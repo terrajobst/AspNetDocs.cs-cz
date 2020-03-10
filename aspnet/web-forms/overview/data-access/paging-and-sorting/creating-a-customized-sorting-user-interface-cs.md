@@ -9,11 +9,11 @@ ms.assetid: 6f81b633-9d01-4e52-ae4a-2ea6bc109475
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/creating-a-customized-sorting-user-interface-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 93ec07a13de80e4c874ff46b5dfa626b60b632c8
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74597407"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78619992"
 ---
 # <a name="creating-a-customized-sorting-user-interface-c"></a>Vytvoření vlastního uživatelského rozhraní pro řazení (C#)
 
@@ -163,7 +163,7 @@ S výše uvedeným kódem jsou nyní k dispozici záhlaví skupin pro řazení p
 > [!NOTE]
 > Pokud máte produkty s `NULL` hodnotami databáze pro pole `CategoryID`, `SupplierID`nebo `UnitPrice`, budou se tyto hodnoty ve výchozím nastavení zobrazovat jako prázdné řetězce v prvku GridView, což znamená, že text oddělovače pro tyto produkty s `NULL` hodnotami se načtou jako kategorie: (to znamená, že za kategorií: nápoje nejsou žádné názvy). Pokud chcete zobrazit hodnotu, můžete buď nastavit [vlastnost BoundFields`NullDisplayText`](https://msdn.microsoft.com/library/system.web.ui.webcontrols.boundfield.nulldisplaytext.aspx) na text, který chcete zobrazit, nebo můžete přidat podmíněný příkaz do metody Render při přiřazování `currentValue` k vlastnosti `Text` oddělovače řádků.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Prvek GridView nezahrnuje mnoho předdefinovaných možností pro přizpůsobení rozhraní řazení. Nicméně s bitovou úrovní kódu na nízké úrovni je možné upravit hierarchii ovládacího prvku GridView s a vytvořit přizpůsobené rozhraní. V tomto kurzu jsme viděli, jak přidat řádek oddělovače skupiny řazení pro řazený prvek GridView, který snadněji identifikuje samostatné skupiny a tyto skupiny. Další příklady přizpůsobených rozhraní řazení najdete v části [Scott Guthrie](https://weblogs.asp.net/scottgu/) s [pár ASP.NET 2,0 GridView – tipy a položky blogu s triky pro řazení](https://weblogs.asp.net/scottgu/archive/2006/02/11/437995.aspx) .
 

@@ -9,11 +9,11 @@ ms.assetid: 829d2f56-5c48-445b-b826-3418a450c788
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/forms-authentication-configuration-and-advanced-topics-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 4d77816a489a4fa16cd70ec4214cd2f8ee563029
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74632049"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78637989"
 ---
 # <a name="forms-authentication-configuration-and-advanced-topics-vb"></a>Konfigurace ověřování pomocí formuláře a pokročilá témata (VB)
 
@@ -42,14 +42,14 @@ Tabulka 1 shrnuje vlastnosti, které lze přizpůsobit pomocí&gt; elementu &lt;
 |         formulář         |                                                                                                                Tento atribut určuje, za jakých podmínek je ověřovací lístek uložený v souboru cookie, který je vložený v adrese URL. Povolené hodnoty jsou: UseCookies; UseUri; Automatické rozpoznávání a UseDeviceProfile (výchozí). Krok 2 toto nastavení prověřuje podrobněji.                                                                                                                |
 |         defaultUrl         |                                                                                                                                                         Určuje adresu URL, na kterou se uživatelé přesměrují po přihlášení ze stránky pro přihlášení, pokud v řetězci dotazu není zadaná žádná hodnota RedirectUrl. Výchozí hodnota je Default. aspx.                                                                                                                                                         |
 |           domain           | Při použití ověřovacích lístků založených na souborech cookie toto nastavení určuje hodnotu domény cookie s. Výchozí hodnota je prázdný řetězec, který způsobí, že prohlížeč použije doménu, ze které byla vydána (například www.yourdomain.com). V takovém <strong>případě se soubory</strong> cookie neodesílají při vytváření požadavků na subdomény, jako je admin.yourdomain.com. Pokud chcete, aby byl soubor cookie předán všem poddoménám, je třeba přizpůsobit atribut domény jeho nastavení na yourdomain.com. |
-|  enableCrossAppRedirects   |                                                                                                                                                                   Logická hodnota označující, zda jsou ověření uživatelé zapamatování při přesměrování na adresy URL v jiných webových aplikacích na stejném serveru. Výchozí hodnota je false.                                                                                                                                                                   |
+|  enableCrossAppRedirects   |                                                                                                                                                                   Logická hodnota označující, zda jsou ověření uživatelé zapamatování při přesměrování na adresy URL v jiných webových aplikacích na stejném serveru. Výchozí hodnotou je hodnota false.                                                                                                                                                                   |
 |          loginUrl          |                                                                                                                                                                                                                      Adresa URL přihlašovací stránky Výchozí hodnota je Login. aspx.                                                                                                                                                                                                                      |
-|            name            |                                                                                                                                                                                                   Pokud používáte ověřovací lístky založené na souborech cookie, název souboru cookie. Výchozí hodnota je. ASPXAUTH.                                                                                                                                                                                                   |
-|            cesta            |                                                                             Při použití ověřovacích lístků založených na souborech cookie toto nastavení určuje atribut cesty cookie s. Atribut path umožňuje vývojářům omezit rozsah souboru cookie na konkrétní hierarchii adresářů. Výchozí hodnota je/, která informuje prohlížeč o odeslání souboru cookie ověřovacího lístku do jakékoli žádosti provedené v doméně.                                                                              |
+|            jméno            |                                                                                                                                                                                                   Pokud používáte ověřovací lístky založené na souborech cookie, název souboru cookie. Výchozí hodnota je. ASPXAUTH.                                                                                                                                                                                                   |
+|            path            |                                                                             Při použití ověřovacích lístků založených na souborech cookie toto nastavení určuje atribut cesty cookie s. Atribut path umožňuje vývojářům omezit rozsah souboru cookie na konkrétní hierarchii adresářů. Výchozí hodnota je/, která informuje prohlížeč o odeslání souboru cookie ověřovacího lístku do jakékoli žádosti provedené v doméně.                                                                              |
 |         ochrana         |                                                                                                                                            Určuje, jaké techniky se používají k ochraně lístku pro ověřování pomocí formulářů. Povolené hodnoty jsou: All (výchozí); Šifr NTato a ověření. Tato nastavení jsou podrobněji popsaná v kroku 3.                                                                                                                                            |
-|         Vlastnost requireSSL         |                                                                                                                                                                                Logická hodnota určující, zda je pro přenos ověřovacího souboru cookie vyžadováno připojení SSL. Výchozí hodnota je False.                                                                                                                                                                                |
-|     Parametr slidingExpiration      |                                                                                                 Logická hodnota, která označuje, zda se má resetovat časový limit ověřovacího souboru cookie s pokaždé, když uživatel navštíví web během jedné relace. Výchozí hodnota je true (pravda). Zásady časového limitu ověřovacího lístku jsou podrobněji popsány v části určení hodnoty časového limitu lístku s.                                                                                                 |
-|          Prodlev           |                                                                                                                               Určuje dobu v minutách, po jejímž uplynutí vyprší platnost souboru cookie ověřovacího lístku. Výchozí hodnota je 30. Zásady časového limitu ověřovacího lístku jsou podrobněji popsány v části určení hodnoty časového limitu lístku s.                                                                                                                               |
+|         Vlastnost requireSSL         |                                                                                                                                                                                Logická hodnota určující, zda je pro přenos ověřovacího souboru cookie vyžadováno připojení SSL. Výchozí hodnota je false.                                                                                                                                                                                |
+|     Parametr slidingExpiration      |                                                                                                 Logická hodnota, která označuje, zda se má resetovat časový limit ověřovacího souboru cookie s pokaždé, když uživatel navštíví web během jedné relace. Výchozí hodnotou je hodnota true. Zásady časového limitu ověřovacího lístku jsou podrobněji popsány v části určení hodnoty časového limitu lístku s.                                                                                                 |
+|          timeout           |                                                                                                                               Určuje dobu v minutách, po jejímž uplynutí vyprší platnost souboru cookie ověřovacího lístku. Výchozí hodnota je 30. Zásady časového limitu ověřovacího lístku jsou podrobněji popsány v části určení hodnoty časového limitu lístku s.                                                                                                                               |
 
 **Tabulka 1**: shrnutí atributů &lt;ových formulářů&gt; prvků
 
@@ -244,7 +244,7 @@ V předchozím kurzu, pokud jsou zadané přihlašovací údaje platné, jsme je
 
 Tyto kroky se replikují do výše uvedeného kódu. Za prvé, řetězec, který nakonec ukládáme do vlastnosti UserData, se vytvoří tak, že se zkombinuje název společnosti a název, přičemž tyto dvě hodnoty se znakem svislé čáry (|).
 
-Dim userDataString As String = String. Concat (companyName (i); "|"; titleAtCompany (i))
+Dim userDataString As String = String.Concat(companyName(i), "|", titleAtCompany(i))
 
 Dále je vyvolána metoda FormsAuthentication. GetAuthCookie, která vytvoří ověřovací lístek, zašifruje ho a ověří ho v závislosti na nastavení konfigurace a umístí ho do objektu HttpCookie.
 
@@ -256,11 +256,11 @@ Dim lístek as FormsAuthenticationTicket = FormsAuthentication. dešifruje (auth
 
 Pak vytvoříme *novou* instanci FormsAuthenticationTicket založenou na stávajících hodnotách FormsAuthenticationTicket. Tento nový lístek ale obsahuje informace specifické pro uživatele (userDataString).
 
-Dim newTicket as FormsAuthenticationTicket = New FormsAuthenticationTicket (Ticket. Verze, lístek. Název, lístek. IssueDate, lístek. Vypršení platnosti, lístek. Persistent, userDataString)
+Dim newTicket As FormsAuthenticationTicket = New FormsAuthenticationTicket(ticket.Version, ticket.Name, ticket.IssueDate, ticket.Expiration, ticket.IsPersistent, userDataString)
 
 Pak zašifrujeme (a ověříme) novou instanci FormsAuthenticationTicket voláním [metody Encrypt](https://msdn.microsoft.com/library/system.web.security.formsauthentication.encrypt.aspx)a tato šifrovaná (a ověřená) data vložte zpátky do authCookie.
 
-authCookie. Value = FormsAuthentication. Encrypt (newTicket)
+authCookie.Value = FormsAuthentication.Encrypt(newTicket)
 
 Nakonec se authCookie přidá do kolekce Response. cookies a metoda GetRedirectUrl se zavolá k určení vhodné stránky pro odeslání uživatele.
 
@@ -368,7 +368,7 @@ Vraťte se na stránku\_načíst obslužnou rutinu události ve formátu default
 
 [!code-vb[Main](forms-authentication-configuration-and-advanced-topics-vb/samples/sample12.vb)]
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme prozkoumali, jak přizpůsobit nastavení systému ověřování pomocí formulářů pomocí souboru Web. config. Prohlédli jsme se na tom, jak se zpracovává vypršení platnosti ověřovacího lístku a jak se používají ochranná a ověřovací ochrana k ochraně lístku před kontrolou a úpravou. Nakonec jsme probrali použití vlastnosti UserData v ověřovacím lístku pro ukládání dalších informací o uživateli do samotného lístku a použití vlastních objektů zabezpečení a identity k zveřejnění těchto informací v lépe přívětivém způsobu vývojářů.
 

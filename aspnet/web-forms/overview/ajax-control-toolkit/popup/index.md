@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/popup/index
-title: Automaticky otevírané okno | Dokumentace Microsoftu
+title: Automaticky otevíraná okna | Microsoft Docs
 author: rick-anderson
-description: Tento kurz ukazuje, jak pomocí ovládacího prvku Popup má zobrazit automaticky otevíraného okna, když se aktivuje jiný ovládací prvek.
+description: V tomto kurzu se dozvíte, jak používat ovládací prvek místní nabídky k zobrazení automaticky otevírané okno, když se aktivuje jakýkoli jiný ovládací prvek.
 ms.author: riande
 ms.date: 11/14/2011
 ms.assetid: c993c38f-ffcc-412c-a8bb-09569a4cba23
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup
 msc.type: chapter
 ms.openlocfilehash: 3bb627e4dcea758d7f663c0299806d1314f7fec6
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65115125"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78612691"
 ---
 # <a name="popup"></a>Překryvný
 
-> Tento kurz ukazuje, jak pomocí ovládacího prvku Popup má zobrazit automaticky otevíraného okna, když se aktivuje jiný ovládací prvek.
+> V tomto kurzu se dozvíte, jak používat ovládací prvek místní nabídky k zobrazení automaticky otevírané okno, když se aktivuje jakýkoli jiný ovládací prvek.
 
 - [Použití několika překryvných ovládacích prvků (C#)](using-multiple-popup-controls-cs.md)
 - [Zpracování postbacků extenderu PopupControl ovládacím prvkem UpdatePanel (C#)](handling-postbacks-from-a-popup-control-with-an-updatepanel-cs.md)

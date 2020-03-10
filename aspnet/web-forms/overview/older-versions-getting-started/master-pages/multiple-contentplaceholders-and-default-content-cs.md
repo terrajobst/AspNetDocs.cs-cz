@@ -9,11 +9,11 @@ ms.assetid: b9b9798b-027d-46cc-9636-473378e437ac
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/multiple-contentplaceholders-and-default-content-cs
 msc.type: authoredcontent
 ms.openlocfilehash: e902bcae05c0e7976a20293f2b01e5f2e2bee13a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74639536"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78630296"
 ---
 # <a name="multiple-contentplaceholders-and-default-content-c"></a>Několik prvků ContentPlaceHolder a výchozí obsah (C#)
 
@@ -148,7 +148,7 @@ Obrázek 8 zobrazuje `Default.aspx` při prohlížení v prohlížeči. Odvolán
 
 **Obrázek 08**: zobrazí se výchozí obsah pro `LeftColumnContent` a `QuickLoginUI` ContentPlaceHolders ([kliknutím zobrazíte obrázek v plné velikosti](multiple-contentplaceholders-and-default-content-cs/_static/image24.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Model hlavní stránky ASP.NET umožňuje na stránce předlohy libovolný počet prvků ContentPlaceHolder. Prvky ContentPlaceHolders obsahují výchozí obsah, který je generován v případě, že na stránce obsahu není žádný odpovídající ovládací prvek obsahu. V tomto kurzu jsme viděli, jak zahrnout další ovládací prvky ContentPlaceHolder na stránce předlohy a jak definovat ovládací prvky obsahu pro tyto nové prvky ContentPlaceHolder na nové i stávající ASP.NET stránky. Zjistili jsme také určení výchozího obsahu v prvku ContentPlaceHolder, který je užitečný ve scénářích, kdy pouze menšina stran musí přizpůsobit jinak standardizovaný obsah v určité oblasti.
 

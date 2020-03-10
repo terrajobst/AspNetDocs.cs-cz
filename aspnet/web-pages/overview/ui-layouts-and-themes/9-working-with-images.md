@@ -1,222 +1,222 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/9-working-with-images
-title: Práce s obrázky na webu technologie ASP.NET Web Pages (Razor) | Dokumentace Microsoftu
+title: Práce s obrázky na webu ASP.NET Web Pages (Razor) | Microsoft Docs
 author: Rick-Anderson
-description: Tato kapitola ukazuje, jak přidat, zobrazit a pracovat s imagí (Změna velikosti, Převrátit na ose a přidávat vodoznaky) na vašem webu.
+description: V této kapitole se dozvíte, jak přidat, zobrazit a manipulovat s obrázky (změnit velikost, překlopit a přidat meze) na vašem webu.
 ms.author: riande
 ms.date: 02/20/2014
 ms.assetid: 778c4e58-4372-4d25-bab9-aec4a8d8e38d
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/9-working-with-images
 msc.type: authoredcontent
 ms.openlocfilehash: 53514b3c314fc182a43c82974ffcfa8158a636a1
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65114382"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78631857"
 ---
-# <a name="working-with-images-in-an-aspnet-web-pages-razor-site"></a>Práce s obrázky na webu rozhraní ASP.NET Web Pages (Razor)
+# <a name="working-with-images-in-an-aspnet-web-pages-razor-site"></a>Práce s obrázky na webu ASP.NET Web Pages (Razor)
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> Tento článek ukazuje, jak přidat, zobrazit a pracovat s imagí (Změna velikosti, Převrátit na ose a přidávat vodoznaky) na webu rozhraní ASP.NET Web Pages (Razor).
+> V tomto článku se dozvíte, jak přidat, zobrazit a manipulovat s obrázky (Změna velikosti, překlopení a přidání vodoznaků) na webu ASP.NET Web Pages (Razor).
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Postup přidání obrázku na stránku dynamicky.
-> - Jak chcete, aby uživatelé nahrát obrázek.
-> - Postup pro změnu velikosti obrázku.
-> - Jak překlopit nebo otočení obrázku.
-> - Postup přidání vodoznaku do bitové kopie.
-> - Jak použít obraz jako vodoznak.
+> - Jak dynamicky přidat obrázek na stránku
+> - Jak umožnit uživatelům odeslat obrázek.
+> - Jak změnit velikost obrázku
+> - Jak překlopit nebo otočit obrázek
+> - Postup přidání vodoznaku do obrázku
+> - Použití obrázku jako meze.
 > 
-> Toto jsou ASP.NET programování funkcí představených v následujícím článku:
+> Jedná se o funkce ASP.NET programování, které jsou představené v článku:
 > 
-> - `WebImage` Pomocné rutiny.
-> - `Path` Objektu, který poskytuje metody, které umožňují pracovat s názvy souborů a cestu.
+> - Pomocná rutina `WebImage`
+> - Objekt `Path`, který poskytuje metody, které umožňují pracovat s cestami a názvy souborů.
 >   
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
-> - Rozhraní ASP.NET Web Pages (Razor) 2
-> - Služba WebMatrix 2
+> - Webové stránky ASP.NET (Razor) 2
+> - WebMatrix 2
 >   
 > 
-> V tomto kurzu funguje taky pomocí služby WebMatrix 3.
+> V tomto kurzu se používá také WebMatrix 3.
 
 <a id="Adding_an_Image"></a>
 ## <a name="adding-an-image-to-a-web-page-dynamically"></a>Dynamické přidání obrázku na webovou stránku
 
-Image můžete přidat na váš web a na jednotlivých stránkách, zatímco vyvíjíte web. Můžete taky umožnit uživatelům odeslat Image, které může být užitečná pro úkoly, jako je, aby přidat profilové fotky.
+Při vývoji webu můžete přidat obrázky na svůj web a na jednotlivé stránky. Můžete také umožnit uživatelům odeslat obrázky, které mohou být užitečné pro úlohy, jako je například umožnění Přidání fotografie profilu.
 
-Pokud chcete zobrazit na stránce bitovou kopii je již k dispozici na webu, použijete HTML `<img>` element následujícím způsobem:
+Pokud je obrázek již na vašem webu k dispozici a chcete jej pouze zobrazit na stránce, použijte prvek HTML `<img>` takto:
 
 [!code-html[Main](9-working-with-images/samples/sample1.html)]
 
-V některých případech však musíte být schopni zobrazit obrázky dynamicky &#8212; tedy si nejste jisti, co obrázek zobrazit, dokud je stránka je spuštěná.
+Někdy je ale potřeba, abyste mohli obrázky dynamicky &#8212; zobrazovat, ale nevíte, jaký obrázek chcete zobrazit, dokud stránka neběží.
 
-Postup v této části ukazuje, jak zobrazit obrázek v reálném čase, kdy uživatelé zadat název souboru obrázku ze seznamu názvy imagí. Název bitové kopie, vyberte z rozevíracího seznamu a při odesílání stránky, se zobrazí obrázek, který se vybral.
+Postup v této části ukazuje, jak zobrazit obrázek průběžně, kde uživatelé určují název souboru obrázku ze seznamu názvů obrázků. Vyberou název obrázku z rozevíracího seznamu a při odeslání stránky se zobrazí obrázek, který vybrali.
 
-![[Obrázek] ](9-working-with-images/_static/image1.jpg "ch9images 1.jpg")
+![obrazu](9-working-with-images/_static/image1.jpg "ch9images-1. jpg")
 
-1. V nástroji WebMatrix vytvoření nového webu.
-2. Přidejte novou stránku s názvem *DynamicImage.cshtml*.
-3. V kořenové složce webu, přidejte novou složku a pojmenujte ho *image*.
-4. Přidejte čtyři imagí *imagí* složky, které jste právě vytvořili. (Žádné obrázky máte po ruce budou dělat, ale by se měl vejít na stránku.) Přejmenovat imagí *Photo1.jpg*, *Photo2.jpg*, *Photo3.jpg*, a *Photo4.jpg*. (Nebudete používat *Photo4.jpg* v tomto postupu, ale použijete je později v tomto článku.)
-5. Ověřte, že čtyři obrázky nejsou označeny jako jen pro čtení.
-6. Nahraďte existující obsah na stránce s následujícími možnostmi:
+1. V WebMatrixu vytvořte nový web.
+2. Přidejte novou stránku s názvem *DynamicImage. cshtml*.
+3. V kořenové složce webu přidejte novou složku a pojmenujte ji jako *Image*.
+4. Přidejte čtyři obrázky do složky *images* , kterou jste právě vytvořili. (Všechny užitečné obrázky budou, ale měly by se vejít na stránku.) Přejmenujte obrázky *Photo1. jpg*, *Photo2. jpg*, *Photo3. jpg*a *Photo4. jpg*. (V tomto postupu nebudete používat *Photo4. jpg* , ale budete ho používat později v článku.)
+5. Ověřte, že čtyři bitové kopie nejsou označeny jako jen pro čtení.
+6. Stávající obsah stránky nahraďte následujícím způsobem:
 
     [!code-cshtml[Main](9-working-with-images/samples/sample2.cshtml)]
 
-    Text na stránce má rozevíracího seznamu ( `<select>` prvek), který je pojmenován `photoChoice`. Seznam obsahuje tři možnosti a `value` atribut jednotlivých možností v seznamu má název některou k imagí, které jste umístili do *imagí* složky. V podstatě seznamu umožní uživateli vybrat popisný název, jako je &quot;fotografii 1&quot;, a poté předá *.jpg* název souboru při odeslání stránky.
+    Tělo stránky obsahuje rozevírací seznam (`<select>` element), který má název `photoChoice`. Seznam má tři možnosti a atribut `value` každé možnosti seznamu má název jedné z imagí, které vložíte do složky *images* . V podstatě vám seznam umožní uživateli vybrat popisný název, například &quot;fotografii 1&quot;, a po odeslání stránky předává název souboru *. jpg* .
 
-    V kódu, můžete získat výběru uživatele (jinými slovy, název souboru obrázku) ze seznamu načtením `Request["photoChoice"]`. Nejprve zobrazí, pokud je výběr vůbec. Pokud existuje, sestavit cestu k obrázku, který se skládá z názvu složky pro obrázky a název souboru obrázku uživatele. (Pokud jste se pokusili vytvořit cestu, ale došlo ustanovení `Request["photoChoice"]`, by dojde k chybě.) Výsledkem je relativní cesta takto:
+    V kódu můžete získat výběr uživatele (jinými slovy, název souboru obrázku) ze seznamu, a to čtením `Request["photoChoice"]`. Nejprve se zobrazí, zda existuje výběr. Pokud je k dispozici, vytvoříte cestu k obrázku, který se skládá z názvu složky pro obrázky a názvu souboru obrázku uživatele. (Pokud jste se pokusili vytvořit cestu, ale nedošlo k žádnému `Request["photoChoice"]`, zobrazí se chyba.) Výsledkem je relativní cesta, například:
 
-    *images/Photo1.jpg*
+    *obrázky/Photo1. jpg*
 
-    Cesta je uložena v proměnné s názvem `imagePath` , kterou budete potřebovat později na stránce.
+    Cesta je uložena v proměnné s názvem `imagePath`, kterou budete později potřebovat na stránce.
 
-    V textu, k dispozici je také `<img>` element, který se používá k zobrazení obrázku, který uživatel vybere. `src` Atribut není nastavena na název souboru nebo adresu URL, jako by tomu zobrazíte statický prvek. Místo toho je nastavena na `@imagePath`, což znamená, že získá svou hodnotu z cesty, které jste nastavili v kódu.
+    V těle je také `<img>` element, který se používá k zobrazení obrázku, který uživatel vybral. Atribut `src` není nastaven na název souboru nebo na adresu URL, třeba v případě, že byste chtěli zobrazit statický prvek. Místo toho je nastavená na `@imagePath`, což znamená, že získá hodnotu z cesty, kterou jste nastavili v kódu.
 
-    Při prvním spuštění stránky, ale neexistuje žádný obrázek se zobrazí, protože uživatel nemá vybrané nic. To obvykle znamená, že `src` atribut budou prázdné a image se zobrazují jako červené &quot;x&quot; (nebo cokoli, co prohlížeče vykreslí, pokud nemůže najít image). Chcete-li tomu zabránit, kam si ukládáte `<img>` prvek v `if` blok, který testuje, pokud chcete zobrazit, jestli `imagePath` proměnná má něco v ní. Pokud uživatel proveden výběr, `imagePath` obsahuje cestu. Pokud uživatel nebyl vyberte bitovou kopii nebo pokud je to první stránka se zobrazí, `<img>` prvek není ještě vykreslen.
-7. Uložte soubor a spuštění stránky v prohlížeči. (Ujistěte se, že je vybrána na stránce v **soubory** pracovního prostoru před jeho spuštěním.)
-8. Vyberte bitovou kopii z rozevíracího seznamu a klikněte na **Ukázkový obrázek**. Ujistěte se, že se zobrazuje různé obrázky pro různé možnosti.
+    Při prvním spuštění stránky, ale není k dispozici žádný obrázek k zobrazení, protože uživatel nic nevybrali. To obvykle znamená, že atribut `src` by byl prázdný a obrázek by se zobrazil jako červený &quot;x&quot; (nebo bez ohledu na to, jestli se v prohlížeči nenajde obrázek). Chcete-li tomu zabránit, vložte prvek `<img>` do bloku `if`, který testuje, zda obsahuje `imagePath` proměnná, která obsahuje nějaké informace. Pokud uživatel provedl výběr, `imagePath` obsahuje cestu. Pokud uživatel nezvolil obrázek, nebo pokud se jedná o první zobrazení stránky, `<img>` element není ani vykreslen.
+7. Uložte soubor a spusťte stránku v prohlížeči. (Před spuštěním se ujistěte, že je stránka vybraná v pracovním prostoru **soubory** .)
+8. V rozevíracím seznamu vyberte obrázek a klikněte na **ukázkový obrázek**. Ujistěte se, že se zobrazují různé obrázky pro různé volby.
 
 <a id="Uploading_an_Image"></a>
-## <a name="uploading-an-image"></a>Nahrání Image
+## <a name="uploading-an-image"></a>Nahrání obrázku
 
-Předchozí příklad ukázal, jak zobrazit obrázek dynamicky, ale to šlo jenom s imagí, které již byly na vašem webu. Tento postup ukazuje, jak chcete, aby uživatelé nahrát obrázek, který se následně zobrazí na stránce. V technologii ASP.NET, můžete pracovat s obrázky v reálném čase pomocí `WebImage` pomocné rutiny, která obsahuje metody, které umožňují vytváření, manipulaci s a uložte imagí. `WebImage` Pomocné rutiny podporuje všechny běžné webové image typy souborů, včetně *.jpg*, *.png*, a *.bmp*. V tomto článku budete používat *.jpg* bitové kopie, ale můžete použít některé typy obrázků.
+Předchozí příklad ukazuje, jak dynamicky zobrazit obrázek, ale pracoval pouze s obrázky, které již byly na vašem webu. Tento postup ukazuje, jak umožnit uživatelům odeslat obrázek, který se pak zobrazí na stránce. V ASP.NET můžete pomocí pomocné rutiny `WebImage` manipulovat s imagemi, které obsahují metody, které umožňují vytvářet, manipulovat a ukládat obrázky. Pomocná rutina `WebImage` podporuje všechny běžné typy souborů webové image, včetně *. jpg*, *. png*a *. bmp*. V celém článku budete používat obrázky *. jpg* , ale můžete použít libovolný z těchto typů obrázků.
 
-![[Obrázek] ](9-working-with-images/_static/image2.jpg "ch9images 2.jpg")
+![obrazu](9-working-with-images/_static/image2.jpg "ch9images-2. jpg")
 
-1. Přidejte novou stránku a pojmenujte ho *UploadImage.cshtml*.
-2. Nahraďte existující obsah na stránce s následujícími možnostmi: 
+1. Přidejte novou stránku a pojmenujte ji *UploadImage. cshtml*.
+2. Stávající obsah stránky nahraďte následujícím způsobem: 
 
     [!code-cshtml[Main](9-working-with-images/samples/sample3.cshtml)]
 
-    Má tělo text `<input type="file">` element, který umožňuje uživateli vybrat soubor k odeslání. Kliknutím na **odeslat**, odeslání souboru, vyberou se spolu s formuláři.
+    Tělo textu má element `<input type="file">`, který umožňuje uživatelům vybrat soubor, který se má nahrát. Když kliknete na **Odeslat**, soubor, který se vybere, se odešle spolu s formulářem.
 
-    K získání nahraného obrázku, použijete `WebImage` pomocné rutiny, která má celou řadu užitečných metod pro práci s obrázky. Konkrétně byste měli použít `WebImage.GetImageFromRequest` získání nahraného obrázku (pokud existuje) a uloží je do proměnné s názvem `photo`.
+    K získání nahraného obrázku použijte pomocníka `WebImage`, který obsahuje nejrůznější užitečné metody pro práci s obrázky. Konkrétně se používá `WebImage.GetImageFromRequest` k získání nahraného obrázku (pokud existuje) a jeho uložení do proměnné s názvem `photo`.
 
-    Spoustu práce v tomto příkladu zahrnuje získání a nastavení názvy souborů a cestu. Tento problém je, že chcete získat název (a pouze název) bitovou kopii, která uživatel nahrál a pak vytvořte novou cestu pro budete k uložení image. Protože uživatelé potenciálně mohou nahrávat více bitových kopií, které mají stejný název, vám hodně zvláštní kód vytvořit jedinečné názvy a ujistěte se, že uživatelé nepřepisujte stávající obrázky.
+    Spousta práce v tomto příkladu zahrnuje získání a nastavení názvů souborů a cest. Problém je, že chcete získat název (a pouze název) image, kterou uživatel nahrál, a pak vytvořit novou cestu, do které budete image ukládat. Vzhledem k tomu, že uživatelé mohou nahrát více obrázků se stejným názvem, použijete pro vytváření jedinečných názvů bitovou kopii dalšího kódu a zajistěte, aby uživatelé nepřepsali existující obrázky.
 
-    Pokud obrázek skutečně odeslal (test `if (photo != null)`), získat název bitové kopie z této image `FileName` vlastnost. Když uživatel odešle obrázek, `FileName` obsahuje původní jméno uživatele, který obsahuje cestu z počítače uživatele. To může vypadat takto:
+    Pokud byl obrázek odeslán (test `if (photo != null)`), získá se název obrázku z vlastnosti `FileName` obrázku. Když uživatel obrázek nahraje, `FileName` obsahuje původní název uživatele, který zahrnuje cestu z počítače uživatele. Může to vypadat takto:
 
     *C:\Users\Joe\Pictures\SamplePhoto1.jpg*
 
-    Tyto cesty informace, ale nechcete &#8212; je vhodné skutečného názvu souboru (*SamplePhoto1.jpg*). Můžete odstranit pouze soubor pomocí cesty s použitím `Path.GetFileName` metoda takto:
+    Nechcete všechny tyto informace o cestě, ale &#8212; chcete mít jenom skutečný název souboru (*SamplePhoto1. jpg*). Pomocí metody `Path.GetFileName` můžete prokládat pouze soubor z cesty, například takto:
 
     [!code-csharp[Main](9-working-with-images/samples/sample4.cs)]
 
-    Potom vytvoříte nový jedinečný název souboru tak, že přidáte identifikátor GUID k původnímu názvu. (Další informace o identifikátory GUID najdete v tématu [o identifikátory GUID](#SB_AboutGUIDs) dále v tomto článku.) Pak vytvoříte úplnou cestu, která vám pomůže se tento obrázek uloží. Uložení cesta se skládá z nový název souboru, složky (imagí) a aktuální umístění webu.
+    Pak můžete vytvořit nový jedinečný název souboru přidáním identifikátoru GUID k původnímu názvu. (Další informace o identifikátorech GUID najdete v tématu [o guidch](#SB_AboutGUIDs) dále v tomto článku.) Pak vytvoříte úplnou cestu, kterou můžete použít k uložení obrázku. Cesta pro uložení se skládá z nového názvu souboru, složky (imagí) a aktuálního umístění webu.
 
     > [!NOTE]
-    > Aby se váš kód pro uložení souborů v *imagí* složce aplikace potřebuje pro čtení i zápis oprávnění pro tuto složku. Ve svém vývojovém počítači to není obvykle problém. Při publikování webu poskytovatele hostingu webový server, může však muset explicitně nastavena patřičná oprávnění. Pokud tento kód spustit na serveru pro poskytovatele hostingu a dojde k chybám, obraťte se na poskytovatele hostingu a zjistěte, jak nastavit tato oprávnění.
+    > Aby váš kód ukládal soubory do složky *imagí* , aplikace potřebuje oprávnění ke čtení i zápisu pro tuto složku. Ve vývojovém počítači to není obvykle problém. Když ale publikujete web na webový server poskytovatele hostingu, možná budete muset tato oprávnění výslovně nastavit. Pokud spustíte tento kód na serveru poskytovatele hostingu a získáte chyby, obraťte se na poskytovatele hostingu a zjistěte, jak tato oprávnění nastavit.
 
-    A konečně, předáte Uložit cestu k `Save` metodu `WebImage` pomocné rutiny. Toto uloží nahraný obrázek pod jejím novým názvem. Uložení metoda vypadá takto: `photo.Save(@"~\" + imagePath)`. Úplná cesta je připojen na `@"~\"`, což je aktuální umístění webu. (Informace o tom, `~` operátoru, naleznete v tématu [Úvod do ASP.NET webové programování pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkId=202890#ID_WorkingWithFileAndFolderPaths).)
+    Nakonec předáte cestu pro uložení do metody `Save` pomocné rutiny `WebImage`. Tím se nahraný obrázek uloží pod jeho nový název. Metoda Save vypadá takto: `photo.Save(@"~\" + imagePath)`. Úplná cesta je připojena k `@"~\"`, což je aktuální umístění webu. (Informace o operátoru `~` naleznete v tématu [Úvod do webového programování ASP.NET pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkId=202890#ID_WorkingWithFileAndFolderPaths).)
 
-    Stejně jako v předchozím příkladu obsahuje tělo stránky `<img>` elementu a zobrazte obrázek. Pokud `imagePath` nastavil, `<img>` prvek je vykreslovaný a jeho `src` atribut je nastaven na `imagePath` hodnotu.
-3. Spuštění stránky v prohlížeči.
-4. Nahrání image a ujistěte se, že se zobrazí na stránce.
-5. Na vašem webu, otevřete *imagí* složky. Uvidíte, že nový soubor byl přidán jejichž název souboru by měl vypadat asi takto: 
+    Jak je uvedeno v předchozím příkladu, tělo stránky obsahuje prvek `<img>` pro zobrazení obrázku. Pokud byla nastavena `imagePath`, je prvek `<img>` vykreslen a jeho atribut `src` je nastaven na hodnotu `imagePath`.
+3. Spusťte stránku v prohlížeči.
+4. Nahrajte obrázek a ujistěte se, že je zobrazený na stránce.
+5. V lokalitě otevřete složku *images* . Vidíte, že byl přidán nový soubor, jehož název souboru vypadá nějak takto:: 
 
-    *45ea4527-7ddd-4965-b9ca-c6444982b342\_MyPhoto.png*
+    *45ea4527-7ddd-4965-b9ca-c6444982b342\_MyPhoto. png*
 
-    Toto je obrázek, který jste nahráli s předponou názvu identifikátor GUID. (Vlastní soubor bude mít jiný identifikátor GUID a pravděpodobně se jmenuje něco jiného než *MyPhoto.png*.)
+    Toto je obrázek, který jste nahráli pomocí identifikátoru GUID s předponou názvu. (Vlastní soubor bude mít jiný identifikátor GUID a pravděpodobně se jmenuje něco jiného než *Myphoto. png*.)
 
 > [!TIP] 
 > 
 > <a id="SB_AboutGUIDs"></a>
-> ### <a name="about-guids"></a>O identifikátory GUID
+> ### <a name="about-guids"></a>O identifikátorech GUID
 > 
-> Identifikátor GUID (globálně jedinečný Identifikátor) je identifikátor, který je vykreslen obvykle ve formátu tímto způsobem: `936DA01F-9ABD-4d9d-80C7-02AF85C822A8`. Čísla a písmena (A-F) se liší pro každý identifikátor GUID, ale všechny se řídí vzor používání skupin 8-4-4-4-12 znaků. (Technicky vzato identifikátor GUID je bajtů / 12816bitové číslo.) Když budete potřebovat identifikátor GUID, můžete volat specializovaný kód, který pro vás vytvoří identifikátor GUID. Za identifikátory GUID spočívá v tom, mezi obrovském množství číslo (3.4 x 10<sup>38</sup>) a algoritmus pro generování výsledné číslo je prakticky zaručeně jednoho typu. Identifikátory GUID proto jsou dobrým způsobem, jak generovat názvy pro takové věci, pokud je třeba zaručit, že nebudete používat se stejným názvem dvakrát. Nevýhodou, samozřejmě, je, že identifikátory GUID nejsou zejména uživatelsky přívětivější, takže mají tendenci se dá použít při název se používá pouze v kódu.
+> Identifikátor GUID (globálně jedinečné ID) je identifikátor, který se obvykle vykresluje v následujícím formátu: `936DA01F-9ABD-4d9d-80C7-02AF85C822A8`. Čísla a písmena (od A-F) se liší pro každý identifikátor GUID, ale všechny mají stejný postup jako při používání skupin 8-4-4-4-12 znaků. (Technicky, identifikátor GUID je 16 bajtů nebo 128bitové číslo.) Pokud potřebujete identifikátor GUID, můžete zavolat specializovaný kód, který pro vás vygeneruje identifikátor GUID. V rámci identifikátorů GUID je to, že mezi mimořádnou velikostí čísla (3,4 x 10<sup>38</sup>) a algoritmem pro jeho vygenerování je výsledný počet prakticky zaručený jako jeden z druhů. Identifikátory GUID jsou proto dobrým způsobem, jak vygenerovat názvy věcí, pokud musíte zaručit, že nebudete používat stejný název dvakrát. Nevýhodou je samozřejmě, že identifikátory GUID nejsou obzvláště uživatelsky přívětivé, takže mají být použity, pokud se název používá pouze v kódu.
 
 <a id="Resizing_an_Image"></a>
 ## <a name="resizing-an-image"></a>Změna velikosti obrázku
 
-Pokud váš web přijímá Image od uživatele, můžete chtít změnit velikost bitové kopie, před zobrazení nebo je uložíte. Můžete znovu použít `WebImage` pomocné rutiny pro tento.
+Pokud web akceptuje obrázky od uživatele, možná budete chtít změnit velikost obrázků, než je zobrazíte nebo uložíte. Pro tuto akci můžete znovu použít pomocníka `WebImage`.
 
-Tento postup ukazuje, jak změnit velikost obrázku vytvořit miniaturu a poté uložit miniaturu a původní obrázek na webu. Zobrazit miniaturu na stránce a hypertextový odkaz můžete přesměrovat uživatele na plnou velikost obrázku.
+Tento postup ukazuje, jak změnit velikost nahraného obrázku pro vytvoření miniatury a pak uložit miniaturu a původní obrázek na webu. Miniaturu můžete zobrazit na stránce a použít hypertextový odkaz pro přesměrování uživatelů na obrázek v plné velikosti.
 
-![[Obrázek] ](9-working-with-images/_static/image3.jpg "ch9images 3.jpg")
+![obrazu](9-working-with-images/_static/image3.jpg "ch9images-3. jpg")
 
-1. Přidejte novou stránku s názvem *Thumbnail.cshtml*.
-2. V *image* složce vytvořte podsložku s názvem *thumbs*.
-3. Nahraďte existující obsah na stránce s následujícími možnostmi: 
+1. Přidejte novou stránku s názvem *Thumbnail. cshtml*.
+2. Ve složce *images* vytvořte podsložku s názvem *palec*.
+3. Stávající obsah stránky nahraďte následujícím způsobem: 
 
     [!code-cshtml[Main](9-working-with-images/samples/sample5.cshtml)]
 
-    Tento kód je podobný kód z předchozího příkladu. Rozdíl spočívá v tom, že tento kód uloží obrázek dvakrát, jednou za normálních okolností a jednou po vytvoření Miniatura bitovou kopii. Nejprve získejte nahraného obrázku a uložte ho do *imagí* složky. Pak vytvoříte novou cestu pro miniaturu. K samotnému vytvoření miniatury, volání `WebImage` pomocné rutiny `Resize` metodu pro vytvoření bitové kopie 60 – podle 60 pixelů. Příklad ukazuje, jak zachovat poměr stran a jak můžete zabránit bitovou kopii z se zvětší (v případě novou velikost by ve skutečnosti zvětšit na obrázku). Obrázek se změněnou velikostí se pak uloží do *thumbs* podsložky.
+    Tento kód je podobný kódu z předchozího příkladu. Rozdílem je, že tento kód uloží obrázek dvakrát, jednou za normálních podmínek, a jednou po vytvoření miniatury bitové kopie. Napřed dostanete nahraný obrázek a uložte ho do složky *images* . Pak vytvoříte novou cestu k obrázku miniatury. Chcete-li vytvořit miniaturu, zavoláte `Resize` metodu `WebImage` pomoc k vytvoření obrázku 60-pixel podle 60-pixel. Tento příklad ukazuje, jak zachováte poměr stran a jak můžete zabránit zvětšování obrázku (pro případ, že by nová velikost znamenala větší velikost obrázku). Obrázek se změněnou velikostí se pak uloží v podsložce s *miniaturami* .
 
-    Na konci značky, můžete použít stejné `<img>` element s dynamické `src` atribut, který jste viděli v předchozích příkladech má podmíněně zobrazit obrázek. V takovém případě můžete zobrazit miniatury. Můžete také použít `<a>` prvek, který chcete vytvořit hypertextový odkaz na velké objemy verzi image. Stejně jako u `src` atribut `<img>` prvku nastavíte `href` atribut `<a>` element dynamicky na cokoli, co je v `imagePath`. Pokud chcete mít jistotu, že cesta může fungovat jako adresu URL, předáte `imagePath` k `Html.AttributeEncode` metodu, která převede vyhrazené znaky v cestě na znaky, které jsou v pořádku v adrese URL.
-4. Spuštění stránky v prohlížeči.
-5. Odeslat fotografii a ověřte, jestli se zobrazují na miniaturu.
-6. Klikněte na miniaturu a chcete obrázek reklamy zobrazit.
-7. V *image* a *Image/thumbs*, mějte na paměti, že se přidaly nové soubory.
+    Na konci značky použijete stejný `<img>` element s atributem Dynamic `src`, který jste si poznamenali v předchozích příkladech, k podmíněnému zobrazení obrázku. V tomto případě zobrazíte miniaturu. Pomocí elementu `<a>` také můžete vytvořit hypertextový odkaz na velkou verzi obrázku. Stejně jako u atributu `src` `<img>` elementu, je automaticky nastaven atribut `href` prvku `<a>` dynamicky na cokoli, co je v `imagePath`. Chcete-li se ujistit, že cesta může fungovat jako adresa URL, předáte `imagePath` do metody `Html.AttributeEncode`, která převede rezervované znaky v cestě na znaky, které jsou v adrese URL v pořádku.
+4. Spusťte stránku v prohlížeči.
+5. Nahrajte fotografii a ověřte, jestli je zobrazená miniatura.
+6. Kliknutím na miniaturu zobrazíte obrázek v plné velikosti.
+7. V *obrazech* a *obrázcích/palec*si všimněte, že byly přidány nové soubory.
 
 <a id="Rotating_and_Flipping"></a>
 ## <a name="rotating-and-flipping-an-image"></a>Otočení a překlopení obrázku
 
-`WebImage` Pomocník také umožňuje Převrátit a otáčení obrázků. Tento postup ukazuje, jak získat obrázek ze serveru, Převrátit obrázek vzhůru nohama (svisle), uložte ho a pak zobrazí na stránce přetočený obrázek. V tomto příkladu jste právě pomocí souboru již na serveru (*Photo2.jpg*). V reálné aplikaci by pravděpodobně Převrátit obrázek jejíž název je získat dynamicky, stejně jako v předchozích příkladech.
+Pomocná rutina `WebImage` také umožňuje překlopit a otočit obrázky. Tento postup ukazuje, jak získat obrázek ze serveru, jak překlopit obrázek (svisle), uložit ho a pak zobrazit převrácenou image na stránce. V tomto příkladu jste právě používali soubor, který už máte na serveru (*Photo2. jpg*). V reálné aplikaci byste pravděpodobně přeměnili obrázek, jehož název se dynamicky načte, stejně jako v předchozích příkladech.
 
-![[Obrázek] ](9-working-with-images/_static/image4.jpg "ch9images 4.jpg")
+![obrazu](9-working-with-images/_static/image4.jpg "ch9images-4. jpg")
 
-1. Přidejte novou stránku s názvem *FlipImage.cshtml*.
-2. Nahraďte existující obsah na stránce s následujícími možnostmi: 
+1. Přidejte novou stránku s názvem *FlipImage. cshtml*.
+2. Stávající obsah stránky nahraďte následujícím způsobem: 
 
     [!code-cshtml[Main](9-working-with-images/samples/sample6.cshtml)]
 
-    Tento kód použije `WebImage` pomocné rutiny, chcete-li získat obrázek ze serveru. Vytvořit cestu k obrázku pomocí stejného postupu, který jste použili v předchozích příkladech pro ukládání obrázků a předat tuto cestu při vytváření image pomocí `WebImage`:
+    Kód používá pomocníka `WebImage` k získání obrázku ze serveru. Cestu k bitové kopii vytvoříte pomocí stejné techniky, jakou jste použili v předchozích příkladech pro ukládání imagí, a předáte tuto cestu při vytváření image pomocí `WebImage`:
 
     [!code-javascript[Main](9-working-with-images/samples/sample7.js)]
 
-    Pokud je nalezen bitovou kopii, vytvořit novou cestu a název souboru, stejně jako v předchozích příkladech. Převrátit obrázek, zavolejte `FlipVertical` metoda a pak uložte bitovou kopii znovu.
+    Pokud se najde obrázek, vytvoří se nová cesta a název souboru, podobně jako v předchozích příkladech. Chcete-li překlopit obrázek, zavoláte metodu `FlipVertical` a pak obrázek znovu uložíte.
 
-    Image se znovu zobrazí na stránce pomocí `<img>` křížkem `src` atribut nastaven na `imagePath`.
-3. Spuštění stránky v prohlížeči. Obrázek pro *Photo2.jpg* vzhůru nohama se zobrazí.
-4. Aktualizujte stránku, nebo požádat o stránku znovu, abyste viděli, že bitová kopie je přetočený pravé straně se znovu.
+    Obrázek se znovu zobrazí na stránce pomocí elementu `<img>` s atributem `src` nastaveným na `imagePath`.
+3. Spusťte stránku v prohlížeči. Zobrazuje se obrázek pro *Photo2. jpg* .
+4. Aktualizujte stránku, nebo požádejte stránku znovu, aby se zobrazila znovu pravá strana.
 
-Otočí obrázek, použijte stejný kód, s výjimkou, že namísto volání metody `FlipVertical` nebo `FlipHorizontal`, volání `RotateLeft` nebo `RotateRight`.
+Pro otočení obrázku použijte stejný kód s tím rozdílem, že místo volání `FlipVertical` nebo `FlipHorizontal`zavoláte `RotateLeft` nebo `RotateRight`.
 
 <a id="Adding_a_Watermark"></a>
-## <a name="adding-a-watermark-to-an-image"></a>Přidání vodoznaku do Image
+## <a name="adding-a-watermark-to-an-image"></a>Přidání vodoznaku do obrázku
 
-Když přidáte obrázků na váš web, můžete chtít přidat vodoznak do bitové kopie, předtím, než ji uložit nebo zobrazit na stránce. Lidé často používají vodoznaky, chcete-li přidat informace o autorských právech pro bitovou kopii nebo inzerovat název své firmy.
+Když na svůj web přidáte obrázky, možná budete chtít přidat vodoznak do obrázku před jeho uložením nebo zobrazením na stránce. Lidé často používají vodoznaky k přidání informací o autorských právech do obrázku nebo pro inzerci svého obchodního jména.
 
-![[Obrázek] ](9-working-with-images/_static/image5.jpg "ch9images 5.jpg")
+![obrazu](9-working-with-images/_static/image5.jpg "ch9images-5. jpg")
 
-1. Přidejte novou stránku s názvem *Watermark.cshtml*.
-2. Nahraďte existující obsah na stránce s následujícími možnostmi: 
+1. Přidejte novou stránku s názvem *vodotisk. cshtml*.
+2. Stávající obsah stránky nahraďte následujícím způsobem: 
 
     [!code-cshtml[Main](9-working-with-images/samples/sample8.cshtml)]
 
-    Tento kód je stejně jako kód v *FlipImage.cshtml* stránky z předchozí (i když se v tuto chvíli se používá *Photo3.jpg* souboru). Chcete-li přidat vodoznak, zavolejte `WebImage` pomocné rutiny `AddTextWatermark` metoda před uložením na obrázku. Při volání funkce `AddTextWatermark`, předáte text &quot;Můj vodoznak&quot;, nastavit barvu písma na žlutou a nastavte na Arial rodiny písem. (I když ho tady není ukázaný, `WebImage` Pomocník také umožňuje určit krytí a rodinu písem a velikost písma a pozice vodoznakového textu.) Při ukládání obrázku nesmí být jen pro čtení.
+    Tento kód je podobný kódu na stránce *FlipImage. cshtml* ze starší verze (Přestože tato doba používá soubor *Photo3. jpg* ). Chcete-li přidat meze, zavoláte metodu `AddTextWatermark` pomocné rutiny `WebImage` před uložením obrázku. V volání `AddTextWatermark`předáte text &quot;můj vodoznak&quot;, nastavíte barvu písma na žlutou a nastavíte rodinu písma na Arial. (I když zde není zobrazená, Pomocník pro `WebImage` také umožňuje určit krytí, rodinu písem a velikost písma a umístění textu meze.) Když uložíte obrázek, nesmí být jen pro čtení.
 
-    Jak už víte, před, obrázek se zobrazí na stránce pomocí `<img>` element s atributem src nastaven na hodnotu `@imagePath`.
-3. Spuštění stránky v prohlížeči. Všimněte si, že text "Moje vodoznak" v pravém dolním rohu obrázku.
+    Jak jste viděli dříve, obrázek se zobrazí na stránce pomocí elementu `<img>` s atributem src nastaveným na `@imagePath`.
+3. Spusťte stránku v prohlížeči. V pravém dolním rohu obrázku si všimněte textu "můj vodoznak".
 
 <a id="Using_an_Image_as_a_Watermark"></a>
-## <a name="using-an-image-as-a-watermark"></a>Pomocí Image jako vodoznak
+## <a name="using-an-image-as-a-watermark"></a>Použití obrázku jako meze
 
-Namísto použití text pro mez, můžete použít jiný obrázek. Uživatelé někdy použít jako vodoznak Image, jako je logo společnosti, nebo použít vodoznak namísto textu pro informace o autorských právech.
+Místo používání textu pro vodoznak můžete použít jiný obrázek. Lidé někdy používají jako vodoznak obrázky, jako je logo společnosti, nebo používají obrázek vodoznaku místo textu pro informace o autorských právech.
 
-![[Obrázek] ](9-working-with-images/_static/image6.jpg "ch9images 6.jpg")
+![obrazu](9-working-with-images/_static/image6.jpg "ch9images-6. jpg")
 
-1. Přidejte novou stránku s názvem *ImageWatermark.cshtml*.
-2. Přidání obrázku, který má *image* složky, můžete použít jako logo a přejmenovat *MyCompanyLogo.jpg*. Tato bitová kopie by měl být bitovou kopii, které můžete jasně vidíte, když je nastaven na 80 pixelů na šířku a 20 pixelů na výšku.
-3. Nahraďte existující obsah na stránce s následujícími možnostmi: 
+1. Přidejte novou stránku s názvem *ImageWatermark. cshtml*.
+2. Přidejte obrázek do složky *images* , kterou můžete použít jako logo a přejmenovat image *MyCompanyLogo. jpg*. Tento obrázek by měl být obrázek, který se zobrazí jasně, když je nastaven na 80 pixelů a velký objem 20 pixelů.
+3. Stávající obsah stránky nahraďte následujícím způsobem: 
 
     [!code-cshtml[Main](9-working-with-images/samples/sample9.cshtml)]
 
-    Toto je další variantou na kód v předchozích příkladech. V tomto případě voláte `AddImageWatermark` přidání vodoznaku do target image (*Photo3.jpg*) před uložením na obrázku. Při volání `AddImageWatermark`, nastavte jeho šířku na 80 pixelů a výšku na 20 pixelů. *MyCompanyLogo.jpg* image je vodorovného zarovnání v centru a v dolní části obrázku cílové svisle zarovnané. Neprůhlednost nastavená na 100 % a je odsazení nastaveno na 10 pixelů. Pokud vodoznaku je větší než cílové image, nic nestane. Pokud je větší než cílové image vodoznaku a nastavte odsazení pro image mez nula, je ignorován vodoznak.
+    Jedná se o další variaci kódu z předchozích příkladů. V tomto případě zavoláte `AddImageWatermark` pro přidání obrázku meze do cílové Image (*Photo3. jpg*) před uložením obrázku. Při volání `AddImageWatermark`nastavíte šířku na 80 pixelů a výšku na 20 pixelů. Obrázek *MyCompanyLogo. jpg* je vodorovně zarovnán do středu a svisle zarovnané v dolní části cílové image. Neprůhlednost je nastavena na 100% a odsazení je nastaveno na 10 pixelů. Pokud je obrázek meze větší než cílový obrázek, nic se nestane. Pokud je obrázek meze větší než cílový obrázek a nastavíte odsazení obrázku na hodnotu nula, vodoznak se ignoruje.
 
-    Jako před tím zobrazíte pomocí bitové kopie `<img>` elementu a dynamické `src` atribut.
-4. Spuštění stránky v prohlížeči. Všimněte si, že vodoznaku se zobrazí v dolní části hlavní image.
+    Stejně jako předtím zobrazíte obrázek pomocí elementu `<img>` a dynamického atributu `src`.
+4. Spusťte stránku v prohlížeči. Všimněte si, že obrázek vodoznaku se zobrazí v dolní části hlavní bitové kopie.
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
 
-[Práce se soubory na webu rozhraní ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=202896)
+[Práce se soubory na webu ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=202896)
 
-[Úvod do programování pomocí syntaxe Razor rozhraní ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkID=251587)
+[Úvod do programování webových stránek ASP.NET pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=251587)

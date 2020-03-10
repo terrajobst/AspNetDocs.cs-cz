@@ -9,11 +9,11 @@ ms.assetid: f7073f50-d765-456d-9957-926ce60f35f6
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-animations-using-client-side-code-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 7ef36900d20d8d07c3c6f3b63ce96568a377a0ed
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74575489"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78598159"
 ---
 # <a name="executing-animations-using-client-side-code-vb"></a>Spuštění animací klientským kódem (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Spuštění animace se může také aktivovat pomocí vlastního kódu JavaScriptu na straně klienta.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 

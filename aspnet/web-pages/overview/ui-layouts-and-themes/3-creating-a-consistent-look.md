@@ -1,221 +1,221 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/3-creating-a-consistent-look
-title: Vytvoření konzistentního rozložení v rozhraní ASP.NET Web Pages servery (Razor) | Dokumentace Microsoftu
+title: Vytvoření konzistentního rozložení v lokalitách ASP.NET Web Pages (Razor) | Microsoft Docs
 author: Rick-Anderson
-description: Chcete-li efektivnější vytvořit webové stránky pro váš web, můžete vytvořit opakovaně použitelné bloky obsahu (jako záhlaví a zápatí) u vašeho webu a jazyka c je...
+description: Aby bylo vytváření webových stránek pro svůj web efektivnější, můžete vytvořit opakovaně použitelné bloky obsahu (například záhlaví a zápatí) pro váš web a Vy c...
 ms.author: riande
 ms.date: 03/10/2014
 ms.assetid: d7bd001b-6db2-4422-9b78-f3d08b743b00
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/3-creating-a-consistent-look
 msc.type: authoredcontent
 ms.openlocfilehash: 3f63ce68ae4c13970ac0df196167ace0b22b592c
-ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67411258"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78627447"
 ---
-# <a name="creating-a-consistent-layout-in-aspnet-web-pages-razor-sites"></a>Vytvoření konzistentního rozložení v lokalitách rozhraní ASP.NET Web Pages (Razor)
+# <a name="creating-a-consistent-layout-in-aspnet-web-pages-razor-sites"></a>Vytvoření konzistentního rozložení na webech ASP.NET Web Pages (Razor)
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> Tento článek vysvětluje, jak můžete pomocí rozložení stránky na webu rozhraní ASP.NET Web Pages (Razor) k vytvoření opakovaně použitelné bloky obsahu (jako záhlaví a zápatí) a k vytvoření konzistentního vzhledu všech stránek na webu.
+> Tento článek vysvětluje, jak můžete použít stránky rozložení na webu ASP.NET Web Pages (Razor) k vytvoření opakovaně použitelných bloků obsahu (například hlaviček a zápatí) a vytvořit konzistentní vzhled pro všechny stránky v lokalitě.
 > 
-> **Co se dozvíte:** 
+> **Co se naučíte:** 
 > 
-> - Jak vytvářet opakovaně použitelné bloky obsahu jako záhlaví a zápatí.
-> - Postup vytvoření konzistentního vzhledu všech stránek ve vaší lokalitě pomocí rozložení.
-> - Jak předávat data v době běhu na stránku rozložení.
+> - Vytvoření opakovaně použitelných bloků obsahu, jako jsou záhlaví a zápatí.
+> - Jak vytvořit konzistentní vzhled pro všechny stránky v lokalitě pomocí rozložení.
+> - Jak předat data v době běhu do stránky rozložení.
 > 
-> Toto jsou funkce technologie ASP.NET v následujícím článku:
+> Jedná se o funkce ASP.NET, které jsou představené v článku:
 > 
-> - Bloky obsahu, které jsou soubory, které obsahují obsah ve formátu HTML má být vložen do více stránek.
-> - Rozložení stránky, které jsou stránky, které obsahují obsah ve formátu HTML, který může být sdílen stránky na webu.
-> - `RenderPage`, `RenderBody`, A `RenderSection` metody, které zjistit, kam chcete vložit elementy stránek technologie ASP.NET.
-> - `PageData` Slovník, který umožňuje sdílet data mezi bloky obsahu a rozložení stránky.
+> - Bloky obsahu, což jsou soubory, které obsahují obsah ve formátu HTML, který má být vložen na více stránek.
+> - Stránky rozložení, což jsou stránky, které obsahují obsah ve formátu HTML, který může být sdílen stránkami na webu.
+> - Metody `RenderPage`, `RenderBody`a `RenderSection`, které oznamují ASP.NET, kde vložit prvky stránky.
+> - Slovník `PageData`, který umožňuje sdílet data mezi bloky obsahu a stránkami rozložení.
 >   
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
 > - Webové stránky ASP.NET (Razor) 3
 >   
 > 
-> V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
+> Tento kurz funguje také s ASP.NET webovými stránkami 2.
 
-## <a name="about-layout-pages"></a>Informace o rozložení stránky
+## <a name="about-layout-pages"></a>O stránkách rozložení
 
-Mnohé weby mají obsah, který se zobrazí na každé stránce, jako je záhlaví a zápatí nebo pole, který uživatele informuje, že jste přihlášení. Technologie ASP.NET umožňuje vytvořit samostatný soubor s bloku s obsahem, který může obsahovat text, značek a kódu, stejně jako běžné webové stránce. Pak můžete vložit blok s obsahem na jiných stránkách na webu, kam chcete informace zobrazit. Díky tomu není nutné zkopírovat a vložit stejný obsah do každé stránky. Vytvoření společného obsahu, jako je to také usnadňuje rychlé k aktualizaci vašeho webu. Pokud potřebujete změnit obsah, můžete aktualizovat jenom jeden soubor a změny se projeví všude, kde byl vložen obsah.
+Mnoho webů má obsah, který se zobrazuje na každé stránce, jako je záhlaví a zápatí, nebo pole, které oznamuje uživatelům, že se přihlásili. ASP.NET umožňuje vytvořit samostatný soubor s blokem obsahu, který může obsahovat text, kód a kód, stejně jako běžná webová stránka. Pak můžete vložit blok obsahu na jiné stránky na webu, kde chcete informace zobrazit. Tímto způsobem nemusíte kopírovat a vkládat stejný obsah na každou stránku. Vytváření společného obsahu, podobně jako to, usnadňuje aktualizaci webu. Pokud potřebujete změnit obsah, můžete jenom aktualizovat jeden soubor a změny se pak projeví všude, kde je obsah vložený.
 
-Následující diagram znázorňuje, jak obsah blokuje práce. Když prohlížeč požádá o stránku z webového serveru, ASP.NET vloží bloky obsahu v místě, kde `RenderPage` metoda je volána na hlavní stránce. Na stránce dokončení (sloučení) se pak posílají do prohlížeče.
+Následující obrázek znázorňuje fungování bloků obsahu. Když prohlížeč požaduje stránku z webového serveru, ASP.NET vloží bloky obsahu v místě, kde je na hlavní stránce volána metoda `RenderPage`. Stránka dokončeno (sloučeno) se pak pošle do prohlížeče.
 
-![Koncepční diagram znázorňující, jak metoda RenderPage vloží odkazované stránky do aktuální stránky.](3-creating-a-consistent-look/_static/image1.jpg)
+![Koncepční diagram znázorňující, jak metoda RenderPage vloží odkazovanou stránku na aktuální stránku.](3-creating-a-consistent-look/_static/image1.jpg)
 
-V tomto postupu vytvoříte stránku, která odkazuje na dva bloky obsahu (záhlaví nebo zápatí), které se nacházejí v samostatných souborech. Tyto stejné bloky obsahu můžete použít na libovolné stránce na webu. Jakmile budete hotovi, získáte na stránce takto:
+V tomto postupu vytvoříte stránku, která odkazuje na dva bloky obsahu (záhlaví a zápatí) umístěné v samostatných souborech. Stejné bloky obsahu můžete použít na libovolné stránce webu. Až budete hotovi, dostanete stránku podobné této:
 
-![Snímek obrazovky zobrazující stránku v prohlížeči, který je výsledkem spuštění stránky, která obsahuje volání metodě RenderPage.](3-creating-a-consistent-look/_static/image2.png)
+![Snímek obrazovky, který ukazuje stránku v prohlížeči, která je výsledkem spuštění stránky, která obsahuje volání metody RenderPage.](3-creating-a-consistent-look/_static/image2.png)
 
-1. V kořenové složce vašeho webu, vytvořte soubor s názvem *Index.cshtml*.
-2. Nahraďte existující kód následujícím kódem:
+1. V kořenové složce vašeho webu vytvořte soubor s názvem *index. cshtml*.
+2. Existující značku nahraďte následujícím kódem:
 
     [!code-html[Main](3-creating-a-consistent-look/samples/sample1.html)]
 3. V kořenové složce vytvořte složku s názvem *Shared*.
 
     > [!NOTE]
-    > Se obvykle používá k ukládání souborů, které jsou odkazy sdíleny mezi webové stránky ve složce s názvem *Shared*.
-4. V *Shared* složce vytvořte soubor s názvem  *\_Header.cshtml*.
-5. Jakýkoli existující obsah nahraďte následujícím kódem:
+    > Běžným postupem je ukládání souborů, které jsou sdíleny mezi webovými stránkami ve složce s názvem *Shared*.
+4. Ve *sdílené* složce vytvořte soubor s názvem *\_Header. cshtml*.
+5. Existující obsah nahraďte následujícím:
 
     [!code-html[Main](3-creating-a-consistent-look/samples/sample2.html)]
 
-    Všimněte si, že je název souboru  *\_Header.cshtml*, podtržítko (\_) jako předponu. ASP.NET nebude lze do prohlížeče odeslat stránku, pokud jeho název začíná podtržítkem. To zabrání uživatelům požaduje (neúmyslně nebo jinak) tyto stránky přímo. Je vhodné použít na název stránky, které mají bloky obsahu v nich, podtržítko, protože nechcete skutečně uživatelé mít možnost požádat o tyto stránky &#8212; existují výhradně má být vložen do jiné stránky.
-6. V *Shared* složce vytvořte soubor s názvem  *\_Footer.cshtml* a nahraďte obsah následujícím kódem:
+    Všimněte si, že název souboru je *\_Header. cshtml*s podtržítkem (\_) jako předponou. ASP.NET nepošle stránku do prohlížeče, pokud jeho název začíná podtržítkem. To brání lidem v žádosti (neúmyslně nebo jinak) tyto stránky přímo. Je vhodné použít podtržítko pro názvy stránek, které mají v nich bloky obsahu, protože nechcete, aby uživatelé mohli vyžádat tyto stránky &#8212; výhradně pro vložení na jiné stránky.
+6. Ve *sdílené* složce vytvořte soubor s názvem *\_footer. cshtml* a nahraďte ho následujícím obsahem:
 
     [!code-html[Main](3-creating-a-consistent-look/samples/sample3.html)]
-7. V *Index.cshtml* stránce, přidejte dvě volání `RenderPage` způsob, jak je znázorněno zde:
+7. Na stránce *index. cshtml* přidejte dvě volání metody `RenderPage`, jak je znázorněno zde:
 
     [!code-html[Main](3-creating-a-consistent-look/samples/sample4.html)]
 
-    To ukazuje, jak vložit blok s obsahem do webové stránky. Volání `RenderPage` metoda a předejte mu název souboru, jejíž obsah chcete vložit v daném okamžiku. Sem vkládáte obsah  *\_Header.cshtml* a  *\_Footer.cshtml* soubory do *Index.cshtml* souboru.
-8. Spustit *Index.cshtml* stránku v prohlížeči. (V nástroji WebMatrix, v **soubory** pracovní prostor, klikněte pravým tlačítkem na soubor a pak vyberte **spustit v prohlížeči**.)
-9. V prohlížeči zobrazte zdroj stránky. (Například v aplikaci Internet Explorer, klikněte pravým tlačítkem na stránce a potom klikněte na tlačítko **zobrazit zdroj**.)
+    To ukazuje, jak vložit blok obsahu do webové stránky. Zavoláte metodu `RenderPage` a předá jí název souboru, jehož obsah chcete v tomto okamžiku vložit. Sem vkládáte obsah *\_hlaviček. cshtml* a *\_footer. cshtml* do souboru *index. cshtml* .
+8. Spusťte stránku *index. cshtml* v prohlížeči. (Ve WebMatrixu v pracovním prostoru **soubory** klikněte pravým tlačítkem na soubor a vyberte **Spustit v prohlížeči**.)
+9. V prohlížeči zobrazte zdroj stránky. (Například v Internet Exploreru klikněte pravým tlačítkem na stránku a pak klikněte na **Zobrazit zdroj**.)
 
-    To umožňuje zobrazit kódu webové stránky, které je odesláno prohlížeči, který kombinuje značky index stránky s bloky obsahu. Následující příklad ukazuje na stránku zdroj, který je vykreslen pro *Index.cshtml*. Volání `RenderPage` , který jste vložili do *Index.cshtml* bylo nahrazeno tématem skutečný obsah souborů záhlaví a zápatí.
+    To vám umožní zobrazit kód webové stránky, který se odešle do prohlížeče, který kombinuje značky stránky indexu s bloky obsahu. Následující příklad ukazuje zdroj stránky, který je vykreslen pro *index. cshtml*. Volání `RenderPage`, která jste vložili do souboru *index. cshtml* , byla nahrazena skutečným obsahem souborů hlaviček a zápatí.
 
     [!code-html[Main](3-creating-a-consistent-look/samples/sample5.html)]
 
-## <a name="creating-a-consistent-look-using-layout-pages"></a>Vytvoření konzistentního vzhledu pomocí rozložení stránek
+## <a name="creating-a-consistent-look-using-layout-pages"></a>Vytvoření konzistentního vzhledu pomocí stránek rozložení
 
-Zatím jste viděli, že je snadné zahrnutí stejného obsahu na více stránkách. Více strukturovaný přístup k vytvoření konzistentního vzhledu pro lokalitu, je použití rozložení stránky. Stránka rozložení definuje strukturu webové stránky, ale neobsahuje žádný skutečný obsah. Po vytvoření rozložení stránek, můžete vytvořit webové stránky, které obsahují obsah a připojit je ke stránce rozložení. Při tyto stránky se zobrazí, budete mít ve formátu podle rozložení stránky. (V tomto smyslu stránku rozložení funguje jako šablony pro obsah, který je definován v jiné stránky.)
+Zatím jste viděli, že na více stránkách je snadné zahrnout stejný obsah. Strukturovaným přístupem k vytvoření konzistentního vzhledu webu je použití stránek rozložení. Stránka rozložení definuje strukturu webové stránky, ale neobsahuje žádný skutečný obsah. Po vytvoření stránky rozložení můžete vytvořit webové stránky, které obsah obsahují, a pak je propojit se stránkou rozložení. Po zobrazení těchto stránek budou tyto stránky formátovány podle stránky rozložení. (V tomto smyslu stránka rozložení funguje jako typ šablony pro obsah, který je definovaný na jiných stránkách.)
 
-Stránka rozložení se stejně jako libovolnou stránku HTML s tím rozdílem, že obsahuje volání `RenderBody` metody. Pozice `RenderBody` metody ve stránce rozložení určuje, kde budou zahrnuty informace z obsahu stránky.
+Stránka rozložení je stejně jako libovolná stránka HTML s tím rozdílem, že obsahuje volání metody `RenderBody`. Pozice metody `RenderBody` na stránce rozložení určuje, kam budou zahrnuty informace ze stránky obsahu.
 
-Následující diagram ukazuje, jak obsahu stránky a rozložení stránky jsou zkombinované v době běhu k vytvoření konečného webové stránky. Prohlížeč požádá o stránku obsahu. Stránka obsahu obsahuje kód, který určuje požadovanou stránku rozložení pro stránky strukturu. Na stránce rozložení se vloží obsah v místě, kde `RenderBody` metoda je volána. Obsahu bloky lze také vložit do rozložení stránky voláním `RenderPage` metodu, tak, jak jste to udělali v předchozí části. Po dokončení webové stránky je odesláno prohlížeči.
+Následující diagram znázorňuje, jak se stránky obsahu a stránky rozložení kombinují za běhu, aby se vytvořila hotová webová stránka. Prohlížeč vyžádá stránku obsahu. Stránka obsahu obsahuje kód, který určuje stránku rozložení, která se má použít pro strukturu stránky. Na stránce rozložení je obsah vložen do místa, kde je volána metoda `RenderBody`. Bloky obsahu lze také vložit do stránky rozložení voláním metody `RenderPage`, způsobu, jaký jste provedli v předchozí části. Až se webová stránka dokončí, pošle se do prohlížeče.
 
-![Snímek obrazovky zobrazující stránku v prohlížeči, který je výsledkem spuštění stránky, která obsahuje volání metodě RenderBody.](3-creating-a-consistent-look/_static/image3.jpg)
+![Snímek obrazovky, který ukazuje stránku v prohlížeči, která je výsledkem spuštění stránky, která obsahuje volání metody RenderBody.](3-creating-a-consistent-look/_static/image3.jpg)
 
-Následující postup ukazuje, jak vytvořit rozložení stránky obsahu stránky a odkaz na něj.
+Následující postup ukazuje, jak vytvořit stránku rozložení a propojit na ni stránky obsahu.
 
-1. V *Shared* složku vašeho webu, vytvořte soubor s názvem  *\_Layout1.cshtml*.
-2. Jakýkoli existující obsah nahraďte následujícím kódem:
+1. Ve *sdílené* složce vašeho webu vytvořte soubor s názvem *\_Layout1. cshtml*.
+2. Existující obsah nahraďte následujícím:
 
     [!code-html[Main](3-creating-a-consistent-look/samples/sample6.html)]
 
-    Můžete použít `RenderPage` metody ve stránce rozložení pro vložení bloky obsahu. Rozložení stránky může obsahovat pouze jedno volání `RenderBody` metody.
-3. V *Shared* složce vytvořte soubor s názvem  *\_Header2.cshtml* a jakýkoli existující obsah nahraďte následujícím kódem:
+    Pomocí metody `RenderPage` na stránce rozložení lze vkládat bloky obsahu. Stránka rozložení může obsahovat pouze jedno volání metody `RenderBody`.
+3. Ve *sdílené* složce vytvořte soubor s názvem *\_Header2. cshtml* a nahraďte veškerý existující obsah následujícím:
 
     [!code-html[Main](3-creating-a-consistent-look/samples/sample7.html)]
-4. V kořenové složce vytvořte novou složku s názvem *styly*.
-5. V *styly* složce vytvořte soubor s názvem *Site.css* a přidejte následující definice:
+4. V kořenové složce vytvořte novou složku a pojmenujte ji *styly*.
+5. Ve složce *Styles (styly* ) vytvořte soubor s názvem *Web. CSS* a přidejte následující definice stylu:
 
     [!code-css[Main](3-creating-a-consistent-look/samples/sample8.css)]
 
-    Tyto definice stylů se tady jenom zobrazit použití šablony stylů se stránkami rozložení. Pokud chcete, můžete definovat vlastní styly pro tyto elementy.
-6. V kořenové složce vytvořte soubor s názvem *Content1.cshtml* a jakýkoli existující obsah nahraďte následujícím kódem:
+    Tyto definice stylu slouží pouze k zobrazení, jak lze použít šablony stylů se stránkami rozložení. Pokud chcete, můžete pro tyto prvky definovat vlastní styly.
+6. V kořenové složce vytvořte soubor s názvem *Content1. cshtml* a nahraďte veškerý existující obsah následujícím:
 
     [!code-cshtml[Main](3-creating-a-consistent-look/samples/sample9.cshtml)]
 
-    Toto je stránka, která bude používat stránku rozložení. Blok kódu v horní části stránky označuje stránce rozložení, které se má použít pro formátování tohoto obsahu.
-7. Spustit *Content1.cshtml* v prohlížeči. Na vykreslené stránce používá formát a šablony stylů definovaná v  *\_Layout1.cshtml* a text (obsah) definované v *Content1.cshtml*.
+    Toto je stránka, která bude používat stránku rozložení. Blok kódu v horní části stránky indikuje, kterou stránku rozložení použít k formátování tohoto obsahu.
+7. Spusťte *Content1. cshtml* v prohlížeči. Vykreslená stránka používá formát a předlohu stylů definované v *\_Layout1. cshtml* a text (Content) definovaný v *Content1. cshtml*.
 
-    ![[image]](3-creating-a-consistent-look/_static/image4.png)
+    ![obrazu](3-creating-a-consistent-look/_static/image4.png)
 
-    Krok 6 a vytvořte další stránky obsahu, které pak můžete sdílet stejnou stránku rozložení, můžete opakovat.
+    Můžete opakovat krok 6 a vytvořit další stránky obsahu, které pak můžou sdílet stejnou stránku rozložení.
 
     > [!NOTE]
-    > Můžete nastavit svůj web tak, aby může automaticky použít stejnou stránku rozložení pro všechny stránky obsahu ve složce. Podrobnosti najdete v tématu [přizpůsobení chování v celém webu pro webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906).
+    > Můžete nastavit web tak, aby bylo možné automaticky použít stejnou stránku rozložení pro všechny stránky obsahu ve složce. Podrobnosti najdete v tématu [přizpůsobení chování pro webové stránky ASP.NET napříč lokalitami](https://go.microsoft.com/fwlink/?LinkId=202906).
 
-## <a name="designing-layout-pages-that-have-multiple-content-sections"></a>Návrh rozložení stránky, které mají více oddíly obsahu.
+## <a name="designing-layout-pages-that-have-multiple-content-sections"></a>Návrh stránek rozložení, které mají více oddílů obsahu
 
-Stránka obsahu může mít více oddílů, což je užitečné, pokud chcete použít rozložení, které mají více oblastí s obsahem replaceable. Na stránce obsahu dáte každý oddíl jedinečný název. (Výchozí sekcí zbývá nepojmenované.) Na stránce rozložení přidáte `RenderBody` metodu k určení, kde by se měla zobrazit v části nepojmenované (výchozí). Potom přidáte jako samostatné `RenderSection` metody za účelem vykreslení jednotlivě pojmenovaných oddílů.
+Stránka obsahu může obsahovat více oddílů, což je užitečné, pokud chcete použít rozložení, která mají více oblastí s nahraditelným obsahem. Na stránce obsah dáte každému oddílu jedinečný název. (Výchozí oddíl zůstane nepojmenovaný.) Na stránce rozložení přidejte `RenderBody` metodu, která určuje, kde se má zobrazit oddíl bez názvu (výchozí). Pak přidáte samostatné metody `RenderSection`, aby bylo možné vykreslit pojmenované oddíly jednotlivě.
 
-Následující diagram znázorňuje způsob, jakým zpracovává obsah, který je rozdělený do několika částí technologie ASP.NET. Každý pojmenovaný oddíl je obsažen v části bloku na stránce obsahu. (Se nazývají `Header` a `List` v příkladu.) Rozhraní framework vloží části obsahu do stránky rozložení v místě, kde `RenderSection` metoda je volána. Nepojmenované (výchozí) oddíl disku do mechaniky v místě, kde `RenderBody` metoda je volána, protože jste viděli již dříve.
+Následující diagram ukazuje, jak ASP.NET zpracovává obsah, který je rozdělen do více částí. Každý pojmenovaný oddíl je obsažen v bloku oddílu na stránce obsahu. (Nazývají se `Header` a `List` v příkladu.) Rozhraní vloží oddíl obsahu do stránky rozložení v místě, kde je volána metoda `RenderSection`. Nejmenovaný (výchozí) oddíl je vložen do místa, kde je volána metoda `RenderBody`, jak jste viděli dříve.
 
-![Koncepční diagram znázorňující, jak metoda RenderSection vloží odkazy na oddíly na aktuální stránku.](3-creating-a-consistent-look/_static/image5.jpg)
+![Koncepční diagram znázorňující, jak metoda RenderSection vkládá odkazy na oddíly do aktuální stránky.](3-creating-a-consistent-look/_static/image5.jpg)
 
-Tento postup ukazuje, jak vytvořit stránku obsahu, který má více oddílů obsahu a jak lze vykreslit pomocí rozložení stránky, která podporuje víc oddílů obsahu.
+Tento postup ukazuje, jak vytvořit stránku obsahu s více oddíly obsahu a jak ji vykreslit pomocí stránky rozložení, která podporuje více oddílů obsahu.
 
-1. V *Shared* složce vytvořte soubor s názvem  *\_Layout2.cshtml*.
-2. Jakýkoli existující obsah nahraďte následujícím kódem:
+1. Ve *sdílené* složce vytvořte soubor s názvem *\_Layout2. cshtml*.
+2. Existující obsah nahraďte následujícím:
 
     [!code-html[Main](3-creating-a-consistent-look/samples/sample10.html)]
 
-    Můžete použít `RenderSection` metody vykreslit záhlaví a seznam oddílů.
-3. V kořenové složce vytvořte soubor s názvem *Content2.cshtml* a jakýkoli existující obsah nahraďte následujícím kódem:
+    Pomocí metody `RenderSection` můžete vykreslit oddíly záhlaví i seznamu.
+3. V kořenové složce vytvořte soubor s názvem *Content2. cshtml* a nahraďte veškerý existující obsah následujícím:
 
     [!code-cshtml[Main](3-creating-a-consistent-look/samples/sample11.cshtml)]
 
-    Tato stránka obsahu obsahuje blok kódu v horní části stránky. Každý pojmenovaný oddíl je obsažen v části bloku. Zbývající části stránky obsahuje výchozí (nepojmenované) části obsahu.
-4. Spustit *Content2.cshtml* v prohlížeči.
+    Tato stránka obsahu obsahuje blok kódu v horní části stránky. Každý pojmenovaný oddíl je obsažen v bloku oddílu. Zbývající část stránky obsahuje oddíl výchozí (nepojmenovaný) obsah.
+4. Spusťte *Content2. cshtml* v prohlížeči.
 
-    ![Snímek obrazovky zobrazující stránku v prohlížeči, který je výsledkem spuštění stránky, která obsahuje volání metodě RenderSection.](3-creating-a-consistent-look/_static/image6.png)
+    ![Snímek obrazovky, který ukazuje stránku v prohlížeči, která je výsledkem spuštění stránky, která obsahuje volání metody RenderSection.](3-creating-a-consistent-look/_static/image6.png)
 
-## <a name="making-content-sections-optional"></a>Provádění nepovinné oddíly obsahu.
+## <a name="making-content-sections-optional"></a>Nastavení oddílů obsahu jako volitelné
 
-Za normálních okolností oddíly, které jste vytvořili na stránce obsahu se musí shodovat oddíly, které jsou definovány na stránce rozložení. Chyby můžete získat, pokud dojde k některé z následujících akcí:
+Obvykle oddíly, které vytvoříte na stránce obsahu, musí odpovídat oddílům, které jsou definovány na stránce rozložení. Pokud dojde k některé z následujících akcí, můžete získat chyby:
 
-- Stránka obsahu obsahuje oddíl, který nemá žádný odpovídající oddíl na stránce rozložení.
-- Stránka rozložení obsahuje oddíl, který není k dispozici žádný obsah.
-- Stránka rozložení obsahuje volání metody, které se pokoušejí vykreslení stejné části více než jednou.
+- Stránka Obsah obsahuje oddíl, který nemá žádný odpovídající oddíl na stránce rozložení.
+- Stránka rozložení obsahuje oddíl, pro který není k dispozici žádný obsah.
+- Stránka rozložení obsahuje volání metod, která se pokusí vykreslit stejnou část více než jednou.
 
-Však můžete přepsat toto chování pro pojmenovaný oddíl deklarováním oddílu, který má být volitelné na stránce rozložení. To vám umožňuje definovat více obsahu stránek, které sdílejí stránku rozložení, ale mohou nebo nemusí mít obsah pro určitou část.
+Toto chování pojmenovaného oddílu však můžete přepsat deklarováním oddílu, který bude volitelný na stránce rozložení. To umožňuje definovat více stránek obsahu, které mohou sdílet stránku rozložení, ale mohou nebo nemusí mít obsah pro konkrétní oddíl.
 
-1. Otevřít *Content2.cshtml* a odeberte následující části:
+1. Otevřete *Content2. cshtml* a odeberte následující část:
 
     [!code-cshtml[Main](3-creating-a-consistent-look/samples/sample12.cshtml)]
-2. Uložit na stránku a pak ho spusťte v prohlížeči. Chybová zpráva se zobrazí, protože obsah stránky neposkytuje obsah pro oddíl definovaný v rozložení stránky, konkrétně oddíl hlavičky.
+2. Uložte stránku a spusťte ji v prohlížeči. Zobrazí se chybová zpráva, protože stránka obsahu neposkytuje obsah pro oddíl definovaný na stránce rozložení, konkrétně v oddílu záhlaví.
 
-    ![Snímek obrazovky, který se zobrazuje chyba, ke které dojde při spuštění stránky, která volá metodu RenderSection, ale odpovídající oddíl není k dispozici.](3-creating-a-consistent-look/_static/image7.png)
-3. V *Shared* složku, otevřete  *\_Layout2.cshtml* stránce a nahraďte tento řádek:
+    ![Snímek obrazovky zobrazující chybu, ke které dojde, pokud spouštíte stránku, která volá metodu RenderSection, ale není k dispozici odpovídající oddíl.](3-creating-a-consistent-look/_static/image7.png)
+3. Ve *sdílené* složce otevřete stránku *\_Layout2. cshtml* a nahraďte tento řádek:
 
     [!code-javascript[Main](3-creating-a-consistent-look/samples/sample13.js)]
 
-    následujícím kódem:
+    s následujícím kódem:
 
     [!code-javascript[Main](3-creating-a-consistent-look/samples/sample14.js)]
 
-    Jako alternativu můžete na předchozí řádek kódu nahradit následující blok kódu, který vytvoří stejné výsledky:
+    Jako alternativu můžete nahradit předchozí řádek kódu následujícím blokem kódu, který vytváří stejné výsledky:
 
     [!code-cshtml[Main](3-creating-a-consistent-look/samples/sample15.cshtml)]
-4. Spustit *Content2.cshtml* stránku v prohlížeči znovu. (Pokud stále máte tuto stránku otevřít v prohlížeči, můžete jen aktualizovat ji.) Tentokrát stránka se zobrazí s žádná chyba, i když nemá žádné hlavičky.
+4. Znovu spusťte stránku *Content2. cshtml* v prohlížeči. (Pokud pořád tuto stránku otevřete v prohlížeči, můžete ji jenom aktualizovat.) Tentokrát se stránka zobrazuje bez chyby, i když nemá hlavičku.
 
-## <a name="passing-data-to-layout-pages"></a>Předání dat stránkám rozložení
+## <a name="passing-data-to-layout-pages"></a>Předávání dat na stránky rozložení
 
-Můžete mít data definovaná v obsahu stránky, které potřebujete k odkazování na stránce rozložení. Pokud ano, je potřeba předat data z obsahu stránky na stránku rozložení. Například můžete chtít zobrazit stav přihlášení uživatele, nebo můžete chtít zobrazit nebo skrýt oblasti obsahu, které jsou založeny na vstup uživatele.
+Můžete mít data definovaná na stránce obsahu, na kterou musíte odkazovat na stránce rozložení. Pokud ano, musíte předat data ze stránky obsahu na stránku rozložení. Například můžete chtít zobrazit stav přihlášení uživatele nebo můžete chtít zobrazit nebo skrýt oblasti obsahu založené na vstupu uživatele.
 
-Předání dat z obsahu stránky pro stránku rozložení, hodnoty je možné uspořádat do `PageData` vlastnost obsahu stránky. `PageData` Vlastnost je kolekce dvojic název/hodnota, které obsahují data, která chcete předávat mezi stránkami. Na stránce rozložení, pak můžete přečíst hodnot z `PageData` vlastnost.
+Chcete-li předat data ze stránky obsahu na stránku rozložení, můžete vložit hodnoty do vlastnosti `PageData` stránky obsahu. Vlastnost `PageData` je kolekce párů název/hodnota, které obsahují data, která chcete předat mezi stránkami. Na stránce rozložení můžete následně číst hodnoty z vlastnosti `PageData`.
 
-Tady je jiného diagramu. Tento ukazuje, jak můžete používat ASP.NET `PageData` vlastnost k předání hodnot z obsahu stránky na stránku rozložení. Po zahájení sestavování webové stránky ASP.NET vytvoří `PageData` kolekce. Na stránce obsahu píšete kód k vložení dat `PageData` kolekce. Hodnoty v `PageData` kolekci lze rovněž přistupovat pomocí jiné části na stránce obsahu nebo další bloky obsahu.
+Tady je jiný diagram. Tento příklad ukazuje, jak může ASP.NET pomocí vlastnosti `PageData` předávat hodnoty ze stránky obsahu na stránku rozložení. Když ASP.NET začne sestavovat webovou stránku, vytvoří kolekci `PageData`. Na stránce obsah napíšete kód pro vložení dat do kolekce `PageData`. K hodnotám v kolekci `PageData` lze také přistupovat jinými oddíly na stránce obsahu nebo dalšími bloky obsahu.
 
-![Koncepční diagram, který ukazuje, jak naplnit PageData slovníku a předávat tyto informace ke stránce rozložení stránky obsahu.](3-creating-a-consistent-look/_static/image8.jpg)
+![Koncepční diagram znázorňující, jak může stránka obsahu naplnit slovník PageData a předat tyto informace na stránku rozložení.](3-creating-a-consistent-look/_static/image8.jpg)
 
-Následující postup ukazuje, jak předat data z obsahu stránky pro stránku rozložení. Při spuštění stránky se zobrazí tlačítko, které umožňuje uživateli skrýt nebo zobrazit seznam, který je definován v rozložení stránky. Když uživatelé kliknou na tlačítko, nastaví hodnotu true nebo false (Boolean) `PageData` vlastnost. Stránka rozložení přečte tuto hodnotu a pokud je hodnota false, skryje seznamu. Hodnota se také používá na stránce obsahu k určení, jestli se má zobrazit **skrýt seznam** tlačítko nebo **zobrazit seznam** tlačítko.
+Následující postup ukazuje, jak předat data ze stránky obsahu na stránku rozložení. Po spuštění stránky se zobrazí tlačítko, které uživateli umožňuje skrýt nebo zobrazit seznam definovaný na stránce rozložení. Když uživatel klikne na tlačítko, nastaví hodnotu true nebo false (logická hodnota) ve vlastnosti `PageData`. Stránka rozložení načte tuto hodnotu a pokud je false, seznam skryje. Hodnota se také používá na stránce obsah k určení, zda se má zobrazit tlačítko **Skrýt seznam** nebo **Zobrazit seznam** .
 
-![[image]](3-creating-a-consistent-look/_static/image9.jpg)
+![obrazu](3-creating-a-consistent-look/_static/image9.jpg)
 
-1. V kořenové složce vytvořte soubor s názvem *Content3.cshtml* a jakýkoli existující obsah nahraďte následujícím kódem:
+1. V kořenové složce vytvořte soubor s názvem *Content3. cshtml* a nahraďte veškerý existující obsah následujícím:
 
     [!code-cshtml[Main](3-creating-a-consistent-look/samples/sample16.cshtml)]
 
-    Ukládá dva druhy dat v kódu `PageData` vlastnost &#8212; název webové stránky a true nebo false určující, zda chcete-li zobrazit seznam.
+    Kód ukládá dvě části dat do vlastnosti &#8212; `PageData` název webové stránky a hodnotu true nebo false pro určení, zda se má zobrazit seznam.
 
-    Všimněte si, že technologie ASP.NET umožňuje vložit kód HTML do stránky podmíněně pomocí bloku kódu. Například `if/else` blok v těle stránky určuje, který formulář pro zobrazení v závislosti na tom, zda `PageData["ShowList"]` je nastavena na hodnotu true.
-2. V *Shared* složce vytvořte soubor s názvem  *\_Layout3.cshtml* a jakýkoli existující obsah nahraďte následujícím kódem:
+    Všimněte si, že ASP.NET umožňuje vložit kód HTML do stránky podmíněně pomocí bloku kódu. Například blok `if/else` v těle stránky určuje, který formulář se má zobrazit v závislosti na tom, zda je `PageData["ShowList"]` nastaven na hodnotu true.
+2. Ve *sdílené* složce vytvořte soubor s názvem *\_Layout3. cshtml* a nahraďte veškerý existující obsah následujícím:
 
     [!code-cshtml[Main](3-creating-a-consistent-look/samples/sample17.cshtml)]
 
-    Stránka rozložení obsahuje výraz v `<title>` element, který získá hodnotu názvu `PageData` vlastnost. Využívá také `ShowList` hodnotu `PageData` a určí, jestli se má zobrazit seznam blok s obsahem.
-3. V *Shared* složce vytvořte soubor s názvem  *\_List.cshtml* a jakýkoli existující obsah nahraďte následujícím kódem:
+    Stránka rozložení obsahuje výraz v prvku `<title>`, který získá hodnotu názvu z vlastnosti `PageData`. K určení, zda se má zobrazit blok obsahu seznamu, používá také `ShowList` hodnotu vlastnosti `PageData`.
+3. Ve *sdílené* složce vytvořte soubor s názvem *\_list. cshtml* a nahraďte veškerý existující obsah následujícím:
 
     [!code-html[Main](3-creating-a-consistent-look/samples/sample18.html)]
-4. Spustit *Content3.cshtml* stránku v prohlížeči. Zobrazí se na stránce se seznamem na levé straně stránky viditelná a **skrýt seznam** tlačítko dole.
+4. Spusťte stránku *Content3. cshtml* v prohlížeči. Stránka se zobrazí se seznamem zobrazeným na levé straně stránky a tlačítkem **Skrýt seznam** v dolní části.
 
-    ![Snímek obrazovky zobrazující stránku, která obsahuje seznam a tlačítko s textem "Skrýt seznam".](3-creating-a-consistent-look/_static/image10.png)
-5. Klikněte na tlačítko **skrýt seznam**. V seznamu zmizí a tlačítko se změní na **zobrazit seznam**.
+    ![Snímek obrazovky zobrazující stránku obsahující seznam a tlačítko s textem skrýt seznam](3-creating-a-consistent-look/_static/image10.png)
+5. Klikněte na **Skrýt seznam**. Seznam zmizí a tlačítko se změní na **zobrazení seznamu**.
 
-    ![Snímek obrazovky zobrazující stránku, která se nenachází v seznamu a tlačítko, které se říká zobrazit seznam.](3-creating-a-consistent-look/_static/image11.png)
-6. Klikněte na tlačítko **zobrazit seznam** tlačítko a v seznamu se zobrazí znovu.
+    ![Snímek obrazovky se stránkou, která nezahrnuje seznam a tlačítko s textem Zobrazit seznam.](3-creating-a-consistent-look/_static/image11.png)
+6. Klikněte na tlačítko **Zobrazit seznam** a seznam se zobrazí znovu.
 
 ## <a name="additional-resources"></a>Další prostředky
 
-[Přizpůsobení chování v celém webu pro webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906)
+[Přizpůsobení chování na úrovni webu pro webové stránky v ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906)

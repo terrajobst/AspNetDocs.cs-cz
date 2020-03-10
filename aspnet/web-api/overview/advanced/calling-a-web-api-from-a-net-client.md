@@ -8,18 +8,18 @@ ms.date: 11/24/2017
 ms.custom: seoapril2019
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 960960d26863cc3f725eee8a6c98844c5d3ce721
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.openlocfilehash: ab3ba71839123e848dffaa59871f9dac8c1a88d0
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519177"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78622617"
 ---
 # <a name="call-a-web-api-from-a-net-client-c"></a>Volání webového rozhraní API z klienta .NET (C#)
 
 [Jan Wasson](https://github.com/MikeWasson) a [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[Stažení dokončeného projektu](https://github.com/aspnet/AspNetDocs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample). [Pokyny ke stažení](/aspnet/core/tutorials/#how-to-download-a-sample). 
+[Stažení dokončeného projektu](https://github.com/dotnet/AspNetDocs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample). [Pokyny ke stažení](/aspnet/core/tutorials/#how-to-download-a-sample). 
 
 V tomto kurzu se dozvíte, jak volat webové rozhraní API z aplikace .NET pomocí [System .NET. http. HttpClient.](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)
 
@@ -55,7 +55,7 @@ Předchozí kód je kompletní klientská aplikace.
 
 Pomocí Správce balíčků NuGet nainstalujte balíček klientské knihovny webového rozhraní API.
 
-Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet** > **Konzola správce balíčků**. V konzole správce balíčků (PMC) zadejte následující příkaz:
+V nabídce **nástroje** vyberte **správce balíčků NuGet** > **konzolu Správce balíčků**. V konzole správce balíčků (PMC) zadejte následující příkaz:
 
 `Install-Package Microsoft.AspNet.WebApi.Client`
 
@@ -165,7 +165,7 @@ Podobně jako GET, žádost o odstranění neobsahuje tělo žádosti. Pomocí D
 
 Testování klientské aplikace:
 
-1. [Stáhněte](https://github.com/aspnet/AspNetDocs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) a spusťte serverovou aplikaci. [Pokyny ke stažení](/aspnet/core/#how-to-download-a-sample). Ověřte, že aplikace serveru pracuje. Například `http://localhost:64195/api/products` by měl vracet seznam produktů.
+1. [Stáhněte](https://github.com/dotnet/AspNetDocs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) a spusťte serverovou aplikaci. [Pokyny ke stažení](/aspnet/core/#how-to-download-a-sample). Ověřte, že aplikace serveru pracuje. Například `http://localhost:64195/api/products` by měl vracet seznam produktů.
 2. Nastavte základní identifikátor URI pro požadavky HTTP. Změňte číslo portu na port použitý v serverové aplikaci.
     [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
 

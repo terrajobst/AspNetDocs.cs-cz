@@ -9,11 +9,11 @@ ms.assetid: f44c166e-7e91-48a0-a6f8-d9285f3594e5
 msc.legacyurl: /whitepapers/mvc3-release-notes
 msc.type: content
 ms.openlocfilehash: 504202068f5db4f8614bba02e8066ffecfd15b48
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74619241"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78618046"
 ---
 # <a name="aspnet-mvc-3"></a>ASP.NET MVC 3
 
@@ -21,7 +21,7 @@ ms.locfileid: "74619241"
 - [Poznámky k instalaci](#installation-notes)
 - [Požadavky na software](#software-requirements)
 - [Dokumentace](#documentation)
-- [Pracovníky](#support)
+- [Podpora](#support)
 - [Upgrade projektu ASP.NET MVC 2 na ASP.NET aktualizace nástrojů MVC 3](#upgrading)
 - [Aktualizace nástrojů ASP.NET MVC 3 (12. dubna 2011)](#tu-changes)
 
@@ -268,7 +268,7 @@ Modernizr je knihovna JavaScriptu, která umožňuje podporu šablon stylů CSS 
 
 - jQuery 1.5.1
 - Ověření jQuery 1,8
-- 1\.8.11 uživatelského rozhraní jQuery
+- jQuery UI 1.8.11
 
 Tyto knihovny jsou zahrnuté jako předem nainstalované balíčky NuGet.
 
@@ -355,7 +355,7 @@ Přejmenování souboru Razor pomocí Průzkumník řešení, když je soubor ot
 - Pokud nainstalujete ASP.NET MVC 3 pro Visual Web Developer Express na počítač, na kterém není nainstalovaná aplikace Visual Studio, a později nainstalujete Visual Studio, musíte znovu nainstalovat ASP.NET MVC 3. Visual Studio a Visual Web Developer Express sdílí komponenty, které jsou upgradovány instalačním programem ASP.NET MVC 3. Stejný problém se týká, pokud nainstalujete ASP.NET MVC 3 pro Visual Studio na počítači, který nemá Visual Web Developer Express, a pak později nainstalujete Visual Web Developer Express.
 
 <a id="RTM-BC"></a>
-## <a name="breaking-changes"></a>Nejnovější změny
+## <a name="breaking-changes"></a>Zásadní změny
 
 - V předchozích verzích ASP.NET MVC jsou filtry akcí vytvářeny na žádost s výjimkou případů v několika případech. Tímto chováním nebylo nikdy zaručené chování, ale pouze podrobností o implementaci a kontraktu pro filtry bylo považovat za bezstavové. V ASP.NET MVC 3 jsou filtry ukládány do mezipaměti mnohem agresivní. Proto všechny vlastní filtry akcí, které mají nesprávně uložený stav instance, můžou být poškozené.
 - Pořadí spouštění pro filtry výjimek se změnilo pro filtry výjimek, které mají stejnou hodnotu *Order* . V ASP.NET MVC 2 a starších verzích filtry výjimek na kontroleru, které mají stejnou hodnotu *objednávky* jako u metody Action, se spustí před filtry výjimek v metodě Action. Obvykle se jedná o případ, kdy jsou filtry výjimek aplikovány bez zadané hodnoty *pořadí* . V ASP.NET MVC 3 bylo toto pořadí obráceno, aby se nejdříve nastavila většina specifická obslužná rutina výjimky. V případě, že je vlastnost *Order* explicitně určena jako v dřívějších verzích, jsou filtry spouštěny v zadaném pořadí.
@@ -457,7 +457,7 @@ Byla opravena chyba, kde Metoda *LabelFor* vygenerovala *pro* atribut, který se
 V dřívějších verzích byly explicitní hodnoty, které byly předány metodě *RenderAction* , ignorovány ve prospěch aktuálních hodnot formuláře během vazby modelu uvnitř podřízené akce. Oprava zajistí, že při vytváření vazby modelu budou mít explicitní hodnoty přednost.
 
 <a id="_Toc2_BC"></a>
-## <a name="breaking-changes"></a>Nejnovější změny
+## <a name="breaking-changes"></a>Zásadní změny
 
 - V předchozích verzích ASP.NET MVC byly pro každý požadavek vytvořeny filtry akcí s výjimkou v několika případech. Tímto chováním nebylo nikdy zaručené chování, ale pouze podrobností o implementaci a kontraktu pro filtry bylo považovat za bezstavové. V ASP.NET MVC 3 jsou filtry ukládány do mezipaměti mnohem agresivní. Proto všechny vlastní filtry akcí, které mají nesprávně uložený stav instance, můžou být poškozené.
 - Pořadí spouštění pro filtry výjimek se změnilo pro filtry výjimek, které mají stejnou hodnotu *Order* . V ASP.NET MVC 2 a starších byly filtry výjimek na kontroleru, které mají stejnou hodnotu *Order* jako u metody Action, byly provedeny před filtry výjimek v metodě Action. Obvykle se jedná o případ, kdy byly filtry výjimek aplikovány bez zadané hodnoty *pořadí* . V ASP.NET MVC 3 bylo toto pořadí obráceno, aby se nejdříve nastavila většina specifická obslužná rutina výjimky. V případě, že je vlastnost *Order* explicitně určena jako v dřívějších verzích, jsou filtry spouštěny v zadaném pořadí.
@@ -578,7 +578,7 @@ ClassName (obor názvů)
 
 V dřívějších verzích se tato zpráva zobrazila jako následující:
 
-Namespace. ClassName
+Namespace.ClassName
 
 <a id="_Toc276711793"></a>
 ### <a name="granular-request-validation"></a>Podrobné ověření požadavku
@@ -602,7 +602,7 @@ Případně pro vypnutí žádosti o ověření pro každou vlastnost modelu pou
 [!code-csharp[Main](mvc3-release-notes/samples/sample24.cs)]
 
 <a id="_Toc276711794"></a>
-## <a name="breaking-changes"></a>Nejnovější změny
+## <a name="breaking-changes"></a>Zásadní změny
 
 - Pořadí spouštění pro filtry výjimek se změnilo pro filtry výjimek, které mají stejnou hodnotu *Order* . V ASP.NET MVC 2 a starších byly filtry výjimek na řadiči, které měly stejné *pořadí* jako u metody Action, provedeny před filtry výjimek v metodě Action. Obvykle se jedná o případ, kdy byly filtry výjimek aplikovány bez zadané hodnoty *pořadí* . V ASP.NET MVC 3 bylo toto pořadí obráceno, aby se nejdříve nastavila většina specifická obslužná rutina výjimky. V případě, že je vlastnost *Order* explicitně určena jako v dřívějších verzích, jsou filtry spouštěny v zadaném pořadí.
 - Do základní třídy *VirtualPathProviderViewEngine* se přidala nová vlastnost s názvem *přípona* . Při vyhledávání zobrazení podle cesty (a nikoli podle názvu) se považuje jenom zobrazení s příponou souboru obsažená v seznamu určeném touto novou vlastností. Toto je zásadní změna pro uživatele, kteří registrují vlastního poskytovatele sestavení, aby povolili vlastní příponu souboru pro zobrazení webového formuláře a odkazovala na tato zobrazení pomocí úplné cesty místo názvu. Alternativním řešením je změnit hodnotu vlastnosti *přípony* souborů tak, aby zahrnovala vlastní příponu souboru.
@@ -622,7 +622,7 @@ Případně pro vypnutí žádosti o ověření pro každou vlastnost modelu pou
 - Při úpravách zobrazení Razor (soubor. cshtml) nebude k dispozici položka nabídky přejít na řadič v aplikaci Visual Studio a neexistují žádné fragmenty kódu.
 
 <a id="TOC_ASP_NET_3_Beta"></a>
-## <a name="aspnet-mvc-3-beta"></a>ASP.NET MVC 3 beta
+## <a name="aspnet-mvc-3-beta"></a>ASP.NET MVC 3 Beta
 
 ASP.NET MVC 3 beta byla vydána 6. října 2010. Následující poznámky jsou specifické pro beta verzi a vztahují se na všechny aktualizace nebo změny, na které odkazuje část ASP.NET MVC 3 Release Candidate výše.
 
@@ -669,7 +669,7 @@ Technologie New ASP.NET Web Pages zahrnuje sadu pomocných metod, které jsou u�
 | **Podpůrn** | **Popis** |
 | --- | --- |
 | Graf | Vykreslí graf v rámci zobrazení. Obsahuje metody, jako je například Chart. ToWebImage, Chart. Save a Chart. Write. |
-| SGC | Používá algoritmy hash k vytváření správně nasolených a zatřiďovacích hesel. |
+| Crypto | Používá algoritmy hash k vytváření správně nasolených a zatřiďovacích hesel. |
 | WebGrid | Vykreslí kolekci objektů (obvykle data z databáze) jako mřížku. Podporuje stránkování a řazení. |
 | Webimage | Vykreslí obrázek. |
 | Webová pošta | Pošle e-mailovou zprávu. |
@@ -733,15 +733,15 @@ Nová verze zahrnuje podporu překladu závislostí pro následující služby:
 
 ASP.NET MVC obsahuje pomocné metody AJAX, například následující:
 
-- AJAX. ActionLink
-- AJAX. RouteLink
-- AJAX. BeginForm
-- AJAX. BeginRouteForm
+- Ajax.ActionLink
+- Ajax.RouteLink
+- Ajax.BeginForm
+- Ajax.BeginRouteForm
 
 Tyto metody používají JavaScript k vyvolání metody akce na serveru místo použití úplného zpětného volání. Tato funkce se aktualizovala tak, aby využívala nenápadný způsob. Namísto rušivého vygenerování vložených klientských skriptů tyto pomocné metody oddělují chování od značky tím, že generují atributy HTML5 pomocí předpony *data-AJAX* . Chování se pak aplikuje na značky odkazem na příslušné soubory JavaScriptu. Ujistěte se, že jsou odkazovány následující soubory jazyka JavaScript:
 
-- jQuery 1.4.1. js
-- jQuery. unnápad. Ajax. js
+- jquery-1.4.1.js
+- jquery.unobtrusive.ajax.js
 
 Tato funkce je ve výchozím nastavení povolená v souboru Web. config v ASP.NET MVC 3 nové šablony projektu, ale ve výchozím nastavení je pro existující projekty zakázané. Další informace najdete v tématu [přidané příznaky pro aplikaci pro ověřování klientů a](#0.1_AddedApplicationWideFlagsForClientValida) nenáročného JavaScriptu na později v tomto dokumentu.
 
@@ -757,9 +757,9 @@ To vyžaduje, aby vlastnost ViewContext. UnobtrusiveJavaScriptEnabled byla nasta
 
 Také se ujistěte, že jsou odkazovány následující soubory jazyka JavaScript.
 
-- jQuery 1.4.1. js
-- jQuery. Validate. js
-- jQuery. Validate. nenáročná. js
+- jquery-1.4.1.js
+- jquery.validate.js
+- jquery.validate.unobtrusive.js
 
 Tato funkce je ve výchozím nastavení povolená v souboru Web. config v ASP.NET MVC 3 nové šablony projektu, ale ve výchozím nastavení je pro existující projekty zakázané. Další informace najdete v tématu [nové příznaky pro ověřování klientů v úrovni aplikace a](#0.1_AddedApplicationWideFlagsForClientValida) nenáročného JavaScriptu v tomto dokumentu.
 
@@ -839,7 +839,7 @@ Služba JsonValueProviderFactory je nyní registrována ve výchozím nastavení
 
 Pořadí spouštění pro filtry výjimek se změnilo pro filtry výjimek, které mají stejnou hodnotu Order. V ASP.NET MVC 2 a starších verzích filtry výjimek na kontroleru se stejným pořadím jako u metody Action byly provedeny před filtry výjimek v metodě Action. Obvykle se jedná o případ, kdy byly filtry výjimek aplikovány bez zadané hodnoty pořadí. V ASP.NET MVC 3 bylo toto pořadí obráceno, aby se nejdříve nastavila většina specifická obslužná rutina výjimky. V případě, že je vlastnost Order explicitně určena jako v dřívějších verzích, jsou filtry spouštěny v zadaném pořadí.
 
-## <a id="0.1__Toc274034230"></a>Známé problémy
+## <a id="0.1__Toc274034230"></a> Známé problémy
 
 Během instalace se v dialogovém okně přijetí smlouvy EULA zobrazí licenční podmínky v okně, které je menší než určené.
 

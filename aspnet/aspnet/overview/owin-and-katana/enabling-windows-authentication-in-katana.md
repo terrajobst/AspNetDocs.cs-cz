@@ -1,93 +1,93 @@
 ---
 uid: aspnet/overview/owin-and-katana/enabling-windows-authentication-in-katana
-title: Povolení ověřování Windows v sadě Katana | Dokumentace Microsoftu
+title: Povoluje se ověřování Windows v Katana | Microsoft Docs
 author: MikeWasson
-description: 'Tento článek ukazuje, jak povolit ověřování Windows v sadě Katana. Popisuje dva scénáře: Pomocí služby IIS pro hostování Katana a pomocí HttpListener k samoobslužnému hostování Kat...'
+description: 'Tento článek popisuje, jak v Katana povolit ověřování systému Windows. Týká se to dvou scénářů: použití služby IIS k hostování Katana a použití HttpListener k samoobslužnému hostování kat...'
 ms.author: riande
 ms.date: 07/30/2013
 ms.assetid: 82324ef0-3b75-4f63-a217-76ef4036ec93
 msc.legacyurl: /aspnet/overview/owin-and-katana/enabling-windows-authentication-in-katana
 msc.type: authoredcontent
 ms.openlocfilehash: 3d81e7e1bf13ab63417378fba0c5ab80213f404b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65118327"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78617178"
 ---
 # <a name="enabling-windows-authentication-in-katana"></a>Povolení ověřování systému Windows v sadě Katana
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-> Tento článek ukazuje, jak povolit ověřování Windows v sadě Katana. Popisuje dva scénáře: Pomocí služby IIS pro hostování Katana a pomocí HttpListener Katana samoobslužné hostování ve vlastním procesu. Děkujeme, že Jiří Dorrans, David Matson a Chris Ross revize v tomto článku.
+> Tento článek popisuje, jak v Katana povolit ověřování systému Windows. Zabývá se dvěma scénáři: používání služby IIS k hostování Katana a použití HttpListener k samoobslužnému hostování Katana ve vlastním procesu. Děkujeme Barryho Dorrans, David Matson a Novák Rossův pro kontrolu tohoto článku.
 
-Katana je implementace společnosti Microsoft [OWIN](http://owin.org/), Open Web Interface pro .NET. Můžete si přečíst Úvod do OWIN a Katana [tady](an-overview-of-project-katana.md). Architektura OWIN má několik vrstev:
+Katana je implementace [Owin](http://owin.org/)od Microsoftu, které představuje otevřené webové rozhraní pro .NET. Úvod do OWIN a Katana si můžete přečíst [tady](an-overview-of-project-katana.md). Architektura OWIN má několik vrstev:
 
-- Hostitel: Spravuje proces, ve kterém se spouští kanál OWIN.
-- Server: Otevře soket sítě a čeká na požadavky.
-- Middleware: Zpracuje požadavek HTTP a odpovědí.
+- Hostitel: slouží ke správě procesu, ve kterém je spuštěný kanál OWIN.
+- Server: otevře síťový soket a naslouchat žádostem.
+- Middleware: zpracovává požadavek HTTP a odpověď.
 
 Katana v současné době poskytuje dva servery, které podporují integrované ověřování Windows:
 
-- **Microsoft.Owin.Host.SystemWeb**. Používá službu IIS pomocí kanálu ASP.NET.
-- **Microsoft.Owin.Host.HttpListener**. Používá [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx). Tento server je aktuálně výchozí možnost, při hostování na vlastním Katana.
+- **Microsoft. Owin. Host. SystemWeb**. Používá službu IIS s kanálem ASP.NET.
+- **Microsoft. Owin. Host. HttpListener**. Používá [System .NET. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx). Tento server je momentálně výchozí možností při hostování Katana.
 
 > [!NOTE]
-> Katana neposkytuje aktuálně OWIN middleware pro ověřování Windows, protože tato funkce je k dispozici na serverech.
+> Katana v současné době neposkytuje OWIN middleware pro ověřování systému Windows, protože tato funkce je již na serverech k dispozici.
 
-## <a name="windows-authentication-in-iis"></a>Ověřování Windows ve službě IIS
+## <a name="windows-authentication-in-iis"></a>Ověřování systému Windows ve službě IIS
 
-Pomocí Microsoft.Owin.Host.SystemWeb, můžete jednoduše povolit ověřování Windows služby IIS.
+Pomocí Microsoft. Owin. Host. SystemWeb můžete jednoduše povolit ověřování systému Windows ve službě IIS.
 
-Začněme tím, že vytvoříte novou aplikaci ASP.NET, pomocí šablony projektu "Prázdná webová aplikace ASP.NET".
+Pojďme začít vytvořením nové aplikace ASP.NET pomocí šablony projektu "prázdná webová aplikace ASP.NET".
 
 ![](enabling-windows-authentication-in-katana/_static/image1.png)
 
-Dále přidejte balíčky NuGet. Z **nástroje** příkaz **Správce balíčků NuGet**, vyberte **konzoly Správce balíčků**. V okně konzoly Správce balíčků zadejte následující příkaz:
+Dále přidejte balíčky NuGet. V nabídce **nástroje** vyberte **Správce balíčků NuGet**a pak vyberte **Konzola správce balíčků**. V okně konzoly Správce balíčků zadejte následující příkaz:
 
 [!code-console[Main](enabling-windows-authentication-in-katana/samples/sample1.cmd)]
 
-Nyní přidejte třídu pojmenovanou `Startup` následujícím kódem:
+Nyní přidejte třídu s názvem `Startup` s následujícím kódem:
 
 [!code-csharp[Main](enabling-windows-authentication-in-katana/samples/sample2.cs)]
 
-To je všechno, co potřebujete k vytvoření aplikace "Hello world" pro OWIN ve službě IIS. Stisknutím klávesy F5 pro ladění aplikace. Měli byste vidět "Hello World!" v okně prohlížeče.
+To je vše, co potřebujete k vytvoření aplikace "Hello World" pro OWIN, která běží na službě IIS. Pro ladění aplikace stiskněte klávesu F5. Měl by se zobrazit "Hello World!" v okně prohlížeče.
 
 ![](enabling-windows-authentication-in-katana/_static/image2.png)
 
-V dalším kroku vám poskytujeme ověřování Windows služby IIS Express. Z **zobrazení** nabídce vyberte možnost **vlastnosti**. Klikněte na název projektu v Průzkumníku řešení Chcete-li zobrazit vlastnosti projektu.
+Dále povolíme ověřování systému Windows v IIS Express. V nabídce **zobrazení** vyberte možnost **vlastnosti**. Kliknutím na název projektu v Průzkumník řešení zobrazíte vlastnosti projektu.
 
-V **vlastnosti** okno, nastavte **anonymní ověřování** k **zakázané** a nastavte **ověřování Windows** k  **Povolené**.
+V okně **vlastnosti** nastavte **anonymní ověřování** na **zakázáno** a nastavte **ověřování systému Windows** na **povoleno**.
 
 ![](enabling-windows-authentication-in-katana/_static/image3.png)
 
-Při spuštění aplikace ze sady Visual Studio, služby IIS Express bude vyžadovat přihlašovací údaje uživatele Windows. Můžete to zobrazit pomocí [Fiddler](http://fiddler2.com/home) nebo jiného nástroje ladění HTTP. Tady je příklad odpovědi HTTP:
+Při spuštění aplikace ze sady Visual Studio bude IIS Express vyžadovat pověření systému Windows uživatele. To můžete zobrazit pomocí [Fiddler](http://fiddler2.com/home) nebo jiného nástroje pro ladění http. Tady je příklad odpovědi HTTP:
 
 [!code-console[Main](enabling-windows-authentication-in-katana/samples/sample3.cmd?highlight=1,5-6)]
 
-Hlavičky WWW-Authenticate tato odpověď značí, že server podporuje [Negotiate](http://www.ietf.org/rfc/rfc4559.txt) protokol, který používá protokol Kerberos nebo NTLM.
+Hlavičky WWW-Authenticate v této odpovědi označují, že server podporuje protokol [Negotiate](http://www.ietf.org/rfc/rfc4559.txt) , který používá protokol Kerberos nebo NTLM.
 
-Později, když nasazujete aplikace na server, využijte [tyto kroky](https://www.iis.net/configreference/system.webserver/security/authentication/windowsauthentication) povolení ověřování Windows služby IIS na tomto serveru.
+Když později nasadíte aplikaci na server, postupujte podle [těchto kroků](https://www.iis.net/configreference/system.webserver/security/authentication/windowsauthentication) a povolte ověřování systému Windows ve službě IIS na daném serveru.
 
-## <a name="windows-authentication-in-httplistener"></a>Ověřování Windows v HttpListener
+## <a name="windows-authentication-in-httplistener"></a>Ověřování systému Windows v HttpListener
 
-Pokud používáte Microsoft.Owin.Host.HttpListener k samoobslužnému hostování Katana, můžete povolit ověřování Windows přímo na **HttpListener** instance.
+Pokud používáte Microsoft. Owin. Host. HttpListener k samoobslužnému hostování Katana, můžete povolit ověřování systému Windows přímo v instanci **HttpListener** .
 
-Nejprve vytvořte novou konzolovou aplikaci. Dále přidejte balíčky NuGet. Z **nástroje** příkaz **Správce balíčků NuGet**, vyberte **konzoly Správce balíčků**. V okně konzoly Správce balíčků zadejte následující příkaz:
+Nejprve vytvořte novou konzolovou aplikaci. Dále přidejte balíčky NuGet. V nabídce **nástroje** vyberte **Správce balíčků NuGet**a pak vyberte **Konzola správce balíčků**. V okně konzoly Správce balíčků zadejte následující příkaz:
 
 [!code-console[Main](enabling-windows-authentication-in-katana/samples/sample4.cmd)]
 
-Nyní přidejte třídu pojmenovanou `Startup` následujícím kódem:
+Nyní přidejte třídu s názvem `Startup` s následujícím kódem:
 
 [!code-csharp[Main](enabling-windows-authentication-in-katana/samples/sample5.cs)]
 
-Tato třída implementuje stejné příkladu "Hello world" z před, ale také nastaví ověřování Windows jako schéma ověřování.
+Tato třída implementuje stejný příklad "Hello World" z dřív, ale také nastaví ověřování systému Windows jako schéma ověřování.
 
-Uvnitř `Main` funkci, spuštění kanálu OWIN:
+Uvnitř funkce `Main` spusťte kanál OWIN:
 
 [!code-csharp[Main](enabling-windows-authentication-in-katana/samples/sample6.cs)]
 
-Odeslat požadavek ve Fiddleru potvrďte, že aplikace používá ověřování Windows:
+V Fiddler můžete odeslat žádost o potvrzení, že aplikace používá ověřování systému Windows:
 
 [!code-console[Main](enabling-windows-authentication-in-katana/samples/sample7.cmd?highlight=1,4-5)]
 
@@ -95,6 +95,6 @@ Odeslat požadavek ve Fiddleru potvrďte, že aplikace používá ověřování 
 
 [Přehled projektu Katana](an-overview-of-project-katana.md)
 
-[System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx)
+[System .NET. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener.aspx)
 
-[Principy ověřování pomocí formulářů OWIN v MVC 5](https://blogs.msdn.com/b/webdev/archive/2013/07/03/understanding-owin-forms-authentication-in-mvc-5.aspx)
+[Principy ověřování OWIN Forms v MVC 5](https://blogs.msdn.com/b/webdev/archive/2013/07/03/understanding-owin-forms-authentication-in-mvc-5.aspx)

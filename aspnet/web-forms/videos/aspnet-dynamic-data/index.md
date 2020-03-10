@@ -1,23 +1,23 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/index
-title: Dynamická Data technologie ASP.NET | Dokumentace Microsoftu
+title: ASP.NET dynamická data | Microsoft Docs
 author: rick-anderson
-description: Jak vytvořit automaticky generovaný aplikací, které automaticky vědět, jak se přístup k datům pomocí dynamických dat ASP.NET.
+description: Jak používat dynamická data ASP.NET k vytváření vygenerovaných aplikací, které automaticky znají přístup k datům.
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: cd51e6c4-6ff9-419d-8ac8-a39b79d63c78
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data
 msc.type: chapter
 ms.openlocfilehash: 622f4c5243d094d1ab6b58a909795bc5230c62ce
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116403"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78633782"
 ---
 # <a name="aspnet-dynamic-data"></a>Dynamická data ASP.NET
 
-> Jak vytvořit automaticky generovaný aplikací, které automaticky vědět, jak se přístup k datům pomocí dynamických dat ASP.NET.
+> Jak používat dynamická data ASP.NET k vytváření vygenerovaných aplikací, které automaticky znají přístup k datům.
 
 - [První vygenerované uživatelské rozhraní a vysvětlení dynamických dat](your-first-scaffold-and-what-is-dynamic-data.md)
 - [Povolení řádkových úprav v ovládacím prvku GridView](how-do-i-enable-inline-gridview-editing.md)

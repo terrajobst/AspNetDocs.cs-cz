@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-configure-an-aspnet-web-site-for-a-net-framework-version
-title: '[Postup:] Konfigurace webu ASP.NET pro verzi rozhraní .NET Framework | Dokumentace Microsoftu'
+title: '[Postupy:] Konfigurace webu v ASP.NET pro verzi .NET Framework | Microsoft Docs'
 author: rick-anderson
-description: V toto video pixelů na Chris zobrazí konfigurace webu ASP.NET použije konkrétní verzi rozhraní Framework ASP.NET/.NET. Nejprve zjistíte, jak identifikovat jaké v...
+description: V tomto videu Chris pixelů na se zobrazí způsob konfigurace webu ASP.NET pro použití konkrétní verze ASP.NET/.NET Frameworku. Napřed Zjistěte, jak zjistit, co v...
 ms.author: riande
 ms.date: 05/20/2008
 ms.assetid: 7b814965-aae2-4436-941c-710804557b67
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-configure-an-aspnet-web-site-for-a-net-framework-version
 msc.type: video
 ms.openlocfilehash: 37f7f75dbe1d88190032538b0b1b3dec74cab4c0
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59386252"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78624794"
 ---
-# <a name="how-do-i-configure-an-aspnet-web-site-for-a-net-framework-version"></a>[Postup:] Konfigurace webu ASP.NET pro verzi rozhraní .NET Framework
+# <a name="how-do-i-configure-an-aspnet-web-site-for-a-net-framework-version"></a>[Postupy:] Konfigurace webu v ASP.NET pro verzi .NET Framework
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V toto video pixelů na Chris zobrazí konfigurace webu ASP.NET použije konkrétní verzi rozhraní Framework ASP.NET/.NET. Nejprve zjistit, jak určit verzi rozhraní .NET Framework je webová stránka přidružené k zobrazením mapu skriptů se v Internet Information Server (IIS). Podívejte se jak mapu skriptů souvisí s kořenem ve službě IIS a potom u jednotlivých webů. Další informace o nástroje ASP.NET IIS Registration (aspnet\_regiis.exe) použít ke konfiguraci služby IIS nebo na webu technologie ASP.NET použít konkrétní verzi rozhraní .NET Framework. Pomocí této informace naleznete v tématu Konfigurace jednoho webu na používání jiné verze rozhraní .NET Framework, než je výchozí nastavení služby IIS. Nakonec zkontrolujte dvě různé webové servery v rámci stejné služby IIS, kde jeden spuštěný v rozhraní .NET Framework 2.0 a druhý v oblasti 1.1.
+V tomto videu Chris pixelů na se zobrazí způsob konfigurace webu ASP.NET pro použití konkrétní verze ASP.NET/.NET Frameworku. Nejprve se podívejte, jak zjistit, ke které verzi .NET Framework web přidružen, zobrazením mapy skriptů v internetové informační službě (IIS). Podívejte se, jak je mapa skriptů přidružena k kořenovému adresáři služby IIS a pak s jednotlivými weby. Další informace o nástroji ASP.NET služby IIS pro registraci (ASPNET\_regiis. exe), který se používá ke konfiguraci služby IIS nebo webu ASP.NET pro použití konkrétní verze .NET Framework. Pomocí těchto informací můžete zjistit, jak je jeden web nakonfigurován na používání jiné verze .NET Framework, než je výchozí hodnota pro službu IIS. Nakonec si přečtěte dva různé weby ve stejné službě IIS, kde jedna je spuštěná pod .NET Framework 2,0 a druhá pod 1,1.
 
-[&#9654;Podívejte se na video (12 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-configure-an-aspnet-web-site-for-a-net-framework-version)
+[&#9654;Přehrát video (12 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-configure-an-aspnet-web-site-for-a-net-framework-version)

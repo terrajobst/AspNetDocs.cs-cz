@@ -9,11 +9,11 @@ ms.assetid: 1d1a7c93-971d-4690-9c5e-dac0e5014a09
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb
 msc.type: authoredcontent
 ms.openlocfilehash: a953c00acc4c37fd563321477b6b21689d6e686c
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74576441"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78620902"
 ---
 # <a name="masterdetail-using-a-selectable-master-gridview-with-a-details-detailview-vb"></a>Zobrazení hlavních záznamů / podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (VB)
 
@@ -123,7 +123,7 @@ Po správném nakonfigurování ovládacího prvku `productDetailsDataSource` Ob
 
 **Obrázek 12**: po výběru řádku se zobrazí podrobnosti o produktu ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb/_static/image36.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto a předchozích třech kurzech jsme viděli řadu postupů pro zobrazení hlavních a podrobných sestav. V tomto kurzu jsme prozkoumali použití selektivního prvku GridView pro vytvoření hlavních záznamů a prvku DetailsView k zobrazení podrobností o vybraném hlavním záznamu na stejné stránce. V předchozích kurzech jsme se podívali na postup zobrazení sestav hlavních a podrobností pomocí ovládacích prvků DropDownList a zobrazení hlavních záznamů na jedné webové stránce a podrobností záznamů na jiném.
 

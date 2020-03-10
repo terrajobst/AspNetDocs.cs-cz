@@ -10,11 +10,11 @@ ms.assetid: ce11b017-0ca6-4376-aa9d-a7f3288101de
 msc.legacyurl: /web-api/overview/formats-and-model-binding/bson-support-in-web-api-21
 msc.type: authoredcontent
 ms.openlocfilehash: ccbc0372120301b1cd8d4cdc86bd9fba9404d8ae
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519324"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78622295"
 ---
 # <a name="bson-support-in-aspnet-web-api-21"></a>Podpora BSON v rozhraní ASP.NET Web API 2,1
 
@@ -104,7 +104,7 @@ Před serializací se formátovací modul BSON převede na následující pár k
 
 Při deserializaci, formátovací modul převede data zpět na původní hodnotu. Nicméně pokud vaše webové rozhraní API vrátí nezpracované hodnoty, budou se v takovém případě muset vycházet z klientů, kteří používají jiný analyzátor BSON. Obecně byste měli zvážit vracení strukturovaných dat místo nezpracovaných hodnot.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Ukázka BSON webového rozhraní API](https://github.com/aspnet/samples/tree/master/samples/aspnet/WebApi/BSONSample/)
 

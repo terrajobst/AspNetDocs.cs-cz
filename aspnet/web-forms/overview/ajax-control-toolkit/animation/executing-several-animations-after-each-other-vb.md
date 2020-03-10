@@ -9,11 +9,11 @@ ms.assetid: 21ece509-79cc-4d9d-892d-7b6e9c4d3502
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-after-each-other-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 5034fe905299d4559b713dd841cb166886179c39
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74606864"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78598131"
 ---
 # <a name="executing-several-animations-after-each-other-vb"></a>Postupné provedení několika animací (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Umožňuje spustit několik animací za sebou.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 

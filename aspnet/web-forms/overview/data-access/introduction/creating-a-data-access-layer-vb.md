@@ -9,11 +9,11 @@ ms.assetid: 6227233a-6254-4b6b-9a89-947efef22330
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 51c9255f80f83a68cf26decf318347752498491a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74635140"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78604557"
 ---
 # <a name="creating-a-data-access-layer-vb"></a>Vytvoření vrstvy přístupu k datům (VB)
 
@@ -168,11 +168,11 @@ Tento kód nám nevyžadoval zápis jednoho bitu kódu specifického pro příst
 
 Každý objekt použitý v tomto příkladu je také silného typu, což aplikaci Visual Studio umožňuje poskytovat technologii IntelliSense a kontrolu typu při kompilaci. A nejlepší ze všech datových tabulek vrácených TableAdapter může být svázán s datovými ovládacími prvky ASP.NET dat, jako je například GridView, DetailsView, DropDownList, CheckBoxList a několik dalších. Následující příklad znázorňuje vazbu objektu DataTable vráceného metodou `GetProducts()` do prvku GridView v pouze scant třech řádcích kódu v rámci obslužné rutiny události `Page_Load`.
 
-AllProducts. aspx
+AllProducts.aspx
 
 [!code-aspx[Main](creating-a-data-access-layer-vb/samples/sample2.aspx)]
 
-AllProducts. aspx. vb
+AllProducts.aspx.vb
 
 [!code-vb[Main](creating-a-data-access-layer-vb/samples/sample3.vb)]
 
@@ -226,11 +226,11 @@ Tyto parametrizované dotazy mohou být testovány přímo z návrháře DataSet
 
 Pomocí metody `GetProductsByCategoryID(categoryID)` v naší DAL teď můžeme vytvořit stránku ASP.NET, která zobrazí jenom produkty v zadané kategorii. Následující příklad ukazuje všechny produkty, které jsou v kategorii nápoje, které mají `CategoryID` 1.
 
-Nápoje. aspx
+Beverages.aspx
 
 [!code-aspx[Main](creating-a-data-access-layer-vb/samples/sample4.aspx)]
 
-Nápoje. aspx. vb
+Beverages.aspx.vb
 
 [!code-vb[Main](creating-a-data-access-layer-vb/samples/sample5.vb)]
 
@@ -422,11 +422,11 @@ Tato data je možné zobrazit také v jakémkoli z ASP. Webové ovládací prvky
 
 Podíváme se, jak tyto sestavy hlavní-podrobnosti zobrazit v budoucích kurzech. Nyní je tento příklad navržen pro ilustraci pomocí vlastní metody přidané do třídy `Northwind.SuppliersRow`.
 
-SuppliersAndProducts. aspx
+SuppliersAndProducts.aspx
 
 [!code-aspx[Main](creating-a-data-access-layer-vb/samples/sample24.aspx)]
 
-SuppliersAndProducts. aspx. vb
+SuppliersAndProducts.aspx.vb
 
 [!code-vb[Main](creating-a-data-access-layer-vb/samples/sample25.vb)]
 
@@ -434,7 +434,7 @@ SuppliersAndProducts. aspx. vb
 
 **Obrázek 35**: název společnosti dodavatele je uveden v levém sloupci a jejich produkty napravo ([kliknutím zobrazíte obrázek v plné velikosti).](creating-a-data-access-layer-vb/_static/image93.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Při sestavování webové aplikace, která vytvořila DAL, by měl být jedním z vašich prvních kroků, ke kterým došlo před tím, než začnete vytvářet prezentační vrstvu. V sadě Visual Studio je vytvořením DAL na základě typových datových sad úkol, který je možné provést během 10-15 minut, aniž byste museli psát řádek kódu. Kurzy, které se přesunou dál, se na tomto DAL vytvoří. V [dalším kurzu](creating-a-business-logic-layer-vb.md) definujeme několik obchodních pravidel a zjistíte, jak je implementovat do samostatné vrstvy obchodní logiky.
 

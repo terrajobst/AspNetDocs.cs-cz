@@ -1,97 +1,97 @@
 ---
 uid: web-api/overview/security/working-with-ssl-in-web-api
-title: Práce s protokolem SSL ve webovém rozhraní API | Dokumentace Microsoftu
+title: Práce s protokolem SSL ve webovém rozhraní API | Microsoft Docs
 author: MikeWasson
-description: Ukazuje, jak používat protokol SSL s ASP.NET Web API, včetně používání certifikátů SSL klienta.
+description: Ukazuje, jak používat protokol SSL s webovým rozhraním API ASP.NET, včetně použití klientských certifikátů SSL.
 ms.author: riande
 ms.date: 02/22/2019
 ms.assetid: 97f6164f-59cf-45c0-b820-e4aa29b45396
 msc.legacyurl: /web-api/overview/security/working-with-ssl-in-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 31589b3713b1f1a9b98d12906bfef81f8bf5e3f9
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59386149"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78598635"
 ---
-# <a name="working-with-ssl-in-web-api"></a>Práce s protokolem SSL ve webovém rozhraní API
+# <a name="working-with-ssl-in-web-api"></a>Práce s protokolem SSL v rozhraní Web API
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-Několik společných schémat ověřování nejsou zabezpečené přes standardní protokol HTTP. Konkrétně se základní ověřování a ověřování pomocí formulářů odesílat nezašifrované přihlašovací údaje. Zabezpečení, tato schémata ověřování *musí* používat protokol SSL. Kromě toho certifikáty SSL klienta slouží k ověřování klientů.
+Několik běžných schémat ověřování není v případě obyčejného protokolu HTTP zabezpečené. Konkrétně základní ověřování a ověřování formulářů odesílají nezašifrované přihlašovací údaje. Aby bylo zajištěno zabezpečení, *musí* tato schémata ověřování používat protokol SSL. K ověřování klientů se navíc dají použít klientské certifikáty SSL.
 
 ## <a name="enabling-ssl-on-the-server"></a>Povolení protokolu SSL na serveru
 
-Nastavení protokolu SSL ve službě IIS 7 nebo novější:
+Nastavení SSL v IIS 7 nebo novějším:
 
-- Vytvořit nebo získat certifikát. Pro účely testování můžete vytvořit certifikát podepsaný svým držitelem.
-- Přidáte vazbu HTTPS.
+- Vytvořte nebo Získejte certifikát. Pro účely testování můžete vytvořit certifikát podepsaný svým držitelem.
+- Přidejte vazbu HTTPS.
 
-Podrobnosti najdete v tématu [postupy nastavení protokolu SSL ve službě IIS 7](https://www.iis.net/learn/manage/configuring-security/how-to-set-up-ssl-on-iis).
+Podrobnosti najdete v tématu [jak nastavit SSL na IIS 7](https://www.iis.net/learn/manage/configuring-security/how-to-set-up-ssl-on-iis).
 
-Pro místní testování, můžete povolit SSL ve službě IIS Express ze sady Visual Studio. V okně Vlastnosti nastavte **povolený protokol SSL** k **True**. Poznamenejte si hodnotu **adresa URL protokolu SSL**; pomocí této adresy URL pro testování připojení prostřednictvím protokolu HTTPS.
+V případě místního testování můžete povolit protokol SSL v IIS Express ze sady Visual Studio. V okno Vlastnosti nastavte možnost **SSL povoleno** na **hodnotu true**. Poznamenejte si hodnotu **URL SSL**; tuto adresu URL použijte pro testování připojení HTTPS.
 
 ![](working-with-ssl-in-web-api/_static/image1.png)
 
-### <a name="enforcing-ssl-in-a-web-api-controller"></a>Vynucování SSL v Kontroleru webového rozhraní API
+### <a name="enforcing-ssl-in-a-web-api-controller"></a>Vynucování SSL v kontroleru webového rozhraní API
 
-Pokud máte vazbu HTTP i HTTPS, klienti můžou stále používat HTTP pro přístup k webu. Může povolit některé prostředky je k dispozici prostřednictvím protokolu HTTP, zatímco jiné prostředky vyžadují protokol SSL. V takovém případě použijte filtr akce Pokud chcete vyžadovat protokol SSL k chráněným prostředkům. Následující kód ukazuje filtr ověřování webové rozhraní API, která kontroluje pro protokol SSL:
+Pokud máte vazbu HTTPS i HTTP, klienti stále můžou k přístupu k webu používat protokol HTTP. Může být možné, že některé prostředky budou k dispozici prostřednictvím protokolu HTTP, zatímco jiné prostředky vyžadují protokol SSL. V takovém případě použijte filtr akcí pro vyžadování protokolu SSL pro chráněné prostředky. Následující kód ukazuje filtr ověřování webového rozhraní API, který kontroluje protokol SSL:
 
 [!code-csharp[Main](working-with-ssl-in-web-api/samples/sample1.cs)]
 
-Přidejte tento filtr pro všechny akce webového rozhraní API, které vyžadují protokol SSL:
+Přidejte tento filtr do všech akcí webového rozhraní API, které vyžadují protokol SSL:
 
 [!code-csharp[Main](working-with-ssl-in-web-api/samples/sample2.cs)]
 
 ## <a name="ssl-client-certificates"></a>Klientské certifikáty SSL
 
-Protokol SSL zajišťuje ověřování pomocí certifikátů infrastruktury veřejných klíčů. Na serveru, musíte zadat certifikát, který se ověřuje serveru do klienta. Je méně běžné pro klienta, jak poskytnout certifikát na server, ale to je jednou z možností pro ověřování klientů. Použití klientských certifikátů pomocí protokolu SSL, potřebujete způsob, jak distribuovat certifikáty podepsané svým uživatelům. Pro mnoho typů aplikací neměl by to být vhodné uživatelské prostředí, ale v některých prostředích (například organizace) může být vhodná.
+SSL zajišťuje ověřování pomocí certifikátů infrastruktury veřejných klíčů. Server musí poskytovat certifikát, který ověřuje server pro klienta. Je méně běžné, že klient poskytuje certifikát serveru, ale jedná se o jednu možnost ověřování klientů. Pokud chcete používat klientské certifikáty s protokolem SSL, budete potřebovat způsob distribuce podepsaných certifikátů uživatelům. Pro mnoho typů aplikací to nebude dobrým uživatelským prostředím, ale v některých prostředích (například v podniku) může být proveditelné.
 
 | Výhody | Nevýhody |
 | --- | --- |
-| -Certificate přihlašovací údaje jsou silnější než uživatelského jména a hesla. -SSL poskytuje kompletní zabezpečený kanál s ověřováním, zprávu, integritu a šifrování zpráv. | -Je nutné získat a správu certifikátů infrastruktury veřejných KLÍČŮ. -Klientská platforma musí podporovat klientské certifikáty SSL. |
+| -Přihlašovací údaje certifikátu jsou silnější než uživatelské jméno a heslo. -SSL poskytuje kompletní zabezpečený kanál s ověřováním, integritou zpráv a šifrováním zpráv. | – Musíte získat a spravovat certifikáty PKI. -Klientská platforma musí podporovat klientské certifikáty SSL. |
 
-Pokud chcete nakonfigurovat službu IIS tak, aby přijímal klientské certifikáty, otevřete Správce služby IIS a proveďte následující kroky:
+Chcete-li nakonfigurovat službu IIS tak, aby přijímala klientské certifikáty, otevřete Správce služby IIS a proveďte následující kroky:
 
-1. Klikněte na uzel serveru ve stromovém zobrazení.
-2. Dvakrát klikněte **nastavení SSL** funkce v prostředním podokně.
-3. V části **klientské certifikáty**, vyberte jednu z těchto možností: 
+1. Ve stromovém zobrazení klikněte na uzel lokalita.
+2. Dvakrát klikněte na funkci **Nastavení SSL** v prostředním podokně.
+3. V části **klientské certifikáty**vyberte jednu z následujících možností: 
 
-    - **Přijměte**: Služba IIS bude přijímat certifikát od klienta, ale nevyžaduje, aby jeden.
-    - **Vyžadovat**: V nástroji vyžadují certifikát klienta. (Chcete-li povolit tuto možnost, musíte také vybrat "Požadovat protokol SSL")
+    - **Přijmout**: Internetová informační služba bude přijímat certifikát od klienta, ale nevyžaduje jednu z nich.
+    - **Vyžadovat**: vyžadování klientského certifikátu. (Pokud chcete povolit tuto možnost, musíte taky vybrat "vyžadovat SSL".)
 
-V souboru ApplicationHost.config můžete také nastavit tyto možnosti:
+Můžete také nastavit tyto možnosti v souboru ApplicationHost. config:
 
 [!code-xml[Main](working-with-ssl-in-web-api/samples/sample3.xml)]
 
-**SslNegotiateCert** příznak znamená, že služba IIS bude přijímat certifikát od klienta, ale nevyžaduje, aby jeden (odpovídá možnosti "Přijmout" ve Správci služby IIS). Chcete-li v nástroji vyžadují certifikát, nastavte **SslRequireCert** příznak. Pro účely testování můžete také nastavit tyto možnosti v rámci služby IIS Express, v místní hostitele aplikace. Konfigurační soubor umístěný ve "Documents\IISExpress\config".
+Příznak **SslNegotiateCert** znamená, že služba IIS přijme certifikát od klienta, ale nevyžaduje jeden (ekvivalent možnosti "přijmout" ve Správci služby IIS). Pro vyžadování certifikátu nastavte příznak **SslRequireCert** . Pro testování můžete také nastavit tyto možnosti v IIS Express v místním hostiteli aplikace. Konfigurační soubor umístěný v části "Documents\IISExpress\config".
 
-### <a name="creating-a-client-certificate-for-testing"></a>Vytváří se klientský certifikát pro účely testování
+### <a name="creating-a-client-certificate-for-testing"></a>Vytvoření klientského certifikátu pro testování
 
-Pro účely testování můžete použít [MakeCert.exe](/windows/desktop/SecCrypto/makecert) k vytvoření klientského certifikátu. Nejprve vytvořte testovací kořenové autority:
+Pro účely testování můžete použít nástroj [Makecert. exe](/windows/desktop/SecCrypto/makecert) k vytvoření klientského certifikátu. Nejdřív vytvořte kořenovou autoritu testu:
 
 [!code-console[Main](working-with-ssl-in-web-api/samples/sample4.cmd)]
 
-Použití nástroje MakeCert vás vyzve k zadání hesla privátního klíče.
+Makecert zobrazí výzvu k zadání hesla pro privátní klíč.
 
-V dalším kroku přidejte certifikát do testu, které ukládají serveru "důvěryhodné kořenové certifikační autority", následujícím způsobem:
+Dále přidejte certifikát do úložiště Důvěryhodné kořenové certifikační autority testovacího serveru následujícím způsobem:
 
 1. Otevřete konzolu MMC.
-2. V části **souboru**vyberte **Přidat/odebrat modul Snap-In**.
-3. Vyberte **účet počítače**.
-4. Vyberte **místního počítače** a dokončete průvodce.
-5. V navigačním podokně rozbalte uzel "Důvěryhodné kořenové certifikační autority".
-6. Na **akce** nabídky, přejděte k **všechny úkoly**a potom klikněte na tlačítko **Import** spusťte Průvodce importem certifikátu.
-7. Přejděte do souboru certifikátu, TempCA.cer.
-8. Klikněte na tlačítko **otevřít**, pak klikněte na tlačítko **Další** a dokončete průvodce. (Budete vyzváni znovu zadat heslo.)
+2. V části **soubor**vyberte **Přidat nebo odebrat modul snap-in**.
+3. Vyberte možnost **účet počítače**.
+4. Vyberte **místní počítač** a dokončete průvodce.
+5. V navigačním podokně rozbalte uzel důvěryhodné kořenové certifikační autority.
+6. V nabídce **Akce** přejděte na **všechny úlohy**a potom kliknutím na **importovat** spusťte Průvodce importem certifikátu.
+7. Vyhledejte soubor certifikátu TempCA. cer.
+8. Klikněte na **otevřít**a potom na **Další** a dokončete průvodce. (Budete vyzváni k zadání hesla znovu.)
 
-Teď vytvořte klientský certifikát, který je podepsaný první certifikát:
+Nyní vytvořte certifikát klienta, který je podepsán prvním certifikátem:
 
 [!code-console[Main](working-with-ssl-in-web-api/samples/sample5.cmd)]
 
-### <a name="using-client-certificates-in-web-api"></a>Pomocí klientských certifikátů ve webovém rozhraní API
+### <a name="using-client-certificates-in-web-api"></a>Použití klientských certifikátů ve webovém rozhraní API
 
-Na straně serveru, můžete získat certifikát klienta voláním [GetClientCertificate](https://msdn.microsoft.com/library/system.net.http.httprequestmessageextensions.getclientcertificate.aspx) na zprávy s požadavkem. Metoda vrátí hodnotu null, pokud neexistuje žádný certifikát klienta. V opačném případě vrátí **X509Certificate2** instance. Pomocí tohoto objektu můžete získat informace z certifikátu, jako je vydavatel a předmět. Tyto informace pak můžete použít pro ověřování a autorizace.
+Na straně serveru můžete získat certifikát klienta voláním [GetClientCertificate](https://msdn.microsoft.com/library/system.net.http.httprequestmessageextensions.getclientcertificate.aspx) ve zprávě požadavku. Metoda vrátí hodnotu null, pokud není k dispozici klientský certifikát. V opačném případě vrátí instanci **X509Certificate2** . Pomocí tohoto objektu můžete získat informace z certifikátu, jako je například Vystavitel a předmět. Pak můžete tyto informace použít k ověřování a/nebo autorizaci.
 
 [!code-csharp[Main](working-with-ssl-in-web-api/samples/sample6.cs)]

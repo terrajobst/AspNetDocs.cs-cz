@@ -1,35 +1,35 @@
 ---
 uid: web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
-title: Trasování v rozhraní ASP.NET Web API 2 | Dokumentace Microsoftu
+title: Trasování ve webovém rozhraní API 2 pro ASP.NET | Microsoft Docs
 author: MikeWasson
-description: Ukazuje, jak povolit trasování v rozhraní ASP.NET Web API.
+description: Ukazuje, jak povolit trasování v ASP.NET webovém rozhraní API.
 ms.author: riande
 ms.date: 02/25/2014
 ms.assetid: 66a837e9-600b-4b72-97a9-19804231c64a
 msc.legacyurl: /web-api/overview/testing-and-debugging/tracing-in-aspnet-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: a01acb649556d06ab9828ceab0fcbdf363bbc0d1
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405895"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78598551"
 ---
-# <a name="tracing-in-aspnet-web-api-2"></a>Trasování v rozhraní ASP.NET Web API 2
+# <a name="tracing-in-aspnet-web-api-2"></a>Trasování ve webovém rozhraní API 2 ASP.NET
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-> Pokud se pokoušíte ladit webové aplikace, není žádná náhrada správnou sadu protokoly trasování. Tento kurz ukazuje, jak povolit trasování v rozhraní ASP.NET Web API. Tuto funkci můžete použít ke sledování, co dělá rozhraní webového rozhraní API před a po vyvolá kontrolér. Také ho můžete použít ke sledování vlastního kódu.
+> Při pokusu o ladění webové aplikace nenahrazujete správnou sadu protokolů trasování. V tomto kurzu se dozvíte, jak povolit trasování v ASP.NET webovém rozhraní API. Pomocí této funkce můžete sledovat, co rozhraní Web API funguje před a poté, co vyvolá kontroler. Můžete ho také použít k trasování vlastního kódu.
 >
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 >
-> - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) (funguje taky s Visual Studiem 2015)
+> - [Visual studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017) (také funguje se sadou visual Studio 2015)
 > - Webové rozhraní API 2
-> - [Microsoft.AspNet.WebApi.Tracing](http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Tracing)
+> - [Microsoft. AspNet. WebApi. Tracing](http://www.nuget.org/packages/Microsoft.AspNet.WebApi.Tracing)
 
-## <a name="enable-systemdiagnostics-tracing-in-web-api"></a>Povolit System.Diagnostics trasování ve webovém rozhraní API
+## <a name="enable-systemdiagnostics-tracing-in-web-api"></a>Povolit trasování System. Diagnostics ve webovém rozhraní API
 
-Nejprve vytvoříme nový projekt webové aplikace ASP.NET. V sadě Visual Studio z **souboru** nabídce vyberte možnost **nový** > **projektu**. V části **šablony**, **webové**vyberte **webová aplikace ASP.NET**.
+Nejprve vytvoříme nový projekt webové aplikace ASP.NET. V aplikaci Visual Studio v nabídce **soubor** vyberte **Nový** > **projekt**. V části **šablony**, **Web**vyberte **ASP.NET webová aplikace**.
 
 [![](tracing-in-aspnet-web-api/_static/image2.png)](tracing-in-aspnet-web-api/_static/image1.png)
 
@@ -37,93 +37,93 @@ Vyberte šablonu projektu webového rozhraní API.
 
 [![](tracing-in-aspnet-web-api/_static/image4.png)](tracing-in-aspnet-web-api/_static/image3.png)
 
-Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet**, pak **konzoly Správa balíčků**.
+V nabídce **nástroje** vyberte **Správce balíčků NuGet**a pak **balíček spravovat konzolu**.
 
 V okně konzoly Správce balíčků zadejte následující příkazy.
 
 [!code-console[Main](tracing-in-aspnet-web-api/samples/sample1.cmd)]
 
-První příkaz nainstaluje nejnovější balíček trasování webového rozhraní API. Rovněž aktualizuje balíčky webového rozhraní API core. Druhý příkaz je WebApi.WebHost balíček aktualizován na nejnovější verzi.
+První příkaz nainstaluje nejnovější balíček trasování webového rozhraní API. Také aktualizuje základní balíčky webového rozhraní API. Druhý příkaz aktualizuje balíček WebApi. webhost na nejnovější verzi.
 
 > [!NOTE]
-> Pokud chcete cílit na konkrétní verzi rozhraní Web API, použijte příznak-verze při instalaci balíčku trasování.
+> Pokud chcete cílit na konkrétní verzi webového rozhraní API, použijte příznak-Version při instalaci balíčku trasování.
 
-Otevřete soubor WebApiConfig.cs v aplikaci\_spouštěcí složka. Přidejte následující kód, který **zaregistrovat** metody.
+Otevřete soubor WebApiConfig.cs ve složce App\_Start. Do metody **Register** přidejte následující kód.
 
 [!code-csharp[Main](tracing-in-aspnet-web-api/samples/sample2.cs?highlight=6)]
 
-Tento kód přidá [zapisovač SystemDiagnosticsTraceWriter](https://msdn.microsoft.com/library/system.web.http.tracing.systemdiagnosticstracewriter.aspx) třídy do kanálu webové rozhraní API. **Zapisovač SystemDiagnosticsTraceWriter** zapíše trasování do třídy [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace).
+Tento kód přidá do kanálu webového rozhraní API třídu [SystemDiagnosticsTraceWriter](https://msdn.microsoft.com/library/system.web.http.tracing.systemdiagnosticstracewriter.aspx) . Třída **SystemDiagnosticsTraceWriter** zapisuje trasování do [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace).
 
-Chcete-li zobrazit trasování, spusťte aplikaci v ladicím programu. V prohlížeči přejděte na `/api/values`.
+Chcete-li zobrazit trasování, spusťte aplikaci v ladicím programu. V prohlížeči přejděte na adresu `/api/values`.
 
 ![](tracing-in-aspnet-web-api/_static/image5.png)
 
-Příkazy trasování jsou zapsány do okna výstup v sadě Visual Studio. (Z **zobrazení** nabídce vyberte možnost **výstup**).
+Příkazy trasování jsou zapsány do okna výstup v aplikaci Visual Studio. (V nabídce **zobrazení** vyberte **výstup**).
 
 [![](tracing-in-aspnet-web-api/_static/image7.png)](tracing-in-aspnet-web-api/_static/image6.png)
 
-Protože **zapisovač SystemDiagnosticsTraceWriter** zapíše trasování do **System.Diagnostics.Trace**, zaregistrujete naslouchací procesy další trasování; například zapsat trasování do souboru protokolu. Další informace o trasování zapisovače, najdete v článku [naslouchacích procesů trasování](https://msdn.microsoft.com/library/4y5y10s7.aspx) tématu na webu MSDN.
+Vzhledem k tomu, že **SystemDiagnosticsTraceWriter** zapisuje trasování do **System. Diagnostics. Trace**, můžete registrovat další naslouchací procesy trasování; například pro zápis trasování do souboru protokolu. Další informace o zapisovačích trasování naleznete v tématu [naslouchací procesy trasování](https://msdn.microsoft.com/library/4y5y10s7.aspx) na webu MSDN.
 
-### <a name="configuring-systemdiagnosticstracewriter"></a>Konfigurace zapisovač SystemDiagnosticsTraceWriter
+### <a name="configuring-systemdiagnosticstracewriter"></a>Konfigurace SystemDiagnosticsTraceWriter
 
-Následující kód ukazuje, jak konfigurovat zápis trasování.
+Následující kód ukazuje, jak nakonfigurovat zapisovač trasování.
 
 [!code-csharp[Main](tracing-in-aspnet-web-api/samples/sample3.cs)]
 
-Existují dvě nastavení, které můžete řídit:
+Můžete řídit dvě nastavení:
 
-- IsVerbose: Pokud má hodnotu false, obsahuje každý trasování minimální informace. Při hodnotě true se trasování obsahují další informace.
-- MinimumLevel: Nastaví minimální úroveň trasování. Jsou úrovně trasování, v pořadí, ladění, informace, varování, chyba a závažná chyba.
+- Verbose: Pokud má hodnotu false, každé trasování obsahuje minimální informace. Je-li nastavena hodnota true, trasování obsahují více informací.
+- MinimumLevel: nastaví minimální úroveň trasování. Úrovně trasování jsou v pořadí ladění, informace, varování, chyba a závažná.
 
-## <a name="adding-traces-to-your-web-api-application"></a>Přidání trasování aplikace webového rozhraní API
+## <a name="adding-traces-to-your-web-api-application"></a>Přidání trasování do aplikace webového rozhraní API
 
-Přidání zapisovač trasování umožňuje okamžitý přístup k trasování vytvořený kanál rozhraní Web API. Můžete také zapisovač trasování pro trasování váš vlastní kód:
+Přidáním zapisovače trasování získáte okamžitý přístup k trasování vytvořeným kanálem webového rozhraní API. Můžete také použít zapisovač trasování k trasování vlastního kódu:
 
 [!code-csharp[Main](tracing-in-aspnet-web-api/samples/sample4.cs)]
 
-Chcete-li získat zapisovač trasování, zavolejte **HttpConfiguration.Services.GetTraceWriter**. Z řadiče, tato metoda je přístupná prostřednictvím **ApiController.Configuration** vlastnost.
+Chcete-li získat zapisovač trasování, zavolejte **HttpConfiguration. Services. GetTraceWriter**. Z kontroleru je tato metoda přístupná prostřednictvím vlastnosti **ApiController. Configuration** .
 
-Zapsat trasování do třídy, můžete volat **ITraceWriter.Trace** metoda přímo, ale [ITraceWriterExtensions](https://msdn.microsoft.com/library/system.web.http.tracing.itracewriterextensions.aspx) třída definuje některé metody rozšíření, které jsou popisnějšího. Například **informace** výše uvedená metoda vytvoří trasování s úrovní trasování **informace**.
+Chcete-li napsat trasování, můžete zavolat metodu **ITraceWriter. Trace** přímo, ale třída [ITraceWriterExtensions](https://msdn.microsoft.com/library/system.web.http.tracing.itracewriterextensions.aspx) definuje některé rozšiřující metody, které jsou výstižnější. Například metoda **info** zobrazená výše vytvoří trasování s **informacemi**úrovně trasování.
 
-## <a name="web-api-tracing-infrastructure"></a>Sledování infrastruktury webového rozhraní API
+## <a name="web-api-tracing-infrastructure"></a>Infrastruktura trasování webového rozhraní API
 
-Tato část popisuje, jak psát vlastní trasování zapisovače pro webové rozhraní API.
+Tato část popisuje, jak napsat vlastní zapisovač trasování pro webové rozhraní API.
 
-Další obecné infrastruktury trasování v rozhraní Web API je nástavbou Microsoft.AspNet.WebApi.Tracing balíčku. Namísto použití Microsoft.AspNet.WebApi.Tracing, můžete také zařadit některé další knihovny trasování a protokolování, například [NLog](http://nlog-project.org/) nebo [log4net](http://logging.apache.org/log4net/).
+Balíček Microsoft. AspNet. WebApi. Tracing je postaven na obecnější trasovací infrastruktuře ve webovém rozhraní API. Místo použití Microsoft. AspNet. WebApi. Tracing můžete také připojit jiné knihovny trasování nebo protokolování, jako je například [nLOG](http://nlog-project.org/) nebo [log4net](http://logging.apache.org/log4net/).
 
-Chcete-li shromažďovat trasování, implementovat **ITraceWriter** rozhraní. Tady je jednoduchý příklad:
+Chcete-li shromažďovat trasování, implementujte rozhraní **ITraceWriter** . Tady je jednoduchý příklad:
 
 [!code-csharp[Main](tracing-in-aspnet-web-api/samples/sample5.cs)]
 
-**ITraceWriter.Trace** metoda vytvoří trasování. Volající určuje úroveň kategorie a trasování. Kategorie může být libovolný řetězec definovaný uživatelem. Implementace **trasování** udělat toto:
+Metoda **ITraceWriter. Trace** vytvoří trasování. Volající určuje kategorii a úroveň trasování. Kategorie může být libovolný uživatelsky definovaný řetězec. Vaše implementace **trasování** by měla provádět následující akce:
 
-1. Vytvořte nový **TraceRecord**. Jak je znázorněno, inicializujte ho s požadavkem, kategorií a úroveň trasování. Tyto hodnoty jsou k dispozici volajícím.
-2. Vyvolat *traceAction* delegovat. Uvnitř tohoto delegáta, volající by měl k vyplnění zbývající části **TraceRecord**.
-3. Zápis **TraceRecord**, pomocí jakékoli protokolování technika, který vás zajímá. V příkladu je vidět tady jednoduše volá **System.Diagnostics.Trace**.
+1. Vytvořte nový **TraceRecord**. Inicializujte ji pomocí úrovně žádosti, kategorie a trasování, jak je znázorněno na obrázku. Tyto hodnoty poskytuje volající.
+2. Vyvolat delegáta *traceAction* Uvnitř tohoto delegáta se očekává, že volající vyplní zbytek **TraceRecord**.
+3. Napište **TraceRecord**pomocí jakékoli metody protokolování, kterou chcete. Zde uvedený příklad jednoduše volá do **System. Diagnostics. Trace**.
 
-## <a name="setting-the-trace-writer"></a>Nastavení zapisovač trasování
+## <a name="setting-the-trace-writer"></a>Nastavení zapisovače trasování
 
-Pokud chcete povolit trasování, musíte nakonfigurovat webové rozhraní API pro použití vašeho **ITraceWriter** implementace. Až to uděláte **HttpConfiguration** objektu, jak je znázorněno v následujícím kódu:
+Chcete-li povolit trasování, je nutné nakonfigurovat webové rozhraní API tak, aby používalo implementaci **ITraceWriter** . Provedete to pomocí objektu **HttpConfiguration** , jak je znázorněno v následujícím kódu:
 
 [!code-csharp[Main](tracing-in-aspnet-web-api/samples/sample6.cs)]
 
-Může být aktivní pouze jeden trasování zapisovače. Ve výchozím nastavení, nastaví webového rozhraní API &quot;no-op&quot; závislostí, který nemá žádný účinek. ( &quot;No-op&quot; závislostí existuje, takže není potřeba zkontrolovat, zda je zapisovač trasování trasování kódu **null** před zápisem trasování.)
+Aktivní může být pouze jeden zapisovač trasování. Ve výchozím nastavení webové rozhraní API nastaví &quot;trasování no-op&quot;, které nedělá nic. (&quot;trasování no-op&quot; existuje, aby trasovací kód nemusel před zápisem trasování kontrolovat, zda má zapisovač trasování **hodnotu null** .)
 
-## <a name="how-web-api-tracing-works"></a>Jak webové rozhraní API trasování funguje
+## <a name="how-web-api-tracing-works"></a>Jak funguje trasování webového rozhraní API
 
-Používá trasování v rozhraní Web API *průčelí* vzoru: Když je povoleno trasování, webové rozhraní API zabalí různé části požadavku kanálu pomocí třídy, které provádějí sledování volání.
+Trasování ve webovém rozhraní API používá vzor *fasády* : Pokud je povoleno trasování, webové rozhraní API zalomí různé části kanálu požadavků se třídami, které provádějí volání trasování.
 
-Například při výběru kontroleru, kanál používá **IHttpControllerSelector** rozhraní. S povoleným trasováním vloží kanál, který implementuje třídu **IHttpControllerSelector** , ale volání skutečné implementaci:
+Když například vyberete kontroler, kanál používá rozhraní **IHttpControllerSelector** . Pokud je povoleno trasování, kanál vloží třídu, která implementuje **IHttpControllerSelector** , ale volá do reálné implementace:
 
-![Trasování serveru webové rozhraní API používá průčelí modelu.](tracing-in-aspnet-web-api/_static/image8.png)
+![Trasování webového rozhraní API používá vzorek fasády.](tracing-in-aspnet-web-api/_static/image8.png)
 
-Tento návrh mezi výhody patří:
+Mezi výhody tohoto návrhu patří:
 
-- Pokud nepřidáte zapisovač trasování, komponenty trasování není vytvořena instance a mít žádný vliv na výkon.
-- Pokud například nahradíte výchozí služby **IHttpControllerSelector** s vlastním vlastních implementací, není ovlivněno trasování, protože trasování se provádí Obálkový objekt.
+- Pokud nepřidáte zapisovač trasování, nebudou vytvořeny instance trasování a nebude mít žádný vliv na výkon.
+- Pokud nahradíte výchozí služby, jako je například **IHttpControllerSelector** , vlastní implementací, trasování není ovlivněno, protože trasování je provedeno pomocí objektu obálky.
 
-Můžete také nahradit celé trasování rozhraní Web API s vlastním vlastní rozhraní .NET framework, tak, že nahradíte výchozí **ITraceManager** služby:
+Můžete také nahradit celé rozhraní trasování API pro web pomocí vlastního rozhraní, a to nahrazením výchozí služby **ITraceManager** :
 
 [!code-csharp[Main](tracing-in-aspnet-web-api/samples/sample7.cs)]
 
-Implementace **ITraceManager.Initialize** inicializovat trasování systému. Mějte na paměti, že to nahrazuje *celý* trasování rozhraní framework, včetně všech trasování kódu, která je integrována do webového rozhraní API.
+Implementujte **ITraceManager. Initialize** pro inicializaci vašeho sledovacího systému. Uvědomte si, že to nahrazuje *celé* rozhraní trasování, včetně veškerého trasovacího kódu, který je součástí webového rozhraní API.

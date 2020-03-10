@@ -9,11 +9,11 @@ ms.assetid: 07978d9d-341c-4524-bcba-62976f390f77
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file
 msc.type: authoredcontent
 ms.openlocfilehash: 419fe51aaf65bddcc2c50380f099f842a8d9439c
-ms.sourcegitcommit: 84b1681d4e6253e30468c8df8a09fe03beea9309
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73445699"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78626229"
 ---
 # <a name="understanding-the-project-file"></a>Porozumění souboru projektu
 
@@ -23,7 +23,7 @@ od [Jason Novák](https://github.com/jrjlee)
 
 > Soubory projektu Microsoft Build Engine (MSBuild) leží na srdce procesu sestavení a nasazení. Toto téma začíná koncepčním přehledem nástroje MSBuild a souboru projektu. Popisuje klíčové komponenty, které se budou nacházet při práci se soubory projektu, a funguje jako příklad, jak můžete použít soubory projektu k nasazení reálných aplikací.
 > 
-> Co se naučíte:
+> Naučíte se:
 > 
 > - Jak nástroj MSBuild používá soubory projektu MSBuild k sestavení projektů.
 > - Jak se MSBuild integruje s technologiemi nasazení, jako je třeba nástroj pro nasazení webu Internetová informační služba (IIS) (Nasazení webu).

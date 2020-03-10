@@ -10,11 +10,11 @@ ms.assetid: 2e260430-d13c-4658-bd05-e256fc0d63b8
 msc.legacyurl: /identity/overview/migrations/migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity
 msc.type: authoredcontent
 ms.openlocfilehash: 31f02a0cec3c531c45c37b7aad8456e01e80b5ea
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77456111"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616569"
 ---
 # <a name="migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity-c"></a>Migrace členských dat od univerzálního zprostředkovatele a uživatelských profilů na ASP.NET Identity (C#)
 
@@ -41,7 +41,7 @@ Informace o profilu jsou uloženy jako Serializovaná data XML a binární data 
 
 Po migraci aplikace, aby používala nový ASP.NET Identity systém, jsou informace o profilu deserializovány a uloženy jako vlastnosti třídy uživatel. Každá vlastnost se pak dá namapovat na sloupce v uživatelské tabulce. Výhodou je, že vlastnosti lze pracovat přímo pomocí třídy uživatele kromě toho, že při přístupu k nim nemusíte serializovat nebo deserializovat informace o datech.
 
-## <a name="getting-started"></a>Začínáme
+## <a name="getting-started"></a>začínáme
 
 1. Vytvořte novou aplikaci webových formulářů ASP.NET 4,5 v aplikaci Visual Studio 2012. Aktuální ukázka používá šablonu webových formulářů, ale můžete použít také aplikaci MVC.  
     ![](migrating-universal-provider-data-for-membership-and-user-profiles-to-aspnet-identity/_static/image1.jpg)

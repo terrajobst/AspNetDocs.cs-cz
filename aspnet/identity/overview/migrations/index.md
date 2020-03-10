@@ -1,6 +1,6 @@
 ---
 uid: identity/overview/migrations/index
-title: Migrace na ASP.NET Identity – ASP.NET 4.x
+title: Migrace na ASP.NET Identity – ASP.NET 4. x
 author: rick-anderson
 description: Migrace na ASP.NET Identity od jiných zprostředkovatelů členství
 ms.author: riande
@@ -10,11 +10,11 @@ ms.assetid: 4a54fee1-d064-4d67-837a-87143a9205fd
 msc.legacyurl: /identity/overview/migrations
 msc.type: chapter
 ms.openlocfilehash: fc072c375d777fabd0c28120f208f7aed62aa6c5
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65121412"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616576"
 ---
 # <a name="migrating-to-aspnet-identity"></a>Migrace na ASP.NET Identity
 

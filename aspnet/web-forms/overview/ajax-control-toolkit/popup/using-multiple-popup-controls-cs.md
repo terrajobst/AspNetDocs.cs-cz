@@ -9,11 +9,11 @@ ms.assetid: 91511b0b-311d-481f-9e7c-73f07b813b79
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/using-multiple-popup-controls-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 8700fe89af591e8b481e853580b0efa0cddbf1bc
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74611665"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78612649"
 ---
 # <a name="using-multiple-popup-controls-c"></a>Použití několika překryvných ovládacích prvků (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 PopupControl Extender v sadě nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevírané okno v případě, že je aktivován jakýkoli jiný ovládací prvek. Je také možné použít více než jeden ovládací prvek místní nabídky na jedné stránce.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Aby bylo možné aktivovat funkce ASP.NET AJAX a Control Toolkit, musí být ovládací prvek `ScriptManager` umístěn kdekoli na stránce (ale v elementu `<form>`):
 

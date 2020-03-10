@@ -1,73 +1,73 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22
-title: Vytvoření jednoho prvku v OData v4 použití rozhraní Web API 2.2 | Dokumentace Microsoftu
+title: Vytvoření typu Singleton v OData v4 pomocí webového rozhraní API 2,2 | Microsoft Docs
 author: rick-anderson
-description: Toto téma ukazuje, jak definovat typ singleton v koncový bod OData v Web API 2.2.
+description: V tomto tématu se dozvíte, jak definovat typ singleton v koncovém bodu OData ve webovém rozhraní API 2,2.
 ms.author: riande
 ms.date: 06/27/2014
 ms.assetid: 4064ab14-26ee-4d5c-ae58-1bdda525ad06
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/using-a-singleton-in-an-odata-endpoint-in-web-api-22
 msc.type: authoredcontent
 ms.openlocfilehash: 218449c18759b306e425c55f8e7b573d837b4658
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65113130"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78622085"
 ---
-# <a name="create-a-singleton-in-odata-v4-using-web-api-22"></a>Vytvoření jednoho prvku v OData v4 použití rozhraní Web API 2.2
+# <a name="create-a-singleton-in-odata-v4-using-web-api-22"></a>Vytvoření typu Singleton v OData v4 pomocí webového rozhraní API 2,2
 
-by Zoe Luo
+od Zoe Luo
 
-> Tradičně entita může přistupovat pouze pokud byly zapouzdřený v sadu entit. Ale OData v4 poskytuje dvě další možnosti, jednotlivý prvek a členství ve skupině, které podporuje WebAPI 2.2.
+> Obvykle by entita mohla být k dispozici pouze v případě, že byla zapouzdřena v sadě entit. OData v4 ale nabízí dvě další možnosti, singleton a omezení, z nichž WebAPI 2,2 podporuje.
 
-Tento článek ukazuje, jak definovat typ singleton v koncový bod OData v Web API 2.2. Informace o jaký typ singleton je a jak vám může přinést použití, naleznete v tématu [použití typu singleton k definování zvláštní entita](https://blogs.msdn.com/b/odatateam/archive/2014/03/05/use-singleton-to-define-your-special-entity.aspx). Vytvoření koncového bodu OData V4 v rozhraní Web API najdete v tématu [vytvořit OData v4 koncový bod pomocí rozhraní ASP.NET Web API 2.2](create-an-odata-v4-endpoint.md). 
+Tento článek ukazuje, jak definovat singleton v koncovém bodu OData ve webovém rozhraní API 2,2. Informace o tom, co je typu Singleton a jakým způsobem vám jeho používání může přinést, najdete v tématu [použití typu Singleton k definování vaší speciální entity](https://blogs.msdn.com/b/odatateam/archive/2014/03/05/use-singleton-to-define-your-special-entity.aspx). Informace o vytvoření koncového bodu OData v4 ve webovém rozhraní API najdete v tématu [Vytvoření koncového bodu OData v4 pomocí webového rozhraní api ASP.NET 2,2](create-an-odata-v4-endpoint.md). 
 
-Vytvoříme jednotlivý prvek v projektu webového rozhraní API pomocí modelu následující:
+V projektu webového rozhraní API vytvoříme typ singleton pomocí následujícího datového modelu:
 
 ![Datový model](using-a-singleton-in-an-odata-endpoint-in-web-api-22/_static/image1.png)
 
-Jednotlivý prvek s názvem `Umbrella` se určí na základě typu `Company`a sadu pojmenovaných entit `Employees` se určí na základě typu `Employee`.
+Typ singleton s názvem `Umbrella` bude definován v závislosti na typu `Company`a v závislosti na typu `Employee`bude definována sada entit s názvem `Employees`.
 
-Řešení použité v tomto kurzu si můžete stáhnout z [CodePlex](http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/OData/v4/ODataSingletonSample/).
+Řešení použité v tomto kurzu si můžete stáhnout z [webu CodePlex](http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/OData/v4/ODataSingletonSample/).
 
 ## <a name="define-the-data-model"></a>Definování datového modelu
 
-1. Definování typů CLR.
+1. Definujte typy CLR.
 
     [!code-csharp[Main](using-a-singleton-in-an-odata-endpoint-in-web-api-22/samples/sample1.cs)]
-2. Generovat model EDM založený na typy CLR.
+2. Vygenerujte model EDM na základě typů CLR.
 
     [!code-csharp[Main](using-a-singleton-in-an-odata-endpoint-in-web-api-22/samples/sample2.cs)]
 
-    Tady `builder.Singleton<Company>("Umbrella")` říká Tvůrce modelu vytvořit jednotlivý prvek s názvem `Umbrella` v modelu EDM.
+    Zde `builder.Singleton<Company>("Umbrella")` instruuje tvůrce modelů, aby vytvořil typ singleton s názvem `Umbrella` v modelu EDM.
 
-    Vygenerovaný metadata bude vypadat nějak takto:
+    Vygenerovaná metadata budou vypadat takto:
 
     [!code-xml[Main](using-a-singleton-in-an-odata-endpoint-in-web-api-22/samples/sample3.xml)]
 
-    Z metadat můžeme vidět, který navigační vlastnost `Company` v `Employees` sady entit je vázán na jednotlivý prvek `Umbrella`. Vazba se provádí automaticky `ODataConventionModelBuilder`, protože pouze `Umbrella` má `Company` typu. Pokud je model veškerou nejednoznačnost, můžete použít `HasSingletonBinding` explicitně svázat vlastnost navigace typu singleton; `HasSingletonBinding` má stejný účinek jako použití `Singleton` atributu v definici typu CLR:
+    Z metadat vidíte, že navigační vlastnost `Company` v sadě entit `Employees` je vázána na `Umbrella`typu singleton. Vazba je provedena automaticky `ODataConventionModelBuilder`, protože typ `Company` pouze `Umbrella`. Pokud v modelu dojde k nejednoznačnosti, můžete použít `HasSingletonBinding` k explicitnímu navázání navigační vlastnosti na typ singleton; `HasSingletonBinding` má stejný účinek jako použití atributu `Singleton` v definici typu CLR:
 
     [!code-csharp[Main](using-a-singleton-in-an-odata-endpoint-in-web-api-22/samples/sample4.cs)]
 
-## <a name="define-the-singleton-controller"></a>Definování typu singleton kontroleru
+## <a name="define-the-singleton-controller"></a>Definování typu Singleton Controller
 
-Jako řadič EntitySet kontroleru typu singleton dědí z `ODataController`, a názvu kontroleru jednotlivý prvek by měl být `[singletonName]Controller`.
+Podobně jako u řadiče EntitySet zdědí řadič singleton z `ODataController`a název řadiče singleton by měl být `[singletonName]Controller`.
 
 [!code-csharp[Main](using-a-singleton-in-an-odata-endpoint-in-web-api-22/samples/sample5.cs)]
 
-Aby bylo možné zpracovávat různé druhy žádostí, akce musí být předem definované v kontroleru. **Atribut směrování** povolena ve výchozím nastavení WebApi 2.2. Například chcete-li definovat akci, kterou chcete zpracovat dotazování `Revenue` z `Company` používající směrování na atribut, použijte následující:
+Aby bylo možné zpracovávat různé druhy požadavků, je nutné v kontroleru předem definovat akce. **Směrování atributů** je ve výchozím nastavení povolené v WebApi 2,2. Chcete-li například definovat akci pro zpracování dotazů `Revenue` z `Company` pomocí směrování atributů, použijte následující:
 
 [!code-csharp[Main](using-a-singleton-in-an-odata-endpoint-in-web-api-22/samples/sample6.cs)]
 
-Pokud nepřijmete definují atributy pro každou akci, stačí definovat akce po [konvencí směrování protokolu OData](../odata-routing-conventions.md). Protože klíč není vyžadována pro dotazování typu singleton, se mírně liší z akcí, které jsou definované v kontroleru entityset akce definované v kontroleru typu singleton.
+Pokud nejste ochotni definovat atributy pro každou akci, stačí definovat akce, které následují po [konvencích směrování OData](../odata-routing-conventions.md). Vzhledem k tomu, že klíč není vyžadován pro dotazování typu Singleton, akce definované v řadiči s jedním odkazem se mírně liší od akcí definovaných v řadiči EntitySet.
 
-Pro srovnání podpisy metod pro každou definici akce v kontroleru typu singleton jsou uvedeny níže.
+Pro referenci se v seznamu zobrazí signatury metod pro každou definici akce v řadiči s jedním odkazem.
 
 [!code-csharp[Main](using-a-singleton-in-an-odata-endpoint-in-web-api-22/samples/sample7.cs)]
 
-V podstatě to je všechno, co musíte udělat na straně služby. [Ukázkový projekt](http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/OData/v4/ODataSingletonSample/) obsahuje kód pro řešení a klient OData, který ukazuje způsob použití typu singleton. Klient je sestavena podle kroků v [vytvoření klientské aplikace OData v4](create-an-odata-v4-client-app.md).
+V podstatě je to vše, co musíte udělat na straně služby. [Ukázkový projekt](http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/OData/v4/ODataSingletonSample/) obsahuje veškerý kód pro řešení a klienta OData, který ukazuje, jak použít typ singleton. Klient je sestaven podle kroků v části [vytvoření klientské aplikace OData v4](create-an-odata-v4-client-app.md).
 
 . 
 
-*Děkujeme, že k leo by patřil velice Hu původní obsah tohoto článku.*
+*Díky Leo hu pro původní obsah tohoto článku.*

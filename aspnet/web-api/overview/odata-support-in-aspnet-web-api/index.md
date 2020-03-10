@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/index
-title: OData v rozhraní ASP.NET Web API – ASP.NET 4.x
+title: OData ve webovém rozhraní API ASP.NET – ASP.NET 4. x
 author: rick-anderson
-description: Vytvoření koncových bodů protokolu OData v rozhraní ASP.NET Web API pro ASP.NET 4.x
+description: Vytvoření koncových bodů OData ve webovém rozhraní API ASP.NET pro ASP.NET 4. x
 ms.author: riande
 ms.date: 08/17/2012
 ms.custom: seoapril2019
@@ -10,15 +10,15 @@ ms.assetid: 9151c605-e911-4f24-95b5-ca310b105abf
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api
 msc.type: chapter
 ms.openlocfilehash: 6d84b458a02b63b24334b137afdb5b710d91c5ee
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133160"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78598761"
 ---
-# <a name="odata-in-aspnet-web-api"></a>V rozhraní ASP.NET Web API OData
+# <a name="odata-in-aspnet-web-api"></a>OData ve webovém rozhraní API ASP.NET
 
-> Vytvoření koncových bodů protokolu OData v rozhraní ASP.NET Web API pro ASP.NET 4.x. OData je data protokol pro web. Poskytuje jednotným způsobem pro dotazování a manipulaci s datovými sadami. Webové rozhraní API podporuje verze 3 a 4 verze protokolu OData.
+> Vytvoření koncových bodů OData ve webovém rozhraní API ASP.NET pro ASP.NET 4. x. OData je protokol pro přístup k datům pro web. Poskytuje jednotný způsob dotazování a manipulace s datovými sadami. Webové rozhraní API podporuje protokol OData verze 3 i verze 4.
 
 - [OData v4](odata-v4/index.md)
 

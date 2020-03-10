@@ -9,11 +9,11 @@ ms.assetid: 7c4a3445-2440-4aee-b9fd-779c05e6abb2
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-master-page-programmatically-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 0db23ea05ba001c2bf9fc5330a60a767caa568a0
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74590323"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78625487"
 ---
 # <a name="specifying-the-master-page-programmatically-c"></a>Programové určení stránky předlohy (C#)
 
@@ -159,7 +159,7 @@ Teď, když jsme dokončili třídu `BaseMasterPage` a máme dvě stránky před
 
 [!code-aspx[Main](specifying-the-master-page-programmatically-cs/samples/sample11.aspx)]
 
-Na:
+Komu:
 
 [!code-aspx[Main](specifying-the-master-page-programmatically-cs/samples/sample12.aspx)]
 
@@ -226,7 +226,7 @@ S tímto kódem je místo na stránce `ChooseMasterPage.aspx`. Zpočátku je vyb
 
 **Obrázek 7**: stránky obsahu se nyní zobrazují pomocí `Alternate.master` stránky předlohy ([kliknutím zobrazíte obrázek v plné velikosti).](specifying-the-master-page-programmatically-cs/_static/image21.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Po navštívení stránky obsahu jsou ovládací prvky tohoto obsahu poopatřeny ovládacími prvky ContentPlaceHolder stránky předlohy. Stránka předlohy stránky obsahu je označena vlastností `MasterPageFile` třídy `Page`, která je přiřazena k atributu `MasterPageFile` direktivy `@Page` během inicializační fáze. Jak je znázorněno v tomto kurzu, můžeme přiřadit hodnotu vlastnosti `MasterPageFile`, pokud to uděláte před koncem fáze předinicializace. Schopnost programově určit stránku předlohy otevře dvířka pro pokročilejší scénáře, jako je například dynamická vazba stránky obsahu na hlavní stránku na základě externích faktorů.
 

@@ -9,11 +9,11 @@ ms.assetid: 142e5181-29ce-4bb9-907b-2a0becf7928b
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-business-logic-layer-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 2ee4789ea9567b7bcd70eb63695e0b1d73076dc2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74572650"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78605383"
 ---
 # <a name="creating-a-business-logic-layer-vb"></a>Vytvoření vrstvy obchodní logiky (VB)
 
@@ -147,7 +147,7 @@ Bohužel nemůžeme specifikovat kontroly hranic, například `UnitPrice` hodnot
 
 Dále vytvořte obslužnou rutinu události pro událost `ColumnChanging`, která zajistí, aby hodnoty sloupce `UnitPrice`, `UnitsInStock`, `UnitsOnOrder`a `ReorderLevel` (pokud nejsou `NULL`) byly větší nebo rovny nule. Pokud je některý z těchto sloupců mimo rozsah, vyvolejte `ArgumentException`.
 
-ProductsDataTable. ColumnChanging. vb
+ProductsDataTable.ColumnChanging.vb
 
 [!code-vb[Main](creating-a-business-logic-layer-vb/samples/sample5.vb)]
 
@@ -175,7 +175,7 @@ Při volání knihoven BLL z prezentační vrstvy se můžeme rozhodnout, zda se
 
 Jak uvidíme v budoucích kurzech, zpracování výjimek, které se doplňují z knihoven BLL při použití webového ovládacího prvku data pro vložení, aktualizaci nebo odstranění dat, je možné zpracovat přímo v obslužné rutině události, a to na rozdíl od nutnosti zalamovat kód v `Try...Catch`ch blocích.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Dobře navržená aplikace je vytvořená do samostatných vrstev, z nichž každý zapouzdřuje určitou roli. V prvním kurzu této série článků jsme vytvořili vrstvu přístupu k datům pomocí zadaných datových sad; v tomto kurzu jsme sestavili vrstvu obchodní logiky jako řadu tříd v `App_Code` složce aplikace, která volá na naši DAL. KNIHOVEN BLL implementuje logiku na úrovni polí a na úrovni firmy pro naši aplikaci. Kromě vytvoření samostatného knihoven BLL jako v tomto kurzu je další možností rozšířit metody objekty TableAdapter pomocí částečných tříd. Použití této techniky ale neumožňuje přepsat existující metody ani Nedělit naše DAL a naše knihoven BLL jako čistě jako přístup, který jsme udělali v tomto článku.
 

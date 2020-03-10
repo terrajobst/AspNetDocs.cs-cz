@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/self-host-a-web-api
-title: Self-Host ASP.NET Web API 1 (C#) - ASP.NET 4.x
+title: Samoobslužné hostování ASP.NET webového rozhraní API 1C#()-ASP.NET 4. x
 author: MikeWasson
-description: Kurz s kód ukazuje, jak hostování webového rozhraní API v konzolové aplikaci.
+description: Kurz s kódem ukazuje, jak hostovat webové rozhraní API v konzolové aplikaci.
 ms.author: riande
 ms.date: 01/26/2012
 ms.custom: seoapril2019
@@ -10,95 +10,95 @@ ms.assetid: be5ab1e2-4140-4275-ac59-ca82a1bac0c1
 msc.legacyurl: /web-api/overview/older-versions/self-host-a-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: bae1737ba5b16bc67fa0ed0474ff04df0add1b3a
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134761"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78525086"
 ---
-# <a name="self-host-aspnet-web-api-1-c"></a>Self-Host ASP.NET Web API 1 (C#)
+# <a name="self-host-aspnet-web-api-1-c"></a>Samoobslužné hostování ASP.NET webového rozhraní API 1C#()
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-> Tento kurz ukazuje postupy při hostování webového rozhraní API v konzolové aplikaci. Rozhraní ASP.NET Web API nevyžaduje, aby služba IIS. Webové rozhraní API můžete samoobslužné hostování ve vlastním procesu hostitele. 
+> V tomto kurzu se dozvíte, jak hostovat webové rozhraní API v konzolové aplikaci. Webové rozhraní API ASP.NET nevyžaduje službu IIS. Webové rozhraní API můžete sami hostovat ve svém vlastním hostitelském procesu. 
 > 
-> **Nová aplikace by měly používat OWIN k samoobslužnému hostování webového rozhraní API.** Zobrazit [použití rozhraní OWIN k samoobslužnému hostování webového rozhraní API 2 ASP.NET](../hosting-aspnet-web-api/use-owin-to-self-host-web-api.md).
+> **Nové aplikace by měly používat OWIN k samoobslužnému hostování webového rozhraní API.** Viz [použití Owin k samoobslužnému hostování ASP.NET webového rozhraní API 2](../hosting-aspnet-web-api/use-owin-to-self-host-web-api.md).
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
 > - Webové rozhraní API 1
 > - Visual Studio 2012
 
-## <a name="create-the-console-application-project"></a>Vytvořte projekt konzolové aplikace
+## <a name="create-the-console-application-project"></a>Vytvoření projektu konzolové aplikace
 
-Spusťte sadu Visual Studio a vyberte **nový projekt** z **Start** stránky. Nebo z **souboru** nabídce vyberte možnost **nový** a potom **projektu**.
+Spusťte Visual Studio a na **úvodní** stránce vyberte **Nový projekt** . Nebo v nabídce **soubor** vyberte **Nový** a pak **projekt**.
 
-V **šablony** vyberte **nainstalované šablony** a rozbalte **Visual C#** uzlu. V části **Visual C#** vyberte **Windows**. V seznamu šablon projektu vyberte **konzolovou aplikaci**. Pojmenujte projekt &quot;SelfHost&quot; a klikněte na tlačítko **OK**.
+V podokně **šablony** vyberte **Nainstalované šablony** a rozbalte uzel  **C# vizuál** . V **části C#vizuál** vyberte **Windows**. V seznamu šablon projektu vyberte možnost **Konzolová aplikace**. Pojmenujte projekt &quot;SelfHost&quot; a klikněte na tlačítko **OK**.
 
 ![](self-host-a-web-api/_static/image1.png)
 
-## <a name="set-the-target-framework-visual-studio-2010"></a>Nastavit cílové rozhraní (Visual Studio 2010)
+## <a name="set-the-target-framework-visual-studio-2010"></a>Nastavení cílové architektury (Visual Studio 2010)
 
-Pokud používáte Visual Studio 2010, změňte cílovou architekturu na .NET Framework 4.0. (Ve výchozím nastavení šablona cíle projektu [rozhraní .net Framework Client Profile](https://msdn.microsoft.com/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile).)
+Pokud používáte Visual Studio 2010, změňte cílovou architekturu na .NET Framework 4,0. (Ve výchozím nastavení se šablona projektu zaměřuje na [Profil klienta rozhraní .NET Framework](https://msdn.microsoft.com/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile).)
 
-V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a vyberte **vlastnosti**. V **Cílová architektura** rozevírací seznam, změnit cílovou architekturu na .NET Framework 4.0. Po zobrazení výzvy na použití změny, klikněte na tlačítko **Ano**.
+V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte **vlastnosti**. V rozevíracím seznamu **cílové rozhraní** Změňte cílovou architekturu na .NET Framework 4,0. Po zobrazení výzvy k použití změny klikněte na **Ano**.
 
 ![](self-host-a-web-api/_static/image2.png)
 
-## <a name="install-nuget-package-manager"></a>Instalace Správce balíčků NuGet
+## <a name="install-nuget-package-manager"></a>Nainstalovat správce balíčků NuGet
 
-Správce balíčků NuGet je nejjednodušší způsob, jak přidat sestavení webového rozhraní API do projektu – technologie ASP.NET.
+Správce balíčků NuGet je nejjednodušší způsob, jak přidat sestavení webového rozhraní API do projektu non-ASP.NET.
 
-Pokud chcete zkontrolovat, jestli je nainstalovaný Správce balíčků NuGet, klikněte na tlačítko **nástroje** nabídky v sadě Visual Studio. Pokud se zobrazí nabídka položek volá **Správce balíčků NuGet**, pak máte Správce balíčků NuGet.
+Chcete-li zjistit, zda je nainstalován Správce balíčků NuGet, klikněte na nabídku **nástroje** v aplikaci Visual Studio. Pokud se zobrazí položka nabídky s názvem **Správce balíčků NuGet**, měli byste mít správce balíčků NuGet.
 
-Instalace Správce balíčků NuGet:
+Instalace správce balíčků NuGet:
 
 1. Spusťte Visual Studio.
-2. Z **nástroje** nabídce vyberte možnost **rozšíření a aktualizace**.
-3. V **rozšíření a aktualizace** dialogového okna, vyberte **Online**.
-4. Pokud nevidíte "Správce balíčků NuGet", zadejte do vyhledávacího pole "Správce balíčků nuget".
-5. Vyberte Správce balíčků NuGet a klikněte na tlačítko **Stáhnout**.
-6. Až se stahování dokončí, zobrazí se výzva k instalaci.
-7. Po dokončení instalace, vám může zobrazit výzva k restartování sady Visual Studio.
+2. V nabídce **nástroje** vyberte **rozšíření a aktualizace**.
+3. V dialogovém okně **rozšíření a aktualizace** vyberte **online**.
+4. Pokud nevidíte "Správce balíčků NuGet", do vyhledávacího pole zadejte "Správce balíčků NuGet".
+5. Vyberte správce balíčků NuGet a klikněte na **Stáhnout**.
+6. Po dokončení stahování se zobrazí výzva k instalaci.
+7. Po dokončení instalace se může zobrazit výzva k restartování sady Visual Studio.
 
 ![](self-host-a-web-api/_static/image3.png)
 
-## <a name="add-the-web-api-nuget-package"></a>Přidat webový balíček NuGet rozhraní API
+## <a name="add-the-web-api-nuget-package"></a>Přidat balíček NuGet webového rozhraní API
 
-Po dokončení instalace Správce balíčků NuGet do projektu přidejte balíček Self-Host webové rozhraní API.
+Po instalaci správce balíčků NuGet přidejte do svého projektu balíček samoobslužného hostování webového rozhraní API.
 
-1. Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet**. *Poznámka:* Pokud se vám nezobrazí tato nabídka položek, ujistěte se, že tento správce balíčků NuGet správně nainstalován.
-2. Vyberte **spravovat balíčky NuGet pro řešení**
-3. V **Správa balíčků Nuget** dialogového okna, vyberte **Online**.
-4. Do vyhledávacího pole zadejte &quot;Microsoft.AspNet.WebApi.SelfHost&quot;.
-5. Vyberte balíček ASP.NET Web API Self hostitele a klikněte na tlačítko **nainstalovat**.
-6. Po instalaci balíčku, klikněte na tlačítko **zavřete** zavřete dialogové okno.
+1. V nabídce **nástroje** vyberte **Správce balíčků NuGet**. *Poznámka*: Pokud tuto položku nabídky nevidíte, ujistěte se, že je správce balíčků NuGet nainstalovaný správně.
+2. Vyberte **Spravovat balíčky NuGet pro řešení** .
+3. V dialogovém okně **Spravovat balíčky zrnko** vyberte možnost **online**.
+4. Do vyhledávacího pole zadejte &quot;Microsoft. AspNet. WebApi. SelfHost&quot;.
+5. Vyberte samostatný hostitel webového rozhraní API ASP.NET a klikněte na **nainstalovat**.
+6. Po instalaci balíčku zavřete dialog kliknutím na **Zavřít** .
 
 > [!NOTE]
-> Ujistěte se, že k instalaci balíčku s názvem Microsoft.AspNet.WebApi.SelfHost, ne AspNetWebApi.SelfHost.
+> Nezapomeňte nainstalovat balíček s názvem Microsoft. AspNet. WebApi. SelfHost, nikoli AspNetWebApi. SelfHost.
 
 ![](self-host-a-web-api/_static/image4.png)
 
-## <a name="create-the-model-and-controller"></a>Vytvoření modelu a kontroler
+## <a name="create-the-model-and-controller"></a>Vytvoření modelu a kontroleru
 
-Tento kurz používá stejné třídy modelu a kontroler jako [Začínáme](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) kurzu.
+V tomto kurzu se jako [Začínáme](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) kurz používá stejný model a třídy kontroleru.
 
 Přidejte veřejnou třídu s názvem `Product`.
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample1.cs)]
 
-Přidejte veřejnou třídu s názvem `ProductsController`. Odvození z této třídy **System.Web.Http.ApiController**.
+Přidejte veřejnou třídu s názvem `ProductsController`. Tato třída je odvozena od třídy **System. Web. http. ApiController**.
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample2.cs)]
 
-Další informace o kódu v tomto kontroleru, najdete v článku [Začínáme](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) kurzu. Tento kontroler definuje tři akce GET:
+Další informace o kódu v tomto kontroleru najdete v kurzu [Začínáme](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) . Tento kontroler definuje tři akce GET:
 
-| Identifikátor URI | Popis |
+| URI | Popis |
 | --- | --- |
-| / api/produkty | Získání seznamu všech produktů. |
-| / webové rozhraníAPI/produkty/*id* | Získání produktu podle ID. |
-| /api/products/?category=*category* | Získáte seznam produktů podle kategorie. |
+| /api/products | Získá seznam všech produktů. |
+| *ID* /API/Products/ | Získá produkt podle ID. |
+| /API/Products/? kategorie =*kategorie* | Získá seznam produktů podle kategorií. |
 
 ## <a name="host-the-web-api"></a>Hostování webového rozhraní API
 
@@ -106,83 +106,83 @@ Otevřete soubor Program.cs a přidejte následující příkazy using:
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample3.cs)]
 
-Přidejte následující kód, který **Program** třídy.
+Do třídy **program** přidejte následující kód.
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample4.cs)]
 
-## <a name="optional-add-an-http-url-namespace-reservation"></a>(Volitelné) Přidat rezervaci Namespace adresy URL protokolu HTTP
+## <a name="optional-add-an-http-url-namespace-reservation"></a>Volitelné Přidání rezervace oboru názvů URL protokolu HTTP
 
-Tato aplikace naslouchá na `http://localhost:8080/`. Ve výchozím nastavení naslouchání na konkrétní adrese HTTP vyžaduje oprávnění správce. Při spuštění tohoto kurzu, proto může získat tuto chybu: "Protokol HTTP nemohl zaregistrovat adresu URL http://+:8080/" existují dva způsoby, jak se vyhnout se této chybě:
+Tato aplikace naslouchá `http://localhost:8080/`. Ve výchozím nastavení vyžaduje naslouchání na konkrétní adrese HTTP oprávnění správce. Při spuštění tohoto kurzu se vám proto může zobrazit tato chyba: "protokol HTTP nemohl zaregistrovat adresu URL http://+:8080/" Existují dva způsoby, jak se vyhnout této chybě:
 
-- Spuštění sady Visual Studio s oprávněními zvýšenými na úroveň správce, nebo
-- Pomocí Netsh.exe udělte vašeho účtu oprávnění k rezervaci adresy URL.
+- Spusťte aplikaci Visual Studio se zvýšenými oprávněními správce nebo
+- Pomocí nástroje Netsh. exe udělte vašemu účtu oprávnění k rezervaci adresy URL.
 
-Pokud chcete použít Netsh.exe, otevřete příkazový řádek s oprávněními správce a zadejte následující příkaz: následující příkaz:
+Chcete-li použít nástroj Netsh. exe, otevřete příkazový řádek s oprávněními správce a zadejte následující příkaz: následující příkaz:
 
 [!code-console[Main](self-host-a-web-api/samples/sample5.cmd)]
 
-kde *počítač\uživatelské_jméno* je váš uživatelský účet.
+kde *machine\username* je váš uživatelský účet.
 
-Až budete hotovi s vlastním hostováním, je potřeba odstranit rezervaci:
+Po skončení samoobslužného hostování nezapomeňte rezervaci odstranit:
 
 [!code-console[Main](self-host-a-web-api/samples/sample6.cmd)]
 
 ## <a name="call-the-web-api-from-a-client-application-c"></a>Volání webového rozhraní API z klientské aplikace (C#)
 
-Napíšeme jednoduchou konzolovou aplikaci, která volá webové rozhraní API.
+Pojďme napsat jednoduchou konzolovou aplikaci, která volá webové rozhraní API.
 
-Přidáte do řešení nový projekt konzolové aplikace:
+Přidejte do řešení nový projekt konzolové aplikace:
 
-- V Průzkumníku řešení klikněte pravým tlačítkem myši na řešení a vyberte **přidat nový projekt**.
+- V Průzkumník řešení klikněte pravým tlačítkem na řešení a vyberte **Přidat nový projekt**.
 - Vytvořte novou konzolovou aplikaci s názvem &quot;ClientApp&quot;.
 
 ![](self-host-a-web-api/_static/image5.png)
 
-Použití Správce balíčků NuGet pro přidání balíčku ASP.NET Web API základní knihovny:
+Pomocí Správce balíčků NuGet přidejte balíček základních knihoven webových rozhraní API ASP.NET:
 
 - V nabídce Nástroje vyberte **Správce balíčků NuGet**.
-- Vyberte **spravovat balíčky NuGet pro řešení**
-- V **spravovat balíčky NuGet** dialogového okna, vyberte **Online**.
-- Do vyhledávacího pole zadejte &quot;Microsoft.AspNet.WebApi.Client&quot;.
-- Vyberte balíček Microsoft ASP.NET Web API klientské knihovny a klikněte na tlačítko **nainstalovat**.
+- Vyberte **Spravovat balíčky NuGet pro řešení** .
+- V dialogovém okně **Spravovat balíčky NuGet** vyberte **online**.
+- Do vyhledávacího pole zadejte &quot;Microsoft. AspNet. WebApi. Client&quot;.
+- Vyberte balíček klientské knihovny Microsoft ASP.NET webového rozhraní API a klikněte na **nainstalovat**.
 
-Přidáte odkaz v ClientApp do projektu hostitel ve vlastním procesu:
+Přidejte odkaz v ClientApp do projektu SelfHost:
 
-- V Průzkumníku řešení klikněte pravým tlačítkem na projekt ClientApp.
-- Vyberte **přidat odkaz na**.
-- V **správce odkazů** dialogového okna, v části **řešení**vyberte **projekty**.
-- Vyberte projekt, hostitel ve vlastním procesu.
-- Klikněte na **OK**.
+- V Průzkumník řešení klikněte pravým tlačítkem myši na projekt ClientApp.
+- Vyberte **Přidat odkaz**.
+- V dialogovém okně **Správce odkazů** v části **řešení**vyberte **projekty**.
+- Vyberte projekt SelfHost.
+- Klikněte na tlačítko **OK**.
 
 ![](self-host-a-web-api/_static/image6.png)
 
-Otevřete soubor Client/Program.cs. Přidejte následující **pomocí** – příkaz:
+Otevřete soubor Client/program. cs. Přidejte následující příkaz **using** :
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample7.cs)]
 
-Přidání statického **HttpClient** instance:
+Přidejte statickou instanci **HttpClient** :
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample8.cs)]
 
-Přidejte následující metody, které jsou uvedeny všechny produkty, seznam produktů podle ID a seznam produktů podle kategorie.
+Přidejte následující metody k vypsání seznamu všechny produkty, vypíše produkt podle ID a vypíše produkty podle kategorie.
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample9.cs)]
 
-Každá z těchto metod používá stejný vzor:
+Každá z těchto metod se shoduje se stejným vzorem:
 
-1. Volání **HttpClient.GetAsync** odešlete požadavek GET na odpovídající identifikátor URI.
-2. Volání **HttpResponseMessage.EnsureSuccessStatusCode**. Tato metoda vyvolá výjimku, pokud je stav odpovědi HTTP chybový kód.
-3. Volání **ReadAsAsync&lt;T&gt;**  deserializovat typ CLR z odpovědi HTTP. Tato metoda je metoda rozšiřující, definované v **System.Net.Http.HttpContentExtensions**.
+1. Voláním **HttpClient. GetAsync** odešlete požadavek GET na příslušný identifikátor URI.
+2. Zavolejte **HttpResponseMessage. EnsureSuccessStatusCode**. Tato metoda vyvolá výjimku, pokud je stavem odpovědi HTTP kód chyby.
+3. Pro rekonstrukci typu CLR z odpovědi HTTP zavolejte **ReadAsAsync&lt;t&gt;** . Tato metoda je rozšiřující metoda definovaná v **System .NET. http. HttpContentExtensions**.
 
-**GetAsync** a **ReadAsAsync** metody jsou asynchronní. Vrátí **úloh** objekty, které představují asynchronní operace. Začínáme **výsledek** vlastnost blokuje vlákno, dokud se operace dokončí.
+Metody **GetAsync** a **ReadAsAsync** jsou asynchronní. Vrací objekty **úkolu** , které představují asynchronní operaci. Získání vlastnosti **výsledku** zablokuje vlákno, dokud se operace nedokončí.
 
-Další informace o používání HttpClient, včetně postupu provádění neblokující volání, naleznete v tématu [volání webového rozhraní API z klienta .NET](../advanced/calling-a-web-api-from-a-net-client.md).
+Další informace o použití HttpClient, včetně toho, jak provést neblokující volání, najdete v tématu [volání webového rozhraní API z klienta .NET](../advanced/calling-a-web-api-from-a-net-client.md).
 
-Před voláním těchto metod, nastavte vlastnost BaseAddress nastavte na instanci HttpClient "`http://localhost:8080`". Příklad:
+Před voláním těchto metod nastavte vlastnost BaseAddress v instanci HttpClient na hodnotu "`http://localhost:8080`". Příklad:
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample10.cs)]
 
-To by měl výstupu následující. (Nezapomeňte nejprve spusťte aplikaci SelfHost).
+To by mělo mít následující výstup. (Nezapomeňte nejdřív spustit aplikaci SelfHost.)
 
 [!code-console[Main](self-host-a-web-api/samples/sample11.cmd)]
 

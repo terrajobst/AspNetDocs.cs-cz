@@ -9,11 +9,11 @@ ms.assetid: 364ce84e-5af8-4e08-afc9-75a512b01f84
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/design-to-survive-failures
 msc.type: authoredcontent
 ms.openlocfilehash: 348232af531b5d53dc3cb46d6d2c7931d95a572d
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457125"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78617724"
 ---
 # <a name="design-to-survive-failures-building-real-world-cloud-apps-with-azure"></a>Návrh pro dosažení selhání (vytváření skutečných cloudových aplikací s Azure)
 
@@ -107,7 +107,7 @@ Tato kapitola se pokusila získat informace o tom, proč je reálné cloudové a
 - Použijte [distribuované ukládání do mezipaměti](distributed-caching.md) , abyste minimalizovali problémy s propustností, latencí a připojením s přístupem k databázi.
 - Implementujte volné spojení pomocí [vzoru práce orientovaného na fronty](queue-centric-work-pattern.md), aby mohl front-end aplikace i nadále fungovat, když je back-end mimo provoz.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 
 Další informace najdete v těchto e-knihách v pozdějších kapitolách a na následujících zdrojích.
 

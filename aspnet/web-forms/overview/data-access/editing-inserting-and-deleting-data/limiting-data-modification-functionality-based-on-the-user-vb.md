@@ -9,11 +9,11 @@ ms.assetid: 9dc264a6-feb8-474b-8b91-008c50708065
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/limiting-data-modification-functionality-based-on-the-user-vb
 msc.type: authoredcontent
 ms.openlocfilehash: c257a930e4d27fcd42591a541e700786bf413bf0
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74627183"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78607392"
 ---
 # <a name="limiting-data-modification-functionality-based-on-the-user-vb"></a>Omezení funkcí pro úpravu dat podle uživatele (VB)
 
@@ -194,7 +194,7 @@ V tomto kurzu stránka ASP.NET zpracovává veškerou logiku s ohledem na inform
 
 Nezahrnuli jsme sem tyto knihoven BLL kontroly, protože v našem kurzu jsou práva uživatele určena pomocí ovládacího prvkem DropDownList na stránce, ke kterému třídy knihoven BLL získat přístup. Při používání systému členství nebo jednoho z předem připravených ověřovacích schémat poskytovaných službou ASP.NET (například ověřování systému Windows) je přístup k informacím a rolím aktuálně přihlášeného uživatele z knihoven BLL, čímž se takový přístup stane. Kontrola práv je možná na prezentační i knihoven BLL vrstvě.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Většina webů, které poskytují uživatelské účty, musí přizpůsobit rozhraní změny dat na základě přihlášeného uživatele. Uživatelé s právy pro správu mohou odstranit a upravit jakýkoli záznam, zatímco uživatelé bez oprávnění správce mohou být omezeni pouze na aktualizaci nebo odstranění záznamů, které sami vytvořili. Bez ohledu na to, jak scénář může být, lze rozšířit třídy dat webové ovládací prvky, prvky ObjectDataSource a obchodní logiky tak, aby na základě přihlášeného uživatele mohli přidat nebo zamítnout určité funkce. V tomto kurzu jsme viděli, jak omezit zobrazitelná a upravitelná data v závislosti na tom, jestli byl uživatel přidružený ke konkrétnímu dodavateli nebo jestli pracoval pro naši společnost.
 

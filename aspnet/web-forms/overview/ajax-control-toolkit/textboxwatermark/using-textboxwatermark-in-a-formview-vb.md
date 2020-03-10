@@ -9,11 +9,11 @@ ms.assetid: 41497361-7fba-4825-b36c-f58d79522a88
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-in-a-formview-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 1dd17ed57383680122c4ca613ca71f6682dec40e
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74598317"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78627104"
 ---
 # <a name="using-textboxwatermark-in-a-formview-vb"></a>Použití ovládacího prvku TextBoxWatermark v ovládacím prvku FormView (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek `TextBoxWatermark` v sadě nástrojů AJAX Control Toolkit rozšiřuje textové pole tak, aby byl v poli zobrazen text. Když uživatel klikne na pole, bude vyprázdněn. Pokud uživatel opustí pole bez zadání textu, předem vyplněný text se zobrazí znovu. To je možné také v rámci ovládacího prvku `FormView`.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejdříve je vyžadován zdroj dat. V této ukázce se používá databáze AdventureWorks a edice Microsoft SQL Server 2005 Express. Databáze je volitelnou součástí instalace sady Visual Studio (včetně Express Edition) a je k dispozici také jako samostatné stažení v rámci [https://go.microsoft.com/fwlink/?LinkId=64064](https://go.microsoft.com/fwlink/?LinkId=64064). Databáze AdventureWorks je součástí ukázek SQL Server 2005 a ukázkových databází (Stáhnout v [https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;D isplaylang = EN](https://www.microsoft.com/downloads/details.aspx?FamilyID=e719ecf7-9f46-4312-af89-6ad8702e4e6e&amp;DisplayLang=en)). Nejjednodušší způsob, jak nastavit databázi, je použít Microsoft SQL Server Management Studio Express ([https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;D isplaylang = EN](https://www.microsoft.com/downloads/details.aspx?FamilyID=c243a5ae-4bd1-4e3d-94b8-5a0f62bf7796&amp;DisplayLang=en)) a připojit soubor databáze `AdventureWorks.mdf`.
 

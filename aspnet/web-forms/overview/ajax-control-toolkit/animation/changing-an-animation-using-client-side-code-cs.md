@@ -9,11 +9,11 @@ ms.assetid: 2bfbc5cc-f942-44b7-a62d-a29520f1da9a
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/changing-an-animation-using-client-side-code-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 84fc2d6646b89cfabb2193cdfca59462d6d7ef16
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74606951"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78598215"
 ---
 # <a name="changing-an-animation-using-client-side-code-c"></a>Změna animace klientským kódem (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Animaci lze také změnit pomocí vlastního kódu JavaScriptu na straně klienta.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 
@@ -51,7 +51,7 @@ Pak přidejte `AnimationExtender` na stránku a zadejte `ID`, atribut `TargetCon
 
 Všimněte si, že v ovládacím prvku `AnimationExtender` není žádný `<Animations>` uzel. Vlastní kód JavaScriptu slouží k poskytnutí animací pro použití s ovládacím prvkem.
 
-Stejně jako u rozhraní API serveru `AnimationExtender`neexistuje jednoduchý způsob, jak přiřadit animaci k tomuto zařízení. Nicméně modul pro rozšiřování vystavuje několik metod pro čtení a zápis animací zaregistrovaných v různých událostech (`OnClick`, `OnLoad`a tak dále). Následuje několik příkladů:
+Stejně jako u rozhraní API serveru `AnimationExtender`neexistuje jednoduchý způsob, jak přiřadit animaci k tomuto zařízení. Nicméně modul pro rozšiřování vystavuje několik metod pro čtení a zápis animací zaregistrovaných v různých událostech (`OnClick`, `OnLoad`a tak dále). Zde je několik příkladů:
 
 - `get_OnClick()`
 - `set_OnClick()`

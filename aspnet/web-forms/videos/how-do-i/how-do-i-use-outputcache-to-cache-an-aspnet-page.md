@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-outputcache-to-cache-an-aspnet-page
-title: '[Postup:] Použití direktivy OutputCache k ukládání do mezipaměti stránky ASP.NET | Dokumentace Microsoftu'
+title: '[Postupy:] Použití OutputCache k ukládání stránky ASP.NET do mezipaměti | Microsoft Docs'
 author: rick-anderson
-description: V pixelů na toto video Chris ukazuje, jak využít vestavěné ukládání do mezipaměti ASP.NET k ukládání do mezipaměti na stránce proto nemusí být znovu vykreslené. První,...
+description: V tomto videu Chris pixelů na ukazuje, jak využít vestavěnou mezipaměť ASP.NET pro uložení stránky v mezipaměti, aby se nemusela znovu vykreslovat. Nejprve...
 ms.author: riande
 ms.date: 02/05/2009
 ms.assetid: 651c54da-becb-467e-9076-d6ace7456351
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-outputcache-to-cache-an-aspnet-page
 msc.type: video
 ms.openlocfilehash: c2b3738524741a50d669ce1e5fa22ed1a88bf4df
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398251"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78603080"
 ---
-# <a name="how-do-i-use-outputcache-to-cache-an-aspnet-page"></a>[Postup:] Použití direktivy OutputCache k ukládání do mezipaměti stránky ASP.NET
+# <a name="how-do-i-use-outputcache-to-cache-an-aspnet-page"></a>[Postupy:] Použití OutputCache k ukládání stránky ASP.NET do mezipaměti
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V pixelů na toto video Chris ukazuje, jak využít vestavěné ukládání do mezipaměti ASP.NET k ukládání do mezipaměti na stránce proto nemusí být znovu vykreslené. Za prvé, nejjednodušší forma stránky ukládání do mezipaměti je ukázáno, kde je celé stránky uložené v mezipaměti po zadanou dobu. V dalším kroku je zvolen podrobnější přístup, kde jsou hodnoty proměnných řetězce dotazu použít jako základ pro ukládání do mezipaměti stránek. A konečně naleznete v části mají typ prohlížeče být základem pro ukládání do mezipaměti na stránce.
+V tomto videu Chris pixelů na ukazuje, jak využít vestavěnou mezipaměť ASP.NET pro uložení stránky v mezipaměti, aby se nemusela znovu vykreslovat. Nejdříve se zobrazí nejjednodušší forma ukládání stránky do mezipaměti po zadanou dobu. Dále je provedenější podrobnější přístup, kde jsou hodnoty proměnných QueryString použity jako základ pro ukládání stránek do mezipaměti. Nakonec si přečtěte, jak má být typ prohlížeče základem pro ukládání stránky do mezipaměti.
 
-[&#9654;Podívejte se na video (14 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-outputcache-to-cache-an-aspnet-page)
+[&#9654;Sledovat video (14 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-outputcache-to-cache-an-aspnet-page)

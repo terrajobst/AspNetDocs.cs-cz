@@ -9,11 +9,11 @@ ms.assetid: ee4b924e-8002-4dc3-819f-695fca1ff867
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/storing-additional-user-information-vb
 msc.type: authoredcontent
 ms.openlocfilehash: cb352de6f7c2d117b41532112a87956c8dde62f8
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74639317"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78603220"
 ---
 # <a name="storing-additional-user-information-vb"></a>Ukládání dalších informací o uživatelích (VB)
 
@@ -438,7 +438,7 @@ Pomocí této obslužné rutiny události můžete navštívit stránku `Enhance
 > [!NOTE]
 > Náš web má v současné době dvě stránky, ze kterých může návštěvník vytvořit nový účet: `CreatingUserAccounts.aspx` a `EnhancedCreateUserWizard.aspx`. Stránka Mapa webu a přihlašovací stránka webu odkazuje na stránku `CreatingUserAccounts.aspx`, ale stránka `CreatingUserAccounts.aspx` nevyzve uživatele k zadání domovské města, domovské stránky a informací o podpisu a nepřidá odpovídající řádek do `UserProfiles`. Proto buď aktualizujte `CreatingUserAccounts.aspx` stránku tak, že nabídne tuto funkci, nebo aktualizujte stránku mapa a přihlašovací stránka, aby odkazovala `EnhancedCreateUserWizard.aspx` namísto `CreatingUserAccounts.aspx`. Pokud zvolíte druhou možnost, nezapomeňte aktualizovat soubor `Web.config` `Membership` složky tak, aby umožňoval anonymním uživatelům přístup na stránku `EnhancedCreateUserWizard.aspx`.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme se prohlédli na postupy modelování dat, která se týkají uživatelských účtů v rámci rozhraní členství. Konkrétně jsme se podívali na modelování entit, které sdílí relaci 1:1 s uživatelskými účty a data, která sdílí relaci 1:1. Kromě toho jsme viděli, jak se tyto související informace můžou zobrazovat, vkládat a aktualizovat s některými příklady použití ovládacího prvku SqlDataSource a dalších uživatelů pomocí kódu ADO.NET.
 

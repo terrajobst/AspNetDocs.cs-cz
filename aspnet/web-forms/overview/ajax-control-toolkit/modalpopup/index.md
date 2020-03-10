@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/modalpopup/index
-title: ModalPopup | Microsoft Docs
+title: Ovládacího prvku modalpopup | Microsoft Docs
 author: rick-anderson
-description: Tento kurz ukazuje použití ovládacího prvku ModalPopup ovládacího prvku, který umožňuje vytvořit ekvivalentní modální dialogové okno.
+description: V tomto kurzu se dozvíte, jak používat ovládací prvek ovládacího prvku modalpopup, který umožňuje vytvořit ekvivalent modálního dialogového okna.
 ms.author: riande
 ms.date: 11/14/2011
 ms.assetid: db4eca5d-b625-4e67-8e5b-a844639d4354
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup
 msc.type: chapter
 ms.openlocfilehash: 708d5646fed3a44ce9c0e82f115e24cc8b5c5978
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132635"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78613314"
 ---
 # <a name="modalpopup"></a>ModalPopup
 
-> Tento kurz ukazuje použití ovládacího prvku ModalPopup ovládacího prvku, který umožňuje vytvořit ekvivalentní modální dialogové okno.
+> V tomto kurzu se dozvíte, jak používat ovládací prvek ovládacího prvku modalpopup, který umožňuje vytvořit ekvivalent modálního dialogového okna.
 
 - [Spuštění okna modální místní nabídky serverovým kódem (C#)](launching-a-modal-popup-window-from-server-code-cs.md)
 - [Použití ovládacího prvku ModalPopup v ovládacím prvku Repeater (C#)](using-modalpopup-with-a-repeater-control-cs.md)

@@ -9,11 +9,11 @@ ms.assetid: 68b8c023-92fa-4df6-9563-1764e16e4b04
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 545b24a66476c55aff88ac62d3a6528105fea6c0
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74631249"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78607077"
 ---
 # <a name="masterdetail-filtering-across-two-pages-c"></a>Filtrování hlavních záznamů / podrobností na dvou stránkách (C#)
 
@@ -144,7 +144,7 @@ Po aktualizaci databáze se odpovídajícím způsobem vraťte na stránku `Cate
 
 **Obrázek 9**: Pokud nejsou k dispozici žádné produkty patřící do vybrané kategorie ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-acess-two-pages-datalist-cs/_static/image27.png)), zobrazí se zpráva.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 I když se v sestavách a podrobností můžou zobrazovat hlavní a podrobné záznamy na jedné stránce, na mnoha webech, které jsou oddělené na dvou webových stránkách. V tomto kurzu jsme se podívali na to, jak implementovat takovou sestavu hlavní/podrobnosti s kategoriemi uvedenými v seznamu s odrážkami pomocí opakovače na webové stránce hlavní a s přidruženými produkty uvedenými na stránce Podrobnosti. Každá položka seznamu na hlavní webové stránce obsahovala odkaz na stránku s podrobnostmi, která prošla `CategoryID` hodnotou řádku.
 

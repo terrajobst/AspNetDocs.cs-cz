@@ -1,7 +1,7 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
-title: 'Kurz: Začínáme s Entity Framework 6 Code First pomocí MVC 5 | Dokumentace Microsoftu'
-description: V této sérii kurzů se dozvíte, jak sestavit aplikaci ASP.NET MVC 5, která pro přístup k datům používá Entity Framework 6.
+title: 'Kurz: Začínáme s Entity Framework 6 Code First pomocí MVC 5 | Microsoft Docs'
+description: V této sérii kurzů se naučíte, jak vytvořit aplikaci ASP.NET MVC 5, která pro přístup k datům používá Entity Framework 6.
 author: tdykstra
 ms.author: riande
 ms.date: 01/22/2019
@@ -10,26 +10,26 @@ ms.assetid: 00bc8b51-32ed-4fd3-9745-be4c2a9c1eaf
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
 msc.type: authoredcontent
 ms.openlocfilehash: a00a5a3aa295c2584b90abbf931c258c9e1b58ca
-ms.sourcegitcommit: 24b1f6decbb17bb22a45166e5fdb0845c65af498
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57076051"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616128"
 ---
 # <a name="tutorial-get-started-with-entity-framework-6-code-first-using-mvc-5"></a>Kurz: Začínáme s Entity Framework 6 Code First pomocí MVC 5
 
 > [!NOTE]
-> Pro nový vývoj doporučujeme [ASP.NET Core Razor Pages](/aspnet/core/razor-pages) přes zobrazení a kontrolery ASP.NET MVC. Pro řadu kurzů podobné následujícímu pomocí Razor Pages, naleznete v tématu [kurzu: Začínáme se stránkami Razor v ASP.NET Core](/aspnet/core/tutorials/razor-pages/razor-pages-start). Nové kurzu:
-> * Je usnadňuje její sledování.
-> * Poskytuje další EF Core osvědčené postupy.
-> * Používá účinnější dotazy.
-> * Je více aktuální pomocí nejnovější rozhraní API.
+> Pro nový vývoj doporučujeme, abyste [ASP.NET Core Razor Pages](/aspnet/core/razor-pages) přes ASP.NET a zobrazení MVC. Řadu kurzů, která se podobá tomuto použití Razor Pages, najdete [v tématu Kurz: Začínáme s Razor Pages v ASP.NET Core](/aspnet/core/tutorials/razor-pages/razor-pages-start). Nový kurz:
+> * Je snazší sledovat.
+> * Poskytuje další EF Core osvědčených postupů.
+> * Používá efektivnější dotazy.
+> * Je aktuálnější s nejnovějším rozhraním API.
 > * Zahrnuje další funkce.
-> * Je upřednostňovaný způsob pro nový vývoj aplikací.
+> * Je upřednostňovaným přístupem k vývoji nových aplikací.
 
-V této sérii kurzů se dozvíte, jak sestavit aplikaci ASP.NET MVC 5, která pro přístup k datům používá Entity Framework 6. Tento kurz používá Code First pracovního postupu. Informace o tom, jak si vybrat mezi Code First, Database First a první Model, najdete v části [vytvořit model](/ef/ef6/modeling/).
+V této sérii kurzů se naučíte, jak vytvořit aplikaci ASP.NET MVC 5, která pro přístup k datům používá Entity Framework 6. V tomto kurzu se používá pracovní postup Code First. Informace o tom, jak zvolit mezi Code First, Database First a Model First, najdete v tématu [Vytvoření modelu](/ef/ef6/modeling/).
 
-Tato série kurzů vysvětluje, jak vytvořit ukázková aplikace Contoso University. Ukázková aplikace je jednoduchá university webu. S ním můžete zobrazit a aktualizovat Všichni studenti, kurz a informace instruktorem. Tady jsou dvě obrazovky, kterou jste vytvořili:
+V této sérii kurzů se dozvíte, jak sestavit ukázkovou aplikaci Contoso University. Ukázková aplikace je jednoduchý web na univerzitě. Díky tomu můžete zobrazit a aktualizovat informace o studentech, kurzech a instruktorech. Tady jsou dvě obrazovky, které vytvoříte:
 
 ![Students_Index_page](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image1.png)
 
@@ -40,254 +40,254 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření webové aplikace MVC
 > * Nastavit styl lokality
-> * Nainstalujte rozhraní Entity Framework 6
+> * Nainstalovat Entity Framework 6
 > * Vytvoření datového modelu
-> * Vytvořte kontext databáze
-> * Inicializace databáze s testovací data
-> * Nastavení EF 6 pro použití LocalDB
-> * Vytvoření kontroleru a zobrazení
+> * Vytvoření kontextu databáze
+> * Inicializovat databázi s testovacími daty
+> * Nastavte pro použití LocalDB EF 6.
+> * Vytvořit kontroler a zobrazení
 > * Zobrazení databáze
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 
 ## <a name="create-an-mvc-web-app"></a>Vytvoření webové aplikace MVC
 
-1. Otevřete Visual Studio a vytvořte C# webového projektu pomocí **webová aplikace ASP.NET (.NET Framework)** šablony. Pojmenujte projekt *ContosoUniversity* a vyberte **OK**.
+1. Otevřete Visual Studio a vytvořte C# webový projekt pomocí šablony **webové aplikace ASP.NET (.NET Framework)** . Pojmenujte projekt *ContosoUniversity* a vyberte **OK**.
 
-   ![Dialogové okno Nový projekt v sadě Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/new-project-dialog.png)
+   ![Dialogové okno Nový projekt v aplikaci Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/new-project-dialog.png)
 
-1. V **nová webová aplikace ASP.NET - ContosoUniversity**vyberte **MVC**.
+1. V **New ASP.NET Web Application – ContosoUniversity**vyberte **MVC**.
 
-   ![Webové aplikace dialogové okno Nový v sadě Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/new-web-app-dialog.png)
+   ![Dialogové okno Nová webová aplikace v aplikaci Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/new-web-app-dialog.png)
 
     > [!NOTE]
-    > Ve výchozím nastavení **ověřování** je možnost nastavená na **bez ověřování**. Pro účely tohoto kurzu webové aplikace nevyžaduje, aby uživatelům umožní přihlásit. Také nijak neomezuje přístup na základě, na který je přihlášen.
+    > Ve výchozím nastavení je možnost **ověřování** nastavena na **bez ověřování**. Pro tento kurz webová aplikace nepožaduje, aby se uživatelé přihlásili. Také neomezuje přístup na základě toho, kdo je přihlášený.
 
-1. Vyberte **OK** pro vytvoření projektu.
+1. Vyberte **OK** a vytvořte projekt.
 
 ## <a name="set-up-the-site-style"></a>Nastavit styl lokality
 
-Několik jednoduchých změn se nastavit v nabídce webu, rozložení a domovské stránky.
+V několika jednoduchých změnách se nastaví nabídka web, rozložení a Domovská stránka.
 
-1. Otevřít *Views\Shared\\_Layout.cshtml*a proveďte následující změny:
+1. Otevřete *Views\Shared\\_Layout. cshtml*a proveďte následující změny:
 
-   - Změňte všechny výskyty "My ASP.NET Application" a "Název aplikace" na "University společnosti Contoso".
-   - Přidání položek nabídky pro studenty, kurzy, vyučující a oddělení a odstraňte záznam kontaktu.
+   - Změňte všechny výskyty "Moje aplikace ASP.NET" a "název aplikace" na "contoso University".
+   - Přidejte položky nabídky pro studenty, kurzy, instruktory a oddělení a odstraňte položku kontaktu.
 
-   Změny jsou vyznačené na následující fragment kódu:
+   Změny jsou zvýrazněny v následujícím fragmentu kódu:
 
    [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample1.cshtml?highlight=6,19,24-27,38)]
 
-2. V *Views\Home\Index.cshtml*, nahraďte obsah souboru následující kód, který nahradí text o ASP.NET a MVC o této aplikaci:
+2. V *Views\Home\Index.cshtml*nahraďte obsah souboru následujícím kódem, který nahradí text o ASP.NET a MVC textem o této aplikaci:
 
    [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample2.cshtml)]
 
-3. Stiskněte Ctrl + F5 ke spuštění webové stránky. Zobrazí domovská stránka s hlavní nabídky.
+3. Stisknutím kombinace kláves CTRL + F5 spustíte Web. V hlavní nabídce se zobrazí domovská stránka.
 
-## <a name="install-entity-framework-6"></a>Nainstalujte rozhraní Entity Framework 6
+## <a name="install-entity-framework-6"></a>Nainstalovat Entity Framework 6
 
-1. Z **nástroje** nabídky, zvolte **Správce balíčků NuGet**a pak zvolte **konzoly Správce balíčků**.
+1. V nabídce **nástroje** zvolte **Správce balíčků NuGet**a pak zvolte **Konzola správce balíčků**.
 
-2. V **Konzola správce balíčků** okno, zadejte následující příkaz:
+2. V okně **konzoly Správce balíčků** zadejte následující příkaz:
 
    ```text
    Install-Package EntityFramework
    ```
 
-Tento krok je jedním z několika kroků, obsahující tento kurz můžete provést ručně, ale že by byly provedeny automaticky funkcí generování uživatelského rozhraní technologie ASP.NET MVC. Provádíte je ručně, aby mohli zobrazit kroky potřebné k použití Entity Framework (EF). Později budete používat generování uživatelského rozhraní pro vytvoření kontroleru MVC a zobrazení. Alternativou je umožnit generování uživatelského rozhraní automaticky nainstalovat balíček EF NuGet, vytvořit třídy kontextu databáze a vytvořit připojovací řetězec. Jakmile budete připraveni to udělat tak, je vše, co musíte udělat Přeskočit tyto kroky a generování uživatelského rozhraní řadiče MVC po vytvoření tříd entit.
+Tento krok je jedním z několika kroků, které tento kurz provede ručně, ale to může být provedeno automaticky funkcí generování uživatelského rozhraní ASP.NET MVC. Provádíte je ručně, abyste viděli kroky požadované k použití Entity Framework (EF). Pro vytvoření kontroleru a zobrazení MVC použijete generování uživatelského rozhraní později. Alternativou je umožnit automatické instalaci balíčku NuGet pro EF, vytvoření třídy kontextu databáze a vytvoření připojovacího řetězce. Až to uděláte, stačí, když budete chtít tento krok provést, přeskočte tyto kroky a uživatelské rozhraní vašeho kontroleru MVC po vytvoření tříd entit.
 
 ## <a name="create-the-data-model"></a>Vytvoření datového modelu
 
-Dále vytvoříte tříd entit pro aplikaci Contoso University. Začnete s následující tři entity:
+V dalším kroku vytvoříte třídy entit pro aplikaci Contoso University. Začnete s následujícími třemi entitami:
 
 **Kurz** <-> **registrace** <-> **studenta**
 
 | Entity | Relace |
 | -------- | ------------ |
-| Kurz k registraci | Jeden mnoho |
-| Student k registraci | Jeden mnoho |
+| Kurz k registraci | 1: n |
+| Student k registraci | 1: n |
 
-Existuje vztah jeden mnoho mezi `Student` a `Enrollment` entity, a existuje vztah jeden mnoho mezi `Course` a `Enrollment` entity. Jinými slovy student možné zaregistrovat libovolný počet kurzy a kurzu může mít libovolný počet studentů zaregistrovaná do něj.
+Mezi entitami `Student` a `Enrollment` existuje vztah 1:1 a mezi `Course`mi a `Enrollment` entitami existuje vztah 1: n. Jinými slovy, student může být zaregistrovaný v jakémkoli počtu kurzů a kurz může mít zaregistrovaný libovolný počet studentů.
 
 V následujících částech vytvoříte třídu pro každou z těchto entit.
 
 > [!NOTE]
-> Pokud se pokusíte ke kompilaci projektu před dokončením vytvoření všech těchto tříd entit, získáte chyby kompilátoru.
+> Pokud se pokusíte zkompilovat projekt před dokončením vytváření všech těchto tříd entit, zobrazí se chyby kompilátoru.
 
 ### <a name="the-student-entity"></a>Entita studenta
 
-- V *modely* složku, vytvořte soubor třídy s názvem *Student.cs* klepnutím pravým tlačítkem myši na složku v **Průzkumník řešení** a volba **přidat**  >  **Třídy**. Nahraďte kód šablony následujícím kódem:
+- Ve složce *modely* vytvořte soubor třídy s názvem *student.cs* tak, že kliknete pravým tlačítkem na složku v **Průzkumník řešení** a zvolíte **Přidat** > **třídu**. Nahraďte kód šablony následujícím kódem:
 
    [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample3.cs)]
 
-`ID` Vlastnost se stane sloupec primárního klíče tabulky databáze, která odpovídá této třídy. Ve výchozím nastavení Entity Framework interpretuje vlastnost s názvem `ID` nebo *název třídy* `ID` jako primární klíč.
+Vlastnost `ID` se změní na sloupec primárního klíče tabulky databáze, který odpovídá této třídě. Ve výchozím nastavení Entity Framework interpretuje vlastnost s názvem `ID` nebo *classname* `ID` jako primární klíč.
 
-`Enrollments` Je vlastnost *navigační vlastnost*. Vlastnosti navigace podržte dalšími subjekty, které se vztahují k této entity. V takovém případě `Enrollments` vlastnost `Student` entita bude obsahovat všechny `Enrollment` entity, které se vztahují k, které `Student` entity. Jinými slovy Pokud daný `Student` řádků v databázi má dva související `Enrollment` řádky (hodnota řádky, které obsahují student získal primární klíč v jejich `StudentID` sloupec cizího klíče), který `Student` entity `Enrollments` navigační vlastnost bude obsahovat tyto dvě `Enrollment` entity.
+Vlastnost `Enrollments` je *navigační vlastnost*. Navigační vlastnosti obsahují další entity, které se vztahují k této entitě. V tomto případě bude vlastnost `Enrollments` entity `Student` obsahovat všechny entity `Enrollment`, které souvisejí s entitou `Student`. Jinými slovy, pokud daný `Student` řádek v databázi obsahuje dva související `Enrollment` řádky (řádky, které obsahují hodnotu primárního klíče tohoto studenta ve sloupci `StudentID` cizí klíč), tato vlastnost `Student` `Enrollments` navigace této entity bude obsahovat tyto dvě entity `Enrollment`.
 
-Navigační vlastnosti se obvykle definují jako `virtual` tak, aby se můžete využít některé funkce Entity Framework, jako *opožděné načtení*. (Opožděné načtení budou vysvětlena dále v [čtení souvisejících dat](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) později v této sérii kurzů.)
+Navigační vlastnosti jsou obvykle definovány jako `virtual` tak, aby mohly využívat určité Entity Framework funkce, jako je *opožděné načítání*. (Opožděné načítání bude vysvětleno později v kurzu [čtení souvisejících dat](reading-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) dále v této sérii.)
 
-Pokud vlastnost navigace může obsahovat více entit (jako v relace m: n nebo 1 n), jeho typ musí být seznam, ve kterém položky lze přidávat, odstranit a aktualizovat, například `ICollection`.
+Pokud navigační vlastnost může obsahovat více entit (jako v relacích m:n nebo 1:1), musí se jednat o seznam, ve kterém lze přidávat, odstraňovat a aktualizovat položky, například `ICollection`.
 
 ### <a name="the-enrollment-entity"></a>Registrace entity
 
-- V *modely* složku, vytvořte *Enrollment.cs* a nahraďte existující kód následujícím kódem:
+- Ve složce *modely* vytvořte *Enrollment.cs* a nahraďte existující kód následujícím kódem:
 
    [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample4.cs)]
 
-`EnrollmentID` Bude mít vlastnost primárního klíče; tato entita používá *classname* `ID` vzorku místo `ID` samostatně jako jste viděli v `Student` entity. Obvykle by zvolte jeden model a použít ho v rámci datového modelu. Tady variantu ukazuje, které můžete použít buď vzor. V pozdějších kurzech, zobrazí se vám jak pomocí `ID` bez `classname` usnadňuje implementaci dědičnosti v datovém modelu.
+Vlastnost `EnrollmentID` bude primární klíč. Tato entita používá `ID` vzor *ClassName* místo `ID` sám sebe, jako jste viděli v entitě `Student`. Obvykle byste zvolili jeden model a používali ho v rámci svého datového modelu. V tomto příkladu variace znázorňuje, že můžete použít libovolný vzor. V pozdějším kurzu uvidíte, jak používat `ID` bez `classname` usnadňuje implementaci dědičnosti v datovém modelu.
 
-`Grade` Vlastnost je [výčtu](/ef/ef6/modeling/code-first/data-types/enums). Otazník po `Grade` deklarace typu znamená, že `Grade` vlastnost [s možnou hodnotou Null](/dotnet/csharp/programming-guide/nullable-types/using-nullable-types). Se liší od nulovou na podnikové úrovni na podnikové úrovni, který má hodnotu null – hodnota null znamená známku vyjádřenou není znám nebo ještě nebyly přiřazeny.
+Vlastnost `Grade` je [výčet](/ef/ef6/modeling/code-first/data-types/enums). Otazník po deklaraci typu `Grade` označuje, že vlastnost `Grade` může [mít hodnotu null](/dotnet/csharp/programming-guide/nullable-types/using-nullable-types). Třídu, která má hodnotu null, se liší od nulové třídy – hodnota null znamená, že se nejedná o známku nebo ještě nebyla přiřazena.
 
-`StudentID` Vlastnost je cizí klíč a odpovídající navigační vlastnost je `Student`. `Enrollment` Entita je přidružený nejméně k jednomu `Student` entity, tak vlastnost může obsahovat pouze jeden `Student` entity (na rozdíl od `Student.Enrollments` navigační vlastnost předchozímu příkladu, který může obsahovat více `Enrollment` entity).
+Vlastnost `StudentID` je cizí klíč a odpovídající navigační vlastnost je `Student`. Entita `Enrollment` je přidružená k jedné entitě `Student`, takže vlastnost může uchovávat jenom jednu entitu `Student` (na rozdíl od `Student.Enrollments` navigační vlastnost, kterou jste viděli dříve, která může obsahovat několik entit `Enrollment`).
 
-`CourseID` Vlastnost je cizí klíč a odpovídající navigační vlastnost je `Course`. `Enrollment` Entita je přidružený nejméně k jednomu `Course` entity.
+Vlastnost `CourseID` je cizí klíč a odpovídající navigační vlastnost je `Course`. Entita `Enrollment` je přidružená k jedné entitě `Course`.
 
-Nastavení interpretuje Entity Framework vlastnost jako vlastnost cizího klíče Pokud je název *&lt;název navigační vlastnosti&gt;&lt;vlastnost primárního klíče název&gt;* (například `StudentID`pro `Student` navigační vlastnost, protože `Student` je primární klíč entity `ID`). Vlastnosti cizího klíče může také být pojmenován stejně jednoduše *&lt;vlastnost primárního klíče název&gt;* (například `CourseID` od `Course` je primární klíč entity `CourseID`).
+Entity Framework interpretuje vlastnost jako vlastnost cizího klíče, pokud má název *&lt;navigační vlastnost&gt;&lt;název vlastnosti primárního klíče&gt;* (například `StudentID` pro `Student` navigační vlastnost, protože je `Student` primární klíč entity `ID`). Vlastnosti cizího klíče lze také pojmenovat stejným *&lt;název vlastnosti primárního klíče&gt;* (například `CourseID`, protože primární klíč entity `Course` je `CourseID`).
 
 ### <a name="the-course-entity"></a>Kurz entity
 
-- V *modely* složku, vytvořte *Course.cs*, nahraďte kód šablony následujícím kódem:
+- Ve složce *modely* vytvořte *Course.cs*a nahraďte kód šablony následujícím kódem:
 
    [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample5.cs)]
 
-`Enrollments` Je navigační vlastnost. A `Course` entit může souviset s libovolným počtem `Enrollment` entity.
+Vlastnost `Enrollments` je navigační vlastnost. Entita `Course` může souviset s libovolným počtem entit `Enrollment`.
 
-Budete říkáme více o <xref:System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedAttribute> atribut v pozdějších kurzech této řady. V podstatě tento atribut umožňuje zadat primární klíč pro kurz namísto nutnosti databáze jeho vygenerování.
+Další informace o atributu <xref:System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedAttribute> v pozdějším kurzu této série. V podstatě vám tento atribut umožňuje zadat primární klíč pro kurz místo toho, aby ho databáze vygenerovala.
 
-## <a name="create-the-database-context"></a>Vytvořte kontext databáze
+## <a name="create-the-database-context"></a>Vytvoření kontextu databáze
 
-Hlavní třída, která koordinuje funkce Entity Framework pro daný datový model je *kontext databáze* třídy. Vytvoření této třídy odvozené z [System.Data.Entity.DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.113).aspx) třídy. Ve svém kódu určit entit, které jsou součástí datového modelu. Můžete také přizpůsobit chování určité Entity Framework. V tomto projektu je s názvem třídy `SchoolContext`.
+Hlavní třída, která koordinuje funkce Entity Framework pro daný datový model, je třída *kontextu databáze* . Tuto třídu vytvoříte odvozením z třídy [System. data. entity. DbContext](https://msdn.microsoft.com/library/system.data.entity.dbcontext(v=vs.113).aspx) . Ve vašem kódu určíte, které entity budou zahrnuty v datovém modelu. Můžete také přizpůsobit určité chování Entity Framework. V tomto projektu je třída pojmenována `SchoolContext`.
 
-- K vytvoření složky v projektu ContosoUniversity, klikněte pravým tlačítkem na projekt v **Průzkumníka řešení** a klikněte na tlačítko **přidat**a potom klikněte na tlačítko **novou složku**. Název nové složky *DAL* (pro Data Access Layer). V této složce, vytvořte nový soubor třídy *SchoolContext.cs*a nahraďte kód šablony následujícím kódem:
+- Chcete-li vytvořit složku v projektu ContosoUniversity, klikněte pravým tlačítkem myši na projekt v **Průzkumník řešení** a klikněte na možnost **Přidat**a poté klikněte na možnost **Nová složka**. Pojmenujte novou složku *dal* (pro přístup k datům). V této složce vytvořte nový soubor třídy s názvem *SchoolContext.cs*a nahraďte kód šablony následujícím kódem:
 
    [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample6.cs)]
 
-### <a name="specify-entity-sets"></a>Určení sady entit
+### <a name="specify-entity-sets"></a>Zadání sad entit
 
-Tento kód vytvoří [DbSet](https://msdn.microsoft.com/library/system.data.entity.dbset(v=vs.113).aspx) vlastností pro každou sadu entit. V terminologii Entity Framework *sadu entit* obvykle odpovídá tabulku databáze a *entity* odpovídající řádek v tabulce.
+Tento kód vytvoří vlastnost [negenerickými](https://msdn.microsoft.com/library/system.data.entity.dbset(v=vs.113).aspx) pro každou sadu entit. V Entity Framework terminologii *sada entit* obvykle odpovídá tabulce databáze a *entita* odpovídá řádku v tabulce.
 
 > [!NOTE]
 >
-> Můžete vynechat `DbSet<Enrollment>` a `DbSet<Course>` příkazy a bude fungovat stejně. Entity Framework bude zahrnovat je implicitně protože `Student` odkazy na entity `Enrollment` entity a `Enrollment` odkazy na entity `Course` entity.
+> Můžete vynechat příkazy `DbSet<Enrollment>` a `DbSet<Course>` a bude fungovat stejně. Entity Framework by je implicitně zahrnovaly, protože `Student` entita odkazuje na entitu `Enrollment` a entita `Enrollment` odkazuje na entitu `Course`.
 
 ### <a name="specify-the-connection-string"></a>Zadejte připojovací řetězec
 
-Název připojovacího řetězce (které přidáte do souboru Web.config později) je předáno konstruktoru.
+Název připojovacího řetězce (který přidáte do souboru Web. config později) je předán do konstruktoru.
 
 [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample7.cs?highlight=1)]
 
-Můžete také předat samotný připojovací řetězec ne název jednoho, který je uložen v souboru Web.config. Další informace o možnosti pro určení databáze, které se mají použít, najdete v části [připojovací řetězce a modely](/ef/ef6/fundamentals/configuring/connection-strings).
+Místo názvu, který je uložen v souboru Web. config, můžete také předat samotný připojovací řetězec. Další informace o možnostech určení databáze, která se má použít, najdete v tématu [připojovací řetězce a modely](/ef/ef6/fundamentals/configuring/connection-strings).
 
-Pokud nechcete explicitně zadat připojovací řetězec nebo název jednoho, Entity Framework předpokládá, že název připojovacího řetězce je stejný jako název třídy. Výchozí název připojovacího řetězce v tomto příkladu by pak `SchoolContext`, stejně jako co zadáváte explicitně.
+Pokud nezadáte připojovací řetězec nebo název explicitně, Entity Framework předpokládá, že název připojovacího řetězce je stejný jako název třídy. Výchozí název připojovacího řetězce v tomto příkladu by pak byl `SchoolContext`stejný jako to, co explicitně zadáte.
 
-### <a name="specify-singular-table-names"></a>Zadejte názvy singulární tabulek
+### <a name="specify-singular-table-names"></a>Zadat jednotné názvy tabulek
 
-`modelBuilder.Conventions.Remove` Výroky [OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx) metoda zabraňuje se pluralized názvy tabulek. Pokud jste to neudělali, by se pojmenoval generované tabulky v databázi `Students`, `Courses`, a `Enrollments`. Místo toho budou názvy tabulek `Student`, `Course`, a `Enrollment`. Vývojáři Nesouhlasím o tom, jestli by měl názvy tabulek pluralized nebo ne. Tento kurz používá jednotný tvar, ale důležité je, že můžete vybrat libovolný formulář dáváte přednost zahrnutím nebo vynechání tento řádek kódu.
+Příkaz `modelBuilder.Conventions.Remove` v metodě [OnModelCreating](https://msdn.microsoft.com/library/system.data.entity.dbcontext.onmodelcreating(v=vs.103).aspx) zabraňuje v pluralitování názvů tabulek. Pokud jste to neudělali, vygenerované tabulky v databázi budou pojmenovány `Students`, `Courses`a `Enrollments`. Místo toho se názvy tabulek `Student`, `Course`a `Enrollment`. Vývojáři nesouhlasí s tím, zda by měly být názvy tabulek v množném čísle. V tomto kurzu se používá jednotný formulář, ale důležitým bodem je, že můžete vybrat libovolný formulář, který dáváte přednost při zahrnutí nebo vynechání tohoto řádku kódu.
 
-## <a name="initialize-db-with-test-data"></a>Inicializace databáze s testovací data
+## <a name="initialize-db-with-test-data"></a>Inicializovat databázi s testovacími daty
 
-Entity Framework můžete automaticky vytvořit (nebo vyřadit a znovu vytvořit) databáze za vás při spuštění aplikace. Můžete určit, že to by mělo být provedeno pokaždé, když vaše aplikace spuštěná, nebo jenom v případě modelu je synchronizovaný s existující databází. Můžete je zapsat také `Seed` metody tohoto rozhraní Entity Framework automaticky volá po vytvoření databáze, aby bylo možné naplnit ho daty testu.
+Entity Framework může při spuštění aplikace automaticky vytvořit (nebo vyřadit a znovu vytvořit) databázi. Můžete určit, že se má provést při každém spuštění aplikace, nebo jenom v případě, že model není synchronizovaný se stávající databází. Můžete také napsat metodu `Seed`, která Entity Framework automaticky volá po vytvoření databáze, aby se naplnila testovacími daty.
 
-Výchozí chování je vytvořit databázi jenom v případě, že ho neexistuje (a vyvolání výjimky, pokud došlo ke změně modelu a databáze již existuje). V této části zadáte, že by měl být databázi vyřadit a znovu vytvořit při každé změně modelu. Vyřazení databáze způsobí ztrátu všechna vaše data. Toto je obvykle dobře během vývoje, protože `Seed` metody se spustí, jakmile se znovu vytvoří databázi a znovu vytvoříte testovací data. Ale v produkčním prostředí budete obvykle nechcete ztratit všechna vaše data pokaždé, když je třeba změnit schéma databáze. Později uvidíte, jak zpracovat změny modelu pomocí migrace Code First pro změnu schématu databáze místo vyřadit a znovu vytvořit databázi.
+Výchozím chováním je vytvořit databázi pouze v případě, že neexistuje (a vyvolat výjimku, pokud se model změnil a databáze již existuje). V této části určíte, že se má databáze při každé změně modelu vyřadit a znovu vytvořit. Vyřazení databáze způsobí ztrátu všech vašich dat. To je obvykle v pořádku během vývoje, protože metoda `Seed` se spustí, když se databáze znovu vytvoří a znovu vytvoří vaše testovací data. Ale v produkčním prostředí nechcete při každé změně schématu databáze obvykle ztratit všechna data. Později se dozvíte, jak zpracovat změny modelu pomocí Migrace Code First ke změně schématu databáze místo vyřazení a opětovnému vytvoření databáze.
 
-1. Ve složce DAL, vytvořte nový soubor třídy s názvem *SchoolInitializer.cs* a nahraďte kód šablony následujícím kódem, což způsobí, že databáze má být vytvořen v případě potřeby a načte testovací data do nové databáze.
+1. Ve složce DAL vytvořte nový soubor třídy s názvem *SchoolInitializer.cs* a nahraďte kód šablony následujícím kódem, což způsobí, že se databáze vytvoří v případě potřeby a načte testovací data do nové databáze.
 
    [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample8.cs)]
 
-   `Seed` Metoda přijímá jako vstupní parametr objekt kontextu databáze, a kód v metodě používá tento objekt k přidání nové entity do databáze. Pro každý typ entity kód vytvoří kolekci nové entity, se přidají do příslušné `DbSet` vlastnost a uloží změny do databáze. Není nutné volat `SaveChanges` metoda po každé skupiny entit, jako se zde provádí, ale způsobem, který pomáhá při hledání příčiny problému, pokud dojde k výjimce, zatímco kód zapisuje do databáze.
+   Metoda `Seed` přebírá objekt kontextu databáze jako vstupní parametr a kód v metodě používá tento objekt k přidání nových entit do databáze. Pro každý typ entity kód vytvoří kolekci nových entit, přidá je do příslušné vlastnosti `DbSet` a poté uloží změny do databáze. Není nutné volat metodu `SaveChanges` za každou skupinu entit, jak je zde provedeno, ale to vám pomůže najít zdroj problému, pokud dojde k výjimce, když kód zapisuje do databáze.
 
-2. Zjistit Entity Framework pomocí vaší inicializátor třídy, přidejte element, který má `entityFramework` v aplikaci prvku *Web.config* souboru (je v kořenové složce projektu), jak je znázorněno v následujícím příkladu:
+2. Chcete-li sdělit, Entity Framework použít třídu inicializátoru, přidejte element do `entityFramework` elementu v souboru *Web. config* aplikace (ten v kořenové složce projektu), jak je znázorněno v následujícím příkladu:
 
    [!code-xml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample9.xml?highlight=2-6)]
 
-   `context type` Určuje kontext plně kvalifikovaný název třídy a sestavení probíhá, a `databaseinitializer type` Určuje plně kvalifikovaný název inicializátor třídy a je v sestavení. (Pokud nechcete, aby EF použití inicializátoru, můžete nastavit atribut na `context` element: `disableDatabaseInitialization="true"`.) Další informace najdete v tématu [nastavení konfiguračního souboru](/ef/ef6/fundamentals/configuring/config-file).
+   `context type` Určuje plně kvalifikovaný název třídy kontextu a sestavení, ve kterém je, a `databaseinitializer type` Určuje plně kvalifikovaný název třídy inicializátoru a sestavení, ve kterém je. (Pokud nechcete, aby EF používal inicializátor, můžete nastavit atribut pro element `context`: `disableDatabaseInitialization="true"`.) Další informace najdete v tématu [nastavení konfiguračního souboru](/ef/ef6/fundamentals/configuring/config-file).
 
-   Alternativa k nastavení inicializátoru *Web.config* souboru se to udělat v kódu tak, že přidáte `Database.SetInitializer` příkazu `Application_Start` metoda ve *Global.asax.cs* souboru. Další informace najdete v tématu [Principy inicializátory databáze v Entity Framework Code First](http://www.codeguru.com/csharp/article.php/c19999/Understanding-Database-Initializers-in-Entity-Framework-Code-First.htm).
+   Alternativou k nastavení inicializátoru v souboru *Web. config* je jeho provedení v kódu přidáním příkazu `Database.SetInitializer` do metody `Application_Start` v souboru *Global.asax.cs* . Další informace najdete v tématu [Principy inicializátorů databáze v Entity Framework Code First](http://www.codeguru.com/csharp/article.php/c19999/Understanding-Database-Initializers-in-Entity-Framework-Code-First.htm).
 
-Aplikace je nyní nastavit tak, aby při přístupu k databázi v daném běhu aplikace poprvé, Entity Framework porovnává databáze do modelu (vaše `SchoolContext` a tříd entit). Pokud rozdíl aplikace zahodí a znovu vytvoří databázi.
+Aplikace je teď nastavená tak, aby při prvním přístupu k databázi v daném spuštění aplikace Entity Framework porovnává databázi s modelem (vaše `SchoolContext` třídy a třídy entit). V případě, že dojde k rozdílu, aplikace uvolní a znovu vytvoří databázi.
 
 > [!NOTE]
-> Při nasazení aplikace do produkčního prostředí webového serveru, musíte odebrat nebo zakázat kód, který se zahodí a znovu vytvoří databázi. Můžete to udělat v pozdějších kurzech v této sérii.
+> Když nasadíte aplikaci na provozní webový server, je nutné odebrat nebo zakázat kód, který databázi vyřazuje a znovu vytvoří. V pozdějším kurzu v této sérii provedete.
 
-## <a name="set-up-ef-6-to-use-localdb"></a>Nastavení EF 6 pro použití LocalDB
+## <a name="set-up-ef-6-to-use-localdb"></a>Nastavte pro použití LocalDB EF 6.
 
-[LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb?view=sql-server-2017) je Odlehčená verze databázového stroje systému SQL Server Express. Snadno nainstalujte a nakonfigurujte, spustí na vyžádání a běží v uživatelském režimu. LocalDB běží v ve speciálním režimu provádění SQL Server Express, která umožňuje pracovat s databází jako *.mdf* soubory. Můžete umístit soubory databáze LocalDB *aplikace\_Data* složce webového projektu, pokud chcete zkopírovat databázi s projektem. Funkce instance uživatele v SQL serveru Express také umožňuje pracovat s *.mdf* soubory, ale uživatelské instance funkce je zastaralá možnost; proto se doporučuje LocalDB pro práci s *.mdf* soubory. LocalDB je nainstalovaný ve výchozím nastavení se sadou Visual Studio.
+[LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb?view=sql-server-2017) je zjednodušená verze databázového stroje SQL Server Express. Instalaci a konfiguraci, spuštění na vyžádání a spuštění v uživatelském režimu je snadné. LocalDB se spouští ve speciálním režimu provádění SQL Server Express, který umožňuje pracovat s databázemi jako se soubory *. mdf* . Soubory databáze LocalDB můžete umístit do složky *Data\_aplikace* webového projektu, pokud chcete mít možnost zkopírovat databázi do projektu. Funkce uživatelské instance v SQL Server Express také umožňuje pracovat se soubory *. mdf* , ale funkce uživatelské instance je zastaralá. Proto se LocalDB doporučuje pro práci se soubory *. mdf* . LocalDB se ve výchozím nastavení instaluje v aplikaci Visual Studio.
 
-Obvykle SQL Server Express se nepoužívá pro produkční webové aplikace. LocalDB zejména se nedoporučuje pro produkční použití s webovou aplikací vzhledem k tomu, že má nejsou určeny pro práci se službou IIS.
+Pro produkční webové aplikace se obvykle SQL Server Express nepoužívá. LocalDB se konkrétně nedoporučuje pro použití v produkčním prostředí s webovou aplikací, protože není navržená pro práci se službou IIS.
 
-- V tomto kurzu budete pracovat s LocalDB. Otevřete aplikaci *Web.config* a přidejte `connectionStrings` předchozí element `appSettings` elementu, jak je znázorněno v následujícím příkladu. (Nezapomeňte aktualizovat *Web.config* soubor v kořenové složce projektu. K dispozici je také *Web.config* soubor *zobrazení* podsložky, která není nutné aktualizovat.)
+- V tomto kurzu budete pracovat s LocalDB. Otevřete soubor *Web. config* aplikace a přidejte `connectionStrings` element předcházející `appSettings` elementu, jak je znázorněno v následujícím příkladu. (Nezapomeňte aktualizovat soubor *Web. config* v kořenové složce projektu. V podsložce *zobrazení* je také soubor *Web. config* , který není nutné aktualizovat.)
 
    [!code-xml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample10.xml?highlight=1-3)]
 
-Určuje připojovací řetězec, který jste přidali, Entity Framework použijete databázi LocalDB s názvem *ContosoUniversity1.mdf*. (Databáze ještě neexistuje ale EF ji vytvoří.) Pokud chcete vytvořit databázi v vaše *aplikace\_Data* složky, můžete přidat `AttachDBFilename=|DataDirectory|\ContosoUniversity1.mdf` na připojovací řetězec. Další informace o připojovacích řetězcích najdete v tématu [připojovací řetězce SQL serveru pro webové aplikace ASP.NET](/previous-versions/aspnet/jj653752(v=vs.110)).
+Připojovací řetězec, který jste přidali, určuje, že Entity Framework bude používat databázi LocalDB s názvem *ContosoUniversity1. mdf*. (Databáze zatím neexistuje, ale EF ji vytvoří.) Pokud chcete vytvořit databázi ve složce *\_dat vaší aplikace* , můžete přidat `AttachDBFilename=|DataDirectory|\ContosoUniversity1.mdf` do připojovacího řetězce. Další informace o připojovacích řetězcích najdete v tématu [SQL Server připojovacích řetězců pro webové aplikace v ASP.NET](/previous-versions/aspnet/jj653752(v=vs.110)).
 
-Doopravdy nepotřebujete připojovacího řetězce v *Web.config* souboru. Pokud nezadáte připojovací řetězec, Entity Framework používá výchozí propojovací řetězec založené na třídě kontextu. Další informace najdete v tématu [Code First pro novou databázi](/ef/ef6/modeling/code-first/workflows/new-database).
+V souboru *Web. config* nebudete ve skutečnosti potřebovat připojovací řetězec. Pokud neposkytnete připojovací řetězec, Entity Framework používá výchozí připojovací řetězec na základě vaší třídy kontextu. Další informace najdete v tématu [Code First k nové databázi](/ef/ef6/modeling/code-first/workflows/new-database).
 
-## <a name="create-controller-and-views"></a>Vytvoření kontroleru a zobrazení
+## <a name="create-controller-and-views"></a>Vytvořit kontroler a zobrazení
 
-Teď vytvoříte webovou stránku zobrazit data. Proces žádosti o data automaticky aktivuje vytváření databáze. Zobrazí za přibližně tak, že vytvoříte nový kontroler. Ale předtím, než to uděláte, sestavte projekt a zpřístupnit třídy modelu a kontextu pro generování uživatelského rozhraní řadiče MVC.
+Teď vytvoříte webovou stránku, na které se budou zobrazovat data. Proces vyžádání dat automaticky aktivuje vytvoření databáze. Začnete vytvořením nového kontroleru. Než to uděláte, sestavte projekt, aby byly třídy modelů a kontextu dostupné pro generování uživatelského rozhraní kontroléru MVC.
 
-1. Klikněte pravým tlačítkem na **řadiče** složky v **Průzkumníka řešení**vyberte **přidat**a potom klikněte na tlačítko **novou vygenerovanou položku**.
-2. V **přidat vygenerované uživatelské rozhraní** dialogu **kontroler MVC 5 se zobrazeními, používá nástroj Entity Framework**a klikněte na tlačítko **přidat**.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku **řadiče** , vyberte **Přidat**a pak klikněte na **Nová vygenerovaná položka**.
+2. V dialogovém okně **Přidat vygenerované uživatelské rozhraní** vyberte **kontroler MVC 5 se zobrazeními, pomocí Entity Framework**a pak zvolte **Přidat**.
 
-     ![Přidat dialog vygenerované uživatelské rozhraní v sadě Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/add-scaffold.png)
+     ![Dialogové okno Přidat generování uživatelského rozhraní v aplikaci Visual Studio](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/add-scaffold.png)
 
-3. V **přidat kontroler** dialogové okno, proveďte následující výběr a klikněte na tlačítko **přidat**:
+3. V dialogovém okně **Přidat řadič** proveďte následující výběry a pak zvolte **Přidat**:
 
-   - Třída modelu: **Student (ContosoUniversity.Models)**. (Pokud se tato možnost v rozevíracím seznamu nezobrazí, sestavte projekt a zkuste to znovu.)
-   - Třída kontextu dat: **SchoolContext (ContosoUniversity.DAL)**.
+   - Třída modelu: **student (ContosoUniversity. Models)** . (Pokud v rozevíracím seznamu tuto možnost nevidíte, sestavte projekt a zkuste to znovu.)
+   - Třída kontextu dat: **SchoolContext (ContosoUniversity. dal)** .
    - Název kontroleru: **StudentController** (ne StudentsController).
    - Ponechte výchozí hodnoty pro ostatní pole.
 
-     Po kliknutí na **přidat**, vytvoří scaffolder *StudentController.cs* souboru a nastavte zobrazení (*.cshtml* soubory), které fungují s kontrolerem. V budoucnu při vytváření projektů, které využívají Entity Framework, můžete taky využít výhod některé další funkce scaffolder: vytvoření vaší první třídy modelu, nevytvářejte připojovací řetězec a pak **přidat kontroler** pole zadejte **nový kontext dat.** tak, že vyberete **+** vedle **třída kontextu dat**. Vytvoří scaffolder vaše `DbContext` třídy a připojení řetězec a také kontroler a zobrazení.
-4. Visual Studio otevře *Controllers\StudentController.cs* souboru. Uvidíte, že proměnné třídy se vytvořil, který vytvoří instanci objektu kontextu databáze:
+     Po kliknutí na tlačítko **Přidat**generátor vytvoří soubor *StudentController.cs* a sadu zobrazení (soubory *. cshtml* ), které pracují s řadičem. V budoucnu, když vytváříte projekty, které používají Entity Framework, můžete také využít výhod některých dalších funkcí generátoru: Vytvořte svoji první třídu modelu, nevytvářejte připojovací řetězec a potom v poli **Přidat kontrolér** zadejte **nový kontext dat** tak, že vyberete tlačítko **+** vedle **třídy datový kontext**. Lešení vytvoří třídu `DbContext` a váš připojovací řetězec také jako kontroler a zobrazení.
+4. Visual Studio otevře soubor *Controllers\StudentController.cs* . Vidíte, že byla vytvořena proměnná třídy, která vytvoří instanci objektu kontextu databáze:
 
      [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample11.cs)]
 
-     `Index` Metody akce získá seznam studenti z *studenty* načtením sadu entit `Students` vlastnost instance kontextu databáze:
+     Metoda `Index` akce načte seznam studentů ze sady entit *studentů* načtením vlastnosti `Students` instance kontextu databáze:
 
      [!code-csharp[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample12.cs)]
 
-     *Student\Index.cshtml* zobrazení seznamu v tabulce:
+     Zobrazení *Student\Index.cshtml* zobrazí tento seznam v tabulce:
 
      [!code-cshtml[Main](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/samples/sample13.cshtml)]
-5. Stiskněte kombinaci kláves Ctrl + F5 ke spuštění projektu. (Pokud dojde k chybě "Nejde vytvořit stínovou kopii" zavřete prohlížeč a zkuste to znovu.)
+5. Stisknutím kombinace kláves CTRL + F5 spusťte projekt. (Pokud se zobrazí chyba "nelze vytvořit stínovou kopii", zavřete prohlížeč a zkuste to znovu.)
 
-     Klikněte na tlačítko **studenty** kartu pro zobrazení testovacích dat, který `Seed` metoda vložen. V závislosti na tom, jak úzké okno prohlížeče, je, uvidíte odkaz karta studenta nejvyšší adresního řádku nebo budete muset klikněte na tlačítko pravém horním rohu na odkaz.
+     Kliknutím na kartu **Students** zobrazíte testovací data, která byla vložená metodou `Seed`. V závislosti na tom, jak úzká je okno prohlížeče, uvidíte v horním adresním řádku odkaz na kartu student nebo kliknutím na pravý horní roh zobrazíte odkaz.
 
      ![Tlačítko nabídky](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application/_static/image14.png)
 
 ## <a name="view-the-database"></a>Zobrazení databáze
 
-Když jste spustili na stránce studenty a pokusu o přístup k databázi aplikace, zjistí EF, existuje se žádná databáze a jste jej vytvořili. EF pak jste spustili seed – metoda k naplnění databáze s daty.
+Když jste spustili stránku Students a aplikace se pokusila získat přístup k databázi, EF zjistila, že neexistovala žádná databáze a nebyla vytvořena. EF pak spustila metodu počáteční hodnoty k naplnění databáze daty.
 
-Můžete použít buď **Průzkumníka serveru** nebo **Průzkumník objektů systému SQL Server** (SSOX) Chcete-li zobrazit databáze v sadě Visual Studio. Pro účely tohoto kurzu budete používat **Průzkumníka serveru**.
+K zobrazení databáze v aplikaci Visual Studio můžete použít buď **Průzkumník serveru** , nebo **Průzkumník objektů systému SQL Server** (SSOX). V tomto kurzu použijete **Průzkumník serveru**.
 
 1. Zavřete prohlížeč.
-2. V **Průzkumníka serveru**, rozbalte **datová připojení** (budete muset nejprve vyberte tlačítko pro aktualizaci), rozbalte **školním kontextu (ContosoUniversity)** a potom rozbalte  **Tabulky** zobrazíte tabulek v nové databázi.
+2. V **Průzkumník serveru**rozbalte **datová připojení** (nejdřív možná budete muset vybrat tlačítko Aktualizovat), rozbalte **školní kontext (ContosoUniversity)** a potom rozbalte **tabulky** , abyste viděli tabulky v nové databázi.
 
-3. Klikněte pravým tlačítkem na **Student** tabulky a klikněte na tlačítko **zobrazit Data tabulky** zobrazit sloupce, které byly vytvořeny a řádky, které byly vloženy do tabulky.
+3. Klikněte pravým tlačítkem myši na tabulku **student** a kliknutím na možnost **Zobrazit data tabulky** Zobrazte sloupce, které byly vytvořeny, a řádky, které byly vloženy do tabulky.
 
-4. Zavřít **Průzkumníka serveru** připojení.
+4. Zavřete **Průzkumník serveru** připojení.
 
-*ContosoUniversity1.mdf* a *.ldf* databázové soubory jsou v *% USERPROFILE %* složky.
+Soubory databáze *ContosoUniversity1. mdf* a *. ldf* jsou ve složce *% USERPROFILE%* .
 
-Vzhledem k tomu, že používáte `DropCreateDatabaseIfModelChanges` inicializátor, může teď provedete změnu `Student` třídy, spusťte aplikaci znovu spustit a databáze bude automaticky znovu vytvořit tak, aby odpovídaly změny. Například, pokud chcete přidat `EmailAddress` vlastnost `Student` třídy, znovu spusťte stránce studenty a pak pohled na tabulku znovu, zobrazí se vám nový `EmailAddress` sloupce.
+Vzhledem k tomu, že používáte inicializátor `DropCreateDatabaseIfModelChanges`, můžete nyní provést změnu `Student` třídy, znovu spustit aplikaci a databáze by se automaticky znovu vytvořila, aby odpovídala vaší změně. Pokud například přidáte vlastnost `EmailAddress` do třídy `Student`, spusťte znovu stránku Students a potom se znovu podívejte na tabulku a zobrazí se nový `EmailAddress` sloupec.
 
-## <a name="conventions"></a>Konvence
+## <a name="conventions"></a>Zásady
 
-Množství kódu, které jste měli pro zápis v pořadí pro Entity Framework umožnit vytvoření kompletní databáze je minimální z důvodu *konvence*, nebo předpokladů, které díky rozhraní Entity Framework. Některé z nich už bylo uvedeno nebo byly použity bez vašeho vědomí:
+Množství kódu, který jste museli zapsat, aby Entity Framework mohl vytvořit úplnou databázi, je minimální z důvodu *konvencí*nebo předpokladů, které Entity Framework provádí. Některé z nich již byly označeny nebo byly použity bez vědomí, že jsou:
 
-- Pluralized formy názvy tříd entit se používají jako názvy tabulek.
-- Názvy vlastností entity se používají pro názvy sloupců.
-- Vlastnosti entity, které jsou pojmenovány `ID` nebo *classname* `ID` jsou rozpoznány jako vlastnosti primárního klíče.
-- Vlastnost je interpretován jako vlastnost cizího klíče, pokud je název *&lt;název navigační vlastnosti&gt;&lt;vlastnost primárního klíče název&gt;* (například `StudentID` pro `Student` navigační vlastnost, protože `Student` je primární klíč entity `ID`). Vlastnosti cizího klíče může také být pojmenován stejně jednoduše &lt;vlastnost primárního klíče název&gt; (například `EnrollmentID` od `Enrollment` je primární klíč entity `EnrollmentID`).
+- V množném čísle se používají v názvech tabulek názvy tříd entit.
+- Názvy vlastností entit se používají pro názvy sloupců.
+- Vlastnosti entity s názvem `ID` nebo *classname* `ID` jsou rozpoznávány jako vlastnosti primárního klíče.
+- Vlastnost je interpretována jako vlastnost cizího klíče, pokud je pojmenována *&lt;název vlastnosti navigace&gt;&lt;název vlastnosti primárního klíče&gt;* (například `StudentID` pro `Student` navigační vlastnost, protože je `Student` primární klíč entity `ID`). Vlastnosti cizího klíče lze také pojmenovat stejným &lt;název vlastnosti primárního klíče&gt; (například `EnrollmentID`, protože primární klíč entity `Enrollment` je `EnrollmentID`).
 
-Už víte, že konvence lze přepsat. Například jste zadali, že by neměla být pluralized názvy tabulek a později uvidíte, jak lze explicitně označit vlastnost jako vlastnost cizího klíče.
+Viděli jste, že konvence lze přepsat. Například jste určili, že názvy tabulek by neměly být v množném číslech a později uvidíte, jak vlastnost explicitně označit jako vlastnost cizího klíče.
 
-## <a name="get-the-code"></a>Získat kód
+## <a name="get-the-code"></a>Získání kódu
 
 [Stáhnout dokončený projekt](https://webpifeed.blob.core.windows.net/webpifeed/Partners/ASP.NET%20MVC%20Application%20Using%20Entity%20Framework%20Code%20First.zip)
 
@@ -297,7 +297,7 @@ Další informace o EF 6 najdete v těchto článcích:
 
 * [Přístup k datům ASP.NET – doporučené zdroje informací](../../../../whitepapers/aspnet-data-access-content-map.md)
 
-* [První konvence kódu](/ef/ef6/modeling/code-first/conventions/built-in)
+* [Code First konvence](/ef/ef6/modeling/code-first/conventions/built-in)
 
 * [Vytvoření složitějšího datového modelu](creating-a-more-complex-data-model-for-an-asp-net-mvc-application.md)
 
@@ -306,16 +306,16 @@ Další informace o EF 6 najdete v těchto článcích:
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření webové aplikace MVC
+> * Vytvořená webová aplikace MVC
 > * Nastavit styl lokality
-> * Nainstalované Entity Framework 6
+> * Nainstalováno Entity Framework 6
 > * Vytvoření datového modelu
-> * Vytvoří kontext databáze
-> * Inicializované databáze se testovací data
-> * Nastavení EF 6 pro použití LocalDB
-> * Vytvořený kontroler a zobrazení
+> * Byl vytvořen kontext databáze.
+> * Inicializovaná databáze s testovacími daty
+> * Nastavte pro použití LocalDB EF 6.
+> * Vytvořen kontroler a zobrazení
 > * Zobrazení databáze
 
-Přejděte k dalším článku se naučíte, jak zkontrolovat a upravit vytvořit, číst, aktualizovat, odstranění (CRUD) kódu v kontrolerů a zobrazení.
+V dalším článku se dozvíte, jak zkontrolovat a přizpůsobit kód vytvoření, čtení, aktualizace, odstranění (CRUD) v řadičích a zobrazeních.
 > [!div class="nextstepaction"]
-> [Implementace základních funkcí CRUD](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)
+> [Implementace základní funkce CRUD](implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application.md)

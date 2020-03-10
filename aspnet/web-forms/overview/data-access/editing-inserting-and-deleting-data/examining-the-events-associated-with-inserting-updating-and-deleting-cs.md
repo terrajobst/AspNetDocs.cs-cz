@@ -9,11 +9,11 @@ ms.assetid: dab291a0-a8b5-46fa-9dd8-3d35b249201f
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/examining-the-events-associated-with-inserting-updating-and-deleting-cs
 msc.type: authoredcontent
 ms.openlocfilehash: a8c1388b73524a8bb918b67aa265db894c07636f
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74571967"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78609149"
 ---
 # <a name="examining-the-events-associated-with-inserting-updating-and-deleting-c"></a>Zkoumání událostí spojených s vložením, aktualizací a odstraněním (C#)
 
@@ -264,7 +264,7 @@ Tentokrát při přidávání nového produktu (například Acme soda) se sloupc
 
 **Obrázek 20**: nové produkty mají nyní své `CategoryID` a `SupplierID` hodnoty nastaveny na hodnotu 1 ([kliknutím zobrazíte obrázek v plné velikosti).](examining-the-events-associated-with-inserting-updating-and-deleting-cs/_static/image58.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Během úprav, vkládání a odstraňování procesu může ovládací prvek data web i ObjectDataSource pokračovat prostřednictvím řady událostí před a po úrovni. V tomto kurzu jsme prozkoumali události na úrovni služby a zjistili jsme, jak je použít k přizpůsobení vstupních parametrů nebo k tomu, aby se operace změny dat zcela zrušila jak z ovládacího prvku data Control, tak z událostí ObjectDataSource. V dalším kurzu se podíváme na vytváření a používání obslužných rutin událostí pro události na úrovni post.
 

@@ -9,11 +9,11 @@ ms.assetid: e6c2cb98-f745-4bc8-973a-813879c8a891
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/textboxwatermark/using-textboxwatermark-with-validation-controls-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 141cae26c9e52be510e2a5a8f816cbac977dcf3d
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74597240"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78627041"
 ---
 # <a name="using-textboxwatermark-with-validation-controls-vb"></a>Použití ovládacího prvku TextBoxWatermark s validačními ovládacími prvky (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek `TextBoxWatermark` v sadě nástrojů AJAX Control Toolkit rozšiřuje textové pole tak, aby byl v poli zobrazen text. Když uživatel klikne na pole, bude vyprázdněn. Pokud uživatel opustí pole bez zadání textu, předem vyplněný text se zobrazí znovu. To může kolidovat s ovládacími prvky ověřování ASP.NET na stejné stránce, ale tyto problémy se můžou překonat.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Základní nastavení ukázky je následující: ovládací prvek `TextBox` má vodoznak pomocí ovládacího prvku `TextBoxWatermarkExtender`. Tlačítko aktivuje postback a později bude použito ke spuštění ovládacích prvků ověřování na stránce. Pro inicializaci ASP.NET AJAX je také vyžadován ovládací prvek `ScriptManager`:
 

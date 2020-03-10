@@ -1,135 +1,135 @@
 ---
 uid: mvc/overview/advanced/custom-mvc-templates
-title: Vlastní šablona MVC | Dokumentace Microsoftu
+title: Vlastní šablona MVC | Microsoft Docs
 author: joeloff
-description: Vytvoření šablony jako rozšíření VSIX.
+description: Vytvořte šablonu jako rozšíření VSIX.
 ms.author: riande
 ms.date: 12/10/2012
 ms.assetid: b0a214c7-2f38-4dbc-b47f-bd7bd9df97bd
 msc.legacyurl: /mvc/overview/advanced/custom-mvc-templates
 msc.type: authoredcontent
 ms.openlocfilehash: 0603bc24e070e223551813f66a75889a2e46fd35
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59379544"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616352"
 ---
 # <a name="custom-mvc-template"></a>Vlastní šablona MVC
 
-podle [Jacques Eloff](https://github.com/joeloff)
+od [Jacques Eloff](https://github.com/joeloff)
 
-Verze MVC 3 nástroje Update pro sadu Visual Studio 2010 zavedené Průvodce samostatných projektů pro projekty MVC. Tato změna byla využitím dva faktory. Nejprve způsobit zavedení nové šablony MVC 3 a podpora pro zobrazení dalších modulů, jako je Razor zatarasování dialogu Nový projekt v sadě Visual Studio. Za druhé zákazníci měli už dlouho žádali bodů rozšiřitelnosti a Průvodce novým projektem MVC by si dovolit nám moci odpovědět na tyto požadavky.
+Vydání aktualizace nástrojů MVC 3 Tools for Visual Studio 2010 představilo samostatného Průvodce projektem pro projekty MVC. Tato změna byla řízena dvěma faktory. Nejprve zavedení nových šablon v MVC 3 a podpora dalších zobrazovacích modulů, jako je například Razor, vedlo k přeplnění dialogového okna Nový projekt v aplikaci Visual Studio. V druhé době si zákazníci požádali o body rozšiřitelnosti a nový průvodce projektem MVC vám poskytne možnost reagovat na tyto žádosti.
 
-Přidání vlastních šablon byla namáhavý proces, který spoléhal na zviditelnit nové šablony do Průvodce vytvořením projektu MVC pomocí registru. Vytvořit novou šablonu došlo ke sbalení uvnitř MSI a ověřte, že nezbytné položky registru bude vytvořen v době instalace. Alternativním byl soubor ZIP, který obsahuje šablonu, která je k dispozici a mít koncový uživatel ručně vytvořit požadované položky registru.
+Přidání vlastních šablon bylo namáhavý proces, který se spoléhat na použití registru, aby se nové šablony zobrazovaly v Průvodci projektem MVC. Autor nové šablony musel zabalit ho do MSI, aby se zajistilo, že se v době instalace vytvoří potřebné položky registru. Alternativou bylo vytvoření souboru ZIP obsahujícího šablonu, která bude mít koncovému uživateli k dispozici požadované položky registru ručně.
 
-Žádná z výše uvedených dvou přístupů je ideální, takže jsme se rozhodli využít některé z existující infrastrukturu [VSIX](https://msdn.microsoft.com/library/ff363239.aspx) rozšíření zjednodušit Autor, distribuci a instalaci vlastní šablony MVC počínaje MVC 4 pro sadu Visual Studio 2012. Mezi výhody tohoto přístupu patří:
+Žádná ze zmíněných přístupů není ideální, takže jsme se rozhodli využít některou ze stávajících infrastruktur poskytovaných rozšířeními [VSIX](https://msdn.microsoft.com/library/ff363239.aspx) , aby bylo snazší vytvářet, distribuovat a instalovat vlastní šablony MVC počínaje MVC 4 pro Visual Studio 2012. Mezi výhody, které poskytuje tento přístup, patří:
 
-- Rozšíření VSIX může obsahovat více šablon, které zajistit podporu různých jazyků (C# a Visual Basic) a více moduly zobrazení (ASPX a Razor).
-- Rozšíření VSIX mohou cílit na více SKU sady Visual Studio včetně Express SKU.
-- [Galerie sady Visual Studio](https://visualstudiogallery.msdn.microsoft.com/) usnadňuje distribuci rozšíření pro širokou cílovou skupinu.
-- Rozšíření VSIX je možné upgradovat, což usnadňuje vytváření opravy a aktualizace vlastní šablony.
+- Rozšíření VSIX může obsahovat více šablon, které podporují různé jazyky (C# a Visual Basic) a několik zobrazovacích modulů (aspx a Razor).
+- Rozšíření VSIX může cílit na více SKU sady Visual Studio včetně SKU Express.
+- [Galerie sady Visual Studio](https://visualstudiogallery.msdn.microsoft.com/) usnadňuje distribuci rozšíření pro velkou cílovou skupinu.
+- Rozšíření VSIX je možné upgradovat, aby bylo snazší vytvářet opravy a aktualizace vlastních šablon.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Uživatelé musí být obeznámeni s vytvořením šablony projektů, včetně požadované značky souborů vstemplate atd.
-- Uživatelé musí mít Visual Studio Professional a vyšší. Express SKU nepodporuje vytváření projektů VSIX.
-- [Visual Studio 2012 SDK](https://www.microsoft.com/download/details.aspx?id=30668) nainstalované.
+- Uživatelé musí být obeznámeni s vytvářením šablon projektů, včetně požadovaných značek pro vstemplate soubory atd.
+- Uživatelé budou muset mít nainstalované Visual Studio Professional a novější. Expresní SKU nepodporují vytváření projektů VSIX.
+- Je nainstalovaná [Sada Visual Studio 2012 SDK](https://www.microsoft.com/download/details.aspx?id=30668) .
 
 ## <a name="example"></a>Příklad
 
-Prvním krokem je vytvoření nového projektu VSIX pomocí jazyka C# nebo Visual Basic. Vyberte **soubor > Nový projekt**, pak klikněte na tlačítko **rozšiřitelnost** v levém podokně a vyberte **projekt VSIX**.
+Prvním krokem je vytvoření nového projektu VSIX pomocí C# nebo Visual Basic. Vyberte **soubor > nový projekt**, klikněte na **rozšiřitelnost** v levém podokně a vyberte **projekt VSIX**.
 
 ![Nový projekt](custom-mvc-templates/_static/image1.jpg)
 
-Po vytvoření projektu, otevře se Návrhář VSIX.
+Po vytvoření projektu bude otevřen Návrhář VSIX.
 
 ![Metadata Návrháře projektu](custom-mvc-templates/_static/image2.jpg)
 
-Návrhář umožňuje upravit některé obecné vlastnosti rozšíření, které se bude zobrazovat uživatelům při instalaci rozšíření nebo procházet nainstalovaná rozšíření v sadě Visual Studio (**nástroje > rozšíření a aktualizace**). Po dokončení klikněte na obecné informace o **cíle instalace kartu**.
+Návrhář lze použít k úpravě některých obecných vlastností rozšíření, které se uživatelům zobrazí při instalaci rozšíření nebo po prohledání nainstalovaných rozšíření v aplikaci Visual Studio (**nástroje > rozšíření a aktualizace**). Až dokončíte Obecné informace, klikněte na **kartu cíle instalace**.
 
 ![Cíle instalace Návrháře projektu](custom-mvc-templates/_static/image3.jpg)
 
-Tato karta slouží k určení SKU a verze sady Visual Studio, které vaše rozšíření podporuje. Zaškrtněte políčko pro **tento VSIX se nainstalují pro všechny uživatele** umožňující vázaná na počítač nainstaluje rozšíření VSIX. Klikněte na **nový** tlačítko na pravé straně, chcete-li přidat další skladové položky jako je Web Developer Express (VWD).
+Tato karta slouží k určení SKU a verzí sady Visual Studio, které jsou podporovány vaším rozšířením. Zaškrtněte políčko pro **Tento VSIX je nainstalováno pro všechny uživatele** , aby bylo možné instalovat VSIX pro jednotlivé počítače. Kliknutím na tlačítko **Nový** na pravé straně přidejte další SKU, jako je například Web Developer Express (souboru vwd).
 
 ![Přidat nový cíl instalace](custom-mvc-templates/_static/image4.jpg)
 
-Pokud máte v úmyslu podporují všechny Professional a vyšší skladové jednotky (Professional, Premium a Ultimate) stačí vybrat minimální SKU v rodině, **Microsoft.VisualStudio.Pro**. Nezapomeňte si uložte všechny provedené změny po dokončení cíle instalace.
+Pokud máte v úmyslu podporovat všechny skladové položky Professional a vyšší (Professional, Premium a Ultimate), stačí pouze vybrat minimální SKLADOVOU položku v rodině, **Microsoft.VisualStudio.pro**. Až dokončíte cíle instalace, nezapomeňte uložit všechny změny.
 
 ![Cíle instalace Návrháře projektu](custom-mvc-templates/_static/image5.jpg)
 
-**Prostředky** karta slouží k přidání všechny soubory obsahu do VSIX. Protože MVC požaduje metadata vlastní je upravována nezpracovaném kódu XML souboru manifestu VSIX namísto použití **prostředky** kartu k přidání obsahu. Začněte přidáním obsah šablony do projektu VSIX. Je důležité, že struktura složky a obsah zrcadlí rozložení projektu. Následující příklad obsahuje čtyři šablony projektů, které byly získány z šablony projektu základní MVC. Ujistěte se, že všechny soubory, které tvoří vaši šablonu projektu (všechno pod ní složce ProjectTemplates) jsou přidány do **obsahu** itemgroup ve VSIX projekt Souborová služba a že obsahuje každou položku  **CopyToOutputDirectory** a **IncludeInVsix** metadat nastavit, jak je znázorněno v následujícím příkladu.
+Karta **assets (prostředky** ) slouží k přidání všech souborů obsahu do VSIX. Vzhledem k tomu, že MVC vyžaduje vlastní metadata, budete upravovat nezpracovaný soubor XML souboru manifestu VSIX namísto použití karty **assets** pro přidání obsahu. Začněte přidáním obsahu šablony do projektu VSIX. Je důležité, aby struktura složky a obsahu zrcadlíte rozložení projektu. Níže uvedený příklad obsahuje čtyři šablony projektu, které byly odvozeny ze šablony projektu základní MVC. Zajistěte, aby všechny soubory, které tvoří šablonu projektu (vše pod složkou ProjectTemplates), byly přidány do skupiny položek **obsahu** v souboru projektu VSIX a že každá položka obsahuje sadu metadat **CopyToOutputDirectory** a **IncludeInVsix** , jak je znázorněno v následujícím příkladu.
 
-&lt;Content Include=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
+&lt;obsahu include =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicWeb.config&quot;&gt;
 
-&lt;CopyToOutputDirectory&gt;Always&lt;/CopyToOutputDirectory&gt;
+&lt;CopyToOutputDirectory&gt;vždy&lt;/CopyToOutputDirectory&gt;
 
 &lt;IncludeInVSIX&gt;true&lt;/IncludeInVSIX&gt;
 
-&lt;/ Obsahu&gt;
+&lt;/Content&gt;
 
-Pokud ne, rozhraní IDE se pokusí zkompilovat obsah šablony při vytváření VSIX a pravděpodobně se zobrazí chyba. Soubory kódu v šablonách často obsahují speciální [parametry šablony](https://msdn.microsoft.com/library/eehb4faa(v=vs.110).aspx) používá sada Visual Studio, když je vytvořena instance šablony projektu a proto nemohou být zkompilovány v integrovaném vývojovém prostředí.
+V takovém případě se IDE pokusí kompilovat obsah šablony při sestavení VSIX a pravděpodobně se zobrazí chyba. Soubory kódu v šablonách často obsahují speciální [parametry šablony](https://msdn.microsoft.com/library/eehb4faa(v=vs.110).aspx) používané v aplikaci Visual Studio, když je vytvořena instance šablony projektu, a proto nemůže být zkompilována v INTEGROVANÉm vývojovém prostředí.
 
 ![Průzkumník řešení](custom-mvc-templates/_static/image6.jpg)
 
-Zavřít Návrhář VSIX, a klikněte pravým tlačítkem na **source.extension.manifest** ve **Průzkumníku řešení** a vyberte **otevřít v** a zvolte **XML ( Editor text)** možnost.
+Zavřete návrháře VSIX a pak klikněte pravým tlačítkem na soubor **source. extension. manifest** v **Průzkumník řešení** a vyberte **otevřít s** a zvolte možnost **Editor XML (text)** .
 
-![Otevřít pomocí dialogového okna](custom-mvc-templates/_static/image7.jpg)
+![Otevřít v dialogovém okně](custom-mvc-templates/_static/image7.jpg)
 
-Vytvoření **&lt;prostředky&gt;** prvek a přidat **&lt;Asset&gt;** – element pro každý soubor, který musí být obsažená ve VSIX. **Typ** atribut jednotlivých **&lt;Asset&gt;** element musí být nastaven na **Microsoft.VisualStudio.Mvc.Template**. Toto je vlastní obor názvů, která analyzuje pouze Průvodce projektem MVC. Naleznete v dokumentaci VSIX 2.0 Schema pro další informace o struktuře a rozložení souboru manifestu.
+Vytvořte **&lt;assets&gt;** element a přidejte **&lt;element Asset&gt;** pro každý soubor, který musí být součástí VSIX. Atribut **Type** pro každý **&lt;&gt;elementu assetu** musí být nastaven na **Microsoft. VisualStudio. Mvc. template**. Toto je vlastní obor názvů, který je srozumitelný pouze v Průvodci projektem MVC. Další informace o struktuře a rozložení souboru manifestu najdete v dokumentaci ke schématu VSIX 2,0.
 
-Stačí přidat soubory do VSIX není dostatečná k registraci šablony MVC průvodce. Budete muset poskytnout informace, jako je název šablony, popis, moduly podporované zobrazení a programovací jazyk do Průvodce vytvořením MVC. Tyto informace se přenášejí v vlastní atributy přidružené k **&lt;Asset&gt;** – element pro každé **vstemplate** souboru.
+Pouze přidávání souborů do VSIX není dostačující k registraci šablon pomocí Průvodce MVC. V průvodci MVC musíte zadat informace, jako je název šablony, popis, podporované moduly zobrazení a programovací jazyk. Tyto informace se přenesou do vlastních atributů přidružených k elementu **&lt;Asset&gt;** pro každý soubor **vstemplate** .
 
-&lt;Asset d:VsixSubPath=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
+&lt;Asset d:VsixSubPath =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx&quot;
 
-Type=&quot;Microsoft.VisualStudio.Mvc.Template&quot;
+Type =&quot;Microsoft. VisualStudio. Mvc. template&quot;
 
-d:Source=&quot;File&quot;
+d:Source =&quot;soubor&quot;
 
-Path=&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWebApplicationProjectTemplate.11.csaspx.vstemplate&quot;
+Path =&quot;ProjectTemplates\MyMvcWebApplicationProjectTemplate.csaspx\BasicMvcWebApplicationProjectTemplate.11.csaspx.vstemplate&quot;
 
-ProjectType=&quot;MVC&quot;
+ProjectType =&quot;MVC&quot;
 
-Language=&quot;C#&quot;
+Jazyk =&quot;C#&quot;
 
-ViewEngine=&quot;Aspx&quot;
+ViewEngine =&quot;aspx&quot;
 
-TemplateId=&quot;MyMvcApplication&quot;
+TemplateId =&quot;MyMvcApplication&quot;
 
-Název =&quot;vlastní základní webové aplikace&quot;
+Title =&quot;vlastní základní webová aplikace&quot;
 
-Popis =&quot;vlastní šablony je odvozen z webové aplikace základní MVC (Razor)&quot;
+Description =&quot;vlastní šablonu odvozenou ze základní webové aplikace MVC (Razor)&quot;
 
-Verze =&quot;4.0&quot;/&gt;
+Verze =&quot;4,0&quot;/&gt;
 
-Následuje vysvětlení vlastních atributů, které musí být k dispozici:
+Níže je uveden popis vlastních atributů, které musí být k dispozici:
 
-- **ProjectType** musí být nastaveno na MVC.
-- **Jazyk** označuje vývojový jazyk nepodporuje šablony. Platné hodnoty jsou buď C# nebo VB.
-- **ViewEngine** označí zobrazovací modul, který podporuje šablony, jako je například Aspx nebo Razor. Můžete zadat vlastní hodnotu pro toto pole.
-- **TemplateId –** je určena k seskupování šablony. Hodnota odpovídá existující ID šablony, bude-li přepište dříve zaregistrovali pomocí Průvodce MVC šablony.
-- **Název** určuje stručný popis zobrazovaný v Průvodci MVC pod každou šablonu projektu.
+- **ProjectType** musí být nastavené na MVC.
+- **Jazyk** určuje vývojový jazyk podporovaný šablonou. Platné hodnoty jsou buď C# nebo VB.
+- **ViewEngine** určuje modul zobrazení podporovaný šablonou, jako je například aspx nebo Razor. Pro toto pole můžete zadat vlastní hodnotu.
+- **TemplateID** se používá k seskupování šablon. Pokud se hodnota shoduje s existujícím ID šablony, bude přepsat šablony, které byly dříve registrovány pomocí Průvodce MVC.
+- **Title** Určuje krátký popis zobrazený v průvodci MVC pod každou šablonou projektu.
 - **Popis** určuje podrobnější popis šablony.
 
-Poté, co jste přidali všechny soubory manifestu a ho uložili, všimnete si, který **prostředky** kartě v návrháři se zobrazí všechny soubory, ale ne vlastní atributy jste přidali do **&lt;Asset&gt;** prvky pro **vstemplate** soubory.
+Po přidání všech souborů do manifestu a jejich uložení si všimněte, že se na kartě **assets (prostředky** ) v Návrháři zobrazí všechny soubory, ale ne vlastní atributy, které jste přidali do **&lt;Asset&gt;** elementy pro soubory **vstemplate** .
 
 ![Prostředky Návrháře projektu](custom-mvc-templates/_static/image8.jpg)
 
-Teď už jen zbývá ke kompilaci projektu VSIX a nainstalujte ji.
+Vše, co teď zbývá, je zkompilovat projekt VSIX a nainstalovat ho.
 
-Ujistěte se, že všechny instance sady Visual Studio zavřená na počítači Pokud máte v úmyslu testování rozšíření VSIX. Visual Studio vyhledá nová rozšíření během spouštění, tedy pokud při instalaci rozšíření VSIX je otevřen integrovaném vývojovém prostředí bude nutné restartovat Visual Studio. V Průzkumníku, poklikejte na soubor VSIX ke spuštění **instalátor VSIX**, klikněte na tlačítko **nainstalovat** a pak spusťte sadu Visual Studio.
+Ujistěte se, že jsou všechny instance sady Visual Studio uzavřeny v počítači, kde chcete otestovat rozšíření VSIX. Visual Studio vyhledává nová rozšíření během spouštění, takže pokud je IDE otevřené při instalaci VSIX, budete muset restartovat Visual Studio. V Průzkumníkovi poklikejte na soubor VSIX a spusťte **instalační program VSIX**, klikněte na **nainstalovat** a potom spusťte Visual Studio.
 
-![Instalátor VSIX](custom-mvc-templates/_static/image9.jpg)
+![Instalační program VSIX](custom-mvc-templates/_static/image9.jpg)
 
-V nabídce vyberte **nástroje > rozšíření a aktualizace** potvrďte, že je rozšíření nainstalované. Je-li instalátor VSIX hlášené žádné chyby během instalace rozšíření se zobrazí v instalačním programu VSIX protokolu pro další informace. Protokol je obvykle vytvořeny v **% temp %** složky uživatele, kterého je nainstalované rozšíření, například **C:\Users\Bob\AppData\Local\Temp**.
+V nabídce vyberte **nástroje > rozšíření a aktualizace a** potvrďte tak, že bylo rozšíření nainstalováno. Pokud instalační program VSIX oznámil při instalaci rozšíření nějaké chyby, můžete zobrazit další informace v protokolu VSIX Installer. Protokol je obvykle vytvořen ve složce **% TEMP%** uživatele, který rozšíření nainstaloval, například **C:\Users\Bob\AppData\Local\Temp**.
 
 ![Rozšíření a aktualizace](custom-mvc-templates/_static/image10.jpg)
 
-Po zavření okna můžete vytvořit projekt MVC 4 k, jestli vaše nové šablony jsou uvedené v Průvodci MVC.
+Po zavření okna můžete vytvořit projekt MVC 4, abyste viděli, jestli jsou vaše nové šablony zobrazené v průvodci MVC.
 
 ![Nový projekt ASP.NET MVC 4](custom-mvc-templates/_static/image11.jpg)
 
 ## <a name="limitations"></a>Omezení
 
 1. Průvodce MVC nepodporuje lokalizované vlastní šablony.
-2. Průvodce nebudou podávat zprávy o chybách Pokud se nepodaří najít vlastní šablony. Pokud chybí některé požadované vlastních atributů, šablona by jednoduše vyloučené z průvodce.
+2. Průvodce nebude hlásit žádné chyby, pokud se nepovede najít vlastní šablony. Pokud některý z požadovaných vlastních atributů chybí, šablona bude jednoduše vyloučena z průvodce.

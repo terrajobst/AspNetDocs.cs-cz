@@ -1,27 +1,27 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application
-title: Ošetření souběžnosti se sadou Entity Framework 4.0 v ASP.NET 4 webové aplikace | Dokumentace Microsoftu
+title: Zpracování souběžnosti s Entity Framework 4,0 ve webové aplikaci ASP.NET 4 | Microsoft Docs
 author: tdykstra
-description: V této sérii kurzů staví na Contoso University webovou aplikaci, která se vytvořila Začínáme s Entity Framework 4.0 série kurzů. I...
+description: Tato řada kurzů se sestavuje na webové aplikaci Contoso University, která je vytvořená Začínáme pomocí řady kurzů Entity Framework 4,0. I...
 ms.author: riande
 ms.date: 01/26/2011
 ms.assetid: a5aa22a6-fb7f-4f41-9c7f-addda151940b
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application
 msc.type: authoredcontent
 ms.openlocfilehash: 3df5f7d9c8fb22e1ea34fe16560bdb9a1309bb56
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131886"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78632585"
 ---
-# <a name="handling-concurrency-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>Ošetření souběžnosti se sadou Entity Framework 4.0 v ASP.NET 4 webové aplikace
+# <a name="handling-concurrency-with-the-entity-framework-40-in-an-aspnet-4-web-application"></a>Zpracování souběžnosti s Entity Framework 4,0 ve webové aplikaci ASP.NET 4
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-> V této sérii kurzů staví na Contoso University webovou aplikaci, která se vytvořila [Začínáme s Entity Framework 4.0](https://asp.net/entity-framework/tutorials#Getting%20Started) série kurzů. Pokud nebyla dokončena v předchozích kurzech, jako výchozí bod pro účely tohoto kurzu můžete [stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) , kterou by jste vytvořili. Můžete také [stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) , který vytvoří kompletní série kurzů. Pokud máte dotazy týkající se těchto kurzů, můžete je publikovat [fórum ASP.NET Entity Framework](https://forums.asp.net/1227.aspx).
+> Tato řada kurzů se sestavuje na webové aplikaci Contoso University, která je vytvořená [Začínáme pomocí řady kurzů Entity Framework 4,0](https://asp.net/entity-framework/tutorials#Getting%20Started) . Pokud jste nedokončili předchozí kurzy, jako výchozí bod tohoto kurzu si můžete aplikaci, kterou jste vytvořili, [Stáhnout](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) . Můžete si také [Stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) , která je vytvořená úplnou řadou kurzů. Pokud máte dotazy k kurzům, můžete je publikovat na [fórum ASP.NET Entity Framework](https://forums.asp.net/1227.aspx).
 
-V předchozím kurzu jste zjistili, jak řadit a filtrovat data s využitím `ObjectDataSource` ovládacího prvku a Entity Framework. Tento kurz ukazuje možnosti pro ošetření souběžnosti ve webové aplikaci ASP.NET, která používá Entity Framework. Vytvoří novou webovou stránku, který je vyhrazen pro aktualizaci přiřazení office instruktorem. Postaráme potíže se souběžností na této stránce a na stránce oddělení, který jste vytvořili dříve.
+V předchozím kurzu jste zjistili, jak řadit a filtrovat data pomocí ovládacího prvku `ObjectDataSource` a Entity Framework. V tomto kurzu se dozvíte o možnostech zpracování souběžnosti ve webové aplikaci v ASP.NET, která používá Entity Framework. Vytvoří se nová webová stránka, která je vyhrazená pro aktualizaci přiřazení instruktor kanceláře. Budete zpracovávat problémy souběžnosti na této stránce a na stránce oddělení, kterou jste vytvořili dříve.
 
 [![Image06](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image2.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image1.png)
 
@@ -29,277 +29,277 @@ V předchozím kurzu jste zjistili, jak řadit a filtrovat data s využitím `Ob
 
 ## <a name="concurrency-conflicts"></a>Konflikty souběžnosti
 
-Když jeden uživatel upraví záznam a jiný uživatel upraví stejný záznam před první uživatel změn je zapsána do databáze dojde ke konfliktu souběžnosti. Pokud nenastavíte Entity Framework takové konflikty je zjistit, kdo aktualizuje databázi poslední přepíše změny dalších uživatelů. V mnoha aplikacích toto riziko je přijatelné a není nutné nakonfigurovat aplikaci pro zpracování konfliktů souběžnosti je to možné. (Pokud existuje několik uživatelů nebo několik aktualizací, nebo pokud není skutečně důležité, pokud některé změny budou přepsány, výhody vyváží nižší náklady na programování pro souběžnost.) Pokud není nutné se starat o konfliktů souběžnosti, můžete přeskočit tento kurz; Zbývající dva kurzy z této série nejsou závislé na všechno, co vytvoříte v tohoto objektu.
+Ke konfliktu souběžnosti dojde, když jeden uživatel upraví záznam a jiný uživatel upraví stejný záznam předtím, než se do databáze zapíše Změna prvního uživatele. Pokud nenastavíte Entity Framework k detekci takových konfliktů, při aktualizaci databáze poslední přepíše změny provedené ostatními uživateli. V mnoha aplikacích je toto riziko přijatelné a vy nemusíte konfigurovat aplikaci tak, aby zpracovávala možné konflikty souběžnosti. (Pokud je k dispozici málo uživatelů nebo málo aktualizací, nebo pokud není důležité, pokud jsou nějaké změny přepsány, náklady na programování pro souběžnost můžou převážit výhody.) Pokud se nemusíte starat o konflikty souběžnosti, můžete tento kurz přeskočit; zbývající dva kurzy v řadě nejsou závislé na nic, co v tomto případě sestavíte.
 
-### <a name="pessimistic-concurrency-locking"></a>Pesimistická souběžnost (uzamčení)
+### <a name="pessimistic-concurrency-locking"></a>Pesimistická souběžnost (uzamykání)
 
-Pokud vaše aplikace potřebuje se tak ztrátě dat ve scénářích souběžnosti, je to udělat jedním ze způsobů použití uzamčení databáze. Tento postup se nazývá *Pesimistická souběžnost*. Například předtím, než se pustíte do čtení řádku z databáze, můžete požádat o zámek pro jen pro čtení nebo pro přístup k aktualizaci. Pokud řádek pro aktualizaci přístup, žádné uživatelé můžou zamknout řádku, buď pro jen pro čtení nebo aktualizaci přístup, protože by dostanou kopii dat, která se právě mění. Pokud řádek pro přístup jen pro čtení, ostatní také zařízení Uzamknout pro přístup jen pro čtení, ale ne pro aktualizace.
+Pokud vaše aplikace potřebuje zabránit náhodné ztrátě dat ve scénářích souběžnosti, stačí jeden způsob, jak to provést, pomocí zámků databáze. Tato metoda se nazývá *pesimistická souběžnost*. Například před čtením řádku z databáze si vyžádáte zámek jen pro čtení nebo pro přístup k aktualizacím. Pokud zamknete řádek pro přístup k aktualizacím, žádní jiní uživatelé nemůžou Uzamknout řádek buď pro čtení, nebo pro přístup k aktualizacím, protože by získali kopii dat, která se v procesu mění. Pokud zamknete řádek pro přístup jen pro čtení, můžou ho jiní uživatelé taky uzamknout pro přístup jen pro čtení, ale ne pro aktualizace.
 
-Zámky pro správu obsahuje i určité nevýhody. Může být složité do programu. Vyžaduje významné databáze správy zdrojů, a to může způsobit problémy s výkonem jako počet uživatelů aplikace zvyšuje (to znamená, ho nemá uspokojivé škálování). Z těchto důvodů ne všechny systémy správy databáze nepodporují Pesimistická souběžnost. Entity Framework obsahuje předdefinovanou podporu pro ni a v tomto kurzu nezobrazí způsobu jeho implementace.
+Správa zámků má některé nevýhody. Může být komplexní pro program. Vyžaduje významné prostředky správy databáze a může způsobit problémy s výkonem, protože se zvyšuje počet uživatelů aplikace (to znamená, že se nedokáže správně škálovat). Z těchto důvodů ne všechny systémy správy databáze podporují pesimistickou souběžnost. Entity Framework pro něj neposkytuje žádnou integrovanou podporu a v tomto kurzu se vám nezobrazí, jak ho implementovat.
 
 ### <a name="optimistic-concurrency"></a>Optimistická metoda souběžného zpracování
 
-Je alternativou k Pesimistická souběžnost *optimistického řízení souběžnosti*. Povolení konfliktů souběžnosti, která se provede a reaguje správně, pokud tomu znamená, že optimistického řízení souběžnosti. Například Jan spustí *Department.aspx* stránce, kliknutí **upravit** odkaz pro oddělení historie a snižuje **rozpočtu** částku od 1,000,000.00 $ $ 125,000.00. (Jan spravuje konkurenční oddělení a chce uvolnit tak peníze pro své oddělení.)
+Alternativou k pesimistické souběžnosti je *Optimistická souběžnost*. Optimistická souběžnost znamená, že může dojít ke konfliktům souběžnosti a v případě, že je funguje správně. Například Jan spustí stránku *oddělení. aspx* , klikne na odkaz **Upravit** pro oddělení historie a sníží částku **rozpočtu** z $1 000 000,00 na $125 000,00. (Jan spravuje konkurenční oddělení a chce zdarma uvolnit peníze pro vlastní oddělení.)
 
 [![Image07](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image6.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image5.png)
 
-Předtím, než Jan klikne **aktualizace**, Jana běží na stejné stránce, kliknutí **upravit** odkaz historie oddělení, a potom klepněte na změny **datum zahájení** pole z 1/10/2011 na 1/1 / 1999. (Jana spravuje oddělení historie a chce, aby se pro ni další služební.)
+Když Jan klikne na **aktualizovat**, spustí Jana stejnou stránku, klikne na odkaz **Upravit** pro oddělení historie a pak změní pole **počáteční datum** z 1/10/2011 na 1/1/1999. (Jana spravuje oddělení historie a chce dát mu větší služební věk.)
 
 [![Image08](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image8.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image7.png)
 
-Jan klikne **aktualizace** pak Jana nejprve klikne **aktualizace**. Jana prohlížeč teď seznamy **rozpočtu** objem $1,000,000.00, ale to je nesprávná, protože velikost změnila Jan na 125,000.00 $.
+Jan klikne na **aktualizovat** jako první a pak Jana klikne na **aktualizovat**. V prohlížeči Jana se nyní zobrazí hodnota **rozpočtu** jako $1 000 000,00, ale to není správné, protože se změnila hodnota od jan do $125 000,00.
 
-Některé akce, které si můžete v tomto scénáři patří:
+V tomto scénáři můžete použít následující akce:
 
-- Můžete sledovat, které vlastnosti uživatele byl změněn a aktualizovat pouze odpovídající sloupce v databázi. V ukázkovém scénáři žádné by dojít ke ztrátě dat., protože různé vlastnosti byly aktualizovány dva uživatelé. Při příštím někdo prohlíží historii oddělení, zobrazí se 1/1/1999 a 125,000.00 $. 
+- Můžete sledovat, kterou vlastnost uživatel změnil, a aktualizovat pouze odpovídající sloupce v databázi. V ukázkovém scénáři by se neztratila žádná data, protože dva uživatelé aktualizovali různé vlastnosti. Když někdo příště prochází oddělení historie, uvidí 1/1/1999 a $125 000,00. 
 
-    Toto je výchozí chování v Entity Framework a může podstatně snížit počet konfliktů, ke kterým může dojít ke ztrátě. Ale toto chování není nedošlo ke ztrátě dat. Pokud konkurenční změn na stejnou vlastnost entity. Kromě toho není toto chování vždycky možné; Při mapování uložené procedury pro typ entity, všechny vlastnosti entity jsou aktualizovány při jakékoli změny v entitě v databázi.
-- Můžete umožnit změnu Jana John's změna přepsána. Po kliknutí Jana **aktualizace**, **rozpočtu** částka se vrátí do 1,000,000.00 $. Tento postup se nazývá *Wins, klient* nebo *poslední ve službě Wins* scénář. (Hodnoty klienta přednost co je v úložišti.)
-- Jana změny můžete zabránit aktualizují v databázi. By obvykle zobrazí chybovou zprávu, zobrazit její aktuální stav dat a manažerovi zadejte znovu své změny, pokud chce je. Uložením svůj vstup a poskytne jí příležitost znovu bez nutnosti znovu zadat ho může dál automatizovat proces. Tento postup se nazývá *Store Wins* scénář. (Hodnoty úložiště dat přednost hodnoty odeslány klientem.)
+    Toto je výchozí chování Entity Framework a může podstatně snížit počet konfliktů, které by mohly vést ke ztrátě dat. Toto chování však nebrání ztrátě dat, pokud jsou v rámci stejné vlastnosti entity provedeny konkurenční změny. Kromě toho toto chování není vždy možné; Když namapujete uložené procedury na typ entity, aktualizují se všechny vlastnosti entity, když se v databázi provedou jakékoli změny entity.
+- Můžete nechat změnu přepsat Jan. Jakmile Jana klikne na **aktualizovat**, částka **rozpočtu** se vrátí do $1 000 000,00. To se označuje jako *klient WINS* nebo *Poslední ve scénáři WINS* . (Hodnoty klienta mají přednost před tím, co je v úložišti dat.)
+- Můžete zabránit tomu, aby se změna v databázi nástroje Jana aktualizovala. Obvykle byste zobrazili chybovou zprávu, zobrazila její aktuální stav dat a umožní jí znovu zadat změny, pokud je stále chce udělat. Proces můžete dále automatizovat uložením jeho vstupu a tím, že ho budete moct znovu použít, aniž byste ho museli znovu zadávat. To se označuje jako scénář *služby WINS pro Store* . (Hodnoty úložiště dat přednost hodnoty odeslány klientem.)
 
 ### <a name="detecting-concurrency-conflicts"></a>Zjišťování konfliktů souběžnosti
 
-V rozhraní Entity Framework lze vyřešit konflikty zpracování `OptimisticConcurrencyException` výjimky, které vyvolá rozhraní Entity Framework. Pokud chcete zjistit, kdy se má vyvolat tyto výjimky, musí být schopen rozpoznat konflikty Entity Framework. Proto je nutné nakonfigurovat databázi a datový model odpovídajícím způsobem. Některé možnosti aktivace zjišťování konfliktů, patří:
+V Entity Framework můžete vyřešit konflikty zpracováním `OptimisticConcurrencyException` výjimek, které Entity Framework vyvolá. Chcete-li zjistit, kdy vyvolat tyto výjimky, Entity Framework musí být schopna detekovat konflikty. Proto je nutné správně nakonfigurovat databázi a datový model. Mezi možnosti pro povolení detekce konfliktů patří následující:
 
-- V databázi zahrnují sloupce tabulky, který slouží k určení, kdy změnil řádek. Potom můžete nakonfigurovat rozhraní Entity Framework patří tento sloupec ve `Where` klauzule SQL `Update` nebo `Delete` příkazy.
+- V databázi zahrňte sloupec tabulky, který se dá použít k určení, kdy došlo ke změně řádku. Pak můžete nakonfigurovat Entity Framework pro zahrnutí tohoto sloupce do klauzule `Where` příkazů SQL `Update` nebo `Delete`.
 
-    To je účel `Timestamp` sloupec v `OfficeAssignment` tabulky.
+    To je účel sloupce `Timestamp` v tabulce `OfficeAssignment`.
 
     [![Image09](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image10.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image9.png)
 
-    Datový typ `Timestamp` sloupce se také nazývá `Timestamp`. Sloupec však skutečně neobsahuje hodnotu data a času. Místo toho je hodnota pořadové číslo, které se zvýší pokaždé, když se aktualizuje řádek. V `Update` nebo `Delete` příkazu `Where` klauzule obsahuje původní `Timestamp` hodnotu. Pokud se změnila řádek aktualizován jiným uživatelem, hodnota v `Timestamp` se liší od původní hodnoty, proto `Where` klauzule vrátí žádný řádek aktualizovat. Při Entity Framework zjistí, že byly aktualizovány žádné řádky aktuální `Update` nebo `Delete` příkazu (to znamená, když počet ovlivněných řádků je nula), který interpretuje jako ke konfliktu souběžnosti.
-- Konfigurace rozhraní Entity Framework pro zahrnutí původní hodnota každý sloupec v tabulce `Where` klauzuli `Update` a `Delete` příkazy.
+    Datový typ sloupce `Timestamp` se také označuje jako `Timestamp`. Sloupec ale ve skutečnosti neobsahuje hodnotu data nebo času. Místo toho je hodnota sekvenční číslo, které se zvýší pokaždé, když se řádek aktualizuje. V příkazu `Update` nebo `Delete` zahrnuje klauzule `Where` původní `Timestamp` hodnotu. Pokud byl aktualizovaný řádek změněn jiným uživatelem, hodnota v `Timestamp` se liší od původní hodnoty, takže klauzule `Where` nevrátí žádný řádek, který se má aktualizovat. Pokud Entity Framework zjistí, že aktuální `Update` nebo `Delete` příkaz neaktualizoval žádné řádky (tj. Pokud je počet ovlivněných řádků nula), interpretuje to jako konflikt souběžnosti.
+- Nakonfigurujte Entity Framework tak, aby zahrnoval původní hodnoty všech sloupců v tabulce v klauzuli `Where` příkazů `Update` a `Delete`.
 
-    Jako první možnost, pokud něco v řádku od řádku se nejdřív přečíst, změnila `Where` klauzule nevrátí řádek k aktualizaci, která nastavení interpretuje Entity Framework jako ke konfliktu souběžnosti. Tato metoda je co nejúčinnější pomocí `Timestamp` pole, ale může být neefektivní. Pro databázové tabulky, které mají mnoho sloupců, to může vést k velmi velké `Where` klauzule, a ve webové aplikaci může vyžadovat, že udržujete velké množství stavu. Správa velkého objemu stavu může ovlivnit výkon aplikace, protože ji vyžaduje prostředky serveru (například stav relace) nebo musí být součástí webové stránky (například stav zobrazení).
+    Stejně jako v první možnosti, pokud se cokoli na řádku od prvního načtení řádku změnilo, klauzule `Where` nevrátí řádek, který se má aktualizovat, což Entity Framework interpretuje jako konflikt souběžnosti. Tato metoda je platná jako při použití pole `Timestamp`, ale může být neefektivní. U databázových tabulek, které mají mnoho sloupců, může být výsledkem velmi velkých `Where` klauzulí a ve webové aplikaci může vyžadovat, abyste zachovali velké množství stavu. Udržování velkých objemů stavu může ovlivnit výkon aplikace, protože buď vyžaduje prostředky serveru (například stav relace), nebo musí být součástí samotné webové stránky (například stav zobrazení).
 
-V tomto kurzu přidáte optimistického řízení souběžnosti konflikty pro entitu, která nemá vlastnost sledování zpracování chyb ( `Department` entity) a entity, které mají vlastnost sledování ( `OfficeAssignment` entity).
+V tomto kurzu přidáte zpracování chyb pro konflikty optimistického souběžnosti pro entitu, která nemá vlastnost sledování (`Department` entitu), a pro entitu, která má vlastnost sledování (`OfficeAssignment` entita).
 
-## <a name="handling-optimistic-concurrency-without-a-tracking-property"></a>Zpracování optimistického řízení souběžnosti bez vlastnosti sledování do
+## <a name="handling-optimistic-concurrency-without-a-tracking-property"></a>Zpracovává se Optimistická souběžnost bez vlastnosti sledování.
 
-Implementace optimistického řízení souběžnosti pro `Department` entity, která nemá sleduje (`Timestamp`) vlastnost, se dokončí následující úkoly:
+K implementaci optimistického řízení souběžnosti pro entitu `Department`, která nemá vlastnost sledování (`Timestamp`), dokončíte následující úlohy:
 
-- Změnit datový model, který povolit sledování souběžnosti `Department` entity.
-- V `SchoolRepository` třídy, zpracování výjimek souběžnosti v `SaveChanges` metody.
-- V *Departments.aspx* stránky, zpracování výjimek souběžnosti zobrazením uživateli upozornění, že neúspěšné pokusy o změny byly úspěšné. Uživatel můžete zobrazit aktuální hodnoty a zkuste změny, pokud jsou stále potřeba.
+- Změňte datový model tak, aby povoloval sledování souběžnosti pro `Department` entit.
+- Ve třídě `SchoolRepository` zpracujte výjimky souběžnosti v metodě `SaveChanges`.
+- Na stránce *oddělení. aspx* můžete zpracovat výjimky souběžnosti tím, že se uživateli zobrazí zpráva s upozorněním, že se provedené změny nezdařily. Uživatel pak může zobrazit aktuální hodnoty a opakovat změny, pokud jsou stále potřeba.
 
-### <a name="enabling-concurrency-tracking-in-the-data-model"></a>Povolení sledování v datovém modelu souběžnosti
+### <a name="enabling-concurrency-tracking-in-the-data-model"></a>Povolení sledování souběžnosti v datovém modelu
 
-V sadě Visual Studio otevřete webová aplikace Contoso University, kterým jste pracovali v předchozím kurzu této série.
+V sadě Visual Studio otevřete webovou aplikaci Contoso University, se kterou jste pracovali v předchozím kurzu této série.
 
-Otevřít *SchoolModel.edmx*a v Návrháři modelů dat, klikněte pravým tlačítkem `Name` vlastnost v `Department` entity a pak klikněte na tlačítko **vlastnosti**. V **vlastnosti** okno Změnit `ConcurrencyMode` vlastnost `Fixed`.
+Otevřete *SchoolModel. edmx*a v návrháři datového modelu klikněte pravým tlačítkem na vlastnost `Name` v entitě `Department` a pak klikněte na **vlastnosti**. V okně **vlastnosti** změňte vlastnost `ConcurrencyMode` na hodnotu `Fixed`.
 
 [![Image16](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image12.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image11.png)
 
-Provést totéž pro ostatní primární klíč Skalární vlastnosti (`Budget`, `StartDate`, a `Administrator`.) (Nelze to provést pro navigační vlastnosti.) Určuje, že vždy, když rozhraní Entity Framework generuje `Update` nebo `Delete` příkaz SQL pro aktualizaci `Department` entitu v databázi, tyto sloupce (s původní hodnoty) musí být součástí `Where` klauzuli. Pokud není nalezen žádný řádek, kdy `Update` nebo `Delete` příkaz spustí, Entity Framework vyvolá výjimku optimistického řízení souběžnosti.
+Totéž udělejte u ostatních skalárních vlastností, které nejsou primárním klíčem (`Budget`, `StartDate`a `Administrator`.) (To nejde udělat pro navigační vlastnosti.) To určuje, že pokaždé, když Entity Framework generuje příkaz jazyka SQL `Update` nebo `Delete`, který aktualizuje entitu `Department` v databázi, musí být v klauzuli `Where` zahrnuté tyto sloupce (s původními hodnotami). Pokud není nalezen žádný řádek při spuštění příkazu `Update` nebo `Delete`, Entity Framework vyvolá výjimku optimistického zpracování.
 
 Uložte a zavřete datový model.
 
-### <a name="handling-concurrency-exceptions-in-the-dal"></a>Zpracování výjimky souběžnosti v vrstvy DAL
+### <a name="handling-concurrency-exceptions-in-the-dal"></a>Zpracování výjimek souběžnosti v DAL
 
-Otevřít *SchoolRepository.cs* a přidejte následující `using` příkaz `System.Data` obor názvů:
+Otevřete *SchoolRepository.cs* a přidejte následující příkaz `using` pro obor názvů `System.Data`:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample1.cs)]
 
-Přidejte následující novou `SaveChanges` metodu, která zpracovává výjimky optimistického řízení souběžnosti:
+Přidejte následující novou `SaveChanges` metodu, která zpracovává optimistické výjimky souběžnosti:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample2.cs)]
 
-Pokud došlo k chybě souběžnosti nastane, pokud tato metoda je volána, hodnoty vlastností entity v paměti se nahradí hodnotami aktuálně v databázi. Výjimky souběžnosti je znovu vyvolána, takže ji můžete zpracovat webové stránky.
+Pokud při volání této metody dojde k chybě souběžnosti, hodnoty vlastností entity v paměti jsou nahrazeny hodnotami, které jsou aktuálně v databázi. Výjimka souběžnosti je znovu vyvolána, aby ji webová stránka mohla zpracovat.
 
-V `DeleteDepartment` a `UpdateDepartment` metody, nahraďte existující volání `context.SaveChanges()` voláním `SaveChanges()` k vyvolání nové metody.
+V metodách `DeleteDepartment` a `UpdateDepartment` nahraďte existující volání `context.SaveChanges()` voláním `SaveChanges()`, aby bylo možné vyvolat novou metodu.
 
-### <a name="handling-concurrency-exceptions-in-the-presentation-layer"></a>Zpracování výjimky souběžnosti v prezentační vrstvě
+### <a name="handling-concurrency-exceptions-in-the-presentation-layer"></a>Zpracování výjimek souběžnosti v prezentační vrstvě
 
-Otevřít *Departments.aspx* a přidat `OnDeleted="DepartmentsObjectDataSource_Deleted"` atribut `DepartmentsObjectDataSource` ovládacího prvku. Počáteční značka pro ovládací prvek bude nyní vypadat podobně jako v následujícím příkladu.
+Otevřete panel *oddělení. aspx* a přidejte `OnDeleted="DepartmentsObjectDataSource_Deleted"` atribut pro ovládací prvek `DepartmentsObjectDataSource`. Otevírací značka ovládacího prvku bude nyní vypadat podobně jako v následujícím příkladu.
 
 [!code-aspx[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample3.aspx)]
 
-V `DepartmentsGridView` řídit, zadejte možnost all sloupců tabulky podle `DataKeyNames` atributu, jak je znázorněno v následujícím příkladu. Všimněte si, že tím se vytvoří zobrazení velmi velkého pole stavu, což je jedním z důvodů důvod, proč pomocí sledování pole je obecně preferovaný způsob, jak sledovat konfliktů souběžnosti.
+V ovládacím prvku `DepartmentsGridView` zadejte všechny sloupce tabulky v atributu `DataKeyNames`, jak je znázorněno v následujícím příkladu. Všimněte si, že se tím vytvoří velmi rozsáhlá pole stavu zobrazení, což je jeden z důvodů, proč použití sledovacího pole obvykle představuje preferovaný způsob, jak sledovat konflikty souběžnosti.
 
 [!code-aspx[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample4.aspx)]
 
-Otevřít *Departments.aspx.cs* a přidejte následující `using` příkaz `System.Data` obor názvů:
+Otevřete *departments.aspx.cs* a přidejte následující příkaz `using` pro obor názvů `System.Data`:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample5.cs)]
 
-Přidejte následující novou metodu, která bude volat z ovládacího prvku zdroje dat `Updated` a `Deleted` obslužné rutiny událostí pro zpracování výjimky souběžnosti:
+Přidejte následující novou metodu, kterou budete volat z `Updated` a obslužné rutiny události `Deleted` ovládacího prvku zdroje dat pro zpracování výjimek souběžnosti:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample6.cs)]
 
-Tento kód ověří typ výjimky, a pokud se jedná výjimky souběžnosti, kód dynamicky vytvoří `CustomValidator` ovládací prvek, který se pak zobrazí zprávu v `ValidationSummary` ovládacího prvku.
+Tento kód kontroluje typ výjimky, a pokud se jedná o výjimku souběžnosti, kód dynamicky vytvoří ovládací prvek `CustomValidator`, který zase zobrazí zprávu v ovládacím prvku `ValidationSummary`.
 
-Zavolat novou metodu z `Updated` obslužná rutina události, které jste přidali dříve. Kromě toho, vytvořte nový `Deleted` obslužná rutina události, která volá metodu stejné (ale nebude dělat nic jiného):
+Zavolejte novou metodu z obslužné rutiny události `Updated`, kterou jste přidali dříve. Kromě toho vytvořte novou `Deleted` obslužnou rutinu události, která volá stejnou metodu (ale neprovede žádnou jinou):
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample7.cs)]
 
-### <a name="testing-optimistic-concurrency-in-the-departments-page"></a>Na stránce oddělení testování optimistického řízení souběžnosti
+### <a name="testing-optimistic-concurrency-in-the-departments-page"></a>Testování optimistické souběžnosti na stránce oddělení
 
-Spustit *Departments.aspx* stránky.
+Spusťte stránku *oddělení. aspx* .
 
 [![Image17](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image14.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image13.png)
 
-Klikněte na tlačítko **upravit** v řádku a změňte hodnotu v **rozpočtu** sloupce. (Mějte na paměti, že lze upravit pouze záznamy, které jste vytvořili pro účely tohoto kurzu, protože stávající `School` záznamy v databázi obsahují neplatná data. Záznam pro oddělení hospodárnost je bezpečné můžete experimentovat.)
+V řádku klikněte na **Upravit** a změňte hodnotu ve sloupci **rozpočet** . (Nezapomeňte, že můžete upravovat jenom záznamy, které jste pro tento kurz vytvořili, protože existující záznamy `School` databáze obsahují neplatná data. Záznam pro ekonomické oddělení je bezpečný pro experimentování s.)
 
 [![Image18](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image16.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image15.png)
 
-Otevřete nové okno prohlížeče a spusťte znovu stránky (zkopírovat adresu URL z pole adresy první okno prohlížeče na druhé okno prohlížeče).
+Otevřete nové okno prohlížeče a znovu spusťte stránku (zkopírujte adresu URL z pole adresa prvního okna prohlížeče do druhého okna prohlížeče).
 
 [![Image17](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image18.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image17.png)
 
-Klikněte na tlačítko **upravit** ve stejném řádku jste upravili v předchozích krocích a změnit **rozpočtu** hodnotu na něco jiného.
+Klikněte na **Upravit** ve stejném řádku, který jste upravovali dříve, a změňte hodnotu **rozpočtu** na jinou.
 
 [![Image19](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image20.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image19.png)
 
-V druhém okně prohlížeče, klikněte na tlačítko **aktualizace**. **Rozpočtu** částka se úspěšně změnil na této nové hodnoty.
+V druhém okně prohlížeče klikněte na **aktualizovat**. Částka **rozpočtu** se úspěšně změnila na tuto novou hodnotu.
 
 [![Image20](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image22.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image21.png)
 
-V prvním okně prohlížeče, klikněte na tlačítko **aktualizace**. Aktualizace se nezdaří. **Rozpočtu** částka se zobrazí znovu pomocí hodnotu nastavenou v druhém okně prohlížeče a zobrazí chybovou zprávu.
+V prvním okně prohlížeče klikněte na **aktualizovat**. Aktualizace se nezdařila. Částka **rozpočtu** se znovu zobrazí pomocí hodnoty, kterou jste nastavili v druhém okně prohlížeče, a zobrazí se chybová zpráva.
 
 [![Image21](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image24.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image23.png)
 
-## <a name="handling-optimistic-concurrency-using-a-tracking-property"></a>Zpracování pomocí vlastnosti sledování do optimistického řízení souběžnosti
+## <a name="handling-optimistic-concurrency-using-a-tracking-property"></a>Zpracování optimistického řízení souběžnosti pomocí vlastnosti sledování
 
-Pro zpracování optimistického řízení souběžnosti, který má vlastnosti sledování do entity, se dokončí následující úkoly:
+Chcete-li zpracovat optimistickou souběžnost pro entitu, která má vlastnost sledování, proveďte následující úlohy:
 
-- Přidat uložené procedury do datového modelu pro správu `OfficeAssignment` entity. (Vlastnosti sledování a uložené procedury nemusí být použity současně, jsou právě seskupeny dohromady zde ukázky)
-- Přidejte metody CRUD vrstvy DAL a BLL pro `OfficeAssignment` entitami, včetně kód pro zpracování výjimek optimistického řízení souběžnosti v vrstvy DAL.
-- Vytvořte webovou stránku office přiřazení.
-- Otestujte optimistického řízení souběžnosti v nové webové stránky.
+- Přidejte uložené procedury do datového modelu pro správu `OfficeAssignment` entit. (Vlastnosti sledování a uložené procedury nemusejí být používány dohromady. jsou zde pouze seskupeny na ilustraci.)
+- Přidejte metody CRUD do DAL a knihoven BLL pro `OfficeAssignment` entit, včetně kódu pro zpracování optimistických výjimek souběžnosti v DAL.
+- Vytvoří webovou stránku přiřazení Office.
+- Otestujte optimistickou souběžnost na nové webové stránce.
 
-### <a name="adding-officeassignment-stored-procedures-to-the-data-model"></a>Přidání OfficeAssignment uložené procedury do datového modelu
+### <a name="adding-officeassignment-stored-procedures-to-the-data-model"></a>Přidání uložených procedur OfficeAssignment do datového modelu
 
-Otevřít *SchoolModel.edmx* soubor v Návrháři modelů klikněte pravým tlačítkem na návrhové ploše a klikněte na tlačítko **aktualizace modelů z databáze**. V **přidat** karty **zvolte vaše databázové objekty** dialogového okna rozbalte **uložené procedury** a vyberte tři `OfficeAssignment` uložených procedur komponentami TableAdapter (naleznete v tématu Následující snímek obrazovky) a potom klikněte na tlačítko **Dokončit**. (Tyto uložené procedury bylo již v databázi při jste stáhli nebo vytvořili pomocí skriptu.)
+Otevřete soubor *SchoolModel. edmx* v Návrháři modelů, klikněte pravým tlačítkem myši na návrhovou plochu a klikněte na příkaz **aktualizovat model z databáze**. Na kartě **Přidat** dialogového okna **zvolit objekty databáze** rozbalte **uložené procedury** a vyberte tři `OfficeAssignment` uložené procedury (viz následující snímek obrazovky) a pak klikněte na **Dokončit**. (Tyto uložené procedury byly již v databázi v době, kdy jste je stáhli nebo vytvořili pomocí skriptu.)
 
 [![Image02](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image26.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image25.png)
 
-Klikněte pravým tlačítkem myši `OfficeAssignment` entity a vyberte **mapování uložené procedury**.
+Klikněte pravým tlačítkem na entitu `OfficeAssignment` a vyberte **mapování uložených procedur**.
 
 [![Image03](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image28.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image27.png)
 
-Nastavte **vložit**, **aktualizace**, a **odstranit** funkce použít odpovídající uložené procedury. Pro `OrigTimestamp` parametr `Update` fungovat, nastavte **vlastnost** k `Timestamp` a vyberte **původní hodnotu použití** možnost.
+Nastavte funkce **INSERT**, **Update**a **Delete** tak, aby používaly odpovídající uložené procedury. Pro parametr `OrigTimestamp` funkce `Update` nastavte **vlastnost** na hodnotu `Timestamp` a vyberte možnost **použít původní hodnotu** .
 
 [![Image04](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image30.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image29.png)
 
-Když volá rozhraní Entity Framework `UpdateOfficeAssignment` uložené procedury, předá se původní hodnoty `Timestamp` sloupec v `OrigTimestamp` parametr. Uložená procedura použije tento parametr v jeho `Where` klauzule:
+Když Entity Framework volá uloženou proceduru `UpdateOfficeAssignment`, předáte původní hodnotu sloupce `Timestamp` v parametru `OrigTimestamp`. Uložená procedura používá tento parametr v klauzuli `Where`:
 
 [!code-sql[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample8.sql)]
 
-Uložená procedura také vybere novou hodnotu `Timestamp` sloupec po aktualizaci tak, aby rozhraní Entity Framework můžete ponechat `OfficeAssignment` entity, která je v paměti synchronizované s odpovídající řádek.
+Uložená procedura také vybere novou hodnotu sloupce `Timestamp` po aktualizaci tak, aby Entity Framework mohl ponechat entitu `OfficeAssignment`, která je v paměti, synchronizována s odpovídajícím řádkem databáze.
 
-(Všimněte si, že nemá uložené procedury pro odstranění přiřazení kanceláře `OrigTimestamp` parametru. Z tohoto důvodu Entity Framework nelze ověřit, že je před jejím odstraněním beze změny entity.)
+(Všimněte si, že úložná procedura pro odstranění přiřazení kanceláře neobsahuje parametr `OrigTimestamp`. Z tohoto důvodu Entity Framework nemůže před odstraněním ověřit, zda je entita beze změny.)
 
 Uložte a zavřete datový model.
 
-### <a name="adding-officeassignment-methods-to-the-dal"></a>Přidání metody OfficeAssignment vrstvy Dal
+### <a name="adding-officeassignment-methods-to-the-dal"></a>Přidání metod OfficeAssignment do DAL
 
-Otevřít *ISchoolRepository.cs* a přidejte následující metody CRUD pro `OfficeAssignment` sady entit:
+Otevřete *ISchoolRepository.cs* a přidejte následující metody CRUD pro sadu entit `OfficeAssignment`:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample9.cs)]
 
-Přidejte následující nové metody, které *SchoolRepository.cs*. V `UpdateOfficeAssignment` metodu zavoláte místní `SaveChanges` metoda místo `context.SaveChanges`.
+Do *SchoolRepository.cs*přidejte následující nové metody. V metodě `UpdateOfficeAssignment` zavoláte místní metodu `SaveChanges` namísto `context.SaveChanges`.
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample10.cs)]
 
-V projektu testů otevřete *MockSchoolRepository.cs* a přidejte následující `OfficeAssignment` kolekce a CRUD metody k němu. (Mock úložiště musí implementovat rozhraní úložiště nebo řešení nebude kompilovat.)
+V projektu testu otevřete *MockSchoolRepository.cs* a přidejte do něj následující kolekce `OfficeAssignment` a metody CRUD. (Maketa úložiště musí implementovat rozhraní úložiště, jinak se řešení nezkompiluje.)
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample11.cs)]
 
-### <a name="adding-officeassignment-methods-to-the-bll"></a>Přidání metody OfficeAssignment BLL
+### <a name="adding-officeassignment-methods-to-the-bll"></a>Přidání metod OfficeAssignment do knihoven BLL
 
-V hlavním projektu otevřete *SchoolBL.cs* a přidejte následující metody CRUD pro `OfficeAssignment` sada entit k ní:
+V hlavním projektu otevřete *SchoolBL.cs* a přidejte následující metody CRUD pro `OfficeAssignment` sadu entit:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample12.cs)]
 
 ## <a name="creating-an-officeassignments-web-page"></a>Vytvoření webové stránky OfficeAssignments
 
-Vytvořit novou webovou stránku, která používá *Site.Master* stránku předlohy a pojmenujte ho *OfficeAssignments.aspx*. Přidejte následující kód k `Content` ovládací prvek s názvem `Content2`:
+Vytvořte novou webovou stránku, která používá hlavní stránku *Web. Master* a pojmenujte ji *OfficeAssignments. aspx*. Přidejte následující značku do ovládacího prvku `Content` s názvem `Content2`:
 
 [!code-aspx[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample13.aspx)]
 
-Všimněte si, že v `DataKeyNames` atribut, určuje kód `Timestamp` vlastnosti, jakož i klíč záznamu (`InstructorID`). Zadání vlastnosti `DataKeyNames` atribut způsobí, že ovládací prvek k jejich uložení v stav ovládacího prvku (které je podobné zobrazení stavu) tak, že původní hodnoty jsou k dispozici během zpracování zpětného volání.
+Všimněte si, že v atributu `DataKeyNames` značka určuje vlastnost `Timestamp` a také klíč záznamu (`InstructorID`). Určení vlastností v atributu `DataKeyNames` způsobí, že ovládací prvek je uloží do stavu ovládacího prvku (což je podobně jako stav zobrazení), takže původní hodnoty jsou k dispozici během zpracování zpětného volání.
 
-Pokud jste neprovedli `Timestamp` hodnotu, Entity Framework nemusí ho `Where` klauzule SQL `Update` příkazu. V důsledku nic bude nalezen aktualizovat. V důsledku toho by Entity Framework vyvolat výjimku optimistického řízení souběžnosti pokaždé, když `OfficeAssignment` se aktualizuje entitu.
+Pokud jste hodnotu `Timestamp` neuložili, Entity Framework by ji neobsahovala pro klauzuli `Where` příkazu SQL `Update`. V důsledku toho by se nenašly žádné aktualizace. V důsledku toho Entity Framework vyvolat výjimku optimistické souběžnosti pokaždé, když se aktualizuje entita `OfficeAssignment`.
 
-Otevřít *OfficeAssignments.aspx.cs* a přidejte následující `using` příkaz pro vrstvy přístupu k datům:
+Otevřete *OfficeAssignments.aspx.cs* a přidejte následující příkaz `using` pro vrstvu přístupu k datům:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample14.cs)]
 
-Přidejte následující `Page_Init` metodu, která povoluje funkce Dynamická Data. Také přidejte následující obslužnou rutinu pro `ObjectDataSource` ovládacího prvku `Updated` událostí za účelem ověření chyby souběžnosti:
+Přidejte následující metodu `Page_Init`, která umožňuje funkci dynamického data. Přidejte také následující obslužnou rutinu pro událost `Updated` ovládacího prvku `ObjectDataSource`, aby bylo možné zjistit chyby souběžnosti:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample15.cs)]
 
-### <a name="testing-optimistic-concurrency-in-the-officeassignments-page"></a>Na stránce OfficeAssignments testování optimistického řízení souběžnosti
+### <a name="testing-optimistic-concurrency-in-the-officeassignments-page"></a>Testování optimistické souběžnosti na stránce OfficeAssignments
 
-Spustit *OfficeAssignments.aspx* stránky.
+Spusťte stránku *OfficeAssignments. aspx* .
 
 [![Image10](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image32.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image31.png)
 
-Klikněte na tlačítko **upravit** v řádku a změňte hodnotu v **umístění** sloupce.
+V řádku klikněte na **Upravit** a změňte hodnotu ve sloupci **umístění** .
 
 [![Image11](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image34.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image33.png)
 
-Otevřete nové okno prohlížeče a spusťte znovu stránku (zkopírovat adresu URL z první okno prohlížeče na druhé okno prohlížeče).
+Otevřete nové okno prohlížeče a znovu spusťte stránku (zkopírujte adresu URL z prvního okna prohlížeče do druhého okna prohlížeče).
 
 [![Image10](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image36.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image35.png)
 
-Klikněte na tlačítko **upravit** ve stejném řádku jste upravili v předchozích krocích a změnit **umístění** hodnotu na něco jiného.
+Klikněte na **Upravit** ve stejném řádku, který jste upravovali dříve, a změňte hodnotu **umístění** na jinou.
 
 [![Image12](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image38.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image37.png)
 
-V druhém okně prohlížeče, klikněte na tlačítko **aktualizace**.
+V druhém okně prohlížeče klikněte na **aktualizovat**.
 
 [![Image13](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image40.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image39.png)
 
-Přepněte na první okno prohlížeče a klikněte na tlačítko **aktualizace**.
+Přepněte do prvního okna prohlížeče a klikněte na **aktualizovat**.
 
 [![Image15](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image42.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image41.png)
 
-Zobrazí chybová zpráva a **umístění** hodnota se aktualizovala na Zobrazit hodnotu ho na změně v druhém okně prohlížeče.
+Zobrazí se chybová zpráva a hodnota **umístění** byla aktualizována, aby se zobrazila hodnota, na kterou jste změnili v druhém okně prohlížeče.
 
-## <a name="handling-concurrency-with-the-entitydatasource-control"></a>Ošetření souběžnosti s ovládacím prvkem EntityDataSource
+## <a name="handling-concurrency-with-the-entitydatasource-control"></a>Zpracování souběžnosti s ovládacím prvkem EntityDataSource
 
-`EntityDataSource` Ovládací prvek obsahuje integrovanou logikou, která rozpozná nastavení souběžnosti v datovém modelu a popisovače aktualizační a odstraňovací operace odpovídajícím způsobem. Nicméně, stejně jako u všech výjimek, musí zpracovat `OptimisticConcurrencyException` výjimky sami negace popisnou chybovou zprávu.
+Ovládací prvek `EntityDataSource` obsahuje vestavěnou logiku, která rozpoznává nastavení souběžnosti v datovém modelu a zpracovává odpovídající operace aktualizace a odstranění. Stejně jako u všech výjimek je však nutné zpracovat výjimky `OptimisticConcurrencyException` sami, aby bylo možné zadat uživatelsky přívětivou chybovou zprávu.
 
-Dále je nutné nakonfigurovat *Courses.aspx* stránky (který používá `EntityDataSource` ovládací prvek) Chcete-li povolit aktualizaci a odstraňování a se zobrazí chybová zpráva, pokud dojde ke konfliktu souběžnosti. `Course` Entita nemá souběžnosti sledování sloupců, což vám umožní používat stejné metody, které jste prováděli pomocí `Department` entity: sledování hodnoty všech vlastností neklíčovým.
+Dále nakonfigurujete stránku *kurzy. aspx* (která používá ovládací prvek `EntityDataSource`) k povolení operací aktualizace a odstranění a k zobrazení chybové zprávy, pokud dojde ke konfliktu souběžnosti. Entita `Course` nemá sloupec sledování souběžnosti, takže budete používat stejnou metodu, kterou jste provedli s entitou `Department`: Sledujte hodnoty všech neklíčových vlastností.
 
-Otevřít *SchoolModel.edmx* souboru. Pro vlastnosti neklíčovým `Course` entity (`Title`, `Credits`, a `DepartmentID`), můžete nastavit **souběžný režim** vlastnost `Fixed`. Potom uložte a zavřete datový model.
+Otevřete soubor *SchoolModel. edmx* . Pro neklíčové vlastnosti entity `Course` (`Title`, `Credits`a `DepartmentID`) nastavte vlastnost **režim souběžnosti** na `Fixed`. Pak datový model uložte a zavřete.
 
-Otevřít *Courses.aspx* stránce a proveďte následující změny:
+Otevřete stránku *kurzy. aspx* a proveďte následující změny:
 
-- V `CoursesEntityDataSource` řídit, přidejte `EnableUpdate="true"` a `EnableDelete="true"` atributy. Počáteční značka pro tento ovládací prvek teď vypadá podobně jako v následujícím příkladu:
+- V ovládacím prvku `CoursesEntityDataSource` přidejte atributy `EnableUpdate="true"` a `EnableDelete="true"`. Otevírací značka pro tento ovládací prvek teď vypadá podobně jako v následujícím příkladu:
 
     [!code-aspx[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample16.aspx)]
-- V `CoursesGridView` řídit, změnit `DataKeyNames` atribut hodnotu `"CourseID,Title,Credits,DepartmentID"`. Pak přidejte `CommandField` element `Columns` element, který ukazuje **upravit** a **odstranit** tlačítka (`<asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />`). `GridView` Ovládací prvek teď vypadá podobně jako v následujícím příkladu:
+- V ovládacím prvku `CoursesGridView` změňte hodnotu atributu `DataKeyNames` na `"CourseID,Title,Credits,DepartmentID"`. Pak přidejte `CommandField` element do prvku `Columns`, který zobrazuje tlačítka **Upravit** a **Odstranit** (`<asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />`). Ovládací prvek `GridView` se teď podobá následujícímu příkladu:
 
     [!code-aspx[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample17.aspx)]
 
-Spuštění stránky a vytvořte konflikt situaci jako předtím na stránce oddělení. Spuštění stránky v dvě okna prohlížeče, klikněte na tlačítko **upravit** ve stejném řádku v každé okno a různých změnu provést v každém z nich. Klikněte na tlačítko **aktualizace** v jednom okně a pak klikněte na tlačítko **aktualizace** v druhém okně. Po kliknutí na **aktualizace** podruhé, zobrazit chybovou stránku, která je výsledkem výjimka neošetřená souběžnosti.
+Spusťte stránku a na stránce oddělení vytvořte situaci, ve které došlo ke konfliktu. Spusťte stránku ve dvou oknech prohlížeče, v každém okně klikněte na **Upravit** na stejném řádku a udělejte v každém z nich jinou změnu. V jednom okně klikněte na **aktualizovat** a potom v druhém okně klikněte na **aktualizovat** . Když kliknete na **aktualizovat** podruhé, zobrazí se chybová stránka, která bude mít za následek neošetřenou výjimku souběžnosti.
 
 [![Image22](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image44.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image43.png)
 
-Zpracovat tuto chybu způsobem, který je velmi podobný způsob pro zpracování `ObjectDataSource` ovládacího prvku. Otevřít *Courses.aspx* stránky a `CoursesEntityDataSource` ovládacího prvku, určují obslužné rutiny pro `Deleted` a `Updated` události. Počáteční značka ovládacího prvku teď vypadá podobně jako v následujícím příkladu:
+Tato chyba se zpracovává způsobem velmi podobným způsobu, jakým jste ji zpracovali pro ovládací prvek `ObjectDataSource`. Otevřete stránku *kurzy. aspx* a v ovládacím prvku `CoursesEntityDataSource` určete obslužné rutiny pro události `Deleted` a `Updated`. Otevírací značka ovládacího prvku teď vypadá podobně jako v následujícím příkladu:
 
 [!code-aspx[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample18.aspx)]
 
-Před `CoursesGridView` řídit, přidejte následující `ValidationSummary` ovládacího prvku:
+Před ovládacím prvkem `CoursesGridView` přidejte následující ovládací prvek `ValidationSummary`:
 
 [!code-aspx[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample19.aspx)]
 
-V *Courses.aspx.cs*, přidejte `using` příkaz pro `System.Data` obor názvů, přidejte metodu, která kontroluje výjimky souběžnosti a přidejte obslužné rutiny pro `EntityDataSource` ovládacího prvku `Updated` a `Deleted`obslužné rutiny. Kód bude vypadat nějak takto:
+V *courses.aspx.cs*přidejte příkaz `using` pro `System.Data` oboru názvů, přidejte metodu, která kontroluje výjimky souběžnosti, a přidejte obslužné rutiny pro `Updated` a `Deleted` obslužné rutiny ovládacího prvku `EntityDataSource`. Kód bude vypadat jako následující:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample20.cs)]
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/samples/sample21.cs)]
 
-Jediným rozdílem mezi tímto kódem a jaké kroky jste provedli `ObjectDataSource` ovládací prvek je, že v tomto případě výjimky souběžnosti v `Exception` vlastnost objektu argumenty události, nikoli v tuto výjimku `InnerException` vlastnost.
+Jediný rozdíl mezi tímto kódem a to, co jste použili pro ovládací prvek `ObjectDataSource` je, že v tomto případě je výjimka souběžnosti ve vlastnosti `Exception` objektu argumenty události, nikoli v této vlastnosti `InnerException` této výjimky.
 
-Spuštění stránky a znovu vytvořit ke konfliktu souběžnosti. Tentokrát se zobrazí chybová zpráva:
+Spusťte stránku a vytvořte konflikt souběžnosti znovu. Tentokrát se zobrazí chybová zpráva:
 
 [![Image23](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image46.png)](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application/_static/image45.png)
 
-Dokončení tohoto postupu Úvod ke zpracování konfliktů souběžnosti. V dalším kurzu najdete pokyny k vylepšení výkonu ve webové aplikaci, která používá Entity Framework.
+Tím se dokončí Úvod ke zpracování konfliktů souběžnosti. V dalším kurzu se dozvíte, jak zvýšit výkon webové aplikace, která používá Entity Framework.
 
 > [!div class="step-by-step"]
 > [Předchozí](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
-> [další](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)
+> [Další](maximizing-performance-with-the-entity-framework-in-an-asp-net-web-application.md)

@@ -1,23 +1,23 @@
 ---
 uid: web-api/overview/web-api-routing-and-actions/index
-title: Směrování webového rozhraní API | Dokumentace Microsoftu
+title: Směrování webového rozhraní API | Microsoft Docs
 author: rick-anderson
-description: Jak rozhraní ASP.NET Web API směruje žádosti HTTP do kontrolerů a akcí.
+description: Jak webové rozhraní API ASP.NET směruje požadavky HTTP na řadiče a akce.
 ms.author: riande
 ms.date: 01/26/2012
 ms.assetid: 8447679a-2556-4411-b758-bbe55cfa4805
 msc.legacyurl: /web-api/overview/web-api-routing-and-actions
 msc.type: chapter
 ms.openlocfilehash: 965fb110e1c42d8e6ebe198da4a904e1601bcf29
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133665"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78614616"
 ---
 # <a name="web-api-routing"></a>Směrování webového rozhraní API
 
-> Jak rozhraní ASP.NET Web API směruje žádosti HTTP do kontrolerů a akcí.
+> Jak webové rozhraní API ASP.NET směruje požadavky HTTP na řadiče a akce.
 
 - [Směrování ve webovém rozhraní API](routing-in-aspnet-web-api.md)
 - [Směrování a výběr akce ve webovém rozhraní API](routing-and-action-selection.md)

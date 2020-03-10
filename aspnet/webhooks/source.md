@@ -7,11 +7,11 @@ ms.author: riande
 ms.date: 01/17/2012
 ms.assetid: 91a62bfa-ea3a-41f9-a2e1-e90d2c8fc8ca
 ms.openlocfilehash: 8d07848754d9efda9c893b8ba54ac6d0c0214a53
-ms.sourcegitcommit: b95316530fa51087d6c400ff91814fe37e73f7e8
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70000705"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78633061"
 ---
 # <a name="aspnet-webhooks-source-code-and-nuget-packages"></a>Zdrojový kód Webhooku ASP.NET a balíčky NuGet
 
@@ -23,8 +23,8 @@ Tato online dokumentace, kterou právě čtete, je také hostována jako [Open s
 
 [Balíčky NuGet](https://nuget.org/packages?q=Microsoft.AspNet.WebHooks) jsou rozdělené na tři části:
 
-* [Běžné](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Common): Společný balíček, který je sdílen mezi odesílateli a přijímači.
+* [Běžný](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Common): společný balíček, který je sdílen mezi odesílateli a přijímači.
 
-* [Odesílatel](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Custom): Sada balíčků, které podporují odesílání vlastních webhooků jiným uživatelům. Funkce pro odesílání webhooků je podrobněji popsána v tématu [odesílání](sending/senders.md)webhooků.
+* [Odesilatel](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Custom): sada balíčků, které podporují odesílání vlastních webhooků jiným uživatelům. Funkce pro odesílání webhooků je podrobněji popsána v tématu [odesílání webhooků](sending/senders.md).
 
-* [Přijímače](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers): Sada balíčků podporující příjem webhooků od ostatních. Funkce pro příjem webhooků je podrobněji popsána v tématu [příjem](receiving/index.md)webhooků.
+* [Přijímače](https://www.nuget.org/packages?q=Microsoft.AspNet.WebHooks.Receivers): sada balíčků podporující příjem webhooků od ostatních. Funkce pro příjem webhooků je podrobněji popsána v tématu [příjem webhooků](receiving/index.md).

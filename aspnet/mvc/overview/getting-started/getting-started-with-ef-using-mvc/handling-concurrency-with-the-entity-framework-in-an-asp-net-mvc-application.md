@@ -1,7 +1,7 @@
 ---
 uid: mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
-title: 'Kurz: Popisovač souběžnosti ovládacím prvkem EF v aplikaci ASP.NET MVC 5'
-description: Tento kurz ukazuje, jak použít optimistické řízení souběžnosti řešit konflikty při více uživatelů aktualizovat stejná entita ve stejnou dobu.
+title: 'Kurz: zpracování souběžnosti s EF v aplikaci ASP.NET MVC 5'
+description: V tomto kurzu se dozvíte, jak používat optimistickou souběžnost ke zpracování konfliktů, když více uživatelů aktualizuje stejnou entitu ve stejnou dobu.
 author: tdykstra
 ms.author: riande
 ms.topic: tutorial
@@ -10,15 +10,15 @@ ms.assetid: be0c098a-1fb2-457e-b815-ddca601afc65
 msc.legacyurl: /mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
 ms.openlocfilehash: 43c5fdff5601c9bff32300d3460de0079a498d28
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65120915"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616107"
 ---
-# <a name="tutorial-handle-concurrency-with-ef-in-an-aspnet-mvc-5-app"></a>Kurz: Popisovač souběžnosti ovládacím prvkem EF v aplikaci ASP.NET MVC 5
+# <a name="tutorial-handle-concurrency-with-ef-in-an-aspnet-mvc-5-app"></a>Kurz: zpracování souběžnosti s EF v aplikaci ASP.NET MVC 5
 
-V předchozích kurzech jste zjistili, jak aktualizovat data. Tento kurz ukazuje, jak použít optimistické řízení souběžnosti řešit konflikty při více uživatelů aktualizovat stejná entita ve stejnou dobu. Změnit webové stránky, které využívají službu `Department` entity tak, aby se zpracování chyb souběžnosti. Upravit a odstranit stránky, včetně některé zprávy, které se zobrazí, pokud dojde ke konfliktu souběžnosti na následujících obrázcích.
+V předchozích kurzech jste zjistili, jak aktualizovat data. V tomto kurzu se dozvíte, jak používat optimistickou souběžnost ke zpracování konfliktů, když více uživatelů aktualizuje stejnou entitu ve stejnou dobu. Webové stránky, které pracují s entitou `Department`, změníte tak, aby zpracovaly chyby souběžnosti. Následující ilustrace znázorňují stránky upravit a odstranit, včetně některých zpráv zobrazených v případě, že dojde ke konfliktu souběžnosti.
 
 ![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
 
@@ -27,208 +27,208 @@ V předchozích kurzech jste zjistili, jak aktualizovat data. Tento kurz ukazuje
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Další informace o konfliktů souběžnosti
-> * Přidat optimistického řízení souběžnosti
-> * Změna kontroleru oddělení
-> * Test souběžného zpracování
+> * Další informace o konfliktech souběžnosti
+> * Přidat optimistickou souběžnost
+> * Upravit kontroler oddělení
+> * Zpracování souběžnosti testů
 > * Aktualizovat stránku Delete
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Async a uložené procedury](async-and-stored-procedures-with-the-entity-framework-in-an-asp-net-mvc-application.md)
 
 ## <a name="concurrency-conflicts"></a>Konflikty souběžnosti
 
-Ke konfliktu souběžnosti dochází, když jeden uživatel zobrazuje entity data abyste ji mohli editovat a aktualizuje stejné entity data jiným uživatelem než změnu první uživatele je zapsána do databáze. Pokud nepovolíte detekce takové konflikty je, kdo aktualizuje databázi poslední přepíše změny dalších uživatelů. V mnoha aplikacích je přijatelné toto riziko: Pokud existuje několik uživatelů nebo několik aktualizací, nebo pokud není skutečně důležité, pokud některé změny budou přepsány, výhody vyváží nižší náklady na programování pro souběžnost. V takovém případě není nutné nakonfigurovat aplikaci pro zpracování konfliktů souběžnosti.
+Ke konfliktu souběžnosti dojde, když jeden uživatel zobrazuje data entity, aby je mohl upravit, a poté jiný uživatel aktualizuje data stejné entity před zápisem prvního uživatele do databáze. Pokud nepovolíte detekci takových konfliktů, si aktualizace databáze poslední přepíše změny provedené ostatními uživateli. V mnoha aplikacích je toto riziko přijatelné: v případě, že existuje několik uživatelů nebo málo aktualizací, nebo pokud jsou nějaké změny přepsány, náklady na programování pro souběžnost můžou převážit výhody. V takovém případě nemusíte konfigurovat aplikaci pro zpracování konfliktů souběžnosti.
 
-### <a name="pessimistic-concurrency-locking"></a>Pesimistická souběžnost (uzamčení)
+### <a name="pessimistic-concurrency-locking"></a>Pesimistická souběžnost (uzamykání)
 
-Pokud vaše aplikace potřebuje se tak ztrátě dat ve scénářích souběžnosti, je to udělat jedním ze způsobů použití uzamčení databáze. Tento postup se nazývá *Pesimistická souběžnost*. Například předtím, než se pustíte do čtení řádku z databáze, můžete požádat o zámek pro jen pro čtení nebo pro přístup k aktualizaci. Pokud řádek pro aktualizaci přístup, žádné uživatelé můžou zamknout řádku, buď pro jen pro čtení nebo aktualizaci přístup, protože by dostanou kopii dat, která se právě mění. Pokud řádek pro přístup jen pro čtení, ostatní také zařízení Uzamknout pro přístup jen pro čtení, ale ne pro aktualizace.
+Pokud vaše aplikace potřebuje zabránit náhodné ztrátě dat ve scénářích souběžnosti, stačí jeden způsob, jak to provést, pomocí zámků databáze. Tato metoda se nazývá *pesimistická souběžnost*. Například před čtením řádku z databáze si vyžádáte zámek jen pro čtení nebo pro přístup k aktualizacím. Pokud zamknete řádek pro přístup k aktualizacím, žádní jiní uživatelé nemůžou Uzamknout řádek buď pro čtení, nebo pro přístup k aktualizacím, protože by získali kopii dat, která se v procesu mění. Pokud zamknete řádek pro přístup jen pro čtení, můžou ho jiní uživatelé taky uzamknout pro přístup jen pro čtení, ale ne pro aktualizace.
 
-Zámky pro správu má nevýhody. Může být složité do programu. Vyžaduje významné databáze správy zdrojů, a to může způsobit problémy s výkonem jako počet uživatelů aplikace zvyšuje. Z těchto důvodů ne všechny systémy správy databáze nepodporují Pesimistická souběžnost. Entity Framework obsahuje předdefinovanou podporu pro ni a v tomto kurzu nezobrazí způsobu jeho implementace.
+Správa zámků má nevýhody. Může být komplexní pro program. Vyžaduje významné prostředky správy databáze a může způsobit problémy s výkonem, protože se zvyšuje počet uživatelů aplikace. Z těchto důvodů ne všechny systémy správy databáze podporují pesimistickou souběžnost. Entity Framework pro něj neposkytuje žádnou integrovanou podporu a v tomto kurzu se vám nezobrazí, jak ho implementovat.
 
 ### <a name="optimistic-concurrency"></a>Optimistická metoda souběžného zpracování
 
-Je alternativou k Pesimistická souběžnost *optimistického řízení souběžnosti*. Povolení konfliktů souběžnosti, která se provede a reaguje správně, pokud tomu znamená, že optimistického řízení souběžnosti. Například Jan spustí oddělení upravit stránku, změny **rozpočtu** velikost pro anglickou oddělení od $350,000.00 0.00 $.
+Alternativou k pesimistické souběžnosti je *Optimistická souběžnost*. Optimistická souběžnost znamená, že může dojít ke konfliktům souběžnosti a v případě, že je funguje správně. Například Jan spustí stránku pro úpravy oddělení, změní částku **rozpočtu** pro anglické oddělení z $350 000,00 na $0,00.
 
-Předtím, než Jan klikne **Uložit**, spustí Jana na stejnou stránku a změny **datum zahájení** pole z 9/1/2007 na verzi 8 nebo 8/2013.
+Až Jan klikne na **Uložit**, spustí Jana stejnou stránku a změní pole **počáteční datum** z 9/1/2007 na 8/8/2013.
 
-Jan klikne **Uložit** první a jeho změna návratu prohlížeč na indexovou stránku, pak Jana klikne vidí **Uložit**. Co bude dál se určuje podle způsobu zpracování konfliktů souběžnosti. Mezi možnosti patří následující:
+Jan klikne na **Uložit** jako první a uvidí jeho změnu, když se prohlížeč vrátí na stránku indexu, a potom Jana klikne na **Uložit**. Co bude dál se určuje podle způsobu zpracování konfliktů souběžnosti. Mezi tyto možnosti patří:
 
-- Můžete sledovat, které vlastnosti uživatele byl změněn a aktualizovat pouze odpovídající sloupce v databázi. V ukázkovém scénáři žádné by dojít ke ztrátě dat., protože různé vlastnosti byly aktualizovány dva uživatelé. Při příštím někdo přejde z anglické oddělení, uvidí John's a Jana změny – počáteční datum 8/8/2013 a rozpočtu nulové dolarů.
+- Můžete sledovat, kterou vlastnost uživatel změnil, a aktualizovat pouze odpovídající sloupce v databázi. V ukázkovém scénáři by se neztratila žádná data, protože dva uživatelé aktualizovali různé vlastnosti. Když někdo příště prochází v anglickém oddělení, uvidí změny Jan i Jana – počáteční datum 8/8/2013 a rozpočet s nulovými dolary.
 
-    Tato metoda aktualizace může snížit počet konflikty, ke kterým může dojít ke ztrátě, ale nemůže zamezení ztrátě dat, pokud dojde ke změně konkurenční na stejnou vlastnost entity. Ať už rozhraní Entity Framework funguje tímto způsobem závisí na implementace aktualizace kódu. Není často praktické ve webové aplikaci, protože to může vyžadovat spravovat velké množství stavu aby bylo možné udržovat přehled o všech původní hodnoty vlastností pro entitu a nové hodnoty. Správa velkého objemu stavu může ovlivnit výkon aplikace, protože ji vyžaduje prostředky serveru nebo musí být součástí webové stránky (například v skrytá pole) nebo do souboru cookie.
-- Můžete umožnit změnu Jana John's změna přepsána. Při příštím někdo přejde z anglické oddělení, uvidí 8/8/2013 a obnovený $350,000.00 hodnotu. Tento postup se nazývá *Wins, klient* nebo *poslední ve službě Wins* scénář. (Všechny hodnoty z klienta přednost co je v úložišti.) Jak jsme uvedli v úvodu do této části, pokud tak učiníte vytvářet kód pro zpracování souběžnosti, k tomu dochází automaticky.
-- Jana změny můžete zabránit aktualizují v databázi. By obvykle zobrazí chybovou zprávu, zobrazit její aktuální stav dat a povolit jí znovu použít své změny, pokud chce je. Tento postup se nazývá *Store Wins* scénář. (Hodnoty úložiště dat přednost hodnoty odeslány klientem.) V tomto kurzu budete implementovat scénář Store Wins. Tato metoda zajišťuje, že se žádné změny přepsán, aniž by uživatel se zobrazí upozornění na co se děje.
+    Tato metoda aktualizace může snížit počet konfliktů, které by mohly mít za následek ztrátu dat, ale nemůže se vyhnout ztrátě dat, pokud se ve stejné vlastnosti entity provedou konkurenční změny. To, zda Entity Framework funguje tímto způsobem závisí na způsobu implementace kódu aktualizace. V rámci webové aplikace to často není praktické, protože může vyžadovat, abyste zachovali velké množství stavu, aby bylo možné sledovat všechny původní hodnoty vlastností pro entitu a také nové hodnoty. Udržování velkých objemů stavu může ovlivnit výkon aplikace, protože buď vyžaduje prostředky serveru, nebo musí být součástí samotné webové stránky (například v skrytých polích) nebo v souboru cookie.
+- Můžete nechat změnu přepsat Jan. Když někdo příště prochází v anglickém oddělení, uvidí 8/8/2013 a obnovenou hodnotu $350 000,00. To se označuje jako *klient WINS* nebo *Poslední ve scénáři WINS* . (Všechny hodnoty z klienta mají přednost před tím, co je v úložišti dat.) Jak je uvedeno v části Úvod do této části, pokud neuděláte žádné kódování pro zpracování souběžnosti, k tomu dojde automaticky.
+- Můžete zabránit tomu, aby se změna v databázi nástroje Jana aktualizovala. Obvykle by se zobrazila chybová zpráva, zobrazila se její aktuální stav dat a umožní jí, aby znovu použila změny, pokud je stále chce udělat. To se označuje jako scénář *služby WINS pro Store* . (Hodnoty úložiště dat mají přednost před hodnotami odeslanými klientem.) V tomto kurzu implementujete scénář služby WINS pro Store. Tato metoda zajistí, že nedojde k přepsání žádné změny bez upozornění uživatele na to, co se děje.
 
 ### <a name="detecting-concurrency-conflicts"></a>Zjišťování konfliktů souběžnosti
 
-Konflikty lze vyřešit zpracování [OptimisticConcurrencyException](https://msdn.microsoft.com/library/system.data.optimisticconcurrencyexception.aspx) výjimky, které vyvolá rozhraní Entity Framework. Pokud chcete zjistit, kdy se má vyvolat tyto výjimky, musí být schopen rozpoznat konflikty Entity Framework. Proto je nutné nakonfigurovat databázi a datový model odpovídajícím způsobem. Některé možnosti aktivace zjišťování konfliktů, patří:
+Konflikty můžete vyřešit zpracováním výjimek [OptimisticConcurrencyException](https://msdn.microsoft.com/library/system.data.optimisticconcurrencyexception.aspx) , které Entity Framework vyvolá. Chcete-li zjistit, kdy vyvolat tyto výjimky, Entity Framework musí být schopna detekovat konflikty. Proto je nutné správně nakonfigurovat databázi a datový model. Mezi možnosti pro povolení detekce konfliktů patří následující:
 
-- V tabulce databáze zahrnují sledování sloupec, který slouží k určení, kdy změnil řádek. Potom můžete nakonfigurovat rozhraní Entity Framework patří tento sloupec ve `Where` klauzule SQL `Update` nebo `Delete` příkazy.
+- V tabulce databáze zahrňte sloupec sledování, který se dá použít k určení, kdy došlo ke změně řádku. Pak můžete nakonfigurovat Entity Framework pro zahrnutí tohoto sloupce do klauzule `Where` příkazů SQL `Update` nebo `Delete`.
 
-    Datový typ sloupce pro sledování je obvykle [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx). [Rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) hodnotu pořadové číslo, které se zvýší při každé aktualizaci řádku. V `Update` nebo `Delete` příkazu `Where` klauzule obsahuje původní hodnota sloupce pro sledování (původní verze řádku). Pokud se změnila řádek aktualizován jiným uživatelem, hodnota v `rowversion` sloupce se liší od původní hodnoty, proto `Update` nebo `Delete` příkaz nebyl nalezen řádek aktualizovat z důvodu `Where` klauzuli. Když rozhraní Entity Framework zjistí, že nebyly aktualizovány žádné řádky pomocí `Update` nebo `Delete` příkazu (to znamená, když počet ovlivněných řádků je nula), který interpretuje jako ke konfliktu souběžnosti.
-- Konfigurace rozhraní Entity Framework pro zahrnutí původní hodnota každý sloupec v tabulce `Where` klauzuli `Update` a `Delete` příkazy.
+    Datový typ sloupce sledování je obvykle [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx). Hodnota [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) je sekvenční číslo, které se zvýší pokaždé, když se řádek aktualizuje. V příkazu `Update` nebo `Delete` zahrnuje klauzule `Where` původní hodnotu sloupce sledování (původní verze řádku). Pokud byl aktualizovaný řádek změněn jiným uživatelem, hodnota ve sloupci `rowversion` se liší od původní hodnoty, takže příkaz `Update` nebo `Delete` nemůže najít řádek, který se má aktualizovat z důvodu klauzule `Where`. Pokud Entity Framework zjistí, že nebyly aktualizovány žádné řádky pomocí příkazu `Update` nebo `Delete` (tj. Pokud je počet ovlivněných řádků nula), interpretuje to jako konflikt souběžnosti.
+- Nakonfigurujte Entity Framework tak, aby zahrnoval původní hodnoty všech sloupců v tabulce v klauzuli `Where` příkazů `Update` a `Delete`.
 
-    Jako první možnost, pokud něco v řádku od řádku se nejdřív přečíst, změnila `Where` klauzule nevrátí řádek k aktualizaci, která nastavení interpretuje Entity Framework jako ke konfliktu souběžnosti. Pro databázové tabulky, které mají mnoho sloupců, tento přístup může vést k velmi velké `Where` klauzule a můžete požadovat, že udržujete velké množství stavu. Jak bylo uvedeno dříve, udržování velké množství stavu může ovlivnit výkon aplikace. Proto tento postup se obecně nedoporučuje, které není metoda použitá v tomto kurzu.
+    Stejně jako v první možnosti, pokud se cokoli na řádku od prvního načtení řádku změnilo, klauzule `Where` nevrátí řádek, který se má aktualizovat, což Entity Framework interpretuje jako konflikt souběžnosti. U databázových tabulek, které mají mnoho sloupců, může tento přístup mít za následek velmi velké `Where` klauzule a může vyžadovat, abyste zachovali velké objemy stavů. Jak bylo uvedeno dříve, údržba velkých objemů stavu může ovlivnit výkon aplikace. Proto se tento přístup obecně nedoporučuje a nejedná se o metodu používanou v tomto kurzu.
 
-    Pokud chcete k implementaci tohoto přístupu se souběžností, budete muset označit všechny vlastnosti primárního klíče v entitě, kterou chcete sledovat souběžnosti pro tak, že přidáte [atribut ConcurrencyCheck](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.concurrencycheckattribute.aspx) atributu na ně. Že změna umožňuje rozhraní Entity Framework zahrňte všechny sloupce v SQL `WHERE` klauzuli `UPDATE` příkazy.
+    Pokud chcete tento přístup implementovat do souběžnosti, je nutné označit všechny vlastnosti neprimárního klíče v entitě, pro kterou chcete sledovat souběžnost, přidáním atributu [ConcurrencyCheck](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.concurrencycheckattribute.aspx) do nich. Tato změna umožňuje Entity Framework zahrnout všechny sloupce v klauzuli SQL `WHERE` příkazů `UPDATE`.
 
-Ve zbývající části tohoto kurzu přidáte [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) vlastnost pro sledování `Department` entity, vytvořte kontroler a zobrazení a otestovat a ověřit, že vše funguje správně.
+Ve zbývající části tohoto kurzu přidáte vlastnost sledování [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) k entitě `Department`, vytvoříte kontroler a zobrazení a otestujete, zda vše funguje správně.
 
-## <a name="add-optimistic-concurrency"></a>Přidat optimistického řízení souběžnosti
+## <a name="add-optimistic-concurrency"></a>Přidat optimistickou souběžnost
 
-V *Models\Department.cs*, přidání vlastnosti sledování do s názvem `RowVersion`:
+Do *Models\Department.cs*přidejte vlastnost sledování s názvem `RowVersion`:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs?highlight=20-22)]
 
-[Časové razítko](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) atribut určuje, že v tomto sloupci se zahrne `Where` klauzuli `Update` a `Delete` příkazy, odeslané do databáze. Atribut se nazývá [časové razítko](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) protože předchozích verzí SQL serveru použít SQL [časové razítko](https://msdn.microsoft.com/library/ms182776(v=SQL.90).aspx) datového typu než SQL [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) nahradili jsme ho. Typ formátu .net pro [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) bajtové pole.
+Atribut [timestamp](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) určuje, že tento sloupec bude obsažen v klauzuli `Where` `Update` a `Delete` příkazy odeslané do databáze. Atribut se nazývá [časové razítko](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) , protože předchozí verze SQL Server používaly datový typ [časové razítko](https://msdn.microsoft.com/library/ms182776(v=SQL.90).aspx) SQL předtím, než ho nahradí SQL [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) . Typ .NET pro [rowversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) je bajtové pole.
 
-Pokud chcete použít rozhraní fluent API, můžete použít [IsConcurrencyToken](https://msdn.microsoft.com/library/gg679501(v=VS.103).aspx) metodu pro určení této vlastnosti sledování, jak je znázorněno v následujícím příkladu:
+Pokud dáváte přednost použití rozhraní Fluent API, můžete použít metodu [IsConcurrencyToken](https://msdn.microsoft.com/library/gg679501(v=VS.103).aspx) k určení vlastnosti sledování, jak je znázorněno v následujícím příkladu:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
 
-Přidáním vlastnosti změnit model databáze, takže je třeba provést další migraci. V balíčku správce konzoly (konzolu PMC), zadejte následující příkazy:
+Přidáním vlastnosti, kterou jste změnili databázový model, takže je nutné provést další migraci. V konzole správce balíčků (PMC) zadejte následující příkazy:
 
 [!code-console[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample3.cmd)]
 
-## <a name="modify-department-controller"></a>Změna kontroleru oddělení
+## <a name="modify-department-controller"></a>Upravit kontroler oddělení
 
-V *Controllers\DepartmentController.cs*, přidejte `using` – příkaz:
+Do *Controllers\DepartmentController.cs*přidejte příkaz `using`:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cs)]
 
-V *DepartmentController.cs* souborů, změňte všechny čtyři výskyty "LastName" na "FullName" tak, aby oddělení správce rozevírací seznamy bude obsahovat úplný název instruktorem, nikoli pouze poslední název.
+V souboru *DepartmentController.cs* změňte všechny čtyři výskyty "LastName" na "FullName", aby rozevírací seznamy správce oddělení obsahovaly celé jméno instruktora, nikoli jenom příjmení.
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample5.cs?highlight=1)]
 
-Nahraďte stávající kód `HttpPost` `Edit` metodu s následujícím kódem:
+Existující kód pro metodu `HttpPost` `Edit` nahraďte následujícím kódem:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample6.cs)]
 
-Pokud `FindAsync` metoda vrátí hodnotu null, z oddělení byla odstraněna jiným uživatelem. Kód používá hodnoty odeslaného formuláře vytvořit entitu oddělení tak, aby stránky pro úpravu můžete zobrazí znovu, zobrazí se chybová zpráva. Jako alternativu nebude muset znovu vytvořit entity oddělení, pokud zobrazení pouze chybové zprávy bez opětovné zobrazení pole oddělení.
+Pokud metoda `FindAsync` vrátí hodnotu null, oddělení bylo odstraněno jiným uživatelem. Zobrazený kód používá hodnoty odeslaného formuláře k vytvoření entity oddělení, aby bylo možné upravit stránku úprav, aby se mohla znovu zobrazit chybová zpráva. Jako alternativu nebudete muset entitu oddělení znovu vytvořit, pokud se zobrazí pouze chybová zpráva bez zobrazení polí oddělení.
 
-Zobrazení ukládá původní `RowVersion` hodnotu ve skrytém poli a metoda obdrží v `rowVersion` parametru. Před voláním `SaveChanges`, budete muset vytvořit z původní `RowVersion` hodnoty vlastnosti `OriginalValues` kolekce entity. Když rozhraní Entity Framework vytvoří SQL `UPDATE` příkazu, že bude obsahovat příkaz `WHERE` klauzuli, která hledá řádek, který má původní `RowVersion` hodnotu.
+Zobrazení ukládá původní hodnotu `RowVersion` ve skrytém poli a metoda ji přijímá v parametru `rowVersion`. Před voláním `SaveChanges`je nutné do kolekce `OriginalValues` pro entitu vložit původní hodnotu vlastnosti `RowVersion`. Pak když Entity Framework vytvoří příkaz SQL `UPDATE`, bude tento příkaz obsahovat klauzuli `WHERE`, která hledá řádek, který má původní `RowVersion` hodnotu.
 
-Pokud jsou ovlivněny žádné řádky `UPDATE` příkazu (žádné řádky mít původní `RowVersion` hodnota), vyvolá rozhraní Entity Framework `DbUpdateConcurrencyException` výjimky a kód v `catch` bloku získá ovlivněný `Department` entity z výjimky objekt.
+Pokud nejsou ovlivněny žádné řádky pomocí příkazu `UPDATE` (žádné řádky nemají původní `RowVersion` hodnotu), Entity Framework vyvolá výjimku `DbUpdateConcurrencyException` a kód v bloku `catch` získá ovlivněnou entitu `Department` z objektu Exception.
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample7.cs)]
 
-Tento objekt obsahuje nové hodnoty zadané uživatelem v jeho `Entity` vlastnosti kde můžete získat hodnoty z databáze pomocí volání `GetDatabaseValues` metody.
+Tento objekt má nové hodnoty zadané uživatelem v jeho vlastnosti `Entity` a můžete načíst hodnoty načtené z databáze voláním metody `GetDatabaseValues`.
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample8.cs)]
 
-`GetDatabaseValues` Metoda vrátí hodnotu null, pokud někdo odstranil řádku z databáze; v opačném případě musíte přetypovat vráceného objektu na `Department` třídy s cílem získat přístup `Department` vlastnosti. (Protože je již zaškrtnuté políčko k odstranění, `databaseEntry` by mít hodnotu null jenom v případě, že byl odstraněn z oddělení po `FindAsync` spustí a před `SaveChanges` spustí.)
+Metoda `GetDatabaseValues` vrátí hodnotu null, pokud někdo odstranil řádek z databáze. v opačném případě je nutné přetypování vráceného objektu na třídu `Department`, aby bylo možné získat přístup k vlastnostem `Department`. (Vzhledem k tomu, že jste již kontrolovali odstranění, `databaseEntry` by byl null pouze v případě, že se oddělení odstranilo po `FindAsync` provedení a před provedením `SaveChanges`.)
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample9.cs)]
 
-V dalším kroku kód přidá vlastní chybovou zprávu pro každý sloupec, který se liší od uživatel zadal na stránky pro úpravu hodnot v databázi:
+Dále kód přidá vlastní chybovou zprávu pro každý sloupec, který má hodnoty databáze jiné než uživatel zadaný na stránce pro úpravy:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample10.cs)]
 
-Chybové zprávy vysvětluje, co se stalo a co dělat:
+Delší chybová zpráva vysvětluje, co se stalo, a co dělat.
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cs)]
 
-Nakonec kód nastaví `RowVersion` hodnotu `Department` načíst objekt na novou hodnotu z databáze. Tato nová `RowVersion` hodnota bude uložena ve skrytém poli, když upravit stránka se zobrazí znovu a další čas kliknutí **Uložit**, pouze souběžnosti chyby, ke kterým dochází, protože redisplay stránky pro úpravu bude zachycena.
+Nakonec kód nastaví `RowVersion` hodnotu objektu `Department` na novou hodnotu načtenou z databáze. Tato nová hodnota `RowVersion` se uloží do skrytého pole, když se znovu zobrazí stránka pro úpravy, a když uživatel příště klikne na **Uložit**, zachytí se jenom chyby souběžnosti, ke kterým dochází, protože se znovu zobrazí stránka pro úpravy.
 
-V *Views\Department\Edit.cshtml*, přidání skrytého pole k uložení `RowVersion` hodnotu vlastnosti, hned za skryté pole pro `DepartmentID` vlastnost:
+V *Views\Department\Edit.cshtml*přidejte skryté pole pro uložení hodnoty vlastnosti `RowVersion` hned za skryté pole pro vlastnost `DepartmentID`:
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cshtml?highlight=18)]
 
-## <a name="test-concurrency-handling"></a>Test souběžného zpracování
+## <a name="test-concurrency-handling"></a>Zpracování souběžnosti testů
 
-Spuštění tohoto webu a klikněte na tlačítko **oddělení**.
+Spusťte web a klikněte na **oddělení**.
 
-Klikněte pravým tlačítkem myši **upravit** hypertextového odkazu pro anglickou oddělení a vyberte **otevřít na nové kartě** klikněte **upravit** hypertextového odkazu pro anglickou oddělení. Dvě karty zobrazí stejné informace.
+Klikněte pravým tlačítkem myši **na hypertextový** odkaz pro jazykové oddělení a vyberte **otevřít na nové kartě** a pak klikněte na hypertextový odkaz pro **Úpravy** v anglickém oddělení. Tyto dvě karty zobrazují stejné informace.
 
-Změňte pole na první záložce prohlížeče a klikněte na tlačítko **Uložit**.
+Změňte pole na první kartě prohlížeče a klikněte na **Uložit**.
 
-Prohlížeč zobrazí indexovou stránku s změněné hodnoty.
+Prohlížeč zobrazí stránku indexu se změněnou hodnotou.
 
-Změňte pole na druhé záložce prohlížeče a klikněte na tlačítko **Uložit**. Zobrazí chybová zpráva:
+Změňte pole na druhé kartě prohlížeče a klikněte na **Uložit**. Zobrazí se chybová zpráva:
 
 ![Department_Edit_page_2_after_clicking_Save](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image10.png)
 
-Klikněte na tlačítko **Uložit** znovu. Hodnota, kterou jste zadali na druhé záložce prohlížeče je uložen spolu s původní hodnoty dat, který jste změnili v první prohlížeče. Uložené hodnoty se zobrazí, jakmile se zobrazí stránka indexu.
+Znovu klikněte na **Uložit** . Hodnota, kterou jste zadali na druhé záložce prohlížeče, se uloží spolu s původní hodnotou dat, která jste změnili v prvním prohlížeči. Po zobrazení stránky index se zobrazí uložené hodnoty.
 
 ## <a name="update-the-delete-page"></a>Aktualizovat stránku Delete
 
-Odstranění stránky Entity Framework detekuje souběžnosti konflikty způsobené někdo jinak úpravy oddělení podobným způsobem. Když `HttpGet` `Delete` metoda zobrazí potvrzení zobrazení, zobrazení zahrnuje původní `RowVersion` hodnotu ve skrytém poli. Hodnota se pak k dispozici na `HttpPost` `Delete` metodu, která je volána, když uživatel potvrdí odstranění. Když vytvoří SQL Entity Framework `DELETE` příkazu, obsahuje `WHERE` klauzule s původní `RowVersion` hodnotu. Pokud vliv na výsledky příkazu v nulový počet řádků (tj. řádek byl změněn, jakmile se zobrazí stránka potvrzení odstranění), je vyvolána výjimka souběžnosti a `HttpGet Delete` metoda je volána příznakem chyba nastavena na `true` k opětovnému zobrazení potvrzovací stránku s chybovou zprávou. Je také možné, že vzhledem k tomu, že řádek byl odstraněn jiným uživatelem, tak v tom případě se zobrazí různé chybová zpráva vliv nulový počet řádků.
+Pro stránku odstranění Entity Framework detekuje konflikty souběžnosti způsobené někým jiným upravováním oddělení podobným způsobem. Pokud metoda `HttpGet` `Delete` zobrazí zobrazení potvrzení, obsahuje zobrazení původní hodnotu `RowVersion` ve skrytém poli. Tato hodnota je pak k dispozici pro metodu `HttpPost` `Delete`, která je volána, když uživatel potvrdí odstranění. Když Entity Framework vytvoří příkaz SQL `DELETE`, zahrnuje klauzuli `WHERE` s původní `RowVersion`ou hodnotou. Pokud tento příkaz má vliv na nulové řádky (což znamená, že řádek byl změněn po zobrazení stránky pro potvrzení odstranění), je vyvolána výjimka souběžnosti a metoda `HttpGet Delete` je volána s příznakem chyby nastaveným na `true`, aby bylo možné znovu zobrazit potvrzovací stránku s chybovou zprávou. Je také možné, že došlo ke ovlivnění nulových řádků, protože řádek odstranil jiný uživatel, takže v takovém případě se zobrazí jiná chybová zpráva.
 
-V *DepartmentController.cs*, nahraďte `HttpGet` `Delete` metodu s následujícím kódem:
+V *DepartmentController.cs*nahraďte metodu `HttpGet` `Delete` následujícím kódem:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample13.cs)]
 
-Metoda přijímá volitelný parametr, který označuje, zda je právě na stránce zobrazí znovu po chybě souběžnosti. Pokud je tento příznak `true`, chybová zpráva je odeslána pomocí zobrazení `ViewBag` vlastnost.
+Metoda přijímá volitelný parametr, který označuje, zda se stránka po chybě souběžného zpracování znovu zobrazuje. Pokud je tento příznak `true`, pošle se do zobrazení chybová zpráva s použitím vlastnosti `ViewBag`.
 
-Nahraďte kód v `HttpPost` `Delete` – metoda (s názvem `DeleteConfirmed`) následujícím kódem:
+Nahraďte kód v metodě `HttpPost` `Delete` (s názvem `DeleteConfirmed`) následujícím kódem:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample14.cs)]
 
-V automaticky generovaný kód, který jste právě nahrazen tato metoda přijaty pouze ID záznamu:
+V právě vygenerovaném kódu jste tuto metodu přijali pouze s ID záznamu:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample15.cs)]
 
-Změnili jste tento parametr `Department` zapisovanou instanci entity vytvořené vazače modelu. To umožňuje přístup k `RowVersion` vlastnost hodnota kromě klíče záznamu.
+Změnili jste tento parametr na instanci entity `Department`, kterou vytvořila pořadač modelů. Díky tomu získáte přístup k hodnotě vlastnosti `RowVersion` kromě klíče záznamu.
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample16.cs)]
 
-Také jste změnili název metody akce z `DeleteConfirmed` k `Delete`. Automaticky generovaný kód s názvem `HttpPost` `Delete` metoda `DeleteConfirmed` poskytnout `HttpPost` metoda jedinečnou signaturu. (CLR vyžaduje přetížené metody s parametry jinou metodu.) Teď, když podpisy jsou jedinečné, můžete zůstat u konvence MVC a použijte stejný název pro `HttpPost` a `HttpGet` metody pro odstranění.
+Změnili jste také název metody akce z `DeleteConfirmed` na `Delete`. Generovaný kód s názvem `HttpPost` `Delete` metody `DeleteConfirmed` pro udělení jedinečného podpisu `HttpPost` metodě. (CLR vyžaduje, aby byly přetížené metody pro různé parametry metody.) Teď, když jsou podpisy jedinečné, můžete s úmluvou MVC pracovat a používat stejný název pro `HttpPost` a `HttpGet` odstranit metody.
 
-Pokud došlo k chybě souběžnosti je zachycena, kód znovu zobrazí na stránce potvrzení odstranění a zajišťuje, že příznak, který označují, že by se zobrazit zpráva chybě souběžnosti.
+Pokud je zachycena chyba souběžnosti, kód znovu zobrazí stránku pro potvrzení odstranění a poskytne příznak označující, že by měla zobrazit chybovou zprávu o souběžnosti.
 
-V *Views\Department\Delete.cshtml*, nahraďte následující kód, který přidá polem chybové zprávy a skrytá pole vlastností DepartmentID a RowVersion automaticky generovaný kód. Změny jsou zvýrazněné.
+V *Views\Department\Delete.cshtml*nahraďte generovaný kód následujícím kódem, který přidá pole chybové zprávy a skrytá pole pro vlastnosti DepartmentID a rowversion. Změny jsou zvýrazněné.
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample17.cshtml?highlight=9-10,21,52-54)]
 
-Tento kód přidá chybovou zprávu mezi `h2` a `h3` záhlaví:
+Tento kód přidá chybovou zprávu mezi `h2` a záhlaví `h3`:
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample18.cshtml)]
 
-Nahradí `LastName` s `FullName` v `Administrator` pole:
+V poli `Administrator` nahrazuje `LastName` `FullName`:
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample19.cshtml)]
 
-Nakonec přidá skryté pole `DepartmentID` a `RowVersion` vlastnosti po `Html.BeginForm` – příkaz:
+Nakonec přidá skrytá pole pro `DepartmentID` a vlastnosti `RowVersion` po příkazu `Html.BeginForm`:
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample20.cshtml)]
 
-Spustíte oddělení indexovou stránku. Klikněte pravým tlačítkem myši **odstranit** hypertextového odkazu pro anglickou oddělení a vyberte **otevřít na nové kartě** na první kartě klikněte na tlačítko **upravit** hypertextového odkazu pro anglickou oddělení.
+Spusťte stránku rejstřík oddělení. Klikněte pravým tlačítkem myši na hypertextový odkaz **Odstranit** pro anglické oddělení a vyberte **otevřít na nové kartě** a pak na první kartě klikněte na odkaz **Upravit** pro anglické oddělení.
 
-V prvním okně, změňte jednu z hodnot a klikněte na tlačítko **Uložit**.
+V prvním okně změňte jednu z hodnot a klikněte na **Uložit**.
 
-Indexovou stránku potvrdí změny.
+Stránka index potvrzuje změnu.
 
-Na druhé kartě klikněte **odstranit**.
+Na druhé kartě klikněte na **Odstranit**.
 
-Zobrazí chybová zpráva souběžnosti a oddělení hodnoty se aktualizují s tím, co je aktuálně v databázi.
+Zobrazí se chybová zpráva o souběžnosti a hodnoty oddělení se aktualizují s tím, co je aktuálně v databázi.
 
 ![Department_Delete_confirmation_page_with_concurrency_error](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image15.png)
 
-Vyberete-li **odstranit** znovu, budete přesměrováni na indexovou stránku, který ukazuje, že byl odstraněn z oddělení.
+Pokud znovu kliknete na tlačítko **Odstranit** , budete přesměrováni na stránku index, která ukazuje, že oddělení bylo odstraněno.
 
-## <a name="get-the-code"></a>Získat kód
+## <a name="get-the-code"></a>Získání kódu
 
 [Stáhnout dokončený projekt](https://webpifeed.blob.core.windows.net/webpifeed/Partners/ASP.NET%20MVC%20Application%20Using%20Entity%20Framework%20Code%20First.zip)
 
 ## <a name="additional-resources"></a>Další zdroje
 
-Odkazy na další zdroje Entity Framework najdete v [přístup k datům ASP.NET – doporučené zdroje informací](../../../../whitepapers/aspnet-data-access-content-map.md).
+Odkazy na další prostředky Entity Framework najdete v [prostředcích, které jsou doporučeny pro přístup k datům ASP.NET](../../../../whitepapers/aspnet-data-access-content-map.md).
 
-Informace o dalších způsobech pro různé scénáře souběžného zpracování naleznete v tématu [optimistického řízení souběžnosti vzorů](https://msdn.microsoft.com/data/jj592904) a [práce s hodnotami vlastností](https://msdn.microsoft.com/data/jj592677) na webové stránce MSDN. Další kurz ukazuje postupy při implementaci tabulky na hierarchii dědičnosti pro `Instructor` a `Student` entity.
+Informace o jiných způsobech zpracování různých scénářů souběžnosti naleznete v tématu [optimistické vzorce souběžnosti](https://msdn.microsoft.com/data/jj592904) a [práce s hodnotami vlastností](https://msdn.microsoft.com/data/jj592677) na webu MSDN. V dalším kurzu se dozvíte, jak implementovat dědičnost tabulek na hierarchii pro `Instructor` a `Student` entity.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Dozvěděli jste se o konfliktů souběžnosti
+> * Dozvědělo se o konfliktech souběžnosti
 > * Přidání optimistického řízení souběžnosti
-> * Upravené oddělení kontroleru
-> * Zpracování otestované souběžnosti
-> * Aktualizovat stránku Delete
+> * Změněný kontroler oddělení
+> * Testované zpracování souběžnosti
+> * Aktualizace stránky odstranění
 
-Přejděte k dalším článku se dozvíte, jak implementovat dědičnosti v datovém modelu.
+V dalším článku se dozvíte, jak implementovat dědičnost v datovém modelu.
 > [!div class="nextstepaction"]
 > [Implementace dědičnosti v datovém modelu](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)

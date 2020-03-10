@@ -9,11 +9,11 @@ ms.assetid: a585c9a2-7c8e-478b-9706-90f3739c50d1
 msc.legacyurl: /web-forms/overview/performance-and-caching/using-asynchronous-methods-in-aspnet-45
 msc.type: authoredcontent
 ms.openlocfilehash: 7abc3d7acc60d7d868958f2a313bc408f96c95a4
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457567"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78625193"
 ---
 # <a name="using-asynchronous-methods-in-aspnet-45"></a>Použití asynchronních metod v ASP.NET 4.5
 
@@ -204,7 +204,7 @@ Aby bylo možné využít výhody asynchronní webové aplikace, může být nut
 - Pokud vaše aplikace používá webové služby nebo System.NET ke komunikaci s back-endu přes protokol HTTP, může být nutné zvýšit [connectionManagement/maxconnection](https://msdn.microsoft.com/library/fb6y0fyc(VS.110).aspx) element. U aplikací ASP.NET to je omezené funkcí Automatická konfigurace na 12 časů počtu procesorů. To znamená, že u čtyřjádrových procesů můžete mít maximálně 12 \* 4 = 48 souběžných připojení k koncovému bodu IP adres. Vzhledem k tomu, že se jedná o přizpůsobitelné [automatické konfigurace](https://msdn.microsoft.com/library/7w2sway1(VS.110).aspx), nejjednodušší způsob, jak zvýšit `maxconnection` v aplikaci ASP.NET, je nastavit [System .NET. Třída ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(VS.110).aspx) programově v metodě `Application_Start` v souboru *Global. asax* . Příklad najdete v ukázkovém souboru ke stažení.
 - V rozhraní .NET 4,5 by měla být výchozí hodnota 5000 pro [maxConcurrentRequestsPerCPU](https://blogs.msdn.com/tmarq/archive/2007/07/21/asp-net-thread-usage-on-iis-7-0-and-6-0.aspx) .
 
-## <a name="contributors"></a>Spoluautoři
+## <a name="contributors"></a>Přispěvatelé
 
 - [Broderick dávky](http://stackoverflow.com/users/59641/levi)
 - [Dykstra](http://www.bing.com/search?q=site%3Aasp.net+%22Tom+Dykstra%22+-forums.asp.net&amp;qs=n&amp;form=QBRE&amp;pq=site%3Aasp.net+%22tom+dykstra%22+-forums.asp.net&amp;sc=8-42&amp;sp=-1&amp;sk=)

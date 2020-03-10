@@ -9,11 +9,11 @@ ms.assetid: 2469f7ea-1489-42fb-a8e1-414c90141ce9
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/executing-several-animations-at-the-same-time-vb
 msc.type: authoredcontent
 ms.openlocfilehash: fc11debd06c897c29db56d42167d483f5608cdf8
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74575321"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78614252"
 ---
 # <a name="executing-several-animations-at-the-same-time-vb"></a>Provádění několika animací současně (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Umožňuje paralelní spuštění několika animací.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 

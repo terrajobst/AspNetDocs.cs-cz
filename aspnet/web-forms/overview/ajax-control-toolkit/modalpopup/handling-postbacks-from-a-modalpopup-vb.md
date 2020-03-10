@@ -9,11 +9,11 @@ ms.assetid: f70ac2b3-900f-40fa-858f-ab057904506b
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/handling-postbacks-from-a-modalpopup-vb
 msc.type: authoredcontent
 ms.openlocfilehash: df0b71b3e336a0d230869623473bdac24b3dd07b
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74606634"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78621525"
 ---
 # <a name="handling-postbacks-from-a-modalpopup-vb"></a>Zpracování postbacků z ovládacího prvku ModalPopup (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek ovládacího prvku modalpopup v sadě nástrojů AJAX Control Toolkit nabízí jednoduchý způsob, jak vytvořit modální nabídku pomocí prostředků na straně klienta. Při vytváření zpětného volání z místní nabídky je potřeba věnovat zvláštní péči.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Aby bylo možné aktivovat funkce ASP.NET AJAX a Control Toolkit, musí být ovládací prvek `ScriptManager` umístěn kdekoli na stránce (ale v elementu `<form>`):
 

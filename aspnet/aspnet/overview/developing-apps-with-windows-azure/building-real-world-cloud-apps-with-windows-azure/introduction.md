@@ -9,11 +9,11 @@ ms.assetid: accfa16a-ab15-4c26-9ad4-babdc2a77d2e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
 msc.type: authoredcontent
 ms.openlocfilehash: b88573b3702b755b155e8da35f5f8a67931bafc6
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457112"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78617591"
 ---
 # <a name="building-real-world-cloud-apps-with-azure"></a>Sestavování skutečných cloudových aplikací s využitím Azure
 
@@ -102,7 +102,7 @@ Tato elektronická příručka vysvětluje třináctně Doporučené vzory pro v
 - [Příloha: ukázková aplikace Fix It](the-fix-it-sample-application.md)
 
     - Známé problémy
-    - Doporučené postupy
+    - Osvědčené postupy
     - Jak stahovat, sestavovat, spouštět a nasazovat.
 
 Tyto vzory se vztahují na všechna cloudová prostředí, ale budeme je považovat za použití příkladů založených na technologiích a službách společnosti Microsoft, jako je například Visual Studio, Team Foundation Service, ASP.NET a Azure.
@@ -158,7 +158,7 @@ Rychlý a jednoduchý podrobný kurz, který ukazuje, jak vytvořit webovou apli
 
 Tento Úvod obsahuje seznam témat, na které se kniha zabývá, snímky obrazovky ukázkové aplikace a stručný přehled Web Apps v cloudovém prostředí Azure App Service. Jednou z výhod vývoje aplikací v a pro Cloud je, že je snadné automatizovat opakované vývojářské úlohy, jako je vytvoření testovacího prostředí a nasazení kódu do něj. Jak to udělat, je předmět [Další kapitoly](automate-everything.md).
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 
 Další informace o tématech popsaných v této kapitole najdete v následujících zdrojích.
 

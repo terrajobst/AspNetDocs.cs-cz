@@ -9,11 +9,11 @@ ms.assetid: fae968c9-1902-487d-b053-86a46dd52c3f
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/accordion/dynamically-adding-an-accordion-pane-vb
 msc.type: authoredcontent
 ms.openlocfilehash: be48db5ea3de4af46b0f864cc9e73d2f518294a4
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74607209"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78598320"
 ---
 # <a name="dynamically-adding-an-accordion-pane-vb"></a>Dynamické Přidání podokna pro přiznávání (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Řízení přiznávání v ovládacím prvku AJAX Control Toolkit poskytuje více podoken a umožňuje uživateli zobrazit jeden z nich najednou. Panely jsou obvykle deklarovány v rámci samotné stránky, ale kód na straně serveru lze použít k dosažení stejného výsledku.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Řízení přiznávání zveřejňuje všechny důležité vlastnosti kódu na straně serveru. Mimo jiné vlastnost `Panes` uděluje přístup ke kolekci podoken, která tvoří danou přiznávání. Každé podokno je typu `AccordionPane`. Proto je triviální vytvořit takové podokno:
 

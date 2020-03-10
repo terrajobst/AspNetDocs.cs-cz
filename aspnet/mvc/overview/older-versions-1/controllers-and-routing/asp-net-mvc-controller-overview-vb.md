@@ -1,102 +1,102 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-controller-overview-vb
-title: ASP.NET MVC – přehled Kontrolerů (VB) | Dokumentace Microsoftu
+title: ASP.NET kontroler MVC – přehled (VB) | Microsoft Docs
 author: StephenWalther
-description: V tomto kurzu Stephen Walther vás seznámí s kontrolery ASP.NET MVC. Zjistíte, jak vytvořit nové řadiče a vracet různé druhy res akce...
+description: V tomto kurzu vás Stephen Walther seznámí s řadiči pro ASP.NET MVC. Naučíte se vytvářet nové řadiče a vracet různé typy zdrojů akcí...
 ms.author: riande
 ms.date: 02/16/2008
 ms.assetid: 94c3e5d9-a904-445e-a34e-d92fd1ca108a
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/asp-net-mvc-controller-overview-vb
 msc.type: authoredcontent
 ms.openlocfilehash: f19e7dd7fc025de2e0c387db898d36623e790e6a
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65123677"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78601561"
 ---
 # <a name="aspnet-mvc-controller-overview-vb"></a>ASP.NET MVC – přehled kontrolerů (VB)
 
-podle [Stephen Walther](https://github.com/StephenWalther)
+od [Stephen Walther](https://github.com/StephenWalther)
 
-> V tomto kurzu Stephen Walther vás seznámí s kontrolery ASP.NET MVC. Zjistíte, jak vytvořit nové řadiče a vracet různé typy výsledků akcí.
+> V tomto kurzu vás Stephen Walther seznámí s řadiči pro ASP.NET MVC. Naučíte se vytvářet nové řadiče a vracet různé typy výsledků akcí.
 
-Tento kurz se věnuje téma kontrolery ASP.NET MVC, akce kontroleru a výsledky akce. Po dokončení tohoto kurzu budete rozumět, jak se řadiče používají k řízení způsobu, jakým návštěvník komunikuje se službou Web ASP.NET MVC.
+V tomto kurzu se seznámíte s tématem řadičů ASP.NET MVC, akcemi kontrol a výsledků akcí. Po dokončení tohoto kurzu budete rozumět tomu, jak se řadiče používají k řízení způsobu, jakým návštěvník komunikuje s webem ASP.NET MVC.
 
-## <a name="understanding-controllers"></a>Vysvětlení Kontrolerů
+## <a name="understanding-controllers"></a>Principy řadičů
 
-Kontrolery MVC je zodpovědná za odpověď na požadavky na web ASP.NET MVC. Každý požadavek prohlížeče je namapována na určitý kontroler. Představte si například, zadejte následující adresu URL do adresního řádku svého prohlížeče:
+Řadiče MVC zodpovídají za reakci na požadavky vytvořené na webu ASP.NET MVC. Každá žádost prohlížeče je namapovaná na konkrétní kontroler. Představte si například, že na adresní řádek v prohlížeči zadáte následující adresu URL:
 
 `http://localhost/Product/Index/3`
 
-V takovém případě je vyvolána s názvem ProductController kontroleru. Je zodpovědná za generování odpověď na žádost prohlížeče ProductController. Například kontroler může vrátit konkrétní zobrazení zpět do prohlížeče nebo kontroler může přesměruje uživatele na jiný kontroler.
+V tomto případě je vyvolán kontroler s názvem ProductController. ProductController zodpovídá za generování odpovědi na požadavek prohlížeče. Kontroler může například vrátit konkrétní zobrazení zpět do prohlížeče nebo může správce přesměrovat uživatele na jiný kontroler.
 
-Výpis 1 obsahuje jednoduché ProductController řadič.
+Výpis 1 obsahuje jednoduchý řadič s názvem ProductController.
 
 **Listing1 - Controllers\ProductController.vb**
 
 [!code-vb[Main](asp-net-mvc-controller-overview-vb/samples/sample1.vb)]
 
-Jak je vidět z výpisu 1 kontroleru je právě třídy (třídy jazyka Visual Basic .NET nebo C#). Kontroler je třída, která je odvozena ze základní třídy System.Web.Mvc.Controller. Protože kontroler dědí z této základní třídy, řadič zdarma zdědí několik užitečných metod (můžeme probírat tyto metody za chvíli).
+Jak vidíte z výpisu 1, kontroler je pouze třída (Visual Basic .NET nebo C# třída). Kontrolér je třída, která je odvozena od třídy Base System. Web. Mvc. Controller. Vzhledem k tomu, že kontroler dědí z této základní třídy, kontroler zdědí několik užitečných metod (v průběhu chvilky probereme tyto metody).
 
-## <a name="understanding-controller-actions"></a>Principy akce Kontroleru
+## <a name="understanding-controller-actions"></a>Principy akcí kontroleru
 
-Kontroler zpřístupní akce kontroleru. Akce je metoda na řadiči, která je volána při zadání určité adresy URL v adresním řádku prohlížeče. Představte si například, že zadáte požadavek na následující adresu URL:
+Kontroler zveřejňuje akce kontroleru. Akce je metoda na řadiči, který se volá při zadání konkrétní adresy URL v adresním řádku prohlížeče. Představte si například, že vytvoříte požadavek na následující adresu URL:
 
 `http://localhost/Product/Index/3`
 
-V takovém případě je volána metoda Index() ProductController třídy. Metoda Index() je příklad akce kontroleru.
+V tomto případě je metoda index () volána na třídu ProductController. Metoda index () je příkladem akce kontroleru.
 
-Akce kontroleru musí být veřejné metody třídy kontroleru. Visual Basic metody, ve výchozím nastavení, jsou veřejné metody. Uvědomte si, že všechny veřejné metody, který přidáte do třídu kontroleru je automaticky vystavena jako akce kontroleru (musíte být opatrní při to od akce kontroleru můžete vyvolat kdokoli v universe jednoduše tak, že zadáte správné adresy URL do adresního řádku prohlížeče).
+Akce kontroleru musí být veřejnou metodou třídy Controller. Metody Visual Basic.NET jsou ve výchozím nastavení veřejné metody. Mějte na paměti, že všechny veřejné metody, které přidáte do třídy Controller, se vystaví jako akce kontroleru automaticky (musíte být opatrní, protože akci kontroleru může vyvolat kdokoli v hlavním panelu jednoduše zadáním správné adresy URL do adresního řádku prohlížeče).
 
-Existují některé další požadavky, které musí být splněno akce kontroleru. Metoda používá jako akce kontroleru nemohou být přetíženy. Kromě toho akce kontroleru nemůže být statickou metodu. Kromě toho můžete použít prakticky jakoukoli metodu jako akce kontroleru.
+K dispozici jsou některé další požadavky, které musí splnit akce kontroleru. Metoda použitá jako akce kontroleru nemůže být přetížena. Kromě toho nemůže být akce kontroleru statickou metodou. Kromě toho můžete jako akci kontroleru použít jenom tuto metodu.
 
-## <a name="understanding-action-results"></a>Principy výsledky akcí
+## <a name="understanding-action-results"></a>Porozumění výsledkům akcí
 
-Akce kontroleru vrátí hodnotu s názvem *výsledek akce*. Výsledek akce se akce kontroleru vrátí v reakci na žádost prohlížeče.
+Akce kontroleru vrátí něco označovaného jako *výsledek akce*. Výsledkem akce je to, co se akce kontroleru vrátí v reakci na požadavek prohlížeče.
 
-Architektura ASP.NET MVC podporuje několik typů výsledky akcí, včetně:
+Rozhraní ASP.NET MVC podporuje několik typů výsledků akcí, včetně:
 
-1. ViewResult – představuje HTML a kódu.
-2. EmptyResult – představuje žádný výsledek.
+1. ViewResult – reprezentuje HTML a značky.
+2. EmptyResult – nepředstavuje žádný výsledek.
 3. RedirectResult – představuje přesměrování na novou adresu URL.
-4. JsonResult – představuje JavaScript Object Notation výsledek, který lze použít v aplikaci AJAX.
-5. JavaScriptResult – představuje skriptu JavaScript.
-6. ContentResult – představuje výsledek text.
-7. FileContentResult – představuje soubor ke stažení (s binární obsah).
+4. JsonResult – představuje výsledek JavaScript Object Notation, který lze použít v aplikaci AJAX.
+5. JavaScriptResult – představuje skript JavaScriptu.
+6. ContentResult – představuje výsledek textu.
+7. FileContentResult – představuje soubor ke stažení (s binárním obsahem).
 8. FilePathResult – představuje soubor ke stažení (s cestou).
-9. FileStreamResult – představuje soubor ke stažení (s datový proud souboru).
+9. FileStreamResult – představuje soubor ke stažení (s datovým proudem souboru).
 
-Všechny tyto akce výsledky dědí ze základní třídy ActionResult.
+Všechny tyto výsledky akce dědí ze základní třídy ActionResult.
 
-Ve většině případů se akce kontroleru vrátí ViewResult. Například vrátí Index akce kontroleru v zobrazení 2 ViewResult.
+Ve většině případů akce kontroleru vrátí ViewResult. Například akce řadiče indexu v seznamu 2 vrátí hodnotu ViewResult.
 
-**Listing 2 - Controllers\BookController.vb**
+**Výpis 2 – Controllers\BookController.vb**
 
 [!code-vb[Main](asp-net-mvc-controller-overview-vb/samples/sample2.vb)]
 
-Po návratu akce ViewResult, HTML se vrátí do prohlížeče. Metoda Index() ve výpisu 2 vrátí zobrazení s názvem Index do prohlížeče.
+Když akce vrátí ViewResult, do prohlížeče se vrátí HTML. Metoda index () v seznamu 2 vrátí zobrazení s názvem index do prohlížeče.
 
-Všimněte si, že akce Index() ve výpisu 2 nevrací ViewResult(). Místo toho je volána metoda View() základní třídy Kontroleru. Za normálních okolností je nevrátí výsledek akce přímo. Místo toho můžete volat jednu z následujících metod základní třídy Kontroleru:
+Všimněte si, že akce index () v seznamu 2 nevrací ViewResult (). Místo toho je volána metoda View () základní třídy kontroleru. Za normálních okolností nevrátíte výsledek akce přímo. Místo toho zavoláte jednu z následujících metod základní třídy Controller:
 
 1. Zobrazit – vrátí výsledek akce ViewResult.
-2. Přesměrování - vrací výsledek akce RedirectResult.
+2. Redirect – vrátí výsledek akce RedirectResult.
 3. RedirectToAction – vrátí výsledek akce RedirectToRouteResult.
 4. Metodu RedirectToRoute – vrátí výsledek akce RedirectToRouteResult.
 5. JSON – vrátí výsledek akce JsonResult.
 6. JavaScriptResult – vrátí JavaScriptResult.
-7. Obsah – vrátí výsledek akce ContentResult.
-8. Soubor – vrátí FileContentResult, FilePathResult nebo FileStreamResult v závislosti na parametrech předaný metodě.
+7. Content – vrátí výsledek ContentResult akce.
+8. File-vrátí FileContentResult, FilePathResult nebo FileStreamResult v závislosti na parametrech předaných metodě.
 
-Ano Pokud chcete vrátit zobrazení v prohlížeči, zavolejte metodu View(). Pokud chcete přesměrovat uživatele z jednoho řadiče akce do druhého, zavolejte metodu RedirectToAction(). Například akce Details() ve výpisu 3 zobrazuje zobrazení nebo přesměruje uživatele na Index() akci v závislosti na tom, zda má parametr Id hodnotu.
+Takže pokud chcete vrátit zobrazení do prohlížeče, zavolejte metodu View (). Pokud chcete uživatele přesměrovat z jedné akce kontroleru na jiný, zavoláte metodu RedirectToAction (). Například akce podrobnosti () v seznamu 3 buď zobrazí zobrazení nebo přesměruje uživatele na akci index () v závislosti na tom, zda parametr ID má hodnotu.
 
-**Výpis 3 - CustomerController.vb**
+**Výpis 3 – CustomerController. vb**
 
 [!code-vb[Main](asp-net-mvc-controller-overview-vb/samples/sample3.vb)]
 
-Výsledek akce ContentResult je speciální. Výsledek akce ContentResult můžete použít k vrácení výsledku akce jako prostý text. Metoda Index() ve výpisu 4 například vrátí zprávu jako prostý text a ne jako HTML.
+Výsledek akce ContentResult je zvláštní. Výsledek akce ContentResult můžete použít k vrácení výsledku akce jako prostý text. Například metoda index () v seznamu 4 vrátí zprávu jako prostý text a ne jako HTML.
 
-**Část 4 – Controllers\StatusController.vb**
+**Výpis 4 – Controllers\StatusController.vb**
 
 > StatusController
 > 
@@ -105,20 +105,20 @@ Výsledek akce ContentResult je speciální. Výsledek akce ContentResult může
 
 [!code-vb[Main](asp-net-mvc-controller-overview-vb/samples/sample4.vb)]
 
-Při vyvolání akce StatusController.Index() zobrazení nevrátí. Místo toho nezpracovaný text "Hello World!" se vrátí do prohlížeče.
+Při vyvolání akce StatusController. index () se zobrazení nevrátí. Místo toho je nezpracovaný text "Hello World!" se vrátí do prohlížeče.
 
-Pokud akce kontroleru vrátí výsledek, který není výsledek akce – například datum nebo celé číslo – potom výsledek je zabalen ContentResult automaticky. Například při vyvolání akce Index() WorkController výpis 5 datum se vrátí jako ContentResult automaticky.
+Pokud akce kontroleru vrátí výsledek, který není výsledkem akce – například datum nebo celé číslo, pak je výsledek zabalen do ContentResult automaticky. Například při vyvolání akce index () WorkController v seznamu 5 se datum vrátí jako ContentResult automaticky.
 
-**Výpis 5 - WorkController.vb**
+**Výpis 5 – WorkController. vb**
 
 [!code-vb[Main](asp-net-mvc-controller-overview-vb/samples/sample5.vb)]
 
-Akce Index() ve výpisu 5 vrátí objekt DateTime. Architektura ASP.NET MVC převede objekt DateTime na řetězec a automaticky zabalí ContentResult hodnotu data a času. Prohlížeč obdrží data a času jako prostý text.
+Akce index () v výpisu 5 vrátí objekt DateTime. Rozhraní ASP.NET MVC převede objekt DateTime na řetězec a automaticky zabalí hodnotu DateTime do ContentResult. Prohlížeč obdrží jako prostý text Datum a čas.
 
 ## <a name="summary"></a>Souhrn
 
-Účelem tohoto kurzu bylo seznámí s koncepty kontrolery ASP.NET MVC, akce kontroleru a výsledky akce kontroleru. V prvním oddílu jste zjistili, jak přidat nové řadiče do projektu aplikace ASP.NET MVC. Dále jste zjistili, jak veřejné metody řadiče jsou vystaveny rozhraní universe jako akce kontroleru. Nakonec jsme probírali různé druhy výsledky akcí, které mohou být vráceny z akce kontroleru. Konkrétně jsme probírali jak vrátit ViewResult, RedirectToActionResult a ContentResult z akce kontroleru.
+Účelem tohoto kurzu je předvést vás koncepty řadičů ASP.NET MVC, akcí kontrol a výsledků akcí kontroleru. V první části jste se dozvěděli, jak přidat nové řadiče do projektu ASP.NET MVC. V dalším kroku jste zjistili, jak se veřejné metody kontroleru zveřejňují jako akce kontroleru. Nakonec jsme probrali různé typy výsledků akcí, které je možné vrátit z akce kontroleru. Konkrétně jsme probrali, jak vrátit ViewResult, RedirectToActionResult a ContentResult z akce kontroleru.
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-a-custom-route-constraint-cs.md)
-> [další](creating-custom-routes-vb.md)
+> [Další](creating-custom-routes-vb.md)

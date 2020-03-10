@@ -9,11 +9,11 @@ ms.assetid: 48e2a4ae-77ca-4208-a204-c38c690ffb59
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-inserting-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 413a0e209b1899414eaab70aff07ee0d3223f28f
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74643125"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78618571"
 ---
 # <a name="batch-inserting-vb"></a>Dávkové vkládání (VB)
 
@@ -219,7 +219,7 @@ Obrázek s 13, 14 a 15 zobrazuje rozhraní pro vkládání a zobrazování v akc
 > [!NOTE]
 > Dávková vložení logiky použité v tomto kurzu zabalí vložení do oboru transakce. Pokud to chcete ověřit, záměrně zavádí chybu na úrovni databáze. Například namísto přiřazení nové vlastnosti `ProductsRow` instance s `CategoryID` k vybrané hodnotě v `Categories` DropDownList, přiřaďte ji k hodnotě, jako je `i * 5`. Tady `i` je indexer smyčky a má hodnoty od 1 do 5. Proto při přidávání dvou nebo více produktů do dávky vloží první produkt platnou hodnotu `CategoryID` (5), ale další produkty budou mít `CategoryID` hodnoty, které neodpovídají hodnotám `CategoryID` v tabulce `Categories`. Čistým účinkem je to, že zatímco první `INSERT` bude úspěšná, dojde při selhání k porušení omezení cizího klíče. Vzhledem k tomu, že dávková operace INSERT je atomická, první `INSERT` se vrátí zpět a vrátí databázi do stavu před zahájením procesu dávkového vkládání.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto a předchozích dvou kurzech jsme vytvořili rozhraní, která umožňují aktualizovat, odstraňovat a vkládat dávky dat, a to vše, co používalo podporu transakcí, kterou jsme přidali do vrstvy přístupu k datům v [rámci](wrapping-database-modifications-within-a-transaction-vb.md) kurzových úprav v transakci. V některých scénářích Tato uživatelská rozhraní dávkového zpracování významně zlepšují efektivitu koncových uživatelů tím, že rozchází na počet kliknutí, postbacků a přepínačů kontextu klávesnice na myš a zároveň zachovává integritu podkladových dat.
 

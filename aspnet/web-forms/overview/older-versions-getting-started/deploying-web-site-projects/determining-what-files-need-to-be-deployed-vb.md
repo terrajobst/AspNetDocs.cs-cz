@@ -9,11 +9,11 @@ ms.assetid: ea918f62-c9d6-4a7f-9bc6-e054d3764b2c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/determining-what-files-need-to-be-deployed-vb
 msc.type: authoredcontent
 ms.openlocfilehash: a11dadfda8b6a189acedd7ac723d85f8b2084324
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74569938"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78635189"
 ---
 # <a name="determining-what-files-need-to-be-deployed-vb"></a>Zjištění souborů, které je potřeba nasadit (VB)
 
@@ -148,7 +148,7 @@ Kromě kopírování souborů značek ASP.NET a zdrojového kódu je také nutn�
 > [!NOTE]
 > Webové projekty mohou také používat explicitní kompilaci. V budoucím kurzu se podíváme, jak explicitně zkompilovat projekt webu.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Nasazení aplikace ASP.NET zahrnuje kopírování potřebných souborů z vývojového prostředí do provozního prostředí. Přesná sada souborů, které je třeba synchronizovat, závisí na tom, zda je kód aplikace ASP.NET explicitně nebo automaticky zkompilován. Použitá strategie kompilace je ovlivněna tím, že je aplikace Visual Studio nakonfigurována pro správu aplikace ASP.NET pomocí modelu projektu webové aplikace nebo modelu webu projektu.
 

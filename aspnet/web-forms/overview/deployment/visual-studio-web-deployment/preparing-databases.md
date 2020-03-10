@@ -9,11 +9,11 @@ ms.assetid: ae4def81-fa37-4883-a13e-d9896cbf6c36
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/preparing-databases
 msc.type: authoredcontent
 ms.openlocfilehash: cdcb3578725c41e3c801afd54e6d34455bc4b281
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74618529"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78636995"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-preparing-for-database-deployment"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Příprava na nasazení databáze
 
@@ -197,7 +197,7 @@ Na první stránce centra instalace SQL Server klikněte na **nový SQL Server s
 10. Kliknutím na **Další** přejděte na kartu **Souhrn** a vytvořte skript znovu kliknutím na **Další** .
 
     ![Skript SSMS se vytvořil.](preparing-databases/_static/image14.png)
-11. Klikněte na tlačítko **Dokončit**.
+11. Klikněte na **Finish** (Dokončit).
 
 ### <a name="create-the-production-database-script"></a>Vytvoření produkčního skriptu databáze
 
@@ -212,7 +212,7 @@ Vzhledem k tomu, že jste projekt nespouštěli s provozní databází, není do
 3. Klikněte na tlačítko **OK**.
 4. Použijte stejný postup, který jste použili dříve, k vytvoření skriptu pro produkční soubor. Název souboru skriptu *ASPNET-data-prod. SQL*.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Obě databáze jsou teď připravené k nasazení a ve složce řešení máte dva skripty pro nasazení dat.
 

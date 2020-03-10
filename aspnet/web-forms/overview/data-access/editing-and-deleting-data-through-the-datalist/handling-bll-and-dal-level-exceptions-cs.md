@@ -9,11 +9,11 @@ ms.assetid: f8fd58e2-f932-4f08-ab3d-fbf8ff3295d2
 msc.legacyurl: /web-forms/overview/data-access/editing-and-deleting-data-through-the-datalist/handling-bll-and-dal-level-exceptions-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 35ff60be6ed67ea8d1bf226ae70f590100597757
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74634142"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78610948"
 ---
 # <a name="handling-bll--and-dal-level-exceptions-c"></a>Zpracování výjimek na úrovni knihoven BLL a DAL (C#)
 
@@ -107,7 +107,7 @@ U `Try ... Catch`ho blokování se uživatelům zobrazí více informativní chy
 
 **Obrázek 5**: při zadání záporné ceny se zobrazí chybová zpráva ([kliknutím zobrazíte obrázek v plné velikosti](handling-bll-and-dal-level-exceptions-cs/_static/image13.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 GridView a ObjectDataSource poskytují obslužné rutiny události na úrovni, které obsahují informace o všech výjimkách, které byly vyvolány během procesu aktualizace a odstranění, a také vlastnosti, které lze nastavit tak, aby označovaly, zda byla výjimka zpracována. Tyto funkce jsou však nedostupné při práci s DataList a přímé použití knihoven BLL. Místo toho zodpovídáme za implementaci zpracování výjimek.
 

@@ -9,11 +9,11 @@ ms.assetid: 04b7591d-106f-4f05-87e9-d416cb65a8a6
 msc.legacyurl: /web-forms/overview/data-access/database-driven-site-maps/building-a-custom-database-driven-site-map-provider-cs
 msc.type: authoredcontent
 ms.openlocfilehash: a3e27b37703b12c9796e8516f0d805aef1fdf8d8
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74636891"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78611984"
 ---
 # <a name="building-a-custom-database-driven-site-map-provider-c"></a>Vytvoření vlastního databázově řízeného zprostředkovatele mapy webu (C#)
 
@@ -284,7 +284,7 @@ Chcete-li získat přístup ke členu, který je specifický pro poskytovatele m
 > [!NOTE]
 > Ujistěte se, že testujete funkci závislosti mezipaměti SQL. Po návštěvě `Default.aspx`, `ProductsByCategory.aspx`a `ProductDetails.aspx` stránky, jděte do jednoho z kurzů v části úpravy, vložení a odstranění a upravte název kategorie nebo produktu. Pak se vraťte na jednu ze stránek ve složce `SiteMapProvider`. Za předpokladu, že se pro mechanismus cyklického dotazování předává dostatek času na změnu podkladové databáze, měla by být mapa lokality aktualizována, aby se zobrazil nový název produktu nebo kategorie.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Funkce mapy webu ASP.NET 2,0 s obsahuje třídu `SiteMap`, řadu integrovaných webových ovládacích prvků a výchozího poskytovatele mapy webu, který očekává, že informace o mapě webu jsou trvale uložené v souboru XML. Aby bylo možné používat informace o mapě webu z nějakého jiného zdroje, například z databáze, architektury aplikace nebo vzdálené webové služby, musíme vytvořit vlastního poskytovatele mapy webu. To zahrnuje vytvoření třídy, která je přímo nebo nepřímo odvozena z třídy `SiteMapProvider`.
 

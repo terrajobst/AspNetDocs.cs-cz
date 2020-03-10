@@ -1,155 +1,155 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering
-title: 'Použití rozhraní Entity Framework 4.0 a ovládací prvek ObjectDataSource, 3. část: Řazení a filtrování | Dokumentace Microsoftu'
+title: 'Použití Entity Framework 4,0 a ovládacího prvku ObjectDataSource, část 3: řazení a filtrování | Microsoft Docs'
 author: tdykstra
-description: V této sérii kurzů staví na Contoso University webovou aplikaci, která se vytvořila Začínáme s Entity Framework 4.0 série kurzů. I...
+description: Tato řada kurzů se sestavuje na webové aplikaci Contoso University, která je vytvořená Začínáme pomocí řady kurzů Entity Framework 4,0. I...
 ms.author: riande
 ms.date: 01/26/2011
 ms.assetid: 2990bd10-590d-43d5-9529-6b503ce5455d
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering
 msc.type: authoredcontent
 ms.openlocfilehash: 603120864528b9a5ff81214270eb9a7f1b68b347
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130681"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78631668"
 ---
-# <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-3-sorting-and-filtering"></a>Použití rozhraní Entity Framework 4.0 a ovládací prvek ObjectDataSource, 3. část: Řazení a filtrování
+# <a name="using-the-entity-framework-40-and-the-objectdatasource-control-part-3-sorting-and-filtering"></a>Použití Entity Framework 4,0 a ovládacího prvku ObjectDataSource, část 3: řazení a filtrování
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-> V této sérii kurzů staví na Contoso University webovou aplikaci, která se vytvořila [Začínáme s Entity Framework 4.0](https://asp.net/entity-framework/tutorials#Getting%20Started) série kurzů. Pokud nebyla dokončena v předchozích kurzech, jako výchozí bod pro účely tohoto kurzu můžete [stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) , kterou by jste vytvořili. Můžete také [stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) , který vytvoří kompletní série kurzů. Pokud máte dotazy týkající se těchto kurzů, můžete je publikovat [fórum ASP.NET Entity Framework](https://forums.asp.net/1227.aspx).
+> Tato řada kurzů se sestavuje na webové aplikaci Contoso University, která je vytvořená [Začínáme pomocí řady kurzů Entity Framework 4,0](https://asp.net/entity-framework/tutorials#Getting%20Started) . Pokud jste nedokončili předchozí kurzy, jako výchozí bod tohoto kurzu si můžete aplikaci, kterou jste vytvořili, [Stáhnout](https://code.msdn.microsoft.com/ASPNET-Web-Forms-97f8ee9a) . Můžete si také [Stáhnout aplikaci](https://code.msdn.microsoft.com/ASPNET-Web-Forms-6c7197aa) , která je vytvořená úplnou řadou kurzů. Pokud máte dotazy k kurzům, můžete je publikovat na [fórum ASP.NET Entity Framework](https://forums.asp.net/1227.aspx).
 
-V předchozím kurzu jste implementovali úložiště vzor n vrstvá webové aplikace, která používá Entity Framework a `ObjectDataSource` ovládacího prvku. Tento kurz ukazuje, jak provést řazení a filtrování a zpracování scénářů hlavní podrobnosti. Přidejte následující vylepšení *Departments.aspx* stránky:
+V předchozím kurzu jste implementovali vzor úložiště v n-vrstvé webové aplikaci, která používá Entity Framework a ovládací prvek `ObjectDataSource`. V tomto kurzu se dozvíte, jak provádět řazení a filtrování a zpracovávat scénáře hlavní-podrobnosti. Na stránku *oddělení. aspx* přidáte následující vylepšení:
 
-- Textové pole, chcete-li povolit uživatelům výběr oddělení podle názvu.
-- Seznam kurzů pro každé oddělení, který se zobrazí v mřížce.
-- Možnost řadit kliknutím na záhlaví sloupců.
+- Textové pole, které uživatelům umožní vybrat oddělení podle jména.
+- Seznam kurzů pro každé oddělení zobrazené v mřížce
+- Možnost řazení kliknutím na záhlaví sloupců.
 
 [![Image01](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/_static/image2.png)](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/_static/image1.png)
 
-## <a name="adding-the-ability-to-sort-gridview-columns"></a>Přidání možnosti řazení sloupce GridView
+## <a name="adding-the-ability-to-sort-gridview-columns"></a>Přidání možnosti řazení sloupců GridView
 
-Otevřít *Departments.aspx* stránky a přidat `SortParameterName="sortExpression"` atribut `ObjectDataSource` ovládací prvek s názvem `DepartmentsObjectDataSource`. (Později vytvoříte `GetDepartments` metodu, která přebírá parametr s názvem `sortExpression`.) Značky pro počáteční značka ovládacího prvku teď vypadá podobně jako v následujícím příkladu.
+Otevřete stránku *oddělení. aspx* a přidejte atribut `SortParameterName="sortExpression"` do ovládacího prvku `ObjectDataSource` s názvem `DepartmentsObjectDataSource`. (Později vytvoříte metodu `GetDepartments`, která převezme parametr s názvem `sortExpression`.) Značky pro otevírací značku ovládacího prvku nyní připomínají následující příklad.
 
 [!code-aspx[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample1.aspx)]
 
-Přidat `AllowSorting="true"` atribut otevírací značce `GridView` ovládacího prvku. Značky pro počáteční značka ovládacího prvku teď vypadá podobně jako v následujícím příkladu.
+Přidejte atribut `AllowSorting="true"` do počáteční značky `GridView` ovládacího prvku. Značky pro otevírací značku ovládacího prvku nyní připomínají následující příklad.
 
 [!code-aspx[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample2.aspx)]
 
-V *Departments.aspx.cs*, nastavit výchozí pořadí řazení voláním `GridView` ovládacího prvku `Sort` metodu z `Page_Load` metody:
+V *departments.aspx.cs*nastavte výchozí pořadí řazení voláním metody `Sort` `GridView` ovládacího prvku z metody `Page_Load`:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample3.cs)]
 
-Můžete přidat kód, který seřadí nebo filtry ve třídě obchodní logiku nebo třídu úložiště. Pokud ji uděláte ve třídě obchodní logiky, řazení a filtrování pracovních se provede po načtení dat z databáze, protože třída obchodní logiky pracuje s `IEnumerable` vrácený úložiště. Pokud přidáte řazení a filtrování kód v třídě úložiště a proveďte před výrazu LINQ nebo dotaz na objekt byl převeden na `IEnumerable` objektu, vaše příkazy se budou předávat na databázi pro zpracování, což je obvykle efektivnější. V tomto kurzu budete implementovat řazení a filtrování způsobem, který způsobí, že zpracování, aby prováděla databáze – to znamená, že v úložišti.
+Můžete přidat kód, který seřadí nebo filtruje buď ve třídě obchodní logiky, nebo ve třídě úložiště. Pokud to provedete ve třídě obchodní logika, bude řazení nebo filtrování provedeno po načtení dat z databáze, protože třída obchodní logiky pracuje s objektem `IEnumerable` vráceným úložištěm. Pokud přidáte kód pro řazení a filtrování do třídy úložiště a provedete jej před převodem výrazu LINQ nebo objektu na objekt `IEnumerable`, budou příkazy předány do databáze ke zpracování, což je obvykle efektivnější. V tomto kurzu implementujete řazení a filtrování způsobem, který způsobí, že se zpracování provádí v databázi, tj. v úložišti.
 
-Přidání možnosti třídění, musíte přidat nové metody pro úložiště rozhraní a třídy úložiště i jako třída obchodní logiku. V *ISchoolRepository.cs* přidejte nový `GetDepartments` metodu, která přebírá `sortExpression` parametr, který se použije k seřazení seznamu oddělení, která je vrácena:
+Chcete-li přidat možnosti řazení, je nutné přidat novou metodu do rozhraní úložiště a třídy úložiště a také do třídy obchodní logiky. V souboru *ISchoolRepository.cs* přidejte novou `GetDepartments` metodu, která převezme parametr `sortExpression`, který se použije k řazení seznamu vrácených oddělení:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample4.cs)]
 
-`sortExpression` Parametr bude určovat sloupec řazení a směr řazení.
+Parametr `sortExpression` určí sloupec, podle kterého se má řadit, a směr řazení.
 
-Přidejte kód pro novou metodu pro *SchoolRepository.cs* souboru:
+Do souboru *SchoolRepository.cs* přidejte kód pro novou metodu:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample5.cs)]
 
-Změnit existující konstruktor bez parametrů `GetDepartments` metoda zavolat novou metodu:
+Změňte existující metodu `GetDepartments` bez parametrů pro volání nové metody:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample6.cs)]
 
-V testovacím projektu přidejte následující novou metodu pro *MockSchoolRepository.cs*:
+V testovacím projektu přidejte následující novou metodu do *MockSchoolRepository.cs*:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample7.cs)]
 
-Pokud se chystáte vytvořit všechny testy jednotek, které závisí tato metoda vrátí seřazený seznam, je třeba seřadit seznam před jeho vrácením. Můžete nebude vytvářet testy tímto způsobem. v tomto kurzu, metoda může vrátit pouze netříděný seznam oddělení.
+Pokud jste chtěli vytvořit jakékoli testy jednotek, které jsou závislé na této metodě vracející seřazený seznam, museli byste seznam před jeho vrácením seřadit. V tomto kurzu nebudete vytvářet testy jako v tomto kurzu, takže metoda může jednoduše vrátit Neseřazený seznam oddělení.
 
-V *SchoolBL.cs* přidejte následující novou metodu do třídy obchodní logiky:
+V souboru *SchoolBL.cs* přidejte následující novou metodu do třídy obchodní logiky:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample8.cs)]
 
-Tento kód předá parametr řazení metodu úložiště.
+Tento kód předá parametr řazení metodě úložiště.
 
-Spustit *Departments.aspx* stránky.
+Spusťte stránku *oddělení. aspx* .
 
 [![Image02](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/_static/image4.png)](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/_static/image3.png)
 
-Nyní můžete kliknout na záhlaví libovolného sloupce pro řazení podle sloupce. Pokud sloupec je už seřazený, kliknutím na záhlaví obrátí směr řazení.
+Nyní můžete kliknout na záhlaví kteréhokoli sloupce a řadit podle daného sloupce. Pokud je sloupec již seřazený, kliknutím na záhlaví obrátíte směr řazení.
 
 ## <a name="adding-a-search-box"></a>Přidání vyhledávacího pole
 
-V této části budete přidání textového pole hledání, propojení tak, `ObjectDataSource` řídit pomocí parametru ovládacího prvku a přidejte metodu do třídy obchodní logiky chcete podporovat filtrování.
+V této části přidáte textové pole hledání, propojíte ho s ovládacím prvkem `ObjectDataSource` pomocí parametru Control a přidáte metodu do třídy obchodní logiky pro podporu filtrování.
 
-Otevřít *Departments.aspx* stránku a přidejte následující kód mezi názvem a prvním `ObjectDataSource` ovládacího prvku:
+Otevřete stránku *oddělení. aspx* a přidejte následující značku mezi nadpisem a prvním ovládacím prvkem `ObjectDataSource`:
 
 [!code-aspx[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample9.aspx)]
 
-V `ObjectDataSource` ovládací prvek s názvem `DepartmentsObjectDataSource`, postupujte takto:
+V ovládacím prvku `ObjectDataSource` s názvem `DepartmentsObjectDataSource`proveďte následující kroky:
 
-- Přidat `SelectParameters` – element pro parametr s názvem `nameSearchString` , který získá hodnota zadaná v `SearchTextBox` ovládacího prvku.
-- Změnit `SelectMethod` atribut hodnotu `GetDepartmentsByName`. (Vytvoříte tato metoda později.)
+- Přidejte `SelectParameters` element pro parametr s názvem `nameSearchString`, který získá hodnotu zadanou v ovládacím prvku `SearchTextBox`.
+- Změňte hodnotu atributu `SelectMethod` na `GetDepartmentsByName`. (Tuto metodu vytvoříte později.)
 
-Zápis `ObjectDataSource` ovládací prvek teď vypadá podobně jako v následujícím příkladu:
+Značky pro ovládací prvek `ObjectDataSource` nyní připomínají následující příklad:
 
 [!code-aspx[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample10.aspx)]
 
-V *ISchoolRepository.cs*, přidejte `GetDepartmentsByName` metodu, která přebírá obě `sortExpression` a `nameSearchString` parametry:
+Do *ISchoolRepository.cs*přidejte metodu `GetDepartmentsByName`, která přijímá parametry `sortExpression` a `nameSearchString`:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample11.cs)]
 
-V *SchoolRepository.cs*, přidejte následující novou metodu:
+Do *SchoolRepository.cs*přidejte následující novou metodu:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample12.cs)]
 
-Tento kód používá `Where` pro výběr položek, které obsahují hledaný řetězec. Pokud hledaný řetězec je prázdný, budou vybrány všechny záznamy. Všimněte si, že při zadání metody volá společně v jednom příkazu takto (`Include`, pak `OrderBy`, pak `Where`), `Where` metoda musí být vždy poslední.
+Tento kód používá metodu `Where` k výběru položek, které obsahují hledaný řetězec. Pokud je hledaný řetězec prázdný, budou vybrány všechny záznamy. Všimněte si, že pokud zadáte volání metody společně v jednom příkazu (`Include`, pak `OrderBy`a pak `Where`), metoda `Where` musí vždy být poslední.
 
-Změnit existující `GetDepartments` metodu, která přebírá `sortExpression` parametr zavolat novou metodu:
+Změňte existující metodu `GetDepartments`, která převezme parametr `sortExpression` pro volání nové metody:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample13.cs)]
 
-V *MockSchoolRepository.cs* v testovacím projektu přidejte následující novou metodu:
+Do *MockSchoolRepository.cs* v testovacím projektu přidejte následující novou metodu:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample14.cs)]
 
-V *SchoolBL.cs*, přidejte následující novou metodu:
+Do *SchoolBL.cs*přidejte následující novou metodu:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample15.cs)]
 
-Spustit *Departments.aspx* stránku a zadejte hledaný řetězec, abyste měli jistotu, že funguje logiku výběru. Do textového pole ponechte prázdné a opakujte vyhledávání, abyste měli jistotu, že se vrátí všechny záznamy.
+Spusťte stránku *oddělení. aspx* a zadejte hledaný řetězec, abyste se ujistili, že logika výběru funguje. Pole text nechejte prázdné a zkuste hledání zkontrolovat, zda jsou vráceny všechny záznamy.
 
 [![Image03](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/_static/image6.png)](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/_static/image5.png)
 
 ## <a name="adding-a-details-column-for-each-grid-row"></a>Přidání sloupce podrobností pro každý řádek mřížky
 
-V dalším kroku budete chtít zobrazit všechny kurzy pro každé oddělení zobrazí v pravém buňky v mřížce. K tomuto účelu použijete vnořený `GridView` ovládacího prvku a databind tak data z `Courses` vlastnost navigace `Department` entity.
+V dalším kroku chcete zobrazit všechny kurzy pro každé oddělení zobrazené v pravé buňce mřížky. K tomuto účelu použijete vnořený ovládací prvek `GridView` a provedete jeho vázání na data z `Courses` navigační vlastnosti entity `Department`.
 
-Otevřít *Departments.aspx* a do značky `GridView` řídit, zadejte obslužnou rutinu pro `RowDataBound` událostí. Značky pro počáteční značka ovládacího prvku teď vypadá podobně jako v následujícím příkladu.
+Otevřete panel *oddělení. aspx* a v části značky pro ovládací prvek `GridView` určete obslužnou rutinu pro událost `RowDataBound`. Značky pro otevírací značku ovládacího prvku nyní připomínají následující příklad.
 
 [!code-aspx[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample16.aspx)]
 
-Přidat nový `TemplateField` elementu po `Administrator` pole šablony:
+Přidejte nový element `TemplateField` za pole šablony `Administrator`:
 
 [!code-aspx[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample17.aspx)]
 
-Tento kód vytvoří vnořený `GridView` ovládací prvek, který zobrazuje číslo kurzu a název seznamu kurzů. Neurčuje zdroj dat, protože databind, je nutné ho v kódu v `RowDataBound` obslužné rutiny.
+Tento kód vytvoří vnořený `GridView` ovládací prvek, který zobrazuje číslo kurzu a název seznamu kurzů. Neurčuje zdroj dat, protože ho v obslužné rutině `RowDataBound` provedete v kódu.
 
-Otevřít *Departments.aspx.cs* a přidejte následující obslužnou rutinu `RowDataBound` události:
+Otevřete *departments.aspx.cs* a přidejte následující obslužnou rutinu pro událost `RowDataBound`:
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample18.cs)]
 
-Tento kód získá `Department` entity z argumenty události, převede `Courses` navigační vlastnost pro `List` kolekce a databinds vnořeného `GridView` do kolekce.
+Tento kód získá `Department` entitu z argumentů události, převede `Courses` navigační vlastnost na kolekci `List` a dataváže vnořenou `GridView` do kolekce.
 
-Otevřít *SchoolRepository.cs* souboru a zadejte předběžné načítání pro `Courses` navigační vlastnost voláním `Include` metoda v objektu dotazu, který vytvoříte v `GetDepartmentsByName` metody. `return` Výroky `GetDepartmentsByName` metoda teď vypadá podobně jako v následujícím příkladu.
+Otevřete soubor *SchoolRepository.cs* a zadejte Eager načítání pro navigační vlastnost `Courses` voláním metody `Include` v dotazu objektu, který vytvoříte v metodě `GetDepartmentsByName`. Příkaz `return` v metodě `GetDepartmentsByName` nyní vypadá podobně jako v následujícím příkladu.
 
 [!code-csharp[Main](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/samples/sample19.cs)]
 
-Spuštění stránky. Kromě řazení a filtrování funkce, která jste přidali dříve ovládací prvek GridView nyní zobrazuje podrobnosti o vnořené kurzu pro každé oddělení.
+Spusťte stránku. Kromě možnosti řazení a filtrování, které jste přidali dříve, ovládací prvek GridView nyní zobrazuje informace o vnořeném kurzu pro každé oddělení.
 
 [![Image01](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/_static/image8.png)](using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering/_static/image7.png)
 
-Dokončení tohoto postupu Úvod do scénáře řazení, filtrování a hlavní podrobnosti. V dalším kurzu zobrazí se vám způsob zpracování souběžnosti.
+Tím se dokončí Úvod ke scénářům řazení, filtrování a hlavní-podrobnosti. V dalším kurzu se dozvíte, jak zpracovávat souběžnost.
 
 > [!div class="step-by-step"]
 > [Předchozí](using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
-> [další](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
+> [Další](handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)

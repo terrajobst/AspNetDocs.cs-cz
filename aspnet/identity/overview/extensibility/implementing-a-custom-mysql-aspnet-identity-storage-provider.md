@@ -10,11 +10,11 @@ ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/extensibility/implementing-a-custom-mysql-aspnet-identity-storage-provider
 msc.type: authoredcontent
 ms.openlocfilehash: 2f0b47d45bce82c71d1864536309f9e2ffed2d63
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519125"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616912"
 ---
 # <a name="implementing-a-custom-mysql-aspnet-identity-storage-provider"></a>Implementace vlastního poskytovatele úložiště MySQL ASP.NET Identity
 
@@ -121,7 +121,7 @@ V případě potřeby nainstalujte buď [Visual Studio Express 2013 pro web](htt
 5. Klikněte pravým tlačítkem myši na projekt IdentityMySQLDemo, vyberte možnost **Přidat**, **odkaz, řešení, projekty** , vyberte projekt ASPNET. identity. MySQL a klikněte na tlačítko **OK**.
 6. V projektu IdentityMySQLDemo nahraďte všechny odkazy na  
     `using Microsoft.AspNet.Identity.EntityFramework;`  
-   se službou  
+   následující adresou:  
      `using AspNet.Identity.MySQL;`
 7. V IdentityModels.cs nastavte **ApplicationDbContext** na odvozený od **MySqlDatabase** a přidejte konstruktor, který přijímá jeden parametr s názvem připojení.  
 

@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/data-access/index
-title: Starší verze – přístup k datům | Dokumentace Microsoftu
+title: Starší verze – přístup k datům | Microsoft Docs
 author: rick-anderson
-description: Jak k provádění různých úloh souvisejících s daty pomocí ovládací prvky dat webových formulářů ASP.NET.
+description: Postup provádění nejrůznějších úloh souvisejících s daty pomocí ovládacích prvků dat webových formulářů ASP.NET.
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: cf54a6fb-a362-4481-b967-c158b98092f7
 msc.legacyurl: /web-forms/overview/data-access
 msc.type: chapter
 ms.openlocfilehash: 9bdc5cdb3ef3a2289e2f76ae498544d0584f36f5
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65109024"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78605628"
 ---
 # <a name="older-versions---data-access"></a>Starší verze – přístup k datům
 
-> Jak k provádění různých úloh souvisejících s daty pomocí ovládací prvky dat webových formulářů ASP.NET.
+> Postup provádění nejrůznějších úloh souvisejících s daty pomocí ovládacích prvků dat webových formulářů ASP.NET.
 
 - [Úvod](introduction/index.md)
 
@@ -43,7 +43,7 @@ ms.locfileid: "65109024"
     - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (C#)](masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
     - [Filtrování záznamů hlavních záznamů/podrobností ovládacím prvkem DropDownList (VB)](masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md)
     - [Filtrování záznamů hlavních záznamů/podrobností dvou ovládacích prvků DropDownList (VB)](masterdetail/master-detail-filtering-with-two-dropdownlists-vb.md)
-    - [Filtrování záznamů hlavních záznamů/podrobností na dvou stránkách (VB)](masterdetail/master-detail-filtering-across-two-pages-vb.md)
+    - [Filtrování záznamů master/detail na dvou stránkách (VB)](masterdetail/master-detail-filtering-across-two-pages-vb.md)
     - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (VB)](masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)
 - [Vlastní formátování](custom-formatting/index.md)
 
@@ -104,7 +104,7 @@ ms.locfileid: "65109024"
     - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (C#)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
     - [Filtrování záznamů master/detail na dvou stránkách (C#)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs.md)
     - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
-    - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
+    - [Filtrování záznamů hlavních záznamů/podrobností ovládacím prvkem DropDownList (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
     - [Filtrování záznamů master/detail na dvou stránkách (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-vb.md)
     - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)](filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
 - [Úpravy a odstranění dat prostřednictvím datového prvku DataList](editing-and-deleting-data-through-the-datalist/index.md)

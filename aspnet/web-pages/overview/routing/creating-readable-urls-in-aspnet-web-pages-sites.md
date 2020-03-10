@@ -1,93 +1,93 @@
 ---
 uid: web-pages/overview/routing/creating-readable-urls-in-aspnet-web-pages-sites
-title: Vytvoření čitelných adres URL v rozhraní ASP.NET Web Pages servery (Razor) | Dokumentace Microsoftu
+title: Vytváření čitelných adres URL na webech ASP.NET Web Pages (Razor) | Microsoft Docs
 author: Rick-Anderson
-description: Tento článek popisuje směrování ve na webu rozhraní ASP.NET Web Pages (Razor) a jak to vám umožní používat adresy URL, které jsou čitelnější a lépe pro SEO. Co budete...
+description: Tento článek popisuje směrování na webu ASP.NET Web Pages (Razor) a jak vám to umožňuje používat adresy URL, které jsou čitelnější a lepší pro SEO. Co budete...
 ms.author: riande
 ms.date: 02/17/2014
 ms.assetid: a8aac1ac-89de-4415-afe0-97a41c6423d2
 msc.legacyurl: /web-pages/overview/routing/creating-readable-urls-in-aspnet-web-pages-sites
 msc.type: authoredcontent
 ms.openlocfilehash: 832db8e144cab730f16c78f67c12feb9b7c92c7c
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131772"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78628392"
 ---
-# <a name="creating-readable-urls-in-aspnet-web-pages-razor-sites"></a>Vytvoření čitelných adres URL webů s ASP.NET webovými stránkami (Razor)
+# <a name="creating-readable-urls-in-aspnet-web-pages-razor-sites"></a>Vytváření čitelných adres URL na webech ASP.NET Web Pages (Razor)
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> Tento článek popisuje směrování ve na webu rozhraní ASP.NET Web Pages (Razor) a jak to vám umožní používat adresy URL, které jsou čitelnější a lépe pro SEO.
+> Tento článek popisuje směrování na webu ASP.NET Web Pages (Razor) a jak vám to umožňuje používat adresy URL, které jsou čitelnější a lepší pro SEO.
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Jak ASP.NET používá směrování, aby vám umožňují používat více čitelný a dohledatelné adresy URL.
+> - Jak ASP.NET využívá směrování, abyste mohli používat čitelnější a prohledávatelné adresy URL.
 >   
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
 > - Webové stránky ASP.NET (Razor) 3
 >   
 > 
-> V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
+> Tento kurz funguje také s ASP.NET webovými stránkami 2.
 
 ## <a name="about-routing"></a>O směrování
 
-Adresy URL pro stránky ve vaší lokalitě může mít dopad na tom, jak dobře funguje webu. Adresa URL, která &quot;popisný&quot; usnadnit uživatelům webu. Může také pomoct s optimalizací vyhledávání (SEO) pro lokalitu. Webů ASP.NET zahrnuje možnost automaticky používat přátelské adresy URL.
+Adresy URL stránek na webu mohou mít dopad na to, jak dobře web funguje. Adresa URL, která je &quot;uživatelsky přívětivá&quot; může usnadnit používání webu uživateli. Může také pomáhat s optimalizací vyhledávání na webu (SEO). ASP.NET weby zahrnují možnost používat popisné adresy URL automaticky.
 
-Technologie ASP.NET umožňuje vytvářet smysluplné adresy URL, které popisují akce uživatelů místo jenom odkazuje na soubor na serveru. Vezměte v úvahu tyto adresy URL pro fiktivní blog:
+ASP.NET umožňuje vytvářet smysluplné adresy URL, které popisují akce uživatelů místo pouhého nasměrování na soubor na serveru. Vezměte v úvahu tyto adresy URL fiktivního blogu:
 
 - `http://www.contoso.com/Blog/blog.cshtml?categories=hardware`
 - `http://www.contoso.com//Blog/blog.cshtml?startdate=2009-11-01&enddate=2009-11-30`
 
-Porovnání těchto adres URL pro následující dotazy:
+Porovnejte tyto adresy URL s těmito adresami:
 
 - `http://www.contoso.com/Blog/categories/hardware/`
 - `http://www.contoso.com/Blog/2009/November`
 
-V první pár uživatel musel vědět, že se zobrazí v blogu pomocí *blog.cshtml* stránce a pak je nutné vytvořit řetězec dotazu, který získá správné kategorie nebo rozsah. Druhá řada příklady jsou mnohem snadněji pochopit a vytvořit.
+V první dvojici by uživatel musel mít jistotu, že se blog zobrazuje pomocí stránky *blog. cshtml* , a pak by musel sestavit řetězec dotazu, který získá správnou kategorii nebo rozsah kalendářních dat. Druhá sada příkladů je mnohem snazší pochopit a vytvořit.
 
-Adresy URL pro první příklad také odkazovat přímo na konkrétní soubor (*blog.cshtml*). Pokud z nějakého důvodu blogu byly přesunuty do jiné složky na serveru nebo na blogu nebyly přepsány, aby bylo použít jinou stránku, odkazy by být nesprávné. Druhá sada adres URL neodkazuje na konkrétní stránce, tak i v případě implementace blogu nebo umístění změní, adresy URL by stále platit.
+Adresy URL pro první příklad také odkazují přímo na konkrétní soubor (*blog. cshtml*). Pokud z nějakého důvodu byl blog přesunut do jiné složky na serveru nebo pokud byl blog přepsaný na jinou stránku, odkazy by byly nesprávné. Druhá sada adres URL neukazuje na konkrétní stránku, takže i v případě změny nebo implementace blogu budou adresy URL stále platné.
 
-ASP.NET Web Pages, můžete vytvořit příjemnější adresy URL jako v předchozích příkladech vzhledem k tomu používá ASP.NET *směrování*. Směrování vytvoří logické mapování z adresy URL stránky (nebo stránky), který požadavek můžete splnit. Protože je logické mapování (ne z fyzických prostředků, do konkrétního souboru), směrování poskytuje velmi flexibilní způsob definování adresy URL pro váš web.
+Na webových stránkách ASP.NET můžete vytvořit adresy URL příjemnější, jako jsou ty ve výše uvedených příkladech, protože ASP.NET používá *Směrování*. Směrování vytvoří logické mapování z adresy URL na stránku (nebo stránky), která může splnit požadavek. Vzhledem k tomu, že mapování je logické (nefyzické, pro určitý soubor), směrování poskytuje skvělou flexibilitu při definování adres URL pro váš web.
 
 ## <a name="how-routing-works"></a>Jak funguje směrování
 
-Když ASP.NET zpracovává žádost, načte adresu URL a zjistěte, jak ho směrovat. Technologie ASP.NET pokusí porovnat jednotlivých segmentů adresy URL pro soubory na disku, bude zleva doprava. Pokud se zjistí shoda, nic zbývajících v adrese URL je předána stránce jako *informace o cestě*.
+Když ASP.NET zpracuje požadavek, přečte adresu URL, která určí, jak se má směrovat. ASP.NET se snaží porovnat jednotlivé segmenty adresy URL s soubory na disku, a to směrem zleva doprava. Pokud se vyskytne shoda, vše zbývající na adrese URL se předává stránce jako *informace o cestě*.
 
-Představte si, že někdo vytvoří žádost o tuto adresu URL:
+Představte si, že někdo vytvoří žádost pomocí této adresy URL:
 
 `http://www.contoso.com/a/b/c`
 
-Hledání prochází tímto způsobem:
+Hledání bude vypadat takto:
 
-1. Je k dispozici soubor s cestou a názvem */a/b/c.cshtml*? Pokud ano, spusťte tuto stránku a předat žádné informace. V opačném případě...
-2. Je k dispozici soubor s cestou a názvem */a/b.cshtml*? Pokud ano, spusťte tuto stránku a předejte hodnotu `c` k němu. V opačném případě...
-3. Je k dispozici soubor s cestou a názvem */a.cshtml*? Pokud ano, spusťte tuto stránku a předejte hodnotu `b/c` k němu.
+1. Existuje soubor s cestou a názvem */a/b/c.cshtml*? Pokud ano, spusťte tuto stránku a nepředá do ní žádné informace. V opačném případě...
+2. Existuje soubor s cestou a názvem */a/b.cshtml*? Pokud ano, spusťte tuto stránku a předejte jí hodnotu `c`. V opačném případě...
+3. Existuje soubor s cestou a názvem */a.cshtml*? Pokud ano, spusťte tuto stránku a předejte jí hodnotu `b/c`.
 
-Pokud hledání nenašel žádné přesně odpovídá *.cshtml* soubory v jejich zadaných složek ASP.NET pokračuje v hledání pro tyto soubory pak:
+Pokud hledání nenalezlo přesné shody souborů *. cshtml* v zadaných složkách, ASP.NET pokračuje v hledání těchto souborů:
 
-1. */a/b/c/default.cshtml* (informace o cestě).
-2. */a/b/c/index.cshtml* (informace o cestě).
+1. */a/b/c/default.cshtml* (žádné informace o cestě).
+2. */a/b/c/index.cshtml* (žádné informace o cestě).
 
 > [!NOTE]
-> Jasno, požadavky na konkrétní stránky (to znamená, požadavky, které obsahují *.cshtml* příponu názvu souboru) pracovat stejně jako byste očekávali. Žádost, jako jsou `http://www.contoso.com/a/b.cshtml` poběží na stránce *b.cshtml* zcela v pořádku.
+> Aby bylo jasné, požadavky na konkrétní stránky (tj. požadavky, které obsahují příponu názvu souboru *. cshtml* ) fungují stejně jako ty, které byste očekávali. Žádost, jako je `http://www.contoso.com/a/b.cshtml`, spustí stránku *b. cshtml* pouze přesně.
 
-Uvnitř stránky, můžete získat informace o cestě na stránce `UrlData` vlastnost, která je do slovníku. Představte si, že máte soubor s názvem *ViewCustomers.cshtml* a webu získá této žádosti:
+V rámci stránky můžete získat informace o cestě prostřednictvím vlastnosti `UrlData` stránky, což je slovník. Představte si, že máte soubor s názvem *ViewCustomers. cshtml* a váš web získá tuto žádost:
 
 `http://mysite.com/myWebSite/ViewCustomers/1000`
 
-Podle popisu ve výše uvedených pravidel, požadavek bude přejděte na stránku. Na stránce můžete použít k získání a zobrazit informace o cestě kód podobný tomuto (v tomto případě, hodnota &quot;1000&quot;):
+Jak je popsáno v předchozích pravidlech, požadavek přejde na vaši stránku. Uvnitř stránky můžete použít kód podobný následujícímu k získání a zobrazení informací o cestě (v tomto případě hodnota &quot;1000&quot;):
 
 [!code-html[Main](creating-readable-urls-in-aspnet-web-pages-sites/samples/sample1.html)]
 
 > [!NOTE]
-> Protože směrování nezahrnuje celý názvy, může být nejednoznačnost Pokud máte stránky, které mají stejné ale různé přípony názvu souboru (například *MyPage.cshtml* a *MyPage.html*) . Pokud se chcete vyhnout problémy se směrováním, je nejlepší, abyste měli jistotu, že není nutné stránek ve vaší lokalitě, jejichž názvy se liší pouze velikostí svého rozšíření.
+> Vzhledem k tomu, že směrování nezahrnuje úplné názvy souborů, může dojít k nejednoznačnosti, pokud máte stránky se stejným názvem, ale s různými příponami názvu souboru (například *MyPage. cshtml* a *MyPage. html*). Aby se zabránilo problémům se směrováním, je vhodné zajistit, aby ve vaší lokalitě nebyly stránky, jejichž názvy se liší pouze v jejich příponách.
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
 
-[Služba WebMatrix – adresy URL, UrlData a směrování pro SEO](http://www.mikesdotnetting.com/Article/165/WebMatrix-URLs-UrlData-and-Routing-for-SEO). Tuto položku blogu podle Mike Brind poskytuje některé další podrobnosti o tom, jak směrování funguje v ASP.NET Web Pages.
+[WebMatrix – adresy URL, UrlData a směrování pro SEO](http://www.mikesdotnetting.com/Article/165/WebMatrix-URLs-UrlData-and-Routing-for-SEO). Tento záznam blogu pomocí Jan slaného záznamu vám poskytne další podrobnosti o tom, jak funguje směrování na webových stránkách ASP.NET.

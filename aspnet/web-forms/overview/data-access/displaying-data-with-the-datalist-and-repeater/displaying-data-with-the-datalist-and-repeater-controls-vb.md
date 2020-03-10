@@ -9,11 +9,11 @@ ms.assetid: 58618954-a9ed-4ca0-8c2d-95a5ffd9c03e
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/displaying-data-with-the-datalist-and-repeater-controls-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 4e7aaa1701da67aec61505b64a835ef41031bb13
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74614292"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78626362"
 ---
 # <a name="displaying-data-with-the-datalist-and-repeater-controls-vb"></a>Zobrazení dat ovládacími prvky DataList a Repeater (VB)
 
@@ -248,7 +248,7 @@ Obrázek 18 znázorňuje opakování po provedení těchto změn.
 
 **Obrázek 18**: alternativní sloupce kategorie v barvě pozadí a obsahuje řádek záhlaví ([kliknutím zobrazíte obrázek v plné velikosti](displaying-data-with-the-datalist-and-repeater-controls-vb/_static/image50.png))
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 I když ovládací prvek GridView usnadňuje zobrazení, úpravy, odstranění, řazení a stránkování dat, je vzhled velmi boxy a podobný mřížce. Pro lepší kontrolu vzhledu musíme zapnout ovládací prvky DataList nebo Repeater. Oba tyto ovládací prvky zobrazují sadu záznamů pomocí šablon místo BoundFields, CheckBoxFields a tak dále.
 

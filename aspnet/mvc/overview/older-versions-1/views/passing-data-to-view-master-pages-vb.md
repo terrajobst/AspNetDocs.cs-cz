@@ -9,11 +9,11 @@ ms.assetid: 37a1ebae-8773-408f-8645-d21da7ff9ae1
 msc.legacyurl: /mvc/overview/older-versions-1/views/passing-data-to-view-master-pages-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 9f768f47557adedc43cebfa2c092014bba5842de
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74593733"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78600105"
 ---
 # <a name="passing-data-to-view-master-pages-vb"></a>Předání dat stránkám předlohy pro zobrazení (VB)
 
@@ -103,7 +103,7 @@ Kontroler filmů, stejně jako u domovského kontroleru popsaných v předchozí
 
 Všimněte si, že toto řešení pro přidání dat zobrazení pro zobrazení hlavní stránky nebrání v rozporu s SUCHou (princip "Neopakuj se") principem. Kód pro přidání seznamu kategorií videí pro zobrazení dat je obsažen pouze v jednom umístění: konstruktor pro řadič aplikace.
 
-### <a name="summary"></a>Přehled
+### <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme probrali dva přístupy k předávání dat zobrazení z kontroleru na stránku zobrazení Předloha. Nejprve jsme prozkoumali jednoduchý, ale obtížně zachováme přístup. V první části jsme probrali, jak můžete přidat data zobrazení pro stránku předlohy zobrazení v každé akci kontroleru v aplikaci. Dospěli jsme k závěru, že se jedná o špatný přístup, protože je v rozporu s SUCHou (princip "Neopakuj se") principem.
 

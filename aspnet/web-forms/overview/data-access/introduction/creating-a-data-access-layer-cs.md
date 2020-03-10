@@ -9,11 +9,11 @@ ms.assetid: cfe2a6a0-1e56-4dc8-9537-c8ec76ba96a4
 msc.legacyurl: /web-forms/overview/data-access/introduction/creating-a-data-access-layer-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 5aaf97dc8448dcb7b94ef2e4e23f34fd37ac4426
-ms.sourcegitcommit: 6f0e10e4ca61a1e5534b09c655fd35cdc6886c8a
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74115753"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78605040"
 ---
 # <a name="creating-a-data-access-layer-c"></a>Vytvoření vrstvy přístupu k datům (C#)
 
@@ -168,7 +168,7 @@ Tento kód nám nevyžadoval zápis jednoho bitu kódu specifického pro příst
 
 Každý objekt použitý v tomto příkladu je také silného typu, což aplikaci Visual Studio umožňuje poskytovat technologii IntelliSense a kontrolu typu při kompilaci. A nejlepší ze všech datových tabulek vrácených TableAdapter může být svázán s datovými ovládacími prvky ASP.NET dat, jako je například GridView, DetailsView, DropDownList, CheckBoxList a několik dalších. Následující příklad znázorňuje vazbu objektu DataTable vráceného metodou **GetProducts ()** do prvku GridView v pouze scant třech řádcích kódu v rámci **stránky\_načtení** obslužné rutiny události.
 
-AllProducts. aspx
+AllProducts.aspx
 
 [!code-aspx[Main](creating-a-data-access-layer-cs/samples/sample2.aspx)]
 
@@ -422,7 +422,7 @@ Tato data je možné zobrazit také v jakémkoli z ASP. Webové ovládací prvky
 
 Podíváme se, jak tyto sestavy hlavní-podrobnosti zobrazit v budoucích kurzech. Nyní je tento příklad navržen pro ilustraci pomocí vlastní metody přidané do třídy **Northwind. SuppliersRow** .
 
-SuppliersAndProducts. aspx
+SuppliersAndProducts.aspx
 
 [!code-aspx[Main](creating-a-data-access-layer-cs/samples/sample24.aspx)]
 

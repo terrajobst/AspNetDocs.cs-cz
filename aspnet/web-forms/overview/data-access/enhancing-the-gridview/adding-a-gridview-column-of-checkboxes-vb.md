@@ -9,11 +9,11 @@ ms.assetid: 39253d05-75c0-41c7-b9d4-a6c58ecf69ce
 msc.legacyurl: /web-forms/overview/data-access/enhancing-the-gridview/adding-a-gridview-column-of-checkboxes-vb
 msc.type: authoredcontent
 ms.openlocfilehash: c620b2eac5844d4030c1309b45e7d6a72d1f386a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74592424"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78607350"
 ---
 # <a name="adding-a-gridview-column-of-checkboxes-vb"></a>Přidání sloupce zaškrtávacích políček do ovládacího prvku GridView (VB)
 
@@ -122,7 +122,7 @@ V tomto kódu kliknutím na tlačítko zkontrolovat vše způsobí postback a zk
 > [!NOTE]
 > Při zobrazování sloupce zaškrtávacích políček je jedním z přístupů k výběru nebo odvolbě všech zaškrtávacích políček zaškrtávací políčko v řádku záhlaví. Aktuální kontrolu a zrušit kontrolu všech implementací navíc vyžaduje postback. Zaškrtávací políčka lze zaškrtnout nebo zrušit bez zaškrtnutí, ale výhradně prostřednictvím skriptu na straně klienta, čímž zajistíte snappier uživatelské prostředí. Chcete-li se podívat na zaškrtávací políčko pro kontrolu všech a zrušit zaškrtnutí všech podrobností, společně s diskusí o používání technik na straně klienta, zaškrtněte políčko kontrolovat [všechna políčka v prvku GridView pomocí skriptu na straně klienta a zaškrtnutím políčka zaškrtnout vše](http://aspnet.4guysfromrolla.com/articles/053106-1.aspx).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V případech, kdy potřebujete umožnit uživatelům zvolit libovolný počet řádků z prvku GridView, než budete pokračovat, přidání sloupce zaškrtávacích políček je jedna možnost. Jak jsme viděli v tomto kurzu, včetně sloupce zaškrtávacích políček v prvku GridView, zahrnuje přidání pole TemplateField s webovým ovládacím prvkem CheckBox. Pomocí webového ovládacího prvku (proti vložení značek přímo do šablony, jako jsme to dělali v předchozím kurzu) ASP.NET automaticky pamatuje, jaké zaškrtávací políčko byly a nebyly zkontrolovány v rámci zpětného odeslání. K určení, zda je dané zaškrtávací políčko zaškrtnuto, nebo ke změně stavu zaškrtnutí, můžeme také programově přistupovat k zaškrtávacím políčkům v kódu.
 

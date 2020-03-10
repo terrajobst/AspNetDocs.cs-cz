@@ -9,11 +9,11 @@ ms.assetid: ec9db57c-9f68-402a-bf4c-0d63d5f6908e
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-with-an-updatepanel-vb
 msc.type: authoredcontent
 ms.openlocfilehash: dd045ae56696c7944df98cf805ba812fde1bb4ff
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74598774"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78612894"
 ---
 # <a name="handling-postbacks-from-a-popup-control-with-an-updatepanel-vb"></a>Zpracování postbacků ovládacího prvku PopupControl ovládacím prvkem UpdatePanel (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 PopupControl Extender v sadě nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevírané okno v případě, že je aktivován jakýkoli jiný ovládací prvek. Zvláštní péči je nutné provést, pokud dojde k postbacku v takovém překryvném okně.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Při použití `PopupControl` s postbackem může `UpdatePanel` zabránit aktualizaci stránky způsobenou postbackem. Následující kód definuje několik důležitých prvků:
 

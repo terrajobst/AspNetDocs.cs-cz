@@ -1,156 +1,156 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
-title: Zabezpečení aplikací ověřováním a autorizací | Dokumentace Microsoftu
+title: Zabezpečení aplikací pomocí ověřování a autorizace | Microsoft Docs
 author: microsoft
-description: Krok 9 ukazuje, jak přidat ověřování a autorizace pro zabezpečení naší aplikace NerdDinner tak, aby uživatelé potřebují k registraci a přihlaste se k webu k vytvoření...
+description: Krok 9 ukazuje, jak přidat ověřování a autorizaci k zabezpečení naší aplikace NerdDinner, aby se uživatelé museli zaregistrovat a přihlásit k lokalitě, která se má vytvořit...
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 9e4d5cac-b071-440c-b044-20b6d0c964fb
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/secure-applications-using-authentication-and-authorization
 msc.type: authoredcontent
 ms.openlocfilehash: 8d509c5f15bb4d5014e53b8dc2a736454238e72c
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65122231"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78600980"
 ---
 # <a name="secure-applications-using-authentication-and-authorization"></a>Zabezpečení aplikací ověřováním a autorizací
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> Toto je krok 9 bezplatného [kurz vývoje aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který procházení procházení po tom, jak sestavit malý, ale bylo možné provést, webové aplikace pomocí ASP.NET MVC 1.
+> Toto je krok 9 bezplatného [kurzu aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který vás provede procesem vytvoření malé, ale dokončené webové aplikace pomocí ASP.NET MVC 1.
 > 
-> Krok 9 ukazuje, jak přidat ověřování a autorizace pro zabezpečení naší aplikace NerdDinner tak, aby uživatelé potřebují k registraci a přihlášení na web za účelem vytvoření nové večeří a jenom uživatel, který je hostitelem dinner můžete upravit ho později.
+> V kroku 9 se dozvíte, jak přidat ověřování a autorizaci k zabezpečení naší aplikace NerdDinner, aby se uživatelé museli zaregistrovat a přihlašovat k webu a vytvořit novou večeři a aby ho později mohl upravovat jenom uživatel, který hostuje večeři.
 > 
-> Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
+> Pokud používáte ASP.NET MVC 3, doporučujeme vám postupovat podle [Začínáme s kurzy pro](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) [hudební úložiště](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) MVC 3 nebo MVC.
 
-## <a name="nerddinner-step-9-authentication-and-authorization"></a>NerdDinner krok 9: Ověřování a autorizace
+## <a name="nerddinner-step-9-authentication-and-authorization"></a>NerdDinner krok 9: ověřování a autorizace
 
-Teď naše NerdDinner aplikace poskytuje všem uživatelům následujícím webu umožňuje vytvářet a upravovat podrobnosti libovolné dinner. Změňme ji tak, aby uživatelé potřebují k registraci a přihlaste se k webu a vytvořte nový večeří, tak, aby jenom uživatel, který je hostitelem dinner můžete upravit ho později přidat omezení.
+Teď naše aplikace NerdDinner uděluje komukoli návštěvě webu možnost vytvářet a upravovat podrobnosti o večeři. Pojďme to změnit, aby se uživatelé museli zaregistrovat a přihlásit k webu a vytvořit novou večeři a přidat omezení tak, aby ho mohli později upravovat jenom uživatel, který hostuje večeři.
 
-Chcete-li tuto možnost povolte, použijeme ověřování a autorizace pro zabezpečení aplikace.
+Pokud to chcete povolit, použijeme k zabezpečení naší aplikace ověřování a autorizaci.
 
 ### <a name="understanding-authentication-and-authorization"></a>Principy ověřování a autorizace
 
-*Ověřování* je proces identifikace a ověření identity klienta přístupu k aplikaci. Jednoduše řečeno je o identifikaci ", koncový uživatel je při návštěvě webu". Technologie ASP.NET podporuje více způsobů, jak ověřovat uživatele prohlížeče. Nejběžnější metodu ověřování použitou pro webové aplikace, nazývá "Ověřování pomocí formulářů". Ověřování pomocí formulářů umožňuje vývojářům vytvářet formuláře HTML přihlášení do své aplikace a její ověření uživatelského jména a hesla, které koncový uživatel odešle proti databázi nebo jiných přihlašovacích údajů úložiště hesel. Pokud kombinace uživatelského jména a hesla je správný, Vývojář potom požádejte ASP.NET vydat do zašifrovaného souboru cookie HTTP k identifikaci uživatele napříč budoucí požadavky. My se vám s použitím ověřování pomocí formulářů s naší aplikace NerdDinner.
+*Ověřování* je proces identifikace a ověření identity klienta, který přistupuje k aplikaci. Přesněji řečeno, jedná se o identifikaci "kdo", který je koncovým uživatelem při návštěvě webu. ASP.NET podporuje více způsobů ověřování uživatelů prohlížeče. Pro internetové webové aplikace se nejčastěji používaný přístup pro ověřování nazývá "ověřování pomocí formulářů". Ověřování pomocí formulářů umožňuje vývojářům vytvořit formulář pro přihlášení ve formátu HTML v rámci své aplikace a ověřit uživatelské jméno a heslo, které koncoví uživatelé odesílají do databáze nebo jiného úložiště přihlašovacích údajů k heslu. Pokud je kombinace uživatelského jména a hesla správná, může vývojář požádat ASP.NET o vydání šifrovaného souboru cookie protokolu HTTP, aby identifikoval uživatele v rámci budoucích požadavků. Pomocí ověřování pomocí formulářů v naší aplikaci NerdDinner.
 
-*Autorizace* je procesu, který určuje, zda ověřený uživatel má oprávnění pro přístup k určité adresy URL/prostředku nebo k provedení nějaké akce. Například v rámci naší aplikace NerdDinner nám budete chtít povolit, že přístup pouze uživatelé, kteří jsou přihlášení */večeří/vytvořit* adresy URL a vytvořit nové večeří. Můžeme také vhodné přidat logiku autorizace tak, aby jenom uživatel, který je hostitelem dinner jej mohli upravit – a všem ostatním uživatelům odepřít přístup pro úpravy.
+*Autorizace* je proces určení, jestli ověřený uživatel má oprávnění pro přístup k určité adrese URL nebo prostředku nebo k provedení nějaké akce. V rámci naší aplikace NerdDinner si například přejete, aby k adrese URL */Dinners/Create* mohli získat přístup pouze uživatelé, kteří jsou přihlášeni, a vytvořit novou večeři. Také budete chtít přidat logiku autorizace tak, aby ji mohl upravovat jenom uživatel, který je hostitelem večeře – a odepřít přístup pro úpravy všem ostatním uživatelům.
 
-### <a name="forms-authentication-and-the-accountcontroller"></a>Ověřování pomocí formulářů a AccountController
+### <a name="forms-authentication-and-the-accountcontroller"></a>Ověřování formulářů a AccountController
 
-Výchozí šablona projektu sady Visual Studio pro architekturu ASP.NET MVC automaticky povolí ověřování pomocí formulářů, při vytvoření nové aplikace ASP.NET MVC. Také automaticky přidá na předem sestavených účet přihlašovací stránky implementace do projektu – díky tomu je skutečně snadno integrovat zabezpečení v rámci lokality.
+Výchozí šablona projektu sady Visual Studio pro ASP.NET MVC automaticky povoluje ověřování prostřednictvím formulářů při vytváření nových aplikací ASP.NET MVC. Také automaticky přidá předem vestavěnou implementaci přihlašovací stránky účtu do projektu – což usnadňuje integraci zabezpečení v rámci lokality.
 
-Výchozí stránku předlohy Site.master zobrazí odkaz "Přihlásit" v pravé horní části webu, když nebude ověřený uživatel přístup:
+Výchozí lokalita. Hlavní stránka předlohy zobrazí odkaz Přihlásit se v pravém horním rohu webu, když uživatel přistupující k němu není ověřený:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image1.png)
 
-Kliknutím na odkaz "Přihlásit" trvá uživateli */účet/přihlášení* adresy URL:
+Kliknutím na odkaz přihlásit převezme uživatel adresu URL */account/LogOn* :
 
 ![](secure-applications-using-authentication-and-authorization/_static/image2.png)
 
-Návštěvníci, kteří se ještě nezaregistrovali to tak, že kliknutím na odkaz "Register" – které je pro vás přesměruje */účtu/registrace* adresy URL a umožnit jim zadejte podrobnosti o účtu:
+Návštěvníkům, kteří se nezaregistrovali, můžete tak učinit kliknutím na odkaz zaregistrovat, který převezme adresu URL */account/Register* a umožní jim zadat podrobnosti účtu:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image3.png)
 
-Kliknutím na tlačítko "Register" bude vytvoření nového uživatele v rámci systému členství technologie ASP.NET a ověřit uživatele na serveru pomocí ověřování pomocí formulářů.
+Kliknutím na tlačítko zaregistrovat vytvoříte nového uživatele v rámci systému členství v ASP.NET a ověříte uživatele na webu pomocí ověřování pomocí formulářů.
 
-Pokud je uživatel přihlášený, Site.master změní pravé horní části stránky a výstup "Vítejte [username]!" zpráva a vykreslí "odhlásit" propojení namísto "přihlášení" jeden. Kliknutím na odkaz "Odhlásit" odhlásí uživatele:
+Když je uživatel přihlášený, lokalita. Master změní pravou stranu stránky na výstup "Vítejte [UserName]!". zpráva a vykreslí odkaz odhlásit se místo jednoho přihlášení. Kliknutím na odkaz odhlásit se odhlásí uživatel:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image4.png)
 
-Výše uvedené přihlášení, odhlášení a registrace funkce je implementovaná v rámci AccountController třídy, která byla přidána do našich projektu ve Visual Studio při vytvoření projektu. V uživatelském rozhraní AccountController je implementováno pomocí zobrazení šablony v adresáři \Views\Account:
+Výše uvedené funkce přihlášení, odhlášení a registrace jsou implementovány v rámci třídy AccountController, která byla přidána do našeho projektu při vytváření projektu v sadě Visual Studio. Uživatelské rozhraní pro AccountController je implementováno pomocí šablon zobrazení v adresáři \Views\Account:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image5.png)
 
-Třída AccountController využívá systém ověřování formulářů ASP.NET vydat šifrované ověřovací soubory cookie a rozhraní API členství technologie ASP.NET k ukládání a ověřit uživatelská jména a hesla. Rozhraní API členství technologie ASP.NET je rozšiřitelný a umožňuje všechny přihlašovací údaje úložiště hesel má být použit. Technologie ASP.NET se dodává s integrovanou členství zprostředkovatele implementace, které ukládání uživatelského jména a hesla, SQL database, nebo v rámci služby Active Directory.
+Třída AccountController používá systém ověřování pomocí formulářů ASP.NET k vydávání šifrovaných souborů cookie ověřování a rozhraní API pro členství v ASP.NET pro ukládání a ověřování uživatelských jmen a hesel. Rozhraní API pro členství v ASP.NET je rozšiřitelné a povoluje použití úložiště přihlašovacích údajů k heslům. ASP.NET se dodává s integrovanými implementacemi zprostředkovatele členství, které ukládají uživatelské jméno a hesla v rámci databáze SQL nebo v rámci služby Active Directory.
 
-Nakonfigurujeme kterého zprostředkovatele členství naší aplikace NerdDinner by měl použít soubor "web.config" v kořenovém adresáři projektu otevřete a vyhledáním &lt;členství&gt; části v něm. Výchozí soubor web.config přidat, pokud byl projekt vytvořen registruje zprostředkovatele členství SQL a nakonfiguruje ho, aby použijte připojovací řetězec s názvem "ApplicationServices" a zadejte umístění databáze.
+Můžeme nakonfigurovat, který poskytovatel členství má naše aplikace NerdDinner použít, otevřením souboru Web. config v kořenovém adresáři projektu a vyhledáním oddílu &lt;&gt; členství v něm. Výchozí soubor Web. config, který byl přidán při vytvoření projektu, zaregistruje poskytovatele členství SQL a nakonfiguruje ho pro použití připojovacího řetězce s názvem ApplicationServices k určení umístění databáze.
 
-Výchozí připojovací řetězec "ApplicationServices" (který je zadán v rámci &lt;connectionStrings&gt; část souboru web.config) je nakonfigurován na použití SQL Express. Odkazuje na databázi SQL Express s názvem "ASPNETDB. MDF"v rámci vaší aplikace" aplikace\_Data "adresáře. Pokud tuto databázi neexistuje okamžiku, kdy se používá rozhraní API pro členství v rámci aplikace, technologie ASP.NET automaticky vytvořit databázi a zřizování schématu databáze odpovídající členství v rámci něj:
+Výchozí připojovací řetězec "ApplicationServices" (který je uveden v části &lt;connectionStrings&gt; souboru Web. config) je nakonfigurován tak, aby používal SQL Express. Odkazuje na databázi SQL Express s názvem ASPNETDB. MDF v adresáři App\_data aplikace Pokud tato databáze neexistuje při prvním použití rozhraní API členství v rámci aplikace, ASP.NET automaticky vytvoří databázi a zřídí příslušné schéma databáze členství v této aplikaci:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image6.png)
 
-Pokud místo SQL Express, jsme chtěli použít plná instance systému SQL Server (nebo připojení ke vzdálené databázi), všechny by potřebujeme úkolů je aktualizovat připojovací řetězec "ApplicationServices" v souboru web.config a ujistěte se, že schéma odpovídající členství byla přidána do databáze, na který odkazuje na. Můžete spustit "aspnet\_regsql.exe" nástroje v adresáři \Windows\Microsoft.NET\Framework\v2.0.50727\ přidat příslušného schématu pro členství a dalších aplikačních služeb ASP.NET s databází.
+Pokud místo používání SQL Express chceme použít úplnou instanci SQL Server (nebo se připojit ke vzdálené databázi), stačí, když je potřeba aktualizovat připojovací řetězec "ApplicationServices" v souboru Web. config a ujistit se, že příslušné schéma členství bylo přidáno do databáze, na které odkazuje. Můžete spustit nástroj "ASPNET\_regsql. exe" v adresáři \Windows\Microsoft.NET\Framework\v2.0.50727\ a přidat tak příslušné schéma pro členství a další ASP.NET aplikační služby do databáze.
 
-### <a name="authorizing-the-dinnerscreate-url-using-the-authorize-filter"></a>Autorizace URL večeří/vytvořit pomocí [Authorize] filtr
+### <a name="authorizing-the-dinnerscreate-url-using-the-authorize-filter"></a>Autorizace adresy URL/Dinners/Create pomocí filtru [autorizovat]
 
-Psaní kódu zabezpečené ověřování a implementaci účtu správy pro aplikace NerdDinner nebyly k dispozici. Uživatelé můžou registrovat nové účty s naší aplikace a přihlášení/odhlášení lokality.
+Nemuseli jsme psát žádný kód, který umožní implementaci zabezpečeného ověřování a správy účtů pro aplikaci NerdDinner. Uživatelé mohou registrovat nové účty pomocí naší aplikace a přihlašovat nebo odhlásit Web.
 
-Teď můžeme přidat logiku ověřování k aplikaci a můžete řídit, co mohou a nemůže provádět v rámci stránky stav ověření a uživatelské jméno návštěvníků. Začněme přidáním autorizace logiku do metody akce "Vytvořit" náš DinnersController třídy. Konkrétně jsme se požadovat, aby uživatele, kteří používají */večeří/vytvořit* adresy URL musíte být přihlášeni. Pokud uživatel není přihlášený přesměrujeme je na přihlašovací stránku tak, aby se můžete přihlásit.
+Nyní můžeme do aplikace přidat logiku autorizace a použít stav ověřování a uživatelské jméno návštěvníků k řízení toho, co můžou a v rámci lokality dělat. Pojďme začít přidáním logiky autorizace do metod akce "vytvořit" naší třídy DinnersController. Konkrétně budeme vyžadovat, aby uživatelé, kteří přistupují k adrese URL */Dinners/Create* , museli být přihlášeni. Pokud nejsou přihlášeni, přesměrujte je na přihlašovací stránku, aby se mohli přihlásit.
 
-Implementace tuto logiku je poměrně snadné. Všechny potřebujeme úkol má přidat atribut [Authorize] filtr na naše metody akce vytvořit takto:
+Implementace této logiky je poměrně jednoduchá. Vše, co je potřeba udělat, je přidat atribut filtru [autorizovat] k našim způsobům akce vytvoření, jako je například:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample1.cs)]
 
-ASP.NET MVC podporuje schopnost vytvářet "filtrů akce", které lze použít k implementaci opakovaně použitelné logiku, která je deklarativně použít na metody akce. [Authorize] filtr je jeden z filtrů vestavěná akce poskytované rozhraní ASP.NET MVC a umožňuje vývojáři deklarativně aplikuje autorizační pravidla do třídy kontroleru a metody akce.
+ASP.NET MVC podporuje možnost vytvořit "filtry akcí", které lze použít k implementaci opakované použitelné logiky, která se dá deklarativně použít na metody akcí. Filtr [autorizovat] je jedním z vestavěných filtrů akcí, které poskytuje ASP.NET MVC, a umožňuje vývojářům deklarativní použití autorizačních pravidel na metody akcí a tříd kontroleru.
 
-Při použití bez parametrů (jako výše) vynucuje [Authorize] filtr, musíte být přihlášeni uživatele, který vytváří požadavek metody akce – a automaticky přesměruje prohlížeč na adresu URL pro přihlášení, nejsou-li. Při provádění této přesměrování původně požadovanou URL adresu je předán jako argument řetězce dotazu (Příklad: / účet/přihlášení? ReturnUrl = % 2fDinners % 2fCreate). AccountController pak přesměruje uživatele zpět na původně požadovanou URL adresu po jejich přihlášení.
+Při použití bez parametrů (například výše) filtr [autorizační] vynutil, aby uživatel provádějící požadavek na akci metody byl přihlášen – a automaticky přesměruje prohlížeč na adresu URL pro přihlášení, pokud nejsou. Při tomto přesměrování je původní požadovaná adresa URL předána jako argument typu QueryString (například:/Account/LogOn? ReturnUrl =% 2fDinners% 2fCreate). AccountController pak přesměruje uživatele zpět na původně požadovanou adresu URL po přihlášení.
 
-[Authorize] filtr volitelně podporuje možnost zadat vlastnost "Users" nebo "Role", který můžete použít tak, aby vyžadovala, že obou přihlášení uživatele a v seznamu povolených uživatelů nebo členem role zabezpečení povolené. Například následující kód povoluje jenom dva konkrétní uživatele, "scottgu" a "billg" na adresu URL večeří nebo vytvoření:
+Filtr [autorizovat] volitelně podporuje možnost zadat vlastnost "uživatelé" nebo "role", která se dá použít k vyžadování, aby byl uživatel přihlášený, a v rámci seznamu povolených uživatelů nebo členem povolené role zabezpečení. Například kód níže umožňuje přístup k adrese URL/Dinners/Create pouze dvěma konkrétním uživatelům "scottgu" a "billg":
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample2.cs)]
 
-Vložení konkrétní uživatelská jména v kódu je spíše poměrně zrušení udržovatelného ale. Lepším řešením je definování vyšší úrovně "role", která zkontroluje kód oproti a pak pro mapování uživatelů do role pomocí databáze nebo systému služby active directory (povolení skutečného uživatelského seznamu mapování externě ukládaly z kódu). Technologie ASP.NET obsahuje předdefinovanou roli správy rozhraní API, jakož i předdefinované sady zprostředkovatelů rolí (včetně těch, které jsou pro SQL a službu Active Directory), které vám mohou pomoci provést toto mapování uživatelů a rolí. Jsme pak může aktualizovat kód a Povolit jenom uživatelé v rámci role konkrétní "admin" Otevřít adresu URL večeří nebo vytvoření:
+Vkládání specifických uživatelských jmen do kódu je v podstatě neudržovatelnější i když. Lepším řešením je definovat "role vyšší úrovně", které kód kontroluje, a pak mapovat uživatele do role pomocí databáze nebo systému služby Active Directory (Povolit externí uložení vlastního seznamu mapování uživatelů z kódu). ASP.NET zahrnuje integrované rozhraní API pro správu rolí i integrovanou sadu poskytovatelů rolí (včetně těch, které jsou pro SQL a Active Directory), které můžou pomáhat s tímto mapováním uživatelů nebo rolí. Kód můžeme potom aktualizovat tak, aby uživatelům v rámci určité role správce povolil přístup k adrese URL/Dinners/Create:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample3.cs)]
 
-### <a name="using-the-useridentityname-property-when-creating-dinners"></a>Pomocí vlastnosti User.Identity.Name při vytváření večeří
+### <a name="using-the-useridentityname-property-when-creating-dinners"></a>Použití vlastnosti User.Identity.Name při vytváření večeři
 
-Nemůžeme načíst uživatelské jméno aktuálně přihlášeného uživatele žádost pomocí vlastnosti User.Identity.Name zveřejněné na základní třídu Kontroleru.
+Uživatelské jméno aktuálně přihlášeného uživatele žádosti můžeme načíst pomocí vlastnosti User.Identity.Name vystavené u základní třídy Controller.
 
-Starší když jsme implementovali verze HTTP POST metody akce naše Create() jsme měli pevně zakódované vlastnost "HostedBy" Dinner statický řetězec. Jsme můžete nyní aktualizovat tento kód, aby místo toho použijte vlastnost User.Identity.Name, jakož i automaticky přidat odpověď pro vytváření společnosti Dinner hostitele:
+Dříve, když jsme implementovali verzi HTTP-POST metody akce Create (), měli jsme pevně zakódované vlastnost HostedBy pro večeři na statický řetězec. Tento kód teď můžeme aktualizovat, aby místo toho používal vlastnost User.Identity.Name, a také automaticky přidat protokol RSVP pro hostitele, který vytváří večeři:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample4.cs)]
 
-Protože jsme přidali atribut [Authorize] metodě Create(), ASP.NET MVC zajistí, že spuštění metody akce pouze pokud je uživatel navštívit adresu URL večeří nebo vytvoření přihlášení na webu. Hodnota vlastnosti User.Identity.Name v důsledku toho bude vždy obsahovat platné uživatelské jméno.
+Vzhledem k tomu, že jsme přidali atribut [autorizovat] do metody Create (), ASP.NET MVC zajistí, že se metoda Action spustí jenom v případě, že se uživateli, který navštíví adresu URL/Dinners/Create, přihlásí na webu. V takovém případě hodnota vlastnosti User.Identity.Name bude vždy obsahovat platné uživatelské jméno.
 
-### <a name="using-the-useridentityname-property-when-editing-dinners"></a>Pomocí vlastnosti User.Identity.Name při úpravách večeří
+### <a name="using-the-useridentityname-property-when-editing-dinners"></a>Použití vlastnosti User.Identity.Name při úpravě večeři
 
-Přidejme teď některé logiku autorizace, která omezuje uživatele tak, aby mohou upravovat pouze vlastnosti večeří, které jsou hostiteli sami.
+Teď přidáme část autorizační logiky, která omezí uživatele tak, aby mohli upravovat jenom vlastnosti večeře, které sami sami hostují.
 
-Pro usnadnění, nejprve přidáme metodu helper "IsHostedBy(username)" naše společnost Dinner objektu (v rámci Dinner.cs částečné třídy, které jsme vytvořili výše). Tato pomocná metoda vrátí hodnotu PRAVDA nebo NEPRAVDA v závislosti na tom, jestli zadané uživatelské jméno odpovídá vlastnost Dinner HostedBy a zapouzdří logiku potřebnou k provádění porovnání nerozlišuje velikost písmen řetězců z nich:
+Abychom vám to usnadnili, Přidali jsme do objektu večeře (v rámci předchozí třídy Dinner.cs, kterou jsme vytvořili dříve) pomocnou metodu "IsHostedBy (uživatelské jméno)". Tato pomocná metoda vrátí hodnotu true nebo false v závislosti na tom, zda zadané uživatelské jméno odpovídá vlastnosti večeře HostedBy, a zapouzdřuje logiku nutnou k provedení porovnávání řetězců nerozlišujících velká a malá písmena:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample5.cs)]
 
-Potom přidáme atribut [Authorize] na Edit() metody akce v rámci naší DinnersController třídy. Tím se zajistí, že uživatelé musíte být přihlášení k žádosti */Dinners/Edit / [id]* adresy URL.
+Pak přidáte atribut [autorizovat] do metod akce Edit () v rámci naší třídy DinnersController. Tím se zajistí, že se uživatelé musí přihlásili, aby si vyžádali adresu URL */Dinners/Edit/[ID]* .
 
-Naše úpravy metodám, které používá Dinner.IsHostedBy(username) pomocnou metodu k ověření, že přihlášeného uživatele odpovídá hostitele Dinner jsme poté můžete přidat kód. Pokud uživatel není hostiteli, vytvoříme zobrazení "InvalidOwner" a ukončení požadavku. Kód k tomu bude vypadat jako následující:
+Pak můžeme do našich metod úprav, které používají pomocnou metodu večeře. IsHostedBy (Username), přidat kód, který ověří, jestli přihlášený uživatel odpovídá hostiteli večeře. Pokud uživatel není hostitel, zobrazí se zobrazení "InvalidOwner" a žádost se ukončí. Kód, který se má udělat, vypadá takto:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample6.cs)]
 
-My pak klikněte pravým tlačítkem na adresář \Views\Dinners a zvolte možnost Add -&gt;zobrazit příkaz k vytvoření nového zobrazení "InvalidOwner". Budete ji naplníme následující chybová zpráva:
+Potom můžete kliknout pravým tlačítkem na adresář \Views\Dinners a pomocí příkazu nabídky pro zobrazení pro přidání&gt;vytvořit nové zobrazení "InvalidOwner". Naplníme ji následující chybovou zprávou:
 
 [!code-aspx[Main](secure-applications-using-authentication-and-authorization/samples/sample7.aspx)]
 
-A když se uživatel pokusí upravit dinner, který není vlastníkem, získají nyní první chybovou zprávu:
+A teď když se uživatel pokusí upravit večeři, že nevlastní, zobrazí se chybová zpráva:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image7.png)
 
-V rámci kontroleru zamezit oprávnění k odstraňování večeří také a zajistili, že pouze hostitele večeři můžete odstranili jsme můžete opakujte stejný postup pro Delete() metody akce.
+Stejný postup můžete opakovat pro metody akce DELETE () v rámci našeho kontroleru, abyste mohli uzamknout oprávnění k odstranění večeři i k tomu, že ho může odstranit jenom hostitel večeře.
 
-### <a name="showinghiding-edit-and-delete-links"></a>Zobrazení nebo skrytí upravit a odstranit odkazy
+### <a name="showinghiding-edit-and-delete-links"></a>Zobrazení nebo skrytí odkazů pro úpravy a odstranění
 
-Na metodu akce upravit a odstranit třídy Naše DinnersController jsme propojení z našich podrobnosti adresy URL:
+Odkazujeme na metodu akce upravit a odstranit naší třídy DinnersController z naší adresy URL s podrobnostmi:
 
 ![](secure-applications-using-authentication-and-authorization/_static/image8.png)
 
-Právě jsme se zobrazují upravit a odstranit odkazy na akce bez ohledu na to, zda návštěvníky na adresu URL podrobnosti hostitele společnosti dinner. Umožňuje změnit tak, aby odkazy se zobrazí jenom v případě hostujícími uživatel je vlastníkem společnosti dinner.
+V současné době zobrazujeme odkazy na akce upravit a odstranit bez ohledu na to, jestli je návštěvníkem této hostiny adresa URL s podrobnostmi. Pojďme to změnit, aby se odkazy zobrazovaly jenom v případě, že je uživatel, který je návštěvníkem, vlastníkem večeře.
 
-Details() metody akce v rámci naší DinnersController načte objekt Dinner a předá jej jako objekt modelu do našich zobrazení šablony:
+Metoda Action () v rámci našeho DinnersController načte objekt večeře a pak ho předává jako objekt modelu do naší šablony zobrazení:
 
 [!code-csharp[Main](secure-applications-using-authentication-and-authorization/samples/sample8.cs)]
 
-Aktualizujeme naše zobrazit šablonu podmíněně zobrazit/skrýt odkazy upravit a odstranit pomocí Dinner.IsHostedBy() Pomocná metoda podobná níže uvedenému příkladu:
+Naši šablonu zobrazení můžeme aktualizovat tak, aby podmíněně zobrazovala nebo skryla odkazy pro úpravy a odstranění pomocí pomocné metody večeře. IsHostedBy (), jak je uvedeno níže:
 
 [!code-aspx[Main](secure-applications-using-authentication-and-authorization/samples/sample9.aspx)]
 
 #### <a name="next-steps"></a>Další kroky
 
-Nyní Podívejme se na tom, jak jsme povolili ověřeným uživatelům RSVP pro večeří pomocí rozhraní AJAX.
+Teď se podíváme na to, jak můžeme ověřeným uživatelům povolit protokol RSVP pro večeři pomocí AJAX.
 
 > [!div class="step-by-step"]
 > [Předchozí](implement-efficient-data-paging.md)
-> [další](use-ajax-to-deliver-dynamic-updates.md)
+> [Další](use-ajax-to-deliver-dynamic-updates.md)

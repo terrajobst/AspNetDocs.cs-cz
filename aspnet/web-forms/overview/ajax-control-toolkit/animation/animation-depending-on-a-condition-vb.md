@@ -9,11 +9,11 @@ ms.assetid: 1b87d8d6-b3f7-4126-b51c-d41442fbf947
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animation-depending-on-a-condition-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 583ebdbf109beb74b9a425020477183067bbb79a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74607024"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78614343"
 ---
 # <a name="animation-depending-on-a-condition-vb"></a>Animace závislá na podmínce (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Zda je animace spuštěna, nebo ne, může také záviset na stavu ve formě některého kódu JavaScriptu.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 

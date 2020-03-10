@@ -9,11 +9,11 @@ ms.assetid: 1caac9d0-e21e-49d6-a8ff-e563a736d6ca
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/modalpopup/positioning-a-modalpopup-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 8034f5aeb5a1a80f1ea8cbc9d638f3dfb1a38706
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74599027"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78613223"
 ---
 # <a name="positioning-a-modalpopup-c"></a>Umístění ovládacího prvku ModalPopup (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek ovládacího prvku modalpopup v sadě nástrojů AJAX Control Toolkit nabízí jednoduchý způsob, jak vytvořit modální nabídku pomocí prostředků na straně klienta. Ovládací prvek však nenabízí integrovanou funkci pro umístění místní nabídky.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Aby bylo možné aktivovat funkce ASP.NET AJAX a Control Toolkit, `ScriptManager`. ovládací prvek musí být umístěn kdekoli na stránce (ale v prvku `<form>`):
 

@@ -1,212 +1,212 @@
 ---
 uid: mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-cs
-title: Použití ASP.NET MVC s různými verzemi služby IIS (C#) | Dokumentace Microsoftu
+title: Použití ASP.NET MVC s různými verzemi služby IIS (C#) | Microsoft Docs
 author: microsoft
-description: V tomto kurzu se dozvíte, jak používat rozhraní ASP.NET MVC a směrování adres URL s různými verzemi služby IIS. Zjistíte, různé strategie...
+description: V tomto kurzu se naučíte používat ASP.NET MVC a směrování adres URL s různými verzemi Internetová informační služba. Naučíte se různé strategie...
 ms.author: riande
 ms.date: 08/19/2008
 ms.assetid: b0cf4a34-2c1d-4717-bb54-ff029e722990
 msc.legacyurl: /mvc/overview/older-versions-1/deployment/using-asp-net-mvc-with-different-versions-of-iis-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 3b0a9509c0600f3598fd1218a7b383430548d4c0
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65123246"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78601099"
 ---
 # <a name="using-aspnet-mvc-with-different-versions-of-iis-c"></a>Použití ASP.NET MVC s různými verzemi služby IIS (C#)
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> V tomto kurzu se dozvíte, jak používat rozhraní ASP.NET MVC a směrování adres URL s různými verzemi služby IIS. Zjistíte, různé strategie pro ASP.NET MVC pomocí služby IIS 7.0 (v klasickém režimu), služby IIS 6.0 a starších verzích služby IIS.
+> V tomto kurzu se naučíte používat ASP.NET MVC a směrování adres URL s různými verzemi Internetová informační služba. Naučíte se různé strategie pro používání ASP.NET MVC se službou IIS 7,0 (klasický režim), IIS 6,0 a staršími verzemi služby IIS.
 
-Architektura ASP.NET MVC, závisí na směrování ASP.NET pro směrování požadavků prohlížeče na akce kontroleru. Pokud chcete využít výhod směrování ASP.NET, budete muset provést další kroky konfigurace na webovém serveru. Všechno závisí na verzi Internetové informační služby (IIS) a režim pro vaši aplikaci zpracování požadavku.
+Rozhraní ASP.NET MVC závisí na směrování ASP.NET pro směrování požadavků prohlížeče na akce kontroleru. Aby bylo možné využívat ASP.NET směrování, možná budete muset provést další kroky konfigurace na webovém serveru. To vše závisí na verzi Internetová informační služba (IIS) a režimu zpracování žádostí pro vaši aplikaci.
 
-Zde je uveden seznam různými verzemi služby IIS:
+Tady je souhrn různých verzí služby IIS:
 
-- Služba IIS 7.0 (integrovaný režim) – žádná zvláštní konfigurace, které jsou nutné k použití směrování ASP.NET.
-- Služba IIS 7.0 (klasický režim) – je třeba provést zvláštní konfigurace, aby používala směrování ASP.NET.
-- Služba IIS 6.0 nebo níže – je třeba provést zvláštní konfigurace, aby používala směrování ASP.NET.
+- Služba IIS 7,0 (integrovaný režim) – není nutná žádná zvláštní konfigurace pro použití směrování ASP.NET.
+- IIS 7,0 (klasický režim) – pro použití směrování ASP.NET je potřeba provést speciální konfiguraci.
+- Služba IIS 6,0 nebo nižší – pro použití směrování ASP.NET je potřeba provést zvláštní konfiguraci.
 
-Nejnovější verze služby IIS je verze 7.5 (na Win7). Služby IIS 7 IIS je součástí s Windows Server 2008 a VISTA/SP1 a vyšší. Také můžete nainstalovat službu IIS 7.0 na žádné verze operačního systému Vista kromě Home Basic (viz [ https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx ](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx)).
+Nejnovější verze služby IIS je verze 7,5 (v systému Win7). Služba IIS 7 služby IIS je součástí systémů Windows Server 2008 a VISTA/SP1 a vyšší. Službu IIS 7,0 můžete také nainstalovat na libovolnou verzi operačního systému Vista s výjimkou Home Basic (viz [https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx](https://technet.microsoft.com/library/cc731179%28WS.10%29.aspx)).
 
-Služba IIS 7.0 podporuje dva režimy pro zpracování požadavků. Můžete použít integrované režimu nebo v klasickém režimu. Není nutné provádět žádné zvláštní konfigurační kroky, při použití služby IIS 7.0 v integrovaném režimu. Ale je nutné provést další konfigurace, při použití služby IIS 7.0 v klasickém režimu.
+Služba IIS 7,0 podporuje dva režimy zpracování požadavků. Můžete použít integrovaný režim nebo klasický režim. Pokud používáte IIS 7,0 v integrovaném režimu, nemusíte provádět žádné zvláštní kroky konfigurace. Při použití IIS 7,0 v klasickém režimu ale potřebujete provést další konfiguraci.
 
-Microsoft Windows Server 2003 obsahuje služby IIS 6.0. Při použití operačního systému Windows Server 2003, nelze upgradovat služby IIS 6.0 pro službu IIS 7.0. Při použití služby IIS 6.0, je nutné provést další kroky konfigurace.
+Microsoft Windows Server 2003 obsahuje službu IIS 6,0. Pokud používáte operační systém Windows Server 2003, nemůžete upgradovat službu IIS 6,0 na IIS 7,0. Při použití služby IIS 6,0 je nutné provést další kroky konfigurace.
 
-Microsoft Windows XP Professional zahrnuje služba IIS 5.1. Při použití IIS 5.1, je nutné provést další kroky konfigurace.
+Microsoft Windows XP Professional zahrnuje IIS 5,1. Při použití služby IIS 5,1 je nutné provést další kroky konfigurace.
 
-A konečně Microsoft Windows 2000 a Microsoft Windows 2000 Professional zahrnuje služby IIS 5.0. Při použití služby IIS 5.0, je nutné provést další kroky konfigurace.
+Microsoft Windows 2000 a Microsoft Windows 2000 Professional zahrnují službu IIS 5,0. Při použití služby IIS 5,0 je nutné provést další kroky konfigurace.
 
-## <a name="integrated-versus-classic-mode"></a>Integrované a klasický režim
+## <a name="integrated-versus-classic-mode"></a>Integrovaný versus klasický režim
 
-IIS 7.0 může zpracovat pomocí dvou režimů jinou žádost o zpracování žádosti o: integrované a classic. Integrovaný režim poskytuje lepší výkon a další funkce. Klasický režim je součástí pro zpětnou kompatibilitu s předchozími verzemi služby IIS.
+Služba IIS 7,0 může zpracovávat požadavky pomocí dvou různých režimů zpracování požadavků: integrovaných a klasických. Integrovaný režim poskytuje lepší výkon a další funkce. Klasický režim je zahrnutý pro zpětnou kompatibilitu s předchozími verzemi služby IIS.
 
-Fond aplikací je určeno režim zpracování požadavků. Můžete určit, který způsob zpracování je používán konkrétní webovou aplikaci tak, že určíte fond aplikací přidružených k aplikaci. Postupujte podle těchto kroků:
+Režim zpracování žádosti je určen fondem aplikací. Můžete určit, který režim zpracování je používán konkrétní webovou aplikací, určením fondu aplikací, který je přidružen k aplikaci. Postupujte následovně:
 
-1. Spusťte Správce Internetové informační služby
-2. V okně připojení vybrat aplikaci
-3. V okně Akce klikněte **základní nastavení** odkaz k otevření dialogového okna Upravit aplikaci (viz obrázek 1)
+1. Spustit Správce Internetová informační služba
+2. V okně připojení vyberte aplikaci.
+3. V okně akce kliknutím na odkaz **základní nastavení** otevřete dialogové okno Upravit aplikaci (viz obrázek 1).
 4. Poznamenejte si vybraný fond aplikací.
 
-Ve výchozím nastavení je služba IIS konfigurována pro podporu dvou fondů aplikací: **DefaultAppPool** a **Classic .NET AppPool**. Pokud je vybrána DefaultAppPool, vaše aplikace běží v režimu zpracování integrované žádosti. Pokud je vybrána Classic .NET AppPool, aplikace běží v režimu zpracování classic žádosti.
+Ve výchozím nastavení je služba IIS nakonfigurovaná tak, aby podporovala dva fondy aplikací: **DefaultAppPool** a **Classic .NET AppPool**. Pokud je vybraná možnost DefaultAppPool, aplikace běží v režimu integrovaného zpracování požadavků. Pokud je vybrána možnost klasický fond aplikací .NET, aplikace běží v režimu klasických zpracování požadavků.
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image1.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image1.png)
+[![dialogového okna Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image1.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image1.png)
 
-**Obrázek 1**: Zjišťování režim zpracování požadavků ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image2.png))
+**Obrázek 1**: zjištění režimu zpracování požadavků ([kliknutím zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image2.png))
 
-Všimněte si, že můžete změnit režim zpracování požadavků v dialogovém okně Upravit aplikaci. Klikněte na tlačítko pro výběr a změnit fond aplikací přidružených k aplikaci. Uvědomte si, že existují problémy s kompatibilitou při změně aplikace ASP.NET z modelu nasazení classic do integrovaného režimu. Další informace najdete v následujících článcích:
+Všimněte si, že můžete změnit režim zpracování požadavků v dialogovém okně Upravit aplikaci. Klikněte na tlačítko vybrat a změňte fond aplikací přidružený k aplikaci. Mějte na paměti, že při změně aplikace ASP.NET z klasického režimu na integrovaný režim dochází k problémům s kompatibilitou. Další informace najdete v následujících článcích:
 
-- Upgrade na službě IIS 7.0 ve Windows Vista a Windows Server 2008 – ASP.NET 1.1 [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008)
-- Integrace ASP.NET se službou IIS 7.0: [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
+- Upgrade ASP.NET 1,1 na IIS 7,0 v systému Windows Vista a Windows Server 2008-- [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/upgrading-aspnet-11-to-iis-on-windows-vista-and-windows-server-2008)
+- Integrace ASP.NET se službou IIS 7,0 – [https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis](https://www.iis.net/learn/application-frameworks/building-and-running-aspnet-applications/aspnet-integration-with-iis)
 
-Pokud aplikace ASP.NET používá DefaultAppPool, pak není nutné provádět žádné další kroky k získání směrování ASP.NET (a tedy ASP.NET MVC) pro práci. Pokud aplikace ASP.NET je nakonfigurováno pomocí Classic .NET AppPool pak pokračujte ve čtení, ale máte další práci.
+Pokud aplikace ASP.NET používá službu DefaultAppPool, nemusíte provádět žádné další kroky, abyste mohli získat ASP.NET směrování (a tedy ASP.NET MVC), aby fungovala. Pokud je ale aplikace ASP.NET nakonfigurovaná tak, aby používala klasický fond rozhraní .NET .NET, pak budete moct dál číst.
 
-## <a name="using-aspnet-mvc-with-older-versions-of-iis"></a>Pomocí technologie ASP.NET MVC se staršími verzemi služby IIS
+## <a name="using-aspnet-mvc-with-older-versions-of-iis"></a>Použití ASP.NET MVC se staršími verzemi služby IIS
 
-Pokud je třeba použít technologie ASP.NET MVC pomocí starší verze služby IIS, než IIS 7.0 nebo budete muset použít službu IIS 7.0 v režimu classic, máte dvě možnosti. Nejprve můžete upravit směrovací tabulky pro použití souboru rozšíření. Namísto žádosti adresy URL /Store/Details, například bude adresa URL jako /Store.aspx/Details požadavku.
+Pokud potřebujete použít službu ASP.NET MVC se starší verzí služby IIS, než je IIS 7,0, nebo potřebujete použít IIS 7,0 v klasickém režimu, máte dvě možnosti. Nejprve můžete upravit směrovací tabulku tak, aby používala přípony souborů. Například místo vyžádání adresy URL jako/Store/Details byste si vyžádali adresu URL, jako je/Store.aspx/Details.
 
-Druhou možností je vytvořit s názvem *mapu skriptů se zástupnými znaky*. Mapy skriptů se zástupnými znaky vám umožní mapovat každou žádost do architektury ASP.NET.
+Druhou možností je vytvořit něco označovaného jako *Mapa skriptu se zástupnými znaky*. Mapa skriptu se zástupnými znaky umožňuje mapovat všechny požadavky do ASP.NET Frameworku.
 
-Pokud nemáte přístup na webový server (například vaší ASP.NET MVC se aplikace hostuje poskytovatele internetových služeb) pak budete muset použít první možnost. Pokud nechcete změnit vzhled vaší adresy URL a mít přístup k webovému serveru, můžete použít druhou možnost.
+Pokud nemáte přístup k webovému serveru (například vaše aplikace ASP.NET MVC je hostována poskytovatelem internetových služeb), budete muset použít první možnost. Pokud nechcete měnit vzhled adres URL a máte přístup k vašemu webovému serveru, můžete použít druhou možnost.
 
-Podíváme na jednotlivé možnosti podrobně v následující části.
+Podrobněji prozkoumáme jednotlivé možnosti v následujících oddílech.
 
-## <a name="adding-extensions-to-the-route-table"></a>Přidávání rozšíření do směrovací tabulky
+## <a name="adding-extensions-to-the-route-table"></a>Přidání rozšíření do směrovací tabulky
 
-Nejjednodušší způsob, jak získat směrování ASP.NET pro práci se staršími verzemi služby IIS je upravit vaše směrovací tabulku v souboru Global.asax. Výchozí nastavení a verzí bez úprav souboru Global.asax ve výpisu 1 nakonfiguruje jednu trasu s názvem výchozí trasu.
+Nejjednodušší způsob, jak získat směrování ASP.NET pro práci se staršími verzemi služby IIS, je upravit tabulku směrování v souboru Global. asax. Výchozí a neupravený soubor Global. asax v seznamu 1 nakonfiguruje jednu trasu s názvem výchozí trasa.
 
-**Listing 1 - Global.asax (unmodified)**
+**Výpis 1-Global. asax (nezměněno)**
 
 [!code-csharp[Main](using-asp-net-mvc-with-different-versions-of-iis-cs/samples/sample1.cs)]
 
-Výchozí trasy nakonfigurované v informacích 1 umožňuje směrování adres URL, které vypadat nějak takto:
+Výchozí trasa nakonfigurovaná v seznamu 1 vám umožní směrovat adresy URL, které vypadají takto:
 
-/ Home/Index
+/Home/Index
 
-/ Produkt/podrobnosti/3
+/Product/Details/3
 
-/ Produktu
+/Product
 
-Starší verze služby IIS bohužel nebudou předávat tyto žádosti na rozhraní ASP.NET. Proto nebude získat tyto požadavky směrovány do kontroleru. Například pokud vytvoříte žádost prohlížeče na adresu URL/Home/Index pak získáte chybovou stránku na obrázku 2.
+Starší verze služby IIS bohužel tyto požadavky nepředá rozhraní ASP.NET Framework. Proto se tyto požadavky nebudou směrovat do kontroleru. Pokud například vytvoříte požadavek prohlížeče na adresu URL/Home/Index, zobrazí se chybová stránka na obrázku 2.
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image2.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image3.png)
+[![dialogového okna Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image2.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image3.png)
 
-**Obrázek 2**: Chyba 404 nebyl nalezen ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image4.png))
+**Obrázek 2**: příjem Chyby nenalezení 404 ([kliknutím zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image4.png))
 
-Starší verze služby IIS mapovat pouze určité požadavky na rozhraní ASP.NET. Žádost musí být pro adresu URL s příponou souboru správné. Žádost o /SomePage.aspx získá například mapovat na technologii ASP.NET. Ale žádost o /SomePage.htm nepodporuje.
+Starší verze služby IIS mapují pouze některé požadavky na ASP.NET Framework. Požadavek musí být adresa URL se správnou příponou souboru. Například požadavek na/SomePage.aspx se mapuje na rozhraní ASP.NET. Nicméně požadavek na/SomePage.htm není.
 
-Proto zobrazíte směrování ASP.NET pro práci jsme musíte upravit výchozí trasu tak, že obsahují příponu souboru, který je namapovaný na technologii ASP.NET.
+Proto je potřeba upravit výchozí trasu tak, aby se ASP.NET směrování, aby obsahovalo příponu souboru, která je namapovaná na ASP.NET Framework.
 
-To se provádí pomocí skriptu s názvem `registermvc.wsf`. Je součástí verze technologie ASP.NET MVC 1 v `C:\Program Files\Microsoft ASP.NET\ASP.NET MVC\Scripts`, ale od 2 technologie ASP.NET tento skript byl přesunut do Futures ASP.NET k dispozici na [ http://aspnet.codeplex.com/releases/view/39978 ](http://aspnet.codeplex.com/releases/view/39978).
+To se provádí pomocí skriptu s názvem `registermvc.wsf`. Byla součástí verze ASP.NET MVC 1 v `C:\Program Files\Microsoft ASP.NET\ASP.NET MVC\Scripts`, ale od ASP.NET 2 se tento skript přesunul do ASP.NET futures, který je k dispozici na adrese [http://aspnet.codeplex.com/releases/view/39978](http://aspnet.codeplex.com/releases/view/39978).
 
-Spuštěním tohoto skriptu zaregistruje nové rozšíření .mvc službou IIS. Až dokončíte registraci .mvc rozšíření, tak, aby trasy používat rozšíření .mvc můžete upravit trasy v souboru Global.asax.
+Spuštění tohoto skriptu zaregistruje nové rozšíření. Mvc se službou IIS. Po registraci rozšíření. Mvc můžete v souboru Global. asax změnit trasy tak, aby trasy používaly rozšíření. Mvc.
 
-Upravený soubor Global.asax výpis 2 funguje ve starších verzích služby IIS.
+Upravený soubor Global. asax v seznamu 2 funguje se staršími verzemi služby IIS.
 
-**Výpis 2 - Global.asax (upravit pomocí rozšíření)**
+**Výpis 2 – Global. asax (upraveno s rozšířeními)**
 
 [!code-csharp[Main](using-asp-net-mvc-with-different-versions-of-iis-cs/samples/sample2.cs)]
 
-**Důležité**: Mějte na paměti k vytvoření aplikace ASP.NET MVC po změně souboru Global.asax.
+**Důležité**: nezapomeňte znovu sestavit aplikaci ASP.NET MVC po změně souboru Global. asax.
 
-Existují dvě důležité změny v souboru Global.asax ve výpisu 2. Nyní existují dvě trasy definované v souboru Global.asax. Vzor adresy URL pro výchozí trasa první trasa teď vypadá jako:
+Existují dvě důležité změny v souboru Global. asax v seznamu 2. V Global. asax jsou nyní definovány dvě trasy. Vzor adresy URL výchozí trasy, první trasy, teď vypadá takto:
 
-{controller}.mvc/{action}/{id}
+{Controller}. Mvc/{Action}/{ID}
 
-Přidání rozšíření .mvc změní typ souborů, které zachycuje modulu Směrování ASP.NET. Díky této změně teď aplikace ASP.NET MVC směruje požadavky vypadat asi takto:
+Přidání rozšíření. Mvc změní typ souborů, které modul směrování ASP.NET zachycuje. V této změně aplikace ASP.NET MVC nyní směruje požadavky jako následující:
 
-/Home.MVC/index/
+/Home.mvc/Index/
 
 /Product.mvc/Details/3
 
 /Product.mvc/
 
-Druhá trasa trasy kořenové novinky. Tento vzor adresy URL pro trasu Root je prázdný řetězec. Tato trasa je nezbytné pro odpovídající požadavků na přístup kořenového adresáře aplikace. Trasy kořenové bude například odpovídat požadavek, který vypadá takto:
+Druhá trasa, kořenová trasa, je nová. Tento vzor adresy URL pro kořenovou trasu je prázdný řetězec. Tato trasa je nezbytná pro porovnání požadavků provedených vůči kořenovému adresáři vaší aplikace. Například kořenová trasa bude odpovídat žádosti, která vypadá takto:
 
 [http://www.YourApplication.com/](http://www.YourApplication.com/)
 
-Po provedení těchto změn do směrovací tabulky, budete muset ověřit, že všechny odkazy v aplikaci jsou kompatibilní s tyto nové vzory adres URL. Jinými slovy Ujistěte se, že všechny odkazy zahrnují .mvc rozšíření. Pokud používáte Html.ActionLink() Pomocná metoda ke generování odkazů, pak neměli byste potřebovat provádět žádné změny.
+Po provedení těchto úprav v tabulce směrování budete muset zajistit, aby všechny odkazy v aplikaci byly kompatibilní s těmito novými vzory adres URL. Jinými slovy, zajistěte, aby všechny vaše odkazy zahrnovaly příponu. Mvc. Použijete-li k vygenerování odkazů pomocnou metodu HTML. ActionLink (), neměli byste provádět žádné změny.
 
-Namísto použití skriptu registermvc.wcf, můžete přidat nové rozšíření do služby IIS, který je namapovaný na rozhraní ASP.NET ručně. Při přidávání nové rozšíření, ujistěte se, že označení zaškrtávacího políčka **věřit existenci souboru** políčko není zaškrtnuté.
+Namísto použití skriptu registermvc. WCF můžete přidat nové rozšíření služby IIS, které je namapováno na ASP.NET Framework ručně. Když přidáváte nové rozšíření sami, ujistěte se, že políčko **ověřit, že soubor existuje** , není zaškrtnuté.
 
-## <a name="hosted-server"></a>Hosted Server
+## <a name="hosted-server"></a>Hostovaný Server
 
-Vždy nemáte přístup k webovému serveru. Například pokud vaše aplikace ASP.NET MVC pomocí poskytovatele hostingu Internet, pak nebudete mít nutně přístup do služby IIS.
+Nemáte vždycky přístup k vašemu webovému serveru. Pokud například hostete aplikaci MVC ASP.NET pomocí poskytovatele internetového hostování, pak nebudete nutně mít přístup ke službě IIS.
 
-V takovém případě by měl používat jednu z existujících přípony souborů, které jsou mapovány na rozhraní ASP.NET. Příklady přípon souborů, které jsou mapovány na technologii ASP.NET, které zahrnují .aspx, AXD a ASHX rozšíření.
+V takovém případě byste měli použít jednu z existujících přípon souborů, které jsou namapovány na ASP.NET Framework. Mezi přípony souborů namapované na ASP.NET patří například rozšíření. aspx,. axd a. ashx.
 
-Upravený soubor Global.asax výpis 3 například používá rozšíření .aspx místo .mvc rozšíření.
+Například upravený soubor Global. asax v seznamu 3 používá příponu. aspx místo rozšíření. Mvc.
 
-**Výpis 3 - Global.asax (upraveno s příponou .aspx)**
+**Výpis 3 – Global. asax (upraveno s příponami. aspx)**
 
 [!code-csharp[Main](using-asp-net-mvc-with-different-versions-of-iis-cs/samples/sample3.cs)]
 
-Soubor Global.asax výpis 3 je přesně stejný jako předchozí soubor Global.asax kromě toho používá rozšíření .aspx místo .mvc rozšíření. Není nutné provádět žádné nastavení na vzdáleném webovém serveru na použití rozšíření .aspx.
+Soubor Global. asax v seznamu 3 je přesně stejný jako předchozí soubor Global. asax s výjimkou toho, že používá příponu. aspx místo rozšíření. Mvc. Není nutné provádět žádné nastavení na vzdáleném webovém serveru, aby bylo možné použít příponu. aspx.
 
 ## <a name="creating-a-wildcard-script-map"></a>Vytvoření mapy skriptů se zástupnými znaky
 
-Pokud nechcete změnit adresy URL pro aplikaci ASP.NET MVC a mít přístup k webovému serveru, máte možnost Další. Můžete vytvořit mapu skriptů se zástupnými znaky, který mapuje všechny požadavky na webový server pro technologii ASP.NET. Tímto způsobem můžete výchozí aplikaci ASP.NET MVC směrovací tabulku s IIS 7.0 (v klasickém režimu) nebo služby IIS 6.0.
+Pokud nechcete měnit adresy URL pro aplikaci ASP.NET MVC a máte přístup k vašemu webovému serveru, máte další možnost. Můžete vytvořit mapu skriptů se zástupnými znaky, která mapuje všechny požadavky na webový server do ASP.NET architektury. Tímto způsobem můžete použít výchozí směrovací tabulku ASP.NET MVC se službou IIS 7,0 (v klasickém režimu) nebo IIS 6,0.
 
-Mějte na paměti, že tato možnost způsobí, že služby IIS, aby se zachytily každý požadavek směřovaný webový server. Patří sem požadavky pro obrázky, klasické ASP stránky a stránky HTML. Proto povolení zástupný znak mapování skriptů ASP.NET nemá vliv na výkon.
+Uvědomte si, že tato možnost způsobí, že služba IIS zachycuje všechny požadavky vytvořené na webovém serveru. To zahrnuje požadavky na image, klasické stránky ASP a HTML stránky. Proto povolení mapy skriptů se zástupnými znaky pro ASP.NET má vliv na výkon.
 
-Zde je, jak povolit mapu skriptů se zástupnými znaky pro službu IIS 7.0:
+Tady je postup, jak povolit mapu skriptů se zástupnými znaky pro IIS 7,0:
 
-1. Vyberte svou aplikaci v okně připojení
-2. Ujistěte se, že **funkce** je vybráno zobrazení
-3. Dvakrát klikněte **mapování obslužných rutin** tlačítko
-4. Klikněte na tlačítko **přidat mapu skriptů se zástupnými znaky** propojení (viz obrázek 3)
-5. Zadejte cestu k aspnet\_isapi.dll souboru (tuto cestu můžete zkopírovat z mapování skriptů PageHandlerFactory)
-6. Zadejte název MVC
-7. Klikněte na tlačítko **OK** tlačítko
+1. Výběr aplikace v okně připojení
+2. Ujistěte se, že je vybraná možnost zobrazení **funkcí** .
+3. Dvakrát klikněte na tlačítko **mapování obslužných rutin** .
+4. Klikněte na odkaz **Přidat mapu skriptů se zástupnými znaky** (viz obrázek 3).
+5. Zadejte cestu k souboru ASPNET\_ISAPI. dll (tuto cestu můžete zkopírovat z mapy skriptů PageHandlerFactory).
+6. Zadejte název MVC.
+7. Klikněte na tlačítko **OK** .
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image3.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image5.png)
+[![dialogového okna Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image3.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image5.png)
 
-**Obrázek 3**: Vytváření mapy skriptů se zástupnými znaky se službou IIS 7.0 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image6.png))
+**Obrázek 3**: vytvoření mapy skriptů se zástupnými znaky pomocí IIS 7,0 ([kliknutím zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image6.png))
 
-Postupujte podle těchto kroků můžete vytvořit mapu skriptů se zástupnými znaky se službou IIS 6.0:
+Pomocí těchto kroků vytvořte mapu skriptů se zástupnými znaky se službou IIS 6,0:
 
-1. Klikněte pravým tlačítkem na web a vyberte vlastnosti
-2. Vyberte **domovský adresář** kartu
-3. Klikněte na tlačítko **konfigurace** tlačítko
-4. Vyberte **mapování** kartu
-5. Klikněte na tlačítko **vložit** tlačítko (viz obrázek 4)
-6. Vložte cestu k aspnet\_isapi.dll do pole spustitelný soubor (tuto cestu můžete zkopírovat z mapy skriptů pro soubory .aspx)
-7. Zrušte zaškrtnutí políčka popisek **věřit existenci souboru**
-8. Klikněte na tlačítko **OK** tlačítko
+1. Klikněte pravým tlačítkem na web a vyberte vlastnosti.
+2. Výběr karty **domovského adresáře**
+3. Klikněte na tlačítko **Konfigurace** .
+4. Výběr karty **mapování**
+5. Klikněte na tlačítko **Vložit** (viz obrázek 4).
+6. Vložte cestu k souboru ASPNET\_ISAPI. dll do spustitelného pole (tuto cestu můžete zkopírovat z mapy skriptu pro soubory. aspx).
+7. Zrušte zaškrtnutí políčka s označením **ověřit, zda soubor existuje** .
+8. Klikněte na tlačítko **OK** .
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image4.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image7.png)
+[![dialogového okna Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image4.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image7.png)
 
-**Obrázek 4**: Vytváření mapy skriptů se zástupnými znaky se službou IIS 6.0 ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image8.png))
+**Obrázek 4**: vytvoření mapy skriptů se zástupnými znaky pomocí služby IIS 6,0 ([kliknutím zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image8.png))
 
-Po povolení mapy skriptů se zástupnými znaky, budete muset upravit směrovací tabulky v souboru Global.asax tak, že obsahují kořenový trasy. Vytvořit žádost o kořenové stránky aplikace zobrazí, jinak se chybové stránky na obrázku 5. Můžete použít upravený soubor Global.asax výpis 4.
+Po povolení mapování skriptů se zástupnými znaky je nutné upravit směrovací tabulku v souboru Global. asax tak, aby zahrnovala kořenovou trasu. V opačném případě se zobrazí chybová stránka na obrázku 5 při vytváření žádosti o kořenovou stránku aplikace. V seznamu 4 můžete použít upravený soubor Global. asax.
 
-[![Dialogové okno Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image5.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image9.png)
+[![dialogového okna Nový projekt](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image5.jpg)](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image9.png)
 
-**Obrázek 5**: Chybí kořenový trasy chyby ([kliknutím ji zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image10.png))
+**Obrázek 5**: chybějící chyba kořenové trasy ([kliknutím zobrazíte obrázek v plné velikosti](using-asp-net-mvc-with-different-versions-of-iis-cs/_static/image10.png))
 
-**Část 4 – Global.asax (upraveno s trasou kořenový)**
+**Výpis 4 – Global. asax (upraveno s kořenovou trasou)**
 
 [!code-csharp[Main](using-asp-net-mvc-with-different-versions-of-iis-cs/samples/sample4.cs)]
 
-Po povolení mapy skriptů se zástupnými znaky služby IIS 7.0 a IIS 6.0, můžete provést požadavků, které pracují s výchozí směrovací tabulka, které vypadat nějak takto:
+Po povolení mapování skriptů se zástupnými znaky pro IIS 7,0 nebo IIS 6,0 můžete vytvořit žádosti, které budou fungovat s výchozí směrovací tabulkou, která bude vypadat takto:
 
 /
 
-/ Home/Index
+/Home/Index
 
-/ Produkt/podrobnosti/3
+/Product/Details/3
 
-/ Produktu
+/Product
 
 ## <a name="summary"></a>Souhrn
 
-Cílem tohoto kurzu bylo vysvětlují, jak můžete ASP.NET MVC, jestli používáte starší verzi služby IIS (nebo službě IIS 7.0 v klasickém režimu). Jsme probírali dva způsoby získávání směrování ASP.NET pro práci se staršími verzemi služby IIS: Změnit výchozí směrovací tabulka nebo vytvořit mapu skriptů se zástupnými znaky.
+Cílem tohoto kurzu je vysvětlit, jak můžete použít ASP.NET MVC při použití starší verze služby IIS (nebo IIS 7,0 v klasickém režimu). Provedli jsme dvě metody získání ASP.NET směrování pro práci se staršími verzemi služby IIS: Upravte výchozí směrovací tabulku nebo vytvořte mapu skriptů se zástupnými znaky.
 
-První možnost vyžaduje úpravu adresy URL použité v aplikaci ASP.NET MVC. Velmi důležité výhod první možnost je nepotřebují přístup k webovému serveru pro úpravu směrovací tabulky. To znamená, že i v případě hostování vaší aplikace ASP.NET MVC pomocí Internetu můžete použít první možnost hostování společnosti.
+První možnost vyžaduje, abyste upravili adresy URL používané ve vaší aplikaci ASP.NET MVC. Jednou z výhod této první možnosti je, že nepotřebujete přístup k webovému serveru, abyste mohli upravit směrovací tabulku. To znamená, že můžete použít tuto první možnost i při hostování aplikace ASP.NET MVC s internetovou hostingovou společností.
 
-Druhou možností je vytvořit mapu skriptů se zástupnými znaky. Výhodou této druhé možnosti je, že není potřeba měnit vaší adresy URL. Nevýhodou této druhou možností je, že může mít vliv na výkon vaší aplikace ASP.NET MVC.
+Druhou možností je vytvořit mapu skriptů se zástupnými znaky. Výhodou této druhé možnosti je, že nemusíte měnit adresy URL. Nevýhodou této druhé možnosti je, že může ovlivnit výkon aplikace ASP.NET MVC.
 
 > [!div class="step-by-step"]
 > [Next](using-asp-net-mvc-with-different-versions-of-iis-vb.md)

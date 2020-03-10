@@ -9,11 +9,11 @@ ms.assetid: c120187e-963e-4439-bb85-32771bc7f1f4
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/adding-animation-to-a-control-vb
 msc.type: authoredcontent
 ms.openlocfilehash: efaee9c1665d795dc1a889b9ac9f25dd1c08f4e2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74607148"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78598299"
 ---
 # <a name="adding-animation-to-a-control-vb"></a>Přidání animace k ovládacímu prvku (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. V tomto kurzu se dozvíte, jak nastavit takovou animaci.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Prvním krokem je obvykle zahrnutí `ScriptManager` do stránky, aby byla načtena knihovna ASP.NET AJAX a bylo možné použít ovládací sadu Toolkit:
 

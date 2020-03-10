@@ -9,11 +9,11 @@ ms.assetid: 778b9009-76f2-4665-940e-afc0e35bc917
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/using-dynamicpopulate-with-a-user-control-and-javascript-vb
 msc.type: authoredcontent
 ms.openlocfilehash: ee5923ad6d8b101f689a0564aef8b1e0e00a7639
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74599111"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78613671"
 ---
 # <a name="using-dynamicpopulate-with-a-user-control-and-javascript-vb"></a>Použití ovládacího prvku DynamicPopulate s uživatelským ovládacím prvkem a JavaScriptem (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek `DynamicPopulate` v ASP.NET AJAX Control Toolkit volá webovou službu (nebo metodu stránky) a vyplní výslednou hodnotu do cílového ovládacího prvku na stránce bez obnovení stránky. Je také možné aktivovat plnění pomocí vlastního kódu JavaScriptu na straně klienta. Zvláštní péči je však nutné vzít v případě, že se v uživatelském ovládacím prvku nachází zařízení.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve potřebujete webovou službu ASP.NET, která implementuje metodu volanou ovládacím prvkem `DynamicPopulateExtender`. Webová služba implementuje metodu `getDate()`, která očekává jeden argument typu String, nazvaný `contextKey`, protože ovládací prvek `DynamicPopulate` odesílá jednu část informací o kontextu s každým voláním webové služby. Zde je kód (soubory `DynamicPopulate.vb.asmx`), který načte aktuální datum v jednom ze tří formátů:
 
@@ -63,7 +63,7 @@ Nakonec přidejte uživatelský ovládací prvek na stránku. Je nutné nastavit
 
 [!code-aspx[Main](using-dynamicpopulate-with-a-user-control-and-javascript-vb/samples/sample8.aspx)]
 
-A je to! Stránka se chová podle očekávání: uživatel klikne na jeden z přepínačů, ovládací prvek v sadě nástrojů volá webovou službu a zobrazí aktuální datum v požadovaném formátu.
+A to je vše! Stránka se chová podle očekávání: uživatel klikne na jeden z přepínačů, ovládací prvek v sadě nástrojů volá webovou službu a zobrazí aktuální datum v požadovaném formátu.
 
 [![, že se přepínače nacházejí v uživatelském ovládacím prvku](using-dynamicpopulate-with-a-user-control-and-javascript-vb/_static/image2.png)](using-dynamicpopulate-with-a-user-control-and-javascript-vb/_static/image1.png)
 

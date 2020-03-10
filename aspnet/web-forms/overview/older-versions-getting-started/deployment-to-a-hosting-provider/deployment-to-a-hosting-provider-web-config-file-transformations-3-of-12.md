@@ -9,11 +9,11 @@ ms.assetid: 2b0df3d9-450b-4ea6-b315-4c9650722cad
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-web-config-file-transformations-3-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: 9e7902bcf8a16c154aee1a982824bfaedeea7d9d
-ms.sourcegitcommit: 7b1e1784213dd4c301635f9e181764f3e2f94162
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309233"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78634923"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-or-visual-web-developer-webconfig-file-transformations---3-of-12"></a>Nasazení webové aplikace SQL Server Compact v ASP.NET s využitím sady Visual Studio nebo Visual Web Developer: transformace souboru Web. config-3 z 12
 

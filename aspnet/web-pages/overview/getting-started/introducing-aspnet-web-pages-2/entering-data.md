@@ -1,260 +1,260 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
-title: Představení rozhraní ASP.NET Web Pages – zadávání dat do databáze pomocí formulářů | Dokumentace Microsoftu
+title: Představení webových stránek ASP.NET – zadávání dat databáze pomocí formulářů | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se dozvíte, jak vytvořit formulář pro zadávání a zadejte data, která získáte z formuláře do databázové tabulky pomocí rozhraní ASP.NET Web Pages (...)
+description: V tomto kurzu se dozvíte, jak vytvořit vstupní formulář a pak zadat data, která dostanete z formuláře do tabulky databáze při použití webových stránek ASP.NET (...
 ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: d37c93fc-25fd-4e94-8671-0d437beef206
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/entering-data
 msc.type: authoredcontent
 ms.openlocfilehash: b9354a7b97a7df9020a681f709e16a92650cfcf0
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132972"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78624535"
 ---
-# <a name="introducing-aspnet-web-pages---entering-database-data-by-using-forms"></a>Představení rozhraní ASP.NET Web Pages – zadávání dat do databáze pomocí formulářů
+# <a name="introducing-aspnet-web-pages---entering-database-data-by-using-forms"></a>Představení webových stránek ASP.NET – zadávání dat databáze pomocí formulářů
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> V tomto kurzu se dozvíte, jak vytvořit formulář položku a zadejte data, která získáte z formuláře do tabulky databáze při použití webových stránek ASP.NET (Razor). Předpokládá, že jste dokončili řady prostřednictvím [základy z formuláře HTML na webových stránkách ASP.NET](https://go.microsoft.com/fwlink/?LinkId=251581).
+> V tomto kurzu se dozvíte, jak vytvořit vstupní formulář a pak zadat data, která dostanete z formuláře do tabulky databáze při použití webových stránek ASP.NET (Razor). Předpokládá, že jste dokončili řadu prostřednictvím [základních formulářů HTML v ASP.NET webových stránkách](https://go.microsoft.com/fwlink/?LinkId=251581).
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Další informace o tom, jak zpracovat formulářích pro zadávání.
-> - Jak přidat data (Vložit) v databázi.
-> - Jak zajistit, aby uživatelé zadali požadovaná hodnota ve formě (jak ověřit vstup uživatele).
-> - Jak zobrazit chyby ověření.
-> - Jak přejít na jinou stránku na aktuální stránce.
+> - Další informace o tom, jak zpracovávat formuláře zadávání.
+> - Jak přidat (vložit) data do databáze.
+> - Jak zajistit, aby uživatelé zadali požadovanou hodnotu ve formuláři (ověření vstupu uživatele).
+> - Jak zobrazit chyby ověřování.
+> - Jak přejít na jinou stránku z aktuální stránky.
 >   
 > 
 > Popsané funkce a technologie:
 > 
-> - `Database.Execute` Metody.
-> - SQL `Insert Into` – příkaz
-> - `Validation` Pomocné rutiny.
-> - `Response.Redirect` Metody.
+> - Metoda `Database.Execute`.
+> - Příkaz SQL `Insert Into`
+> - Pomocná rutina `Validation`
+> - Metoda `Response.Redirect`.
 
-## <a name="what-youll-build"></a>Co budete vytvářet
+## <a name="what-youll-build"></a>Co sestavíte
 
-V tomto kurzu dříve, který vám ukázali, jak vytvořit databázi, jste zadali dat z databáze tak, že upravíte přímo ve službě WebMatrix, práce databázi **databáze** pracovního prostoru. Ve většině aplikací, který není praktický způsob, jak ukládat data do databáze, i když. Proto v tomto kurzu vytvoříte webové rozhraní, ve kterém jste nebo všem uživatelům zadávat data a uložit do databáze.
+V předchozím kurzu, který ukázal, jak vytvořit databázi, jste zadali data databáze tak, že upravíte databázi přímo v WebMatrixu a pracujete v pracovním prostoru **databáze** . Ve většině aplikací to není praktický způsob, jak vložit data do databáze, i když. Takže v tomto kurzu vytvoříte webové rozhraní, které vám umožní nebo kdokoli zadá data a uloží je do databáze.
 
-Vytvoříte stránky, kde můžete zadat nové filmy. Stránka bude obsahovat formulář položka, která má pole (polí), ve kterém můžete zadat název filmu, rozšířením podle tematických a rok. Stránka bude vypadat na této stránce:
+Vytvoříte stránku, kde můžete zadat nové filmy. Stránka bude obsahovat formulář, který obsahuje pole (textová pole), kde můžete zadat název, Žánr a rok videa. Stránka bude vypadat jako na této stránce:
 
-!["Přidat video" stránku v prohlížeči](entering-data/_static/image1.png)
+![Stránka Přidat film v prohlížeči](entering-data/_static/image1.png)
 
-Textová pole bude HTML `<input>` prvky, které bude vypadat jako tento kód:
+Textová pole budou prvky HTML `<input>`, které budou vypadat jako tento kód:
 
 `<input type="text" name="genre" value="" />`
 
-## <a name="creating-the-basic-entry-form"></a>Vytvoření základní vstupu formuláře
+## <a name="creating-the-basic-entry-form"></a>Vytvoření základního formuláře položky
 
-Vytvoření stránky s názvem *AddMovie.cshtml*.
+Vytvořte stránku s názvem *AddMovie. cshtml*.
 
-Nahraďte, co je v souboru následujícím kódem. Přepsat vše, co; přidáte blok kódu v horní části za chvíli.
+Nahraďte obsah souboru následujícím kódem. Přepsat vše; v krátké době přidáte blok kódu.
 
 [!code-cshtml[Main](entering-data/samples/sample1.cshtml)]
 
-Tento příklad ukazuje typické HTML pro vytvoření formuláře. Používá `<input>` elementy pro textová pole a tlačítka Odeslat. Popisky pro textová pole jsou vytvořeny pomocí standardních `<label>` elementy. `<fieldset>` a `<legend>` prvky umístěte nice rámečkem okolo položky formuláře.
+Tento příklad ukazuje typický kód HTML pro vytvoření formuláře. Používá prvky `<input>` pro textová pole a pro tlačítko Odeslat. Titulky pro textová pole jsou vytvořeny pomocí standardních `<label>` prvků. Prvky `<fieldset>` a `<legend>` vloží do formuláře Skvělé pole.
 
-Všimněte si, že na této stránce `<form>` prvek používá `post` hodnotu `method` atribut. V předchozím kurzu jste vytvořili formuláře, který se používá `get` metody. Bylo správné, protože i když se odešle formulář hodnoty na server, žádost nebyly provedeny žádné změny. Všechno, co kdyby byl načtení dat různými způsoby. Ale na této stránce můžete *bude* proveďte změny – se chystáte přidat nové záznamy v databázi. Proto měli používat tento formulář `post` metody. (Další informace o rozdílech mezi `GET` a `POST` operací, najdete v článku[GET, POST a HTTP příkaz bezpečnosti](https://go.microsoft.com/fwlink/?LinkId=251581#GET,_POST,_and_HTTP_Verb_Safety) boční panel v předchozím kurzu.)
+Všimněte si, že na této stránce `<form>` element používá `post` jako hodnotu atributu `method`. V předchozím kurzu jste vytvořili formulář, který používal metodu `get`. To bylo správné, protože ačkoliv formulář odeslal hodnoty na server, požadavek provedl žádné změny. Všechna data byla načtena různými způsoby. Na této stránce ale *provedete* změny – Chystáte se přidat nové záznamy databáze. Proto by tato forma měla používat metodu `post`. (Další informace o rozdílu mezi operacemi `GET` a `POST` najdete v předchozím kurzu na postranním panelu pro[získání, odeslání a zabezpečení operací HTTP](https://go.microsoft.com/fwlink/?LinkId=251581#GET,_POST,_and_HTTP_Verb_Safety) .)
 
-Všimněte si, že každé pole má `name` – element (`title`, `genre`, `year`). Jak už jste viděli v předchozím kurzu, tyto názvy jsou důležité, protože tyto názvy musí mít, abyste se mohli uživatelovo zadání později. Můžete použít názvy. Je vhodné použijte smysluplné názvy, které vám pomůžou zapamatovat jaká data se kterou pracujete.
+Všimněte si, že každé textové pole má element `name` (`title`, `genre`, `year`). Jak jste viděli v předchozím kurzu, tyto názvy jsou důležité, protože musíte mít tyto názvy, abyste mohli později získat vstup uživatele. Můžete použít libovolný název. Je užitečné použít smysluplné názvy, které vám pomůžou zapamatovat si, se kterými daty pracujete.
 
-`value` Atribut jednotlivých `<input>` prvek obsahuje hodně kódu Razor (například `Request.Form["title"]`). Verzi této možností jste zjistili v předchozím kurzu, chcete-li zachovat hodnoty zadané do textového pole (pokud existuje) po odeslání formuláře.
+Atribut `value` každého prvku `<input>` obsahuje bitovou kopii kódu Razor (například `Request.Form["title"]`). Zjistili jste ve verzi tohoto štychu v předchozím kurzu, abyste zachovali hodnotu zadanou do textového pole (pokud existuje) po odeslání formuláře.
 
-## <a name="getting-the-form-values"></a>Načtení hodnot formuláře
+## <a name="getting-the-form-values"></a>Získání hodnot formuláře
 
-V dalším kroku přidáte kód, který zpracovává formuláře. V přehledu budete postupujte takto:
+Dále přidáte kód, který zpracovává formulář. V osnově provedete následující akce:
 
-1. Zkontrolujte, zda se odeslání stránky (bylo odesláno). Chcete kód spustit pouze v případě, že uživatelé kliknuli na tlačítko Ne už při prvním spuštění stránky.
-2. Získá hodnoty, které uživatel zadat do textového pole. V takovém případě vzhledem k tomu, že pomocí formuláře `POST` sloveso, získání hodnot z formulářů `Request.Form` kolekce.
-3. Vložení hodnoty jako nového záznamu v *filmy* databázové tabulky.
+1. Ověřte, zda je stránka publikována (odeslána). Chcete, aby se váš kód spouštěl pouze v případě, že uživatel klikl na tlačítko, nikoli při prvním spuštění stránky.
+2. Načte hodnoty, které uživatel zadal do textových polí. V takovém případě, protože formulář používá příkaz `POST`, získáte hodnoty formuláře z kolekce `Request.Form`.
+3. Vložte hodnoty jako nový záznam do tabulky databáze *filmů* .
 
-Na začátek souboru přidejte následující kód:
+V horní části souboru přidejte následující kód:
 
 [!code-cshtml[Main](entering-data/samples/sample2.cshtml)]
 
-Několik prvních řádků vytváření proměnných (`title`, `genre`, a `year`) pro uchování hodnoty z textových polí. Na řádku `if(IsPost)` zajišťuje, že proměnné se nastaví *pouze* když uživatelé kliknou **přidat video** tlačítko – to znamená, když formulář byl odeslán.
+První pár řádků vytvoří proměnné (`title`, `genre`a `year`), aby se hodnoty z textových polí vešly. Řádková `if(IsPost)` zajistí, že proměnné jsou nastaveny *pouze* v případě, že uživatel klikne na tlačítko **přidat video** – to znamená, když byl formulář publikován.
 
-Jak už jste viděli v předchozí kurzu, získáte hodnotu textové pole vlastnosti autorefresh pomocí výrazu jako `Request.Form["name"]`, kde *název* je název `<input>` elementu.
+Jak jste viděli v předchozím kurzu, získáte hodnotu textového pole pomocí výrazu, jako je `Request.Form["name"]`, kde *název* je název `<input>` elementu.
 
-Názvy proměnných (`title`, `genre`, a `year`) jsou libovolného. Názvy, které přiřadíte, jako jsou `<input>` prvky, můžete je zavolat jakkoli chcete. (Názvy proměnných nemusí odpovídat názvu atributy `<input>` prvky ve formuláři.) Ale stejně jako u `<input>` prvků, je vhodné použít názvy proměnných, které zahrnují data, která obsahují. Při psaní kódu, konzistentní názvy usnadňují si zapamatovat, jaká data se kterou pracujete.
+Názvy proměnných (`title`, `genre`a `year`) jsou libovolné. Podobně jako názvy, které přiřadíte `<input>` prvků, můžete je zavolat libovolným způsobem. (Názvy proměnných nemusejí odpovídat atributům názvu `<input>` prvků ve formuláři.) Ale stejně jako u elementů `<input>` je vhodné použít názvy proměnných, které odráží data, která obsahují. Když píšete kód, konzistentní názvy usnadňují zapamatování, se kterými daty pracujete.
 
 ## <a name="adding-data-to-the-database"></a>Přidání dat do databáze
 
-V kódu je právě přidanou, pouze blokovat *uvnitř* pravou složenou závorku ( `}` ) z `if` blokovat (ne jenom uvnitř bloku kódu), přidejte následující kód:
+V bloku kódu, který jste právě přidali, těsně *uvnitř* uzavírací složené závorky (`}`) bloku `if` (ne pouze uvnitř bloku kódu) přidejte následující kód:
 
 [!code-csharp[Main](entering-data/samples/sample3.cs)]
 
-Tento příklad je podobný kód, který jste použili v předchozím kurzu k načtení a zobrazení data. Řádek, který začíná `db =` otevře databáze, stejně jako předtím a na další řádek definuje příkaz jazyka SQL, znovu jako viděli dříve. Ale tentokrát ho definuje SQL `Insert Into` příkazu. Následující příklad ukazuje Obecná syntaxe nástroje `Insert Into` – příkaz:
+Tento příklad je podobný kódu, který jste použili v předchozím kurzu pro načtení a zobrazení dat. Řádek, který začíná `db =` otevře databázi, například dřív, a další řádek definuje příkaz SQL znovu, jak jste viděli předtím. Tentokrát ale definuje příkaz SQL `Insert Into`. Následující příklad ukazuje obecnou syntaxi příkazu `Insert Into`:
 
 `INSERT INTO table (column1, column2, column3, ...) VALUES (value1, value2, value3, ...)`
 
-Jinými slovy zadejte v tabulce pro vložení do, pak sloupce, které chcete vložit do seznamu a potom zobrazí seznam hodnot pro vložení. (Poznamenali dříve SQL není velká a malá písmena, ale někteří lidé velké první písmeno klíčová slova, aby bylo snazší přečíst příkazu.)
+Jinými slovy, zadáte tabulku, do které se má vložit, a pak uveďte sloupce, které se mají vložit do, a potom vypište hodnoty, které chcete vložit. (Jak je uvedeno dříve, SQL nerozlišuje velká a malá písmena, ale někteří lidé mají na velká písmena, aby usnadnili čtení příkazu.)
 
-Sloupce, které jste vložili do už jsou uvedeny v příkazu – `(Title, Genre, Year)`. Zajímavé části je, jak získat hodnoty z textových polí do `VALUES` část příkazu. Místo skutečných hodnot, uvidíte `@0`, `@1`, a `@2`, které jsou samozřejmě zástupné symboly. Při spuštění příkazu (na `db.Execute` řádek), můžete předat hodnoty, které jste získali z textových polí.
+Sloupce, které vkládáte do, jsou již uvedeny v příkazu – `(Title, Genre, Year)`. Zajímavá část je způsob, jak získat hodnoty z textových polí do `VALUES` části příkazu. Místo skutečných hodnot vidíte `@0`, `@1`a `@2`, což jsou zástupné symboly kurzů. Při spuštění příkazu (na řádku `db.Execute`) předáte hodnoty, které jste získali z textových polí.
 
-**Důležité!** Mějte na paměti, že jediný způsob, kdy by měl obsahovat data zadaná uživatelem v příkazu SQL online se použít zástupné znaky, jako je tady uvidíte (`VALUES(@0, @1, @2)`). Pokud zřetězit uživatelský vstup do příkazu SQL můžete otevřít sami injektáže SQL, jak je vysvětleno v [základy formulářů v ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=251581) (předchozí kurz o službě).
+**Významná!** Mějte na paměti, že jediným způsobem, jak byste měli v příkazu SQL zahrnout data zadaná online uživatelem, je použít zástupné symboly, jak vidíte tady (`VALUES(@0, @1, @2)`). Pokud do příkazu SQL zřetězete vstup uživatele, otevřete sami sebe s útokem na injektáže SQL, jak je vysvětleno v tématu [základy formulářů na webových stránkách ASP.NET](https://go.microsoft.com/fwlink/?LinkId=251581) (předchozí kurz).
 
-Stále uvnitř `if` blokovat, přidejte následující řádek po `db.Execute` řádku:
+V rámci `if` bloku přidejte následující řádek za `db.Execute` řádek:
 
 [!code-css[Main](entering-data/samples/sample4.css)]
 
-Jakmile tento nový film byla vložena do databáze, tento přeskakování vám (přesměrování) *filmy* stránce, abyste si mohli zobrazit videa, kterou jste právě zadali. `~` Operátor znamená "kořenový adresář webu." ( `~` Operátor funguje pouze na stránkách ASP.NET, není ve formátu HTML obecně.)
+Po vložení nového videa do databáze se tento řádek přeskočí (přesměrovává) na stránku *filmy* , abyste viděli film, který jste právě zadali. Operátor `~` znamená "kořen webu". (Operátor `~` funguje pouze na stránkách ASP.NET, ne v HTML všeobecně.)
 
-Blok kompletní kód bude vypadat jako v tomto příkladu:
+Úplný blok kódu vypadá jako v tomto příkladu:
 
 [!code-cshtml[Main](entering-data/samples/sample5.cshtml)]
 
-## <a name="testing-the-insert-command-so-far"></a>Testování příkazu Insert (zatím)
+## <a name="testing-the-insert-command-so-far"></a>Testování příkazu INSERT (zatím daleko)
 
-Ještě neskončili, ale teď je vhodná doba k testování.
+Ještě nejste hotovi, ale teď je vhodná doba k otestování.
 
-Ve stromovém zobrazení souborů v nástroji WebMatrix, klikněte pravým tlačítkem myši *AddMovie.cshtml* stránce a potom klikněte na tlačítko **spustit v prohlížeči**.
+Ve stromovém zobrazení souborů ve WebMatrixu klikněte pravým tlačítkem na stránku *AddMovie. cshtml* a pak klikněte na **Spustit v prohlížeči**.
 
-!["Přidat video" stránku v prohlížeči](entering-data/_static/image2.png)
+![Stránka Přidat film v prohlížeči](entering-data/_static/image2.png)
 
-(Pokud skončíte se na jinou stránku v prohlížeči, ujistěte se, že je adresa URL `http://localhost:nnnnn/AddMovie`), kde *nnnnn* je číslo portu, který používáte.)
+(Pokud skončíte s jinou stránkou v prohlížeči, ujistěte se, že adresa URL je `http://localhost:nnnnn/AddMovie`), kde *nnnnn* je číslo portu, které používáte.)
 
-Obdrželi jste chybovou stránku? Pokud ano, pečlivě si přečtěte a ujistěte se, že kód bude vypadat přesně co byl uveden výše.
+Zobrazila se chybová stránka? Pokud ano, přečtěte si je pečlivě a ujistěte se, že kód přesně vypadá, co byl uveden výše.
 
-Zadejte ve formátu filmu &mdash; použít například "Občany Kratochvílová", "Drama" a "1941". (Nebo cokoli jiného.) Pak klikněte na tlačítko **přidat video**.
+Zadejte film do formuláře &mdash; například, použijte "občanský Kane", "drama" a "1941". (Nebo cokoli.) Pak klikněte na **Přidat film**.
 
-Pokud všechno proběhne správně, budete přesměrováni na *filmy* stránky. Ujistěte se, že je uvedena nová videa.
+Pokud vše proběhne správně, budete přesměrováni na stránku *filmy* . Ujistěte se, že je uvedený nový film.
 
-![Stránka filmy zobrazující nově přidána movie](entering-data/_static/image3.png)
+![Stránka filmy zobrazující nově přidaný film](entering-data/_static/image3.png)
 
-## <a name="validating-user-input"></a>Ověřování uživatelského vstupu
+## <a name="validating-user-input"></a>Ověřování vstupu uživatele
 
-Přejděte zpět *AddMovie* stránce a potom ho spusťte znovu. Zadejte jiný film, ale tentokrát, zadejte pouze název &mdash; zadejte například "Přihlášení ' v the déšť". Pak klikněte na tlačítko **přidat video**.
+Vraťte se na stránku *AddMovie* nebo ji znovu spusťte. Zadejte jiný film, ale tentokrát zadejte jenom nadpis &mdash; například, do pole deště zadejte "singin'". Pak klikněte na **Přidat film**.
 
-Budete přesměrováni na *filmy* stránku znovu nezobrazovat. Můžete najít tento nový film, ale je neúplný.
+Budete přesměrováni na stránku *filmy* znovu. Nový film můžete najít, ale neúplný.
 
-![Stránka zobrazující nové video, které chybí některé hodnoty filmy](entering-data/_static/image4.png)
+![Stránka filmy s informacemi o novém videu, u kterých chybí některé hodnoty](entering-data/_static/image4.png)
 
-Při vytváření *filmy* tabulky, můžete explicitně ale nutné dodat, že žádné z polí může mít hodnotu null. Zde máte formuláře pro nové filmy a jste se tak rozhodli pole prázdné. To je chyba.
+Při vytváření tabulky *filmů* jste výslovně uvedli, že žádná pole by mohla mít hodnotu null. Tady máte vstupní formulář pro nové filmy a zanecháváte si pole prázdné. To je chyba.
 
-V takovém případě databáze nebyla ve skutečnosti vyvolat (nebo *throw*) k chybě. Jste nezadali jste žánr nebo rok, takže kód *AddMovie* stránky považován za tyto hodnoty takzvané *prázdné řetězce*. Když SQL `Insert Into` byl spuštěn příkaz, pole žánr a roku neměli užitečná data v nich, ale jejich nebyly hodnotu null.
+V tomto případě databáze ve skutečnosti nevyvolává (nebo *vyvolává*) chybu. Nezadali jste Žánr nebo rok, takže kód na stránce *AddMovie* tyto hodnoty považuje za vyvolané *prázdné řetězce*. Když jste spustili příkaz SQL `Insert Into`, pole žánru a roku neobsahovala v nich užitečná data, ale nemají hodnotu null.
 
-Samozřejmě které nechcete umožní uživatelům zadat polovině prázdný film informace do databáze. Řešením je ověření vstupu uživatele. Na začátku ověření jednoduše zajistit, aby uživatel zadal hodnotu pro všechna pole (to znamená, že žádný z nich obsahuje prázdný řetězec).
+Zjevně nechcete uživatelům umožnit zadávat do databáze informace o polovičním vyprázdnění filmů. Řešením je ověřit vstup uživatele. Ve výchozím nastavení se ověří, že uživatel zadal hodnotu pro všechna pole (to znamená, že žádná z nich neobsahuje prázdný řetězec).
 
 > [!TIP]
 > 
-> **Řetězce Null a prázdné**
+> **Null a prázdné řetězce**
 > 
-> Při programování, je rozdíl mezi různé pojmy "žádná hodnota." Obecně platí, je hodnota *null* Pokud nikdy byla nastavena nebo inicializován žádným způsobem. Naproti tomu proměnná, která očekává, že znaková data (řetězce) může být nastaven na *prázdný řetězec*. V takovém případě hodnota není null. To je právě byla explicitně nastaveno na řetězec znaků, jehož délka je 0. Tyto dva příkazy Zobrazit rozdíl:
+> V programování existuje rozdíl mezi různými pojmy "žádná hodnota". Obecně je hodnota *null* , pokud nebyla nikdy nastavena nebo inicializována jakýmkoli způsobem. Naproti tomu proměnná, která očekává znaková data (řetězce), může být nastavena na *prázdný řetězec*. V takovém případě hodnota není null; je pouze explicitně nastaveno na řetězec znaků, jejichž délka je nula. Tyto dva příkazy znázorňují rozdíl:
 > 
 > [!code-csharp[Main](entering-data/samples/sample6.cs)]
 > 
-> To je trochu složitější než, ale důležitý bod je, že `null` představuje druh neurčeném stavu.
+> Je to poněkud složitější než to, ale důležité je, že `null` představuje řazení neurčitého stavu.
 > 
-> A poté je důležité pochopit přesně Pokud hodnota je null a když se nachází pouze prázdný řetězec. V kódu *AddMovie* stránky, získáte hodnoty do textových polí pomocí `Request.Form["title"]` a tak dále. Při prvním spuštění stránky (před kliknutím na tlačítko), hodnota `Request.Form["title"]` má hodnotu null. Ale při odeslání formuláře, `Request.Form["title"]` získá hodnotu `title` textového pole. Není zřejmé, ale není null; prázdné textové pole v něm jenom má prázdný řetězec. Proto při spuštění kódu v reakci na panelu klikněte na tlačítko, `Request.Form["title"]` v sobě obsahuje prázdný řetězec.
+> Nyní je důležité pochopit přesně, pokud je hodnota null, a když je pouze prázdný řetězec. V kódu stránky *AddMovie* získáte hodnoty textových polí pomocí `Request.Form["title"]` a tak dále. Při prvním spuštění stránky (před kliknutím na tlačítko) je hodnota `Request.Form["title"]` null. Ale při odeslání formuláře `Request.Form["title"]` Získá hodnotu `title` textového pole. Není zřejmé, ale prázdné textové pole není null. obsahuje pouze prázdný řetězec. Takže když se kód spustí jako odpověď na kliknutí na tlačítko, `Request.Form["title"]` obsahuje prázdný řetězec.
 > 
-> Toto rozlišení je důležité Při vytváření *filmy* tabulky, můžete explicitně ale nutné dodat, že žádné z polí může mít hodnotu null. Ale zde máte formuláře pro nové filmy a jste se tak rozhodli pole prázdné. Očekáváte by přiměřeně databáze si stěžovat při pokusu o uložení nové filmy, které nebyly k dispozici hodnoty žánr nebo rok. Ale to je bod &mdash; i v případě, že tyto textová pole necháte prázdné, nejsou hodnoty null; jsou prázdné řetězce. Díky tomu budete moct uložit do databáze s těmito sloupci prázdný nové filmy &mdash; , ale není null! &mdash; hodnoty. Proto budete muset Ujistěte se, že uživatelé neodesílejte prázdný řetězec, což lze provést pomocí ověření vstupu uživatele.
+> Proč je tento rozdíl důležitý? Při vytváření tabulky *filmů* jste výslovně uvedli, že žádná pole by mohla mít hodnotu null. Ale tady máte vstupní formulář pro nové filmy a necháte pole prázdná. Měli byste očekávat, že databáze bude stěžovatelem při pokusu o uložení nových filmů, které neobsahovaly hodnoty pro žánr nebo rok. Ale to je &mdash;, i když necháte tato textová pole prázdná, hodnoty nemůžou být null. Jedná se o prázdné řetězce. V důsledku toho můžete uložit nové filmy do databáze s prázdnými sloupci &mdash;, ale ne null! &mdash; hodnoty. Proto je nutné se ujistit, že uživatelé neodesílají prázdný řetězec, který můžete provést ověřením vstupu uživatele.
 
-### <a name="the-validation-helper"></a>Pomocná rutina pro ověření
+### <a name="the-validation-helper"></a>Pomocník pro ověřování
 
-Webové stránky ASP.NET obsahuje pomocný &mdash; `Validation` pomocné rutiny &mdash; můžete zajistit, aby uživatelé zadali data, která splňují vaše požadavky. `Validation` Pomocné rutiny je jedním z pomocných rutin, které je součástí do webových stránek ASP.NET, takže není nutné jej nainstalovat jako balíček pomocí NuGet, tak, jak jste nainstalovali Gravatar pomocné rutiny v předchozí kurzu.
+Webové stránky ASP.NET obsahují nápovědu &mdash; `Validation` pomocníka &mdash;, pomocí kterých se můžete ujistit, že uživatelé zadávají data vyhovující vašim požadavkům. Pomocník pro `Validation` je jedním z pomocných rutin, které jsou integrované pro ASP.NET webových stránek, takže je nemusíte instalovat jako balíček pomocí NuGet, jak jste nainstalovali pomocníka Gravatar v předchozím kurzu.
 
-Ověření vstupu uživatele, budete postupujte takto:
+Chcete-li ověřit vstup uživatele, proveďte následující akce:
 
-- Pomocí kódu můžete určit, že chcete, aby hodnoty v polích text na stránce.
-- Vložte test do kódu tak, aby informace film se přidá do databáze pouze v případě, že je všechno správně ověří.
-- Přidejte kód do kódu zobrazit chybové zprávy.
+- Pomocí kódu určete, že chcete v textových polích na stránce vyžadovat hodnoty.
+- Vložte do kódu test, aby byly informace o videu přidány do databáze pouze v případě, že vše ověřuje správně.
+- Přidejte kód do značky pro zobrazení chybových zpráv.
 
-V bloku kódu v *AddMovie* stránce, doprava nahoru v horní části před deklarace proměnných, přidejte následující kód:
+V bloku kódu na stránce *AddMovie* vpravo nahoře před deklaracemi proměnné přidejte následující kód:
 
 [!code-csharp[Main](entering-data/samples/sample7.cs)]
 
-Volání `Validation.RequireField` s jednou registrací u každé pole (`<input>` element) místo vyžadují zadání vstupu. Můžete také přidat vlastní chybovou zprávu pro každé volání, jako je tady vidíte. (Budeme měnit zprávy pouze k zobrazení můžete umístit všechno, co vám vyhovuje existuje).
+Zavoláte `Validation.RequireField` jednou pro každé pole (`<input>` element), kde chcete vyžadovat zadání. Můžete také přidat vlastní chybovou zprávu pro každé volání, jako tady vidíte. (Tyto zprávy jsme rozlišili tak, aby ukázaly, že zde můžete nic dělat.)
 
-Pokud je nějaký problém, můžete chtít zabránit nových filmů nebude vložen do databáze. V `if(IsPost)` zablokuje, použít `&&` (logický operátor a) Chcete-li přidat další typ podmínek, který testuje `Validation.IsValid()`. Až budete mít, celý `if(IsPost)` bloku vypadá přibližně takto:
+Pokud dojde k potížím, chcete zabránit vložení nových informací o videu do databáze. V bloku `if(IsPost)` použijte `&&` (Logical AND) k přidání další podmínky, která testuje `Validation.IsValid()`. Až skončíte, celý `if(IsPost)` blok vypadá jako tento kód:
 
 [!code-csharp[Main](entering-data/samples/sample8.cs)]
 
-Pokud dojde k chybě ověření pomocí libovolné pole, které jste zaregistrovali pomocí `Validation` pomocné rutiny, `Validation.IsValid` metoda vrátí hodnotu false. A v takovém případě žádný kód v tomto bloku se spustí, tak žádné položky neplatný film bude vložena do databáze. A samozřejmě budete přesměrování na *filmy* stránky.
+Pokud dojde k chybě ověřování u libovolného pole, které jste zaregistrovali pomocí pomocné rutiny `Validation`, vrátí metoda `Validation.IsValid` hodnotu false. A v takovém případě žádný kód v tomto bloku nebude spuštěn, takže do databáze nebudou vloženy žádné neplatné záznamy filmů. A samozřejmě nejste přesměrováni na stránku *filmy* .
 
-Kompletní kód bloku, včetně kód pro ověření, se teď vypadá jako v tomto příkladu:
+Kompletní blok kódu, včetně ověřovacího kódu, teď vypadá jako v tomto příkladu:
 
 [!code-cshtml[Main](entering-data/samples/sample9.cshtml?highlight=10)]
 
 ## <a name="displaying-validation-errors"></a>Zobrazení chyb ověřování
 
-Posledním krokem je zobrazení chybové zprávy. Můžete zobrazit jednotlivé zprávy pro všechny chyby ověření, nebo můžete zobrazit souhrn, nebo obojí. Pro účely tohoto kurzu budete používat i tak, abyste viděli, jak to funguje.
+Posledním krokem je zobrazení všech chybových zpráv. Můžete zobrazit jednotlivé zprávy pro každou chybu ověřování, nebo můžete zobrazit souhrn nebo obojí. V tomto kurzu provedete obojí, abyste viděli, jak funguje.
 
-Vedle každého `<input>` element, který jste ověřování, volání `Html.ValidationMessage` metoda a předejte mu název `<input>` element už Probíhá ověřování. Umístíte `Html.ValidationMessage` metoda doprava, kde chcete, zobrazí se chybová zpráva. Při spuštění stránky, `Html.ValidationMessage` metoda vykreslí `<span>` elementu, kde bude umístěno chybu ověření. (Pokud se nezobrazí žádná chyba, `<span>` prvek je vykreslovaný, ale neexistuje žádný text v něm.)
+Vedle každého prvku `<input>`, který ověřujete, zavolejte metodu `Html.ValidationMessage` a předejte jí název `<input>`ho prvku, který ověřujete. Metodu `Html.ValidationMessage` vložíte přímo tam, kde chcete, aby se zobrazila chybová zpráva. Při spuštění stránky vykreslí metoda `Html.ValidationMessage` `<span>` elementu, kde se zobrazí chyba ověřování. (Pokud není k dispozici žádná chyba, element `<span>` je vykreslen, ale v něm není žádný text.)
 
-Změňte kód na stránce tak, že obsahují `Html.ValidationMessage` metodu pro každý ze tří `<input>` elementy na stránce, jako jsou v tomto příkladu:
+Změňte značku na stránce tak, aby obsahovala metodu `Html.ValidationMessage` pro každý ze tří `<input>` prvků na stránce, jako v tomto příkladu:
 
 [!code-cshtml[Main](entering-data/samples/sample10.cshtml?highlight=3,8,13)]
 
-Jak funguje souhrn najdete také přidejte následující kód a kódu hned po `<h1>Add a Movie</h1>` elementu na stránce:
+Chcete-li zjistit, jak souhrn funguje, přidejte také následující značku a kód hned za `<h1>Add a Movie</h1>` element na stránce:
 
 [!code-cshtml[Main](entering-data/samples/sample11.cshtml)]
 
-Ve výchozím nastavení `Html.ValidationSummary` metoda zobrazí seznam všech ověřovacích zpráv ( `<ul>` element, který se nachází uvnitř `<div>` element). Stejně jako u `Html.ValidationMessage` metoda, je vždy vykreslí značku pro souhrn ověření, pokud nejsou žádné chyby, jsou vykreslovány žádné položky seznamu.
+Ve výchozím nastavení metoda `Html.ValidationSummary` zobrazuje všechny zprávy o ověřování v seznamu (`<ul>` element, který je uvnitř elementu `<div>`). Stejně jako u metody `Html.ValidationMessage` se kód pro Shrnutí ověření vždy vykreslí; Pokud nejsou žádné chyby, nejsou vykresleny žádné položky seznamu.
 
-Souhrn může být alternativní způsob zobrazení ověřovacích zpráv místo pomocí `Html.ValidationMessage` metodu pro zobrazení jednotlivých chyb specifické pro pole. Nebo můžete použít souhrn a podrobnosti. Nebo můžete použít `Html.ValidationSummary` metodu pro zobrazení Obecná chyba a potom použijte jednotlivé `Html.ValidationMessage` volání zobrazíte podrobnosti.
+Souhrn může být alternativní způsob, jak zobrazit ověřovací zprávy místo pomocí metody `Html.ValidationMessage` k zobrazení každé chyby specifické pro každé pole. Můžete také použít souhrn i podrobnosti. Nebo můžete použít metodu `Html.ValidationSummary` k zobrazení obecné chyby a potom použít jednotlivá volání `Html.ValidationMessage` k zobrazení podrobností.
 
-Na stránce dokončení teď vypadá jako v tomto příkladu:
+Stránka dokončení teď vypadá jako v tomto příkladu:
 
 [!code-cshtml[Main](entering-data/samples/sample12.cshtml)]
 
-Je to. Na stránce teď můžete otestovat přidáním videa, ale přitom jeden nebo více polí. Když použijete, se zobrazí následující chyba zobrazení:
+A to je vše. Nyní můžete stránku otestovat přidáním videa, ale ponechání jednoho nebo více polí. Když to uděláte, zobrazí se následující chybová zpráva:
 
-![Přidat stránku film zobrazení chybové zprávy ověření](entering-data/_static/image5.png)
+![Přidat stránku videa zobrazující chybové zprávy ověřování](entering-data/_static/image5.png)
 
-## <a name="styling-the-validation-error-messages"></a>Používání stylů pro chybové zprávy ověření
+## <a name="styling-the-validation-error-messages"></a>Určení stylu chybových zpráv ověřování
 
-Uvidíte, že existují chybové zprávy, ale jejich není odlišit se opravdu velmi dobře. Snadný způsob, jak formátování chybové zprávy, ale není k dispozici.
+Vidíte, že se zobrazují chybové zprávy, ale ve skutečnosti se neukládají velmi dobře. K dispozici je jednoduchý způsob, jak tyto chybové zprávy naformátovat, ale.
 
-K formátování jednotlivých chybové zprávy, která zobrazuje `Html.ValidationMessage`, vytvořte třídu šablony stylů CSS style s názvem `field-validation-error`. K definování vzhledu pro souhrn ověření, vytvořte třídu šablony stylů CSS style s názvem `validation-summary-errors`.
+Chcete-li naformátovat jednotlivé chybové zprávy, které jsou zobrazeny `Html.ValidationMessage`, vytvořte třídu stylu CSS s názvem `field-validation-error`. Chcete-li definovat hledání souhrnu ověření, vytvořte třídu stylu CSS s názvem `validation-summary-errors`.
 
-Chcete-li zjistit, jak tento postup funguje, přidejte `<style>` element v rámci `<head>` části stránky. Potom definujte třídy s názvem `field-validation-error` a `validation-summary-errors` , které obsahují následující pravidla:
+Chcete-li zjistit, jak tento postup funguje, přidejte prvek `<style>` do části `<head>` stránky. Pak definujte třídy stylů s názvem `field-validation-error` a `validation-summary-errors`, které obsahují následující pravidla:
 
 [!code-cshtml[Main](entering-data/samples/sample13.cshtml?highlight=4-17)]
 
-Obvykle by pravděpodobně vložit informace o stylu do samostatné *.css* souboru, ale pro zjednodušení můžete je umístit na stránce teď. (Dále v této sérii kurzů přesunete pravidel šablon stylů CSS do samostatné *.css* souboru.)
+Normálně byste pravděpodobně umístili informace o stylu do samostatného souboru *. CSS* , ale pro zjednodušení můžete je umístit na stránku. (Později v tomto kurzu nastavíte pravidla šablony stylů CSS do samostatného souboru *. CSS* .)
 
-Pokud dojde k chybě ověřování `Html.ValidationMessage` metoda vykreslí `<span>` element, který zahrnuje `class="field-validation-error"`. Přidáte definici stylu pro danou třídu, můžete nakonfigurovat, bude zpráva vypadat podobně jako. Pokud nejsou chyby, `ValidationSummary` metoda podobně dynamicky vykreslí atribut `class="validation-summary-errors"`.
+Pokud dojde k chybě ověřování, metoda `Html.ValidationMessage` vykreslí `<span>` prvek, který obsahuje `class="field-validation-error"`. Přidáním definice stylu pro tuto třídu můžete nakonfigurovat, jak bude zpráva vypadat. Pokud dojde k chybám, metoda `ValidationSummary` podobně dynamicky vykresluje `class="validation-summary-errors"`atributu.
 
-Spusťte znovu a záměrně vynechte několika polí. Chyby jsou teď zřetelnější. (Ve skutečnosti jste overdone, ale, který je prostě ukázat, co můžete dělat.)
+Spusťte znovu stránku a záměrně ponechte několik polí. Chyby jsou nyní mnohem patrné. (Ve skutečnosti se overdone, ale to je jenom k tomu, abyste viděli, co můžete dělat.)
 
-![Přidat video stránky zobrazující chybám ověření, které mají ve stylu](entering-data/_static/image6.png)
+![Přidat stránku videa ukazující chyby ověřování, které byly ve stylu](entering-data/_static/image6.png)
 
-## <a name="adding-a-link-to-the-movies-page"></a>Přidání odkazu na stránku filmy
+## <a name="adding-a-link-to-the-movies-page"></a>Přidání odkazu na stránku filmů
 
-Jeden posledním krokem je usnadňuje zobrazíte *AddMovie* stránku z původní výpis video.
+Prvním krokem je to, aby bylo možné se dostat na stránku *AddMovie* z původního seznamu filmů.
 
-Otevřít *filmy* stránku znovu nezobrazovat. Za uzavírací `</div>` značky, který následuje `WebGrid` pomocné rutiny, přidejte následující kód:
+Otevřete stránku *filmy* znovu. Po uzavírací značce `</div>`, která následuje po `WebGrid` pomocné rutiny, přidejte následující kód:
 
 [!code-cshtml[Main](entering-data/samples/sample14.cshtml)]
 
-Protože jste viděli dříve, interpretuje ASP.NET `~` operátor jako kořenový adresář webu. Není nutné použít `~` operátor; můžete použít značky `<a href="./AddMovie">Add a movie</a>` nebo nějakým způsobem definování cestu, která analyzuje HTML. Ale `~` operátor je dobrý obecný postup při vytváření odkazy pro stránky Razor, protože to ztěžuje webu flexibilnější – Pokud přesunete aktuální stránku do podsložky, odkaz bude stále umístěno *AddMovie* stránky. (Mějte na paměti, `~` operátor funguje jenom *.cshtml* stránky. ASP.NET se rozumí, ale není standardní HTML.)
+Jak jste viděli dřív, ASP.NET interpretuje operátor `~` jako kořen webu. Nemusíte používat operátor `~`; můžete použít `<a href="./AddMovie">Add a movie</a>` značek nebo nějaký jiný způsob, jak definovat cestu, kterou jazyk HTML rozumí. Ale operátor `~` je dobrým obecným přístupem při vytváření odkazů na stránky Razor, protože je web flexibilnější – Pokud přesunete aktuální stránku do podsložky, bude odkaz pořád přejít na stránku *AddMovie* . (Nezapomeňte, že operátor `~` funguje pouze na stránkách *. cshtml* . ASP.NET je srozumitelná, ale nejedná se o standardní HTML.)
 
-Jakmile budete hotovi, spusťte *filmy* stránky. Tato stránka bude vypadat:
+Až skončíte, spusťte stránku *filmy* . Bude vypadat jako na této stránce:
 
-![Filmy stránku s odkazem na stránku "přidat filmy](entering-data/_static/image7.png)
+![Stránka filmy s odkazem na stránku přidat filmy](entering-data/_static/image7.png)
 
-Klikněte na tlačítko **přidat video** odkaz, abyste měli jistotu, že přejde na *AddMovie* stránky.
+Klikněte na odkaz **Přidat film** , abyste se ujistili, že přejde na stránku *AddMovie* .
 
-## <a name="coming-up-next"></a>Chystá se další
+## <a name="coming-up-next"></a>Připravujeme další
 
-V dalším kurzu se dozvíte, jak umožnit uživatelům upravovat data, která je již v databázi.
+V dalším kurzu se dozvíte, jak umožnit uživatelům upravovat data, která už jsou v databázi.
 
-## <a name="complete-listing-for-addmovie-page"></a>Úplný seznam AddMovie stránky
+## <a name="complete-listing-for-addmovie-page"></a>Úplný výpis pro stránku AddMovie
 
 [!code-cshtml[Main](entering-data/samples/sample15.cshtml)]
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Úvod k programování v prostředí ASP.NET pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
-- [Vložit do příkazu SQL](http://www.w3schools.com/sql/sql_insert.asp) na webu W3Schools
-- [Ověřování uživatelského vstupu v rozhraní ASP.NET Web Pages lokality](https://go.microsoft.com/fwlink/?LinkId=253002). Další informace o práci s `Validation` pomocné rutiny.
+- [Seznámení s ASP.NET webovým programováním pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
+- [Příkaz SQL INSERT INTO](http://www.w3schools.com/sql/sql_insert.asp) na webu w3schools
+- [Ověřování vstupu uživatele na webech webových stránek ASP.NET](https://go.microsoft.com/fwlink/?LinkId=253002). Další informace o práci s pomocníkem `Validation`.
 
 > [!div class="step-by-step"]
 > [Předchozí](form-basics.md)
-> [další](updating-data.md)
+> [Další](updating-data.md)

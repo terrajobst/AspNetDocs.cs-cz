@@ -9,11 +9,11 @@ ms.assetid: e454c67d-a86e-4119-a858-eb04bbec2dff
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 264ff9850bad397826b45649d52fbfefafc53a01
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74594535"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78600238"
 ---
 # <a name="creating-custom-html-helpers-c"></a>Vytvoření vlastních pomocných rutin HTML (C#)
 
@@ -33,17 +33,17 @@ Pomocný objekt HTML je pouze metoda, která vrací řetězec. Řetězec může 
 
 Rozhraní ASP.NET MVC obsahuje následující sadu standardních pomocníků HTML (nejedná se o úplný seznam):
 
-- HTML. ActionLink ()
-- HTML. BeginForm ()
-- HTML. CheckBox ()
-- HTML. DropDownList ()
-- HTML. EndForm ()
-- HTML. Hidden ()
-- HTML. ListBox ()
-- HTML. Password ()
-- HTML. RadioButton ()
-- HTML. TextArea ()
-- HTML. TextBox ()
+- Html.ActionLink()
+- Html.BeginForm()
+- Html.CheckBox()
+- Html.DropDownList()
+- Html.EndForm()
+- Html.Hidden()
+- Html.ListBox()
+- Html.Password()
+- Html.RadioButton()
+- Html.TextArea()
+- Html.TextBox()
 
 Zvažte například formulář v seznamu 1. Tento formulář se vykreslí pomocí dvou standardních pomocníků HTML (viz obrázek 1). Tento formulář používá pomocné metody `Html.BeginForm()` a `Html.TextBox()` k vykreslování jednoduchého HTML formuláře.
 
@@ -110,7 +110,7 @@ Změněné zobrazení indexu v seznamu 4 používá metodu rozšíření HTML. L
 
 [!code-aspx[Main](creating-custom-html-helpers-cs/samples/sample6.aspx)]
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste se naučili dvě metody vytváření vlastních pomocníků HTML. Nejdříve jste zjistili, jak vytvořit vlastní nápovědu `Label()` HTML vytvořením statické metody, která vrací řetězec. Dále jste zjistili, jak vytvořit vlastní pomocnou metodu `Label()` HTML vytvořením metody rozšíření na `HtmlHelper` třídě.
 

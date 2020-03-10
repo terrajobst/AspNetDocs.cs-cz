@@ -9,11 +9,11 @@ ms.assetid: 6d0d70f4-725e-4258-8ae8-24a6ba1ddbf7
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/rating/creating-a-rating-control-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 08e245edfe73db4e3896db51151e5d7a0fa9697c
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74611526"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78612194"
 ---
 # <a name="creating-a-rating-control-vb"></a>Vytvoření ovládacího prvku Rating (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Mnoho webů, od elektronického obchodování po komunitní weby, nabízí svým uživatelům hodnocení článků nebo položek. To obvykle vyžaduje určité úsilí při psaní kódu, ale máme k dispozici sadu nástrojů Control Toolkit.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejdřív potřebujete (aspoň) dva druhy imagí: jednu pro vyplněnou položku hodnocení a jednu pro prázdnou položku hodnocení. Položka hodnocení je obvykle hvězdička nebo smajlík. V tomto scénáři najdete tři soubory, smajlík. png a prázdné. png a Smiley-Done. png jako součást souborů ke stažení zdrojového kódu pro účely tohoto kurzu.
 

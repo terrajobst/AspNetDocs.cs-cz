@@ -9,11 +9,11 @@ ms.assetid: afa59dfa-fef1-43d3-8fdd-aea3be36ed3c
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/numericupdown/creating-a-numeric-up-down-control-with-a-web-service-backend-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 2bf6e1b27180589d39e308de62b5be1f47fa8fe2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74606373"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78612992"
 ---
 # <a name="creating-a-numeric-updown-control-with-a-web-service-backend-vb"></a>Vytvoření ovládacího prvku Numeric Up/Down webovou službou typu back-end (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Místo toho, aby uživatel zadalo zadat hodnotu do zaškrtávacího políčka, může být číselná hodnota ovládacího prvku (která existuje v systému Windows a dalších operačních systémech), a to pohodlnější. Ve výchozím nastavení `NumericUpDown` ovládací prvek vždy zvyšuje nebo snižuje hodnotu o 1, ale webová služba prokáže větší flexibilitu.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 ASP.NET AJAX Control Toolkit obsahuje rozšíření `NumericUpDown`, které do textového pole automaticky přidá dvě tlačítka: jednu pro zvýšení své hodnoty, jednu pro snížení její hodnoty. Nicméně ovládací prvek podporuje také volání webové služby (nebo volání metody stránky). Při každém kliknutí na tlačítko nahoru nebo dolů se kód JavaScriptu připojí k webovému serveru a spustí metodu. Signatura metody je následující:
 

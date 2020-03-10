@@ -9,11 +9,11 @@ ms.assetid: d191a204-d7ea-458d-b81c-0b9049ecb55f
 msc.legacyurl: /web-forms/overview/data-access/working-with-batched-data/batch-updating-vb
 msc.type: authoredcontent
 ms.openlocfilehash: f0bb83b17585876dd6d28a5893a223cce15da31d
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74591233"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78618361"
 ---
 # <a name="batch-updating-vb"></a>Dávkové aktualizace (VB)
 
@@ -232,7 +232,7 @@ To lze provést přidáním nové metody do knihoven BLL s názvem `UpdateProduc
 
 [!code-vb[Main](batch-updating-vb/samples/sample8.vb)]
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Prvek GridView poskytuje integrované možnosti pro úpravu pro jednotlivé řádky, ale neobsahuje podporu pro vytváření plně upravitelných rozhraní. Jak jsme viděli v tomto kurzu, taková rozhraní jsou možná, ale vyžaduje práci. Chcete-li vytvořit prvek GridView, kde je každý řádek upravitelný, je nutné převést pole GridView s na TemplateFields a definovat rozhraní pro úpravy v rámci `ItemTemplate` s. Kromě toho musí být na stránku přidány webové ovládací prvky tlačítka aktualizovat všechny typy, oddělené od prvku GridView. Tato tlačítka `Click` obslužných rutin událostí musí vytvořit výčet `Rows` kolekce GridView, uložit změny v `ProductsDataTable`a předat aktualizované informace do příslušné metody knihoven BLL.
 

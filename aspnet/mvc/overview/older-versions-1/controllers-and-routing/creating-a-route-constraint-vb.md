@@ -1,76 +1,76 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-a-route-constraint-vb
-title: Vytvoření omezení trasy (VB) | Dokumentace Microsoftu
+title: Vytvoření omezení trasy (VB) | Microsoft Docs
 author: StephenWalther
-description: V tomto kurzu Stephen Walther ukazuje, jak můžete řídit, jak prohlížeč požaduje shoda tras tak, že vytvoříte omezení trasy s regulárními výrazy.
+description: V tomto kurzu Stephen Walther ukazuje, jak můžete řídit, jak se požadavky prohlížeče shodují s trasami vytvořením omezení trasy pomocí regulárních výrazů.
 ms.author: riande
 ms.date: 02/16/2009
 ms.assetid: b7cce113-c82c-45bf-b97b-357e5d9f7f56
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-a-route-constraint-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 205742dd8f866c8828008c8aac7ab3f98b173ceb
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65123427"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78601386"
 ---
 # <a name="creating-a-route-constraint-vb"></a>Vytvoření omezení trasy (VB)
 
-podle [Stephen Walther](https://github.com/StephenWalther)
+od [Stephen Walther](https://github.com/StephenWalther)
 
-> V tomto kurzu Stephen Walther ukazuje, jak můžete řídit, jak prohlížeč požaduje shoda tras tak, že vytvoříte omezení trasy s regulárními výrazy.
+> V tomto kurzu Stephen Walther ukazuje, jak můžete řídit, jak se požadavky prohlížeče shodují s trasami vytvořením omezení trasy pomocí regulárních výrazů.
 
-Pomocí omezení trasy omezte požadavků prohlížeče, které odpovídají konkrétní trasy. Regulární výraz můžete použít k určení omezení trasy.
+Omezení tras použijete k omezení požadavků prohlížeče, které odpovídají konkrétní trase. K určení omezení trasy můžete použít regulární výraz.
 
-Představte si například, kterou jste definovali trasy v informacích 1 v souboru Global.asax.
+Představte si například, že jste v souboru Global. asax definovali trasu v seznamu 1.
 
-**Listing 1 - Global.asax.vb**
+**Výpis 1 – Global. asax. vb**
 
 [!code-vb[Main](creating-a-route-constraint-vb/samples/sample1.vb)]
 
-Výpis 1 obsahuje trasa s názvem produktu. Trasy produktu můžete použít k mapování požadavků prohlížeče ProductController součástí výpis 2.
+Výpis 1 obsahuje trasu s názvem produkt. Můžete použít trasu produktu k mapování požadavků prohlížeče na ProductController obsaženou v seznamu 2.
 
-**Výpis 2 - Controllers\ProductController.vb**
+**Výpis 2 – Controllers\ProductController.vb**
 
 [!code-vb[Main](creating-a-route-constraint-vb/samples/sample2.vb)]
 
-Všimněte si, že akce Details() vystavené kontroler produktu přijímá jeden parametr s názvem productId. Tento parametr je parametr celé číslo.
+Všimněte si, že akce podrobnosti () vystavená produktovým adaptérem přijímá jeden parametr s názvem productId. Tento parametr je celočíselným parametrem.
 
-Trasy definované v informacích 1 se shodují s některým z následujících adres URL:
+Trasa definovaná v seznamu 1 bude odpovídat všem následujícím adresám URL:
 
-- / Produktu/23
-- / Produktu/7
+- /Product/23
+- /Product/7
 
-Bohužel trasy se taky shodovat následující adresy URL:
+Tato trasa bohužel bude taky odpovídat následujícím adresám URL:
 
-- / Produktu/Bla
-- / Produktu/apple
+- /Product/blah
+- /Product/apple
 
-Protože akce Details() očekává jako parametr celé číslo, požadavku, který obsahuje něco jiného než celočíselnou hodnotu způsobí chybu. Například pokud do prohlížeče zadáte adresu URL /Product/apple pak zobrazí se chybová stránka na obrázku 1.
+Vzhledem k tomu, že akce Details () očekává parametr typu Integer, vytvoření požadavku, který obsahuje něco jiného než celočíselné hodnoty způsobí chybu. Pokud například zadáte adresu URL/Product/Apple do prohlížeče, zobrazí se chybová stránka na obrázku 1.
 
-[![Dialogové okno Nový projekt](creating-a-route-constraint-vb/_static/image1.jpg)](creating-a-route-constraint-vb/_static/image1.png)
+[![dialogového okna Nový projekt](creating-a-route-constraint-vb/_static/image1.jpg)](creating-a-route-constraint-vb/_static/image1.png)
 
-**Obrázek 01**: Stránka rozbalit zobrazuje ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-a-route-constraint-vb/_static/image2.png))
+**Obrázek 01**: zobrazení rozbalené stránky ([kliknutím zobrazíte obrázek v plné velikosti](creating-a-route-constraint-vb/_static/image2.png))
 
-Co vlastně chcete udělat, je odpovídá pouze adresy URL, které obsahují productId správné celé číslo. Omezení můžete použít při definování trasy omezovat adresy URL, které odpovídají trasy. Upravené trasy produktu ve výpisu 3 obsahuje omezení regulárního výrazu, který odpovídá jen celá čísla.
+Co opravdu chcete udělat, odpovídá jenom adresám URL, které obsahují správné celé číslo productId. Omezení můžete použít při definování trasy, která bude omezovat adresy URL, které odpovídají trase. Upravená trasa produktu v seznamu 3 obsahuje omezení regulárního výrazu, které odpovídá pouze celým číslům.
 
-**Listing 3 - Global.asax.vb**
+**Výpis 3 – Global. asax. vb**
 
 [!code-vb[Main](creating-a-route-constraint-vb/samples/sample3.vb)]
 
-\D+ regulárního výrazu odpovídá jedné nebo více celých čísel. Vlivem tohoto omezení trasy produkt tak, aby odpovídala následující adresy URL:
+Regulární výraz \D + odpovídá jednomu nebo více celým číslům. Toto omezení způsobí, že trasa produktu bude odpovídat následujícím adresám URL:
 
-- / Produkt/3
-- / Produktu/8999
+- /Product/3
+- /Product/8999
 
 Ale ne následující adresy URL:
 
-- / Produktu/apple
-- / Produktu
+- /Product/apple
+- /Product
 
-Tyto požadavky prohlížeče bude zpracován adresou jiné cestě nebo, pokud nejsou žádné odpovídající trasy *prostředek se nenašel* se vrátí chyba.
+Tyto požadavky prohlížeče budou zpracovány jinou trasou, nebo pokud nejsou k dispozici žádné vyhovující trasy, nebude možné *najít prostředek* , který se vrátí.
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-custom-routes-vb.md)
-> [další](creating-a-custom-route-constraint-vb.md)
+> [Další](creating-a-custom-route-constraint-vb.md)

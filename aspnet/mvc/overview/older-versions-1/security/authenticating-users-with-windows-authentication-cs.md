@@ -1,92 +1,92 @@
 ---
 uid: mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs
-title: Ověřování uživatelů pomocí ověřování Windows (C#) | Dokumentace Microsoftu
+title: Ověřování uživatelů pomocí ověřování systému Windows (C#) | Microsoft Docs
 author: microsoft
-description: Zjistěte, jak používat ověřování Windows v rámci aplikace MVC. Zjistíte, jak povolit ověřování Windows v rámci co webové aplikace...
+description: Naučte se používat ověřování systému Windows v kontextu aplikace MVC. Naučíte se, jak povolit ověřování Windows v rámci webu vaší aplikace co...
 ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: 418bb07e-f369-4119-b4b0-08f890f7abb2
 msc.legacyurl: /mvc/overview/older-versions-1/security/authenticating-users-with-windows-authentication-cs
 msc.type: authoredcontent
 ms.openlocfilehash: bb3909bff2791c15a8737fc12cac69f79b55733f
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65125444"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78624122"
 ---
 # <a name="authenticating-users-with-windows-authentication-c"></a>Ověřování uživatelů pomocí ověřování systému Windows (C#)
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> Zjistěte, jak používat ověřování Windows v rámci aplikace MVC. Zjistíte, jak povolit ověřování Windows v rámci souboru konfigurace webové aplikace a postup konfigurace ověřování pomocí služby IIS. Nakonec se dozvíte, jak použít atribut [Authorize] k omezení přístupu na akce kontroleru, zejména Windows uživatelům nebo skupinám.
+> Naučte se používat ověřování systému Windows v kontextu aplikace MVC. Naučíte se, jak povolit ověřování Windows v konfiguračním souboru webu vaší aplikace a jak nakonfigurovat ověřování pomocí služby IIS. Nakonec se naučíte, jak použít atribut [autorizovat] k omezení přístupu k akcím kontroleru na konkrétní uživatele nebo skupiny systému Windows.
 
-Cílem tohoto kurzu je vysvětlují, jak můžete využít výhod zabezpečení integrované Internetová informační služba heslo chránit zobrazení v aplikacích MVC. Zjistíte, jak umožnit akce kontroleru má být volána pouze pomocí určitým uživatelům Windows nebo uživatele, kteří jsou členy určitých skupin Windows.
+Cílem tohoto kurzu je vysvětlit, jak můžete využít funkce zabezpečení integrované do Internetová informační služba k ochraně zobrazení v aplikacích MVC. Naučíte se, jak můžete, aby se akce kontroleru vyvolaly jenom konkrétním uživatelům nebo uživatelům systému Windows, kteří jsou členy určitých skupin systému Windows.
 
-Ověřování Windows dává smysl, když vytváříte webu k interní firemní (intranetový server) a chcete, aby uživatelé mohli používat jejich standardní Windows uživatelská jména a hesla pro přístup k webu. Pokud vytváříte vně směřující webu (na webu Internet) zvažte místo toho použití ověřování pomocí formulářů.
+Použití ověřování systému Windows dává smysl při vytváření interního webu společnosti (intranetový server) a chcete, aby uživatelé mohli při přístupu k webu používat standardní uživatelská jména a hesla systému Windows. Pokud vytváříte web na webu (internetový web), zvažte místo toho použití ověřování pomocí formulářů.
 
-#### <a name="enabling-windows-authentication"></a>Povolení ověřování Windows
+#### <a name="enabling-windows-authentication"></a>Povoluje se ověřování systému Windows.
 
-Při vytváření nové aplikace ASP.NET MVC, není ve výchozím nastavení povolené ověřování Windows. Ověřování pomocí formulářů je výchozím typem ověřování povolené pro aplikace MVC. Je třeba povolit ověřování Windows tak, že upravíte soubor konfigurace (web.config) webové aplikace MVC. Najít &lt;ověřování&gt; oddílu a upravit ho na použití Windows namísto ověřování pomocí formulářů takto:
+Při vytváření nové aplikace ASP.NET MVC není ověřování systému Windows ve výchozím nastavení povoleno. Ověřování prostřednictvím formulářů je výchozí typ ověřování povolený pro aplikace MVC. Ověřování systému Windows je nutné povolit úpravou konfiguračního souboru webové konfigurace aplikace MVC (Web. config). Vyhledejte&gt; &lt;ověřování a upravte ho tak, aby místo ověřování pomocí formuláře používal Windows:
 
 [!code-xml[Main](authenticating-users-with-windows-authentication-cs/samples/sample1.xml)]
 
-Když povolíte ověřování Windows, webový server je zodpovědný za účelem ověřování totožnosti uživatelů. Obvykle jsou dva různé typy webových serverů, které používáte při vytváření a nasazení aplikace ASP.NET MVC.
+Když povolíte ověřování systému Windows, váš webový server bude zodpovědný za ověřování uživatelů. Obvykle existují dva různé typy webových serverů, které používáte při vytváření a nasazování aplikace ASP.NET MVC.
 
-Nejprve při vývoji aplikace MVC, pomocí technologie ASP.NET vývojového webového serveru součástí sady Visual Studio. Ve výchozím nastavení spustí webový Server ASP.NET Development všechny stránky v kontextu aktuálního Windows účtu (kterou jste použili k přihlášení do Windows).
+Nejdřív při vývoji aplikace MVC použijete vývojový webový server ASP.NET, který je součástí sady Visual Studio. Ve výchozím nastavení se webový server ASP.NET Development spouští všechny stránky v kontextu aktuálního účtu systému Windows (libovolný účet, který jste použili k přihlášení do systému Windows).
 
-Webový Server ASP.NET Development podporuje také ověřování protokolem NTLM. Povolit ověřování NTLM tak, že pravým tlačítkem na název vašeho projektu v okně Průzkumník řešení a vyberte možnost Vlastnosti. V dalším kroku vyberte kartu Web a zaškrtněte políčko NTLM (viz obrázek 1).
+Webový server pro vývoj ASP.NET také podporuje ověřování NTLM. Ověřování NTLM můžete povolit tak, že kliknete pravým tlačítkem na název projektu v okně Průzkumník řešení a vyberete vlastnosti. Potom vyberte kartu Web a zaškrtněte políčko NTLM (viz obrázek 1).
 
-**Obrázek 1 – povolení ověřování NTLM pro vývojový Server ASP.NET Web**
+**Obrázek 1 – povolení ověřování NTLM pro webový server ASP.NET Development**
 
 ![clip_image002](authenticating-users-with-windows-authentication-cs/_static/image1.jpg)
 
-Pro provozní webové aplikace na stranu, použijte služby IIS jako webový server. Služba IIS podporuje několik typů ověřování, včetně:
+V případě produkční webové aplikace můžete službu IIS používat jako webový server. Služba IIS podporuje několik typů ověřování, včetně:
 
-- Základní ověřování – definované jako součást protokolu HTTP 1.0. Odešle uživatelská jména a hesla v nešifrovaném textu (základ64 kódovaný) přes Internet. -Ověřování algoritmem Digest – odešle hodnotu hash hesla, místo hesla, přes internet. – Integrované ověřování Windows (NTLM) – nejlepší typ ověřování pro použití v prostředí intranetu pomocí systému windows. -Certifikátu ověřování – umožňuje ověřování pomocí certifikátu na straně klienta. Certifikát se mapuje na uživatelský účet Windows.
+- Základní ověřování – definováno jako součást protokolu HTTP 1,0. Odesílá uživatelská jména a hesla v nešifrovaném textu (kódovaný v kódování Base64) napříč internetem. – Ověřování algoritmem Digest – pošle místo samotného hesla hodnotu hash hesla, a to přes Internet. – Ověřování pomocí protokolu NTLM (Integrated Windows) – nejlepší typ ověřování, které se má použít v intranetových prostředích používajících systém Windows. -Ověřování certifikátů – povolí ověřování pomocí certifikátu na straně klienta. Certifikát se mapuje na uživatelský účet systému Windows.
 
 > [!NOTE] 
 > 
-> Podrobnější přehled těchto různých typů ověřování, najdete v tématu [ https://msdn.microsoft.com/library/aa292114(VS.71).aspx ](https://msdn.microsoft.com/library/aa292114(VS.71).aspx).
+> Podrobnější přehled těchto různých typů ověřování najdete v tématu [https://msdn.microsoft.com/library/aa292114(VS.71).aspx](https://msdn.microsoft.com/library/aa292114(VS.71).aspx).
 
-Správce Internetové informační služby můžete povolit konkrétní typ ověřování. Mějte na paměti, že všechny typy ověřování nejsou k dispozici v případě každý operační systém. Kromě toho pokud používáte IIS 7.0 s Windows Vista, je potřeba povolit různé typy ověřování Windows, předtím, než se objeví v Správce Internetové informační služby. Otevřít **ovládací panely, programy, programy a funkce Windows zapnout nebo vypnout funkce**a rozbalte uzel Internetová informační služba (viz obrázek 2).
+K povolení konkrétního typu ověřování můžete použít Správce Internetová informační služba. Mějte na paměti, že všechny typy ověřování nejsou v případě každého operačního systému k dispozici. Pokud navíc používáte službu IIS 7,0 se systémem Windows Vista, budete muset před zobrazením ve Správci Internetová informační služba povolit různé typy ověřování systému Windows. Otevřete **Ovládací panely, programy, programy a funkce, zapněte nebo vypněte funkce systému Windows**a rozbalte uzel Internetová informační služba (viz obrázek 2).
 
-**Obrázek 2 – funkce povolení Windows služby IIS**
+**Obrázek 2 – povolení funkcí služby IIS systému Windows**
 
 ![clip_image004](authenticating-users-with-windows-authentication-cs/_static/image2.jpg)
 
-Pomocí Internetové informační služby, můžete povolit nebo zakázat různé typy ověřování. Obrázek 3 znázorňuje například zakázat anonymní ověřování a povolení ověření integrované Windows (NTLM) při použití služby IIS 7.0.
+Pomocí Internetová informační služba můžete povolit nebo zakázat různé typy ověřování. Obrázek 3 například znázorňuje zakázání anonymního ověřování a povolení ověřování pomocí integrovaného systému Windows (NTLM) při použití IIS 7,0.
 
-**Obrázek 3: povolení ověření integrované Windows**
+**Obrázek 3 – povolení integrovaného ověřování systému Windows**
 
 ![clip_image006](authenticating-users-with-windows-authentication-cs/_static/image3.jpg)
 
-#### <a name="authorizing-windows-users-and-groups"></a>Autorizace Windows uživatele a skupiny
+#### <a name="authorizing-windows-users-and-groups"></a>Autorizace uživatelů a skupin systému Windows
 
-Když povolíte ověřování Windows, můžete použít atribut [Authorize] pro řízení přístupu k řadiči nebo akce kontroleru. Tento atribut lze použít pro celý kontroler MVC nebo určitý kontroler akce.
+Po povolení ověřování systému Windows můžete použít atribut [autorizovat] k řízení přístupu k řadičům nebo k akcím kontroleru. Tento atribut lze použít pro celý kontroler MVC nebo pro konkrétní akci kontroleru.
 
-Například kontroler Home v informacích 1 poskytuje tři akce s názvem Index() CompanySecrets() a StephenSecrets(). Kdokoli může vyvolat akci Index(). Akci CompanySecrets() však lze vyvolat pouze členové místní skupiny Správci Windows. Akci StephenSecrets() nakonec můžete vyvolat pouze Windows uživatele domény s názvem Stephen (v doméně Redmond).
+Například domovský řadič v seznamu 1 zveřejňuje tři akce s názvem index (), CompanySecrets () a StephenSecrets (). Kdokoli může vyvolat akci index (). Akci CompanySecrets () však mohou vyvolat pouze členové skupiny místních správců systému Windows. Nakonec může akci StephenSecrets () vyvolat jenom uživatel domény Windows s názvem Stephen (v doméně Redmond).
 
-**Výpis 1 – Controllers\HomeController.cs**
+**Výpis 1 – souboru controllers\homecontroller.cs**
 
 [!code-csharp[Main](authenticating-users-with-windows-authentication-cs/samples/sample2.cs)]
 
 > [!NOTE] 
 > 
-> Z důvodu Windows řízení uživatelských účtů (UAC), při práci s Windows Vista nebo Windows Server 2008, místní skupiny Administrators se chovat jinak než ostatní skupiny. Atribut [Authorize] jej nerozpozná správně členem místní skupiny Administrators, není-li změnit nastavení nástroje Řízení uživatelských účtů v počítači.
+> Vzhledem k tomu, že nástroj řízení uživatelských účtů systému Windows (UAC) pracuje se systémem Windows Vista nebo Windows Server 2008, místní skupina správců se bude chovat jinak než jiné skupiny. Pokud nezměníte nastavení nástroje řízení uživatelských účtů v počítači, atribut [autorizovat] správně rozpoznává člena místní skupiny Administrators.
 
-Přesně co se stane při pokusu o vyvolání akce kontroleru bez oprávnění závisí na typu ověřování povoleno. Ve výchozím nastavení při použití serveru ASP.NET Development Server stačí získat prázdnou stránku. Na stránce obsluhuje s **401 Neautorizováno** stav odpovědi HTTP.
+K tomu, co se stane, když se pokusíte vyvolat akci kontroleru bez správných oprávnění, záleží na typu povoleného ověřování. Ve výchozím nastavení se při použití vývojového serveru ASP.NET jednoduše zobrazí prázdná stránka. Stránka je dodávána s **401 neautorizovaným** stavem odpovědi HTTP.
 
-Pokud, na druhé straně při použití služby IIS se anonymní ověřování zakázané a základní ověřování je povoleno, pak bude dále zobrazovat výzvy dialogové okno přihlášení pokaždé, když požádáte o stránce chráněné (viz obrázek 4).
+Pokud na druhé straně používáte službu IIS se zakázaným anonymním ověřováním a je povolené základní ověřování, pak se při každém požadavku na chráněnou stránku zobrazí výzva k zadání přihlašovacího dialogového okna (viz obrázek 4).
 
-**Obrázek 4 – dialogové okno přihlášení základní ověřování**
+**Obrázek 4 – dialogové okno pro přihlášení k základnímu ověření**
 
 ![clip_image008](authenticating-users-with-windows-authentication-cs/_static/image4.jpg)
 
 #### <a name="summary"></a>Souhrn
 
-V tomto kurzu je vysvětleno, jak můžete používat ověřování Windows v rámci aplikace ASP.NET MVC. Jste se dozvěděli, jak povolit ověřování Windows v rámci souboru konfigurace webové aplikace a postup konfigurace ověřování pomocí služby IIS. Nakonec jste zjistili, jak používat atribut [Authorize] k omezení přístupu na akce kontroleru, zejména Windows uživatelům nebo skupinám.
+V tomto kurzu se vysvětluje, jak můžete používat ověřování Windows v kontextu aplikace ASP.NET MVC. Zjistili jste, jak povolit ověřování systému Windows v rámci konfiguračního souboru webové aplikace a jak nakonfigurovat ověřování pomocí služby IIS. Nakonec jste zjistili, jak použít atribut [autorizovat] k omezení přístupu k akcím kontroleru na konkrétní uživatele nebo skupiny systému Windows.
 
 > [!div class="step-by-step"]
 > [Předchozí](authenticating-users-with-forms-authentication-cs.md)
-> [další](preventing-javascript-injection-attacks-cs.md)
+> [Další](preventing-javascript-injection-attacks-cs.md)

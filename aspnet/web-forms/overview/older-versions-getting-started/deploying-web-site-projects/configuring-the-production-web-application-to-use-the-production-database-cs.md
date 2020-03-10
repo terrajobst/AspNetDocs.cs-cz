@@ -9,11 +9,11 @@ ms.assetid: 0177dabd-d888-449f-91b2-24190cf5e842
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/configuring-the-production-web-application-to-use-the-production-database-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 89941bb6db52316a259ad5f5577721e36f19bd84
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74635895"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78631528"
 ---
 # <a name="configuring-the-production-web-application-to-use-the-production-database-c"></a>Konfigurace provozní webové aplikace pro použití produkční databáze (C#)
 
@@ -121,7 +121,7 @@ V rámci této úpravy obsahují vývojové a produkční prostředí stejný so
 > [!NOTE]
 > Můžete zadat informace pro jakýkoli `Web.config` element v samostatném souboru a použít atribut `configSource` pro odkazování na tento soubor z `Web.config`.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Aplikace řízené daty obvykle používají různé databáze ve vývojovém a produkčním prostředí. V důsledku toho musí být připojovací řetězce databáze uložené v konfiguraci webové aplikace jedinečné pro každé prostředí. V tomto kurzu jsme se podívali na to, jak určit připojovací řetězec provozní databáze a jak udržovat jedinečné informace o připojovacím řetězci v obou prostředích.
 

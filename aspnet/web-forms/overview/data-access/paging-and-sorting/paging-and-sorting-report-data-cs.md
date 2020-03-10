@@ -9,11 +9,11 @@ ms.assetid: 811a6ef2-ec66-4c8e-a089-6f795056e288
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/paging-and-sorting-report-data-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 2f77040316dadc218b8183e52628dc0cfe3b35a1
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74586773"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78619516"
 ---
 # <a name="paging-and-sorting-report-data-c"></a>Stránkování a řazení dat sestavy (C#)
 
@@ -245,7 +245,7 @@ Kliknutím na toto tlačítko vrátíte uživatele na první stránku s produkty
 
 **Obrázek 15**: kliknutím na tlačítko seřadíte produkty od nejdražších k nejméně ([kliknutím zobrazíte obrázek v plné velikosti).](paging-and-sorting-report-data-cs/_static/image33.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme zjistili, jak implementovat výchozí možnosti stránkování a řazení, které byly stejně jednoduché jako zaškrtnutí políčka. Když uživatel seřadí nebo stránkují stránky prostřednictvím dat, podobný pracovní postup se odloží:
 

@@ -1,140 +1,140 @@
 ---
 uid: web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
-title: Přizpůsobení nasazené databáze pro více prostředí | Dokumentace Microsoftu
+title: Přizpůsobení nasazení databáze pro více prostředí | Microsoft Docs
 author: jrjlee
-description: 'Toto téma popisuje, jak přizpůsobit vlastnosti databáze pro konkrétní cíl prostředí jako součást procesu nasazení. Poznámka: V tématu předpokládá th...'
+description: 'Toto téma popisuje, jak přizpůsobit vlastnosti databáze na konkrétní cílová prostředí v rámci procesu nasazení. Poznámka: téma předpokládá, že je to th...'
 ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: a172979a-1318-4318-a9c6-4f9560d26267
 msc.legacyurl: /web-forms/overview/deployment/advanced-enterprise-web-deployment/customizing-database-deployments-for-multiple-environments
 msc.type: authoredcontent
 ms.openlocfilehash: 8ae8cb1a322afb95c5d2e8d5e73c7825c7b2fe5a
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108314"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78604025"
 ---
 # <a name="customizing-database-deployments-for-multiple-environments"></a>Přizpůsobení nasazené databáze pro různá prostředí
 
-podle [Jason Lee](https://github.com/jrjlee)
+od [Jason Novák](https://github.com/jrjlee)
 
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Toto téma popisuje, jak přizpůsobit vlastnosti databáze pro konkrétní cíl prostředí jako součást procesu nasazení.
+> Toto téma popisuje, jak přizpůsobit vlastnosti databáze na konkrétní cílová prostředí v rámci procesu nasazení.
 > 
 > > [!NOTE]
-> > V tématu se předpokládá, že nasazujete pomocí MSBuild.exe a VSDBCMD.exe databázový projekt sady Visual Studio 2010. Další informace o proč může zvolíte tuto metodu, najdete v části [nasazení webu v podniku](../web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md) a [nasazení databázové projekty](../web-deployment-in-the-enterprise/deploying-database-projects.md).
+> > Téma předpokládá, že nasazujete databázový projekt sady Visual Studio 2010 pomocí nástroje MSBuild. exe a VSDBCMD. exe. Další informace o tom, proč můžete zvolit tento přístup, najdete v tématu [nasazení webu v podniku](../web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md) a [nasazení databázových projektů](../web-deployment-in-the-enterprise/deploying-database-projects.md).
 > 
 > 
-> Když nasadíte databázový projekt do více cílů, budete často chcete přizpůsobit vlastnosti nasazení databáze pro každé cílové prostředí. Například v testovacích prostředích je by obvykle znovu vytvořit databázi při každém nasazení, že v přípravném nebo produkčním prostředí by bylo mnohem větší pravděpodobnost Ujistěte se, přírůstkové aktualizace zachovat data.
+> Když nasadíte databázový projekt do více cílů, často budete chtít přizpůsobit vlastnosti nasazení databáze pro každé cílové prostředí. Například v testovacích prostředích byste při každém nasazení obvykle znovu vytvořili databázi, zatímco v pracovních nebo produkčních prostředích byste měli větší mnohem více pravděpodobných přírůstkových aktualizací, abyste zachovali data.
 > 
-> V databázi projektu sady Visual Studio 2010 nastavení nasazení jsou obsaženy v souboru konfigurace (.sqldeployment) nasazení. Jak vytvořit soubory konfigurace nasazení specifických pro prostředí a určit, který chcete použít jako parametr VSDBCMD se zobrazí v tomto tématu.
+> V projektu databáze sady Visual Studio 2010 jsou nastavení nasazení obsažena v rámci konfiguračního souboru nasazení (. SqlDeployment). V tomto tématu se dozvíte, jak vytvořit soubory konfigurace nasazení specifické pro konkrétní prostředí a zadat tu, kterou chcete použít jako parametr VSDBCMD.
 
-Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
+Toto téma je součástí série kurzů založených na požadavcích podnikového nasazení fiktivní společnosti s názvem Fabrikam, Inc. Tato série kurzů používá ukázkové řešení&#x2014;, pomocí kterého [řešení](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;správce kontaktů představuje webovou aplikaci s realistickou úrovní složitosti, včetně aplikace ASP.NET MVC 3, služby Windows Communication Foundation (WCF) a databázového projektu.
 
-Metody nasazení v srdci těchto kurzů je založen na rozdělení přístupu soubor projektu je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve které je řízena procesem sestavení dva soubory projektu&#x2014;jeden obsahující pokyny, které platí pro všechny cílové prostředí a jeden obsahuje nastavení pro konkrétní prostředí sestavení a nasazení pro sestavení. V okamžiku sestavení souboru projektu specifických pro prostředí se sloučí do souboru projektu bez ohledu na prostředí a vytvoří kompletní sadu pokynů sestavení.
+Metoda nasazení na srdce těchto kurzů je založena na způsobu rozdělení souborů projektu popsaných v tématu [Principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve kterém je proces sestavení řízen dvěma soubory&#x2014;projektu jeden, který obsahuje pokyny pro sestavení, které platí pro každé cílové prostředí, a jedno obsahující nastavení sestavení a nasazení specifické pro konkrétní prostředí. V době sestavení je soubor projektu specifický pro prostředí sloučen do souboru projektu prostředí – nezávislá a vytvoří kompletní sadu instrukcí pro sestavení.
 
-## <a name="task-overview"></a>Přehled úloh
+## <a name="task-overview"></a>Přehled úlohy
 
-Toto téma předpokládá, že:
+V tomto tématu se předpokládá, že:
 
-- Použít rozdělení projektu souboru přístup k nasazení řešení, jak je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md).
-- Volání VSDBCMD ze souboru projektu k nasazení projektu databáze, jak je popsáno v [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md).
+- Použijete přístup k rozdělenému souboru projektu k nasazení řešení, jak je popsáno v tématu [Principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md).
+- Zavoláte VSDBCMD ze souboru projektu pro nasazení databázového projektu, jak je popsáno v tématu [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md).
 
-Chcete-li vytvořit nasazení systému, který podporuje různé vlastnosti nasazení databáze mezi cílových prostředí, bude nutné:
+Pokud chcete vytvořit systém nasazení, který podporuje různé vlastnosti nasazení databáze mezi cílovými prostředími, budete muset:
 
-- Vytvořte soubor konfigurace (.sqldeployment) nasazení pro každé cílové prostředí.
-- Vytvoření VSDBCMD příkazu, který určuje konfigurační soubor nasazení jako přepínač příkazového řádku.
-- Parametrizujte VSDBCMD příkaz v souboru projektu Microsoft Build Engine (MSBuild) tak, aby možnosti VSDBCMD jsou vhodné pro cílové prostředí.
+- Vytvořte soubor konfigurace nasazení (. SqlDeployment) pro každé cílové prostředí.
+- Vytvořte příkaz VSDBCMD, který určuje konfigurační soubor nasazení jako přepínač příkazového řádku.
+- Parametrizovat příkaz VSDBCMD v souboru projektu Microsoft Build Engine (MSBuild), aby VSDBCMD možnosti byly vhodné pro cílové prostředí.
 
-Postup pro každý z těchto postupů se zobrazí v tomto tématu.
+V tomto tématu se dozvíte, jak provádět jednotlivé postupy.
 
-## <a name="creating-environment-specific-deployment-configuration-files"></a>Vytváří se soubory konfigurace nasazení specifických pro prostředí
+## <a name="creating-environment-specific-deployment-configuration-files"></a>Vytváření konfiguračních souborů nasazení specifických pro konkrétní prostředí
 
-Ve výchozím nastavení, databázový projekt obsahuje jedno nasazení konfigurační soubor s názvem *Database.sqldeployment*. Pokud tento soubor otevřít v sadě Visual Studio 2010, zobrazí se různé možnosti nasazení podle, které jsou k dispozici:
+Ve výchozím nastavení databázový projekt obsahuje jeden konfigurační soubor nasazení s názvem *Database. SqlDeployment*. Pokud tento soubor otevřete v aplikaci Visual Studio 2010, můžete zobrazit různé možnosti nasazení, které máte k dispozici:
 
-- **Nasazení porovnání řazení**. Můžete zvolit, jestli se má používat kolaci databáze vašeho projektu ( *zdroj* kolace) nebo kolaci databáze cílového serveru ( *cílové* řazení). Ve většině případů budete chtít používat kolaci zdroje při nasazení na vývojovém nebo testovacím prostředí. Při nasazování do testovací nebo produkční prostředí budete obvykle chcete ponechat beze změny, aby všechny problémy s interoperabilitou cílové kolaci.
-- **Nasazení databáze vlastnosti**. Můžete zvolit, jestli se má použít vlastnosti databáze, jak jsou definovány v *Database.sqlsettings* souboru. Při nasazení databáze poprvé, měli byste nasadit vlastnosti databáze. Pokud aktualizujete existující databázi, vlastnosti by už měla být na místě a obvykle není nutné je znovu nasadit.
-- **Vždy znovu vytvořit databázi**. Díky tomu se rozhodujete, jestli chcete znovu vytvořit cílovou databázi vždy, když nasazujete nebo provádět přírůstkové změny do databáze cílové aktuální s schéma. Když znovu vytvoříte databázi, ztratíte všechna data v existující databázi. V důsledku toho by měl obvykle nastavíte **false** pro nasazení pro pracovní nebo produkční prostředí.
-- **Blokovat přírůstkové nasazení, pokud může dojít ke ztrátě dat**. To vám umožňuje zvolit, jestli nasazení by se měla zastavit, pokud změna schématu databáze způsobí ztrátu dat. Obvykle zvolíte **true** pro nasazení do produkčního prostředí, získáte možnost zasahovat a chránit všechna důležitá data. Pokud jste nastavili **vždy znovu vytvořit databázi** k **false**, toto nastavení nebude mít žádný efekt.
-- **Spouštění nasazení v jednouživatelském režimu**. To většinou není problém v vývojová nebo testovací prostředí. Nicméně byste obvykle nastavíte **true** pro nasazení pro pracovní nebo produkční prostředí. To zabrání uživatelům provádět změny do databáze, zatímco probíhá nasazení.
-- **Proveďte zálohu databáze před nasazením**. To obvykle nastavuje na **true** při nasazení v produkčním prostředí, aby se předešlo ztrátě dat. Můžete také nastavit na **true** při nasazení do přípravného prostředí, pokud obsahuje velké množství dat pracovní databáze.
-- **Generovat příkazy DROP pro objekty, které jsou v cílové databázi, ale nejsou v databázi projektu**. Ve většině případů to je integrální a základní součástí přírůstkové změny do databáze. Pokud jste nastavili **vždy znovu vytvořit databázi** k **false**, toto nastavení nebude mít žádný efekt.
-- **Nepoužívejte příkaz ALTER ASSEMBLY příkazy aktualizovat typy CLR**. Toto nastavení určuje, jak aktualizovat běžné language runtime (CLR) typy na novější verze sestavení systému SQL Server. To by mělo být nastavené **false** ve většině scénářů.
+- **Kolace porovnání nasazení** To vám umožní vybrat, jestli se má použít kolace databáze vašeho projektu ( *zdrojová* kolace) nebo kolace databáze cílového serveru ( *cílová* kolace). Ve většině případů budete chtít použít zdrojovou kolaci při nasazení do vývojového nebo testovacího prostředí. Při nasazení do pracovního nebo produkčního prostředí obvykle budete chtít opustit cílovou kolaci beze změny, abyste se vyhnuli problémům s interoperabilitou.
+- **Nasaďte vlastnosti databáze**. To vám umožní vybrat, jestli se mají použít vlastnosti databáze, jak jsou definované v souboru *Database. sqlsettings* . Při prvním nasazení databáze byste měli nasadit vlastnosti databáze. Pokud aktualizujete existující databázi, vlastnosti by již měly být na místě a nemuseli byste je znovu nasazovat.
+- **Vždy znovu vytvořit databázi**. To vám umožní vybrat, jestli se má znovu vytvořit cílová databáze pokaždé, když nasadíte nebo provedete přírůstkové změny, aby se cílová databáze zajistila v aktuálním stavu pomocí schématu. Pokud databázi znovu vytvoříte, ztratíte všechna data ve stávající databázi. V takovém případě byste je měli obvykle nastavit na **hodnotu false** pro nasazení do pracovních nebo produkčních prostředí.
+- **Zablokuje přírůstkové nasazení, pokud může dojít ke ztrátě dat**. To vám umožní vybrat, jestli se má nasazení zastavit, pokud Změna schématu databáze způsobí ztrátu dat. Pro nasazení do produkčního prostředí je obvykle nastavena **hodnota true** , abyste měli možnost zasáhnout a chránit veškerá důležitá data. Pokud jste nastavili možnost **vždy znovu vytvořit databázi** na **hodnotu NEPRAVDA**, toto nastavení nebude mít žádný vliv.
+- **Spustit nasazení v režimu jednoho uživatele**. To obvykle není problém ve vývojových nebo testovacích prostředích. Nicméně tuto hodnotu nastavte na **true** pro nasazení do pracovních nebo produkčních prostředí. To uživatelům brání v provádění změn v databázi během probíhajícího nasazení.
+- **Před nasazením zálohujte databázi**. Toto nastavení je obvykle nastaveno na **hodnotu true** při nasazení do provozního prostředí, jako preventivní opatření před ztrátou dat. Můžete ji také nastavit na **hodnotu true** při nasazení do přípravného prostředí, pokud vaše pracovní databáze obsahuje velké množství dat.
+- **Generujte příkazy drop pro objekty, které jsou v cílové databázi, ale které nejsou v projektu databáze**. Ve většině případů jde o nedílnou a podstatnou součást provádění přírůstkových změn v databázi. Pokud jste nastavili možnost **vždy znovu vytvořit databázi** na **hodnotu NEPRAVDA**, toto nastavení nebude mít žádný vliv.
+- **Nepoužívejte příkazy ALTER ASSEMBLY k aktualizaci typů CLR**. Toto nastavení určuje, jak má SQL Server aktualizovat typy modulu CLR (Common Language Runtime) na novější verze sestavení. Ve většině scénářů by měl být nastaven na **hodnotu false** .
 
-Tato tabulka ukazuje typické nasazení nastavení pro jiné cílové prostředí. Nastavení může být však liší v závislosti na přesné požadavky.
+V této tabulce jsou uvedena typická nastavení nasazení pro různá cílová prostředí. Nastavení se ale může lišit v závislosti na vašich přesných požadavcích.
 
-|  | Pro vývojáře a testování | Pracovní/integrace | Produkční |
+|  | Vývojář a testování | Příprava/integrace | Výroba |
 | --- | --- | --- | --- |
-| **Nasazení porovnání řazení** | Source | Target | Target |
-| **Nasazení vlastnosti databáze** | Pravda | Pouze první čas | Pouze první čas |
-| **Vždy znovu vytvořit databázi** | Pravda | False | False |
-| **Blokovat přírůstkové nasazení, pokud může dojít ke ztrátě dat.** | False | Možná | Pravda |
-| **Spusťte skript nasazení v režimu jednoho uživatele** | False | Pravda | Pravda |
-| **Proveďte zálohu databáze před nasazením** | False | Možná | Pravda |
-| **Generovat příkazy DROP pro objekty, které jsou v cílové databázi, ale nejsou v projektu databáze** | False | Pravda | Pravda |
-| **Nepoužívejte příkaz ALTER ASSEMBLY příkazy aktualizovat typy CLR** | False | False | False |
+| **Kolace porovnání nasazení** | Zdroj | Cíl | Cíl |
+| **Nasadit vlastnosti databáze** | True | Pouze poprvé | Pouze poprvé |
+| **Vždy znovu vytvořit databázi** | True | False | False |
+| **Blokovat přírůstkové nasazení, pokud může dojít ke ztrátě dat** | False | Možná | True |
+| **Spustit skript nasazení v režimu jednoho uživatele** | False | True | True |
+| **Zálohování databáze před nasazením** | False | Možná | True |
+| **Generovat příkazy DROP pro objekty, které jsou v cílové databázi, ale které nejsou v projektu databáze** | False | True | True |
+| **Nepoužívejte příkazy ALTER ASSEMBLY k aktualizaci typů CLR.** | False | False | False |
 
 > [!NOTE]
-> Další informace o vlastnosti nasazení databáze a důležité informace o prostředí, najdete v části [přehled o nastavení databázového projektu](https://msdn.microsoft.com/library/aa833291(v=VS.100).aspx), [jak: Konfigurace vlastností pro podrobnosti o nasazení](https://msdn.microsoft.com/library/dd172125.aspx), [sestavení a nasazení databáze do izolované vývojové prostředí](https://msdn.microsoft.com/library/dd193409.aspx), a [sestavování a nasazování databází do přípravného nebo produkčního prostředí](https://msdn.microsoft.com/library/dd193413.aspx).
+> Další informace o vlastnostech nasazení databáze a ohledech na prostředí najdete v tématu [Přehled nastavení databázového projektu](https://msdn.microsoft.com/library/aa833291(v=VS.100).aspx), [Postupy: Konfigurace vlastností pro podrobnosti o nasazení](https://msdn.microsoft.com/library/dd172125.aspx), [sestavení a nasazení databáze do izolovaného vývojového prostředí](https://msdn.microsoft.com/library/dd193409.aspx)a [vytváření a nasazování databází do pracovního nebo produkčního prostředí](https://msdn.microsoft.com/library/dd193413.aspx).
 
-Pro podporu nasazení databázový projekt do více cílů, měli vytvořit konfigurační soubor nasazení pro každé cílové prostředí.
+Pro podporu nasazení databázového projektu na více cílů byste měli vytvořit konfigurační soubor nasazení pro každé cílové prostředí.
 
-**Chcete-li vytvořit soubor konfigurace specifických pro prostředí**
+**Vytvoření konfiguračního souboru specifického pro prostředí**
 
-1. V sadě Visual Studio 2010 v **Průzkumníka řešení** okna, klikněte pravým tlačítkem na váš projekt databáze a pak klikněte na tlačítko **vlastnosti**.
-2. Na stránce vlastností projektu databáze na **nasadit** kartě **konfigurační soubor nasazení** řádku, klikněte na tlačítko **nový**.
+1. V aplikaci Visual Studio 2010 v okně **Průzkumník řešení** klikněte pravým tlačítkem na projekt databáze a pak klikněte na **vlastnosti**.
+2. Na stránce Vlastnosti projektu databáze na kartě **nasadit** na řádku **konfigurační soubor nasazení** klikněte na **Nový**.
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image1.png)
-3. V **nové konfigurační soubor nasazení** dialogové okno pole, zadejte smysluplný název souboru (například **TestEnvironment.sqldeployment**) a potom klikněte na tlačítko **Uložit**.
-4. Na *[název_souboru]* **.sqldeployment** stránky, nastavit vlastnosti nasazení tak, aby odpovídaly požadavkům vaší cílové prostředí a pak soubor uložte.
+3. V dialogovém okně **Nový konfigurační soubor nasazení** dejte souboru smysluplný název (například **TestEnvironment. SqlDeployment**) a pak klikněte na **Uložit**.
+4. Na stránce *[filename] * * * *. SqlDeployment** nastavte vlastnosti nasazení tak, aby odpovídaly požadavkům vašeho cílového prostředí, a pak soubor uložte.
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image2.png)
-5. Všimněte si, že se přidá nový soubor do vlastnosti složky v projektu databáze.
+5. Všimněte si, že nový soubor je přidán do složky Properties (vlastnosti) projektu databáze.
 
     ![](customizing-database-deployments-for-multiple-environments/_static/image3.png)
 
-## <a name="specifying-the-deployment-configuration-file-in-vsdbcmd"></a>Určení v VSDBCMD konfigurační soubor nasazení
+## <a name="specifying-the-deployment-configuration-file-in-vsdbcmd"></a>Určení konfiguračního souboru nasazení v VSDBCMD
 
-Při použití konfigurace řešení (jako je ladění a vydání) v rámci sady Visual Studio 2010, můžete přidružit každou konfiguraci konfigurační soubor nasazení. Při sestavování konkrétní konfiguraci procesu sestavení generuje soubor manifestu nasazení určených pro konfigurace odkazující na konfigurační soubor nasazení určených pro konfigurace. Jedním z hlavních cílů přístupu k nasazení je popsáno v těchto kurzech ale chcete lidem umožnit řízení procesu nasazení bez použití Visual Studio 2010 a konfigurace řešení. Konfigurace řešení v rámci tohoto přístupu je stejný bez ohledu na cílové nasazení prostředí. Přizpůsobení nasazení databáze tak, aby konkrétní cílové prostředí, můžete použít možnosti příkazového řádku VSDBCMD zadat konfigurační soubor nasazení.
+Použijete-li konfigurace řešení (například ladění a vydání) v rámci sady Visual Studio 2010, můžete k každé konfiguraci přidružit konfigurační soubor nasazení. Když sestavíte určitou konfiguraci, proces sestavení vygeneruje soubor manifestu nasazení specifický pro konfiguraci, který odkazuje na konfigurační soubor nasazení specifický pro konkrétní konfiguraci. Jedním z hlavních cílů přístupu k nasazení, které jsou popsány v těchto kurzech, je však poskytnout lidem možnost řídit proces nasazení bez použití sady Visual Studio 2010 a konfigurací řešení. V tomto přístupu je konfigurace řešení stejná bez ohledu na cílové prostředí nasazení. K přizpůsobení nasazení databáze na konkrétní cílové prostředí můžete použít možnosti příkazového řádku VSDBCMD k určení konfiguračního souboru nasazení.
 
-Chcete-li zadat konfigurační soubor nasazení do vašeho VSDBCMD, použijte **p:/DeploymentConfigurationFile** přepnutí a zadejte úplnou cestu k souboru. Tím se přepíše konfigurační soubor nasazení, který identifikuje manifest nasazení. Například můžete použít tento příkaz VSDBCMD k nasazení **ContactManager** databáze do testovacího prostředí:
+Chcete-li zadat konfigurační soubor nasazení v VSDBCMD, použijte přepínač **p:/DeploymentConfigurationFile** a zadejte úplnou cestu k souboru. Tím dojde k přepsání konfiguračního souboru nasazení, který identifikuje manifest nasazení. Například můžete použít tento příkaz VSDBCMD k nasazení databáze **ContactManager** do testovacího prostředí:
 
 [!code-console[Main](customizing-database-deployments-for-multiple-environments/samples/sample1.cmd)]
 
 > [!NOTE]
-> Všimněte si, že proces sestavení může přejmenujte svůj soubor .sqldeployment, když ho zkopíruje soubor do výstupního adresáře.
+> Všimněte si, že proces sestavení může přejmenovat soubor. SqlDeployment při zkopírování souboru do výstupního adresáře.
 
-Pokud používáte proměnných příkazu SQL v SQL skripty před nasazením nebo po nasazení, můžete použít podobný přístup k přidružení souboru .sqlcmdvars specifických pro prostředí s nasazením. V tomto případě použijete **p:/SqlCommandVariablesFile** přepínač k identifikaci souboru .sqlcmdvars.
+Pokud používáte proměnné příkazů SQL ve skriptech SQL pro předběžné nasazení nebo po nasazení, můžete použít podobný přístup k přidružení souboru. sqlcmdvars specifického pro prostředí k vašemu nasazení. V tomto případě použijete přepínač **p:/SqlCommandVariablesFile** k identifikaci souboru. sqlcmdvars.
 
-## <a name="running-the-vsdbcmd-command-from-an-msbuild-project-file"></a>Spuštění příkazu VSDBCMD ze souboru projektu nástroje MSBuild
+## <a name="running-the-vsdbcmd-command-from-an-msbuild-project-file"></a>Spuštění příkazu VSDBCMD ze souboru projektu MSBuild
 
-Můžete vyvolat příkaz VSDBCMD ze souboru projektu MSBuild pomocí **Exec** úkol v rámci cíl nástroje MSBuild. Ve své nejjednodušší podobě by vypadalo takto:
+Můžete vyvolat příkaz VSDBCMD ze souboru projektu MSBuild pomocí úlohy **exec** v rámci cíle MSBuild. V nejjednodušším tvaru by vypadalo takto:
 
 [!code-xml[Main](customizing-database-deployments-for-multiple-environments/samples/sample2.xml)]
 
-- V praxi aby soubory projektu se snadno čte a opakovaně používat, je budete chtít vytvořit vlastnosti, které chcete ukládat různé parametry příkazového řádku. To usnadňuje uživatelům poskytnout hodnoty vlastností v souboru projektu pro konkrétní prostředí nebo přepsat výchozí hodnoty z příkazového řádku MSBuild. Pokud použijete přístup soubor projektu rozdělit podle [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), pokyny pro sestavení a vlastnosti mezi dvěma soubory by měly rozdělit odpovídajícím způsobem:
-- Nastavení pro konkrétní prostředí, jako je název souboru konfigurace nasazení, připojovací řetězec databáze a název cílové databáze by měl přejít v souboru projektu pro konkrétní prostředí.
-- Cíl nástroje MSBuild, který spouští příkaz VSDBCMD spolu s všechny univerzální vlastnosti jako umístění spustitelného souboru VSDBCMD, by měl přejít v souboru projektu univerzální.
+- V praxi, aby bylo možné soubory projektu snadno číst a opakovaně používat, budete chtít vytvořit vlastnosti pro uložení různých parametrů příkazového řádku. To usnadňuje uživatelům zadání hodnot vlastností do souboru projektu specifického pro prostředí nebo přepisu výchozích hodnot z příkazového řádku MSBuild. Použijete-li přístup k rozdělenému souboru projektu, který je popsaný v tématu [Principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), měli byste odpovídajícím způsobem rozdělit pokyny a vlastnosti sestavení mezi tyto dva soubory:
+- Nastavení specifické pro prostředí, jako je název souboru konfigurace nasazení, připojovací řetězec databáze a název cílové databáze, by měly přejít do souboru projektu specifického pro prostředí.
+- Cíl nástroje MSBuild, který spouští příkaz VSDBCMD, spolu s jakýmikoli univerzálními vlastnostmi, jako je umístění spustitelného souboru VSDBCMD, by měl přejít do souboru univerzálního projektu.
 
-Také se ujistěte, sestavit projekt databáze před vyvolání VSDBCMD tak, aby soubor .deploymanifest je vytvořená a připravená k použití. Zobrazí se úplný příklad tohoto přístupu v tomto tématu [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md), které vás provede soubory projektu ve [ukázkové řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md).
+Měli byste také zajistit, aby projekt databáze byl vytvořen před vyvoláním VSDBCMD, aby byl vytvořen soubor. DeployManifest a byl připraven k použití. Úplný příklad tohoto přístupu si můžete prohlédnout v tématu [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md), který vás provede soubory projektu v [ukázkovém řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md).
 
 ## <a name="conclusion"></a>Závěr
 
-Toto téma popisuje, jak můžete přizpůsobit vlastnosti databáze do jiné cílové prostředí při nasazení pomocí nástroje MSBuild a VSDBCMD databázové projekty. Tento přístup je užitečný, když budete chtít nasadit jako součást větší, řešení podnikových databázových projektů. Tato řešení jsou často nasazené do více cílů, jako je vývojové nebo testovací prostředí v izolovaném prostoru, přípravném nebo Integrace platformy a produkční nebo produkčním prostředím. Každá z těchto cílových prostředí obvykle vyžaduje jedinečnou sadu vlastností nasazení databáze.
+Toto téma popisuje, jak můžete přizpůsobit vlastnosti databáze na jiná cílová prostředí při nasazení databázových projektů pomocí nástroje MSBuild a VSDBCMD. Tento přístup je užitečný v případě, že potřebujete nasadit databázové projekty jako součást větších podnikových řešení na úrovni podniku. Tato řešení se často nasazují na více cílů, jako jsou například vývojové nebo testovací prostředí v izolovaném prostoru, pracovní nebo integrační platformy a produkční nebo aktivní prostředí. Každé z těchto cílových prostředí obvykle vyžaduje jedinečnou sadu vlastností nasazení databáze.
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o nasazení pomocí VSDBCMD.exe databázových projektů, naleznete v tématu [nasazení databázové projekty](../web-deployment-in-the-enterprise/deploying-database-projects.md). Další informace o používání vlastní soubory projektu MSBuild k řízení procesu nasazení najdete v tématu [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md) a [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md).
+Další informace o nasazení databázových projektů pomocí VSDBCMD. exe najdete v tématu [nasazení databázových projektů](../web-deployment-in-the-enterprise/deploying-database-projects.md). Další informace o použití vlastních souborů projektu MSBuild pro řízení procesu nasazení naleznete v tématu [porozumění souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md) a [porozumění procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md).
 
-Tyto články na webu MSDN poskytují další obecné pokyny v nasazení databáze:
+Tyto články na webu MSDN poskytují obecnější pokyny k nasazení databáze:
 
 - [Přehled nastavení databázového projektu](https://msdn.microsoft.com/library/aa833291(v=VS.100).aspx)
-- [Postupy: Konfigurace vlastností pro podrobnosti o nasazení](https://msdn.microsoft.com/library/dd172125.aspx)
-- [Sestavování a nasazování databází do izolované vývojového prostředí](https://msdn.microsoft.com/library/dd193409.aspx)
-- [Sestavování a nasazování databází do přípravného nebo produkčního prostředí](https://msdn.microsoft.com/library/dd193413.aspx)
+- [Postupy: Konfigurace vlastností pro podrobnosti nasazení](https://msdn.microsoft.com/library/dd172125.aspx)
+- [Sestavování a nasazování databází do izolovaného vývojového prostředí](https://msdn.microsoft.com/library/dd193409.aspx)
+- [Sestavování a nasazování databází do pracovního nebo produkčního prostředí](https://msdn.microsoft.com/library/dd193413.aspx)
 
 > [!div class="step-by-step"]
 > [Předchozí](performing-a-what-if-deployment.md)
-> [další](deploying-database-role-memberships-to-test-environments.md)
+> [Další](deploying-database-role-memberships-to-test-environments.md)

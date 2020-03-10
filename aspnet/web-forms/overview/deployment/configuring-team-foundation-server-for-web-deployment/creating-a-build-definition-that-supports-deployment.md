@@ -1,159 +1,159 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
-title: Vytvoření definice sestavení, která podporuje nasazení | Dokumentace Microsoftu
+title: Vytvoření definice sestavení, která podporuje nasazení | Microsoft Docs
 author: jrjlee
-description: Pokud chcete provádět jakékoliv sestavení v Team Foundation Server (TFS) 2010, musíte vytvořit definici sestavení v rámci týmového projektu. Toto téma des...
+description: Chcete-li provést jakýkoli druh sestavení v Team Foundation Server (TFS) 2010, je nutné vytvořit definici sestavení v rámci týmového projektu. Toto téma des...
 ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: fe47a018-f6d0-4979-80e7-5b1fa75a5865
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/creating-a-build-definition-that-supports-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: e11c91a824446572aaf0b3bc6954b9b8ffb4eaff
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133960"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78603997"
 ---
 # <a name="creating-a-build-definition-that-supports-deployment"></a>Vytvoření definice nasazení, která podporuje nasazení
 
-podle [Jason Lee](https://github.com/jrjlee)
+od [Jason Novák](https://github.com/jrjlee)
 
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Pokud chcete provádět jakékoliv sestavení v Team Foundation Server (TFS) 2010, musíte vytvořit definici sestavení v rámci týmového projektu. Toto téma popisuje postup vytvoření nové definice sestavení v TFS a řízení nasazení webu jako součást procesu sestavení v Team Build.
+> Chcete-li provést jakýkoli druh sestavení v Team Foundation Server (TFS) 2010, je nutné vytvořit definici sestavení v rámci týmového projektu. Toto téma popisuje, jak vytvořit novou definici sestavení v sadě TFS a jak řídit nasazení webu v rámci procesu sestavení v týmovém sestavení.
 
-Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
+Toto téma je součástí série kurzů založených na požadavcích podnikového nasazení fiktivní společnosti s názvem Fabrikam, Inc. Tato série kurzů používá ukázkové řešení&#x2014;, pomocí kterého [řešení](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;správce kontaktů představuje webovou aplikaci s realistickou úrovní složitosti, včetně aplikace ASP.NET MVC 3, služby Windows Communication Foundation (WCF) a databázového projektu.
 
-Metody nasazení v srdci těchto kurzů je založen na rozdělení přístupu soubor projektu je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve kterém je řízena procesem sestavení a nasazení dva soubory projektu&#x2014;jeden obsahuje pokyny pro sestavení, které platí pro všechny cílové prostředí a jeden obsahuje nastavení pro konkrétní prostředí sestavení a nasazení. V okamžiku sestavení souboru projektu specifických pro prostředí se sloučí do souboru projektu bez ohledu na prostředí a vytvoří kompletní sadu pokynů sestavení.
+Metoda nasazení na srdce těchto kurzů je založena na způsobu rozdělení souboru projektu popsaného v tématu [Principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve kterém je proces sestavení a nasazení řízen dvěma soubory&#x2014;projektu, které obsahují pokyny pro sestavení, které platí pro každé cílové prostředí, a jedno obsahující nastavení sestavení a nasazení specifické pro konkrétní prostředí. V době sestavení je soubor projektu specifický pro prostředí sloučen do souboru projektu prostředí – nezávislá a vytvoří kompletní sadu instrukcí pro sestavení.
 
-## <a name="task-overview"></a>Přehled úloh
+## <a name="task-overview"></a>Přehled úlohy
 
-Definice sestavení je mechanismus, který řídí, jak a kdy dojde k sestavení pro týmové projekty v sadě TFS. Každá definice sestavení určuje:
+Definice sestavení je mechanismus, který určuje, jak a kdy dochází k sestavení pro týmové projekty v TFS. Každá definice sestavení Určuje:
 
-- Věci, které mají být sestaveny jako soubory řešení sady Visual Studio nebo vlastních souborů projektu Microsoft Build Engine (MSBuild).
-- Kritéria určující, když by neměl zabrat sestavení umístit, jako je ruční triggery, kontinuální integrace (CI), nebo hlídané vrácení se změnami se.
-- Umístění, ke kterému má Team Build odeslat výstupy sestavení, včetně nasazení artefakty stejně jako webových balíčků a databázové skripty.
-- Množství času, který by měl být zachován každého sestavení.
+- Věci, které chcete sestavit, například soubory řešení aplikace Visual Studio nebo vlastní soubory projektu Microsoft Build Engine (MSBuild).
+- Kritéria, která určují, kdy by mělo dojít k sestavení, jako jsou ruční triggery, kontinuální integrace (CI) nebo ověřované vrácení se změnami.
+- Umístění, do kterého má tým sestavení odeslat výstupy sestavení, včetně artefaktů nasazení, jako jsou webové balíčky a databázové skripty.
+- Doba, po kterou mají být všechna sestavení uchována.
 - Různé další parametry procesu sestavení.
 
 > [!NOTE]
-> Další informace o definicích sestavení naleznete v tématu [definovat svůj proces sestavení](https://msdn.microsoft.com/library/ms181715.aspx).
+> Další informace o definicích sestavení naleznete v tématu [Definice procesu sestavení](https://msdn.microsoft.com/library/ms181715.aspx).
 
-Toto téma se ukazují, jak vytvořit definici sestavení, která používá CI, tak, aby sestavení se aktivuje, když vývojář vrátí nový obsah. Pokud byl sestaven úspěšně, sestavovací služba spustí soubor vlastní projekt k nasazení řešení do testovacího prostředí.
+V tomto tématu se dozvíte, jak vytvořit definici sestavení, která používá CI, aby se spustilo sestavení při kontrole nového obsahu vývojářem. Pokud je sestavení úspěšné, služba sestavení spustí vlastní soubor projektu pro nasazení řešení do testovacího prostředí.
 
-Po aktivaci sestavení, třeba dojít tyto akce:
+Při aktivaci sestavení je nutné provést tyto akce:
 
-- Nejprve Team Build má sestavit řešení. V rámci tohoto procesu se vyvolá Team Build Web publikování kanálu (WPP) ke generování balíčky nasazení webu pro jednotlivé projekty webových aplikací v řešení. Sestavení týmu také spustí všechny testy jednotek, které jsou přidružené k řešení.
-- Pokud se nezdaří sestavení řešení, sestavení týmu by neměl zabrat žádná další akce. Selhání testu jednotky by měl být považován za selhání sestavení.
-- Pokud bude úspěšné sestavení řešení, by měl Team Build spusťte soubor vlastní projekt, který řídí nasazení řešení. Jako součást tohoto procesu Team Build se vyvolá Internetové informační služby (IIS) nástroj pro nasazení webu (nasazení webu) k instalaci zabalené webové aplikace na cílové webové servery a vyvolá nástroj VSDBCMD.exe ke spuštění vytvoření databáze skripty na cílových serverech databáze.
+- Nejdřív by mělo sestavení týmu sestavit řešení. V rámci tohoto procesu vytvoří týmový Build kanál pro publikování webu (WPP), který vygeneruje balíčky pro nasazení webu pro každý projekt webové aplikace v řešení. V týmovém sestavení se také spustí všechny testy jednotek spojené s řešením.
+- Pokud se sestavení řešení nepovede, týmový Build by neměl provádět žádnou další akci. Selhání testu jednotek by mělo být považováno za selhání sestavení.
+- Pokud se sestavení řešení zdaří, týmový Build by měl spustit vlastní soubor projektu, který řídí nasazení řešení. V rámci tohoto procesu týmový Build vyvolá Nasazení webu Nástroj pro nasazení webu Internetová informační služba (IIS), který nainstaluje zabalené webové aplikace na cílové webové servery a vyvolá nástroj VSDBCMD. exe pro spuštění vytváření databáze. skripty na cílových databázových serverech.
 
-To je znázorněn proces:
+To znázorňuje proces:
 
 ![](creating-a-build-definition-that-supports-deployment/_static/image1.png)
 
-[Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) ukázkové řešení obsahuje vlastní soubor projektu MSBuild *Publish.proj*, který můžete spustit z nástroje MSBuild nebo Team Build. Jak je popsáno v [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md), tento soubor projektu definuje logiku, která nasadí webových balíčků a databáze do cílové prostředí. Soubor obsahuje logiku, která vynechává sestavení a procesem vytváření balíčku, pokud běží ve službě Team Build, byste museli opustit jenom nasazení úlohy pro spuštění. Toto je vzhledem k tomu, že při automatizaci nasazení tímto způsobem je obvykle vhodné zajistit, že řešení je sestaveno úspěšně a předává všechny testy jednotek, před zahájením procesu nasazení.
+Ukázkové řešení [Contact Manager](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) obsahuje vlastní soubor projektu MSBuild, *publikování. proj*, který můžete spustit z nástroje MSBuild nebo sestavení týmu. Jak je popsáno v tématu [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md), tento soubor projektu definuje logiku, která nasazuje vaše webové balíčky a databáze do cílového prostředí. Soubor obsahuje logiku, která vynechá proces sestavení a balení, pokud je spuštěn v rámci týmového sestavení, takže je potřeba spustit pouze úlohy nasazení. Důvodem je, že při automatizaci nasazení tímto způsobem obvykle budete chtít zajistit, aby se řešení úspěšně sestavilo a před zahájením procesu nasazení předá všechny testy jednotek.
 
-Další části je vysvětlen postup implementace tohoto procesu tak, že vytvoříte novou definici sestavení.
+V další části se dozvíte, jak implementovat tento proces vytvořením nové definice sestavení.
 
 > [!NOTE]
-> Tento postup&#x2014;ve kterém automatizované jeden proces sestavení, testy a nasadí řešení&#x2014;by mohla být nejvhodnější pro nasazení pro testovací prostředí. Pro testovací a produkční prostředí budete pravděpodobně mnohem více chcete nasadit obsah z předchozího buildu, který jste již ověření a ověření v testovacím prostředí. Tento postup je popsaný v dalším tématu [nasazení konkrétního sestavení](deploying-a-specific-build.md).
+> Tento postup&#x2014;, ve kterém jeden automatizovaný proces sestavuje, testuje a nasazuje řešení&#x2014;, je pravděpodobně nejvíce vhodný pro nasazení do testovacích prostředí. V případě pracovních a produkčních prostředí je mnohem více pravděpodobnější, že budete chtít nasadit obsah z předchozího sestavení, které jste již ověřili a ověřili v testovacím prostředí. Tento přístup je popsaný v dalším tématu [nasazení konkrétního sestavení](deploying-a-specific-build.md).
 
-### <a name="who-performs-this-procedure"></a>Kdo provádí tento postup?
+### <a name="who-performs-this-procedure"></a>Kdo tento postup provádí?
 
-Obvykle provádí správce serveru TFS tento postup. V některých případech může vedoucí týmu pro vývojáře nést odpovědnost za kolekci týmových projektů v TFS. Chcete-li vytvořit novou definici sestavení, musíte být členem skupiny **správci sestavení kolekcí projektů** pro kolekci týmového projektu, který obsahuje vaše řešení.
+Tento postup obvykle provádí správce TFS. V některých případech může vedoucí týmu vývojářů převzít zodpovědnost za kolekci týmového projektu v TFS. Chcete-li vytvořit novou definici sestavení, musíte být členem skupiny **Správci sestavení kolekcí projektů** pro kolekci týmových projektů, která obsahuje vaše řešení.
 
-## <a name="create-a-build-definition-for-ci-and-deployment"></a>Vytvořte definici sestavení CI a nasazení
+## <a name="create-a-build-definition-for-ci-and-deployment"></a>Vytvoření definice sestavení pro CI a nasazení
 
-Následující postup popisuje, jak vytvořit definici sestavení, která aktivuje CI. Pokud byl sestaven úspěšně, je řešení nasadit s použitím logiku vlastního souboru projektu MSBuild.
+Další postup popisuje, jak vytvořit definici sestavení, která spouští triggery CI. Pokud je sestavení úspěšné, řešení je nasazeno pomocí logiky ve vlastním souboru projektu MSBuild.
 
-**Chcete-li vytvořit definici sestavení CI a nasazení**
+**Vytvoření definice sestavení pro CI a nasazení**
 
-1. V sadě Visual Studio 2010 v **Team Exploreru** okna, rozbalte uzel týmového projektu, klikněte pravým tlačítkem na **sestavení**a potom klikněte na tlačítko **nová definice sestavení**.
+1. V aplikaci Visual Studio 2010 v okně **Team Explorer** rozbalte uzel týmového projektu, klikněte pravým tlačítkem na položku **sestavení**a poté klikněte na možnost **Nová definice sestavení**.
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image2.png)
-2. Na **Obecné** kartu, zadejte název definice sestavení (například **DeployToTest**) a volitelně také popis.
-3. Na **aktivační událost** kartu, vyberte kritéria, na kterých chcete aktivovat nový build. Pokud například chcete řešení sestavit a nasadit do testovacího prostředí, pokaždé, když vývojář vrátí nový kód, vyberte **kontinuální integrace**.
-4. Na **výchozí hodnoty sestavení** kartě **Kopírovat výstup sestavení na následující odkládací složky** zadejte cestu (Universal Naming Convention) odkládací složky (například  **\\TFSBUILD\Drops**).
+2. Na kartě **Obecné** zadejte název definice sestavení (například **DeployToTest**) a volitelný popis.
+3. Na kartě **aktivační událost** vyberte kritéria, u kterých chcete aktivovat nové sestavení. Například pokud chcete sestavit řešení a nasadit do testovacího prostředí pokaždé, když vývojář zkontroluje nový kód, vyberte možnost **průběžná integrace**.
+4. Na kartě **výchozí hodnoty sestavení** v poli **Kopírovat výstup sestavení do následující ukládací složky** zadejte cestu UNC (Universal Naming Convention) k odkládací složce (například **\\TFSBUILD\Drops**).
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image3.png)
 
     > [!NOTE]
-    > Toto umístění přetažení ukládá několik sestavení, v závislosti na vámi nakonfigurovaných zásad uchovávání informací. Když chcete publikovat artefakty nasazení z konkrétního sestavení pro testovací nebo produkční prostředí, je to, kde najdete ho.
-5. Na **procesu** kartě **soubor procesu sestavení** rozevíracího seznamu, ponechejte tuto položku **DefaultTemplate.xaml** vybrané. Toto je jedna z výchozích šablon procesů sestavení, které se přidají do všech nových týmových projektů.
-6. V **parametry procesu sestavení** tabulku, klikněte na tlačítko v **položky k sestavení** řádku a potom klikněte na tlačítko **tlačítko se třemi tečkami** tlačítko.
+    > Toto odkládací umístění uchovává několik sestavení v závislosti na nakonfigurovaných zásadách uchovávání informací. Když chcete publikovat artefakty nasazení z konkrétního sestavení do pracovního nebo produkčního prostředí, najdete je tam.
+5. Na kartě **proces** v rozevíracím seznamu **soubor procesu sestavení** ponechte vybranou možnost **šabloně DefaultTemplate. XAML** . Toto je jedna z výchozích šablon procesu sestavení, které se přidají do všech nových týmových projektů.
+6. V tabulce **parametrů procesu sestavení** klikněte na řádek **položky k sestavení** a potom klikněte na tlačítko se **třemi tečkami** .
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image4.png)
-7. V **položky k sestavení** dialogové okno, klikněte na tlačítko **přidat**.
-8. Přejděte do umístění souboru řešení a potom klikněte na tlačítko **OK**.
+7. V dialogovém okně **položky k sestavení** klikněte na tlačítko **Přidat**.
+8. Přejděte do umístění souboru řešení a klikněte na tlačítko **OK**.
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image5.png)
-9. V **položky k sestavení** dialogové okno, klikněte na tlačítko **přidat**.
-10. V **položky typu** rozevíracího seznamu vyberte **soubory projektu MSBuild**.
-11. Přejděte do umístění souboru vlastních projektů, pomocí kterého řízení procesu nasazení, vyberte ho a pak klikněte na tlačítko **OK**.
+9. V dialogovém okně **položky k sestavení** klikněte na tlačítko **Přidat**.
+10. V rozevíracím seznamu **položky typu** vyberte možnost **soubory projektu MSBuild**.
+11. Přejděte do umístění vlastního souboru projektu, pomocí kterého budete řídit proces nasazení, vyberte soubor a klikněte na tlačítko **OK**.
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image6.png)
-12. **Položky k sestavení** dialogové okno by teď zobrazují dvě položky. Klikněte na **OK**.
+12. V dialogovém okně **položky k sestavení** by nyní mělo být zobrazeno dvě položky. Klikněte na tlačítko **OK**.
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image7.png)
-13. Na **procesu** kartě **parametry procesu sestavení** tabulky, rozbalte **Upřesnit** oddílu.
-14. V **argumenty nástroje MSBuild** řádek, přidejte jakékoli argumenty příkazového řádku MSBuild, který *buď* položek k sestavení vyžaduje. Scénář řešení Správce kontaktů tyto argumenty jsou povinné:
+13. Na kartě **proces** v tabulce **Parametry procesu sestavení** rozbalte část **Upřesnit** .
+14. V řádku **argumenty MSBuild** přidejte všechny argumenty příkazového řádku MSBuild, které musí *jedna* z položek sestavit. Ve scénáři řešení Contact Manager jsou vyžadovány tyto argumenty:
 
     [!code-console[Main](creating-a-build-definition-that-supports-deployment/samples/sample1.cmd)]
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image8.png)
-15. V tomto příkladu:
+15. V tomto příkladu:
 
-    1. **DeployOnBuild = true** a **DeployTarget = balíček** argumenty jsou povinné, když vytvoříte řešení Správce kontaktů. Toto nastaví nástroj MSBuild pro vytváření webových balíčky pro nasazení po sestavení projektu každé webové aplikace, jak je popsáno v [sestavení a balení projektů webových aplikací](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md).
-    2. **TargetEnvPropsFile** argument je povinný při vytváření *Publish.proj* souboru. Tato vlastnost určuje umístění souboru konfigurace pro konkrétní prostředí, jak je popsáno v [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md).
-16. Na **zásady uchovávání informací** kartu, nakonfigurujte, kolik sestavení každého typu, které chcete zachovat podle potřeby.
+    1. Při sestavování řešení Contact Manageru se vyžadují argumenty balíčku **DeployOnBuild = true** a **DeployTarget =** . Nástroj MSBuild vydává pokyn k vytváření balíčků pro nasazení webu po sestavení každého projektu webové aplikace, jak je popsáno v tématu [sestavování a balení projektů webových aplikací](../web-deployment-in-the-enterprise/building-and-packaging-web-application-projects.md).
+    2. Při vytváření souboru *Publish. proj* je vyžadován argument **TargetEnvPropsFile** . Tato vlastnost označuje umístění konfiguračního souboru specifického pro prostředí, jak je popsáno v tématu [Principy procesu sestavení](../web-deployment-in-the-enterprise/understanding-the-build-process.md).
+16. Na kartě **zásady uchovávání informací** nakonfigurujte, kolik sestavení každého typu chcete zachovat podle potřeby.
 17. Klikněte na **Uložit**.
 
 ## <a name="queue-a-build"></a>Zařazení sestavení do fronty
 
-V tomto okamžiku jste vytvořili aspoň jednu novou definici sestavení. Proces sestavení, které jste definovali se teď spustí podle aktivačních událostí, které jste zadali v definici sestavení.
+V tomto okamžiku jste vytvořili alespoň jednu novou definici sestavení. Proces sestavení, který jste definovali, se nyní spustí podle triggerů, které jste zadali v definici sestavení.
 
-Pokud jste nakonfigurovali definici sestavení CI používat, můžete otestovat definici sestavení dvěma způsoby:
+Pokud jste nakonfigurovali definici sestavení tak, aby používala CI, můžete otestovat definici sestavení dvěma způsoby:
 
-- Vrátit se změnami nějaký obsah do týmového projektu k aktivaci automatického sestavení.
-- Zařadit sestavení do fronty ručně.
+- Vrátit se změnami obsah do týmového projektu, který spustí automatické sestavení.
+- Zařadí sestavení do fronty ručně.
 
-**Sestavení do fronty ručně**
+**Ruční zařazení sestavení do fronty**
 
-1. V **Team Exploreru** okna, klikněte pravým tlačítkem na definici sestavení a pak klikněte na tlačítko **zařadit nové sestavení**.
+1. V okně **Team Explorer** klikněte pravým tlačítkem myši na definici sestavení a potom klikněte na příkaz **zařadit nové sestavení do fronty**.
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image9.png)
-2. V **zařadit sestavení do fronty** dialogové okno, zkontrolujte vlastnosti sestavení a pak klikněte na tlačítko **fronty**.
+2. V dialogovém okně **sestavení fronty** zkontrolujte vlastnosti sestavení a pak klikněte na **fronta**.
 
     ![](creating-a-build-definition-that-supports-deployment/_static/image10.png)
 
-Chcete zkontrolovat průběh a výsledky sestavení&#x2014;bez ohledu na to, zda byla spuštěna ručně nebo automaticky&#x2014;dvakrát na definici sestavení v **Team Exploreru** okna. Tím se otevře **Průzkumník sestavení** kartu.
+Chcete-li zkontrolovat průběh a výsledek sestavení&#x2014;bez ohledu na to, zda byly aktivovány ručně nebo automaticky&#x2014;dvakrát klikněte na definici sestavení v okně **Team Explorer** . Tím se otevře karta **Průzkumník sestavení** .
 
 ![](creating-a-build-definition-that-supports-deployment/_static/image11.png)
 
-Zde můžete řešit selhání sestavení. Pokud dvakrát kliknete na jednotlivý build, můžete zobrazit souhrnné informace a proklikejte se k podrobné soubory protokolů.
+Z tohoto místa můžete řešit problémy s neúspěšnými sestaveními. Pokud dvakrát kliknete na jednotlivé sestavení, můžete zobrazit souhrnné informace a kliknout na podrobné soubory protokolu.
 
 ![](creating-a-build-definition-that-supports-deployment/_static/image12.png)
 
-Tyto informace slouží k řešení selhání sestavení a řešit jakékoli problémy, než se pokusíte jiné sestavení.
+Tyto informace můžete použít k řešení neúspěšných sestavení a vyřešení všech problémů předtím, než se pokusíte o další sestavení.
 
 > [!NOTE]
-> Sestavení, které jsou spouštěny logiky nasazení budou pravděpodobně fungovat, dokud jste udělili server sestavení všechna oprávnění nutná v cílovém prostředí. Další informace najdete v tématu [konfigurace oprávnění pro nasazení sestavení týmu](configuring-permissions-for-team-build-deployment.md).
+> Sestavení, která spouštějí logiku nasazení, budou pravděpodobně neúspěšná, dokud neudělíte serveru sestavení žádná oprávnění požadovaná v cílovém prostředí. Další informace najdete v tématu [Konfigurace oprávnění pro nasazení týmového sestavení](configuring-permissions-for-team-build-deployment.md).
 
 ## <a name="monitor-the-build-process"></a>Monitorování procesu sestavení
 
-TFS poskytuje širokou škálu funkcí, které vám pomohou monitorovat proces sestavení. TFS můžete například odeslat e-mailu nebo zobrazení výstrah v oznamovací oblasti hlavního panelu po dokončení sestavení. Další informace najdete v tématu [spuštění a monitorování sestavení](https://msdn.microsoft.com/library/ms181721.aspx).
+TFS nabízí širokou škálu funkcí, které vám pomůžou monitorovat proces sestavení. TFS například může poslat e-mail nebo zobrazit výstrahy v oznamovací oblasti hlavního panelu po dokončení sestavení. Další informace naleznete v tématu [Run and monitor Builds](https://msdn.microsoft.com/library/ms181721.aspx).
 
 ## <a name="conclusion"></a>Závěr
 
-Toto téma popisuje, jak vytvořit definici sestavení v sadě TFS. Definice sestavení je nakonfigurovaný pro nepřetržitou Integraci, aby proces sestavení poběží pokaždé, když vývojář vrátí obsah do týmového projektu. Definici sestavení spustí vlastní soubor projektu MSBuild k nasazení webových balíčků a databázové skripty do cílového serveru prostředí.
+Toto téma popisuje, jak vytvořit definici sestavení v sadě TFS. Definice sestavení je nakonfigurována pro CI, takže proces sestavení se spustí pokaždé, když vývojář vrátí obsah do týmového projektu. Definice sestavení spustí vlastní soubor projektu MSBuild pro nasazení webových balíčků a databázových skriptů do cílového serverového prostředí.
 
-V pořadí pro automatické nasazení proběhla úspěšně jako součást procesu sestavení budete muset udělit příslušná oprávnění k účtu sestavovací služby na cílové webové servery a databáze cílový server. V posledním tématu v tomto kurzu se [konfigurace oprávnění pro nasazení sestavení týmu](configuring-permissions-for-team-build-deployment.md), popisuje, jak identifikovat a nakonfigurovat oprávnění požadovaná pro automatické nasazení ze serveru Team Build.
+Aby bylo automatizované nasazení v rámci procesu sestavení úspěšné, je nutné udělit příslušné oprávnění k účtu sestavovací služby na cílových webových serverech a cílovém databázovém serveru. Poslední téma v tomto kurzu, [Konfigurace oprávnění pro nasazení týmového sestavení](configuring-permissions-for-team-build-deployment.md), popisuje, jak identifikovat a nakonfigurovat oprávnění požadovaná pro automatizované nasazení ze serveru sestavení týmu.
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o vytvoření definice sestavení, naleznete v tématu [vytvořit a Basic Build Definition](https://msdn.microsoft.com/library/ms181716.aspx) a [definovat svůj proces sestavení](https://msdn.microsoft.com/library/ms181715.aspx). Další pokyny k řazení sestavení do fronty, naleznete v tématu [zařadit sestavení do fronty](https://msdn.microsoft.com/library/ms181722.aspx).
+Další informace o vytváření definic sestavení naleznete v tématu [Vytvoření základní definice sestavení](https://msdn.microsoft.com/library/ms181716.aspx) a [Definování procesu sestavení](https://msdn.microsoft.com/library/ms181715.aspx). Další informace o sestaveních služby Řízení front najdete v tématu [zařazení sestavení do fronty](https://msdn.microsoft.com/library/ms181722.aspx).
 
 > [!div class="step-by-step"]
 > [Předchozí](configuring-a-tfs-build-server-for-web-deployment.md)
-> [další](deploying-a-specific-build.md)
+> [Další](deploying-a-specific-build.md)

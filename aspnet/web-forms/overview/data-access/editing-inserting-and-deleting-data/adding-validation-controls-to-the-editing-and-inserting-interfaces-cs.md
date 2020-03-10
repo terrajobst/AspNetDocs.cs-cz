@@ -9,11 +9,11 @@ ms.assetid: 2086cb1a-ab78-49ae-9c0b-03891c69776a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 110ee08f1d0707664ef6268f34ceab9da30a3e61
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74589755"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78610192"
 ---
 # <a name="adding-validation-controls-to-the-editing-and-inserting-interfaces-c"></a>Přidání validačních ovládacích prvků do rozhraní pro úpravy a vložení (C#)
 
@@ -33,7 +33,7 @@ Aby bylo možné poskytnout přizpůsobené úpravy nebo vložení rozhraní, je
 
 V tomto kurzu se dozvíte, jak snadné je přidat ověřovací ovládací prvky do `EditItemTemplate` TemplateField a `InsertItemTemplate` tak, aby poskytovalo další uživatelské rozhraní foolproof. Konkrétně tento kurz využívá příklad vytvořený při [zkoumání událostí souvisejících s vložením, aktualizací a odstraněním](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md) kurzu a rozšiřuje rozhraní pro úpravy a vkládání, aby zahrnovala příslušné ověření.
 
-## <a name="step-1-replicating-the-example-fromexamining-the-events-associated-with-inserting-updating-and-deletingexamining-the-events-associated-with-inserting-updating-and-deleting-csmd"></a>Krok 1: replikace příkladu z[zkoumání událostí spojených s vložením, aktualizací a odstraněním](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
+## <a name="step-1-replicating-the-example-fromexamining-the-events-associated-with-inserting-updating-and-deleting"></a>Krok 1: replikace příkladu z[zkoumání událostí spojených s vložením, aktualizací a odstraněním](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md)
 
 Při [zkoumání událostí spojených s vložením, aktualizací a odstraněním](examining-the-events-associated-with-inserting-updating-and-deleting-cs.md) kurzu jsme vytvořili stránku, která uvádí názvy a ceny produktů ve upravitelném prvku GridView. Kromě toho stránka obsahovala prvek DetailsView, jehož vlastnost `DefaultMode` byla nastavena na hodnotu `Insert`, takže vždy vykresluje v režimu vkládání. Od tohoto prvku DetailsView může uživatel zadat název a cenu nového produktu, kliknout na Vložit a přidat ho do systému (viz obrázek 1).
 
@@ -225,7 +225,7 @@ V tuto chvíli se ovládací prvky ověřování specifické pro úpravy aktivuj
 
 Tento kurz se dokončí.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 I když BoundFields může poskytovat rozhraní pro vložení i úpravy, rozhraní není přizpůsobitelné. Obecně chceme do rozhraní pro úpravy a vkládání přidat ovládací prvky ověřování, abyste zajistili, že uživatel zadá požadované vstupy do právního formátu. Aby bylo možné tento postup provést, je nutné převést BoundFields na TemplateFields a přidat ověřovací ovládací prvky do odpovídajících šablon. V tomto kurzu jsme rozšířili příklad z *hlediska událostí souvisejících s vložením, aktualizací a odstraněním* kurzu a přidáte ovládací prvky ověřování do rozhraní pro vložení ovládacího prvku DetailsView i do rozhraní pro úpravy ovládacího prvku GridView. Kromě toho jsme viděli, jak zobrazit souhrnné informace o ověřování pomocí ovládacího prvku ovládací souhrnu ověření a jak rozdělit ovládací prvky ověřování na stránku do různých ověřovacích skupin.
 

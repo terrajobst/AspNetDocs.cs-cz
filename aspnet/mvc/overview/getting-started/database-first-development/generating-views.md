@@ -1,7 +1,7 @@
 ---
 uid: mvc/overview/getting-started/database-first-development/generating-views
-title: 'Kurz: Generovat zobrazení pro EF Database First s ASP.NET MVC aplikace'
-description: Tento kurz se zaměřuje na použití technologie ASP.NET generování uživatelského rozhraní pro generování kontrolerů a zobrazení.
+title: 'Kurz: generování zobrazení pro EF Database First pomocí aplikace ASP.NET MVC'
+description: Tento kurz se zaměřuje na použití generování uživatelského rozhraní ASP.NET k vygenerování řadičů a zobrazení.
 author: Rick-Anderson
 ms.author: riande
 ms.date: 01/28/2019
@@ -10,96 +10,96 @@ ms.assetid: 669367cf-8e30-4eb6-821d-10a7d9bb906c
 msc.legacyurl: /mvc/overview/getting-started/database-first-development/generating-views
 msc.type: authoredcontent
 ms.openlocfilehash: e71e13e22d8a72e1699cfc70d4d93af603edba5b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65121229"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616205"
 ---
-# <a name="tutorial-generate-views-for-ef-database-first-with-aspnet-mvc-app"></a>Kurz: Generovat zobrazení pro EF Database First s ASP.NET MVC aplikace
+# <a name="tutorial-generate-views-for-ef-database-first-with-aspnet-mvc-app"></a>Kurz: generování zobrazení pro EF Database First pomocí aplikace ASP.NET MVC
 
-Pomocí generování uživatelského rozhraní ASP.NET, MVC a Entity Framework, můžete vytvořit webovou aplikaci, která poskytuje rozhraní pro existující databázi. V této sérii kurzů se dozvíte, jak automaticky vygenerovat kód, který umožňuje uživatelům zobrazit, upravit, vytvořit a odstranit data, která se nachází v databázové tabulce. Generovaný kód odpovídá sloupců v tabulce databáze.
+Pomocí MVC, Entity Framework a ASP.NET generování uživatelského rozhraní můžete vytvořit webovou aplikaci, která poskytuje rozhraní pro existující databázi. V této sérii kurzů se dozvíte, jak automaticky vygenerovat kód, který uživatelům umožňuje zobrazit, upravit, vytvořit a odstranit data, která se nacházejí v tabulce databáze. Generovaný kód odpovídá sloupcům v tabulce databáze.
 
-Tento kurz se zaměřuje na použití technologie ASP.NET generování uživatelského rozhraní pro generování kontrolerů a zobrazení.
+Tento kurz se zaměřuje na použití generování uživatelského rozhraní ASP.NET k vygenerování řadičů a zobrazení.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidat vygenerované uživatelské rozhraní
-> * Přidat odkazy pro nové zobrazení
-> * Zobrazení studenta
-> * Zobrazení registrace
+> * Přidat generování uživatelského rozhraní
+> * Přidat odkazy na nová zobrazení
+> * Zobrazit zobrazení studenta
+> * Zobrazit zobrazení pro zápis
 
-## <a name="prerequisite"></a>Předpoklad
+## <a name="prerequisite"></a>Požadavek
 
 * [Vytvoření webové aplikace a datových modelů](creating-the-web-application.md)
 
-## <a name="add-scaffold"></a>Přidat vygenerované uživatelské rozhraní
+## <a name="add-scaffold"></a>Přidat generování uživatelského rozhraní
 
-Jste připraveni vygenerovat kód, který bude poskytovat operace standardních datových tříd modelu. Přidat kód tak, že přidáte položku vygenerované uživatelské rozhraní. Existuje mnoho možností pro typ generování uživatelského rozhraní, které můžete přidat; v tomto kurzu se zahrne vygenerované uživatelské rozhraní kontroler a zobrazení, které odpovídají vzorům studenty a registrace, který jste vytvořili v předchozí části.
+Jste připraveni vygenerovat kód, který bude poskytovat standardní operace s daty pro třídy modelu. Kód přidáte přidáním položky uživatelského rozhraní. Existuje mnoho možností pro typ generování uživatelského rozhraní, které můžete přidat; v tomto kurzu bude toto uživatelské rozhraní zahrnovat kontroler a zobrazení, které odpovídají modelům student a registrace, které jste vytvořili v předchozí části.
 
-Můžete zachovat konzistenci ve vašem projektu, přidáte nový kontroler ke stávající **řadiče** složky. Klikněte pravým tlačítkem myši **řadiče** a pak zvolte položku **přidat** > **novou vygenerovanou položku**.
+Chcete-li zachovat konzistenci projektu, přidejte nový kontroler do složky existující **řadiče** . Klikněte pravým tlačítkem na složku **řadiče** a vyberte **Přidat** > **Nová vygenerovaná položka**.
 
-Vyberte **kontroler MVC 5 se zobrazeními, používá nástroj Entity Framework** možnost. Tato možnost bude generovat kontroler a zobrazení pro aktualizaci, odstranění, vytváření a zobrazování dat v modelu.
+Pomocí možnosti **Entity Framework vyberte kontroler MVC 5 se zobrazeními** . Tato možnost vygeneruje kontroler a zobrazení pro aktualizaci, odstranění, vytváření a zobrazování dat v modelu.
 
-![Přidat kontroler mvc](generating-views/_static/image2.png)
+![Přidat kontroler MVC](generating-views/_static/image2.png)
 
-Vyberte **Student (ContosoSite.Models)** pro třídu modelu a vyberte **ContosoUniversityDataEntities (ContosoSite.Models)** pro třídy kontextu. Zachovat název kontroleru jako **StudentsController**.
+Vyberte **student (ContosoSite. Models)** pro třídu modelu a vyberte **ContosoUniversityDataEntities (ContosoSite. Models)** pro třídu kontextu. Ponechte název kontroleru jako **StudentsController**.
 
 Klikněte na **Přidat**.
 
-Pokud se zobrazí chyba, pravděpodobně jste nesestavili projektu v předchozí části. Pokud ano, zkuste sestavit projekt a pak znovu přidání vygenerované položky.
+Pokud se zobrazí chyba, může to být způsobeno tím, že jste projekt nesestavili v předchozí části. Pokud ano, zkuste sestavit projekt a pak znovu přidat vygenerované položky.
 
-Po dokončení procesu generování kódu se zobrazí nový kontroler a zobrazení ve vašem projektu **řadiče** a **zobrazení** > **studenty** složek .
+Po dokončení procesu generování kódu se zobrazí nový kontroler a zobrazení v **řadičích** a **zobrazeních** projektu > složky **studentů** .
 
-Znovu proveďte stejné kroky, ale přidat vygenerované uživatelské rozhraní pro **registrace** třídy. Až budete hotovi, budete mít **EnrollmentsController.cs** soubor a složku ve složce **zobrazení** s názvem **registrace** Create, odstranění, podrobností, úpravy a indexu zobrazení.
+Proveďte stejné kroky znovu, ale přidejte uživatelské rozhraní pro třídu **zápisu** . Po dokončení budete mít k dispozici soubor **EnrollmentsController.cs** a složku v **zobrazení** s názvem **registrace** pomocí zobrazení vytvořit, odstranit, podrobnosti, úpravy a rejstřík.
 
-## <a name="add-links-to-new-views"></a>Přidat odkazy pro nové zobrazení
+## <a name="add-links-to-new-views"></a>Přidat odkazy na nová zobrazení
 
-Zjednodušit přechod na nové zobrazení, můžete přidat několik hypertextové odkazy k zobrazení indexu pro studenty a registrací. Otevřete soubor v **zobrazení** > **domácí** > *Index.cshtml*, což je domovská stránka pro váš web. Přidejte následující kód níže jumbotron.
+Aby bylo snazší přejít na nová zobrazení, můžete přidat několik hypertextových odkazů do zobrazení indexu pro studenty a registrace. Otevřete soubor v **zobrazeních** > **Home** > *index. cshtml*, což je Domovská stránka vašeho webu. Pod JumboTron přidejte následující kód.
 
 [!code-cshtml[Main](generating-views/samples/sample1.cshtml)]
 
-První parametr metody ActionLink je text, který se zobrazí v odkazu. Druhý parametr je akce a třetí parametr je název kontroleru. Například na první odkaz odkazuje na akci indexu v StudentsController. Skutečné hypertextový odkaz je vytvořený z těchto hodnot. Na první odkaz, takže v konečném důsledku přejdou uživatelé k **Index.cshtml** soubor **zobrazení/studenty** složky.
+Pro metodu ActionLink je prvním parametrem text, který se má zobrazit v odkazu. Druhým parametrem je akce a třetí parametr je název kontroleru. Například první odkaz odkazuje na akci indexu v StudentsController. Skutečný hypertextový odkaz je vytvořen z těchto hodnot. První odkaz nakonec převezme uživatele do souboru **index. cshtml** v rámci složky **views/Students** .
 
-## <a name="display-student-views"></a>Zobrazení studenta
+## <a name="display-student-views"></a>Zobrazit zobrazení studenta
 
-Ověříte, že kód přidaný do projektu správně zobrazí seznam studenty a umožňuje uživatelům upravovat, vytvořit nebo odstranit záznamech studentů v databázi.
+Ověřte, že kód přidaný do projektu správně zobrazuje seznam studentů a umožňuje uživatelům upravovat, vytvářet nebo odstraňovat záznamy studenta v databázi.
 
-Klikněte pravým tlačítkem myši **zobrazení** > **Domů** > *Index.cshtml* a vyberte možnost **zobrazit v prohlížeči**. Na domovské stránce aplikace vyberte **seznamu studentů**.
+Klikněte pravým tlačítkem na **zobrazení** > soubor *. cshtml* pro **domovskou** > index a **v prohlížeči vyberte Zobrazit**. Na domovské stránce aplikace vyberte **seznam studentů**.
 
 ![](generating-views/_static/image6.png)
 
-Na **Index** stránky si všimněte seznamu studentů a odkazy, chcete-li změnit tato data. Vyberte **vytvořit nový** propojit a zadání několika hodnot pro nové studenty. Klikněte na tlačítko **vytvořit**a Všimněte si, že přidání nového objektu student do seznamu.
+Na stránce **index** si všimněte seznamu studentů a odkazů pro úpravu těchto dat. Vyberte odkaz **vytvořit nový** a zadejte některé hodnoty pro nového studenta. Klikněte na **vytvořit**a Všimněte si, že se do seznamu přidá nový student.
 
-Zpět na **Index** stránky, vyberte **upravit** propojit a změnit některé z hodnot pro student. Klikněte na tlačítko **Uložit**a Všimněte si, že se změnil záznam studentů.
+Zpět na stránce **index** vyberte odkaz **Upravit** a změňte některé hodnoty pro studenta. Klikněte na **Uložit**a Všimněte si, že se změnil záznam studenta.
 
-Nakonec vyberte **odstranit** propojit a potvrďte, že chcete odstranit záznam kliknutím **odstranit** tlačítko.
+Nakonec vyberte odkaz **Odstranit** a potvrďte, že chcete záznam odstranit kliknutím na tlačítko **Odstranit** .
 
-Bez psaní kódu, přidané zobrazení, které provádějí běžné operace s daty v tabulce studentů.
+Bez psaní kódu jste přidali zobrazení, která provádějí běžné operace s daty v tabulce student.
 
-Mohli jste si všimnout, že je textový popisek pro pole založeného na vlastnosti databáze (například **LastName**) což není nutně co byste chtěli zobrazit na webové stránce. Například můžete chtít raději popisek bude **příjmení**. Později v tomto kurzu se opravit tento problém se zobrazením.
+Možná jste si všimli, že textový popisek pro pole je založen na vlastnosti databáze (například **LastName**), která není nutně ta, co chcete zobrazit na webové stránce. Například můžete chtít, aby popisek byl **Poslední název**. Tento problém se zobrazením opravíte později v tomto kurzu.
 
-## <a name="display-enrollment-views"></a>Zobrazení registrace
+## <a name="display-enrollment-views"></a>Zobrazit zobrazení pro zápis
 
-Vaše databáze obsahuje vztah jeden mnoho mezi tabulkami, studenty a registrace a vztah jeden mnoho mezi tabulkami kurzu a registrace. Zobrazení pro registraci správně zpracovat tyto vztahy. Přejděte na domovskou stránku pro web a vyberte **seznamu registrací** odkaz a pak **vytvořit nový** odkaz.
+Vaše databáze obsahuje vztah 1:1 mezi tabulkami studentů a registrací a vztah 1: n mezi tabulkami kurzů a zápisů. Zobrazení pro registraci správně zpracovávají tyto vztahy. Přejděte na domovskou stránku vašeho webu a vyberte odkaz **seznam** registrací a pak klikněte na odkaz pro **Vytvoření nového** .
 
-Zobrazení zobrazí formulář pro vytvoření nového záznamu registrace. Zejména, Všimněte si, že formulář obsahuje **CourseID** rozevíracího seznamu a **StudentID** rozevíracího seznamu. Obě jsou naplněnou hodnotami ze souvisejících tabulek.
+Zobrazení obsahuje formulář pro vytvoření nového záznamu registrace. Zejména si všimněte, že formulář obsahuje rozevírací seznam **CourseID** a rozevírací seznam **StudentID** . Obě jsou vyplněny hodnotami ze souvisejících tabulek.
 
-Kromě toho ověření zadané hodnoty je automaticky použity na základě datového typu pole. **Na podnikové úrovni** vyžaduje číslo, takže pokud se pokusíte zadejte na nekompatibilní hodnotu, zobrazí se chybová zpráva: *Pole na podnikové úrovni, musí být číslo.*
+Kromě toho se ověření zadaných hodnot automaticky použije na základě datového typu pole. Pro **třídu** je vyžadováno číslo, takže se zobrazí chybová zpráva, pokud se pokusíte zadat nekompatibilní hodnotu: hodnota *pole musí být číslo.*
 
-Ověření, že automaticky generované zobrazení povolení uživatelé pracovat s daty v databázi. V dalším kurzu této série se aktualizovat databázi a provádět odpovídající změny ve webové aplikaci.
+Ověřili jste, že automaticky vygenerovaná zobrazení umožňují uživatelům pracovat s daty v databázi. V dalším kurzu v této sérii aktualizujete databázi a provedete příslušné změny ve webové aplikaci.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Přidání vygenerované uživatelské rozhraní
-> * Přidání odkazů na nové zobrazení
-> * Zobrazení zobrazené studenta
-> * Zobrazení zobrazené registrace
+> * Přidání uživatelského rozhraní
+> * Přidané odkazy na nová zobrazení
+> * Zobrazení zobrazení studenta
+> * Zobrazení zápisu
 
-Přejděte k dalšímu kurzu, kde najdete postup změny databáze.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak změnit databázi.
 > [!div class="nextstepaction"]
 > [Změna databáze](changing-the-database.md)

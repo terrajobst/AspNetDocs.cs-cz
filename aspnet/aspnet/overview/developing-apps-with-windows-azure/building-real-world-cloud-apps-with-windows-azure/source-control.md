@@ -9,11 +9,11 @@ ms.assetid: 2a0370d3-c2fb-4bf3-88b8-aad5a736c793
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
 msc.type: authoredcontent
 ms.openlocfilehash: 5a1e0d7cd3c396d4be79c8958422602055eb3db1
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457099"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78617451"
 ---
 # <a name="source-control-building-real-world-cloud-apps-with-azure"></a>Správa zdrojového kódu (vytváření skutečných cloudových aplikací s Azure)
 
@@ -147,7 +147,7 @@ Visual Studio se zeptá, jestli chcete používat TFVC (centralizovanou správu 
 
 Když vyberete Git a kliknete na **OK**, Visual Studio ve složce řešení vytvoří nové místní úložiště Git. Nové úložiště ještě neobsahuje žádné soubory. je nutné je přidat do úložiště pomocí potvrzení Git. Klikněte pravým tlačítkem na řešení v **Průzkumník řešení**a pak klikněte na **Potvrdit**.
 
-![Potvrdit](source-control/_static/image11.png)
+![Potvrzení](source-control/_static/image11.png)
 
 Visual Studio automaticky vymění všechny soubory projektu pro potvrzení a zobrazí je v **Team Explorer** v podokně **Zahrnuté změny** . (Pokud jste některé z nich nechtěli zahrnout do potvrzení změn, můžete je vybrat, kliknout pravým tlačítkem a kliknout na **vyloučit**.)
 
@@ -192,7 +192,7 @@ Nejedná se o jediný způsob, jak můžete implementovat strategii agilního v�
 Změřte úspěšnost svého systému správy zdrojů na základě toho, jak rychle můžete provést změnu a začít bezpečně a předvídatelným způsobem. Pokud zjistíte, že jste se děsilii změnou, protože je třeba provést jeden den nebo dva ruční testování, můžete se zeptat, co je potřeba udělat, nebo vyzkoušet, abyste tuto změnu mohli udělat v řádu minut nebo v nejhorším rozsahu po dobu delší než hodinu. Jedna strategie, která umožňuje implementovat průběžnou integraci a průběžné doručování, které pokryjeme v [Další části](continuous-integration-and-continuous-delivery.md).
 
 <a id="resources"></a>
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 
 Další informace o strategiích větvení najdete v následujících zdrojích informací:
 

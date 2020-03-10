@@ -9,11 +9,11 @@ ms.assetid: 25444121-5a72-4dac-8e50-ad2b7ac667af
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/popup/handling-postbacks-from-a-popup-control-without-an-updatepanel-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 9c4c59bb9dbd3e2ba2b3b81ecf76271f21673bce
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74598738"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78612740"
 ---
 # <a name="handling-postbacks-from-a-popup-control-without-an-updatepanel-c"></a>Zpracování postbacků ovládacího prvku PopupControl bez ovládacího prvku UpdatePanel (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 PopupControl Extender v sadě nástrojů AJAX Control Toolkit nabízí snadný způsob, jak aktivovat automaticky otevírané okno v případě, že je aktivován jakýkoli jiný ovládací prvek. Pokud dojde k postbacku na takovém panelu a na stránce je několik panelů, je obtížné určit, na který panel byl kliknuto.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Při použití `PopupControl` s zpětným voláním, ale bez `UpdatePanel` na stránce, sada nástrojů Control Toolkit nenabízí způsob, jak určit, který prvek klienta aktivoval automaticky otevírané okno, které způsobilo zpětné odeslání. Malý štych ale poskytuje alternativní řešení pro tento scénář.
 

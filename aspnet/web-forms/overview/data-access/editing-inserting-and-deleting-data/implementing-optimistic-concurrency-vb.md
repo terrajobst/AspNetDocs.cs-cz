@@ -9,11 +9,11 @@ ms.assetid: 2646968c-2826-4418-b1d0-62610ed177e3
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/implementing-optimistic-concurrency-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 28c39fe2a290cc3a5b093fdd09de341630606137
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74629156"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78607910"
 ---
 # <a name="implementing-optimistic-concurrency-vb"></a>Implementace optimistického řízení souběžnosti (VB)
 
@@ -354,7 +354,7 @@ V případě porušení souběžnosti se žádost o odstranění uživatele zru�
 
 **Obrázek 20**: odstranění uživatele se zrušilo na straně porušení souběžnosti ([kliknutím zobrazíte obrázek v plné velikosti).](implementing-optimistic-concurrency-vb/_static/image58.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Příležitosti pro narušení souběžnosti existují v každé aplikaci, která umožňuje více souběžným uživatelům aktualizovat nebo odstraňovat data. Pokud se taková porušení neúčtují pro, když dva uživatelé současně aktualizují stejná data, která jsou v posledním zápisu "WINS", přepíše změny provedené ostatními uživateli. Vývojáři mohou případně implementovat buď optimistické, nebo pesimistické řízení souběžnosti. Optimistické řízení souběžnosti předpokládá, že narušení souběžnosti jsou zřídka a jednoduše nepovoluje příkaz Update nebo DELETE, který by představoval narušení souběžnosti. Pesimistické řízení souběžnosti předpokládá, že narušení souběžnosti často a jednoduše odmítání aktualizace jednoho uživatele nebo příkazu k odstranění není přijatelné. Díky pesimistické kontrole souběžnosti aktualizace záznamů zahrnuje jejich uzamykání, což brání ostatním uživatelům v úpravách nebo odstraňování záznamu v době, kdy je uzamčen.
 

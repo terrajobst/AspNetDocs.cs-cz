@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
-title: Volání webového rozhraní API z Windows Phone 8 aplikace (C#) – ASP.NET 4.x
+title: Volání webového rozhraní API z aplikace Windows Phone 8 (C#)-ASP.NET 4. x
 author: rmcmurray
-description: 'Výukový program s kódem: Vytvoření aplikace ASP.NET Web API v ASP.NET 4.x, který obsahuje katalog knih, které mají aplikace Windows Phone 8.'
+description: 'Kurz s kódem: Vytvoření aplikace webového rozhraní API v ASP.NET v ASP.NET 4. x, která poskytuje katalog knih pro aplikaci Windows Phone 8.'
 ms.author: riande
 ms.date: 10/09/2013
 ms.custom: seoapril2019
@@ -10,186 +10,186 @@ ms.assetid: b9775f41-352a-4f82-baa6-23e95b342e20
 msc.legacyurl: /web-api/overview/mobile-clients/calling-web-api-from-a-windows-phone-8-application
 msc.type: authoredcontent
 ms.openlocfilehash: c5da14a6856f551343b6fb14f0aedc659e792f6b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65122081"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78614735"
 ---
 # <a name="calling-web-api-from-a-windows-phone-8-application-c"></a>Volání webového rozhraní API z aplikace pro Windows Phone 8 (C#)
 
-podle [Robert McMurray](https://github.com/rmcmurray)
+od [Robert blog](https://github.com/rmcmurray)
 
-V tomto kurzu se dozvíte, jak vytvořit kompletní scénář začátku do konce skládající se z aplikace ASP.NET Web API, která obsahuje katalog knih, které mají aplikace Windows Phone 8.
+V tomto kurzu se naučíte, jak vytvořit úplný kompletní scénář skládající se z aplikace ASP.NET Web API, která poskytuje katalog knih pro aplikaci Windows Phone 8.
 
 ### <a name="overview"></a>Přehled
 
-RESTful služeb, jako je ASP.NET Web API zjednodušit vytváření aplikací založených na protokolu HTTP pro vývojáře tím, že poskytuje abstrakci Architektura aplikace na straně serveru a na straně klienta. Místo vytváření vlastnickým protokolem založené na soket pro komunikaci, webové rozhraní API vývojářům jednoduše je potřeba publikovat metody požadavku HTTP pro svou aplikaci (například: GET, POST, PUT, DELETE), a vývojáři klientských aplikací můžou potřebují jenom využívat metody HTTP, které jsou nezbytné pro svou aplikaci.
+Služby RESTful, jako je ASP.NET webové rozhraní API, zjednodušují vytváření aplikací založených na protokolu HTTP pro vývojáře abstrakcí architektury pro aplikace na straně serveru a na straně klienta. Namísto vytváření proprietárního protokolu založeného na soketu pro komunikaci, vývojáři webového rozhraní API jednoduše potřebují publikovat požadavky HTTP pro svou aplikaci (například: GET, POST, PUT, DELETE) a klientské aplikace jenom potřebují spotřebovat. metody HTTP, které jsou nezbytné pro jejich aplikaci.
 
-V tomto kurzu začátku do konce se dozvíte, jak pomocí webového rozhraní API k vytvoření následující projekty:
+V tomto uceleném kurzu se naučíte, jak pomocí webového rozhraní API vytvořit následující projekty:
 
-- V [první části tohoto kurzu](#STEP1), vytvoříte aplikaci rozhraní ASP.NET Web API, která podporuje všechny operace vytvoření, čtení, aktualizace a odstranění (CRUD) ke správě adresáře katalogu. Tato aplikace bude používat [ukázkový soubor XML (books.xml)](https://msdn.microsoft.com/library/windows/desktop/ms762271.aspx) z webu MSDN.
-- V [druhé části tohoto kurzu](#STEP2), vytvoříte interaktivní aplikace Windows Phone 8, která načte data z aplikace webového rozhraní API.
+- V [první části tohoto kurzu](#STEP1)vytvoříte aplikaci webového rozhraní API ASP.NET, která bude podporovat všechny operace vytvoření, čtení, aktualizace a odstranění (CRUD) pro správu katalogu knih. Tato aplikace použije [ukázkový soubor XML (Books. XML)](https://msdn.microsoft.com/library/windows/desktop/ms762271.aspx) z MSDN.
+- V [druhé části tohoto kurzu](#STEP2)vytvoříte interaktivní aplikaci Windows Phone 8, která načte data z vaší aplikace webového rozhraní API.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
-- Visual Studio 2013 with nainstalovánu sadu Windows Phone 8 SDK
-- Windows 8 nebo novější systém 64-bit s nainstalovanou technologii Hyper-V
-- Seznam dalších požadavcích najdete v tématu *požadavky na systém* části na [Windows Phone SDK 8.0](https://www.microsoft.com/download/details.aspx?id=35471) stránce pro stažení.
+- Visual Studio 2013 s nainstalovanou sadou Windows Phone 8 SDK
+- Windows 8 nebo novější v 64 systému s nainstalovanou technologií Hyper-V
+- Seznam dalších požadavků najdete v části *požadavky na systém* na stránce pro stažení [sady Windows Phone SDK 8,0](https://www.microsoft.com/download/details.aspx?id=35471) .
 
 > [!NOTE]
-> Pokud se chystáte otestovat připojení mezi webovým rozhraním API a projekty pro Windows Phone 8 v místním systému, budete muset postupujte podle pokynů *[připojení k rozhraní API webové aplikace v místním emulátorem Windows Phone 8 Počítač](https://go.microsoft.com/fwlink/?LinkId=324014)* článku nastavte testovací prostředí.
+> Pokud budete testovat připojení mezi webovým rozhraním API a Windows Phone 8 projektů v místním systému, budete muset postupovat podle pokynů v článku *[připojení emulátoru Windows Phone 8 k webovým aplikacím API v místním počítači](https://go.microsoft.com/fwlink/?LinkId=324014)* a nastavení testovacího prostředí.
 
 <a id="STEP1"></a>
-### <a name="step-1-creating-the-web-api-bookstore-project"></a>Krok 1: Vytvoření webového rozhraní API knihkupectví projektu
+### <a name="step-1-creating-the-web-api-bookstore-project"></a>Krok 1: vytvoření projektu Bookstore webového rozhraní API
 
-Prvním krokem tohoto kurzu začátku do konce, je vytvořit projekt webového rozhraní API, která podporuje všechny operace CRUD; Všimněte si, že přidáte projekt aplikace Windows Phone k tomuto řešení v [kroku 2](#STEP2) tohoto kurzu.
+Prvním krokem tohoto uceleného kurzu je vytvoření projektu webového rozhraní API, který podporuje všechny operace CRUD. Všimněte si, že do tohoto řešení přidáte projekt Windows Phone aplikace v [kroku 2](#STEP2) tohoto kurzu.
 
-1. Otevřít **Visual Studio 2013**.
-2. Klikněte na tlačítko **souboru**, pak **nové**a potom **projektu**.
-3. Když **nový projekt** se zobrazí dialogové okno, rozbalte položku **nainstalováno**, pak **šablony**, pak **Visual C#** a pak **Webové**.
+1. Otevřete **Visual Studio 2013**.
+2. Klikněte na **soubor**, **Nový**a pak na **projekt**.
+3. Po zobrazení dialogového okna **Nový projekt** rozbalte položku **nainstalováno**, potom **šablony**, **C#vizuál**a pak možnost **Web**.
 
    | [![](calling-web-api-from-a-windows-phone-8-application/_static/image2.png)](calling-web-api-from-a-windows-phone-8-application/_static/image1.png) |
    |-----------------------------------------------------------------------------------------------------------------------------------------------------|
-   |                                                                Klikněte na obrázek rozbalení                                                                |
+   |                                                                Rozbalte kliknutím na obrázek.                                                                |
 
-4. Zvýrazněte **webová aplikace ASP.NET**, zadejte **knihkupectví** pro název projektu a pak klikněte na tlačítko **OK**.
-5. Když **nový projekt ASP.NET** dialogové okno se zobrazí, vyberte **webového rozhraní API** šablonu a pak klikněte na tlačítko **OK**.
+4. Zvýrazněte **ASP.NET webová aplikace**, jako název projektu zadejte **Bookstore** a pak klikněte na **OK**.
+5. Po zobrazení dialogového okna **Nový projekt ASP.NET** vyberte šablonu **webové rozhraní API** a pak klikněte na **OK**.
 
    | [![](calling-web-api-from-a-windows-phone-8-application/_static/image4.png)](calling-web-api-from-a-windows-phone-8-application/_static/image3.png) |
    |-----------------------------------------------------------------------------------------------------------------------------------------------------|
-   |                                                                Klikněte na obrázek rozbalení                                                                |
+   |                                                                Rozbalte kliknutím na obrázek.                                                                |
 
-6. Při otevření projektu webového rozhraní API, odeberte z projektu vzorku kontroleru:
+6. Po otevření projektu webového rozhraní API odeberte z projektu ukázkový kontroler:
 
-    1. Rozbalte **řadiče** složku v Průzkumníku řešení.
-    2. Klikněte pravým tlačítkem myši **ValuesController.cs** souboru a pak klikněte na tlačítko **odstranit**.
-    3. Klikněte na tlačítko **OK** po zobrazení výzvy potvrďte odstranění.
-7. Přidání datového souboru XML do projektu webového rozhraní API. Tento soubor obsahuje obsah knihkupectví katalogu:
+    1. Rozbalte složku **Controllers** v Průzkumníkovi řešení.
+    2. Klikněte pravým tlačítkem na soubor **ValuesController.cs** a pak klikněte na **Odstranit**.
+    3. Po zobrazení výzvy k potvrzení odstranění klikněte na **OK** .
+7. Přidejte datový soubor XML do projektu webového rozhraní API; Tento soubor obsahuje obsah katalogu Bookstore:
 
-   1. Klikněte pravým tlačítkem **aplikace\_Data** složku v Průzkumníku řešení klikněte **přidat**a potom klikněte na **nová položka**.
-   2. Když **přidat novou položku** dialogové okno se zobrazí, vyberte **soubor XML** šablony.
-   3. Název souboru **Books.xml**a potom klikněte na tlačítko **přidat**.
-   4. Když **Books.xml** otevření souboru, nahraďte kód v souboru XML ze vzorku **books.xml** soubor na webové stránce MSDN: 
+   1. V Průzkumníku řešení klikněte pravým tlačítkem na složku **aplikace\_data** a pak klikněte na **Přidat**a pak klikněte na **Nová položka**.
+   2. Jakmile se zobrazí dialogové okno **Přidat novou položku** , zvýrazněte šablonu **souboru XML** .
+   3. Pojmenujte soubor **Books. XML**a potom klikněte na **Přidat**.
+   4. Po otevření souboru **Books. XML** nahraďte kód v souboru souborem XML z ukázkových **knih. XML** na webu MSDN: 
 
        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample1.xml)]
    5. Uložte a zavřete soubor XML.
 
-8. Přidání knihkupectví modelu do projektu webového rozhraní API. Tento model obsahuje logiku pro aplikace knihkupectví vytvoření, čtení, aktualizace a odstranění (CRUD):
+8. Přidejte model Bookstore do projektu webového rozhraní API; Tento model obsahuje logiku vytváření, čtení, aktualizace a odstranění (CRUD) pro aplikaci Bookstore:
 
-   1. Klikněte pravým tlačítkem myši **modely** složku v Průzkumníku řešení klikněte **přidat**a potom klikněte na tlačítko **třídy**.
-   2. Když **přidat novou položku** dialogové okno se zobrazí, zadejte název souboru třídy **BookDetails.cs**a potom klikněte na tlačítko **přidat**.
-   3. Když **BookDetails.cs** otevření souboru, nahraďte kód v souboru následujícím kódem: 
+   1. V Průzkumníku řešení klikněte pravým tlačítkem na složku **modely** , potom klikněte na **Přidat**a potom klikněte na **Třída**.
+   2. Když se zobrazí dialogové okno **Přidat novou položku** , pojmenujte soubor třídy **BookDetails.cs**a pak klikněte na **Přidat**.
+   3. Po otevření souboru **BookDetails.cs** nahraďte kód v souboru následujícím kódem: 
 
        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample2.cs)]
-   4. Uložte a zavřete **BookDetails.cs** souboru.
+   4. Uložte a zavřete soubor **BookDetails.cs** .
 
-9. Přidáte kontroler knihkupectví do projektu webového rozhraní API:
+9. Přidejte kontroler Bookstore do projektu webového rozhraní API:
 
-   1. Klikněte pravým tlačítkem myši **řadiče** složku v Průzkumníku řešení klikněte **přidat**a potom klikněte na **řadič**.
-   2. Když **přidat vygenerované uživatelské rozhraní** se zobrazí dialogové okno, zvýrazněte **kontroler rozhraní Web API 2 – prázdný**a potom klikněte na tlačítko **přidat**.
-   3. Když **přidat kontroler** dialogové okno se zobrazí, zadejte název kontroleru **BooksController**a potom klikněte na tlačítko **přidat**.
-   4. Když **BooksController.cs** otevření souboru, nahraďte kód v souboru následujícím kódem: 
+   1. V Průzkumníku řešení klikněte pravým tlačítkem na složku **řadiče** a pak klikněte na **Přidat**a potom na **kontroler**.
+   2. Po zobrazení dialogového okna **Přidat generování uživatelského rozhraní** zvýrazněte možnost **KONTROLER webového rozhraní API 2 – prázdné**a pak klikněte na tlačítko **Přidat**.
+   3. Po zobrazení dialogového okna **Přidat řadič** pojmenujte kontrolér **BooksController**a pak klikněte na **Přidat**.
+   4. Po otevření souboru **BooksController.cs** nahraďte kód v souboru následujícím kódem: 
 
        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample3.cs)]
-   5. Uložte a zavřete **BooksController.cs** souboru.
+   5. Uložte a zavřete soubor **BooksController.cs** .
 
-10. Sestavení aplikace webového rozhraní API ke kontrole chyb.
+10. Sestavte aplikaci webového rozhraní API, aby kontrolovala chyby.
 
 <a id="STEP2"></a>
-### <a name="step-2-adding-the-windows-phone-8-bookstore-catalog-project"></a>Krok 2: Přidání projektu Windows Phone 8 knihkupectví katalogu
+### <a name="step-2-adding-the-windows-phone-8-bookstore-catalog-project"></a>Krok 2: Přidání projektu katalogu Bookstore pro Windows Phone 8
 
-Dalším krokem tohoto scénáře začátku do konce je vytvoření katalogu aplikací pro Windows Phone 8. Tato aplikace bude používat *aplikace Windows Phone datové vazby* šablonu pro výchozí uživatelské rozhraní a bude používat aplikace webového rozhraní API, kterou jste vytvořili v [kroku 1](#STEP1) tohoto kurzu jako zdroj dat.
+Dalším krokem tohoto kompletního scénáře je vytvoření aplikace katalogu pro Windows Phone 8. Tato aplikace bude používat šablonu *aplikace Windows Phone Data Bound* pro výchozí uživatelské rozhraní a bude používat aplikaci webového rozhraní API, kterou jste vytvořili v [kroku 1](#STEP1) tohoto kurzu jako zdroj dat.
 
-1. Klikněte pravým tlačítkem myši **knihkupectví** řešení v v Průzkumníku řešení klikněte **přidat**a potom **nový projekt**.
-2. Když **nový projekt** se zobrazí dialogové okno, rozbalte položku **nainstalováno**, pak **Visual C#** a potom **Windows Phone**.
-3. Zvýrazněte **aplikace Windows Phone datové vazby**, zadejte **BookCatalog** pro název a pak klikněte na tlačítko **OK**.
-4. Přidejte balíček Json.NET NuGet **BookCatalog** projektu:
+1. V Průzkumníku řešení klikněte pravým tlačítkem na řešení **Bookstore** a pak klikněte na **Přidat**a **Nový projekt**.
+2. Po zobrazení dialogového okna **Nový projekt** rozbalte položku **nainstalováno**, **C#vizuál**a poté **Windows Phone**.
+3. Zvýrazněte **Windows Phone aplikace datové vazby**, jako název zadejte **BookCatalog** a pak klikněte na **OK**.
+4. Přidejte do projektu **BookCatalog** balíček NuGet JSON.NET:
 
-    1. Klikněte pravým tlačítkem na **odkazy** pro **BookCatalog** projektu v Průzkumníku řešení a potom klikněte na tlačítko **spravovat balíčky NuGet**.
-    2. Když **spravovat balíčky NuGet** se zobrazí dialogové okno, rozbalte **Online** části a zvýraznit **nuget.org**.
-    3. Zadejte **Json.NET** do vyhledávacího pole a klikněte na ikonu hledání.
-    4. Zvýrazněte **Json.NET** ve výsledcích hledání a pak klikněte na tlačítko **nainstalovat**.
-    5. Po dokončení instalace, klikněte na tlačítko **Zavřít**.
-5. Přidat **BookDetails** model k **BookCatalog** projektu; obsahuje obecný model knihkupectví třídy:
+    1. V Průzkumníku řešení klikněte pravým tlačítkem na **odkazy** pro projekt **BookCatalog** a pak klikněte na **Spravovat balíčky NuGet**.
+    2. Po zobrazení dialogového okna **Spravovat balíčky NuGet** rozbalte oddíl **Online** a zvýrazněte **NuGet.org**.
+    3. Do vyhledávacího pole zadejte **JSON.NET** a klikněte na ikonu hledání.
+    4. Ve výsledcích hledání zvýrazněte **JSON.NET** a pak klikněte na **nainstalovat**.
+    5. Po dokončení instalace klikněte na **Zavřít**.
+5. Přidejte model **BookDetails** do projektu **BookCatalog** ; obsahuje obecný model třídy Bookstore:
 
-   1. Klikněte pravým tlačítkem myši **BookCatalog** projektu v Průzkumníku řešení a potom klikněte na **přidat**a potom klikněte na tlačítko **novou složku**.
-   2. Název nové složky **modely**.
-   3. Klikněte pravým tlačítkem myši **modely** složku v Průzkumníku řešení klikněte **přidat**a potom klikněte na tlačítko **třídy**.
-   4. Když **přidat novou položku** dialogové okno se zobrazí, zadejte název souboru třídy **BookDetails.cs**a potom klikněte na tlačítko **přidat**.
-   5. Když **BookDetails.cs** otevření souboru, nahraďte kód v souboru následujícím kódem: 
+   1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **BookCatalog** , pak klikněte na **Přidat**a potom na **Nová složka**.
+   2. Pojmenujte nové **modely**složek.
+   3. V Průzkumníku řešení klikněte pravým tlačítkem na složku **modely** , potom klikněte na **Přidat**a potom klikněte na **Třída**.
+   4. Když se zobrazí dialogové okno **Přidat novou položku** , pojmenujte soubor třídy **BookDetails.cs**a pak klikněte na **Přidat**.
+   5. Po otevření souboru **BookDetails.cs** nahraďte kód v souboru následujícím kódem: 
 
        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample4.cs)]
-   6. Uložte a zavřete **BookDetails.cs** souboru.
+   6. Uložte a zavřete soubor **BookDetails.cs** .
 
-6. Aktualizace **MainViewModel.cs** třídy, aby obsahoval funkce pro komunikaci s aplikací knihkupectví webového rozhraní API:
+6. Aktualizujte třídu **MainViewModel.cs** tak, aby zahrnovala funkce pro komunikaci s aplikací webového rozhraní API pro Bookstore:
 
-   1. Rozbalte **modely ViewModels** složku v Průzkumníku řešení a poté dvojitým kliknutím **MainViewModel.cs** souboru.
-   2. Když **MainViewModel.cs** otevření souboru nahraďte kód v souboru následujícím kódem, mějte na paměti, že budete muset aktualizovat hodnotu `apiUrl` konstantní pomocí příkazu skutečnou adresu URL webového rozhraní API: 
+   1. Rozbalte složku **ViewModels** v Průzkumníku řešení a dvakrát klikněte na soubor **MainViewModel.cs** .
+   2. Po otevření souboru **MainViewModel.cs** nahraďte kód v souboru následujícím kódem: Všimněte si, že budete muset aktualizovat hodnotu `apiUrl` konstanty se skutečnou adresou URL webového rozhraní API: 
 
        [!code-csharp[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample5.cs)]
-   3. Uložte a zavřete **MainViewModel.cs** souboru.
+   3. Uložte a zavřete soubor **MainViewModel.cs** .
 
-7. Aktualizace **MainPage.xaml** soubor upravit název aplikace:
+7. Chcete-li přizpůsobit název aplikace, aktualizujte soubor **MainPage. XAML** :
 
-   1. Dvakrát klikněte **MainPage.xaml** souboru v Průzkumníku řešení.
-   2. Když **MainPage.xaml** soubor otevřít, vyhledejte následující řádky kódu: 
+   1. Dvakrát klikněte na soubor **MainPage. XAML** v Průzkumníkovi řešení.
+   2. Po otevření souboru **MainPage. XAML** vyhledejte následující řádky kódu: 
 
        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample6.xml)]
-   3. Nahraďte tyto řádky s následujícími možnostmi: 
+   3. Nahraďte tyto řádky následujícím způsobem: 
 
        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample7.xml)]
-   4. Uložte a zavřete **MainPage.xaml** souboru.
+   4. Uložte a zavřete soubor **MainPage. XAML** .
 
-8. Aktualizace **DetailsPage.xaml** soubor pro přizpůsobení zobrazených položek:
+8. Chcete-li upravit zobrazené položky, aktualizujte soubor **DetailsPage. XAML** :
 
-   1. Dvakrát klikněte **DetailsPage.xaml** souboru v Průzkumníku řešení.
-   2. Když **DetailsPage.xaml** soubor otevřít, vyhledejte následující řádky kódu: 
+   1. Dvakrát klikněte na soubor **DetailsPage. XAML** v Průzkumníkovi řešení.
+   2. Po otevření souboru **DetailsPage. XAML** vyhledejte následující řádky kódu: 
 
        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample8.xml)]
-   3. Nahraďte tyto řádky s následujícími možnostmi: 
+   3. Nahraďte tyto řádky následujícím způsobem: 
 
        [!code-xml[Main](calling-web-api-from-a-windows-phone-8-application/samples/sample9.xml)]
-   4. Uložte a zavřete **DetailsPage.xaml** souboru.
+   4. Uložte a zavřete soubor **DetailsPage. XAML** .
 
-9. Vytvoření aplikace Windows Phone ke kontrole chyb.
+9. Sestavte aplikaci Windows Phone pro kontrolu chyb.
 
-### <a name="step-3-testing-the-end-to-end-solution"></a>Krok 3: Testování – ucelené řešení
+### <a name="step-3-testing-the-end-to-end-solution"></a>Krok 3: testování kompletního řešení
 
-Jak je uvedeno v *požadavky* projekty části tohoto kurzu, a to při testování připojení mezi webovým rozhraním API a Windows Phone 8 v místním systému, budete muset postupovat podle pokynů *[ Připojení k rozhraní API webové aplikace v místním počítači emulátorem Windows Phone 8](https://go.microsoft.com/fwlink/?LinkId=324014)* článku nastavte testovací prostředí.
+Jak je uvedeno v části *požadavky* v tomto kurzu, když testujete připojení mezi WEBOVÝm rozhraním api a Windows Phone 8 projektů v místním systému, budete muset postupovat podle pokynů v článku *[připojení emulátoru Windows Phone 8 k webovým aplikacím API v místním počítači](https://go.microsoft.com/fwlink/?LinkId=324014)* , abyste mohli nastavit testovací prostředí.
 
-Jakmile budete mít testování prostředí nakonfigurované, je potřeba nastavit jako spouštěný projekt aplikace Windows Phone. Uděláte to tak, zvýrazněte **BookCatalog** aplikace v Průzkumníku řešení a pak klikněte na tlačítko **nastavit jako spouštěný projekt**:
+Po nakonfigurování testovacího prostředí budete muset nastavit aplikaci Windows Phone jako spouštěný projekt. Provedete to tak, že v Průzkumníku řešení zvýrazníte aplikaci **BookCatalog** a pak kliknete na **nastavit jako spouštěný projekt**:
 
 | [![](calling-web-api-from-a-windows-phone-8-application/_static/image6.png)](calling-web-api-from-a-windows-phone-8-application/_static/image5.png) |
 | --- |
-| Klikněte na obrázek rozbalení |
+| Rozbalte kliknutím na obrázek. |
 
-Pokud stisknete klávesu F5, Visual Studio se spustí i Windows Phone Emulator, který se zobrazí &quot;počkejte&quot; zpráva, zatímco data aplikací se načte z vašeho webového rozhraní API:
+Když stisknete klávesu F5, Visual Studio spustí emulátor Windows Phone, který zobrazí &quot;při načítání dat aplikace z webového rozhraní API počkat&quot; zprávu:
 
 | [![](calling-web-api-from-a-windows-phone-8-application/_static/image8.png)](calling-web-api-from-a-windows-phone-8-application/_static/image7.png) |
 | --- |
-| Klikněte na obrázek rozbalení |
+| Rozbalte kliknutím na obrázek. |
 
-Pokud všechno proběhne úspěšně, měli byste vidět katalogu zobrazí:
+Pokud je všechno úspěšné, měli byste vidět zobrazený katalog:
 
 | [![](calling-web-api-from-a-windows-phone-8-application/_static/image10.png)](calling-web-api-from-a-windows-phone-8-application/_static/image9.png) |
 | --- |
-| Klikněte na obrázek rozbalení |
+| Rozbalte kliknutím na obrázek. |
 
-Pokud klepnete na libovolný název knihy, aplikace se zobrazí popis knihy:
+Pokud klepnete na název knihy, aplikace zobrazí popis knihy:
 
 | [![](calling-web-api-from-a-windows-phone-8-application/_static/image12.png)](calling-web-api-from-a-windows-phone-8-application/_static/image11.png) |
 | --- |
-| Klikněte na obrázek rozbalení |
+| Rozbalte kliknutím na obrázek. |
 
-Pokud aplikace nemůže komunikovat s webové rozhraní API, zobrazí se chybová zpráva:
+Pokud aplikace nemůže komunikovat s webovým rozhraním API, zobrazí se chybová zpráva:
 
 | [![](calling-web-api-from-a-windows-phone-8-application/_static/image14.png)](calling-web-api-from-a-windows-phone-8-application/_static/image13.png) |
 | --- |
-| Klikněte na obrázek rozbalení |
+| Rozbalte kliknutím na obrázek. |
 
-Pokud klepnete na chybovou zprávu, zobrazí se další podrobnosti o chybě:
+Pokud klepnete na chybovou zprávu, zobrazí se další podrobnosti o této chybě:
 
 | [![](calling-web-api-from-a-windows-phone-8-application/_static/image16.png)](calling-web-api-from-a-windows-phone-8-application/_static/image15.png) |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------|
-|                                                                 Klikněte na obrázek rozbalení                                                                 |
+|                                                                 Rozbalte kliknutím na obrázek.                                                                 |

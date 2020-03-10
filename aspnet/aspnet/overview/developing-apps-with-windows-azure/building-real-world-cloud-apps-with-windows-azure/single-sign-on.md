@@ -9,11 +9,11 @@ ms.assetid: 7d82d5e9-0619-4f22-9e03-32a6d52940a5
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/single-sign-on
 msc.type: authoredcontent
 ms.openlocfilehash: 1ca93cce22487295a24aae95437b3e69dfc5b504
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457138"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78617444"
 ---
 # <a name="single-sign-on-building-real-world-cloud-apps-with-azure"></a>Jednotné přihlašování (vytváření skutečných cloudových aplikací s Azure)
 
@@ -68,7 +68,7 @@ Na portálu pro správu klikněte na kartu Active Directory.
 
 Pro svůj účet Azure máte automaticky jednoho tenanta Azure AD a můžete kliknout na tlačítko **Přidat** v dolní části stránky a vytvořit další adresáře. Můžete chtít jeden pro testovací prostředí a jeden pro produkční prostředí, například. Zamyslete se nad tím, co pojmenujte nový adresář. Pokud pro tento adresář použijete své jméno a potom pro jednoho z nich použijete své jméno, může to být matoucí.
 
-![Přidat adresář](single-sign-on/_static/image6.png)
+![Přidání adresáře](single-sign-on/_static/image6.png)
 
 Portál má úplnou podporu pro vytváření, odstraňování a správu uživatelů v rámci tohoto prostředí. Pokud například chcete přidat uživatele, přejděte na kartu **Uživatelé** a klikněte na tlačítko **Přidat uživatele** .
 
@@ -146,7 +146,7 @@ Visual Studio umožňuje opravdu snadno vytvořit aplikaci, která používá Az
 
 Při vytváření nové aplikace ASP.NET, MVC nebo webových formulářů, je výchozí metoda ověřování ASP.NET Identity. Pokud ho chcete změnit na Azure AD, klikněte na tlačítko **změnit ověřování** .
 
-![Změnit ověřování](single-sign-on/_static/image23.png)
+![Změna ověřování](single-sign-on/_static/image23.png)
 
 Vyberte účty organizace, zadejte název domény a pak vyberte jednotné přihlašování.
 
@@ -175,9 +175,9 @@ V této kapitole jste viděli, že Azure Active Directory, Visual Studio a ASP.N
 [Další kapitola](data-storage-options.md) si vyhledá možnosti úložiště dat dostupné pro cloudovou aplikaci.
 
 <a id="resources"></a>
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 
-Další informace naleznete v následujících zdrojích:
+Další informace najdete v následujících zdrojích:
 
 - [Azure Active Directory dokumentaci](https://docs.microsoft.com/azure/active-directory/). Stránka portálu pro dokumentaci k Azure AD na webu windowsazure.com. Podrobné kurzy najdete v části **vývoj** .
 - [Multi-Factor Authentication Azure](https://docs.microsoft.com/azure/multi-factor-authentication/). Stránka portálu pro dokumentaci k Multi-Factor Authentication v Azure.

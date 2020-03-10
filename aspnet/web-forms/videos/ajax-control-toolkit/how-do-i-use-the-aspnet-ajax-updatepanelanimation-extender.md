@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender
-title: '[Postup:] Použít technologie ASP.NET AJAX – Extender UpdatePanelAnimation? | Dokumenty Microsoft'
+title: '[Postupy:] Chcete použít ASP.NET AJAX UpdatePanelAnimation Extender? | Dokumenty Microsoft'
 author: JoeStagner
-description: Přidáním animace aktualizaci stránky, budeme informovat uživatele, ke kterým dochází při aktualizaci a když se dokončil. UpdatePanelAnimation extender...
+description: Přidáním animace do částečné aktualizace stránky můžeme uživatele informovat, když dojde k aktualizaci a po jejím dokončení. Zařízení UpdatePanelAnimation a...
 ms.author: riande
 ms.date: 07/16/2007
 ms.assetid: 56f5ec0f-38f7-4ebc-90d9-9baf0c693bd4
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender
 msc.type: video
 ms.openlocfilehash: 8e17b21c40df5f8f687059e0daa9028a3a823148
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396496"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638976"
 ---
-# <a name="how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender"></a>[Postup:] Použít technologie ASP.NET AJAX – Extender UpdatePanelAnimation?
+# <a name="how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender"></a>[Postupy:] Chcete použít ASP.NET AJAX UpdatePanelAnimation Extender?
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-Přidáním animace aktualizaci stránky, budeme informovat uživatele, ke kterým dochází při aktualizaci a když se dokončil. UpdatePanelAnimation extender přidá do ovládacího prvku UpdatePanel technologie ASP.NET AJAX framework bohaté animace klíčových rozšíření ASP.NET AJAX, který využívá efekty animace. Toto video ukazuje, jak můžete pro ně definovat pořadí účinky UpdatePanelAnimation a jak můžete podrobně upravit animace s použitím ScriptAction definice.
+Přidáním animace do částečné aktualizace stránky můžeme uživatele informovat, když dojde k aktualizaci a po jejím dokončení. Rozšiřující objekt UpdatePanelAnimation přidává animační efekty do ovládacího prvku UpdatePanel ASP.NET AJAX, který využívá bohatých animačních rozhraní základních rozšíření ASP.NET AJAX. Toto video ukazuje, jak můžete definovat sekvenci efektů pro UpdatePanelAnimation a jak můžete vyladit animaci pomocí definicí ScriptAction.
 
-[&#9654;Podívejte se na video (20 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender)
+[&#9654;Sledovat video (20 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-updatepanelanimation-extender)
 
 > [!div class="step-by-step"]
 > [Předchozí](how-do-i-use-the-aspnet-ajax-slideshow-extender.md)
-> [další](how-do-i-the-ajax-toolkit-reorder-control.md)
+> [Další](how-do-i-the-ajax-toolkit-reorder-control.md)

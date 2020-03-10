@@ -1,186 +1,186 @@
 ---
 uid: web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
-title: Vytvoření zabezpečené aplikace webových formulářů ASP.NET s registrací uživatele, e-mailem potvrzení a resetováním hesla (C#) | Dokumentace Microsoftu
+title: Vytvoření zabezpečené aplikace webových formulářů ASP.NET pomocí registrace uživatele, potvrzení e-mailu a resetování hesla (C#) | Microsoft Docs
 author: Erikre
-description: V tomto kurzu se dozvíte, jak vytvořit aplikaci webových formulářů ASP.NET s registrací uživatele, e-mailové potvrzení a resetování hesla pomocí člen ASP.NET Identity...
+description: V tomto kurzu se dozvíte, jak vytvořit aplikaci webových formulářů ASP.NET s registrací uživatele, potvrzením e-mailu a resetováním hesla pomocí člena ASP.NET Identity...
 ms.author: riande
 ms.date: 10/02/2014
 ms.assetid: 0a8d6044-5fab-4213-82d6-5618d5601358
 msc.legacyurl: /web-forms/overview/security/create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset
 msc.type: authoredcontent
 ms.openlocfilehash: af3653bc164810126bc3bf8f1b1794d75642d807
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133807"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78625151"
 ---
 # <a name="create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset-c"></a>Vytvoření zabezpečené aplikace webových formulářů ASP.NET s registrací uživatele, potvrzením e-mailu a resetováním hesla (C#)
 
-by [Erik Reitan](https://github.com/Erikre)
+od [Erik Reitan](https://github.com/Erikre)
 
-> V tomto kurzu se dozvíte, jak vytvořit aplikaci webových formulářů ASP.NET s registrací uživatele, e-mailové potvrzení a resetování hesla pomocí systém členství technologie ASP.NET Identity. Tento kurz je založený na Rick Anderson [kurz ASP.NET MVC](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md).
+> V tomto kurzu se dozvíte, jak vytvořit aplikaci webových formulářů ASP.NET s registrací uživatele, potvrzením e-mailu a resetováním hesla pomocí systému členství v ASP.NET Identity. Tento kurz vychází z [kurzu MVC](../../../mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset.md)pro Rick Anderson.
 
 ## <a name="introduction"></a>Úvod
 
-Tento kurz vás provede kroky potřebné k vytvoření aplikace webových formulářů ASP.NET pomocí sady Visual Studio a technologii ASP.NET 4.5 pro vytvoření zabezpečené aplikace webových formulářů s registrací uživatele, e-mailové potvrzení a resetováním hesla.
+Tento kurz vás provede kroky potřebnými k vytvoření aplikace webových formulářů ASP.NET pomocí sady Visual Studio a ASP.NET 4,5 k vytvoření zabezpečené aplikace webových formulářů s registrací uživatelů, potvrzením e-mailu a resetováním hesla.
 
-### <a name="tutorial-tasks-and-information"></a>Kurz úkoly a informace:
+### <a name="tutorial-tasks-and-information"></a>Úlohy a informace kurzu:
 
-- [Vytvoření ASP.NET Web Forms app](#createWebForms)
-- [Hook Up SendGrid](#SG)
-- [Vyžadovat e-mailové potvrzení před přihlášení](#require)
-- [Obnovení hesla a obnovení](#reset)
-- [Znovu poslat potvrzovací odkaz e-mailu](#rsend)
+- [Vytvoření aplikace webových formulářů v ASP.NET](#createWebForms)
+- [Připojit SendGrid](#SG)
+- [Vyžadovat před přihlášením e-mailové potvrzení](#require)
+- [Obnovení a resetování hesla](#reset)
+- [Poslat znovu odkaz na potvrzení e-mailu](#rsend)
 - [Řešení potíží s aplikací](#dbg)
-- [Další prostředky](#addRes)
+- [Další zdroje](#addRes)
 
 <a id="createWebForms"></a>
-## <a name="create-an-aspnet-web-forms-app"></a>Vytvoření aplikace ASP.NET Web Forms
+## <a name="create-an-aspnet-web-forms-app"></a>Vytvoření aplikace webových formulářů v ASP.NET
 
-Začněte tím, že instalaci a používání [Visual Studio Express 2013 for Web](https://go.microsoft.com/fwlink/?LinkId=299058) nebo [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Nainstalujte [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) nebo vyšší také.
+Začněte instalací a spuštěním [Visual Studio Express 2013 pro web](https://go.microsoft.com/fwlink/?LinkId=299058) nebo [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566). Nainstalujte taky [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) nebo vyšší.
 
 > [!NOTE]
-> Upozornění: Je nutné nainstalovat [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) nebo vyšší, k dokončení tohoto kurzu.
+> Upozornění: k dokončení tohoto kurzu je nutné nainstalovat [Visual Studio 2013 Update 3](https://go.microsoft.com/fwlink/?LinkId=390465) nebo vyšší.
 
-1. Vytvoření nového projektu (**souboru**  - &gt; **nový projekt**) a vyberte **webová aplikace ASP.NET** šablony a nejnovější rozhraní .NET Framework verze z **nový projekt** dialogové okno.
-2. Z **nový projekt ASP.NET** dialogové okno, vyberte **webových formulářů** šablony. Ponechte výchozí ověřování jako **jednotlivé uživatelské účty**. Pokud chcete hostovat aplikace ve službě Azure, nechte **hostovat v cloudu** zaškrtávací políčko zaškrtnuto.   
- Potom klikněte na **OK** k vytvoření nového projektu.  
-    ![Dialogové okno Nový projekt ASP.NET](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image1.png)
-3. Povolte vrstvy SSL (Secure Sockets) pro projekt. Postupujte podle kroků uvedených v **povolit šifrování SSL pro projekt** část [Začínáme s webovými formuláři sérii](../getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md#SSLWebForms).
-4. Spuštění aplikace, klikněte na tlačítko **zaregistrovat** propojit a registraci nového uživatele. V tomto okamžiku je pouze ověření na e-mailu na základě [[EmailAddress]](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) atribut zajistit e-mailovou adresu ve správném formátu. Budete upravovat kód pro přidání e-mailové potvrzení. Zavřete okno prohlížeče.
-5. V **Průzkumníka serveru** sady Visual Studio (**zobrazení**  - &gt; **Průzkumníka serveru**), přejděte na **Connections\ dat DefaultConnection\Tables\AspNetUsers**, klikněte pravým tlačítkem myši a vyberte **Otevřít definici tabulky**. 
+1. Vytvořte nový projekt (**soubor** -&gt; **Nový projekt**) a v dialogovém okně **Nový projekt** vyberte šablonu **Webová aplikace ASP.NET** a nejnovější verzi .NET Framework.
+2. V dialogovém okně **Nový projekt ASP.NET** vyberte šablonu **webových formulářů** . U **jednotlivých uživatelských účtů**ponechte výchozí ověřování. Pokud chcete aplikaci hostovat v Azure, ponechejte zaškrtnuté políčko **hostitel v cloudu** .   
+ Potom kliknutím na tlačítko **OK** vytvořte nový projekt.  
+    Dialogové okno ![nový projekt v ASP.NET](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image1.png)
+3. Povolte SSL (Secure Sockets Layer) (SSL) pro projekt. Postupujte podle kroků, které jsou k dispozici v části **povolení SSL pro projekt** v Začínáme v rámci [řady kurzů pro webové formuláře](../getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md#SSLWebForms).
+4. Spusťte aplikaci, klikněte na odkaz **zaregistrovat** a zaregistrujte nového uživatele. V tomto okamžiku je jediným ověřením e-mailu založené na atributu [[EmailAddress]](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.emailaddressattribute(v=vs.110).aspx) , aby byla e-mailová adresa ve správném formátu. Úpravou kódu budete moct přidat potvrzení e-mailu. Zavřete okno prohlížeče.
+5. V **Průzkumník serveru** sady Visual Studio (**zobrazení** -&gt; **Průzkumník serveru**) přejděte na **Connections\DefaultConnection\Tables\AspNetUsers dat**, klikněte pravým tlačítkem a vyberte možnost **Otevřít definici tabulky**. 
 
-    Na následujícím obrázku `AspNetUsers` schéma tabulky:
+    Následující obrázek ukazuje schéma `AspNetUsers` tabulky:
 
     ![Schéma tabulky AspNetUsers](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image2.png)
-6. V **Průzkumníka serveru**, klikněte pravým tlačítkem na **AspNetUsers** tabulce a vybrat **zobrazit Data tabulky**.  
+6. V **Průzkumník serveru**klikněte pravým tlačítkem myši na tabulku **AspNetUsers** a vyberte možnost **Zobrazit data tabulky**.  
   
-    ![AspNetUsers tabulkových dat](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image3.png)  
- V tomto okamžiku není potvrzena e-mailu pro registrovaného uživatele.
-7. Klikněte na řádek a vyberte Odstranit pro odstranění uživatele. Budete v dalším kroku znovu přidat tuto e-mailu a odešlete zprávu potvrzení e-mailovou adresu.
+    ![Data tabulky AspNetUsers](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image3.png)  
+ V tomto okamžiku nebyl potvrzen e-mail pro registrovaného uživatele.
+7. Pokud chcete uživatele odstranit, klikněte na řádek a vyberte Odstranit. Tento e-mail přidáte znovu v dalším kroku a odešlete potvrzovací zprávu na e-mailovou adresu.
 
 ## <a name="email-confirmation"></a>Potvrzení e-mailu
 
-Je osvědčeným postupem je potvrďte e-mailu při registraci nového uživatele k ověření, nejsou někdo zosobnění (to znamená, že se ještě nezaregistrovali někoho jiného e-mailu). Předpokládejme, že jste měli diskusní fórum, chcete zabránit `"bob@cpandl.com"` registroval jako `"joe@contoso.com"`. Bez potvrzení e-mailu `"joe@contoso.com"` může získat nežádoucí e-mailu vaší aplikace. Předpokládejme, že Bob omylem zaregistrovaný jako `"bib@cpandl.com"` a kdyby si všimli, že nebudou moci používat obnovení hesla, protože aplikace nemá správnou e-mailovou. Potvrzení e-mailu zajišťuje pouze omezenou ochranu před roboty a neposkytuje ochranu z určené odesílateli nevyžádané pošty.
+Je osvědčeným postupem ověření e-mailu při registraci nového uživatele, aby se ověřilo, že nezosobňuje někoho jiného (tj. není zaregistrovaný v e-mailu někoho jiného). Předpokládejme, že máte diskuzní fórum, chcete zabránit `"bob@cpandl.com"` registraci jako `"joe@contoso.com"`. Bez potvrzení e-mailu `"joe@contoso.com"` možné z vaší aplikace získat nechtěný e-mail. Předpokládejme, že se Bob omylem zaregistrovali jako `"bib@cpandl.com"` a jste si ho všimli, ale nemohlo použít obnovení hesla, protože aplikace nemá správný e-mail. Potvrzení e-mailu poskytuje jenom omezené ochrany z roboty a neposkytuje ochranu před určenými odesilateli nevyžádané pošty.
 
-Obvykle chcete novým uživatelům zabránit v účtování žádná data k webu předtím, než byl potvrzen e-mail, ve zprávě SMS nebo jiný mechanismus. V následujících částech budeme povolit e-mailové potvrzení a upravovat kód, který nově zaregistrovaný uživatelům zabránit v přihlašování až do svého e-mailu byl potvrzen. V tomto kurzu použijete e-mailové služby SendGrid.
+Obecně je vhodné zabránit novým uživatelům v posílání jakýchkoli dat na web před potvrzením e-mailu, textové zprávy SMS nebo jiného mechanismu. V níže uvedených částech povolíme e-mailové potvrzení a upravíte kód tak, aby se nově zaregistrovaní uživatelé nemohli přihlásit, dokud se nepotvrdí jejich e-maily. V tomto kurzu použijete e-mailovou službu SendGrid.
 
 <a id="SG"></a>
-## <a name="hook-up-sendgrid"></a>Připojení SendGrid
+## <a name="hook-up-sendgrid"></a>Připojit SendGrid
 
-SendGrid změnila jeho rozhraní API byla zapsána v tomto kurzu. Aktuální SendGrid pokyny najdete v tématu [SendGrid](http://sendgrid.com/) nebo [povolit obnovení potvrzení a heslo účtu](xref:security/authentication/accconfirm#enable-account-confirmation-and-password-recovery).
+SendGrid změnila rozhraní API od chvíle, kdy byl tento kurz napsán. Aktuální pokyny pro SendGrid najdete v tématu [SendGrid](http://sendgrid.com/) nebo [Povolení potvrzení účtu a obnovení hesla](xref:security/authentication/accconfirm#enable-account-confirmation-and-password-recovery).
 
-Tento kurz vysvětluje pouze přidání e-mailové oznámení prostřednictvím [SendGrid](http://sendgrid.com/), můžete poslat e-mailu pomocí protokolu SMTP a další mechanismy (naleznete v tématu [další prostředky](#addRes)).
+I když tento kurz ukazuje, jak přidat e-mailové oznámení prostřednictvím [SendGrid](http://sendgrid.com/), můžete posílat e-maily pomocí protokolu SMTP a dalších mechanismů (viz [Další zdroje informací](#addRes)).
 
-1. V sadě Visual Studio, otevřete **Konzola správce balíčků** (**nástroje**  - &gt; **Správce balíčků NuGet**  - &gt; **Konzola správce balíčků**) a zadejte následující příkaz:  
+1. V aplikaci Visual Studio otevřete **konzolu správce** balíčků (**nástroje** -&gt; správce **balíčků NuGet** -&gt; **konzole správce balíčků**) a zadejte následující příkaz:  
     `Install-Package SendGrid`
-2. Přejděte [registrační stránku Azure SendGrid](https://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/) a bezplatná registrace účtu SendGrid. Můžete také zaregistrovat si bezplatný účet SendGrid přímo na [Sendgridu lokality](http://www.sendgrid.com).
-3. Z **Průzkumníku řešení** otevřete *IdentityConfig.cs* soubor *aplikace\_Start* složky a přidejte následující kód zvýrazněné žlutou barvou na `EmailService` třída ke konfiguraci **SendGrid**:
+2. Přejdete na [stránku registrace Azure SendGrid](https://azure.microsoft.com/gallery/store/sendgrid/sendgrid-azure/) a zaregistrujete se na bezplatný účet SendGrid. Bezplatný účet SendGrid můžete také zaregistrovat přímo na [webu SendGrid](http://www.sendgrid.com).
+3. Z **Průzkumník řešení** otevřete soubor *IdentityConfig.cs* ve složce *App\_Start* a přidejte následující kód zvýrazněný žlutě do třídy `EmailService`, abyste mohli nakonfigurovat **SendGrid**:
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample1.cs?highlight=3,5,8-37)]
-4. Přidejte také následující `using` příkazy na začátek *IdentityConfig.cs* souboru: 
+4. Na začátek souboru *IdentityConfig.cs* přidejte také následující příkazy `using`: 
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample2.cs?highlight=1-4)]
-5. Pro zjednodušení této ukázku budete ukládat hodnoty účtu služby e-mailu v `appSettings` část *web.config* souboru. Přidejte následující kód XML zvýrazněné žlutou barvou na *web.config* soubor v kořenové složce vašeho projektu:
+5. Chcete-li tuto ukázku uchovávat snadno, uložte hodnoty účtu e-mailové služby do části `appSettings` v souboru *Web. config* . Přidejte následující kód XML zvýrazněný žlutě do souboru *Web. config* v kořenovém adresáři projektu:
 
     [!code-xml[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample3.xml?highlight=2-5)]
 
     > [!WARNING]
-    > Zabezpečení – nikdy ukládání citlivých dat ve zdrojovém kódu. V tomto příkladu účtu a přihlašovací údaje jsou uloženy v **appSetting** část *Web.config* souboru. V Azure, můžete bezpečně uložit tyto hodnoty na **[konfigurovat](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** karta na portálu Azure portal. Související informace naleznete v tématu Rick Anderson s názvem [osvědčené postupy pro nasazení hesel a dalších citlivých dat do ASP.NET a Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
-6. Přidání hodnoty e-mailové služby tak, aby odrážely SendGrid hodnoty ověřování (uživatelské jméno a heslo), abyste mohli úspěšně odeslat e-mailu z vaší aplikace. Nezapomeňte použít název účtu SendGrid spíše než e-mailovou adresu, které jste zadali SendGrid.
+    > Zabezpečení – nikdy neukládejte citlivá data ve zdrojovém kódu. V tomto příkladu je účet a přihlašovací údaje uložené v části **AppSetting** souboru *Web. config* . V Azure můžete tyto hodnoty bezpečně uložit na kartě **[Konfigurace](https://blogs.msdn.com/b/webdev/archive/2014/06/04/queuebackgroundworkitem-to-reliably-schedule-and-run-long-background-process-in-asp-net.aspx)** v Azure Portal. Související informace najdete v tématu Rick Anderson s názvem [osvědčené postupy pro nasazování hesel a dalších citlivých dat do ASP.NET a Azure](https://go.microsoft.com/fwlink/?LinkId=513141).
+6. Přidejte hodnoty e-mailové služby tak, aby odrážely vaše hodnoty ověřování SendGrid (uživatelské jméno a heslo), abyste mohli úspěšně odesílat e-maily z vaší aplikace. Nezapomeňte místo e-mailové adresy, kterou jste zadali SendGrid, použít název svého účtu SendGrid.
 
-### <a name="enable-email-confirmation"></a>Povolení e-mailové potvrzení
+### <a name="enable-email-confirmation"></a>Povolit potvrzení e-mailu
 
- Pokud chcete povolit e-mailové potvrzení, upravíte registrační kód pomocí následujících kroků.  
+ Chcete-li povolit e-mailové potvrzení, upravte registrační kód pomocí následujících kroků.  
 
-1. V *účet* složku, otevřete *Register.aspx.cs* použití modelu code-behind a aktualizovat `CreateUser_Click` metoda umožňuje následující zvýrazněný změny: 
+1. Ve složce *account (účet* ) otevřete kód *Register.aspx.cs* a aktualizujte metodu `CreateUser_Click`, abyste povolili následující zvýrazněné změny: 
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample4.cs?highlight=9-11)]
-2. V **Průzkumníka řešení**, klikněte pravým tlačítkem na *Default.aspx* a vyberte **nastavit jako úvodní stránku**.
-3. Spusťte aplikaci stisknutím klávesy **F5.** Po zobrazení stránky, klikněte na tlačítko **zaregistrovat** odkaz na stránce registrace.
-4. Zadejte váš e-mail a heslo a klikněte **zaregistrovat** tlačítko si pošlete e-mailu přes SendGrid.  
-   Aktuální stav projektu a kódu vám umožní uživateli přihlásit po jejich dokončení registrace, i když se nepotvrdily svého účtu.
-5. Zkontrolujte e-mailový účet a klikněte na odkaz pro potvrzení e-mailu.  
-   Jakmile odešlete registrační formulář se zaznamená.  
-    ![Ukázkové webové stránky – přihlášení](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image4.png)
+2. V **Průzkumník řešení**klikněte pravým tlačítkem myši na *Default. aspx* a vyberte **nastavit jako úvodní stránku**.
+3. Spusťte aplikaci stisknutím klávesy **F5.** Po zobrazení stránky klikněte na odkaz **zaregistrovat** , aby se zobrazila stránka registrace.
+4. Zadejte svůj e-mail a heslo a potom kliknutím na tlačítko **zaregistrovat** odešlete e-mailovou zprávu přes SendGrid.  
+   Aktuální stav projektu a kódu umožní uživateli, aby se přihlásili po dokončení registračního formuláře, i když nepotvrzují svůj účet.
+5. Zkontrolujte svůj e-mailový účet a kliknutím na odkaz potvrďte svůj e-mail.  
+   Po odeslání registračního formuláře budete přihlášeni.  
+    ![Ukázkový web – přihlášený](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/_static/image4.png)
 
 <a id="require"></a>
-## <a name="require-email-confirmation-before-log-in"></a>Vyžadovat e-mailové potvrzení před přihlášení
+## <a name="require-email-confirmation-before-log-in"></a>Vyžadovat před přihlášením e-mailové potvrzení
 
-I když zkontrolujete e-mailový účet, v tomto okamžiku by musíte kliknout na odkaz obsažený v ověřovací e-mailu bude plně přihlášené. V následující části upravíte kódu by nový uživatelé předtím, než se přihlásí mít potvrzené e-mailu (ověřit).
+I když jste e-mailový účet potvrdili, nemusíte v tomto okamžiku kliknout na odkaz obsažený v ověřovacím e-mailu, abyste mohli plně přihlášeni. V následující části upravíte kód, který vyžaduje, aby noví uživatelé měli potvrzené e-maily, než se přihlásí (budou ověřeni).
 
-1. V **Průzkumníku řešení** sady Visual Studio, aktualizujte `CreateUser_Click` událost v *Register.aspx.cs* obsažené v kódu *účty* složka s následující zvýrazněný změny: 
+1. V **Průzkumník řešení** sady Visual Studio aktualizujte událost `CreateUser_Click` v kódu *Register.aspx.cs* na pozadí, který je obsažený ve složce *Accounts* , s následujícími zvýrazněnými změnami: 
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample5.cs?highlight=13-14,17-21)]
-2. Aktualizace `LogIn` metodu *Login.aspx.cs* modelu code-behind s následujícími změnami zvýrazněné: 
+2. Aktualizujte metodu `LogIn` v kódu *Login.aspx.cs* na pozadí s následujícími zvýrazněnými změnami: 
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample6.cs?highlight=9-19,45-46)]
 
 ### <a name="run-the-application"></a>Spuštění aplikace
 
- Teď, když implementujete kód pro kontrolu, zda byl potvrzen e-mailovou adresu uživatele můžete zkontrolovat funkce u obou **zaregistrovat** a **přihlášení** stránky. 
+ Teď, když jste implementovali kód, abyste zkontrolovali, jestli je e-mailová adresa uživatele potvrzená, můžete zjistit **funkčnost na** **přihlašovacích a přihlašovacích** stránkách. 
 
-1. Odstranit některé účty **AspNetUsers** tabulce, která obsahuje e-mailový alias, který chcete otestovat.
-2. Spusťte aplikaci (**F5**) a ověřte nelze zaregistrovat jako uživatel, až se ujistíte e-mailovou adresu.
-3. Před potvrzením svůj nový účet, prostřednictvím e-mailu, který byl právě odeslali, pokuste se přihlásit pomocí nového účtu.  
- Zobrazí se vám nedaří se přihlásit a, musíte mít potvrzené e-mailový účet.
-4. Jakmile potvrdíte, e-mailová adresa, přihlaste se k aplikaci.
+1. Odstraňte všechny účty v tabulce **AspNetUsers** , které obsahují e-mailový alias, který chcete otestovat.
+2. Spusťte aplikaci (**F5**) a ověřte, že se nemůžete zaregistrovat jako uživatel, dokud nepotvrdíte svoji e-mailovou adresu.
+3. Před potvrzením nového účtu prostřednictvím e-mailu, který se právě poslal, se pokuste přihlásit pomocí nového účtu.  
+ Uvidíte, že se nemůžete přihlásit a že musíte mít potvrzený e-mailový účet.
+4. Po potvrzení své e-mailové adresy se přihlaste k aplikaci.
 
 <a id="reset"></a>
-## <a name="password-recovery-and-reset"></a>Obnovení hesla a obnovení
+## <a name="password-recovery-and-reset"></a>Obnovení a resetování hesla
 
-1. V sadě Visual Studio odebere znaky komentáře z `Forgot` metoda ve *Forgot.aspx.cs* obsažené v kódu *účet* složku tak, aby metoda se zobrazí jako následující: 
+1. V aplikaci Visual Studio odeberte znaky komentářů z metody `Forgot` v kódu *Forgot.aspx.cs* na pozadí, který je obsažený ve složce *účtu* , aby se metoda zobrazila takto: 
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample7.cs?highlight=16-18)]
-2. Otevřít *Login.aspx* stránky. Nahraďte kód na konci **loginForm** části znázorněno dole: 
+2. Otevřete stránku *Login. aspx* . Nahraďte značku na konci oddílu **loginForm** , jak je zvýrazněno níže: 
 
     [!code-aspx[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample8.aspx?highlight=52-53)]
-3. Otevřít *Login.aspx.cs* použití modelu code-behind a zrušte komentář u následujícího řádku kódu zvýrazněné žlutou barvou z `Page_Load` obslužné rutiny události: 
+3. Otevřete *Login.aspx.cs* kód na pozadí a odkomentujte následující řádek kódu zvýrazněný žlutě od obslužné rutiny události `Page_Load`: 
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample9.cs?highlight=5)]
-4. Spusťte aplikaci stisknutím klávesy **F5.** Po zobrazení stránky, klikněte na tlačítko **přihlášení** odkaz.
-5. Klikněte na tlačítko **zapomněli jste heslo?** odkazu zobrazíte **zapomněli jste heslo** stránky.
-6. Zadejte svou e-mailovou adresu a klikněte na tlačítko **odeslat** tlačítko si pošlete e-mailu na vaši adresu, která vám umožní obnovit své heslo.   
-   Zkontrolujte e-mailový účet a klikněte na odkaz zobrazíte **resetovat heslo** stránky.
-7. Na **resetovat heslo** stránky, zadejte e-mailu, heslo a potvrzení hesla. Potom stiskněte klávesu **resetování** tlačítko.  
-   Po úspěšném resetování hesla, **změnit heslo** stránka bude zobrazena. Nyní můžete přihlásit pomocí nového hesla.
+4. Spusťte aplikaci stisknutím klávesy **F5.** Po zobrazení stránky klikněte na odkaz **Přihlásit** se.
+5. Klikněte na odkaz **zapomenuté heslo?** . zobrazí se stránka **zapomenuté heslo** .
+6. Zadejte svou e-mailovou adresu a kliknutím na tlačítko **Odeslat** odešlete e-mail na adresu, která vám umožní resetovat heslo.   
+   Ověřte e-mailový účet a kliknutím na odkaz zobrazte stránku pro **resetování hesla** .
+7. Na stránce **resetovat heslo** zadejte svůj e-mail, heslo a potvrzení hesla. Pak stiskněte tlačítko **obnovit** .  
+   Po úspěšném resetování hesla se zobrazí stránka **změněné heslo** . Nyní se můžete přihlásit pomocí nového hesla.
 
 <a id="rsend"></a>
-## <a name="resend-email-confirmation-link"></a>Znovu poslat potvrzovací odkaz e-mailu
+## <a name="resend-email-confirmation-link"></a>Poslat znovu odkaz na potvrzení e-mailu
 
-Jakmile uživatel vytvoří nový místní účet, jsou e-mailem odkaz pro potvrzení, které je potřeba použít dřív, než se můžou přihlašovat Pokud uživatel omylem odstraní potvrzovací e-mail nebo nikdy přijde e-mailu, potřebují potvrzovací odkaz odeslán znovu. Následující změny kódu ukazují, jak ji povolit.
+Jakmile uživatel vytvoří nový místní účet, pošlete jim odkaz na potvrzení, že se musí použít, aby se mohli přihlásit. Pokud uživatel omylem odstraní potvrzovací e-mail nebo e-mail nikdy nepřijde, bude potřebovat poslat potvrzovací odkaz znovu. Následující změny kódu ukazují, jak tuto možnost povolit.
 
-1. V sadě Visual Studio, otevřete **Login.aspx.cs** použití modelu code-behind a přidejte následující obslužnou rutinu události po `LogIn` obslužné rutiny události:   
+1. V aplikaci Visual Studio otevřete **Login.aspx.cs** kód na pozadí a přidejte následující obslužnou rutinu události za obslužnou rutinu události `LogIn`:   
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample10.cs)]
-2. Upravit `LogIn` obslužné rutině událostí ve *Login.aspx.cs* modelu code-behind změnou kódu zvýrazněné žlutou barvou následujícím způsobem: 
+2. Upravte obslužnou rutinu události `LogIn` v kódu *Login.aspx.cs* na pozadí změnou kódu zvýrazněného žlutě následujícím způsobem: 
 
     [!code-csharp[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample11.cs?highlight=15-17)]
-3. Aktualizace *Login.aspx* stránce přidáním kódu zvýrazněné žlutou barvou následujícím způsobem: 
+3. Stránku *Login. aspx* aktualizujte tak, že přidáte kód zvýrazněný žlutě, jak je znázorněno níže: 
 
     [!code-aspx[Main](create-a-secure-aspnet-web-forms-app-with-user-registration-email-confirmation-and-password-reset/samples/sample12.aspx?highlight=45-46)]
-4. Odstranit některé účty **AspNetUsers** tabulce, která obsahuje e-mailový alias, který chcete otestovat.
-5. Spusťte aplikaci (**F5**) a registraci e-mailovou adresu.
-6. Před potvrzením svůj nový účet, prostřednictvím e-mailu, který byl právě odeslali, pokuste se přihlásit pomocí nového účtu.  
-   Zobrazí se vám nedaří se přihlásit a, musíte mít potvrzené e-mailový účet. Kromě toho můžete potvrzovací zpráva teď znovu poslat e-mailový účet.
-7. Zadejte e-mailovou adresu a heslo, stiskněte **znovu poslat potvrzovací** tlačítko.
-8. Jakmile potvrdíte, e-mailovou adresu, na základě nově odeslaných e-mailové zprávy, přihlaste se k aplikaci.
+4. Odstraňte všechny účty v tabulce **AspNetUsers** , které obsahují e-mailový alias, který chcete otestovat.
+5. Spusťte aplikaci (**F5**) a zaregistrujte svou e-mailovou adresu.
+6. Před potvrzením nového účtu prostřednictvím e-mailu, který se právě poslal, se pokuste přihlásit pomocí nového účtu.  
+   Uvidíte, že se nemůžete přihlásit a že musíte mít potvrzený e-mailový účet. Kromě toho teď můžete znovu poslat potvrzovací zprávu na váš e-mailový účet.
+7. Zadejte svou e-mailovou adresu a heslo a potom klikněte na tlačítko **znovu odeslat potvrzení** .
+8. Po potvrzení e-mailové adresy na základě nově odeslané e-mailové zprávy se přihlaste k aplikaci.
 
 <a id="dbg"></a>
 ## <a name="troubleshooting-the-app"></a>Řešení potíží s aplikací
 
-Pokud jste neobdrželi e-mailu s odkazem na ověřit vaše přihlašovací údaje:
+Pokud neobdržíte e-mail obsahující odkaz pro ověření vašich přihlašovacích údajů:
 
-- Zkontrolujte složku s nevyžádanou nebo nevyžádané pošty.
-- Přihlaste se do účtu SendGrid a klikněte na [odkaz e-mailu aktivita](https://sendgrid.com/logs/index).
-- Je potřeba mít jistotu, použít název uživatelského účtu SendGrid jako *Web.config* hodnotu místo e-mailovou adresu účtu SendGrid.
+- Ověřte složku s nevyžádanou poštou nebo spamem.
+- Přihlaste se k účtu SendGrid a klikněte na [odkaz e-mailová aktivita](https://sendgrid.com/logs/index).
+- Měli byste použít název uživatelského účtu SendGrid jako hodnotu *Web. config* , a ne svou e-mailovou adresu účtu SendGrid.
 
 <a id="addRes"></a>
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Odkazy na ASP.NET Identity doporučené zdroje informací](../../../identity/overview/getting-started/aspnet-identity-recommended-resources.md)
-- [Potvrzení účtu a obnovení hesla s ASP.NET Identity](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
-- [Série kurzů webových formulářů ASP.NET – přidání poskytovatele OAuth 2.0](../getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md#OAuthWebForms)
-- [Nasaďte aplikaci zabezpečení rozhraní ASP.NET Web Forms s nástroji Membership, OAuth a SQL Database do služby Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)
-- [Technologie ASP.NET webové formuláře sérii - povolit šifrování SSL pro projekt](../getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md#SSLWebForms)
+- [Odkazy na ASP.NET Identity doporučené prostředky](../../../identity/overview/getting-started/aspnet-identity-recommended-resources.md)
+- [Potvrzení účtu a obnovení hesla pomocí ASP.NET Identity](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md)
+- [Série kurzů pro webové formuláře v ASP.NET – přidání poskytovatele OAuth 2,0](../getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md#OAuthWebForms)
+- [Nasazení zabezpečené aplikace webových formulářů ASP.NET pomocí členství, protokolu OAuth a SQL Database pro Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-webforms-app-membership-oauth-sql-database/)
+- [Série kurzů pro webové formuláře v ASP.NET – povolení SSL pro projekt](../getting-started/getting-started-with-aspnet-45-web-forms/checkout-and-payment-with-paypal.md#SSLWebForms)

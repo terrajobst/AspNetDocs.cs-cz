@@ -10,11 +10,11 @@ ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity
 msc.type: authoredcontent
 ms.openlocfilehash: 4b2c88280df39aa81d60f9508910e8fe5d6db6b8
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519112"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616814"
 ---
 # <a name="account-confirmation-and-password-recovery-with-aspnet-identity-c"></a>Potvrzení účtu a obnovení hesla pomocí ASP.NET Identity (C#)
 
@@ -63,7 +63,7 @@ Kliknutím na tlačítko **obnovit** potvrďte, že se heslo resetoval.
 
 <a id="createMvc"></a>
 
-## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace ASP.NET
+## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace v ASP.NET
 
 Začněte instalací a spuštěním sady [Visual Studio 2017](https://visualstudio.microsoft.com/).
 
@@ -83,7 +83,7 @@ Začněte instalací a spuštěním sady [Visual Studio 2017](https://visualstud
 
 Výchozí úložiště dat pro ASP.NET Identity je Entity Framework, ale můžete ho nakonfigurovat tak, aby používalo jiné úložiště dat, a přidat další pole. Další informace najdete v části [Další materiály](#addRes) na konci tohoto kurzu.
 
-[Třída Owin Startup](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md) ( *Startup.cs* ) se volá při spuštění aplikace a vyvolá metodu `ConfigureAuth` v *App\_START\STARTUP.auth.cs*, která konfiguruje kanál Owin a inicializuje ASP.NET identity. Zkontrolujte `ConfigureAuth` metody. Každé volání `CreatePerOwinContext` zaregistruje zpětné volání (uložené v `OwinContext`), které se bude volat jednou za požadavek na vytvoření instance zadaného typu. Můžete nastavit bod přerušení v konstruktoru a metodu `Create` každého typu (`ApplicationDbContext, ApplicationUserManager`) a ověřit, že jsou volány na každém požadavku. Instance `ApplicationDbContext` a `ApplicationUserManager` je uložena v kontextu OWIN, který lze použít v celé aplikaci. ASP.NET Identity do kanálu OWIN prostřednictvím middleware souboru cookie. Další informace najdete v tématu [Správa životního cyklu požadavků pro třídu UserManager v ASP.NET identity](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx).
+[Třída Owin Startup](../../../aspnet/overview/owin-and-katana/owin-startup-class-detection.md) ( *Startup.cs* ) se volá při spuštění aplikace a vyvolá metodu `ConfigureAuth` v *App\_START\STARTUP.auth.cs*, která konfiguruje kanál Owin a inicializuje ASP.NET identity. Projděte si metodu `ConfigureAuth`. Každé volání `CreatePerOwinContext` zaregistruje zpětné volání (uložené v `OwinContext`), které se bude volat jednou za požadavek na vytvoření instance zadaného typu. Můžete nastavit bod přerušení v konstruktoru a metodu `Create` každého typu (`ApplicationDbContext, ApplicationUserManager`) a ověřit, že jsou volány na každém požadavku. Instance `ApplicationDbContext` a `ApplicationUserManager` je uložena v kontextu OWIN, který lze použít v celé aplikaci. ASP.NET Identity do kanálu OWIN prostřednictvím middleware souboru cookie. Další informace najdete v tématu [Správa životního cyklu požadavků pro třídu UserManager v ASP.NET identity](https://blogs.msdn.com/b/webdev/archive/2014/02/12/per-request-lifetime-management-for-usermanager-class-in-asp-net-identity.aspx).
 
 Když změníte profil zabezpečení, vygeneruje se nové bezpečnostní razítko, které se uloží do pole `SecurityStamp` tabulky *AspNetUsers* . Poznámka: pole `SecurityStamp` se liší od souboru cookie zabezpečení. Soubor cookie zabezpečení není uložený v `AspNetUsers` tabulce (nebo nikde jinde v databázi identity). Token cookie zabezpečení je podepsaný svým držitelem pomocí [DPAPI](https://msdn.microsoft.com/library/system.security.cryptography.protecteddata.aspx) a vytvoří se s informacemi o `UserId, SecurityStamp` a času vypršení platnosti.
 
@@ -224,7 +224,7 @@ Následující kód ukazuje metodu potvrzení e-mailu:
  Aby byla aplikace bezpečnější, ASP.NET Identity podporuje dvojúrovňové ověřování (2FA). Viz [ASP.NET Identity 2,0: nastavení ověřování účtu a dvojúrovňové autorizace](http://typecastexception.com/post/2014/04/20/ASPNET-Identity-20-Setting-Up-Account-Validation-and-Two-Factor-Authorization.aspx) pomocí Jan atten. I když můžete nastavit uzamčení účtu při neúspěchu při pokusu o přihlášení k přihlašovacím údajům, bude se vaše přihlášení nahlížet na uzamčení [systému DOS](http://en.wikipedia.org/wiki/Denial-of-service_attack) . Uzamčení účtu doporučujeme používat jenom s 2FA.  
 <a id="addRes"></a>
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Přehled poskytovatelů vlastního úložiště pro ASP.NET Identity](../extensibility/overview-of-custom-storage-providers-for-aspnet-identity.md)
 - [Aplikace MVC 5 s přihlašováním na Facebooku, Twitter, LinkedIn a Google OAuth2](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) také ukazuje, jak přidat informace o profilu do tabulky uživatelů.

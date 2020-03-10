@@ -9,11 +9,11 @@ ms.assetid: 49d8a66c-3ea8-4087-839f-179d1d94512a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 2b9cdb5af6f33171b191d5a80473c7796eb098d9
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74589121"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78608386"
 ---
 # <a name="handling-bll--and-dal-level-exceptions-in-an-aspnet-page-c"></a>Zpracování výjimek na úrovni knihoven BLL a DAL na stránce ASP.NET (C#)
 
@@ -41,7 +41,7 @@ Pro ilustraci práce s těmito událostmi po úrovních vytvoříme stránku, kt
 
 V předchozím kurzu jsme vytvořili upravitelný prvek GridView s pouze dvěma poli `ProductName` a `UnitPrice`. To vyžadovalo vytvoření dalšího přetížení pro metodu `UpdateProduct` `ProductsBLL` třídy, jednu, která přijala pouze tři vstupní parametry (název produktu, Jednotková cena a ID), a to na rozdíl od parametru pro každé pole produktu. Pro tento kurz Pojďme tuto techniku znovu vymezit vytvořením upravitelného prvku GridView, který zobrazuje název produktu, množství na jednotku, cenu za jednotku a jednotky na skladě, ale umožňuje upravovat jenom název, jednotkovou cenu a jednotky na skladě.
 
-Aby bylo možné tento scénář přizpůsobit, budete potřebovat další přetížení metody `UpdateProduct`, jednu, která přijímá čtyři parametry: název produktu, Jednotková cena, jednotky na skladě a ID. Do `ProductsBLL` třídy přidejte následující metodu:
+Aby bylo možné tento scénář přizpůsobit, budete potřebovat další přetížení metody `UpdateProduct`, jednu, která přijímá čtyři parametry: název produktu, Jednotková cena, jednotky na skladě a ID. Do třídy `ProductsBLL` přidejte následující metodu:
 
 [!code-csharp[Main](handling-bll-and-dal-level-exceptions-in-an-asp-net-page-cs/samples/sample1.cs)]
 
@@ -177,7 +177,7 @@ Tato změna způsobí, že jakákoli aktualizace ceny, která je více než dvoj
 > [!NOTE]
 > V ideálním případě by se pravidla obchodní logiky refaktoroval z přetížení `UpdateProduct` metody a do společné metody. Tento postup je ponechán jako cvičení pro čtenáře.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Během vkládání, aktualizace a odstraňování operací se webový ovládací prvek dat i prvek ObjectDataSource účastní událostí před a na úrovni, které zastavují skutečnou operaci. Jak jsme viděli v tomto kurzu a předchozí, při práci s upravitelným ovládacím prvkem GridView `RowUpdating` událost prvku GridView, následovanou událostmi `Updating` elementu ObjectDataSource, v níž je příkaz Update proveden na podkladovém objektu ObjectDataSource. Po dokončení operace se aktivuje událost `Updated` ObjectDataSource a za ní následuje událost `RowUpdated` prvku GridView.
 

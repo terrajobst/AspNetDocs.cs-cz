@@ -1,55 +1,55 @@
 ---
 uid: whitepapers/denied-access-to-iis-directories
-title: Aplikace ASP.NET zamítla přístup k adresářům služby IIS | Dokumentace Microsoftu
+title: ASP.NET odepřel přístup k adresářům služby IIS | Microsoft Docs
 author: rick-anderson
-description: Tento dokument White Paper popisuje, co musíte udělat, pokud požadavek na vaše aplikace ASP.NET vrátí chyba "přístup byl odepřen do DirectoryName. Nepovedlo se s...
+description: Tento dokument white paper popisuje, co je třeba udělat, pokud požadavek na vaši aplikaci ASP.NET vrátí chybu, "odepřený přístup k adresáři adresáře. Nepovedlo se s...
 ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: 3cb27b8a-354f-4332-bfe0-232b13bbf8aa
 msc.legacyurl: /whitepapers/denied-access-to-iis-directories
 msc.type: content
 ms.openlocfilehash: a3a53aa88abbe1bcaaea7d691406800c8f9b988b
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134553"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638500"
 ---
 # <a name="aspnet-denied-access-to-iis-directories"></a>Aplikace ASP.NET zamítla přístup k adresářům služby IIS
 
-> Tento dokument White Paper popisuje, co musíte udělat, pokud požadavek na vaše aplikace ASP.NET vrátí chybu, "odepření přístupu k *NazevAdresare* adresáře. Nepovedlo se spustit sledování změn v adresáři."
+> Tento dokument white paper popisuje, co je třeba udělat, pokud požadavek na vaši aplikaci ASP.NET vrátí chybu, "odepřený přístup k adresáři *adresáře* . Nepovedlo se spustit monitorování změn adresáře.
 > 
-> Platí pro technologii ASP.NET 1.0 a ASP.NET 1.1.
+> Platí pro ASP.NET 1,0 a ASP.NET 1,1.
 
-Technologie ASP.NET verze 1 RTM se teď bude spouštět pomocí méně privilegovaného účtu systému windows - zaregistrovaný jako "ASPNET" účet na místním počítači.
+ASP.NET v1 RTM teď používá méně privilegovaný účet systému Windows, který je zaregistrován jako účet ASPNET na místním počítači.
 
-U některých systémů uzamčen tento účet může ve výchozím nastavení přečetl(a) security umožněn přístup k obsahu adresáře webu, kořenový adresář aplikace nebo kořenový adresář webu. V tomto případě zobrazí následující chyba požadavku stránky z dané webové aplikace:
+V některých uzamčených systémech nemusí tento účet ve výchozím nastavení mít přístup pro čtení k adresářům obsahu webu, kořenovému adresáři aplikace nebo kořenovému adresáři webu. V takovém případě se při žádosti o stránky z dané webové aplikace zobrazí následující chyba:
 
 ![](denied-access-to-iis-directories/_static/image1.jpg)
 
-Chcete-li tento problém vyřešit, je potřeba měnit oprávnění zabezpečení pro příslušné adresáře.
+Chcete-li tento problém vyřešit, budete muset změnit oprávnění zabezpečení pro příslušné adresáře.
 
-Konkrétně technologie ASP.NET vyžaduje čtení, spouštění a zápis k účtu ASPNET kořenový adresář webového serveru (například: c:\inetpub\wwwroot nebo jakéhokoli adresáře alternativní lokality možná jste nakonfigurovali ve službě IIS), adresář s obsahem a kořenový adresář aplikace aby bylo možné sledovat změny v konfiguraci souboru. Kořenový adresář aplikace odpovídá cesta ke složce, které jsou spojené s virtuálním adresářem aplikace v nástroji pro správu služby IIS (inetmgr).
+Konkrétně ASP.NET vyžaduje přístup pro čtení, spouštění a výpis pro účet ASPNET pro kořen webu (například c:\Inetpub\Wwwroot nebo libovolný alternativní adresář webu, který jste mohli nakonfigurovat ve službě IIS), adresář obsahu a kořenový adresář aplikace. aby bylo možné monitorovat změny konfiguračního souboru. Kořen aplikace odpovídá cestě ke složce přidružené k virtuálnímu adresáři aplikace v nástroji pro správu služby IIS (inetmgr).
 
-Představte si třeba následující hierarchie aplikace pod složku wwwroot.
+Podívejte se například na následující hierarchii aplikací ve složce Wwwroot.
 
 `C:\inetpub\wwwroot\myapp\default.aspx`
 
-V tomto příkladu musí účtu ASPNET oprávnění ke čtení, které jsou definované výše pro obsah Moje aplikace a adresář wwwroot. Jeden zděděné seznamu ACL pro kořenovou složku Volitelně lze také pro oba adresáře v případě, že jsou vnořené.
+V tomto příkladu účet ASPNET potřebuje oprávnění ke čtení definovaná výše pro obsah v adresáři MyApp i Wwwroot. Jeden zděděný seznam řízení přístupu (ACL) kořenové složky se dá volitelně použít i pro oba adresáře, pokud jsou vnořené.
 
 Chcete-li přidat oprávnění k adresáři, proveďte následující kroky:
 
-- Pomocí Průzkumníka Windows přejděte do adresáře
-- Klikněte pravým tlačítkem na složku adresář a zvolte možnost "Properties"
-- Přejděte na kartu "Zabezpečení" v dialogovém okně Vlastnosti
-- Klikněte na tlačítko "Přidat" a zadejte název počítače, za nímž následuje název účtu ASPNET. Například by na počítači s názvem "webdev", zadejte webdev\ASPNET a klikněte na "OK".
-- Zkontrolujte, zda má účet ASPNET "čtení &amp; Execute", "Zobrazovat obsah složky" a "Číst" zaškrtnutých políček.
-- Klikněte na OK a zavřete toto dialogové okno a uložte změny.
+- Pomocí Průzkumníka Windows přejděte do adresáře.
+- Klikněte pravým tlačítkem na složku adresáře a vyberte vlastnosti.
+- Přejděte na kartu zabezpečení v dialogovém okně Vlastnosti.
+- Klikněte na tlačítko Přidat a zadejte název počítače následovaný názvem účtu ASPNET. Například v počítači s názvem "webdev" zadáte webdev\ASPNET a získáte "OK".
+- Ujistěte se, že má účet ASPNET zaškrtnuté políčko číst &amp; spustit, zobrazovat obsah složky a číst.
+- Kliknutím na OK zavřete dialogové okno a změny uložte.
 
 ![](denied-access-to-iis-directories/_static/image2.jpg)
 
-V případě potřeby je možné tyto změny automatizovat pomocí skriptů nebo "cacls.exe" nástroj, který se dodává s Windows. Další informace o účtu ASPNET, najdete v tématu [nejčastější dotazy k dokumentu](https://go.microsoft.com/fwlink/?LinkId=5828).
+V případě potřeby je možné tyto změny automatizovat pomocí skriptů nebo nástroje Cacls. exe, který se dodává se systémem Windows. Další informace o účtu ASPNET najdete v [dokumentu nejčastějších dotazů](https://go.microsoft.com/fwlink/?LinkId=5828).
 
-Pokud dané webové aplikace spoléhá na zápis nebo upravit oprávnění do konkrétní složky nebo souboru, to může udělit pomocí stejného postupu a kontrola zaškrtávací políčka "Write" nebo "Upravit".
+Pokud daná webová aplikace spoléhá na konkrétní složku nebo soubor oprávnění pro zápis nebo změnu, může to být uděleno stejným postupem a zaškrtnutím políček "zapsat" nebo "Upravit".
 
-Na počítačích, které umožňují všem uživatelům nebo přístup ke čtení skupiny uživatelů pro tyto adresáře (to je výchozí konfigurace), se žádné problémy setkáte a proveďte následující kroky se nevyžaduje.
+V počítačích, které povolují všem uživatelům nebo skupinám přístup pro čtení k těmto adresářům (což je výchozí konfigurace), nebudou zjištěny žádné problémy a výše uvedené kroky nebudou nutné.

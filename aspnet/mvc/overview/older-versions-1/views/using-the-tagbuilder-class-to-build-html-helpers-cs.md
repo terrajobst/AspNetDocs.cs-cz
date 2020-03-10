@@ -1,75 +1,75 @@
 ---
 uid: mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-cs
-title: Pomocí třída TagBuilder pro sestavení pomocných rutin HTML (C#) | Dokumentace Microsoftu
+title: Použití třídy TagBuilder k vytváření pomocníků HTML (C#) | Microsoft Docs
 author: StephenWalther
-description: Stephen Walther vás seznámí s třídu v rozhraní ASP.NET MVC s názvem třída TagBuilder užitečné nástroje. Třída TagBuilder pro můžete snadno použít...
+description: Stephen Walther vás seznámí s užitečnou třídou nástrojů v rozhraní ASP.NET MVC s názvem třídy TagBuilder. Můžete snadno použít třídu TagBuilder...
 ms.author: riande
 ms.date: 03/02/2009
 ms.assetid: 3975a52f-bd15-4edd-8f3d-1df93672515b
 msc.legacyurl: /mvc/overview/older-versions-1/views/using-the-tagbuilder-class-to-build-html-helpers-cs
 msc.type: authoredcontent
 ms.openlocfilehash: c8eaea9932a30c744b9a69861619ce9458b5a23a
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130297"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78600028"
 ---
-# <a name="using-the-tagbuilder-class-to-build-html-helpers-c"></a>Pomocí třída TagBuilder pro sestavení pomocných rutin HTML (C#)
+# <a name="using-the-tagbuilder-class-to-build-html-helpers-c"></a>Použití třídy TagBuilder k vytváření pomocníků HTML (C#)
 
-podle [Stephen Walther](https://github.com/StephenWalther)
+od [Stephen Walther](https://github.com/StephenWalther)
 
-> Stephen Walther vás seznámí s třídu v rozhraní ASP.NET MVC s názvem třída TagBuilder užitečné nástroje. Třída TagBuilder můžete použít k snadnému vytváření značky HTML.
+> Stephen Walther vás seznámí s užitečnou třídou nástrojů v rozhraní ASP.NET MVC s názvem třídy TagBuilder. Třídu TagBuilder lze použít k snadnému sestavení značek jazyka HTML.
 
-Architektura ASP.NET MVC zahrnuje užitečný nástroj pro třídu s názvem třída TagBuilder, který vám pomůže při vytváření pomocných rutin HTML. Třída TagBuilder jako název třídy navrhuje, vám umožní snadno vytvářet značky HTML. V tomto kurzu (BRIEF) k dispozici máte přehled o třída TagBuilder a zjistíte, jak použít tuto třídu při vytváření jednoduchých pomocné rutiny HTML, který vykreslí HTML &lt;img&gt; značky.
+Rozhraní ASP.NET MVC obsahuje užitečnou třídu nástrojů nazvanou TagBuilder třídu, kterou lze použít při vytváření pomocníků HTML. Třída TagBuilder, jak naznačuje název třídy, umožňuje snadno vytvářet značky HTML. V tomto stručném kurzu se poskytuje přehled třídy TagBuilder a naučíte se, jak tuto třídu použít při vytváření jednoduchého pomocníka HTML, který vykresluje HTML &lt;img&gt; značky.
 
-## <a name="overview-of-the-tagbuilder-class"></a>Třída TagBuilder-přehled
+## <a name="overview-of-the-tagbuilder-class"></a>Přehled třídy TagBuilder
 
-Třída TagBuilder je obsažen v oboru názvů System.Web.Mvc. Má pět metod:
+Třída TagBuilder je obsažena v oboru názvů System. Web. Mvc. Má pět metod:
 
-- AddCssClass() – umožňuje přidat nový *třídy = ""* atributů pro značku.
-- GenerateId() – umožňuje přidat atribut id značky. Tato metoda automaticky nahrazuje tečky v id (ve výchozím nastavení, tečky jsou nahrazené podtržítka)
-- MergeAttribute() – umožňuje přidat atributů pro značku. Existuje více přetížení této metody.
-- SetInnerText() – umožňuje nastavit vnitřní text značky. Vnitřní text je automaticky použije kódování HTML.
-- ToString() – Umožňuje vykreslit značky. Můžete určit, zda chcete vytvořit značku normální, počáteční značku, koncovou značku nebo samouzavírací značky.
+- AddCssClass () – umožňuje přidat do značky nový atribut *Class = ""* .
+- GenerateId () – umožňuje přidat atribut ID k značce. Tato metoda automaticky nahrazuje tečky v ID (ve výchozím nastavení jsou tečky nahrazeny podtržítky).
+- MergeAttribute () – umožňuje přidat atributy do značky. Existuje více přetížení této metody.
+- SetInnerText () – umožňuje nastavit vnitřní text značky. Vnitřní text je automaticky kódován HTML.
+- ToString () – umožňuje vykreslit značku. Můžete určit, zda chcete vytvořit normální značku, počáteční značku, koncovou značku nebo samočinnou uzavírací značku.
 
 Třída TagBuilder má čtyři důležité vlastnosti:
 
-- Atributy – reprezentuje všechny atributy značky.
-- IdAttributeDotReplacement - hodnota představuje znak metodou GenerateId() používá k nahrazení tečky (výchozí hodnota je podtržítko).
-- InnerHTML – představuje vnitřní obsah značky. Přiřazení k této vlastnosti řetězce *nemá* řetězec s kódováním HTML.
+- Atributy – představuje všechny atributy značky.
+- IdAttributeDotReplacement – představuje znak používaný metodou GenerateId () k nahrazení teček (výchozí je podtržítko).
+- InnerHTML – představuje vnitřní obsah značky. Přiřazení řetězce k *této vlastnosti* nekóduje řetězec ve formátu HTML.
 - TagName – představuje název značky.
 
-Tyto metody a vlastnosti získáte všechny základní metody a vlastnosti, které potřebujete k vytvoření značky jazyka HTML. Není nutné opravdu použít třída TagBuilder. Třída StringBuilder můžete místo toho použít. Nicméně třída TagBuilder vám život o něco jednodušší.
+Tyto metody a vlastnosti poskytují všechny základní metody a vlastnosti, které potřebujete k vytvoření značky jazyka HTML. Ve skutečnosti nemusíte používat třídu TagBuilder. Místo toho můžete použít třídu StringBuilder. Třída TagBuilder ale ještě víc zjednodušuje život.
 
-## <a name="creating-an-image-html-helper"></a>Vytvoření pomocné rutiny HTML bitové kopie
+## <a name="creating-an-image-html-helper"></a>Vytvoření pomocníka s obrázkem HTML
 
-Při vytváření instance třídy TagBuilder předat název značky, který má být sestaveno TagBuilder konstruktoru. V dalším kroku může volat metody jako metody AddCssClass a MergeAttribute() změnit atributy značky. Nakonec proveďte volání metody ToString() k vykreslení značky.
+Při vytváření instance třídy TagBuilder předáte název značky, kterou chcete sestavit do konstruktoru TagBuilder. Dále můžete volat metody jako metody AddCssClass a MergeAttribute () pro úpravu atributů značky. Nakonec zavoláte metodu ToString () pro vykreslení značky.
 
-Výpis 1 obsahuje například pomocné rutiny HTML bitové kopie. Pomocná rutina obrázku je implementována interně pomocí TagBuilder, který představuje HTML &lt;img&gt; značky.
+Například výpis 1 obsahuje pomocníka s obrázkem HTML. Pomocná rutina Image je implementována interně pomocí TagBuilder, který představuje značku&gt; HTML &lt;img.
 
-**Výpis 1 - Helpers\ImageHelper.cs**
+**Výpis 1 – Helpers\ImageHelper.cs**
 
 [!code-csharp[Main](using-the-tagbuilder-class-to-build-html-helpers-cs/samples/sample1.cs)]
 
-Třída v informacích 1 obsahuje dvě statické přetížené metody s názvem obrázku. Při volání metody Image(), můžete předat objekt, který představuje sadu atributů HTML, nebo ne.
+Třída v seznamu 1 obsahuje dvě statické přetížené metody s názvem Image. Při volání metody image () můžete předat objekt, který představuje sadu atributů HTML, nebo ne.
 
-Všimněte si, jak metoda TagBuilder.MergeAttribute() umožňuje přidat jednotlivé atributy, jako je například atribut src TagBuilder. Všimněte si, jak metoda TagBuilder.MergeAttributes() umožňuje přidat kolekci atributů TagBuilder. Metoda MergeAttributes() přijímá slovník&lt;řetězec, objekt&gt; parametru. Třída RouteValueDictionary se používá k převodu objekt představující kolekci atributů do slovníku&lt;řetězec, objekt&gt;.
+Všimněte si, jak metoda TagBuilder. MergeAttribute () slouží k přidání jednotlivých atributů, jako je například atribut src, do TagBuilder. Všimněte si navíc, jak metoda TagBuilder. MergeAttributes () slouží k přidání kolekce atributů do TagBuilder. Metoda MergeAttributes () přijímá slovník&lt;řetězec&gt; parametr. Třída RouteValueDictionary slouží k převodu objektu reprezentujícího kolekci atributů do slovníku&lt;řetězec&gt;objektu.
 
-Po vytvoření Image pomocné rutiny, můžete v zobrazení ASP.NET MVC stejně jako u libovolné ostatní standardní pomocných rutin HTML pomocné rutiny. Zobrazení výpisu 2 používá pomocná rutina obrázku pro zobrazení zobrazí stejný obraz Xboxu dvakrát (viz obrázek 1). Pomocná rutina Image() je volána s i bez kolekce atributů HTML.
+Po vytvoření pomocné rutiny image můžete použít pomocníka v zobrazeních ASP.NET MVC stejným způsobem jako kterýkoli jiný standardní pomocník HTML. Zobrazení v seznamu 2 používá pomocníka pro Image k zobrazení stejné image Xbox dvakrát (viz obrázek 1). Pomocná rutina () se nazývá s kolekcí atributů HTML i bez ní.
 
-**Výpis 2 - Home\Index.aspx**
+**Výpis 2 – Home\Index.aspx**
 
 [!code-aspx[Main](using-the-tagbuilder-class-to-build-html-helpers-cs/samples/sample2.aspx)]
 
-[![Dialogové okno Nový projekt](using-the-tagbuilder-class-to-build-html-helpers-cs/_static/image1.jpg)](using-the-tagbuilder-class-to-build-html-helpers-cs/_static/image1.png)
+[![dialogového okna Nový projekt](using-the-tagbuilder-class-to-build-html-helpers-cs/_static/image1.jpg)](using-the-tagbuilder-class-to-build-html-helpers-cs/_static/image1.png)
 
-**Obrázek 01**: Použití pomocné rutiny bitové kopie ([kliknutím ji zobrazíte obrázek v plné velikosti](using-the-tagbuilder-class-to-build-html-helpers-cs/_static/image2.png))
+**Obrázek 01**: použití pomocné rutiny Image ([kliknutím zobrazíte obrázek v plné velikosti](using-the-tagbuilder-class-to-build-html-helpers-cs/_static/image2.png))
 
-Všimněte si, že je nutné naimportovat přidružené pomocná rutina obrázku v horní části zobrazení Index.aspx obor názvů. Pomocné rutiny s následující direktivy importu:
+Všimněte si, že musíte importovat obor názvů přidružený k pomocné rutině image v horní části zobrazení index. aspx. Pomocná rutina se importuje s následující direktivou:
 
 [!code-aspx[Main](using-the-tagbuilder-class-to-build-html-helpers-cs/samples/sample3.aspx)]
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-custom-html-helpers-cs.md)
-> [další](creating-page-layouts-with-view-master-pages-cs.md)
+> [Další](creating-page-layouts-with-view-master-pages-cs.md)

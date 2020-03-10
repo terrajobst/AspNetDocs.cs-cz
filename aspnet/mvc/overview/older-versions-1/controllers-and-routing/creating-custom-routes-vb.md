@@ -1,72 +1,72 @@
 ---
 uid: mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-vb
-title: Vytváření vlastních tras (VB) | Dokumentace Microsoftu
+title: Vytváření vlastních tras (VB) | Microsoft Docs
 author: microsoft
-description: Zjistěte, jak přidat vlastní trasy pro aplikace ASP.NET MVC. V tomto kurzu se dozvíte, jak změnit výchozí směrovací tabulka v souboru Global.asax.
+description: Naučte se přidávat vlastní trasy do aplikace ASP.NET MVC. V tomto kurzu se naučíte, jak změnit výchozí směrovací tabulku v souboru Global. asax.
 ms.author: riande
 ms.date: 02/16/2009
 ms.assetid: 6ac5758b-6199-42af-adcb-21954b864951
 msc.legacyurl: /mvc/overview/older-versions-1/controllers-and-routing/creating-custom-routes-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 22b44e9e575c9d404881a23ee735bb0c8b7109e1
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65123345"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78601295"
 ---
 # <a name="creating-custom-routes-vb"></a>Vytváření vlastních tras (VB)
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> Zjistěte, jak přidat vlastní trasy pro aplikace ASP.NET MVC. V tomto kurzu se dozvíte, jak změnit výchozí směrovací tabulka v souboru Global.asax.
+> Naučte se přidávat vlastní trasy do aplikace ASP.NET MVC. V tomto kurzu se naučíte, jak změnit výchozí směrovací tabulku v souboru Global. asax.
 
-V tomto kurzu se dozvíte, jak přidat vlastní trasy pro aplikace ASP.NET MVC. Zjistíte, jak změnit výchozí směrovací tabulka v souboru Global.asax s vlastní trasy.
+V tomto kurzu se dozvíte, jak přidat vlastní trasu do aplikace ASP.NET MVC. Naučíte se, jak upravit výchozí směrovací tabulku v souboru Global. asax pomocí vlastní trasy.
 
-V aplikacích ASP.NET MVC bude výchozí směrovací tabulka fungovat správně. Však můžete zjistit, že používáte specializovaný směrování potřebám. V takovém případě můžete vytvořit vlastní trasy.
+V aplikacích ASP.NET MVC bude výchozí směrovací tabulka fungovat přesně přesně. Můžete ale zjistit, že máte specializované požadavky na směrování. V takovém případě můžete vytvořit vlastní trasu.
 
 Představte si například, že vytváříte aplikaci blogu. Můžete chtít zpracovat příchozí požadavky, které vypadají takto:
 
-/ Archivu/12 – 25-2009
+/Archive/12-25-2009
 
-Když uživatel zadá tento požadavek, chcete vrátit blogu, který odpovídá na datum 12/25/2009. Aby bylo možné zpracovávat tento typ požadavku, je potřeba vytvořit vlastní trasy.
+Když uživatel zadá tuto žádost, budete chtít vrátit položku blogu, která odpovídá datu 12/25/2009. Aby bylo možné tento typ žádosti zpracovat, je nutné vytvořit vlastní trasu.
 
-Výpis 1 soubor Global.asax obsahuje novou vlastní trasu s názvem blogu, které zpracovává požadavky, které mají tvar /Archive/*datum položky*.
+Soubor Global. asax v seznamu 1 obsahuje novou vlastní trasu s názvem blog, která zpracovává požadavky, které vypadají jako/Archive/*Datum vstupu*.
 
-**Výpis 1 - Global.asax (s vlastní směrování)**
+**Výpis 1-Global. asax (s vlastním směrováním)**
 
 [!code-vb[Main](creating-custom-routes-vb/samples/sample1.vb)]
 
-Je důležité pořadí tras, které přidáte do směrovací tabulky. Před existující výchozí trasa se přidá naši novou vlastní trasu blogu. Pokud je obrácený pořadí, pak výchozí trasu vždy bude zavolána místo vlastní trasy.
+Pořadí tras, které přidáte do směrovací tabulky, je důležité. Do existující výchozí trasy se přidá nová vlastní trasa blogu. Pokud jste objednávku přeměnili, bude se výchozí trasa místo vlastní trasy volat vždy.
 
-Vlastní Blog trasa odpovídá všechny požadavky, které začíná/archivu /. Ano splňuje všechna následující adresy URL:
+Vlastní trasa blogu odpovídá všem žádostem, které začínají na/Archive/. Proto odpovídá všem následujícím adresám URL:
 
-- / Archivu/12 – 25-2009
+- /Archive/12-25-2009
 
-- / Archivu/10-6-2004
+- /Archive/10-6-2004
 
-- / Archivu/apple
+- /Archive/apple
 
-Vlastní trasy příchozí požadavek se mapuje na kontroler s názvem Archiv a vyvolá akci Entry(). Při volání metody Entry() datum položky se předá jako parametr s názvem entryDate.
+Vlastní trasa mapuje příchozí požadavek na kontroler s názvem Archive a vyvolá akci entry (). Při volání metody entry () se datum položky předává jako parametr s názvem entryDate.
 
-Blog vlastní trasy můžete použít u kontroleru v zobrazení 2.
+Můžete použít vlastní trasu blogu s řadičem v seznamu 2.
 
-**Výpis 2 - ArchiveController.vb**
+**Výpis 2-ArchiveController. vb**
 
 [!code-vb[Main](creating-custom-routes-vb/samples/sample2.vb)]
 
-Všimněte si, že metoda Entry() ve výpisu 2 přijímá parametr typu DateTime. Architektura MVC je dostatečně inteligentní, aby automaticky převést datum položky z adresy URL na hodnotu data a času. Je-li parametr vstupní data z adresy URL nelze převést na typ DateTime, je vyvolána k chybě (viz obrázek 1).
+Všimněte si, že metoda Entry () v seznamu 2 přijímá parametr typu DateTime. Rozhraní MVC je dostatečně inteligentní, aby bylo možné převést datum zadání z adresy URL na hodnotu DateTime automaticky. Pokud nelze parametr data entry z adresy URL převést na typ DateTime, je vyvolána chyba (viz obrázek 1).
 
-**Obrázek 1 – Chyba z převodu parametru**
+**Obrázek 1 – Chyba při převádění parametru**
 
-[![Dialogové okno Nový projekt](creating-custom-routes-vb/_static/image1.jpg)](creating-custom-routes-vb/_static/image1.png)
+[![dialogového okna Nový projekt](creating-custom-routes-vb/_static/image1.jpg)](creating-custom-routes-vb/_static/image1.png)
 
-**Obrázek 01**: Chyba z převodu parametru ([kliknutím ji zobrazíte obrázek v plné velikosti](creating-custom-routes-vb/_static/image2.png))
+**Obrázek 01**: Chyba při převádění parametru ([kliknutím zobrazíte obrázek v plné velikosti](creating-custom-routes-vb/_static/image2.png))
 
 ## <a name="summary"></a>Souhrn
 
-Cílem tohoto kurzu bylo ukazují, jak můžete vytvořit vlastní trasy. Jste zjistili, jak přidat vlastní trasy do směrovací tabulky v souboru Global.asax, která představuje dostupné zápisy z blogu. Jsme probírali jak mapovat požadavky na zápisy z blogu řadič ArchiveController a s názvem Entry() akce kontroleru.
+Cílem tohoto kurzu je Ukázat, jak můžete vytvořit vlastní trasu. Zjistili jste, jak přidat vlastní trasu do směrovací tabulky v souboru Global. asax, který představuje položky blogu. Probrali jsme, jak mapovat požadavky na položky blogu na kontroler s názvem ArchiveController a akci kontroleru s názvem entry ().
 
 > [!div class="step-by-step"]
 > [Předchozí](asp-net-mvc-controller-overview-vb.md)
-> [další](creating-a-route-constraint-vb.md)
+> [Další](creating-a-route-constraint-vb.md)

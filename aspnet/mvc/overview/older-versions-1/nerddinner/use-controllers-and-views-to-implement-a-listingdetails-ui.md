@@ -1,302 +1,302 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
-title: Použití Kontrolerů a zobrazení k implementaci uživatelského rozhraní seznamu a podrobností | Dokumentace Microsoftu
+title: Použití řadičů a zobrazení k implementaci uživatelského rozhraní pro výpisy a podrobnosti | Microsoft Docs
 author: microsoft
-description: Krok 4 ukazuje, jak přidat řadič aplikace, která využívá výhod náš model uživatelům poskytnout data seznamu a podrobností navigaci...
+description: V kroku 4 se dozvíte, jak přidat kontroler do aplikace, která využívá náš model a poskytuje uživatelům přehledy dat a možnosti navigace...
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: 64116e56-1c9a-4f07-8097-bb36cbb6e57f
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/use-controllers-and-views-to-implement-a-listingdetails-ui
 msc.type: authoredcontent
 ms.openlocfilehash: 74319fe5ea4c79b50140834349e2fdf86420cfbb
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65128207"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78600742"
 ---
 # <a name="use-controllers-and-views-to-implement-a-listingdetails-ui"></a>Použití kontrolerů a zobrazení k implementaci uživatelského rozhraní seznamu a podrobností
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> Toto je krok 4 bezplatného [kurz vývoje aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který procházení procházení po tom, jak sestavit malý, ale bylo možné provést, webové aplikace pomocí ASP.NET MVC 1.
+> Toto je krok 4 bezplatného [kurzu aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který vás provede procesem vytvoření malé, ale dokončené webové aplikace pomocí ASP.NET MVC 1.
 > 
-> Krok 4 ukazuje, jak přidat do aplikace, která využívá výhod náš model uživatelům poskytnout data seznamu a podrobností navigaci večeří na našem webu NerdDinner Kontroleru.
+> V kroku 4 se dozvíte, jak přidat kontroler do aplikace, která využívá náš model a poskytuje uživatelům informace o zobrazení dat a podrobností navigace pro večeři na našem webu NerdDinner.
 > 
-> Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
+> Pokud používáte ASP.NET MVC 3, doporučujeme vám postupovat podle [Začínáme s kurzy pro](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) [hudební úložiště](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) MVC 3 nebo MVC.
 
-## <a name="nerddinner-step-4-controllers-and-views"></a>NerdDinner krok 4: Zobrazení a kontrolerů
+## <a name="nerddinner-step-4-controllers-and-views"></a>NerdDinner krok 4: řadiče a zobrazení
 
-S tradičními webovými rozhraními (klasické rozhraní ASP, PHP, webových formulářů ASP.NET atd.) se obvykle mapují příchozí adresy URL na soubory na disku. Příklad: požadavek na adresu URL, jako je "/ Products.aspx" nebo "/ Products.php" může být zpracována "Products.aspx" nebo "Products.php" soubor.
+V případě tradičních webových rozhraní (klasických webových formulářů ASP, PHP, ASP.NET atd.) jsou příchozí adresy URL obvykle mapovány na soubory na disku. Příklad: požadavek na adresu URL, například "/Products.aspx" nebo "/Products.php", může být zpracován souborem "Products. aspx" nebo "Products. php".
 
-Webové rozhraní MVC mapování adres URL do kódu serveru mírně odlišným způsobem. Místo souborů mapování příchozích adres URL, že místo toho mapování adres URL na metody třídy. Tyto třídy se nazývají "Řadiče" a zodpovídají za zpracování příchozích požadavků HTTP, zpracování uživatelského vstupu, načítání a ukládání dat a určení odpověď k odeslání zpátky do klienta (zobrazení HTML, stáhněte si soubor, přesměrovat na jinou Adresa URL atd.).
+Webové architektury MVC mapují adresy URL na kód serveru trochu jiným způsobem. Namísto mapování příchozích adres URL na soubory místo toho namapujte adresy URL na metody třídy. Tyto třídy se nazývají "řadiče" a zodpovídají za zpracování příchozích požadavků HTTP, zpracování vstupu uživatele, načítání a ukládání dat a určení odpovědi, která se pošle zpátky klientovi (zobrazení HTML, stažení souboru, přesměrování na jiný). Adresa URL atd.).
 
-Teď, když jsme vytvořili základní model pro naši aplikaci NerdDinner, naším dalším krokem bude přidání Kontroleru aplikace, která využívá výhod ji uživatelům poskytnout data seznamu a podrobností navigaci večeří na našem webu.
+Teď, když jsme sestavili základní model pro naši aplikaci NerdDinner, náš další krok přidá do aplikace kontroler, který ho bude využívat k tomu, aby uživatelům poskytl informace o zobrazení dat a podrobností navigace pro večeři na našem webu.
 
-### <a name="adding-a-dinnerscontroller-controller"></a>Přidání Kontroleru DinnersController
+### <a name="adding-a-dinnerscontroller-controller"></a>Přidání kontroleru DinnersController
 
-Použijeme začněte tím, že pravým tlačítkem na složku "Řadiče" v rámci naší webový projekt a pak vyberte **Add -&gt;řadič** příkazu nabídky (Tento příkaz můžete spustit také tak, že zadáte Ctrl-M, Ctrl-C):
+Začneme tak, že kliknete pravým tlačítkem na složku Controllers v našem webovém projektu a pak vyberete příkaz nabídky **Add-&gt;Controller** (Tento příkaz můžete spustit také tak, že zadáte CTRL-M, CTRL-C):
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image1.png)
 
-Tím se otevře dialogové okno "Přidat kontroler":
+Tím se zobrazí dialogové okno Přidat kontroler:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image2.png)
 
-Jsme budete pojmenujte nový kontroler "DinnersController" a klikněte na tlačítko "Přidat". Visual Studio se potom přidejte soubor DinnersController.cs v našich \Controllers adresáři:
+Pojmenujte nový kontroler "DinnersController" a klikněte na tlačítko Přidat. Visual Studio potom do našeho adresáře \Controllers přidá soubor DinnersController.cs:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image3.png)
 
-Se rovněž otevře novou třídu DinnersController v editoru kódu.
+Otevře se také nová třída DinnersController v editoru kódu.
 
-### <a name="adding-index-and-details-action-methods-to-the-dinnerscontroller-class"></a>Přidat do třídy DinnersController Index() a Details() metody akce
+### <a name="adding-index-and-details-action-methods-to-the-dinnerscontroller-class"></a>Přidání metod akce index () a Details () do třídy DinnersController
 
-Chceme, aby návštěvníkům používajícím naší aplikace, projděte si seznam nadcházejících večeří a zajistí, aby kliknutím na libovolný web Dinner v seznamu zobrazíte podrobnosti o tom. Provedeme následující adresy URL z naší aplikace pro publikování:
+Chceme umožnit návštěvníkům, kteří používají naši aplikaci, procházet seznam nadcházejících večeře a povolit jim kliknutí na jakoukoli večeři v seznamu, kde se zobrazí konkrétní podrobnosti. Provedeme to publikováním následujících adres URL z naší aplikace:
 
 | **Adresa URL** | **Účel** |
 | --- | --- |
-| */Dinners/* | Zobrazení HTML seznam nadcházejících večeří |
-| */Dinners/podrobnosti / [id]* | Zobrazit podrobnosti o konkrétní společnosti dinner indikován parametr "id" vloženým do adresy URL, – které bude odpovídat DinnerID večeře v databázi. Příklad: /Dinners/Details/2 zobrazí stránku HTML s podrobnostmi o Dinner, jehož hodnota DinnerID je 2. |
+| */Dinners/* | Zobrazit seznam nadcházejících večeře v HTML |
+| */Dinners/Details/[ID]* | Zobrazí podrobnosti o konkrétní večeři, který je uvedený v parametru ID vloženém v rámci adresy URL, který bude odpovídat DinnerID večeře v databázi. Například:/Dinners/Details/2 by zobrazil stránku HTML s podrobnostmi o večeři, jejichž DinnerID hodnota je 2. |
 
-Počáteční implementace z těchto adres URL budeme publikovat do přidáním dvě veřejné "metody akce" pro naše DinnersController třídy níže:
+Počáteční implementace těchto adres URL budeme publikovat přidáním dvou veřejných "metod akcí" do naší třídy DinnersController, například níže:
 
 [!code-csharp[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample1.cs)]
 
-Provozujeme budete aplikace NerdDinner a můžete je vyvolat prohlížeče. Zadávání *"/ večeří /"* způsobí, že adresa URL naše *Index()* metodu spustit a odešle zpět odpověď na následující:
+Pak spustíme aplikaci NerdDinner a použijeme náš prohlížeč k jejich vyvolání. Zadáním v adrese URL *"/Dinners/"* způsobí spuštění naší metody *index ()* a pošle zpět následující odpověď:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image4.png)
 
-Zadávání *"/ večeří/podrobnosti/2"* způsobí, že adresa URL naše *Details()* metodu spustit a jejich odeslání zpět odpověď na následující:
+Zadáním v adrese URL */Dinners/Details/2* se spustí naše metoda *Details ()* a pošle se zpět následující odpověď:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image5.png)
 
-Možná se ptáte – jak ASP.NET MVC věděli k vytvoření naší DinnersController třídy a volat tyto metody? Si uvědomit, že můžeme využít rychlé podívat, jak směrování funguje.
+Možná vás zajímá, jak ASP.NET MVC ví, jak vytvořit naši třídu DinnersController a vyvolat tyto metody? Abychom porozuměli tomu, jak funguje směrování, podíváme se na to.
 
-### <a name="understanding-aspnet-mvc-routing"></a>Principy ASP.NET MVC směrovací
+### <a name="understanding-aspnet-mvc-routing"></a>Principy směrování MVC ASP.NET
 
-ASP.NET MVC zahrnuje výkonné adresy URL směrování modul, který poskytuje značnou flexibilitu při řízení způsobu mapování adres URL na třídy kontroleru. To umožňuje zcela přizpůsobit, jak ASP.NET MVC zvolí které kontroleru třídy za účelem vytvoření, která metoda k vyvolání na něm také nakonfigurovat různými způsoby, že proměnné lze automaticky získá analýzou z adresy URL řetězec dotazu a předá metodě jako parametr argumenty. Poskytuje flexibilitu při zcela optimalizovat web pro SEO (optimalizace pro vyhledávací weby) a také publikovat všechny Struktura adresy URL, kterou chceme, aby z aplikace.
+ASP.NET MVC zahrnuje výkonný modul pro směrování adres URL, který poskytuje značnou flexibilitu při řízení způsobu mapování adres URL na třídy kontroleru. Umožňuje nám úplně přizpůsobit, jak ASP.NET MVC zvolí třídu kontroleru, která se má vytvořit, kterou metodu vyvolat a taky nakonfigurovat různé způsoby, které lze automaticky analyzovat z adresy URL nebo řetězce dotazu a předat metodě jako argumenty parametru. Přináší flexibilitu pro zcela optimalizaci webu pro SEO (optimalizace vyhledávacích webů) a také publikování jakékoli struktury adres URL, kterou chceme z aplikace.
 
-Ve výchozím nastavení obsahuje nové projekty ASP.NET MVC předkonfigurované sadu pravidly směrování adres URL je už zaregistrovaný. Umožňuje nám to snadno začít používat aplikaci bez nutnosti explicitně nic konfigurovat. Výchozí směrování pravidla registrace najdete v rámci třídy "Aplikace" z našich projektů – které můžeme lze otevřít dvojitým kliknutím na soubor "Global.asax" v kořenovém adresáři projektu:
+Ve výchozím nastavení jsou nové projekty ASP.NET MVC dodávány s předem nakonfigurovanou sadou pravidel směrování adres URL, která jsou již zaregistrována. Díky tomu můžeme snadno začít pracovat s aplikacemi, aniž byste museli explicitně konfigurovat cokoli. Výchozí registrace pravidel směrování najdete v rámci třídy "aplikace" našich projektů – které můžeme otevřít dvojitým kliknutím na soubor Global. asax v kořeni našeho projektu:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image6.png)
 
-Výchozí pravidla směrování ASP.NET MVC jsou registrovány v rámci metody "RegisterRoutes" této třídy:
+Výchozí pravidla směrování ASP.NET MVC jsou registrována v rámci metody "RegisterRoutes" této třídy:
 
 [!code-csharp[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample2.cs)]
 
-"Trasy. MapRoute() "volání metody výše zaregistruje výchozí pravidlo směrování, která se mapuje příchozí adresy URL pomocí formátu adresy URL třídy kontroleru:" / {controller} / {action} / {id} "–"controller"je název třídy kontroleru pro vytvoření instance,"action"je název veřejná metoda k vyvolání na ně a "id" je volitelný parametr vkládán adresu URL, kterou lze předat jako argument metody. Třetí parametr předaný voláním metody "MapRoute()" je sada výchozích hodnot v případě, že se nenachází v adrese URL určený pro kontroler nebo akce/id hodnoty (kontroler = "Domů" Action = "Index", Id = "").
+"Trasy". Volání metody MapRoute () nad registruje výchozí pravidlo směrování, které mapuje příchozí adresy URL na třídy kontroleru pomocí formátu adresy URL:/{Controller}/{Action}/{ID} "– kde" Controller "je název třídy kontroleru pro vytvoření instance," Action "je název veřejné metody, která má být vyvolána a" ID "je volitelný parametr vložený v rámci adresy URL, který lze předat jako argument metody. Třetí parametr předaný volání metody "MapRoute ()" je sada výchozích hodnot, které se mají použít pro hodnoty Controller/Action/ID v případě, že nejsou přítomny v adrese URL (Controller = "Home", Action = "index", ID = "").
 
-Níže je tabulka, která ukazuje, jak různé adresy URL se mapují pomocí výchozí "<em>/ {řadiče} / {action} / {id}"</em>trasy pravidlo:
+Níže je tabulka, která ukazuje, jak se namapují celá řada adres URL pomocí výchozího pravidla trasy "<em>/{Controllers}/{Action}/{ID}"</em>:
 
-| **Adresa URL** | **Třída kontroleru** | **Metody akce** | **Parametry předané** |
+| **Adresa URL** | **Controller – třída** | **Action – metoda** | **Předané parametry** |
 | --- | --- | --- | --- |
-| */ Večeří/podrobnosti/2* | DinnersController | Details(ID) | id=2 |
-| */ Večeří/Edit/5* | DinnersController | Edit(id) | id=5 |
-| */Dinners/Create* | DinnersController | Create() | Není k dispozici |
-| */ Večeří* | DinnersController | Index() | Není k dispozici |
-| *Domů* | HomeController | Index() | Není k dispozici |
-| */* | HomeController | Index() | Není k dispozici |
+| */Dinners/Details/2* | DinnersController | Podrobnosti (ID) | id=2 |
+| */Dinners/Edit/5* | DinnersController | Upravit (ID) | id=5 |
+| */Dinners/Create* | DinnersController | Vytvořit () | neuvedeno |
+| */Dinners* | DinnersController | Index() | neuvedeno |
+| */Home* | HomeController | Index() | neuvedeno |
+| */* | HomeController | Index() | neuvedeno |
 
-Poslední tři řádky zobrazit výchozí hodnoty (kontroler = Home, akce = Index, Id = "") se používají. Protože metoda "Index" je zaregistrovaný jako výchozí název akce, pokud není zadaná, "/ večeří" a "/ Home" příčina adresy URL Index() metoda akce má být volána na jejich třídy Kontroleru. Protože kontroler "Home" je zaregistrovaný jako výchozí kontroler neuvede, adresa URL "/" způsobí, že HomeController, který se má vytvořit a metody akce Index() na něj má být volána.
+Poslední tři řádky zobrazují výchozí hodnoty (Controller = Home, Action = index, ID = ""), které se používají. Vzhledem k tomu, že metoda "index" je registrována jako výchozí název akce, pokud není zadána, adresy URL "/Dinners" a "/Home" způsobují metodu akce index (), která má být vyvolána na svých třídách kontroleru. Protože je "domovský" řadič zaregistrován jako výchozí kontroler, pokud není zadán, adresa URL "/" způsobí vytvoření HomeController a metodu akce index (), která má být vyvolána.
 
-Pokud se vám tato pravidla směrování výchozí adresy URL, dobrou zprávou je, že jsou snadno změnit – stačí upravovat v rámci výše uvedené RegisterRoutes metody. Pro naši aplikaci NerdDinner ale nebudeme změnit pravidla směrování výchozí adresy URL – místo toho právě použijeme jako-je.
+Pokud se vám tato výchozí pravidla směrování adresy URL nelíbí, dobrá zpráva je, že se dají snadno měnit – stačí je upravit v rámci výše uvedené metody RegisterRoutes. U naší aplikace NerdDinner ale nebudeme měnit žádné výchozí pravidla směrování adresy URL – místo toho je stačí použít tak, jak jsou.
 
-### <a name="using-the-dinnerrepository-from-our-dinnerscontroller"></a>Pomocí DinnerRepository z našich DinnersController
+### <a name="using-the-dinnerrepository-from-our-dinnerscontroller"></a>Použití DinnerRepository z našeho DinnersControlleru
 
-Pojďme nyní nahraďte naše aktuální implementace DinnersController Index() a Details() metody akce pomocí implementace, které používají náš model.
+Pojďme teď nahradit naši aktuální implementaci metod DinnersController index () a Details () akce s implementacemi, které používají náš model.
 
-Použijeme třídu DinnerRepository jsme vytvořili dříve k implementaci chování. Vytvoříme začít tak, že přidáte "pomocí" příkaz, který odkazuje na obor názvů "NerdDinner.Models" a potom deklarovat instanci naše DinnerRepository jako pole na naše DinnerController třídy.
+Použijeme třídu DinnerRepository, kterou jsme vytvořili dříve k implementaci chování. Začneme přidáním příkazu Using, který odkazuje na obor názvů "NerdDinner. Models" a potom deklaruje instanci našeho DinnerRepository jako pole na naší třídě DinnerController.
 
-Dále v této kapitole vytvoříme přinášejí koncept "Injektáž závislostí" a zobrazit další způsob pro naše řadiče k získání odkazu na DinnerRepository, umožňující lepší jednotky testování – ale právo teď vytvoříme pouze instance naší DinnerRepository vložené jako níže.
+Později v této kapitole zavádíme koncept "injektáže závislosti" a další způsob, jak můžou naše řadiče získat odkaz na DinnerRepository, který umožňuje lepší testování jednotek, ale hned teď vytvoříme instanci našeho DinnerRepositoryu. vložené jako následující.
 
 [!code-csharp[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample3.cs)]
 
-Nyní jsme připraveni ke generování odpovědi HTML pomocí našich objekty modelu načtená data.
+Teď jsme připraveni vygenerovat odpověď HTML zpátky pomocí našich objektů načteného datového modelu.
 
-### <a name="using-views-with-our-controller"></a>Pomocí zobrazení Kontroleru
+### <a name="using-views-with-our-controller"></a>Používání zobrazení u našeho kontroleru
 
-I když je možné napsat kód v rámci naší metody akce k sestavení HTML a následné použití *metody Response.Write()* Pomocná metoda ji odeslat zpět klientovi, že přístup nepraktický poměrně rychle. Mnoho lepším řešením je pro nás provádět jenom aplikace a data logika uvnitř naše DinnersController metody akce a pak předejte data potřebná k vykreslení odpovědi HTML na samostatné "Zobrazit" šablonu, která je zodpovědná za výstupu HTML reprezentace jeho. Jak uvidíme ve chvíli, šablona "Zobrazit" je textový soubor, který obvykle obsahuje kombinaci kódu HTML a vykreslování vložený kód.
+I když je možné napsat kód v rámci našich metod akcí pro sestavení kódu HTML a potom použít pomocnou metodu *Response. Write ()* k odeslání zpátky klientovi, bude tento přístup nepraktický rychle. Mnohem lepším řešením je, aby bylo možné provádět pouze logiku aplikace a dat v rámci našich metod DinnersController akcí a následně předat data potřebná k vygenerování odpovědi HTML do samostatné šablony "zobrazení", která je zodpovědná za výstup reprezentace HTML. z nich. Jak uvidíme za chvilku, šablona zobrazení je textový soubor, který obvykle obsahuje kombinaci značek HTML a vloženého kódu vykreslování.
 
-Oddělení naše logice kontroleru z našich vykreslování zobrazení přináší několik velké výhody. Zejména pomáhá vynucovat jasně "oddělené oblasti zájmu" mezi kódu aplikace a kód pro formátování/vykreslování uživatelského rozhraní. Díky tomu je mnohem jednodušší pro testování částí aplikace logiky v izolaci z logiku pro vykreslení uživatelského rozhraní. To usnadňuje později upravit šablony vykreslení uživatelské rozhraní bez nutnosti provádět změny kódu aplikace. A to může usnadnit práci vývojářům a návrhářům spolupráce na projektech.
+Oddělení naší logiky kontrol od našeho vykreslování zobrazení přináší několik velkých výhod. Konkrétně pomáhá vymáhat jasné "oddělení obav" mezi kódem aplikace a kódem formátování/vykreslování uživatelského rozhraní. To je mnohem snazší pro logiku aplikace testování částí v izolaci z logiky vykreslování uživatelského rozhraní. Usnadňuje to pozdější úpravu šablon pro vykreslování uživatelského rozhraní, aniž by bylo nutné provádět změny kódu aplikace. A vývojáři a návrháři můžou usnadnit spolupráci na projektech.
 
-Aktualizujeme Naše třída DinnersController k označení, že má být šablona zobrazení má být zaslán zpět při reakci na uživatelském rozhraní HTML změnou signatury metody naše dvě akce s návratovým typem "void". místo toho mít typ vrácené hodnoty "ActionResult". Můžete pak volat *View()* pomocnou metodu v základní třídě Kontroleru vrátit zpět objekt "ViewResult" podobná níže uvedenému příkladu:
+Můžeme aktualizovat naši třídu DinnersController, aby označovala, že chceme použít šablonu zobrazení k odeslání zpět odpovědi uživatelského rozhraní HTML změnou signatur metod našich dvou metod, ze kterých má návratový typ typu "void", namísto toho, aby měl návratový typ "ActionResult". Pak můžeme zavolat pomocnou metodu *View ()* na základní třídu kontroleru a vrátit zpět objekt "ViewResult", například:
 
 [!code-csharp[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample4.cs)]
 
-Podpis metody *View()* Pomocná metoda používáme nad vypadá níže:
+Signatura pomocné metody *View ()* , kterou používáme výše, vypadá takto:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image7.png)
 
-První parametr *View()* Pomocná metoda je název souboru šablony zobrazení chceme použít k vykreslení odpovědi HTML. Druhý parametr je objekt modelu, který obsahuje data, která šablona zobrazení potřebuje k vykreslení odpovědi HTML.
+První parametr pomocné metody *View ()* je název souboru šablony zobrazení, který chceme použít k vykreslení odpovědi HTML. Druhý parametr je objekt modelu, který obsahuje data, která šablona zobrazení potřebuje k vykreslení odpovědi HTML.
 
-V metodě akce Index() voláme *View()* pomocnou metodu a označením, že má být k vykreslení HTML seznam večeří pomocí zobrazení šablony "Index". Zobrazit šablonu jsme je úspěšných sekvenci objektů Dinner vytvořit seznam od:
+V rámci naší metody akce index () voláme pomocnou metodu *zobrazení ()* a uvedeme, že chceme vykreslit seznam večeře z HTML pomocí šablony zobrazení "index". Pomocí šablony zobrazení projdeme sekvenci objektů večeře, ze kterých se vygeneruje seznam:
 
 [!code-csharp[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample5.cs)]
 
-V metodě akce Details() jsme pokoušejí o načtení objektu Dinner pomocí zadané v rámci URL id. Pokud se najde platný Dinner říkáme *View()* Pomocná metoda označující chceme použít šablonu "Podrobnosti" zobrazení k vykreslení objektu načtený Dinner. Pokud o to požádá neplatný dinner jsme vykreslení užitečné chybovou zprávu, která označuje, že večeře neexistuje pomocí zobrazení šablony "Serveru" (a přetížené verze *View()* Pomocná metoda, která trvá to jenom název šablony ):
+V naší metodě podrobností () se pokusíme načíst objekt večeře pomocí ID poskytnutého v rámci adresy URL. Pokud se najde platná večeře, zavoláme pomocnou metodu *zobrazení ()* , která indikuje, že se má k vykreslení načteného objektu večeře použít šablona zobrazení Details. Pokud se požaduje neplatnou večeři, vykreslíme vám užitečnou chybovou zprávu, která indikuje, že večeře neexistuje, pomocí šablony zobrazení "NotFound" (a v případě přetížené verze metody *View ()* , která pouze Získá název šablony):
 
 [!code-csharp[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample6.cs)]
 
-Teď můžeme implementovat zobrazit šablony "Serveru", "Details" a "Index".
+Pojďme teď implementovat šablony zobrazení "NotFound", "Details" a "index".
 
-### <a name="implementing-the-notfound-view-template"></a>Implementace "Serveru" Zobrazit šablonu
+### <a name="implementing-the-notfound-view-template"></a>Implementace šablony zobrazení "NotFound"
 
-Začneme budete implementací zobrazit šablonu – které zobrazí se popisná chybová zpráva, nebyl nalezen požadovaný dinner "Serveru".
+Začneme implementací šablony zobrazení "NotFound", která zobrazuje přívětivou chybovou zprávu s oznámením, že nelze najít požadovanou večeři.
 
-Vytvoříme novou šablonu zobrazení umístěním kurzoru náš text v rámci metody akce kontroleru a potom klikněte pravým tlačítkem myši a zvolte příkaz "Přidat zobrazení" (jsme můžete také spustit tento příkaz zadáním kombinace kláves Ctrl-M, Ctrl-V):
+Novou šablonu zobrazení vytvoříme tak, že umístíte náš textový kurzor do metody akce kontroleru a kliknete pravým tlačítkem a vyberete příkaz nabídky přidat zobrazení (Tento příkaz můžeme také spustit zadáním CTRL-M, CTRL-V):
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image8.png)
 
-Tím se otevře dialog "Přidat zobrazení" jako níže. Ve výchozím nastavení dialogové okno se vyplní předem název zobrazení, vytvořit tak, aby odpovídaly názvu metody akce kurzor byla ve chvíli dialogového okna se spustila (v tomto případě "Details"). Protože chceme první implementaci "Serveru" šablony, vytvoříme tento název zobrazení přepsání a nastavit tak, aby se místo toho "Serveru":
+Tím se zobrazí dialogové okno Přidat zobrazení podobné tomuto. Ve výchozím nastavení se v dialogovém okně předem naplní název zobrazení, který se má shodovat s názvem metody akce, při které se v dialogovém okně spustilo kurzor (v tomto případě "Podrobnosti"). Vzhledem k tomu, že chceme nejdřív implementovat šablonu "NotFound", přepíšeme název tohoto zobrazení a nastavíme ho na místo "NotFound":
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image9.png)
 
-Když kliknete na tlačítko "Přidat", Visual Studio vytvořit novou šablonu zobrazení "NotFound.aspx" nám v adresáři "\Views\Dinners" (který také se vytvoří, pokud již neexistuje adresář):
+Po kliknutí na tlačítko Přidat vytvoří Visual Studio novou šablonu zobrazení "NotFound. aspx" pro nás v adresáři "\Views\Dinners" (kterou vytvoří i v případě, že adresář ještě neexistuje):
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image10.png)
 
-Otevře se také si naše nové šablony "NotFound.aspx" zobrazení v editoru kódu:
+Otevře se také naše nová šablona zobrazení "NotFound. aspx" v editoru kódu:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image11.png)
 
-Zobrazení šablony ve výchozím nastavení mají dvě "oblasti obsahu" kde můžeme přidat obsah a kód. První umožňuje přizpůsobit "název" HTML stránka zaslal zpět. Druhý umožňuje přizpůsobit "hlavní obsah" HTML stránka zaslal zpět.
+Zobrazení šablon ve výchozím nastavení má dvě oblasti obsahu, kde můžeme přidat obsah a kód. První umožňuje přizpůsobit "název" stránky HTML, která se pošle zpátky. Druhý umožňuje přizpůsobit "hlavní obsah" stránky HTML odeslané zpět.
 
-K implementaci naše "Serveru" Zobrazit šablonu přidáme některé základní obsah:
+K implementaci naší šablony zobrazení "NotFound" přidáme základní obsah:
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample7.aspx)]
 
-My potom ho můžou vyzkoušet v prohlížeči. K tomu můžeme požadavek *"/ večeří/podrobnosti/9999"* adresy URL. To bude odkazovat na večeři, která aktuálně neexistuje v databázi a způsobí, že naše DinnersController.Details() metody akce k vykreslení zobrazení šablony naše "Serveru":
+Můžeme to vyzkoušet v prohlížeči. Pokud to chcete udělat, požádejte o adresu URL *"/Dinners/Details/9999"* . Tato akce bude odkazovat na večeři, který v databázi aktuálně neexistuje, a způsobí, že naše metoda DinnersController. Details () vykreslí naši "NotFound" šablonu zobrazení:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image12.png)
 
-Jednou z věcí, které uvidíte ve snímku obrazovky výše je, že upravíme šablonu základním zobrazení zdědil spoustu kód HTML, který obklopuje hlavní obsah na obrazovce. Je to proto, že upravíme šablonu zobrazení používá "stránka předlohy" šablonu, která umožňuje nám to konzistentního rozložení můžete použít ve všech zobrazeních v lokalitě. Podíváme se, jak fungují více v pozdější části tohoto kurzu stránky předlohy.
+Při snímku obrazovky výše si všimněte, že naše základní šablona zobrazení zdědila spoustu HTML, která obklopuje hlavní obsah na obrazovce. Je to proto, že naše zobrazení šablony používá šablonu "Master Page", která nám umožňuje použít konzistentní rozložení napříč všemi zobrazeními na webu. Podíváme se, jak stránky předlohy v pozdější části tohoto kurzu pracují rychleji.
 
-### <a name="implementing-the-details-view-template"></a>Implementace "Details" Zobrazit šablonu
+### <a name="implementing-the-details-view-template"></a>Implementace šablony zobrazení Details
 
-Teď můžeme implementovat "Details" Zobrazit šablonu – které se generují kód HTML pro jeden model Dinner.
+Pojďme teď implementovat šablonu zobrazení Details – která vygeneruje HTML pro jeden model večeře.
 
-Jsme budete k tomu umístění kurzoru náš text v rámci podrobnosti o metodě akce a potom klikněte pravým tlačítkem myši a zvolte příkaz "Přidat zobrazení" (nebo stiskněte klávesy Ctrl-M, Ctrl-V):
+To provedeme tak, že umístíte náš textový kurzor do metody akce Details a kliknete pravým tlačítkem myši a vyberete příkaz nabídky přidat zobrazení (nebo stisknete CTRL + M, CTRL-V):
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image13.png)
 
-Tím se otevře dialogové okno "Přidat zobrazení". Výchozí název zobrazení ("o") budeme uchovávat. Také jsme budete v dialogovém okně vyberte zaškrtávací políčko "Vytvořit zobrazení se silnými typy" a vyberte (pomocí rozevíracího seznamu pole se seznamem) název typu modelu, který jsme jsou předány z Kontroleru zobrazení. Pro toto zobrazení jsme prochází Dinner objektu (plně kvalifikovaný název pro tento typ je: "NerdDinner.Models.Dinner"):
+Tím se zobrazí dialogové okno Přidat zobrazení. Ponecháme výchozí název zobrazení (podrobnosti). V dialogovém okně také vyberete zaškrtávací políčko vytvořit zobrazení silného typu a vybrat (pomocí rozevíracího seznamu ComboBox) název typu modelu, který předáváme z kontroleru do zobrazení. Pro toto zobrazení předáváme objekt večeře (plně kvalifikovaný název tohoto typu je: "NerdDinner. Models. večeře"):
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image14.png)
 
-Na rozdíl od předchozích šablony, ve kterém jsme se rozhodli vytvořit "Prázdné zobrazení", tentokrát, která jsme se vyberou automaticky "generování uživatelského rozhraní" zobrazení pomocí šablony "Podrobnosti". Můžeme to lze naznačit to změnou na "Zobrazit obsah" rozevírací seznam v dialogovém okně výše.
+Na rozdíl od předchozí šablony, kde jsme zvolili vytvoření "prázdného zobrazení", tentokrát se rozhodneme pro toto zobrazení automaticky "vytvořit" pomocí šablony Details (podrobnosti). To můžeme naznačit změnou rozevíracího seznamu "Zobrazit obsah" v dialogovém okně výše.
 
-"Generování uživatelského rozhraní" vygeneruje počáteční implementace naše podrobnosti zobrazení šablony založené na večeři objekt, který jsme do něj prochází. To poskytuje snadný způsob, abychom mohli rychle začít používat naše implementace zobrazení šablony.
+"Generování uživatelského rozhraní" vygeneruje počáteční implementaci naší šablony zobrazení podrobností, která je založená na objektu večeře, který do něj předáváme. Díky tomu můžete snadno rychle začít s implementací šablony zobrazení.
 
-Když kliknete na tlačítko "Přidat", Visual Studio vytvoří nový soubor šablony zobrazení "Details.aspx" pro nás v rámci naší "\Views\Dinners" adresář:
+Po kliknutí na tlačítko Přidat vytvoří Visual Studio nový soubor šablony zobrazení Details. aspx pro nás v rámci našeho adresáře "\Views\Dinners":
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image15.png)
 
-Otevře se také si naše nové šablony "Details.aspx" zobrazení v editoru kódu. Bude obsahovat implementace počáteční vygenerované uživatelské rozhraní zobrazení podrobností na základě modelu večeři. Modul generování uživatelského rozhraní používá reflexe .NET se podívat na veřejné vlastnosti, které jsou zveřejněné na třídy je předán a přidá na základě pro každý typ, který najde odpovídající obsahu:
+Otevře se také naše nová šablona zobrazení "Details. aspx" v editoru kódu. Bude obsahovat počáteční implementaci uživatelského rozhraní pro zobrazení podrobností založené na modelu večeře. Modul pro generování uživatelského rozhraní používá reflexi rozhraní .NET k zobrazení veřejných vlastností zveřejněných na dané třídě a přidá odpovídající obsah na základě každého typu, který najde:
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample8.aspx)]
 
-Můžeme požádat o *"/ večeří/podrobnosti/1"* adresy URL vypadá implementovaný "Podrobnosti" vygenerované uživatelské rozhraní v prohlížeči. Pomocí této adresy URL se zobrazí jeden večeří, kterou jsme ručně přidali do databáze při jsme prvním vytvoření:
+Můžeme požádat o adresu URL *"/Dinners/Details/1"* , aby se zobrazila informace o tom, jak se tato implementace uživatelského rozhraní "Details" v prohlížeči podobá. Pomocí této adresy URL se zobrazí jedna z večeři, kterou jsme ručně přidali do naší databáze při jejím prvním vytvoření:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image16.png)
 
-To nám získá rychlým seznámením a spuštěním a poskytuje nám počáteční implementace naše Details.aspx zobrazení. Pak můžeme přejít a upravit ji přizpůsobit uživatelské rozhraní pro naše spokojenost.
+Tím se nám rychle spustí a spustí se úvodní implementace našeho zobrazení Details. aspx. Pak to můžeme použít k přizpůsobení uživatelského rozhraní pro naši spokojenost.
 
-Když podrobněji podíváme na šabloně Details.aspx, jsme zjistíte, že ji obsahuje statický kód HTML a také vložený kód pro vykreslování. &lt;%%&gt; útržky kódu spuštění kódu při vykreslení zobrazení šablony a &lt;% = %&gt; útržky kódu spouštění kódu vytvořeného v nich obsažené a potom vykreslit výsledek do výstupního datového proudu šablony.
+Když se podrobněji podíváme na šablonu details. aspx, zjistíme, že obsahuje statický kód HTML i vložený kód pro vykreslování. &lt;%%&gt; kódu Nuggets spustit kód při vykreslení šablony zobrazení a &lt;% =%&gt; Code Nuggets spustí kód obsažený v nich a pak vykreslí výsledek do výstupního datového proudu šablony.
 
-Nám můžete napsat kód v rámci naší zobrazení přistupující objekt modelu "Dinner", který byl předán z kontroleru pomocí vlastnosti "Model" silného typu. Visual Studio poskytuje úplné funkce intellisense kód při přístupu k této vlastnosti "Vzor" v editoru:
+V našem zobrazení můžeme psát kód, který přistupuje k objektu modelu "večeře", který byl předán z našeho kontroleru pomocí vlastnosti "model" silného typu. Visual Studio poskytuje úplný kód – IntelliSense při přístupu k této vlastnosti "model" v editoru:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image17.png)
 
-Tak, aby zdroj pro naše finální šablona zobrazení podrobností vypadá níže vytvoříme několik vylepšení:
+Pojďme udělat několik vylepšení, aby zdroj pro poslední šablonu zobrazení podrobností vypadal takto:
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample9.aspx)]
 
-Při přístupu k *"/ večeří/podrobnosti/1"* bude adresa URL znovu ji nyní vykreslení podobná níže uvedenému příkladu:
+Když přistupujeme znovu k adrese URL *"/Dinners/Details/1"* , teď se teď vykreslí jako v následujícím příkladu:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image18.png)
 
-### <a name="implementing-the-index-view-template"></a>Implementace "Index" Zobrazit šablonu
+### <a name="implementing-the-index-view-template"></a>Implementace šablony zobrazení "index"
 
-Teď můžeme implementovat "Index" Zobrazit šablonu – který vygeneruje seznam nadcházejících večeří. Úkol to vytvoříme umístění kurzoru náš text v rámci metody akce indexu a potom klikněte pravým tlačítkem myši klikněte na tlačítko a zvolte příkaz "Přidat zobrazení" (nebo stiskněte klávesy Ctrl-M, Ctrl-V).
+Pojďme teď implementovat šablonu zobrazení "index" – tím se vygeneruje výpis nadcházejících večeře. Provedete to tak, že umístíte textový kurzor do metody akce indexu a pak kliknete pravým tlačítkem a vyberete příkaz nabídky přidat zobrazení (nebo stisknete CTRL-M, CTRL-V).
 
-V dialogovém okně "Přidat zobrazení" vytvoříme zachovat zobrazení šablony s názvem "Index" a vyberte zaškrtávací políčko "Vytvořit zobrazení se silnými typy". Tentokrát vybereme možnost automaticky vygenerovat šablonu zobrazení "seznamu List", a vyberte "NerdDinner.Models.Dinner" jako typ modelu předána do zobrazení (které vzhledem k tomu, že jsme uvedli vytváříme "Seznam" způsobí, že vygenerované uživatelské rozhraní předpokládat, že jsme dialogové okno Přidat zobrazení předání pouze sekvenci objektů Dinner z Kontroleru zobrazení):
+V dialogovém okně Přidat zobrazení budeme uchovávat šablonu zobrazení s názvem index a vybrat zaškrtávací políčko vytvořit zobrazení silného typu. Tentokrát se rozhodneme, že automaticky vygenerujeme šablonu zobrazení "list" a jako typ modelu předaný do zobrazení vyberete "NerdDinner. Models. večeře" (to proto, že jsme zjistili, že vytváříme "list", což způsobí, že se zobrazí dialogové okno Přidat zobrazení. předání posloupnosti objektů večeře z našeho řadiče do zobrazení):
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image19.png)
 
-Když kliknete na tlačítko "Přidat", Visual Studio vytvoří nový soubor šablony zobrazení "Index.aspx" pro nás v rámci naší "\Views\Dinners" adresáře. To bude "generování uživatelského rozhraní" počáteční implementace v rámci, která poskytuje výpisu tabulky HTML večeří jsme předána do zobrazení.
+Když klikneme na tlačítko Přidat, Visual Studio vytvoří nový soubor šablony zobrazení index. aspx pro nás v rámci našeho adresáře "\Views\Dinners". V rámci něj bude "" generátorem "vytvořená počáteční implementace, která obsahuje seznam večeři v tabulce HTML, který předáte do zobrazení.
 
-Pokud provozujeme aplikace a přístup *"/ večeří /"* adresy URL se bude vykreslovat náš seznam večeří takto:
+Když aplikaci spustíme a získáte přístup k adrese URL *"/Dinners/"* , vykreslíme si náš seznam večeře, například:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image20.png)
 
-Výše uvedené tabulce řešení získáváme mřížky rozložení částí produktu naše data Dinner – které není úplně chceme pro naše spotřebitelům Dinner výpis. Budeme aktualizovat Index.aspx zobrazit šablonu a upravte je tak seznam méně sloupců dat a použít &lt;ul&gt; – element pro vykreslení namísto tabulky pomocí níže uvedeného kódu:
+Výše uvedené řešení tabulky nabízí rozložení dat o večeři, které je podobné mřížce, což není dost důležité pro náš seznam večeře pro příjemce. Můžeme aktualizovat šablonu zobrazení index. aspx a upravit ji tak, aby obsahovala méně sloupců dat, a použít &lt;prvek ul&gt; k jejich vykreslení místo tabulky pomocí následujícího kódu:
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample10.aspx)]
 
-Jak jsme ve smyčce každý večeře v náš Model se používá – klíčové slovo "var" v rámci výše uvedeného příkazu foreach. Tyto zkušenosti s C# 3.0 možná myslíte, že použití "var" znamená, že večeře objektu s pozdní vazbou. Místo toho znamená, že kompilátor používá odvození typu proti vlastnost silného typu "Vzor" (která je typu "IEnumerable&lt;Dinner&gt;") a kompilace proměnnou místní "dinner" jako typ web Dinner – což znamená, že jsme získali úplný technologie IntelliSense a kompilace kontrolují v rámci bloků kódu:
+Používáme klíčové slovo var v rámci výše uvedeného příkazu foreach jako smyčka za každou večeři v našem modelu. Ty, které nejsou C# známé pomocí 3,0, se můžou domnívat, že použití "var" znamená, že objekt večeře je pozdní vazbou. Místo toho znamená, že kompilátor používá odvozování typů proti silně typované vlastnosti "model" (která je typu "IEnumerable&lt;večeře&gt;") a zkompiluje místní proměnnou "večeře" jako typ večeře, což znamená, že získáme úplnou technologii IntelliSense a kontrolu doby kompilace v rámci bloků kódu:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image21.png)
 
-Když jsme stiskněte tlačítko Aktualizovat */Dinners* adresu URL do prohlížeče naše aktualizované zobrazení teď vypadá podobně jako následující:
+Po zobrazení aktualizace na adrese URL */Dinners* v našem prohlížeči se naše aktualizované zobrazení teď zdá, jak vidíte níže:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image22.png)
 
-To je o něco lépe – ale ještě není úplně existuje. Naše posledním krokem je povolit koncovým uživatelům, aby kliknutím na jednotlivé večeří v seznamu a zobrazte podrobnosti o nich. To jsme budete implementovat podle vykreslení elementů HTML hypertextový odkaz, odkaz na metodu akce podrobnosti v našich DinnersController.
+To se vyhledává lépe, ale ještě ne úplně tam. Náš poslední krok je povolit koncovým uživatelům kliknout na jednotlivé večeře v seznamu a zobrazit podrobnosti o nich. To provedeme tak, že vyvykreslujeme prvky hypertextového odkazu HTML, které odkazují na metodu Action Details na našem DinnersController.
 
-Vygenerujeme můžete tyto hypertextové odkazy v rámci naší Index zobrazení v jednom ze dvou způsobů. První je ruční vytvoření HTML &lt;&gt; prvky, jako jsou níže, kde zahrnujeme &lt;%%&gt; blokuje v rámci &lt;&gt; prvek HTML:
+Tyto hypertextové odkazy můžeme v našem zobrazení indexu vygenerovat jedním ze dvou způsobů. První je ručně vytvořit HTML &lt;prvky&gt;, například níže, kam vložíme &lt;%%&gt; bloky v &lt;&gt; elementu HTML:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image23.png)
 
-Alternativním přístupem můžete je využít integrované Pomocná metoda "Html.ActionLink()" v rámci technologie ASP.NET MVC, která podporuje programové vytvoření HTML &lt;&gt; element, který odkazuje na jinou metodu akce v Kontroler:
+Alternativním přístupem, který můžeme použít, je využít integrované metody "HTML. ActionLink ()" v rámci ASP.NET MVC, která podporuje Programové vytvoření HTML &lt;&gt; elementu, který odkazuje na jinou metodu akce na řadiči.
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample11.aspx)]
 
-První parametr metody helper Html.ActionLink() je text odkazu pro zobrazení (v tomto případě název ze společnosti dinner), druhý parametr je název akce Kontroleru, chceme, aby ke generování odkazu na (v tomto případě metodu podrobnosti) a třetí parametr je Sada parametry se mají odeslat na akci (implementován jako anonymní typ s názvem/hodnotami vlastností). V tomto případě zadáváme parametru "id" dinner jsme chcete propojit a vzhledem k tomu, že výchozí směrování adres URL v architektuře ASP.NET MVC pravidlo "{Controller} / {Action} / {id}" Pomocná metoda Html.ActionLink() vygeneruje následující výstup:
+První parametr pro kód HTML. The ActionLink () pomocná metoda je text odkazu, který se má zobrazit (v tomto případě název večeře), druhý parametr je název akce kontroleru, na kterou chcete vytvořit odkaz (v tomto případě metoda Details), a třetí parametr je sada parametrů k odeslání do akce (implementující jako anonymní typ s názvem nebo hodnotami vlastnosti). V tomto případě zadáváme parametr ID pro večeři, ke kterému se chcete připojit, a vzhledem k tomu, že výchozí pravidlo směrování adresy URL v ASP.NET MVC je {Controller}/{Action}/{id} "metoda" HTML. ActionLink () "vygeneruje následující výstup:
 
 [!code-html[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample12.html)]
 
-Pro naše zobrazení Index.aspx použijeme Html.ActionLink() Pomocná metoda přístup a mít každý večeře v seznamu odkazu na adresu URL odpovídající podrobnosti:
+Pro náš pohled index. aspx použijeme přístup k pomocné metodě HTML. ActionLink () a každý z nich v odkazu seznam na příslušnou adresu URL s podrobnostmi:
 
 [!code-aspx[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample13.aspx)]
 
-Kliknu na nyní Když jsme */Dinners* adresa URL vypadá naše společnost dinner seznam níže:
+A teď, když máme přístup k adrese URL */Dinners* , náš seznam večeře vypadá takto:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image24.png)
 
-Když kliknete na některý z večeří v seznamu přejdeme budete zobrazíte podrobnosti o něm:
+Po kliknutí na kteroukoli z těchto večeři v seznamu přejdeme k podrobnostem o tom, jak se dozvíte:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image25.png)
 
-### <a name="convention-based-naming-and-the-views-directory-structure"></a>Podle konvence pojmenování a strukturu adresářů \Views
+### <a name="convention-based-naming-and-the-views-directory-structure"></a>Vytváření názvů a adresářové struktury na základě konvence
 
-Ve výchozím nastavení aplikace ASP.NET MVC pomocí adresáře podle úmluvy strukturu pojmenování při překladu zobrazit šablony. To umožňuje vývojářům vyhnout se tak nutnosti plnému cesta k umístění při odkazování na zobrazení z v rámci třídy Kontroleru. Ve výchozím nastavení bude vypadat ASP.NET MVC pro zobrazení souboru šablony v rámci * \Views\[ControllerName]\* adresáře pod aplikace.
+ASP.NET aplikace MVC ve výchozím nastavení při rozpoznávání šablon zobrazení používají strukturu názvů adresářů na základě konvence. To umožňuje vývojářům vyhnout se nutnosti plně kvalifikovat cestu k umístění při odkazování na zobrazení v rámci třídy Controller. Ve výchozím nastavení bude ASP.NET MVC hledat soubor šablony zobrazení v adresáři * \Views\[Controller]\* Directory pod aplikací.
 
-Například jsme pracovali na třídě DinnersController – které výslovně odkazuje na tři šablony zobrazení: "Index", "Details" a "Serveru". ASP.NET MVC ve výchozím nastavení vyhledá tato zobrazení v rámci *\Views\Dinners* adresáře pod naše kořenový adresář aplikace:
+Pracovali jste například na třídě DinnersController – která explicitně odkazuje na tři šablony zobrazení: "index", "Details" a "NotFound". ASP.NET MVC bude standardně Hledat tato zobrazení v adresáři *\Views\Dinners* pod adresářem kořenový adresář aplikace:
 
 ![](use-controllers-and-views-to-implement-a-listingdetails-ui/_static/image26.png)
 
-Všimněte si, že nad jak Zde jsou nyní tři třídy kontroleru v rámci projektu (DinnersController, HomeController a AccountController – poslední dva byly přidány ve výchozím nastavení, když jsme vytvořili projekt), a existují tři dílčí adresáře (jeden pro každý kontroler) v rámci \Views adresáře.
+Všimněte si, že v projektu jsou aktuálně tři třídy kontroleru (DinnersController, HomeController a AccountController – poslední dvě byly přidány ve výchozím nastavení, když jsme vytvořili projekt) a existují tři podadresáře (jeden pro každý Controller) v adresáři \Views
 
-Zobrazení na něj odkazovat z řadiče domovské a účty automaticky vyřeší jejich zobrazení šablony z příslušné *\Views\Home* a *\Views\Account* adresáře. *\Views\Shared* podadresář poskytuje způsob, jak ukládat zobrazit šablony, které jsou znovu použít v rámci několika řadičů v rámci aplikace. Když ASP.NET MVC se pokusí přeložit zobrazit šablonu, nejprve zkontroluje v rámci *\Views\[kontroler]* konkrétní adresář, a pokud nemůže najít zobrazit šablonu existuje bude vypadat v rámci *\Views\ Sdílené* adresáře.
+Zobrazení, na která se odkazují z domácích a řadičů účtů, automaticky vyřeší své šablony zobrazení z příslušných adresářů *\Views\Home* a *\Views\Account* . Podadresář *\Views\Shared* poskytuje způsob, jak uložit šablony zobrazení, které se znovu používají napříč více řadiči v rámci aplikace. Když se ASP.NET MVC pokusí vyřešit šablonu zobrazení, nejdřív se ověří v adresáři *\Views\[Controller]* , a pokud nenalezne šablonu zobrazení, bude se v adresáři *\Views\Shared* zobrazovat.
 
-Pokud jde o názvy šablon jednotlivých zobrazení, je doporučené pokyny k zobrazení šablony mají stejný název jako metody akce, který způsobil, že k vykreslení. Například výše naše "Index" je metodu akce pomocí "Index" zobrazení k vykreslení zobrazení výsledků a metoda akce "Details" je pomocí "Details" zobrazení k vykreslení jeho výsledky. To usnadňuje se krátce zobrazit šablonu, která souvisí s každou akci.
+Při pojmenování jednotlivých šablon zobrazení doporučujeme, aby šablona zobrazení sdílela stejný název jako metoda akce, která způsobila vykreslení. Například výše uvedená metoda akce "index" používá zobrazení "index" k vykreslení výsledku zobrazení a metoda akce "Details" používá zobrazení podrobností k vykreslení výsledků. Díky tomu se snadno rychle zjistí, která šablona je k jednotlivým akcím přidružená.
 
-Vývojáři, není potřeba explicitně zadat název šablony zobrazení při zobrazení šablony má stejný název jako metoda akce volaná na řadiči. Jsme můžete místo toho stačí pouze předat objekt modelu "View()" pomocné metody (bez zadání názvu zobrazení) a ASP.NET MVC automaticky odvodí, že chceme použít *\Views\[ControllerName]\[ActionName]* zobrazit šablonu na disku pro vykreslení.
+Vývojáři nemusí explicitně zadávat název šablony zobrazení, pokud má šablona zobrazení stejný název jako metoda akce, která je vyvolána na řadiči. Místo toho můžeme jednoduše předat objekt modelu do pomocné metody View () (bez zadání názvu zobrazení) a ASP.NET MVC automaticky odsadí, že chceme pro vykreslení použít na disku šablonu zobrazení *\[\[Controller] název]* .
 
-To umožňuje nám to trochu vyčistit našeho kódu kontroleru a předchází vzniku duplicitní název dvakrát v našem kódu:
+Díky tomu můžeme trochu vyčistit náš kód kontroleru a vyhnout se tak dvojímu kopírování názvu v našem kódu:
 
 [!code-csharp[Main](use-controllers-and-views-to-implement-a-listingdetails-ui/samples/sample14.cs)]
 
-Ve výše uvedeném kódu je, že všechny, které je potřeba k implementaci nice seznamu a podrobností Dinner prostředí pro web.
+Výše uvedený kód je nezbytný k implementaci seznamu a podrobností o skvělé večeři pro web.
 
-#### <a name="next-step"></a>Dalším krokem
+#### <a name="next-step"></a>Další krok
 
-Teď máme dobré Dinner integrované prostředí pro procházení.
+Teď jsme vytvořili prostředí s dobrým přístupem na večeři.
 
-Pojďme teď povolit podporu editaci formulář dat CRUD (vytváření, čtení, Update, Delete).
+Pojďme nyní povolit možnost CRUD (vytvořit, číst, aktualizovat, odstranit) datový formulář, který podporuje úpravy.
 
 > [!div class="step-by-step"]
 > [Předchozí](build-a-model-with-business-rule-validations.md)
-> [další](provide-crud-create-read-update-delete-data-form-entry-support.md)
+> [Další](provide-crud-create-read-update-delete-data-form-entry-support.md)

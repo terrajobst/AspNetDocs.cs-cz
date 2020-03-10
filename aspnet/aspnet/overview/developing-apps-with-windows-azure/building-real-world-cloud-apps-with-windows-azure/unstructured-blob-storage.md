@@ -9,11 +9,11 @@ ms.assetid: 9f05ccb1-2004-4661-ad8b-c370e6c09c8e
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
 msc.type: authoredcontent
 ms.openlocfilehash: f48b2be755b84dff9b2672bd348c73107602c6dd
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77456788"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78617311"
 ---
 # <a name="unstructured-blob-storage-building-real-world-cloud-apps-with-azure"></a>Nestrukturované Blob Storage (vytváření skutečných cloudových aplikací s Azure)
 
@@ -135,7 +135,7 @@ V účtu úložiště můžete mít stovky terabajtů a náklady na úložiště
 
 V [Další části](design-to-survive-failures.md) se seznámíte s důležitostí, jak zajistit, aby cloudová aplikace mohla řádně zpracovat selhání.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 
 Další informace najdete v následujících zdrojích informací:
 

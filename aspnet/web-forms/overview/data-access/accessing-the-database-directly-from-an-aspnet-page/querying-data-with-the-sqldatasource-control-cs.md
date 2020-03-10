@@ -9,11 +9,11 @@ ms.assetid: 60512d6a-b572-4b7a-beb3-3e44b4d2020c
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/querying-data-with-the-sqldatasource-control-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 5bda42965f7d1db71b207c0b76e251b8fff64e31
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74606144"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78626425"
 ---
 # <a name="querying-data-with-the-sqldatasource-control-c"></a>Dotazování na data ovládacím prvkem SqlDataSource (C#)
 
@@ -195,7 +195,7 @@ Po dokončení průvodce bude do prvku GridView přidána tři BoundFieldsy, kte
 
 **Obrázek 15**: prvek GridView zobrazuje každé ID produktu, název a přiřazený název kategorie ([kliknutím zobrazíte obrázek v plné velikosti).](querying-data-with-the-sqldatasource-control-cs/_static/image23.gif)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme viděli, jak zadávat dotazy a zobrazovat data pomocí ovládacího prvku SqlDataSource. Podobně jako prvek ObjectDataSource, třída SqlDataSource slouží jako proxy a poskytuje deklarativní přístup pro přístup k datům. Jeho vlastnosti určují databázi, ke které se má připojit, a dotaz SQL `SELECT`, který se má provést. dá se zadat pomocí okno Vlastnosti nebo pomocí Průvodce konfigurací zdroje dat.
 

@@ -9,11 +9,11 @@ ms.assetid: 82b8dea0-f062-4ee4-8784-3ffa30fbb1ca
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/command-line-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: 13cfe4492398b59f2c80394689cc113ccb218c60
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74634203"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78630919"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-command-line-deployment"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: nasazení z příkazového řádku
 
@@ -102,7 +102,7 @@ Pro publikování na příkazovém řádku jsou podporované tři metody publiko
 
 Konfigurace sestavení a platforma musí být nastavená v sadě Visual Studio nebo na příkazovém řádku. Profily publikování zahrnují vlastnosti, které jsou pojmenovány `LastUsedBuildConfiguration` a `LastUsedPlatform`, ale tyto vlastnosti nelze nastavit, aby bylo možné určit, jak je projekt sestaven. Další informace najdete v tématu [MSBuild: jak nastavit vlastnost konfigurace](http://sedodream.com/2012/10/27/MSBuildHowToSetTheConfigurationProperty.aspx) na blogu Sayed Hashimi.
 
-## <a name="deploy-to-staging"></a>Nasadit do přípravy
+## <a name="deploy-to-staging"></a>Nasazení do přípravného prostředí
 
 K nasazení do Azure je nutné přidat heslo do příkazového řádku. Pokud jste heslo uložili v profilu publikování v aplikaci Visual Studio, bylo uloženo v šifrované podobě v souboru *. pubxml. User* . Tento soubor není nástrojem MSBuild k dispozici při nasazení příkazového řádku, takže je nutné předat heslo v parametru příkazového řádku.
 
@@ -132,7 +132,7 @@ Proces pro nasazení do produkčního prostředí je podobný procesu pro příp
     V případě skutečného produkčního webu, pokud došlo ke změně databáze, byste obvykle zkopírovali *aplikaci\_offline souboru. htm* do lokality před nasazením a po úspěšném nasazení ho odstraníte.
 4. Otevřete prohlížeč a přejděte na adresu URL vašeho přípravného webu a kliknutím na stránku **o** ověřte, že nasazení proběhlo úspěšně.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Nyní jste nasadili aktualizaci aplikace pomocí příkazového řádku.
 

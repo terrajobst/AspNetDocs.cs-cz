@@ -9,11 +9,11 @@ ms.assetid: 8b7fcf7b-722b-498d-a4e4-7c93701e0c95
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/nested-data-web-controls-vb
 msc.type: authoredcontent
 ms.openlocfilehash: c3c62ce4293498d3b325031ac9817f8935b183b2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74629635"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78611487"
 ---
 # <a name="nested-data-web-controls-vb"></a>Webové ovládací prvky vnořených dat (VB)
 
@@ -145,7 +145,7 @@ Toto vylepšení nezavádí žádné změny vykresleného kódu stránky ani nev
 
 Stejně jako vždy, když přichází k analýze výkonu dvou technik, je jedinou surefireou mírou spuštění řízených testů přizpůsobených pro běžné scénáře v případě použití aplikace.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme viděli, jak v rámci sebe vnořovat webové ovládací prvky pro data, konkrétně si prozkoumáte, jak má vnější opakovač Zobrazit položku pro každou kategorii s vnitřním opakovačem, který obsahuje seznam produktů pro každou kategorii v seznamu s odrážkami. Hlavní výzva při sestavování vnořeného uživatelského rozhraní je v přístupu a vázání správných dat k webovému ovládacímu prvku pro vnitřní data. K dispozici je celá řada techniků, z nichž dva jsme prozkoumali v tomto kurzu. První metoda zkoumala použití prvku ObjectDataSource v ovládacím prvku webového ovládacího prvku s vnějším daty `ItemTemplate`, který byl svázán s ovládacím prvkem pro vnitřní data prostřednictvím jeho vlastnosti `DataSourceID`. Druhá technika získala data prostřednictvím metody ve třídě ASP.NET stránky s kódem na pozadí. Tato metoda může být svázána s vlastností webového ovládacího prvku s vnitřním daty `DataSource` prostřednictvím syntaxe datové vazby.
 

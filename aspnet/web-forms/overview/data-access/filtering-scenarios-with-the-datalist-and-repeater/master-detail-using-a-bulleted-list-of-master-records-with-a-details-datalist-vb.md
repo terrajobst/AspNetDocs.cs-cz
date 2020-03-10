@@ -9,11 +9,11 @@ ms.assetid: ee20742f-6fb7-49a0-a009-058fe363aacb
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 81d72c666925e89729464e7ea696bde8d323e277
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74641715"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78605957"
 ---
 # <a name="masterdetail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb"></a>Zobrazení hlavních záznamů / podrobností v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)
 
@@ -228,7 +228,7 @@ S těmito dodatky jsme náš kurz dokončili. Vyzkoušejte si chvilku, abyste ho
 
 **Obrázek 15**: kliknutím na kategorii výroba zobrazíte seznam vyhovujících produktů vpravo ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb/_static/image43.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Jak jsme viděli v tomto kurzu a předchozí sestavy hlavní/podrobnosti je možné rozložit na dvě stránky nebo konsolidovat na jednu z nich. Zobrazení sestavy hlavní/podrobnosti na jedné stránce ale zavádí některé problémy s tím, jak nejlépe rozložení hlavního a podrobného záznamu na stránce. V seznamu *a podrobnostech pomocí selektivního hlavního prvku GridView s podrobným* kurzem k podrobnostem se zobrazí záznamy podrobností nad hlavními záznamy; v tomto kurzu jsme pomocí techniků CSS nastavili hlavní záznamy na levou stranu podrobností.
 

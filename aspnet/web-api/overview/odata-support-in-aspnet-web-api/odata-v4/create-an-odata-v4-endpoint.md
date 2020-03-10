@@ -1,45 +1,45 @@
 ---
 uid: web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
-title: Vytvoření koncového bodu OData v4 pomocí rozhraní ASP.NET Web API 2.2 | Dokumentace Microsoftu
+title: Vytvoření koncového bodu OData v4 pomocí webového rozhraní API ASP.NET 2,2 | Microsoft Docs
 author: MikeWasson
-description: Open Data Protocol (OData) je protokol data access pro web. OData nabízí jednotným způsobem pro dotazování a manipulaci s datovými sadami prostřednictvím operace CRUD...
+description: Protokol OData (Open Data Protocol) je protokol pro přístup k datům pro web. OData poskytuje jednotný způsob dotazování a manipulace s datovými sadami prostřednictvím operací CRUD...
 ms.author: riande
 ms.date: 01/23/2019
 ms.assetid: 1e1927c0-ded1-4752-80fd-a146628d2f09
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint
 msc.type: authoredcontent
 ms.openlocfilehash: 81d134cbd3231b9a0d5537ccbd1bbfe6419254af
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108718"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78598733"
 ---
-# <a name="create-an-odata-v4-endpoint-using-aspnet-web-api"></a>Vytvoření koncového bodu OData v4 pomocí rozhraní ASP.NET Web API 
+# <a name="create-an-odata-v4-endpoint-using-aspnet-web-api"></a>Vytvoření koncového bodu OData v4 pomocí webového rozhraní API ASP.NET 
 
-> Open Data Protocol (OData) je protokol data access pro web. OData nabízí jednotným způsobem pro dotazování a manipulaci s datovými sadami prostřednictvím operace CRUD (vytváření, čtení, aktualizace a odstranění).
+> Protokol OData (Open Data Protocol) je protokol pro přístup k datům pro web. OData poskytuje jednotný způsob dotazování a manipulace s datovými sadami prostřednictvím operací CRUD (vytvoření, čtení, aktualizace a odstranění).
 >
-> Rozhraní ASP.NET Web API podporuje v3 a v4 protokolu. Může probíhat dokonce na koncový bod v4, na kterém běží vedle sebe s koncovým bodem v3.
+> Webové rozhraní API ASP.NET podporuje V3 i v4 protokolu. Můžete dokonce i koncový bod v4, který běží souběžně s koncovým bodem v3.
 >
-> Tento kurz ukazuje, jak vytvořit koncový bod OData v4, který podporuje operace CRUD.
+> V tomto kurzu se dozvíte, jak vytvořit koncový bod OData v4, který podporuje operace CRUD.
 >
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 >
-> - Web API 5.2
+> - Webové rozhraní API 5,2
 > - OData v4
-> - Visual Studio 2017 (stáhněte si Visual Studio 2017 [tady](https://visualstudio.microsoft.com/downloads/))
+> - Visual Studio 2017 ( [tady si můžete](https://visualstudio.microsoft.com/downloads/)stáhnout visual Studio 2017)
 > - Entity Framework 6
 > - .NET 4.7.2
 >
-> ## <a name="tutorial-versions"></a>Kurz verze
+> ## <a name="tutorial-versions"></a>Verze kurzů
 >
-> OData verze 3, naleznete v tématu [vytváření koncového bodu OData v3](../odata-v3/creating-an-odata-endpoint.md).
+> Informace o OData verze 3 najdete v tématu [Vytvoření koncového bodu OData V3](../odata-v3/creating-an-odata-endpoint.md).
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-V sadě Visual Studio z **souboru** nabídce vyberte možnost **nový** &gt; **projektu**.
+V aplikaci Visual Studio v nabídce **soubor** vyberte **Nový** &gt; **projekt**.
 
-Rozbalte **nainstalováno** &gt; **Visual C#**  &gt; **webové**a vyberte **webová aplikace ASP.NET (.NET Framework)**  šablony. Pojmenujte projekt &quot;ProductService&quot;.
+Rozbalte položku **nainstalované** &gt;  **C# Visual** &gt; **Web**a vyberte šablonu **Webová aplikace ASP.NET (.NET Framework)** . Pojmenujte projekt &quot;ProductService&quot;.
 
 [![](create-an-odata-v4-endpoint/_static/image7.png)](create-an-odata-v4-endpoint/_static/image7.png)
 
@@ -47,51 +47,51 @@ Vyberte **OK**.
 
 [![](create-an-odata-v4-endpoint/_static/image8.png)](create-an-odata-v4-endpoint/_static/image8.png)
 
-Vyberte **prázdný** šablony. V části **přidat složky a základní odkazy pro:** vyberte **webového rozhraní API**. Vyberte **OK**.
+Vyberte **prázdnou** šablonu. V části **Přidat složky a základní reference pro:** vyberte **webové rozhraní API**. Vyberte **OK**.
 
 ## <a name="install-the-odata-packages"></a>Instalace balíčků OData
 
-Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet** &gt; **Konzola správce balíčků**. V okně konzoly Správce balíčků zadejte příkaz:
+V nabídce **nástroje** vyberte **správce balíčků NuGet** &gt; **konzolu Správce balíčků**. V okně konzoly Správce balíčků zadejte:
 
 [!code-console[Main](create-an-odata-v4-endpoint/samples/sample1.cmd)]
 
-Tento příkaz nainstaluje nejnovější balíčky OData NuGet.
+Tento příkaz nainstaluje nejnovější balíčky NuGet pro OData.
 
 ## <a name="add-a-model-class"></a>Přidejte třídu modelu
 
-A *modelu* je objekt, který představuje entitu dat ve vaší aplikaci.
+*Model* je objekt, který představuje datovou entitu v aplikaci.
 
-V Průzkumníku řešení klikněte pravým tlačítkem na složku modely. V místní nabídce vyberte **přidat** &gt; **třídy**.
+V Průzkumník řešení klikněte pravým tlačítkem na složku modely. V místní nabídce vyberte **přidat** &gt; **třídy**.
 
 [![](create-an-odata-v4-endpoint/_static/image6.png)](create-an-odata-v4-endpoint/_static/image5.png)
 
 > [!NOTE]
-> Podle konvence tříd modelu jsou umístěny ve složce modely, ale není nutné postupovat podle tohoto vytváření názvů pro svoje vlastní projekty.
+> Podle konvence jsou třídy modelu umístěny do složky modelů, ale nemusíte postupovat podle této konvence ve svých vlastních projektech.
 
-Název třídy `Product`. V souboru Product.cs nahraďte často používaný kód následujícím kódem:
+Pojmenujte `Product`třídy. V souboru Product.cs nahraďte často používaný kód následujícím kódem:
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample2.cs)]
 
-`Id` Vlastnost je klíč entity. Klienti mohou odesílat dotazy entit podle klíče. Například pokud chcete získat produkt s ID 5, identifikátor URI je `/Products(5)`. `Id` Vlastnosti také bude primární klíč v back-end databáze.
+Vlastnost `Id` je klíč entity. Klienti můžou zadávat dotazy na entity podle klíče. Chcete-li například získat produkt s ID 5, je identifikátor URI `/Products(5)`. Vlastnost `Id` bude také primárním klíčem v back-endové databázi.
 
-## <a name="enable-entity-framework"></a>Povolení rozhraní Entity Framework
+## <a name="enable-entity-framework"></a>Povolit Entity Framework
 
-V tomto kurzu použijeme Entity Framework (EF) Code First k vytvoření back-end databáze.
+V tomto kurzu použijeme Entity Framework (EF) Code First k vytvoření back-endové databáze.
 
 > [!NOTE]
-> Web API OData EF nevyžaduje. Použijte všechny vrstvy přístup k datům, která jsou dobře převeditelné entity databáze do modelů.
+> Rozhraní Web API OData nevyžaduje EF. Použijte jakoukoli vrstvu přístupu k datům, která dokáže překládat databázové entity do modelů.
 
-Nejdřív nainstalujte balíček NuGet pro EF. Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet** &gt; **Konzola správce balíčků**. V okně konzoly Správce balíčků zadejte příkaz:
+Nejdřív nainstalujte balíček NuGet pro EF. V nabídce **nástroje** vyberte **správce balíčků NuGet** &gt; **konzolu Správce balíčků**. V okně konzoly Správce balíčků zadejte:
 
 [!code-console[Main](create-an-odata-v4-endpoint/samples/sample3.cmd)]
 
-Otevřete soubor Web.config a přidat následující části uvnitř **konfigurace** element, za **configSections** elementu.
+Otevřete soubor Web. config a přidejte následující oddíl do **konfiguračního** elementu za prvek **configSections** .
 
 [!code-xml[Main](create-an-odata-v4-endpoint/samples/sample4.xml?highlight=6)]
 
-Toto nastavení přidá připojovacího řetězce pro databázi LocalDB. Tato databáze se použije při spuštění aplikace místně.
+Toto nastavení přidá připojovací řetězec pro databázi LocalDB. Tato databáze se použije, když aplikaci spouštíte místně.
 
-V dalším kroku přidejte třídu pojmenovanou `ProductsContext` ke složce modely:
+Dále do složky modely přidejte třídu s názvem `ProductsContext`:
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample5.cs)]
 
@@ -99,75 +99,75 @@ V konstruktoru `"name=ProductsContext"` poskytuje název připojovacího řetěz
 
 ## <a name="configure-the-odata-endpoint"></a>Konfigurace koncového bodu OData
 
-Otevřete soubor aplikace\_Start/WebApiConfig.cs. Přidejte následující **pomocí** příkazy:
+Otevřete soubor App\_Start/WebApiConfig. cs. Přidejte následující příkazy **using** :
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample6.cs)]
 
-Pak přidejte následující kód, který **zaregistrovat** metody:
+Pak do metody **registru** přidejte následující kód:
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample7.cs)]
 
 Tento kód provede dvě věci:
 
-- Vytvoří Entity Data Model (EDM).
+- Vytvoří model EDM (Entity Data Model) (EDM).
 - Přidá trasu.
 
-EDM je abstraktní modelem data. EDM slouží k vytvoření dokumentu metadat služby. **ODataConventionModelBuilder** třídy pomocí výchozí konvence pojmenování vytvoří modelu EDM. Tento přístup vyžaduje nejméně kódu. Pokud chcete mít větší kontrolu nad EDM, můžete použít **Tvůrce ODataModelBuilder** třídy za účelem vytvoření tak, že explicitně přidáte vlastností, klíčů a navigačních vlastností EDM.
+EDM je abstraktní model dat. Model EDM slouží k vytvoření dokumentu metadat služby. Třída **ODataConventionModelBuilder** vytvoří EDM pomocí výchozích konvencí pojmenování. Tento přístup vyžaduje nejméně kód. Pokud chcete mít větší kontrolu nad modelem EDM, můžete pomocí třídy **ODataModelBuilder** vytvořit EDM přidáním vlastností, klíčů a vlastností navigace explicitně.
 
-A *trasy* informuje webového rozhraní API, jak směrovat požadavky HTTP na koncový bod. Chcete-li vytvořit trasy OData v4, zavolejte **MapODataServiceRoute** – metoda rozšíření.
+*Trasa* oznamuje webovému rozhraní API, jak SMĚROVAT požadavky HTTP na koncový bod. Chcete-li vytvořit trasu OData v4, zavolejte metodu rozšíření **MapODataServiceRoute** .
 
-Pokud aplikace obsahuje více koncových bodů protokolu OData, vytvořte pro každou samostatnou trasu. Zadejte všechny trasy, trasy jedinečný název a předpony.
+Pokud má vaše aplikace více koncových bodů OData, vytvořte pro každou z nich samostatnou trasu. Udělte každé trase jedinečný název a předponu trasy.
 
 ## <a name="add-the-odata-controller"></a>Přidat kontroler OData
 
-A *řadič* je třída, která zpracovává požadavky HTTP. Můžete vytvořit samostatné kontrolerem pro každou sadu entit v služby OData. V tomto kurzu vytvoříte jeden řadič pro `Product` entity.
+*Kontroler* je třída, která zpracovává požadavky HTTP. Pro každou sadu entit ve službě OData vytvoříte samostatný kontroler. V tomto kurzu vytvoříte pro entitu `Product` jeden kontroler.
 
-V Průzkumníku řešení klikněte pravým tlačítkem na složku řadiče a vyberte **přidat** &gt; **třídy**. Název třídy `ProductsController`.
+V Průzkumník řešení klikněte pravým tlačítkem myši na složku Controllers a vyberte **přidat** &gt; **třídu**. Pojmenujte `ProductsController`třídy.
 
 > [!NOTE]
-> Verzi tohoto kurzu pro prostředí OData v3 používá **přidat kontroler** generování uživatelského rozhraní. V současné době neexistuje žádný generování uživatelského rozhraní pro OData v4.
+> Verze tohoto kurzu pro OData V3 používá rozhraní **Add controllering** . V současné době neexistuje pro OData v4 žádné generování uživatelského rozhraní.
 
-Často používaný kód v ProductsController.cs nahraďte následujícím kódem.
+Pomocí následujícího kódu nahraďte často používaný kód v ProductsController.cs.
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample8.cs)]
 
-Využívá kontroler `ProductsContext` pro přístup k databázi pomocí EF. Všimněte si, že přepíše kontroleru **Dispose** metoda a neprovede **ProductsContext**.
+Řadič používá třídu `ProductsContext` pro přístup k databázi pomocí EF. Všimněte si, že kontroler přepisuje metodu **Dispose** pro uvolnění **ProductsContext**.
 
-Toto je výchozí bod pro kontroler. V dalším kroku přidáme metody pro všechny operace CRUD.
+Toto je výchozí bod pro kontroler. Dále přidáme metody pro všechny operace CRUD.
 
 ## <a name="query-the-entity-set"></a>Dotazování sady entit
 
-Přidejte následující metody, které `ProductsController`.
+Přidejte následující metody pro `ProductsController`.
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample9.cs)]
 
-Konstruktor bez parametrů verzi `Get` metoda vrátí celou kolekci produktů. `Get` Metody *klíč* parametr vyhledá produktu podle jeho klíče (v tomto případě `Id` vlastnost).
+Verze `Get` metody bez parametrů vrací celou kolekci Products. Metoda `Get` s parametrem *Key* vyhledává produkt podle jeho klíče (v tomto případě vlastnost `Id`).
 
-**[EnableQuery]** atribut umožňuje upravit dotaz, pomocí možnosti dotazu, jako je například $filter, $sort a $page klientům. Další informace najdete v tématu [podporuje možnosti dotazu OData](../supporting-odata-query-options.md).
+Atribut **[EnableQuery]** umožňuje klientům upravit dotaz pomocí možností dotazu, jako je $filter, $sort a $Page. Další informace najdete v tématu [Podpora možností dotazů OData](../supporting-odata-query-options.md).
 
-## <a name="add-an-entity-to-the-entity-set"></a>Přidání entity do sady entit
+## <a name="add-an-entity-to-the-entity-set"></a>Přidat entitu do sady entit
 
-Pokud chcete povolit klientům přidání nového produktu do databáze, přidejte následující metodu do `ProductsController`.
+Chcete-li povolit klientům přidat do databáze nový produkt, přidejte následující metodu pro `ProductsController`.
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample10.cs)]
 
 ## <a name="update-an-entity"></a>Aktualizace entity
 
-OData podporuje dvě různé sémantiky pro aktualizaci entity, opravy a PUT.
+OData podporuje dvě odlišná sémantika pro aktualizaci entity, opravy a vložení.
 
-- PATCH provede částečnou aktualizaci. Klient určuje vlastnosti k aktualizaci.
-- PUT nahradí celý entity.
+- Oprava provede částečnou aktualizaci. Klient Určuje pouze vlastnosti, které se mají aktualizovat.
+- PUT nahradí celou entitu.
 
-Nevýhodou PUT je, že klient musí odesílat hodnoty pro všechny vlastnosti v entitě, včetně hodnoty, které se mění. [Specifikace prostředí OData](http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html#_Toc372793719) uvádí, že je upřednostňovaný opravy.
+Nevýhodou PUT je, že klient musí odesílat hodnoty všech vlastností v entitě, včetně hodnot, které se nemění. [Specifikace OData](http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html#_Toc372793719) uvádí, že oprava je upřednostňovaná.
 
-V každém případě zde je kód pro opravu a PUT metody:
+V každém případě je zde uveden kód pro metodu PATCH i PUT:
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample11.cs)]
 
-V případě opravy, využívá kontroler **Delta&lt;T&gt;**  typ sledovat změny.
+V případě opravy používá kontroler **&gt;typu rozdíl&lt;t** ke sledování změn.
 
 ## <a name="delete-an-entity"></a>Odstranění entity
 
-Pokud chcete povolit klientům z databáze odstranit produkt, přidejte následující metodu do `ProductsController`.
+Chcete-li povolit klientům odstranit produkt z databáze nástroje, přidejte následující metodu pro `ProductsController`.
 
 [!code-csharp[Main](create-an-odata-v4-endpoint/samples/sample12.cs)]

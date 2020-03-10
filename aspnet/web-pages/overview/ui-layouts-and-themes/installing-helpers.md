@@ -1,62 +1,62 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/installing-helpers
-title: Instalace pomocné rutiny v ASP.NET Web Pages lokality (Razor) | Dokumentace Microsoftu
+title: Instalace pomocné rutiny na webu ASP.NET Web Pages (Razor) | Microsoft Docs
 author: Rick-Anderson
-description: Tento článek popisuje postup instalace pomocné rutiny na webu rozhraní ASP.NET Web Pages (Razor). Pomocné rutiny je opětovně použitelnou komponentu, která obsahuje kód a značky pro každý...
+description: Tento článek popisuje, jak nainstalovat pomocníka na webu ASP.NET Web Pages (Razor). Pomocná součást je opakovaně použitelná komponenta, která obsahuje kód a kód pro...
 ms.author: riande
 ms.date: 02/18/2014
 ms.assetid: 5e968ead-906a-45ea-ac2a-c70e57e1a9b1
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/installing-helpers
 msc.type: authoredcontent
 ms.openlocfilehash: 41e33c04a53a6ad257c3937cdadcec767e9217c8
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65124157"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638584"
 ---
-# <a name="installing-a-helper-in-an-aspnet-web-pages-razor-site"></a>Instalace pomocné rutiny na webu rozhraní ASP.NET Web Pages (Razor)
+# <a name="installing-a-helper-in-an-aspnet-web-pages-razor-site"></a>Instalace pomocné rutiny na webu ASP.NET Web Pages (Razor)
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> Tento článek popisuje postup instalace pomocné rutiny na webu rozhraní ASP.NET Web Pages (Razor). A *pomocné rutiny* je opětovně použitelnou komponentu, která obsahuje kód a značky k provedení úkolu, který může být zdlouhavý nebo složitý.
+> Tento článek popisuje, jak nainstalovat pomocníka na webu ASP.NET Web Pages (Razor). *Pomocná* komponenta je opakovaně použitelná součást, která obsahuje kód a kód k provedení úlohy, která může být zdlouhavá nebo složitá.
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Postup instalace pomocné rutiny na webu vytvořené pomocí služby WebMatrix 3.
+> - Postup instalace Pomocníka na webu vytvořeném pomocí WebMatrixu 3.
 >   
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
-> - Služba WebMatrix 3
+> - WebMatrix 3
 
-## <a name="overview-of-helpers"></a>Přehled pomocné rutiny
+## <a name="overview-of-helpers"></a>Přehled pomocníků
 
-Některé úlohy, které uživatelé často chtějí dělat na webových stránkách vyžadují velké množství kódu nebo vyžadovat další znalostní báze. Mezi příklady patří zobrazení grafu pro data. Vložení tlačítko "Sledovat" Twitter na stránce. odeslání e-mailů z vašeho webu; oříznutí nebo změny velikosti obrázků; pomocí služby PayPal pro váš web. Abyste usnadnili snadnou udělat Tyhle druhy věcí, rozhraní ASP.NET Web Pages vám umožní používat *pomocné rutiny*. Pomocné rutiny jsou součásti nainstalovat pro lokality a, které umožní vám provádět typické úlohy s použitím pouze řádku či dvou od kódu Razor.
+Některé úlohy, které uživatelé často chtějí dělat na webových stránkách, vyžadují velké množství kódu nebo vyžadují další znalosti. Mezi příklady patří zobrazení grafu pro data; na stránce se zobrazí tlačítko sledování na Twitteru. odesílání e-mailů z webu oříznutí a změna velikosti imagí; používání služby PayPal pro váš web. Aby bylo možné tyto druhy věcí snadno provést, ASP.NET webové stránky vám umožní používat *pomocníka*. Pomocníky jsou komponenty, které nainstalujete pro lokalitu a umožňují provádět typické úlohy pomocí pouze řádku nebo dvou kódů Razor.
 
-ASP.NET Web Pages má několik pomocných rutin součástí. Mnoho pomocné rutiny jsou však k dispozici v balíčcích (doplňky), které jsou k dispozici pomocí Správce balíčků NuGet. NuGet umožňuje vybrat balíček pro instalaci a pak se postará o všechny podrobnosti o instalaci.
+ASP.NET webové stránky mají několik vestavěných pomocníků. Mnoho pomocníků je však dostupných v balíčcích (Doplňky), které jsou k dispozici pomocí Správce balíčků NuGet. NuGet umožňuje vybrat balíček, který se má nainstalovat, a pak se postará o všechny podrobnosti o instalaci.
 
-## <a name="installing-a-helper-in-webmatrix-3"></a>Instalace pomocné rutiny v nástroji WebMatrix 3
+## <a name="installing-a-helper-in-webmatrix-3"></a>Instalace pomocné rutiny v WebMatrixu 3
 
-1. Ve službě WebMatrix 3, klikněte na tlačítko **NuGet** tlačítko.
+1. V části WebMatrix 3 klikněte na tlačítko **NuGet** .
 
-    ![Dialogové okno Galerie NuGet v nástroji WebMatrix](installing-helpers/_static/image1.png)
-2. To spustí Správce balíčků NuGet a zobrazí dostupné balíčky. Do vyhledávacího pole zadejte klíčové slovo pro pomocné rutiny, které chcete nainstalovat.
+    ![Dialogové okno galerie NuGet v WebMatrixu](installing-helpers/_static/image1.png)
+2. Spustí se správce balíčků NuGet a zobrazí dostupné balíčky. Do vyhledávacího pole zadejte klíčové slovo pro pomoc, kterou chcete nainstalovat.
 
-    ![Dialogové okno Galerie NuGet v nástroji WebMatrix](installing-helpers/_static/image2.png)
-3. Vyberte balíček a pak klikněte na tlačítko **nainstalovat**. Klikněte na tlačítko **Ano** když se zobrazí výzva, pokud chcete nainstalovat balíček a značí, že souhlasíte s podmínkami.
+    ![Dialogové okno galerie NuGet v WebMatrixu](installing-helpers/_static/image2.png)
+3. Vyberte balíček a pak klikněte na **nainstalovat**. Po zobrazení výzvy klikněte na tlačítko **Ano** , pokud chcete balíček nainstalovat a označit, že souhlasíte s podmínkami.
 
-     Pokud to je poprvé, kdy jste nainstalovali pomocné rutiny, vytvoří NuGet složky na vašem webu pro kód, který tvoří pomocné rutiny.
-4. K odinstalaci pomocné rutiny, klikněte na tlačítko **Galerie** tlačítko, klikněte na tlačítko **nainstalováno** kartu a vyberte balíček, který chcete odinstalovat.
+     Pokud jste pomocníka nainstalovali poprvé, vytvoří NuGet ve vašem webu složky pro kód, který tvoří pomoc.
+4. Chcete-li odinstalovat pomocníka, klikněte na tlačítko **Galerie** , klikněte na kartu **nainstalované** a vyberte balíček, který chcete odinstalovat.
 
-## <a name="installing-the-twitter-helper"></a>Instalace pomocné rutiny Twitter
+## <a name="installing-the-twitter-helper"></a>Instalace pomocníka pro Twitter
 
-Nejnovější verzi rozhraní Twitter API není kompatibilní s Pomocník Twitter, kterou instalujete prostřednictvím balíčku NuGet. Místo toho [Pomocník Twitter se službou WebMatrix](twitter-helper.md) najdete informace o tom, jak nastavit pomocná rutina Twitteru ve vašem projektu.
+Nejnovější verze rozhraní Twitter API není kompatibilní s pomocníkem pro Twitter, který nainstalujete přes NuGet. Místo toho se podívejte na informace o tom, jak v projektu nastavit pomocníka pro Twitter, v tématu [WebMatrix Pomocník pro Twitter](twitter-helper.md) .
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
 
-[Představujeme ASP.NET Web Pages 2 – základy programování](../getting-started/introducing-razor-syntax-c.md)
+[Představujeme ASP.NET webové stránky 2 – základy programování](../getting-started/introducing-razor-syntax-c.md)
 
-[Pomocník Twitter pomocí služby WebMatrix](twitter-helper.md)
+[Pomocník pro Twitter s webmatrixem](twitter-helper.md)

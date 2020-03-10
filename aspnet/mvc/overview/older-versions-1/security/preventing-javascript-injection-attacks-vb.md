@@ -9,11 +9,11 @@ ms.assetid: 9274a72e-34dd-4dae-8452-ed733ae71377
 msc.legacyurl: /mvc/overview/older-versions-1/security/preventing-javascript-injection-attacks-vb
 msc.type: authoredcontent
 ms.openlocfilehash: dfe09085f26c62c566649bc6f570aa25367a0f07
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74594736"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78624094"
 ---
 # <a name="preventing-javascript-injection-attacks-vb"></a>Prevence útoků založených na injektáži JavaScriptu (VB)
 
@@ -107,7 +107,7 @@ Obvykle byste měli upřednostňovat první přístup popsaný v tomto kurzu př
 
 Proč je to chybné? Pokud někdy potřebujete zobrazit databázová data v jiné než webové stránce, budete mít problémy. Například již nelze snadno zobrazit data v aplikaci model Windows Forms.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Účelem tohoto kurzu bylo scarei potenciálního útoku na injektáže JavaScriptu. Tento kurz popisuje dva způsoby, jak chránit vaše aplikace ASP.NET MVC proti útokům prostřednictvím injektáže JavaScriptu: buď můžete HTML zakódovat data odeslaná v zobrazení, nebo můžete HTML kódovat data odeslaná uživatelem v řadiči.
 

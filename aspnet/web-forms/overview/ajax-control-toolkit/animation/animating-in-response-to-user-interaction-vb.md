@@ -9,11 +9,11 @@ ms.assetid: c8204c05-ec27-40fe-933d-88e4e727a482
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animating-in-response-to-user-interaction-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 629d79505cebd49c2f05333bfbf78166f80fc6cb
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74607027"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78614399"
 ---
 # <a name="animating-in-response-to-user-interaction-vb"></a>Animace v reakci na interakci uživatele (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Animace mohou být spouštěny automaticky nebo mohou být aktivovány interakcí uživatele, například kliknutím myší.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 
