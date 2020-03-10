@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/older-versions/self-host-a-web-api
-title: Self-Host ASP.NET Web API 1 (C#) - ASP.NET 4.x
+title: Samoobslužné hostování ASP.NET webového rozhraní API 1C#()-ASP.NET 4. x
 author: MikeWasson
-description: Kurz s kód ukazuje, jak hostování webového rozhraní API v konzolové aplikaci.
+description: Kurz s kódem ukazuje, jak hostovat webové rozhraní API v konzolové aplikaci.
 ms.author: riande
 ms.date: 01/26/2012
 ms.custom: seoapril2019
@@ -10,179 +10,179 @@ ms.assetid: be5ab1e2-4140-4275-ac59-ca82a1bac0c1
 msc.legacyurl: /web-api/overview/older-versions/self-host-a-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: bae1737ba5b16bc67fa0ed0474ff04df0add1b3a
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134761"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78525086"
 ---
-# <a name="self-host-aspnet-web-api-1-c"></a><span data-ttu-id="8e464-103">Self-Host ASP.NET Web API 1 (C#)</span><span class="sxs-lookup"><span data-stu-id="8e464-103">Self-Host ASP.NET Web API 1 (C#)</span></span>
+# <a name="self-host-aspnet-web-api-1-c"></a><span data-ttu-id="49565-103">Samoobslužné hostování ASP.NET webového rozhraní API 1C#()</span><span class="sxs-lookup"><span data-stu-id="49565-103">Self-Host ASP.NET Web API 1 (C#)</span></span>
 
-<span data-ttu-id="8e464-104">podle [Mike Wasson](https://github.com/MikeWasson)</span><span class="sxs-lookup"><span data-stu-id="8e464-104">by [Mike Wasson](https://github.com/MikeWasson)</span></span>
+<span data-ttu-id="49565-104">o [Jan Wasson](https://github.com/MikeWasson)</span><span class="sxs-lookup"><span data-stu-id="49565-104">by [Mike Wasson](https://github.com/MikeWasson)</span></span>
 
-> <span data-ttu-id="8e464-105">Tento kurz ukazuje postupy při hostování webového rozhraní API v konzolové aplikaci.</span><span class="sxs-lookup"><span data-stu-id="8e464-105">This tutorial shows how to host a web API inside a console application.</span></span> <span data-ttu-id="8e464-106">Rozhraní ASP.NET Web API nevyžaduje, aby služba IIS.</span><span class="sxs-lookup"><span data-stu-id="8e464-106">ASP.NET Web API does not require IIS.</span></span> <span data-ttu-id="8e464-107">Webové rozhraní API můžete samoobslužné hostování ve vlastním procesu hostitele.</span><span class="sxs-lookup"><span data-stu-id="8e464-107">You can self-host a web API in your own host process.</span></span> 
+> <span data-ttu-id="49565-105">V tomto kurzu se dozvíte, jak hostovat webové rozhraní API v konzolové aplikaci.</span><span class="sxs-lookup"><span data-stu-id="49565-105">This tutorial shows how to host a web API inside a console application.</span></span> <span data-ttu-id="49565-106">Webové rozhraní API ASP.NET nevyžaduje službu IIS.</span><span class="sxs-lookup"><span data-stu-id="49565-106">ASP.NET Web API does not require IIS.</span></span> <span data-ttu-id="49565-107">Webové rozhraní API můžete sami hostovat ve svém vlastním hostitelském procesu.</span><span class="sxs-lookup"><span data-stu-id="49565-107">You can self-host a web API in your own host process.</span></span> 
 > 
-> <span data-ttu-id="8e464-108">**Nová aplikace by měly používat OWIN k samoobslužnému hostování webového rozhraní API.**</span><span class="sxs-lookup"><span data-stu-id="8e464-108">**New applications should use OWIN to self-host Web API.**</span></span> <span data-ttu-id="8e464-109">Zobrazit [použití rozhraní OWIN k samoobslužnému hostování webového rozhraní API 2 ASP.NET](../hosting-aspnet-web-api/use-owin-to-self-host-web-api.md).</span><span class="sxs-lookup"><span data-stu-id="8e464-109">See [Use OWIN to Self-Host ASP.NET Web API 2](../hosting-aspnet-web-api/use-owin-to-self-host-web-api.md).</span></span>
+> <span data-ttu-id="49565-108">**Nové aplikace by měly používat OWIN k samoobslužnému hostování webového rozhraní API.**</span><span class="sxs-lookup"><span data-stu-id="49565-108">**New applications should use OWIN to self-host Web API.**</span></span> <span data-ttu-id="49565-109">Viz [použití Owin k samoobslužnému hostování ASP.NET webového rozhraní API 2](../hosting-aspnet-web-api/use-owin-to-self-host-web-api.md).</span><span class="sxs-lookup"><span data-stu-id="49565-109">See [Use OWIN to Self-Host ASP.NET Web API 2](../hosting-aspnet-web-api/use-owin-to-self-host-web-api.md).</span></span>
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a><span data-ttu-id="8e464-110">V tomto kurzu použili verze softwaru</span><span class="sxs-lookup"><span data-stu-id="8e464-110">Software versions used in the tutorial</span></span>
+> ## <a name="software-versions-used-in-the-tutorial"></a><span data-ttu-id="49565-110">Verze softwaru použité v tomto kurzu</span><span class="sxs-lookup"><span data-stu-id="49565-110">Software versions used in the tutorial</span></span>
 > 
 > 
-> - <span data-ttu-id="8e464-111">Webové rozhraní API 1</span><span class="sxs-lookup"><span data-stu-id="8e464-111">Web API 1</span></span>
-> - <span data-ttu-id="8e464-112">Visual Studio 2012</span><span class="sxs-lookup"><span data-stu-id="8e464-112">Visual Studio 2012</span></span>
+> - <span data-ttu-id="49565-111">Webové rozhraní API 1</span><span class="sxs-lookup"><span data-stu-id="49565-111">Web API 1</span></span>
+> - <span data-ttu-id="49565-112">Visual Studio 2012</span><span class="sxs-lookup"><span data-stu-id="49565-112">Visual Studio 2012</span></span>
 
-## <a name="create-the-console-application-project"></a><span data-ttu-id="8e464-113">Vytvořte projekt konzolové aplikace</span><span class="sxs-lookup"><span data-stu-id="8e464-113">Create the Console Application Project</span></span>
+## <a name="create-the-console-application-project"></a><span data-ttu-id="49565-113">Vytvoření projektu konzolové aplikace</span><span class="sxs-lookup"><span data-stu-id="49565-113">Create the Console Application Project</span></span>
 
-<span data-ttu-id="8e464-114">Spusťte sadu Visual Studio a vyberte **nový projekt** z **Start** stránky.</span><span class="sxs-lookup"><span data-stu-id="8e464-114">Start Visual Studio and select **New Project** from the **Start** page.</span></span> <span data-ttu-id="8e464-115">Nebo z **souboru** nabídce vyberte možnost **nový** a potom **projektu**.</span><span class="sxs-lookup"><span data-stu-id="8e464-115">Or, from the **File** menu, select **New** and then **Project**.</span></span>
+<span data-ttu-id="49565-114">Spusťte Visual Studio a na **úvodní** stránce vyberte **Nový projekt** .</span><span class="sxs-lookup"><span data-stu-id="49565-114">Start Visual Studio and select **New Project** from the **Start** page.</span></span> <span data-ttu-id="49565-115">Nebo v nabídce **soubor** vyberte **Nový** a pak **projekt**.</span><span class="sxs-lookup"><span data-stu-id="49565-115">Or, from the **File** menu, select **New** and then **Project**.</span></span>
 
-<span data-ttu-id="8e464-116">V **šablony** vyberte **nainstalované šablony** a rozbalte **Visual C#** uzlu.</span><span class="sxs-lookup"><span data-stu-id="8e464-116">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="8e464-117">V části **Visual C#** vyberte **Windows**.</span><span class="sxs-lookup"><span data-stu-id="8e464-117">Under **Visual C#**, select **Windows**.</span></span> <span data-ttu-id="8e464-118">V seznamu šablon projektu vyberte **konzolovou aplikaci**.</span><span class="sxs-lookup"><span data-stu-id="8e464-118">In the list of project templates, select **Console Application**.</span></span> <span data-ttu-id="8e464-119">Pojmenujte projekt &quot;SelfHost&quot; a klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="8e464-119">Name the project &quot;SelfHost&quot; and click **OK**.</span></span>
+<span data-ttu-id="49565-116">V podokně **šablony** vyberte **Nainstalované šablony** a rozbalte uzel  **C# vizuál** .</span><span class="sxs-lookup"><span data-stu-id="49565-116">In the **Templates** pane, select **Installed Templates** and expand the **Visual C#** node.</span></span> <span data-ttu-id="49565-117">V **části C#vizuál** vyberte **Windows**.</span><span class="sxs-lookup"><span data-stu-id="49565-117">Under **Visual C#**, select **Windows**.</span></span> <span data-ttu-id="49565-118">V seznamu šablon projektu vyberte možnost **Konzolová aplikace**.</span><span class="sxs-lookup"><span data-stu-id="49565-118">In the list of project templates, select **Console Application**.</span></span> <span data-ttu-id="49565-119">Pojmenujte projekt &quot;SelfHost&quot; a klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="49565-119">Name the project &quot;SelfHost&quot; and click **OK**.</span></span>
 
 ![](self-host-a-web-api/_static/image1.png)
 
-## <a name="set-the-target-framework-visual-studio-2010"></a><span data-ttu-id="8e464-120">Nastavit cílové rozhraní (Visual Studio 2010)</span><span class="sxs-lookup"><span data-stu-id="8e464-120">Set the Target Framework (Visual Studio 2010)</span></span>
+## <a name="set-the-target-framework-visual-studio-2010"></a><span data-ttu-id="49565-120">Nastavení cílové architektury (Visual Studio 2010)</span><span class="sxs-lookup"><span data-stu-id="49565-120">Set the Target Framework (Visual Studio 2010)</span></span>
 
-<span data-ttu-id="8e464-121">Pokud používáte Visual Studio 2010, změňte cílovou architekturu na .NET Framework 4.0.</span><span class="sxs-lookup"><span data-stu-id="8e464-121">If you are using Visual Studio 2010, change the target framework to .NET Framework 4.0.</span></span> <span data-ttu-id="8e464-122">(Ve výchozím nastavení šablona cíle projektu [rozhraní .net Framework Client Profile](https://msdn.microsoft.com/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile).)</span><span class="sxs-lookup"><span data-stu-id="8e464-122">(By default, the project template targets the [.Net Framework Client Profile](https://msdn.microsoft.com/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile).)</span></span>
+<span data-ttu-id="49565-121">Pokud používáte Visual Studio 2010, změňte cílovou architekturu na .NET Framework 4,0.</span><span class="sxs-lookup"><span data-stu-id="49565-121">If you are using Visual Studio 2010, change the target framework to .NET Framework 4.0.</span></span> <span data-ttu-id="49565-122">(Ve výchozím nastavení se šablona projektu zaměřuje na [Profil klienta rozhraní .NET Framework](https://msdn.microsoft.com/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile).)</span><span class="sxs-lookup"><span data-stu-id="49565-122">(By default, the project template targets the [.Net Framework Client Profile](https://msdn.microsoft.com/library/cc656912.aspx#features_not_included_in_the_net_framework_client_profile).)</span></span>
 
-<span data-ttu-id="8e464-123">V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a vyberte **vlastnosti**.</span><span class="sxs-lookup"><span data-stu-id="8e464-123">In Solution Explorer, right-click the project and select **Properties**.</span></span> <span data-ttu-id="8e464-124">V **Cílová architektura** rozevírací seznam, změnit cílovou architekturu na .NET Framework 4.0.</span><span class="sxs-lookup"><span data-stu-id="8e464-124">In the **Target framework** dropdown list, change the target framework to .NET Framework 4.0.</span></span> <span data-ttu-id="8e464-125">Po zobrazení výzvy na použití změny, klikněte na tlačítko **Ano**.</span><span class="sxs-lookup"><span data-stu-id="8e464-125">When prompted to apply the change, click **Yes**.</span></span>
+<span data-ttu-id="49565-123">V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte **vlastnosti**.</span><span class="sxs-lookup"><span data-stu-id="49565-123">In Solution Explorer, right-click the project and select **Properties**.</span></span> <span data-ttu-id="49565-124">V rozevíracím seznamu **cílové rozhraní** Změňte cílovou architekturu na .NET Framework 4,0.</span><span class="sxs-lookup"><span data-stu-id="49565-124">In the **Target framework** dropdown list, change the target framework to .NET Framework 4.0.</span></span> <span data-ttu-id="49565-125">Po zobrazení výzvy k použití změny klikněte na **Ano**.</span><span class="sxs-lookup"><span data-stu-id="49565-125">When prompted to apply the change, click **Yes**.</span></span>
 
 ![](self-host-a-web-api/_static/image2.png)
 
-## <a name="install-nuget-package-manager"></a><span data-ttu-id="8e464-126">Instalace Správce balíčků NuGet</span><span class="sxs-lookup"><span data-stu-id="8e464-126">Install NuGet Package Manager</span></span>
+## <a name="install-nuget-package-manager"></a><span data-ttu-id="49565-126">Nainstalovat správce balíčků NuGet</span><span class="sxs-lookup"><span data-stu-id="49565-126">Install NuGet Package Manager</span></span>
 
-<span data-ttu-id="8e464-127">Správce balíčků NuGet je nejjednodušší způsob, jak přidat sestavení webového rozhraní API do projektu – technologie ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="8e464-127">The NuGet Package Manager is the easiest way to add the Web API assemblies to a non-ASP.NET project.</span></span>
+<span data-ttu-id="49565-127">Správce balíčků NuGet je nejjednodušší způsob, jak přidat sestavení webového rozhraní API do projektu non-ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="49565-127">The NuGet Package Manager is the easiest way to add the Web API assemblies to a non-ASP.NET project.</span></span>
 
-<span data-ttu-id="8e464-128">Pokud chcete zkontrolovat, jestli je nainstalovaný Správce balíčků NuGet, klikněte na tlačítko **nástroje** nabídky v sadě Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="8e464-128">To check if NuGet Package Manager is installed, click the **Tools** menu in Visual Studio.</span></span> <span data-ttu-id="8e464-129">Pokud se zobrazí nabídka položek volá **Správce balíčků NuGet**, pak máte Správce balíčků NuGet.</span><span class="sxs-lookup"><span data-stu-id="8e464-129">If you see a menu item called **NuGet Package Manager**, then you have NuGet Package Manager.</span></span>
+<span data-ttu-id="49565-128">Chcete-li zjistit, zda je nainstalován Správce balíčků NuGet, klikněte na nabídku **nástroje** v aplikaci Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="49565-128">To check if NuGet Package Manager is installed, click the **Tools** menu in Visual Studio.</span></span> <span data-ttu-id="49565-129">Pokud se zobrazí položka nabídky s názvem **Správce balíčků NuGet**, měli byste mít správce balíčků NuGet.</span><span class="sxs-lookup"><span data-stu-id="49565-129">If you see a menu item called **NuGet Package Manager**, then you have NuGet Package Manager.</span></span>
 
-<span data-ttu-id="8e464-130">Instalace Správce balíčků NuGet:</span><span class="sxs-lookup"><span data-stu-id="8e464-130">To install NuGet Package Manager:</span></span>
+<span data-ttu-id="49565-130">Instalace správce balíčků NuGet:</span><span class="sxs-lookup"><span data-stu-id="49565-130">To install NuGet Package Manager:</span></span>
 
-1. <span data-ttu-id="8e464-131">Spusťte Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="8e464-131">Start Visual Studio.</span></span>
-2. <span data-ttu-id="8e464-132">Z **nástroje** nabídce vyberte možnost **rozšíření a aktualizace**.</span><span class="sxs-lookup"><span data-stu-id="8e464-132">From the **Tools** menu, select **Extensions and Updates**.</span></span>
-3. <span data-ttu-id="8e464-133">V **rozšíření a aktualizace** dialogového okna, vyberte **Online**.</span><span class="sxs-lookup"><span data-stu-id="8e464-133">In the **Extensions and Updates** dialog, select **Online**.</span></span>
-4. <span data-ttu-id="8e464-134">Pokud nevidíte "Správce balíčků NuGet", zadejte do vyhledávacího pole "Správce balíčků nuget".</span><span class="sxs-lookup"><span data-stu-id="8e464-134">If you don't see "NuGet Package Manager", type "nuget package manager" in the search box.</span></span>
-5. <span data-ttu-id="8e464-135">Vyberte Správce balíčků NuGet a klikněte na tlačítko **Stáhnout**.</span><span class="sxs-lookup"><span data-stu-id="8e464-135">Select the NuGet Package Manager and click **Download**.</span></span>
-6. <span data-ttu-id="8e464-136">Až se stahování dokončí, zobrazí se výzva k instalaci.</span><span class="sxs-lookup"><span data-stu-id="8e464-136">After the download completes, you will be prompted to install.</span></span>
-7. <span data-ttu-id="8e464-137">Po dokončení instalace, vám může zobrazit výzva k restartování sady Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="8e464-137">After the installation completes, you might be prompted to restart Visual Studio.</span></span>
+1. <span data-ttu-id="49565-131">Spusťte Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="49565-131">Start Visual Studio.</span></span>
+2. <span data-ttu-id="49565-132">V nabídce **nástroje** vyberte **rozšíření a aktualizace**.</span><span class="sxs-lookup"><span data-stu-id="49565-132">From the **Tools** menu, select **Extensions and Updates**.</span></span>
+3. <span data-ttu-id="49565-133">V dialogovém okně **rozšíření a aktualizace** vyberte **online**.</span><span class="sxs-lookup"><span data-stu-id="49565-133">In the **Extensions and Updates** dialog, select **Online**.</span></span>
+4. <span data-ttu-id="49565-134">Pokud nevidíte "Správce balíčků NuGet", do vyhledávacího pole zadejte "Správce balíčků NuGet".</span><span class="sxs-lookup"><span data-stu-id="49565-134">If you don't see "NuGet Package Manager", type "nuget package manager" in the search box.</span></span>
+5. <span data-ttu-id="49565-135">Vyberte správce balíčků NuGet a klikněte na **Stáhnout**.</span><span class="sxs-lookup"><span data-stu-id="49565-135">Select the NuGet Package Manager and click **Download**.</span></span>
+6. <span data-ttu-id="49565-136">Po dokončení stahování se zobrazí výzva k instalaci.</span><span class="sxs-lookup"><span data-stu-id="49565-136">After the download completes, you will be prompted to install.</span></span>
+7. <span data-ttu-id="49565-137">Po dokončení instalace se může zobrazit výzva k restartování sady Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="49565-137">After the installation completes, you might be prompted to restart Visual Studio.</span></span>
 
 ![](self-host-a-web-api/_static/image3.png)
 
-## <a name="add-the-web-api-nuget-package"></a><span data-ttu-id="8e464-138">Přidat webový balíček NuGet rozhraní API</span><span class="sxs-lookup"><span data-stu-id="8e464-138">Add the Web API NuGet Package</span></span>
+## <a name="add-the-web-api-nuget-package"></a><span data-ttu-id="49565-138">Přidat balíček NuGet webového rozhraní API</span><span class="sxs-lookup"><span data-stu-id="49565-138">Add the Web API NuGet Package</span></span>
 
-<span data-ttu-id="8e464-139">Po dokončení instalace Správce balíčků NuGet do projektu přidejte balíček Self-Host webové rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="8e464-139">After NuGet Package Manager is installed, add the Web API Self-Host package to your project.</span></span>
+<span data-ttu-id="49565-139">Po instalaci správce balíčků NuGet přidejte do svého projektu balíček samoobslužného hostování webového rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="49565-139">After NuGet Package Manager is installed, add the Web API Self-Host package to your project.</span></span>
 
-1. <span data-ttu-id="8e464-140">Z **nástroje** nabídce vyberte možnost **Správce balíčků NuGet**.</span><span class="sxs-lookup"><span data-stu-id="8e464-140">From the **Tools** menu, select **NuGet Package Manager**.</span></span> <span data-ttu-id="8e464-141">*Poznámka:* Pokud se vám nezobrazí tato nabídka položek, ujistěte se, že tento správce balíčků NuGet správně nainstalován.</span><span class="sxs-lookup"><span data-stu-id="8e464-141">*Note*: If do you not see this menu item, make sure that NuGet Package Manager installed correctly.</span></span>
-2. <span data-ttu-id="8e464-142">Vyberte **spravovat balíčky NuGet pro řešení**</span><span class="sxs-lookup"><span data-stu-id="8e464-142">Select **Manage NuGet Packages for Solution**</span></span>
-3. <span data-ttu-id="8e464-143">V **Správa balíčků Nuget** dialogového okna, vyberte **Online**.</span><span class="sxs-lookup"><span data-stu-id="8e464-143">In the **Manage NugGet Packages** dialog, select **Online**.</span></span>
-4. <span data-ttu-id="8e464-144">Do vyhledávacího pole zadejte &quot;Microsoft.AspNet.WebApi.SelfHost&quot;.</span><span class="sxs-lookup"><span data-stu-id="8e464-144">In the search box, type &quot;Microsoft.AspNet.WebApi.SelfHost&quot;.</span></span>
-5. <span data-ttu-id="8e464-145">Vyberte balíček ASP.NET Web API Self hostitele a klikněte na tlačítko **nainstalovat**.</span><span class="sxs-lookup"><span data-stu-id="8e464-145">Select the ASP.NET Web API Self Host package and click **Install**.</span></span>
-6. <span data-ttu-id="8e464-146">Po instalaci balíčku, klikněte na tlačítko **zavřete** zavřete dialogové okno.</span><span class="sxs-lookup"><span data-stu-id="8e464-146">After the package installs, click **Close** to close the dialog.</span></span>
+1. <span data-ttu-id="49565-140">V nabídce **nástroje** vyberte **Správce balíčků NuGet**.</span><span class="sxs-lookup"><span data-stu-id="49565-140">From the **Tools** menu, select **NuGet Package Manager**.</span></span> <span data-ttu-id="49565-141">*Poznámka*: Pokud tuto položku nabídky nevidíte, ujistěte se, že je správce balíčků NuGet nainstalovaný správně.</span><span class="sxs-lookup"><span data-stu-id="49565-141">*Note*: If do you not see this menu item, make sure that NuGet Package Manager installed correctly.</span></span>
+2. <span data-ttu-id="49565-142">Vyberte **Spravovat balíčky NuGet pro řešení** .</span><span class="sxs-lookup"><span data-stu-id="49565-142">Select **Manage NuGet Packages for Solution**</span></span>
+3. <span data-ttu-id="49565-143">V dialogovém okně **Spravovat balíčky zrnko** vyberte možnost **online**.</span><span class="sxs-lookup"><span data-stu-id="49565-143">In the **Manage NugGet Packages** dialog, select **Online**.</span></span>
+4. <span data-ttu-id="49565-144">Do vyhledávacího pole zadejte &quot;Microsoft. AspNet. WebApi. SelfHost&quot;.</span><span class="sxs-lookup"><span data-stu-id="49565-144">In the search box, type &quot;Microsoft.AspNet.WebApi.SelfHost&quot;.</span></span>
+5. <span data-ttu-id="49565-145">Vyberte samostatný hostitel webového rozhraní API ASP.NET a klikněte na **nainstalovat**.</span><span class="sxs-lookup"><span data-stu-id="49565-145">Select the ASP.NET Web API Self Host package and click **Install**.</span></span>
+6. <span data-ttu-id="49565-146">Po instalaci balíčku zavřete dialog kliknutím na **Zavřít** .</span><span class="sxs-lookup"><span data-stu-id="49565-146">After the package installs, click **Close** to close the dialog.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="8e464-147">Ujistěte se, že k instalaci balíčku s názvem Microsoft.AspNet.WebApi.SelfHost, ne AspNetWebApi.SelfHost.</span><span class="sxs-lookup"><span data-stu-id="8e464-147">Make sure to install the package named Microsoft.AspNet.WebApi.SelfHost, not AspNetWebApi.SelfHost.</span></span>
+> <span data-ttu-id="49565-147">Nezapomeňte nainstalovat balíček s názvem Microsoft. AspNet. WebApi. SelfHost, nikoli AspNetWebApi. SelfHost.</span><span class="sxs-lookup"><span data-stu-id="49565-147">Make sure to install the package named Microsoft.AspNet.WebApi.SelfHost, not AspNetWebApi.SelfHost.</span></span>
 
 ![](self-host-a-web-api/_static/image4.png)
 
-## <a name="create-the-model-and-controller"></a><span data-ttu-id="8e464-148">Vytvoření modelu a kontroler</span><span class="sxs-lookup"><span data-stu-id="8e464-148">Create the Model and Controller</span></span>
+## <a name="create-the-model-and-controller"></a><span data-ttu-id="49565-148">Vytvoření modelu a kontroleru</span><span class="sxs-lookup"><span data-stu-id="49565-148">Create the Model and Controller</span></span>
 
-<span data-ttu-id="8e464-149">Tento kurz používá stejné třídy modelu a kontroler jako [Začínáme](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) kurzu.</span><span class="sxs-lookup"><span data-stu-id="8e464-149">This tutorial uses the same model and controller classes as the [Getting Started](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) tutorial.</span></span>
+<span data-ttu-id="49565-149">V tomto kurzu se jako [Začínáme](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) kurz používá stejný model a třídy kontroleru.</span><span class="sxs-lookup"><span data-stu-id="49565-149">This tutorial uses the same model and controller classes as the [Getting Started](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) tutorial.</span></span>
 
-<span data-ttu-id="8e464-150">Přidejte veřejnou třídu s názvem `Product`.</span><span class="sxs-lookup"><span data-stu-id="8e464-150">Add a public class named `Product`.</span></span>
+<span data-ttu-id="49565-150">Přidejte veřejnou třídu s názvem `Product`.</span><span class="sxs-lookup"><span data-stu-id="49565-150">Add a public class named `Product`.</span></span>
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample1.cs)]
 
-<span data-ttu-id="8e464-151">Přidejte veřejnou třídu s názvem `ProductsController`.</span><span class="sxs-lookup"><span data-stu-id="8e464-151">Add a public class named `ProductsController`.</span></span> <span data-ttu-id="8e464-152">Odvození z této třídy **System.Web.Http.ApiController**.</span><span class="sxs-lookup"><span data-stu-id="8e464-152">Derive this class from **System.Web.Http.ApiController**.</span></span>
+<span data-ttu-id="49565-151">Přidejte veřejnou třídu s názvem `ProductsController`.</span><span class="sxs-lookup"><span data-stu-id="49565-151">Add a public class named `ProductsController`.</span></span> <span data-ttu-id="49565-152">Tato třída je odvozena od třídy **System. Web. http. ApiController**.</span><span class="sxs-lookup"><span data-stu-id="49565-152">Derive this class from **System.Web.Http.ApiController**.</span></span>
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample2.cs)]
 
-<span data-ttu-id="8e464-153">Další informace o kódu v tomto kontroleru, najdete v článku [Začínáme](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) kurzu.</span><span class="sxs-lookup"><span data-stu-id="8e464-153">For more information about the code in this controller, see the [Getting Started](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) tutorial.</span></span> <span data-ttu-id="8e464-154">Tento kontroler definuje tři akce GET:</span><span class="sxs-lookup"><span data-stu-id="8e464-154">This controller defines three GET actions:</span></span>
+<span data-ttu-id="49565-153">Další informace o kódu v tomto kontroleru najdete v kurzu [Začínáme](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) .</span><span class="sxs-lookup"><span data-stu-id="49565-153">For more information about the code in this controller, see the [Getting Started](../getting-started-with-aspnet-web-api/tutorial-your-first-web-api.md) tutorial.</span></span> <span data-ttu-id="49565-154">Tento kontroler definuje tři akce GET:</span><span class="sxs-lookup"><span data-stu-id="49565-154">This controller defines three GET actions:</span></span>
 
-| <span data-ttu-id="8e464-155">Identifikátor URI</span><span class="sxs-lookup"><span data-stu-id="8e464-155">URI</span></span> | <span data-ttu-id="8e464-156">Popis</span><span class="sxs-lookup"><span data-stu-id="8e464-156">Description</span></span> |
+| <span data-ttu-id="49565-155">URI</span><span class="sxs-lookup"><span data-stu-id="49565-155">URI</span></span> | <span data-ttu-id="49565-156">Popis</span><span class="sxs-lookup"><span data-stu-id="49565-156">Description</span></span> |
 | --- | --- |
-| <span data-ttu-id="8e464-157">/ api/produkty</span><span class="sxs-lookup"><span data-stu-id="8e464-157">/api/products</span></span> | <span data-ttu-id="8e464-158">Získání seznamu všech produktů.</span><span class="sxs-lookup"><span data-stu-id="8e464-158">Get a list of all products.</span></span> |
-| <span data-ttu-id="8e464-159">/ webové rozhraníAPI/produkty/*id*</span><span class="sxs-lookup"><span data-stu-id="8e464-159">/api/products/*id*</span></span> | <span data-ttu-id="8e464-160">Získání produktu podle ID.</span><span class="sxs-lookup"><span data-stu-id="8e464-160">Get a product by ID.</span></span> |
-| <span data-ttu-id="8e464-161">/api/products/?category=*category*</span><span class="sxs-lookup"><span data-stu-id="8e464-161">/api/products/?category=*category*</span></span> | <span data-ttu-id="8e464-162">Získáte seznam produktů podle kategorie.</span><span class="sxs-lookup"><span data-stu-id="8e464-162">Get a list of products by category.</span></span> |
+| <span data-ttu-id="49565-157">/api/products</span><span class="sxs-lookup"><span data-stu-id="49565-157">/api/products</span></span> | <span data-ttu-id="49565-158">Získá seznam všech produktů.</span><span class="sxs-lookup"><span data-stu-id="49565-158">Get a list of all products.</span></span> |
+| <span data-ttu-id="49565-159">*ID* /API/Products/</span><span class="sxs-lookup"><span data-stu-id="49565-159">/api/products/*id*</span></span> | <span data-ttu-id="49565-160">Získá produkt podle ID.</span><span class="sxs-lookup"><span data-stu-id="49565-160">Get a product by ID.</span></span> |
+| <span data-ttu-id="49565-161">/API/Products/? kategorie =*kategorie*</span><span class="sxs-lookup"><span data-stu-id="49565-161">/api/products/?category=*category*</span></span> | <span data-ttu-id="49565-162">Získá seznam produktů podle kategorií.</span><span class="sxs-lookup"><span data-stu-id="49565-162">Get a list of products by category.</span></span> |
 
-## <a name="host-the-web-api"></a><span data-ttu-id="8e464-163">Hostování webového rozhraní API</span><span class="sxs-lookup"><span data-stu-id="8e464-163">Host the Web API</span></span>
+## <a name="host-the-web-api"></a><span data-ttu-id="49565-163">Hostování webového rozhraní API</span><span class="sxs-lookup"><span data-stu-id="49565-163">Host the Web API</span></span>
 
-<span data-ttu-id="8e464-164">Otevřete soubor Program.cs a přidejte následující příkazy using:</span><span class="sxs-lookup"><span data-stu-id="8e464-164">Open the file Program.cs and add the following using statements:</span></span>
+<span data-ttu-id="49565-164">Otevřete soubor Program.cs a přidejte následující příkazy using:</span><span class="sxs-lookup"><span data-stu-id="49565-164">Open the file Program.cs and add the following using statements:</span></span>
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample3.cs)]
 
-<span data-ttu-id="8e464-165">Přidejte následující kód, který **Program** třídy.</span><span class="sxs-lookup"><span data-stu-id="8e464-165">Add the following code to the **Program** class.</span></span>
+<span data-ttu-id="49565-165">Do třídy **program** přidejte následující kód.</span><span class="sxs-lookup"><span data-stu-id="49565-165">Add the following code to the **Program** class.</span></span>
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample4.cs)]
 
-## <a name="optional-add-an-http-url-namespace-reservation"></a><span data-ttu-id="8e464-166">(Volitelné) Přidat rezervaci Namespace adresy URL protokolu HTTP</span><span class="sxs-lookup"><span data-stu-id="8e464-166">(Optional) Add an HTTP URL Namespace Reservation</span></span>
+## <a name="optional-add-an-http-url-namespace-reservation"></a><span data-ttu-id="49565-166">Volitelné Přidání rezervace oboru názvů URL protokolu HTTP</span><span class="sxs-lookup"><span data-stu-id="49565-166">(Optional) Add an HTTP URL Namespace Reservation</span></span>
 
-<span data-ttu-id="8e464-167">Tato aplikace naslouchá na `http://localhost:8080/`.</span><span class="sxs-lookup"><span data-stu-id="8e464-167">This application listens to `http://localhost:8080/`.</span></span> <span data-ttu-id="8e464-168">Ve výchozím nastavení naslouchání na konkrétní adrese HTTP vyžaduje oprávnění správce.</span><span class="sxs-lookup"><span data-stu-id="8e464-168">By default, listening at a particular HTTP address requires administrator privileges.</span></span> <span data-ttu-id="8e464-169">Při spuštění tohoto kurzu, proto může získat tuto chybu: "Protokol HTTP nemohl zaregistrovat adresu URL http://+:8080/" existují dva způsoby, jak se vyhnout se této chybě:</span><span class="sxs-lookup"><span data-stu-id="8e464-169">When you run the tutorial, therefore, you may get this error: "HTTP could not register URL http://+:8080/" There are two ways to avoid this error:</span></span>
+<span data-ttu-id="49565-167">Tato aplikace naslouchá `http://localhost:8080/`.</span><span class="sxs-lookup"><span data-stu-id="49565-167">This application listens to `http://localhost:8080/`.</span></span> <span data-ttu-id="49565-168">Ve výchozím nastavení vyžaduje naslouchání na konkrétní adrese HTTP oprávnění správce.</span><span class="sxs-lookup"><span data-stu-id="49565-168">By default, listening at a particular HTTP address requires administrator privileges.</span></span> <span data-ttu-id="49565-169">Při spuštění tohoto kurzu se vám proto může zobrazit tato chyba: "protokol HTTP nemohl zaregistrovat adresu URL http://+:8080/" Existují dva způsoby, jak se vyhnout této chybě:</span><span class="sxs-lookup"><span data-stu-id="49565-169">When you run the tutorial, therefore, you may get this error: "HTTP could not register URL http://+:8080/" There are two ways to avoid this error:</span></span>
 
-- <span data-ttu-id="8e464-170">Spuštění sady Visual Studio s oprávněními zvýšenými na úroveň správce, nebo</span><span class="sxs-lookup"><span data-stu-id="8e464-170">Run Visual Studio with elevated administrator permissions, or</span></span>
-- <span data-ttu-id="8e464-171">Pomocí Netsh.exe udělte vašeho účtu oprávnění k rezervaci adresy URL.</span><span class="sxs-lookup"><span data-stu-id="8e464-171">Use Netsh.exe to give your account permissions to reserve the URL.</span></span>
+- <span data-ttu-id="49565-170">Spusťte aplikaci Visual Studio se zvýšenými oprávněními správce nebo</span><span class="sxs-lookup"><span data-stu-id="49565-170">Run Visual Studio with elevated administrator permissions, or</span></span>
+- <span data-ttu-id="49565-171">Pomocí nástroje Netsh. exe udělte vašemu účtu oprávnění k rezervaci adresy URL.</span><span class="sxs-lookup"><span data-stu-id="49565-171">Use Netsh.exe to give your account permissions to reserve the URL.</span></span>
 
-<span data-ttu-id="8e464-172">Pokud chcete použít Netsh.exe, otevřete příkazový řádek s oprávněními správce a zadejte následující příkaz: následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="8e464-172">To use Netsh.exe, open a command prompt with administrator privileges and enter the following command:following command:</span></span>
+<span data-ttu-id="49565-172">Chcete-li použít nástroj Netsh. exe, otevřete příkazový řádek s oprávněními správce a zadejte následující příkaz: následující příkaz:</span><span class="sxs-lookup"><span data-stu-id="49565-172">To use Netsh.exe, open a command prompt with administrator privileges and enter the following command:following command:</span></span>
 
 [!code-console[Main](self-host-a-web-api/samples/sample5.cmd)]
 
-<span data-ttu-id="8e464-173">kde *počítač\uživatelské_jméno* je váš uživatelský účet.</span><span class="sxs-lookup"><span data-stu-id="8e464-173">where *machine\username* is your user account.</span></span>
+<span data-ttu-id="49565-173">kde *machine\username* je váš uživatelský účet.</span><span class="sxs-lookup"><span data-stu-id="49565-173">where *machine\username* is your user account.</span></span>
 
-<span data-ttu-id="8e464-174">Až budete hotovi s vlastním hostováním, je potřeba odstranit rezervaci:</span><span class="sxs-lookup"><span data-stu-id="8e464-174">When you are finished self-hosting, be sure to delete the reservation:</span></span>
+<span data-ttu-id="49565-174">Po skončení samoobslužného hostování nezapomeňte rezervaci odstranit:</span><span class="sxs-lookup"><span data-stu-id="49565-174">When you are finished self-hosting, be sure to delete the reservation:</span></span>
 
 [!code-console[Main](self-host-a-web-api/samples/sample6.cmd)]
 
-## <a name="call-the-web-api-from-a-client-application-c"></a><span data-ttu-id="8e464-175">Volání webového rozhraní API z klientské aplikace (C#)</span><span class="sxs-lookup"><span data-stu-id="8e464-175">Call the Web API from a Client Application (C#)</span></span>
+## <a name="call-the-web-api-from-a-client-application-c"></a><span data-ttu-id="49565-175">Volání webového rozhraní API z klientské aplikace (C#)</span><span class="sxs-lookup"><span data-stu-id="49565-175">Call the Web API from a Client Application (C#)</span></span>
 
-<span data-ttu-id="8e464-176">Napíšeme jednoduchou konzolovou aplikaci, která volá webové rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="8e464-176">Let's write a simple console application that calls the web API.</span></span>
+<span data-ttu-id="49565-176">Pojďme napsat jednoduchou konzolovou aplikaci, která volá webové rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="49565-176">Let's write a simple console application that calls the web API.</span></span>
 
-<span data-ttu-id="8e464-177">Přidáte do řešení nový projekt konzolové aplikace:</span><span class="sxs-lookup"><span data-stu-id="8e464-177">Add a new console application project to the solution:</span></span>
+<span data-ttu-id="49565-177">Přidejte do řešení nový projekt konzolové aplikace:</span><span class="sxs-lookup"><span data-stu-id="49565-177">Add a new console application project to the solution:</span></span>
 
-- <span data-ttu-id="8e464-178">V Průzkumníku řešení klikněte pravým tlačítkem myši na řešení a vyberte **přidat nový projekt**.</span><span class="sxs-lookup"><span data-stu-id="8e464-178">In Solution Explorer, right-click the solution and select **Add New Project**.</span></span>
-- <span data-ttu-id="8e464-179">Vytvořte novou konzolovou aplikaci s názvem &quot;ClientApp&quot;.</span><span class="sxs-lookup"><span data-stu-id="8e464-179">Create a new console application named &quot;ClientApp&quot;.</span></span>
+- <span data-ttu-id="49565-178">V Průzkumník řešení klikněte pravým tlačítkem na řešení a vyberte **Přidat nový projekt**.</span><span class="sxs-lookup"><span data-stu-id="49565-178">In Solution Explorer, right-click the solution and select **Add New Project**.</span></span>
+- <span data-ttu-id="49565-179">Vytvořte novou konzolovou aplikaci s názvem &quot;ClientApp&quot;.</span><span class="sxs-lookup"><span data-stu-id="49565-179">Create a new console application named &quot;ClientApp&quot;.</span></span>
 
 ![](self-host-a-web-api/_static/image5.png)
 
-<span data-ttu-id="8e464-180">Použití Správce balíčků NuGet pro přidání balíčku ASP.NET Web API základní knihovny:</span><span class="sxs-lookup"><span data-stu-id="8e464-180">Use NuGet Package Manager to add the ASP.NET Web API Core Libraries package:</span></span>
+<span data-ttu-id="49565-180">Pomocí Správce balíčků NuGet přidejte balíček základních knihoven webových rozhraní API ASP.NET:</span><span class="sxs-lookup"><span data-stu-id="49565-180">Use NuGet Package Manager to add the ASP.NET Web API Core Libraries package:</span></span>
 
-- <span data-ttu-id="8e464-181">V nabídce Nástroje vyberte **Správce balíčků NuGet**.</span><span class="sxs-lookup"><span data-stu-id="8e464-181">From the Tools menu, select **NuGet Package Manager**.</span></span>
-- <span data-ttu-id="8e464-182">Vyberte **spravovat balíčky NuGet pro řešení**</span><span class="sxs-lookup"><span data-stu-id="8e464-182">Select **Manage NuGet Packages for Solution**</span></span>
-- <span data-ttu-id="8e464-183">V **spravovat balíčky NuGet** dialogového okna, vyberte **Online**.</span><span class="sxs-lookup"><span data-stu-id="8e464-183">In the **Manage NuGet Packages** dialog, select **Online**.</span></span>
-- <span data-ttu-id="8e464-184">Do vyhledávacího pole zadejte &quot;Microsoft.AspNet.WebApi.Client&quot;.</span><span class="sxs-lookup"><span data-stu-id="8e464-184">In the search box, type &quot;Microsoft.AspNet.WebApi.Client&quot;.</span></span>
-- <span data-ttu-id="8e464-185">Vyberte balíček Microsoft ASP.NET Web API klientské knihovny a klikněte na tlačítko **nainstalovat**.</span><span class="sxs-lookup"><span data-stu-id="8e464-185">Select the Microsoft ASP.NET Web API Client Libraries package and click **Install**.</span></span>
+- <span data-ttu-id="49565-181">V nabídce Nástroje vyberte **Správce balíčků NuGet**.</span><span class="sxs-lookup"><span data-stu-id="49565-181">From the Tools menu, select **NuGet Package Manager**.</span></span>
+- <span data-ttu-id="49565-182">Vyberte **Spravovat balíčky NuGet pro řešení** .</span><span class="sxs-lookup"><span data-stu-id="49565-182">Select **Manage NuGet Packages for Solution**</span></span>
+- <span data-ttu-id="49565-183">V dialogovém okně **Spravovat balíčky NuGet** vyberte **online**.</span><span class="sxs-lookup"><span data-stu-id="49565-183">In the **Manage NuGet Packages** dialog, select **Online**.</span></span>
+- <span data-ttu-id="49565-184">Do vyhledávacího pole zadejte &quot;Microsoft. AspNet. WebApi. Client&quot;.</span><span class="sxs-lookup"><span data-stu-id="49565-184">In the search box, type &quot;Microsoft.AspNet.WebApi.Client&quot;.</span></span>
+- <span data-ttu-id="49565-185">Vyberte balíček klientské knihovny Microsoft ASP.NET webového rozhraní API a klikněte na **nainstalovat**.</span><span class="sxs-lookup"><span data-stu-id="49565-185">Select the Microsoft ASP.NET Web API Client Libraries package and click **Install**.</span></span>
 
-<span data-ttu-id="8e464-186">Přidáte odkaz v ClientApp do projektu hostitel ve vlastním procesu:</span><span class="sxs-lookup"><span data-stu-id="8e464-186">Add a reference in ClientApp to the SelfHost project:</span></span>
+<span data-ttu-id="49565-186">Přidejte odkaz v ClientApp do projektu SelfHost:</span><span class="sxs-lookup"><span data-stu-id="49565-186">Add a reference in ClientApp to the SelfHost project:</span></span>
 
-- <span data-ttu-id="8e464-187">V Průzkumníku řešení klikněte pravým tlačítkem na projekt ClientApp.</span><span class="sxs-lookup"><span data-stu-id="8e464-187">In Solution Explorer, right-click the ClientApp project.</span></span>
-- <span data-ttu-id="8e464-188">Vyberte **přidat odkaz na**.</span><span class="sxs-lookup"><span data-stu-id="8e464-188">Select **Add Reference**.</span></span>
-- <span data-ttu-id="8e464-189">V **správce odkazů** dialogového okna, v části **řešení**vyberte **projekty**.</span><span class="sxs-lookup"><span data-stu-id="8e464-189">In the **Reference Manager** dialog, under **Solution**, select **Projects**.</span></span>
-- <span data-ttu-id="8e464-190">Vyberte projekt, hostitel ve vlastním procesu.</span><span class="sxs-lookup"><span data-stu-id="8e464-190">Select the SelfHost project.</span></span>
-- <span data-ttu-id="8e464-191">Klikněte na **OK**.</span><span class="sxs-lookup"><span data-stu-id="8e464-191">Click **OK**.</span></span>
+- <span data-ttu-id="49565-187">V Průzkumník řešení klikněte pravým tlačítkem myši na projekt ClientApp.</span><span class="sxs-lookup"><span data-stu-id="49565-187">In Solution Explorer, right-click the ClientApp project.</span></span>
+- <span data-ttu-id="49565-188">Vyberte **Přidat odkaz**.</span><span class="sxs-lookup"><span data-stu-id="49565-188">Select **Add Reference**.</span></span>
+- <span data-ttu-id="49565-189">V dialogovém okně **Správce odkazů** v části **řešení**vyberte **projekty**.</span><span class="sxs-lookup"><span data-stu-id="49565-189">In the **Reference Manager** dialog, under **Solution**, select **Projects**.</span></span>
+- <span data-ttu-id="49565-190">Vyberte projekt SelfHost.</span><span class="sxs-lookup"><span data-stu-id="49565-190">Select the SelfHost project.</span></span>
+- <span data-ttu-id="49565-191">Klikněte na tlačítko **OK**.</span><span class="sxs-lookup"><span data-stu-id="49565-191">Click **OK**.</span></span>
 
 ![](self-host-a-web-api/_static/image6.png)
 
-<span data-ttu-id="8e464-192">Otevřete soubor Client/Program.cs.</span><span class="sxs-lookup"><span data-stu-id="8e464-192">Open the Client/Program.cs file.</span></span> <span data-ttu-id="8e464-193">Přidejte následující **pomocí** – příkaz:</span><span class="sxs-lookup"><span data-stu-id="8e464-193">Add the following **using** statement:</span></span>
+<span data-ttu-id="49565-192">Otevřete soubor Client/program. cs.</span><span class="sxs-lookup"><span data-stu-id="49565-192">Open the Client/Program.cs file.</span></span> <span data-ttu-id="49565-193">Přidejte následující příkaz **using** :</span><span class="sxs-lookup"><span data-stu-id="49565-193">Add the following **using** statement:</span></span>
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample7.cs)]
 
-<span data-ttu-id="8e464-194">Přidání statického **HttpClient** instance:</span><span class="sxs-lookup"><span data-stu-id="8e464-194">Add a static **HttpClient** instance:</span></span>
+<span data-ttu-id="49565-194">Přidejte statickou instanci **HttpClient** :</span><span class="sxs-lookup"><span data-stu-id="49565-194">Add a static **HttpClient** instance:</span></span>
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample8.cs)]
 
-<span data-ttu-id="8e464-195">Přidejte následující metody, které jsou uvedeny všechny produkty, seznam produktů podle ID a seznam produktů podle kategorie.</span><span class="sxs-lookup"><span data-stu-id="8e464-195">Add the following methods to list all products, list a product by ID, and list products by category.</span></span>
+<span data-ttu-id="49565-195">Přidejte následující metody k vypsání seznamu všechny produkty, vypíše produkt podle ID a vypíše produkty podle kategorie.</span><span class="sxs-lookup"><span data-stu-id="49565-195">Add the following methods to list all products, list a product by ID, and list products by category.</span></span>
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample9.cs)]
 
-<span data-ttu-id="8e464-196">Každá z těchto metod používá stejný vzor:</span><span class="sxs-lookup"><span data-stu-id="8e464-196">Each of these methods follows the same pattern:</span></span>
+<span data-ttu-id="49565-196">Každá z těchto metod se shoduje se stejným vzorem:</span><span class="sxs-lookup"><span data-stu-id="49565-196">Each of these methods follows the same pattern:</span></span>
 
-1. <span data-ttu-id="8e464-197">Volání **HttpClient.GetAsync** odešlete požadavek GET na odpovídající identifikátor URI.</span><span class="sxs-lookup"><span data-stu-id="8e464-197">Call **HttpClient.GetAsync** to send a GET request to the appropriate URI.</span></span>
-2. <span data-ttu-id="8e464-198">Volání **HttpResponseMessage.EnsureSuccessStatusCode**.</span><span class="sxs-lookup"><span data-stu-id="8e464-198">Call **HttpResponseMessage.EnsureSuccessStatusCode**.</span></span> <span data-ttu-id="8e464-199">Tato metoda vyvolá výjimku, pokud je stav odpovědi HTTP chybový kód.</span><span class="sxs-lookup"><span data-stu-id="8e464-199">This method throws an exception if the HTTP response status is an error code.</span></span>
-3. <span data-ttu-id="8e464-200">Volání **ReadAsAsync&lt;T&gt;**  deserializovat typ CLR z odpovědi HTTP.</span><span class="sxs-lookup"><span data-stu-id="8e464-200">Call **ReadAsAsync&lt;T&gt;** to deserialize a CLR type from the HTTP response.</span></span> <span data-ttu-id="8e464-201">Tato metoda je metoda rozšiřující, definované v **System.Net.Http.HttpContentExtensions**.</span><span class="sxs-lookup"><span data-stu-id="8e464-201">This method is an extension method, defined in **System.Net.Http.HttpContentExtensions**.</span></span>
+1. <span data-ttu-id="49565-197">Voláním **HttpClient. GetAsync** odešlete požadavek GET na příslušný identifikátor URI.</span><span class="sxs-lookup"><span data-stu-id="49565-197">Call **HttpClient.GetAsync** to send a GET request to the appropriate URI.</span></span>
+2. <span data-ttu-id="49565-198">Zavolejte **HttpResponseMessage. EnsureSuccessStatusCode**.</span><span class="sxs-lookup"><span data-stu-id="49565-198">Call **HttpResponseMessage.EnsureSuccessStatusCode**.</span></span> <span data-ttu-id="49565-199">Tato metoda vyvolá výjimku, pokud je stavem odpovědi HTTP kód chyby.</span><span class="sxs-lookup"><span data-stu-id="49565-199">This method throws an exception if the HTTP response status is an error code.</span></span>
+3. <span data-ttu-id="49565-200">Pro rekonstrukci typu CLR z odpovědi HTTP zavolejte **ReadAsAsync&lt;t&gt;** .</span><span class="sxs-lookup"><span data-stu-id="49565-200">Call **ReadAsAsync&lt;T&gt;** to deserialize a CLR type from the HTTP response.</span></span> <span data-ttu-id="49565-201">Tato metoda je rozšiřující metoda definovaná v **System .NET. http. HttpContentExtensions**.</span><span class="sxs-lookup"><span data-stu-id="49565-201">This method is an extension method, defined in **System.Net.Http.HttpContentExtensions**.</span></span>
 
-<span data-ttu-id="8e464-202">**GetAsync** a **ReadAsAsync** metody jsou asynchronní.</span><span class="sxs-lookup"><span data-stu-id="8e464-202">The **GetAsync** and **ReadAsAsync** methods are both asynchronous.</span></span> <span data-ttu-id="8e464-203">Vrátí **úloh** objekty, které představují asynchronní operace.</span><span class="sxs-lookup"><span data-stu-id="8e464-203">They return **Task** objects that represent the asynchronous operation.</span></span> <span data-ttu-id="8e464-204">Začínáme **výsledek** vlastnost blokuje vlákno, dokud se operace dokončí.</span><span class="sxs-lookup"><span data-stu-id="8e464-204">Getting the **Result** property blocks the thread until the operation completes.</span></span>
+<span data-ttu-id="49565-202">Metody **GetAsync** a **ReadAsAsync** jsou asynchronní.</span><span class="sxs-lookup"><span data-stu-id="49565-202">The **GetAsync** and **ReadAsAsync** methods are both asynchronous.</span></span> <span data-ttu-id="49565-203">Vrací objekty **úkolu** , které představují asynchronní operaci.</span><span class="sxs-lookup"><span data-stu-id="49565-203">They return **Task** objects that represent the asynchronous operation.</span></span> <span data-ttu-id="49565-204">Získání vlastnosti **výsledku** zablokuje vlákno, dokud se operace nedokončí.</span><span class="sxs-lookup"><span data-stu-id="49565-204">Getting the **Result** property blocks the thread until the operation completes.</span></span>
 
-<span data-ttu-id="8e464-205">Další informace o používání HttpClient, včetně postupu provádění neblokující volání, naleznete v tématu [volání webového rozhraní API z klienta .NET](../advanced/calling-a-web-api-from-a-net-client.md).</span><span class="sxs-lookup"><span data-stu-id="8e464-205">For more information about using HttpClient, including how to make non-blocking calls, see [Calling a Web API From a .NET Client](../advanced/calling-a-web-api-from-a-net-client.md).</span></span>
+<span data-ttu-id="49565-205">Další informace o použití HttpClient, včetně toho, jak provést neblokující volání, najdete v tématu [volání webového rozhraní API z klienta .NET](../advanced/calling-a-web-api-from-a-net-client.md).</span><span class="sxs-lookup"><span data-stu-id="49565-205">For more information about using HttpClient, including how to make non-blocking calls, see [Calling a Web API From a .NET Client](../advanced/calling-a-web-api-from-a-net-client.md).</span></span>
 
-<span data-ttu-id="8e464-206">Před voláním těchto metod, nastavte vlastnost BaseAddress nastavte na instanci HttpClient "`http://localhost:8080`".</span><span class="sxs-lookup"><span data-stu-id="8e464-206">Before calling these methods, set the BaseAddress property on the HttpClient instance to "`http://localhost:8080`".</span></span> <span data-ttu-id="8e464-207">Příklad:</span><span class="sxs-lookup"><span data-stu-id="8e464-207">For example:</span></span>
+<span data-ttu-id="49565-206">Před voláním těchto metod nastavte vlastnost BaseAddress v instanci HttpClient na hodnotu "`http://localhost:8080`".</span><span class="sxs-lookup"><span data-stu-id="49565-206">Before calling these methods, set the BaseAddress property on the HttpClient instance to "`http://localhost:8080`".</span></span> <span data-ttu-id="49565-207">Příklad:</span><span class="sxs-lookup"><span data-stu-id="49565-207">For example:</span></span>
 
 [!code-csharp[Main](self-host-a-web-api/samples/sample10.cs)]
 
-<span data-ttu-id="8e464-208">To by měl výstupu následující.</span><span class="sxs-lookup"><span data-stu-id="8e464-208">This should output the following.</span></span> <span data-ttu-id="8e464-209">(Nezapomeňte nejprve spusťte aplikaci SelfHost).</span><span class="sxs-lookup"><span data-stu-id="8e464-209">(Remember to run the SelfHost application first.)</span></span>
+<span data-ttu-id="49565-208">To by mělo mít následující výstup.</span><span class="sxs-lookup"><span data-stu-id="49565-208">This should output the following.</span></span> <span data-ttu-id="49565-209">(Nezapomeňte nejdřív spustit aplikaci SelfHost.)</span><span class="sxs-lookup"><span data-stu-id="49565-209">(Remember to run the SelfHost application first.)</span></span>
 
 [!code-console[Main](self-host-a-web-api/samples/sample11.cmd)]
 

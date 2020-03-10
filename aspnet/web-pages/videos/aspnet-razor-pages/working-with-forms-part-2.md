@@ -9,21 +9,21 @@ ms.assetid: 2ceb5926-8326-41ba-858e-e86924b2e99b
 msc.legacyurl: /web-pages/videos/aspnet-razor-pages/working-with-forms-part-2
 msc.type: video
 ms.openlocfilehash: 77101ad31b11af42bcee6da858f0211ced1bd8a3
-ms.sourcegitcommit: 84b1681d4e6253e30468c8df8a09fe03beea9309
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73445513"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78633285"
 ---
-# <a name="working-with-forms-part-2"></a><span data-ttu-id="aba81-103">Práce s formuláři (2. část)</span><span class="sxs-lookup"><span data-stu-id="aba81-103">Working with Forms (Part 2)</span></span>
+# <a name="working-with-forms-part-2"></a><span data-ttu-id="ca645-103">Práce s formuláři (2. část)</span><span class="sxs-lookup"><span data-stu-id="ca645-103">Working with Forms (Part 2)</span></span>
 
-<span data-ttu-id="aba81-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="aba81-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="ca645-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="ca645-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="aba81-105">Kurz k používání videa v kurzu práce s formuláři (část 2)</span><span class="sxs-lookup"><span data-stu-id="aba81-105">Video accompaniment to the Working with Forms tutorial (Part 2)</span></span>
+<span data-ttu-id="ca645-105">Kurz k používání videa v kurzu práce s formuláři (část 2)</span><span class="sxs-lookup"><span data-stu-id="ca645-105">Video accompaniment to the Working with Forms tutorial (Part 2)</span></span>
 
-<span data-ttu-id="aba81-106">[&#9654;Sledovat video (16 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-forms-(part-2))</span><span class="sxs-lookup"><span data-stu-id="aba81-106">[&#9654; Watch video (16 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-forms-(part-2))</span></span>
+<span data-ttu-id="ca645-106">[&#9654;Sledovat video (16 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-forms-(part-2))</span><span class="sxs-lookup"><span data-stu-id="ca645-106">[&#9654; Watch video (16 minutes)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-forms-(part-2))</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="aba81-107">[Předchozí](working-with-forms-part-1.md)
-> [Další](working-with-data-part-1.md)</span><span class="sxs-lookup"><span data-stu-id="aba81-107">[Previous](working-with-forms-part-1.md)
+> <span data-ttu-id="ca645-107">[Předchozí](working-with-forms-part-1.md)
+> [Další](working-with-data-part-1.md)</span><span class="sxs-lookup"><span data-stu-id="ca645-107">[Previous](working-with-forms-part-1.md)
 [Next](working-with-data-part-1.md)</span></span>

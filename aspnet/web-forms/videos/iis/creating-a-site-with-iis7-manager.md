@@ -1,29 +1,29 @@
 ---
 uid: web-forms/videos/iis/creating-a-site-with-iis7-manager
-title: Vytvoření webu ve Správci služby IIS7 | Dokumentace Microsoftu
+title: Vytvoření webu pomocí IIS7 Manageru | Microsoft Docs
 author: JoeStagner
-description: Toto video ukazuje procesu zřizování nových webů pomocí služby IIS7.
+description: Toto video ukazuje proces zřizování pro nové weby pomocí IIS7.
 ms.author: riande
 ms.date: 03/09/2009
 ms.assetid: f52814a3-b458-415c-ab9f-b0f904c48705
 msc.legacyurl: /web-forms/videos/iis/creating-a-site-with-iis7-manager
 msc.type: video
 ms.openlocfilehash: cead55311660a630ca5fe906e1afe8767c75aa7f
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59394524"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78639949"
 ---
-# <a name="creating-a-site-with-iis7-manager"></a><span data-ttu-id="d1211-103">Vytvoření webu ve správci služby IIS7</span><span class="sxs-lookup"><span data-stu-id="d1211-103">Creating a Site with IIS7 Manager</span></span>
+# <a name="creating-a-site-with-iis7-manager"></a><span data-ttu-id="4aa87-103">Vytvoření webu ve správci služby IIS7</span><span class="sxs-lookup"><span data-stu-id="4aa87-103">Creating a Site with IIS7 Manager</span></span>
 
-<span data-ttu-id="d1211-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="d1211-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="4aa87-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="4aa87-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="d1211-105">Toto video ukazuje procesu zřizování nových webů pomocí služby IIS7.</span><span class="sxs-lookup"><span data-stu-id="d1211-105">This video demonstrates the provisioning process for new web sites with IIS7.</span></span>
+<span data-ttu-id="4aa87-105">Toto video ukazuje proces zřizování pro nové weby pomocí IIS7.</span><span class="sxs-lookup"><span data-stu-id="4aa87-105">This video demonstrates the provisioning process for new web sites with IIS7.</span></span>
 
-[<span data-ttu-id="d1211-106">&#9654;Podívejte se na video (8 minut)</span><span class="sxs-lookup"><span data-stu-id="d1211-106">&#9654; Watch video (8 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-a-site-with-iis7-manager)
+[<span data-ttu-id="4aa87-106">&#9654;Sledovat video (8 minut)</span><span class="sxs-lookup"><span data-stu-id="4aa87-106">&#9654; Watch video (8 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-a-site-with-iis7-manager)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="d1211-107">[Předchozí](troubleshooting-production-aspnet-apps.md)
-> [další](installing-ftp7.md)</span><span class="sxs-lookup"><span data-stu-id="d1211-107">[Previous](troubleshooting-production-aspnet-apps.md)
+> <span data-ttu-id="4aa87-107">[Předchozí](troubleshooting-production-aspnet-apps.md)
+> [Další](installing-ftp7.md)</span><span class="sxs-lookup"><span data-stu-id="4aa87-107">[Previous](troubleshooting-production-aspnet-apps.md)
 [Next](installing-ftp7.md)</span></span>

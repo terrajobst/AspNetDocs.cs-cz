@@ -9,60 +9,60 @@ ms.assetid: 70d5d106-b547-442c-a7fd-3492b3e3d646
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/using-postbacks-with-reorderlist-cs
 msc.type: authoredcontent
 ms.openlocfilehash: f83201fc6fd458e730b6bb5ffee184d303b52e90
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74611400"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78627230"
 ---
-# <a name="using-postbacks-with-reorderlist-c"></a><span data-ttu-id="c5c1f-104">Použití postbacků s ovládacím prvkem ReorderList (C#)</span><span class="sxs-lookup"><span data-stu-id="c5c1f-104">Using Postbacks with ReorderList (C#)</span></span>
+# <a name="using-postbacks-with-reorderlist-c"></a><span data-ttu-id="3a41c-104">Použití postbacků s ovládacím prvkem ReorderList (C#)</span><span class="sxs-lookup"><span data-stu-id="3a41c-104">Using Postbacks with ReorderList (C#)</span></span>
 
-<span data-ttu-id="c5c1f-105">od [Christian Wenz](https://github.com/wenz)</span><span class="sxs-lookup"><span data-stu-id="c5c1f-105">by [Christian Wenz](https://github.com/wenz)</span></span>
+<span data-ttu-id="3a41c-105">od [Christian Wenz](https://github.com/wenz)</span><span class="sxs-lookup"><span data-stu-id="3a41c-105">by [Christian Wenz](https://github.com/wenz)</span></span>
 
-<span data-ttu-id="c5c1f-106">[Stažení kódu](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList4.cs.zip) nebo [stažení PDF](https://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist4CS.pdf)</span><span class="sxs-lookup"><span data-stu-id="c5c1f-106">[Download Code](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList4.cs.zip) or [Download PDF](https://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist4CS.pdf)</span></span>
+<span data-ttu-id="3a41c-106">[Stažení kódu](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList4.cs.zip) nebo [stažení PDF](https://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist4CS.pdf)</span><span class="sxs-lookup"><span data-stu-id="3a41c-106">[Download Code](https://download.microsoft.com/download/9/3/f/93f8daea-bebd-4821-833b-95205389c7d0/ReorderList4.cs.zip) or [Download PDF](https://download.microsoft.com/download/2/d/c/2dc10e34-6983-41d4-9c08-f78f5387d32b/reorderlist4CS.pdf)</span></span>
 
-> <span data-ttu-id="c5c1f-107">Ovládací prvek ReorderList v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení.</span><span class="sxs-lookup"><span data-stu-id="c5c1f-107">The ReorderList control in the AJAX Control Toolkit provides a list that can be reordered by the user via drag and drop.</span></span> <span data-ttu-id="c5c1f-108">Pokaždé, když je seznam seřazený, zpětné volání sdělí serveru změny.</span><span class="sxs-lookup"><span data-stu-id="c5c1f-108">Whenever the list is reordered, a postback shall inform the server of the change.</span></span>
+> <span data-ttu-id="3a41c-107">Ovládací prvek ReorderList v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení.</span><span class="sxs-lookup"><span data-stu-id="3a41c-107">The ReorderList control in the AJAX Control Toolkit provides a list that can be reordered by the user via drag and drop.</span></span> <span data-ttu-id="3a41c-108">Pokaždé, když je seznam seřazený, zpětné volání sdělí serveru změny.</span><span class="sxs-lookup"><span data-stu-id="3a41c-108">Whenever the list is reordered, a postback shall inform the server of the change.</span></span>
 
-## <a name="overview"></a><span data-ttu-id="c5c1f-109">Přehled</span><span class="sxs-lookup"><span data-stu-id="c5c1f-109">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="3a41c-109">Přehled</span><span class="sxs-lookup"><span data-stu-id="3a41c-109">Overview</span></span>
 
-<span data-ttu-id="c5c1f-110">Ovládací prvek `ReorderList` v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení.</span><span class="sxs-lookup"><span data-stu-id="c5c1f-110">The `ReorderList` control in the AJAX Control Toolkit provides a list that can be reordered by the user via drag and drop.</span></span> <span data-ttu-id="c5c1f-111">Pokaždé, když je seznam seřazený, zpětné volání sdělí serveru změny.</span><span class="sxs-lookup"><span data-stu-id="c5c1f-111">Whenever the list is reordered, a postback shall inform the server of the change.</span></span>
+<span data-ttu-id="3a41c-110">Ovládací prvek `ReorderList` v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení.</span><span class="sxs-lookup"><span data-stu-id="3a41c-110">The `ReorderList` control in the AJAX Control Toolkit provides a list that can be reordered by the user via drag and drop.</span></span> <span data-ttu-id="3a41c-111">Pokaždé, když je seznam seřazený, zpětné volání sdělí serveru změny.</span><span class="sxs-lookup"><span data-stu-id="3a41c-111">Whenever the list is reordered, a postback shall inform the server of the change.</span></span>
 
-## <a name="steps"></a><span data-ttu-id="c5c1f-112">Uvedené</span><span class="sxs-lookup"><span data-stu-id="c5c1f-112">Steps</span></span>
+## <a name="steps"></a><span data-ttu-id="3a41c-112">Kroky</span><span class="sxs-lookup"><span data-stu-id="3a41c-112">Steps</span></span>
 
-<span data-ttu-id="c5c1f-113">K dispozici je několik možných zdrojů dat pro ovládací prvek `ReorderList`.</span><span class="sxs-lookup"><span data-stu-id="c5c1f-113">There are several possible data sources for the `ReorderList` control.</span></span> <span data-ttu-id="c5c1f-114">Jedním z nich je použití ovládacího prvku `XmlDataSource`:</span><span class="sxs-lookup"><span data-stu-id="c5c1f-114">One is to use an `XmlDataSource` control:</span></span>
+<span data-ttu-id="3a41c-113">K dispozici je několik možných zdrojů dat pro ovládací prvek `ReorderList`.</span><span class="sxs-lookup"><span data-stu-id="3a41c-113">There are several possible data sources for the `ReorderList` control.</span></span> <span data-ttu-id="3a41c-114">Jedním z nich je použití ovládacího prvku `XmlDataSource`:</span><span class="sxs-lookup"><span data-stu-id="3a41c-114">One is to use an `XmlDataSource` control:</span></span>
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample1.aspx)]
 
-<span data-ttu-id="c5c1f-115">Aby bylo možné vytvořit vazby tohoto XML k ovládacímu prvku `ReorderList` a povolit zpětná volání, musí být nastaveny následující atributy:</span><span class="sxs-lookup"><span data-stu-id="c5c1f-115">In order to bind this XML to a `ReorderList` control and enable postbacks, the following attributes must be set:</span></span>
+<span data-ttu-id="3a41c-115">Aby bylo možné vytvořit vazby tohoto XML k ovládacímu prvku `ReorderList` a povolit zpětná volání, musí být nastaveny následující atributy:</span><span class="sxs-lookup"><span data-stu-id="3a41c-115">In order to bind this XML to a `ReorderList` control and enable postbacks, the following attributes must be set:</span></span>
 
-- <span data-ttu-id="c5c1f-116">`DataSourceID`: ID zdroje dat</span><span class="sxs-lookup"><span data-stu-id="c5c1f-116">`DataSourceID`: The ID of the data source</span></span>
-- <span data-ttu-id="c5c1f-117">`SortOrderField`: vlastnost, podle které se má řadit</span><span class="sxs-lookup"><span data-stu-id="c5c1f-117">`SortOrderField`: The property to sort by</span></span>
-- <span data-ttu-id="c5c1f-118">`AllowReorder`: Určuje, zda má uživatel změnit pořadí prvků seznamu.</span><span class="sxs-lookup"><span data-stu-id="c5c1f-118">`AllowReorder`: Whether to allow the user to reorder the list elements</span></span>
-- <span data-ttu-id="c5c1f-119">`PostBackOnReorder`: bez ohledu na to, jestli se má vytvořit postback při změně uspořádání seznamu</span><span class="sxs-lookup"><span data-stu-id="c5c1f-119">`PostBackOnReorder`: Whether to create a postback whenever the list is rearranged</span></span>
+- <span data-ttu-id="3a41c-116">`DataSourceID`: ID zdroje dat</span><span class="sxs-lookup"><span data-stu-id="3a41c-116">`DataSourceID`: The ID of the data source</span></span>
+- <span data-ttu-id="3a41c-117">`SortOrderField`: vlastnost, podle které se má řadit</span><span class="sxs-lookup"><span data-stu-id="3a41c-117">`SortOrderField`: The property to sort by</span></span>
+- <span data-ttu-id="3a41c-118">`AllowReorder`: Určuje, zda má uživatel změnit pořadí prvků seznamu.</span><span class="sxs-lookup"><span data-stu-id="3a41c-118">`AllowReorder`: Whether to allow the user to reorder the list elements</span></span>
+- <span data-ttu-id="3a41c-119">`PostBackOnReorder`: bez ohledu na to, jestli se má vytvořit postback při změně uspořádání seznamu</span><span class="sxs-lookup"><span data-stu-id="3a41c-119">`PostBackOnReorder`: Whether to create a postback whenever the list is rearranged</span></span>
 
-<span data-ttu-id="c5c1f-120">Toto je vhodný kód pro ovládací prvek:</span><span class="sxs-lookup"><span data-stu-id="c5c1f-120">Here is the appropriate markup for the control:</span></span>
+<span data-ttu-id="3a41c-120">Toto je vhodný kód pro ovládací prvek:</span><span class="sxs-lookup"><span data-stu-id="3a41c-120">Here is the appropriate markup for the control:</span></span>
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample2.aspx)]
 
-<span data-ttu-id="c5c1f-121">V rámci ovládacího prvku `ReorderList` mohou být konkrétní data ze zdroje dat vázána pomocí `Eval()` metody:</span><span class="sxs-lookup"><span data-stu-id="c5c1f-121">Within the `ReorderList` control, specific data from the data source may be bound using the `Eval()` method:</span></span>
+<span data-ttu-id="3a41c-121">V rámci ovládacího prvku `ReorderList` mohou být konkrétní data ze zdroje dat vázána pomocí `Eval()` metody:</span><span class="sxs-lookup"><span data-stu-id="3a41c-121">Within the `ReorderList` control, specific data from the data source may be bound using the `Eval()` method:</span></span>
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample3.aspx)]
 
-<span data-ttu-id="c5c1f-122">Na libovolné pozici na stránce bude popisek obsahovat informace, když došlo k poslední změně pořadí:</span><span class="sxs-lookup"><span data-stu-id="c5c1f-122">At an arbitrary position on the page, a label will hold the information when the last reordering occurred:</span></span>
+<span data-ttu-id="3a41c-122">Na libovolné pozici na stránce bude popisek obsahovat informace, když došlo k poslední změně pořadí:</span><span class="sxs-lookup"><span data-stu-id="3a41c-122">At an arbitrary position on the page, a label will hold the information when the last reordering occurred:</span></span>
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample4.aspx)]
 
-<span data-ttu-id="c5c1f-123">Tento popisek je vyplněn textem v kódu na straně serveru, který zpracovává postback:</span><span class="sxs-lookup"><span data-stu-id="c5c1f-123">This label is filled with text in the server-side code, handling the postback:</span></span>
+<span data-ttu-id="3a41c-123">Tento popisek je vyplněn textem v kódu na straně serveru, který zpracovává postback:</span><span class="sxs-lookup"><span data-stu-id="3a41c-123">This label is filled with text in the server-side code, handling the postback:</span></span>
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample5.aspx)]
 
-<span data-ttu-id="c5c1f-124">Nakonec, aby bylo možné aktivovat funkci ASP.NET AJAX a Control Toolkit, musí být ovládací prvek `ScriptManager` umístěn na stránce:</span><span class="sxs-lookup"><span data-stu-id="c5c1f-124">Finally, in order to activate the functionality of ASP.NET AJAX and the Control Toolkit, the `ScriptManager` control must be put on the page:</span></span>
+<span data-ttu-id="3a41c-124">Nakonec, aby bylo možné aktivovat funkci ASP.NET AJAX a Control Toolkit, musí být ovládací prvek `ScriptManager` umístěn na stránce:</span><span class="sxs-lookup"><span data-stu-id="3a41c-124">Finally, in order to activate the functionality of ASP.NET AJAX and the Control Toolkit, the `ScriptManager` control must be put on the page:</span></span>
 
 [!code-aspx[Main](using-postbacks-with-reorderlist-cs/samples/sample6.aspx)]
 
-<span data-ttu-id="c5c1f-125">[![každé změnu pořadí spustí postback.](using-postbacks-with-reorderlist-cs/_static/image2.png)](using-postbacks-with-reorderlist-cs/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="c5c1f-125">[![Each reordering triggers a postback](using-postbacks-with-reorderlist-cs/_static/image2.png)](using-postbacks-with-reorderlist-cs/_static/image1.png)</span></span>
+<span data-ttu-id="3a41c-125">[![každé změnu pořadí spustí postback.](using-postbacks-with-reorderlist-cs/_static/image2.png)](using-postbacks-with-reorderlist-cs/_static/image1.png)</span><span class="sxs-lookup"><span data-stu-id="3a41c-125">[![Each reordering triggers a postback](using-postbacks-with-reorderlist-cs/_static/image2.png)](using-postbacks-with-reorderlist-cs/_static/image1.png)</span></span>
 
-<span data-ttu-id="c5c1f-126">Každé přeřazení aktivuje postback ([kliknutím zobrazíte obrázek v plné velikosti).](using-postbacks-with-reorderlist-cs/_static/image3.png)</span><span class="sxs-lookup"><span data-stu-id="c5c1f-126">Each reordering triggers a postback ([Click to view full-size image](using-postbacks-with-reorderlist-cs/_static/image3.png))</span></span>
+<span data-ttu-id="3a41c-126">Každé přeřazení aktivuje postback ([kliknutím zobrazíte obrázek v plné velikosti).](using-postbacks-with-reorderlist-cs/_static/image3.png)</span><span class="sxs-lookup"><span data-stu-id="3a41c-126">Each reordering triggers a postback ([Click to view full-size image](using-postbacks-with-reorderlist-cs/_static/image3.png))</span></span>
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="c5c1f-127">Next</span><span class="sxs-lookup"><span data-stu-id="c5c1f-127">Next</span></span>](drag-and-drop-via-reorderlist-cs.md)
+> [<span data-ttu-id="3a41c-127">Next</span><span class="sxs-lookup"><span data-stu-id="3a41c-127">Next</span></span>](drag-and-drop-via-reorderlist-cs.md)

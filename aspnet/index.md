@@ -6,13 +6,13 @@ author: Rick-Anderson
 ms.author: riande
 title: Dokumentace k ASP.NET
 ms.date: 08/24/2018
-description: Informace o tom, jak vyvíjet standardní a webové aplikace ASP.NET Získejte dokumentaci, ukázkový kód, kurzy a další.
+description: Informace o tom, jak vyvíjet standardní a webové aplikace ASP.NET Získejte dokumentaci, ukázkový kód, výukové kurzy a další materiály.
 ms.openlocfilehash: 6309704444d60d42d49c3a8f1683045dc503e761
-ms.sourcegitcommit: cd35be4b25eb05724a5f074214bbdf6573349eda
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161684"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616422"
 ---
 <!-- markdownlint-disable MD033 -->
 <div id="main" class="v2">
@@ -80,7 +80,7 @@ ms.locfileid: "70161684"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Referenční dokumentace ke knihovně API</h3>
+                                                    <h3>Referenční materiály k rozhraní API</h3>
                                                     <p>Prozkoumejte knihovnu tříd ASP.NET Core.</p>
                                                 </div>
                                             </div>
@@ -153,7 +153,7 @@ ms.locfileid: "70161684"
                         </ul>
                     </li>
                     <li>
-                        <a href="#core_tutorials">Výuka</a>
+                        <a href="#core_tutorials">Kurzy</a>
                         <ul id="core_tutorials" class="cardsZ">
                             <li>
                                 <div class="container intro">
@@ -366,7 +366,7 @@ ms.locfileid: "70161684"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Weby</h3>
+                                                    <h3>Websites</h3>
                                                     <p>Naučte se vytvářet weby pomocí ASP.NET MVC 5 a sady Visual Studio.</p>
                                                 </div>
                                             </div>
@@ -439,7 +439,7 @@ ms.locfileid: "70161684"
                         </ul>
                     </li>
                     <li>
-                        <a href="#aspnet_framework">Rozhraní</a>
+                        <a href="#aspnet_framework">Architektury</a>
                         <ul id="aspnet_framework" class="cardsC">
                             <li>
                                 <div class="container intro">
@@ -457,7 +457,7 @@ ms.locfileid: "70161684"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>webové formuláře</h3>
+                                                    <h3>Webové formuláře</h3>
                                                     <p>Vytvářejte dynamické weby ve známém modelu založeném na událostech, který podporuje přetahování.</p>
                                                 </div>
                                             </div>
@@ -514,7 +514,7 @@ ms.locfileid: "70161684"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Webové rozhraní API</h3>
+                                                    <h3>Web API</h3>
                                                     <p>Snadné sestavování služeb HTTP využitelných v různých klientech, včetně prohlížečů a mobilních zařízení</p>
                                                 </div>
                                             </div>
@@ -533,7 +533,7 @@ ms.locfileid: "70161684"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>WebHooky</h3>
+                                                    <h3>Webhooky</h3>
                                                     <p>Spojte dohromady webová rozhraní API a služby SaaS pomocí odlehčeného vzoru HTTP, který nabízí jednoduchý model typu publish/subscribe.</p>
                                                 </div>
                                             </div>
@@ -568,7 +568,7 @@ ms.locfileid: "70161684"
                         </ul>
                     </li>
                     <li>
-                        <a href="#aspnet_tutorials">Výuka</a>
+                        <a href="#aspnet_tutorials">Kurzy</a>
                         <ul id="aspnet_tutorials" class="cardsZ">
                             <li>
                                 <div class="container intro">
@@ -605,7 +605,7 @@ ms.locfileid: "70161684"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Začínáme s webovým rozhraním API technologie ASP.NET 2</h3>
+                                                    <h3>Začínáme s rozhraním ASP.NET Web API 2</h3>
                                                     <p>V této řadě kurzů se seznámíte se základy vytváření webových rozhraní API s využitím webového rozhraní API technologie ASP.NET 2 a sady Visual Studio.</p>
                                                 </div>
                                             </div>

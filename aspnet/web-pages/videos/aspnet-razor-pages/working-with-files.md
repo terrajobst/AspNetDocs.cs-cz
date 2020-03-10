@@ -1,29 +1,29 @@
 ---
 uid: web-pages/videos/aspnet-razor-pages/working-with-files
-title: Práce se soubory | Dokumentace Microsoftu
+title: Práce se soubory | Microsoft Docs
 author: JoeStagner
-description: Video doprovodná k práci se soubory kurz
+description: Kurz k práci se soubory ve videu
 ms.author: riande
 ms.date: 02/25/2011
 ms.assetid: 7245123a-244d-4665-bff4-5238d5ad3427
 msc.legacyurl: /web-pages/videos/aspnet-razor-pages/working-with-files
 msc.type: video
 ms.openlocfilehash: af40e6b4bf919783ef2e3cc1118783bf7e346074
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59408768"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78633320"
 ---
-# <a name="working-with-files"></a><span data-ttu-id="47e0c-103">Práce se soubory</span><span class="sxs-lookup"><span data-stu-id="47e0c-103">Working with Files</span></span>
+# <a name="working-with-files"></a><span data-ttu-id="8de90-103">Práce se soubory</span><span class="sxs-lookup"><span data-stu-id="8de90-103">Working with Files</span></span>
 
-<span data-ttu-id="47e0c-104">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="47e0c-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="8de90-104">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="8de90-104">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="47e0c-105">Video doprovodná k práci se soubory kurz</span><span class="sxs-lookup"><span data-stu-id="47e0c-105">Video accompaniment to the Working with Files tutorial</span></span>
+<span data-ttu-id="8de90-105">Kurz k práci se soubory ve videu</span><span class="sxs-lookup"><span data-stu-id="8de90-105">Video accompaniment to the Working with Files tutorial</span></span>
 
-[<span data-ttu-id="47e0c-106">&#9654;Podívejte se na video (23 minut)</span><span class="sxs-lookup"><span data-stu-id="47e0c-106">&#9654; Watch video (23 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-files)
+[<span data-ttu-id="8de90-106">&#9654;Přehrát video (23 minut)</span><span class="sxs-lookup"><span data-stu-id="8de90-106">&#9654; Watch video (23 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/working-with-files)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="47e0c-107">[Předchozí](displaying-data-in-a-chart-part-2.md)
-> [další](working-with-images.md)</span><span class="sxs-lookup"><span data-stu-id="47e0c-107">[Previous](displaying-data-in-a-chart-part-2.md)
+> <span data-ttu-id="8de90-107">[Předchozí](displaying-data-in-a-chart-part-2.md)
+> [Další](working-with-images.md)</span><span class="sxs-lookup"><span data-stu-id="8de90-107">[Previous](displaying-data-in-a-chart-part-2.md)
 [Next](working-with-images.md)</span></span>
