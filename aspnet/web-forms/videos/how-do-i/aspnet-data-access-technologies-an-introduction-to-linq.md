@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/aspnet-data-access-technologies-an-introduction-to-linq
-title: Technologie pro přístup k datům v technologii ASP.NET, úvod do LINQ | Dokumentace Microsoftu
+title: ASP.NET technologie pro přístup k datům, Úvod do LINQ | Microsoft Docs
 author: JoeStagner
-description: LINQ je že vývojáře využívající technologii ASP.NET upřednostňované mechanismus dat a přístupu. Toto video je Úvod k programování v jazyce LINQ a porovnává betwee jednoduchý datový přístup...
+description: LINQ je upřednostňovaným mechanismem přístupu k datům vývojářům ASP.NET. Toto video je Úvod k programování pomocí LINQ a porovnává jednoduchý přístup k datům betwee...
 ms.author: riande
 ms.date: 10/13/2009
 ms.assetid: e6792c2a-02db-440a-9070-40a0c0952b27
 msc.legacyurl: /web-forms/videos/how-do-i/aspnet-data-access-technologies-an-introduction-to-linq
 msc.type: video
 ms.openlocfilehash: 4fd6ce813a87caf1b3ecd67c5fa59bc536db0f2e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59401293"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78635805"
 ---
-# <a name="aspnet-data-access-technologies-an-introduction-to-linq"></a><span data-ttu-id="5b7d5-104">Technologie pro přístup k datům v technologii ASP.NET, úvod do LINQ</span><span class="sxs-lookup"><span data-stu-id="5b7d5-104">ASP.NET Data Access Technologies, an Introduction to LINQ</span></span>
+# <a name="aspnet-data-access-technologies-an-introduction-to-linq"></a><span data-ttu-id="88a60-104">ASP.NET technologie pro přístup k datům, Úvod do LINQ</span><span class="sxs-lookup"><span data-stu-id="88a60-104">ASP.NET Data Access Technologies, an Introduction to LINQ</span></span>
 
-<span data-ttu-id="5b7d5-105">podle [Joe Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="5b7d5-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
+<span data-ttu-id="88a60-105">[Jana Stagner](https://github.com/JoeStagner)</span><span class="sxs-lookup"><span data-stu-id="88a60-105">by [Joe Stagner](https://github.com/JoeStagner)</span></span>
 
-<span data-ttu-id="5b7d5-106">LINQ je že vývojáře využívající technologii ASP.NET upřednostňované mechanismus dat a přístupu.</span><span class="sxs-lookup"><span data-stu-id="5b7d5-106">LINQ is the ASP.NET developers preferred Data Access Mechanism.</span></span> <span data-ttu-id="5b7d5-107">Toto video je Úvod k programování v jazyce LINQ a porovnává jednoduchý datový přístup mezi ADO.NET a LINQ z hlediska prostředí pro vývojáře.</span><span class="sxs-lookup"><span data-stu-id="5b7d5-107">This video is an introduction to programming with LINQ and compares simple data access between ADO.NET and LINQ from a developer experience perspective.</span></span>
+<span data-ttu-id="88a60-106">LINQ je upřednostňovaným mechanismem přístupu k datům vývojářům ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="88a60-106">LINQ is the ASP.NET developers preferred Data Access Mechanism.</span></span> <span data-ttu-id="88a60-107">Toto video je Úvod k programování pomocí LINQ a porovnání jednoduchého přístupu k datům mezi ADO.NET a LINQ z perspektivy prostředí pro vývojáře.</span><span class="sxs-lookup"><span data-stu-id="88a60-107">This video is an introduction to programming with LINQ and compares simple data access between ADO.NET and LINQ from a developer experience perspective.</span></span>
 
-[<span data-ttu-id="5b7d5-108">&#9654;Podívejte se na video (37 minuty)</span><span class="sxs-lookup"><span data-stu-id="5b7d5-108">&#9654; Watch video (37 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-data-access-technologies-an-introduction-to-linq)
+[<span data-ttu-id="88a60-108">&#9654;Přehrát video (37 minut)</span><span class="sxs-lookup"><span data-stu-id="88a60-108">&#9654; Watch video (37 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-data-access-technologies-an-introduction-to-linq)

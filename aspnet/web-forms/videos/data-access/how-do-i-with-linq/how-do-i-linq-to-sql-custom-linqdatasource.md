@@ -1,29 +1,29 @@
 ---
 uid: web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-custom-linqdatasource
-title: '[Postup:] Technologie LINQ to SQL: Vlastní zdroj LinqDataSource | Dokumentace Microsoftu'
+title: '[Postupy:] LINQ to SQL: vlastní LinqDataSource | Microsoft Docs'
 author: scottstanfield
-description: Ovládací prvek zdroje dat LinqDataSource je možné přizpůsobit declaritively, jak je uvedeno v části 5 nebo prostřednictvím kódu díky zpracování výběr metody.
+description: Ovládací prvek LinqDataSource lze přizpůsobit declaritively, jak je znázorněno v části 5, nebo prostřednictvím kódu pomocí metody Select.
 ms.author: riande
 ms.date: 01/10/2008
 ms.assetid: 9d020ec8-a7a8-4753-b73a-d9d0584d72e3
 msc.legacyurl: /web-forms/videos/data-access/how-do-i-with-linq/how-do-i-linq-to-sql-custom-linqdatasource
 msc.type: video
 ms.openlocfilehash: ce7daaab2478d1c5a4b67e6cec33c033e53ceafb
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59410276"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78639998"
 ---
-# <a name="how-do-i-linq-to-sql-custom-linqdatasource"></a><span data-ttu-id="425b1-103">[Postup:] Technologie LINQ to SQL: Vlastní zdroj LinqDataSource</span><span class="sxs-lookup"><span data-stu-id="425b1-103">[How Do I:] LINQ to SQL: Custom LinqDataSource</span></span>
+# <a name="how-do-i-linq-to-sql-custom-linqdatasource"></a><span data-ttu-id="8f7f3-103">[Postupy:] LINQ to SQL: vlastní LinqDataSource</span><span class="sxs-lookup"><span data-stu-id="8f7f3-103">[How Do I:] LINQ to SQL: Custom LinqDataSource</span></span>
 
-<span data-ttu-id="425b1-104">podle [Scott Stanfield](https://github.com/scottstanfield)</span><span class="sxs-lookup"><span data-stu-id="425b1-104">by [Scott Stanfield](https://github.com/scottstanfield)</span></span>
+<span data-ttu-id="8f7f3-104">[Scott Stanfield](https://github.com/scottstanfield)</span><span class="sxs-lookup"><span data-stu-id="8f7f3-104">by [Scott Stanfield](https://github.com/scottstanfield)</span></span>
 
-<span data-ttu-id="425b1-105">Ovládací prvek zdroje dat LinqDataSource je možné přizpůsobit declaritively, jak je uvedeno v části 5 nebo prostřednictvím kódu díky zpracování výběr metody.</span><span class="sxs-lookup"><span data-stu-id="425b1-105">The LinqDataSource control can be customized declaritively, as shown in Part 5, or through code by handling the Selecting method.</span></span>
+<span data-ttu-id="8f7f3-105">Ovládací prvek LinqDataSource lze přizpůsobit declaritively, jak je znázorněno v části 5, nebo prostřednictvím kódu pomocí metody Select.</span><span class="sxs-lookup"><span data-stu-id="8f7f3-105">The LinqDataSource control can be customized declaritively, as shown in Part 5, or through code by handling the Selecting method.</span></span>
 
-[<span data-ttu-id="425b1-106">&#9654;Podívejte se na video (9 minut)</span><span class="sxs-lookup"><span data-stu-id="425b1-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-linq-to-sql-custom-linqdatasource)
+[<span data-ttu-id="8f7f3-106">&#9654;Sledovat video (9 minut)</span><span class="sxs-lookup"><span data-stu-id="8f7f3-106">&#9654; Watch video (9 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-linq-to-sql-custom-linqdatasource)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="425b1-107">[Předchozí](how-do-i-linq-to-sql-linqdatasource.md)
-> [další](how-do-i-linq-to-sql-using-stored-procedures.md)</span><span class="sxs-lookup"><span data-stu-id="425b1-107">[Previous](how-do-i-linq-to-sql-linqdatasource.md)
+> <span data-ttu-id="8f7f3-107">[Předchozí](how-do-i-linq-to-sql-linqdatasource.md)
+> [Další](how-do-i-linq-to-sql-using-stored-procedures.md)</span><span class="sxs-lookup"><span data-stu-id="8f7f3-107">[Previous](how-do-i-linq-to-sql-linqdatasource.md)
 [Next](how-do-i-linq-to-sql-using-stored-procedures.md)</span></span>
