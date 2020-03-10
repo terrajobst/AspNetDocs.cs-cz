@@ -1,172 +1,172 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/deleting-data
-title: Představení rozhraní ASP.NET Web Pages – odstranění databázových dat | Dokumentace Microsoftu
+title: Představení webových stránek ASP.NET-odstraňování dat databáze | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se dozvíte, jak odstranit položku jednotlivých databází. Předpokládá se, že jste dokončili řady prostřednictvím aktualizace dat z databáze v prostředí ASP.NET Pa...
+description: V tomto kurzu se dozvíte, jak odstranit jednotlivou položku databáze. Předpokládá, že jste dokončili řadu prostřednictvím aktualizace databázových dat v ASP.NET Web PA...
 ms.author: riande
 ms.date: 01/02/2018
 ms.assetid: 75b5c1cf-84bd-434f-8a86-85c568eb5b09
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/deleting-data
 msc.type: authoredcontent
 ms.openlocfilehash: c8620fc1abc61d514bdc039c66f7a84e67e89abe
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133503"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78629036"
 ---
-# <a name="introducing-aspnet-web-pages---deleting-database-data"></a>Úvod do webových stránek ASP.NET – odstranění databázových dat
+# <a name="introducing-aspnet-web-pages---deleting-database-data"></a>Představení webových stránek ASP.NET – odstranění databázových dat
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> V tomto kurzu se dozvíte, jak odstranit položku jednotlivých databází. Předpokládá, že jste dokončili řady prostřednictvím [aktualizaci dat z databáze v ASP.NET Web Pages](updating-data.md).
+> V tomto kurzu se dozvíte, jak odstranit jednotlivou položku databáze. Předpokládá, že jste dokončili řadu prostřednictvím [aktualizace databázových dat ve webových stránkách ASP.NET](updating-data.md).
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Jak vybrat jednotlivý záznam v seznamu záznamů.
-> - Postup odstranění jednoho záznamu z databáze.
-> - Návod k ověření, že bylo na určité tlačítko kliknuto ve formuláři.
+> - Jak vybrat jednotlivý záznam ze seznamu záznamů.
+> - Jak odstranit jeden záznam z databáze.
+> - Jak kontrolovat, zda bylo na formuláři kliknuto konkrétní tlačítko.
 >   
 > 
 > Popsané funkce a technologie:
 > 
-> - `WebGrid` Pomocné rutiny.
-> - SQL `Delete` příkazu.
-> - `Database.Execute` Způsob spuštění SQL `Delete` příkazu.
+> - Pomocná rutina `WebGrid`
+> - Příkaz SQL `Delete`.
+> - Metoda `Database.Execute` pro spuštění příkazu SQL `Delete`
 
-## <a name="what-youll-build"></a>Co budete vytvářet
+## <a name="what-youll-build"></a>Co sestavíte
 
-V předchozím kurzu jste zjistili, jak aktualizovat stávající záznam v databázi. Tento kurz je podobné, s tím rozdílem, že místo aktualizace záznamu, budete ho odstranit. Procesy, které jsou podobné, s tím rozdílem, že odstranění je jednodušší, takže v tomto kurzu bude krátký.
+V předchozím kurzu jste zjistili, jak aktualizovat existující záznam databáze. Tento kurz je podobný, s tím rozdílem, že místo aktualizace záznamu ho odstraníte. Procesy jsou mnohem stejné, s výjimkou toho, že odstranění je jednodušší, takže tento kurz bude krátký.
 
-V *filmy* stránky, budete aktualizovat `WebGrid` pomocné rutiny, takže se zobrazí **odstranit** odkaz vedle každý film vyvíjený **upravit** propojení, které jste přidali dříve.
+Na stránce *filmy* aktualizujte pomocníka `WebGrid` tak, aby se zobrazil odkaz pro **odstranění** vedle každého filmu, který se doprovází pomocí odkazu pro **Úpravy** , který jste přidali dříve.
 
-![Zobrazuje odkaz pro odstranění pro každý film stránky filmy](deleting-data/_static/image1.png)
+![Stránka filmy znázorňující odkaz pro odstranění každého filmu](deleting-data/_static/image1.png)
 
-Stejně jako u úpravy, když kliknete **odstranit** odkaz, tím přejdete na jinou stránku, kde je video informace již ve formě:
+Stejně jako u úprav můžete po kliknutí na odkaz **Odstranit** přejít na jinou stránku, kde jsou informace o filmu již ve formě:
 
-![Odstranit stránku film se video zobrazí](deleting-data/_static/image2.png)
+![Odstranit stránku videa se zobrazeným filmem](deleting-data/_static/image2.png)
 
-Klikněte na tlačítko se trvale odstranit záznam.
+Potom můžete kliknutím na toto tlačítko trvale odstranit záznam.
 
-## <a name="adding-a-delete-link-to-the-movie-listing"></a>Přidat odkaz pro odstranění výpis Movie
+## <a name="adding-a-delete-link-to-the-movie-listing"></a>Přidání odkazu pro odstranění na seznam filmů
 
-Začnete tak, že přidáte **odstranit** propojit `WebGrid` pomocné rutiny. Tento odkaz je podobný **upravit** propojení, které jste přidali v předchozím kurzu.
+Začnete přidáním odkazu pro **odstranění** do pomocné rutiny `WebGrid`. Tento odkaz je podobný odkazu pro **Úpravy** , který jste přidali v předchozím kurzu.
 
-Otevřít *Movies.cshtml* souboru.
+Otevřete soubor *Movies. cshtml* .
 
-Změnit `WebGrid` kód v těle stránky tak, že přidáte sloupec. Tady je upravený kód:
+Změňte `WebGrid` označení v těle stránky přidáním sloupce. Zde je upravený kód:
 
 [!code-html[Main](deleting-data/samples/sample1.html?highlight=9-10)]
 
-Nový sloupec se tohle:
+Nový sloupec je tento:
 
 [!code-html[Main](deleting-data/samples/sample2.html)]
 
-Tak, jak je nakonfigurovaný mřížky, **upravit** sloupec je úplně vlevo v mřížce a **odstranit** sloupec je úplně vpravo. (Není za čárka `Year` sloupec, v případě, že nebyl Všimněte si, že.) Není nic zvláštního kde tyto sloupce odkaz přejděte a by snadno mohlo vedle sebe. V tomto případě jsou samostatné znesnadnit Smíchat se jim.
+Způsob, jakým je mřížka nakonfigurována, je sloupec pro **Úpravy** v mřížce umístěn nejvíce vlevo a sloupec pro **odstranění** je umístěn nejvíce vpravo. (Pro případ, že jste si nevšimli, je teď za `Year` sloupce čárka.) Neexistují žádné speciální informace o tom, kde tyto sloupce odkazů přecházejí, a můžete je tak snadno umístit vedle sebe. V takovém případě jsou oddělené, aby byly těžší v kombinaci.
 
-![Označené filmy stránka s odkazy pro úpravy a podrobnosti zobrazíte, že nejsou vedle sebe](deleting-data/_static/image3.png)
+![Stránka filmy s odkazy upravit a podrobnosti označují, že nejsou vedle sebe navzájem.](deleting-data/_static/image3.png)
 
-Nový sloupec zobrazuje spojení (`<a>` element) jejichž text říká "Odstranit". Cíl odkazu (jeho `href` atribut) je kód, který se s podobným tuto adresu URL, takže v konečném důsledku přeloží `id` hodnotu pro každý film:
+Nový sloupec zobrazuje odkaz (`<a>` element), jehož text říká "Delete". Cíl odkazu (jeho `href` atribut) je kód, který se nakonec překládá na něco podobného jako tato adresa URL, přičemž `id` hodnota se u každého filmu liší:
 
 [!code-css[Main](deleting-data/samples/sample3.css)]
 
-Tento odkaz se vyvolat stránku s názvem *DeleteMovie* a předejte jí ID videa, které jste vybrali.
+Tento odkaz vyvolá stránku s názvem *DeleteMovie* a předá jí ID vybraného filmu.
 
-V tomto kurzu nezkoumá podrobnosti o tom, jak je vytvořen tento odkaz, protože je téměř stejný jako **upravit** odkaz z předchozí kurz o službě ([aktualizaci dat z databáze v ASP.NET Web Pages](updating-data.md)).
+Tento kurz nepřejde do podrobností o tom, jak je tento odkaz vytvořený, protože je skoro totožný s odkazem na **Úpravy** z předchozího kurzu ([aktualizace dat databáze na webových stránkách ASP.NET](updating-data.md)).
 
-## <a name="creating-the-delete-page"></a>Vytvoření stránky Delete
+## <a name="creating-the-delete-page"></a>Vytvoření stránky pro odstranění
 
-Nyní můžete vytvořit stránku, která budou cílem pro **odstranit** odkaz v mřížce.
+Nyní můžete vytvořit stránku, která bude cílem pro odkaz **Delete** v mřížce.
 
 > [!NOTE] 
 > 
-> **Důležité** technika nejprve výběru záznam odstranit a pak používá samostatné stránky a tlačítko potvrďte procesu je velmi důležité pro zabezpečení. Protože jste si přečetli v předchozích kurzech, což *všechny* druh změn na váš web by měl *vždy* udělat pomocí formuláře &mdash; použití operace HTTP POST. Pokud jste provedli možné změnit webu jenom klepnutím na odkaz (tj. pomocí operace GET), lidí může provádět jednoduché požadavky vašeho webu a odstraňovat data. Dokonce i vyhledávací web prohledávací modul, který je indexování webu může omylem odstraníte data, stačí získat prostřednictvím následujících odkazů.
+> **Důležité** informace Technika prvního výběru záznamu, který se má odstranit, a následného použití samostatné stránky a tlačítka k potvrzení, že proces je mimořádně důležitý pro zabezpečení. Jak jste si přečetli v předchozích kurzech, je nutné, aby *jakýkoli* druh změny webu byl *vždy* proveden pomocí &mdash; formuláře, který používá operaci http post. Pokud jste provedli změnu webu pouhým kliknutím na odkaz (tj. pomocí operace GET), můžou lidé na vašem webu provádět jednoduché požadavky a odstraňovat vaše data. I prohledávací modul, který indexuje web, může omylem odstranit data pouze pomocí následujících odkazů.
 > 
-> Aplikace umožňuje uživatelům změnit záznam, máte k dispozici záznam uživatele pro úpravy přesto. Ale můžete mít tendenci Přeskočit tento krok pro odstranění záznamu. Tento krok, není ale přeskočit. (Je také užitečné, uživatelé si můžou zobrazit záznam a potvrďte, že se při odstraňování záznamu, která jsou určena.)
+> Když vaše aplikace umožňuje uživatelům změnit záznam, je nutné k tomu připrezentovat záznam uživateli pro úpravy. Ale můžete se rozhodnout, že tento krok vynecháte pro odstranění záznamu. Tento krok přeskočte, ale. (Je také užitečné, když uživatelé uvidí záznam a potvrdí, že odstraňují záznam, který zamýšlel.)
 > 
-> V následující sérii kurzů uvidíte, jak přidat funkce přihlášení, aby uživatel musel přihlášení před odstraněním záznamu.
+> V další sadě kurzů se dozvíte, jak přidat funkce přihlášení, aby se uživatel musel před odstraněním záznamu přihlásit.
 
-Vytvoření stránky s názvem *DeleteMovie.cshtml* a nahradit, co je v souboru následujícím kódem:
+Vytvořte stránku s názvem *DeleteMovie. cshtml* a nahraďte obsah souboru následujícím kódem:
 
 [!code-cshtml[Main](deleting-data/samples/sample4.cshtml)]
 
-Tento kód je jako *EditMovie* stránky, s výjimkou, že místo použití polí (`<input type="text">`), obsahuje kód `<span>` elementy. Není nutné nic tady upravit. Všechno, co musíte udělat, je zobrazit podrobnosti o filmu mohou uživatelé provádět jistotu, že se při odstraňování správné videa.
+Tento kód je podobný jako *EditMovie* stránky s tím rozdílem, že místo použití textových polí (`<input type="text">`) obsahuje značka `<span>` prvky. Tady není nic, co byste mohli upravit. Vše, co musíte udělat, je zobrazit podrobnosti o videu, aby se uživatelé mohli ujistit, že odstraňují správný film.
 
-Značky již obsahuje odkaz, který umožňuje uživateli vrátit na stránku výpis video.
+Značka již obsahuje odkaz, který uživateli umožňuje vracet se na stránku se seznamem filmů.
 
-Stejně jako *EditMovie* stránky, ID vybraného videa je uložená ve skrytém poli. (Je předána do stránky na prvním místě jako hodnotu řetězce dotazu.) Je `Html.ValidationSummary` volání, které se zobrazí chyby ověření. V takovém případě chyba může být, že žádné ID film byla předána na stránku nebo že film ID je neplatné. Tato situace může nastat, pokud někdo běžel na této stránce bez první video ve výběru *filmy* stránky.
+Stejně jako na stránce *EditMovie* je ID vybraného filmu uloženo ve skrytém poli. (Předává se na stránku na prvním místě jako hodnota řetězce dotazu.) `Html.ValidationSummary` volání, které zobrazí chyby ověřování. V takovém případě může dojít k chybě, že se na stránku předalo žádné ID filmu nebo že ID filmu není platné. K této situaci může dojít, pokud někdo spustil tuto stránku bez předchozího výběru videa na stránce *filmy* .
 
-Popisek tlačítka je **video odstranit**, a jeho název atributu je nastavena na `buttonDelete`. `name` Atributu se použije v kódu k identifikaci tlačítko odeslání formuláře.
+Popisek tlačítka je **Odstranit film**a jeho atribut Name je nastaven na `buttonDelete`. Atribut `name` bude použit v kódu k identifikaci tlačítka, které odeslalo formulář.
 
-Budete muset psát kód 1) přečíst podrobnosti o filmu při prvním zobrazení stránky a (2) ve skutečnosti odstranit videa, když uživatel klikne na tlačítko.
+Budete muset napsat kód na 1) Přečtěte si podrobnosti o videu při prvním zobrazení stránky a 2) opravdu odstranit film, když uživatel klikne na tlačítko.
 
-## <a name="adding-code-to-read-a-single-movie"></a>Přidání kódu pro čtení jednoho videa
+## <a name="adding-code-to-read-a-single-movie"></a>Přidání kódu pro čtení jednoho filmu
 
-V horní části *DeleteMovie.cshtml* stránce, přidejte následující blok kódu:
+V horní části stránky *DeleteMovie. cshtml* přidejte následující blok kódu:
 
 [!code-cshtml[Main](deleting-data/samples/sample5.cshtml)]
 
-Tento kód je stejné jako odpovídající kód v *EditMovie* stránky. Získá ID film mimo řetězec dotazu a používá ID číst záznam z databáze. Tento kód obsahuje ověřovací test (`IsInt()` a `row != null`) a ujistěte, že ID film předávaný do stránky je platný.
+Tento kód je stejný jako odpovídající kód na stránce *EditMovie* . Získá ID filmu z řetězce dotazu a pomocí ID přečte záznam z databáze. Kód obsahuje ověřovací test (`IsInt()` a `row != null`), aby bylo zajištěno, že ID filmu, které je předáno na stránku, je platné.
 
-Mějte na paměti, že tento kód by měl spustit pouze při prvním spuštění stránky. Chcete znovu načíst video záznam z databáze, když uživatel klikne **video odstranit** tlačítko. Proto kód ke čtení, video se nachází uvnitř test, který říká `if(!IsPost)` &mdash; tedy *Pokud žádost není operace post (odeslání formuláře)*.
+Mějte na paměti, že tento kód by měl být spuštěn pouze při prvním spuštění stránky. Pokud uživatel klikne na tlačítko **Odstranit film** , nechcete znovu načíst záznam videa z databáze. Proto kód pro čtení filmu je uvnitř testu, který říká `if(!IsPost)` &mdash;, který je, *Pokud požadavek není operace post (odeslání formuláře)* .
 
-## <a name="adding-code-to-delete-the-selected-movie"></a>Přidání kódu k odstranění vybraného videa
+## <a name="adding-code-to-delete-the-selected-movie"></a>Přidání kódu pro odstranění vybraného filmu
 
-Odstranit video, když uživatel klikne na tlačítko, přidejte následující kód pouze uvnitř složené závorce `@` blok:
+Chcete-li odstranit film, když uživatel klikne na tlačítko, přidejte následující kód těsně do uzavírací závorky bloku `@`:
 
 [!code-csharp[Main](deleting-data/samples/sample6.cs)]
 
-Tento kód je podobný kód pro aktualizaci existující záznam, ale jednodušší. Kód se spustí v podstatě SQL `Delete` příkazu.
+Tento kód je podobný kódu pro aktualizaci existujícího záznamu, ale jednodušší. Kód v podstatě spustí příkaz SQL `Delete`.
 
- Stejně jako v *EditMovie* stránky, kód je v `if(IsPost)` bloku. Tentokrát `if()` je o něco složitější podmínky: 
+ Stejně jako na stránce *EditMovie* je kód v bloku `if(IsPost)`. Tentokrát je stav `if()` trochu složitější: 
 
 [!code-csharp[Main](deleting-data/samples/sample7.cs)]
 
-Existují dvě podmínky tady. První možností je, že na stránce se právě odesílá, jak už víte, před &mdash; `if(IsPost)`.
+Existují dvě podmínky. První je, že se stránka posílá, protože jste viděli před &mdash; `if(IsPost)`.
 
-Druhá podmínka je `!Request["buttonDelete"].IsEmpty()`, což znamená, že žádost má objekt s názvem `buttonDelete`. Admittedly je to nepřímé způsob testování, které tlačítko odeslání formuláře. Pokud formulář obsahuje více tlačítka pro odeslání dat, zobrazí se pouze název tlačítka, které došlo ke kliknutí na v požadavku. Proto, logicky Pokud se zobrazí název konkrétního tlačítka v požadavku &mdash; nebo jak je uvedeno v kódu, pokud toto tlačítko není prázdný &mdash; , který je tlačítko, které odeslání formuláře.
+Druhá podmínka je `!Request["buttonDelete"].IsEmpty()`, což znamená, že žádost obsahuje objekt s názvem `buttonDelete`. V případě potřeby se jedná o nepřímý způsob testování, který tlačítko odeslalo formulář. Pokud formulář obsahuje více tlačítek pro odeslání, zobrazí se v žádosti pouze název tlačítka, které bylo kliknuto. Proto logicky, pokud se název určitého tlačítka objeví v žádosti &mdash; nebo jak je uvedeno v kódu, pokud toto tlačítko není prázdné &mdash;, které je tlačítko, které formulář odeslalo.
 
-`&&` Znamená, že operátor "a" (logický operátor a). Proto celý `if` podmínka je...
+Operátor `&&` znamená "a" (Logical a). Proto je celá podmínka `if`...
 
-*Tento požadavek je příspěvek (ne první žádost)*  
+*Tento požadavek je post (nejedná se o první požadavek).*  
   
  AND  
   
-*`buttonDelete`Tlačítko* *byl tlačítko odeslání formuláře.*
+Tlačítko `buttonDelete`*bylo tlačítko, které odeslalo formulář.*
 
-Tento formulář (ve skutečnosti, na této stránce) obsahuje pouze jedno tlačítko, takže další test `buttonDelete` není technicky povinný. Stále Chystáte se provést operaci, která se trvale odeberou data. Proto má abyste měli jistotu, jako je to možné, že při provádění operace pouze v případě, že uživatel explicitně požaduje ho. Předpokládejme například, zvětšit později na této stránce a do ní přidat další tlačítka. Dokonce i pak, kód, který odstraní videa se spustí jenom v případě, `buttonDelete` došlo ke kliknutí na tlačítko.
+Tento formulář (ve skutečnosti tuto stránku) obsahuje jenom jedno tlačítko, takže další test pro `buttonDelete` není technicky nutný. Pořád se chystáte provést operaci, která bude trvale odebírat data. Proto chcete mít jistotu, že provádíte operaci pouze v případě, že ji uživatel výslovně požadoval. Předpokládejme například, že později jste tuto stránku rozšířili a přidali do ní další tlačítka. Dokonce i kód, který odstraní film, bude spuštěn pouze v případě, že bylo kliknuto na tlačítko `buttonDelete`.
 
-Stejně jako *EditMovie* stránky, získejte ID z skryté pole a poté spusťte příkaz SQL. Syntaxe `Delete` příkaz je:
+Stejně jako na stránce *EditMovie* získáte ID z skrytého pole a pak spustíte příkaz SQL. Syntaxe příkazu `Delete` je:
 
 `DELETE FROM table WHERE ID = value`
 
-Je důležité zahrnout `WHERE` klauzule a ID. Pokud vynecháte klauzule WHERE *se odstraní všechny záznamy v tabulce*. Protože jste viděli, předejte hodnotu ID příkazu SQL s použitím zástupného symbolu.
+Je důležité zahrnout klauzuli `WHERE` a ID. Pokud ponecháte klauzuli WHERE, *odstraní se všechny záznamy v tabulce*. Jak jste viděli, předáte hodnotu ID příkazu SQL pomocí zástupného symbolu.
 
-## <a name="testing-the-movie-delete-process"></a>Testování procesu odstranění Movie
+## <a name="testing-the-movie-delete-process"></a>Testování procesu odstranění filmu
 
-Nyní můžete otestovat. Spustit *filmy* stránce a klikněte na tlačítko **odstranit** vedle videa. Když *DeleteMovie* stránky se zobrazí, klikněte na tlačítko **video odstranit**.
+Nyní můžete provést test. Spusťte stránku *filmy* a klikněte na tlačítko **Odstranit** vedle videa. Po zobrazení stránky *DeleteMovie* klikněte na **Odstranit film**.
 
-![Odstranit stránku film se zvýrazněným tlačítkem odstranit video](deleting-data/_static/image4.png)
+![Stránka odstranit film s zvýrazněným tlačítkem odstranit video](deleting-data/_static/image4.png)
 
-Když kliknete na tlačítko, kód odstraní videa a vrátí na výpis video. Existuje vyhledejte odstraněné filmů a potvrďte, že byla odstraněna.
+Když kliknete na tlačítko, kód odstraní filmy a vrátí se do seznamu filmů. Můžete vyhledat odstraněný film a potvrdit, že je odstraněný.
 
-## <a name="coming-up-next"></a>Chystá se další
+## <a name="coming-up-next"></a>Připravujeme další
 
-V dalším kurzu se dozvíte, jak poskytnout všechny stránky na webu běžné vzhledu a rozložení.
+V dalším kurzu se dozvíte, jak dát všem stránkám na vašem webu běžný vzhled a rozložení.
 
-## <a name="complete-listing-for-movie-page-updated-with-delete-links"></a>Úplný seznam pro stránku Movie (aktualizován odstranění odkazů)
+## <a name="complete-listing-for-movie-page-updated-with-delete-links"></a>Úplný výpis stránky videa (aktualizovaný s odkazy Delete)
 
 [!code-cshtml[Main](deleting-data/samples/sample8.cshtml)]
 
-## <a name="complete-listing-for-deletemovie-page"></a>Úplný seznam DeleteMovie stránky
+## <a name="complete-listing-for-deletemovie-page"></a>Úplný výpis pro stránku DeleteMovie
 
 [!code-cshtml[Main](deleting-data/samples/sample9.cshtml)]
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Úvod k programování v prostředí ASP.NET pomocí syntaxe Razor](../introducing-razor-syntax-c.md)
-- [Příkaz jazyka SQL odstranit](http://www.w3schools.com/sql/sql_delete.asp) na webu W3Schools
+- [Seznámení s ASP.NET webovým programováním pomocí syntaxe Razor](../introducing-razor-syntax-c.md)
+- [Příkaz SQL Delete](http://www.w3schools.com/sql/sql_delete.asp) na webu w3schools
 
 > [!div class="step-by-step"]
 > [Předchozí](updating-data.md)
-> [další](layouts.md)
+> [Další](layouts.md)

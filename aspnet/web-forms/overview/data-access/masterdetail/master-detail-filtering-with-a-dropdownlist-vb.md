@@ -9,11 +9,11 @@ ms.assetid: ea44717e-ab2e-46cd-a692-e4a9c0de194c
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 62cd296a3f36e1779666a6b5db15b0ce2488d0e4
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74639955"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78528719"
 ---
 # <a name="masterdetail-filtering-with-a-dropdownlist-vb"></a>Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (VB)
 
@@ -130,7 +130,7 @@ Obrázek 14 ukazuje snímek obrazovky `FilterByDropDownList.aspx`, když je vybr
 
 **Obrázek 14**: všechny produkty jsou teď uvedené ve výchozím nastavení ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-filtering-with-a-dropdownlist-vb/_static/image40.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Při zobrazení hierarchicky souvisejících dat často pomáhá prezentovat data pomocí hlavních a podrobných sestav, od kterých může uživatel začít perusing data z horní části hierarchie a přejít k podrobnostem. V tomto kurzu jsme prozkoumali vytvoření jednoduché sestavy hlavní/podrobnosti zobrazující produkty vybrané kategorie. To bylo provedeno pomocí ovládacího prvku DropDownList pro seznam kategorií a GridView pro produkty patřící do vybrané kategorie.
 

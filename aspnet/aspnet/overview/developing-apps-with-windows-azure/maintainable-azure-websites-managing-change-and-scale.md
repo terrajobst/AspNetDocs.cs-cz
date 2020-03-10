@@ -1,39 +1,39 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
-title: 'Praktické cvičení: Udržitelné weby Azure: Správa změn a škálování | Dokumentace Microsoftu'
+title: 'Praktická cvičení: Údržba Azure websites: Správa změn a škálování | Microsoft Docs'
 author: rick-anderson
-description: V tomto testovacím prostředí zjistěte, jak Microsoft Azure umožňuje snadno vytvářet a nasazovat weby do produkčního prostředí.
+description: V tomto testovacím prostředí se dozvíte, jak Microsoft Azure usnadňuje sestavování a nasazování webů do produkčního prostředí.
 ms.author: riande
 ms.date: 07/16/2014
 ms.assetid: ecfd0eb4-c4ad-44e6-9db9-a2a66611ff6a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/maintainable-azure-websites-managing-change-and-scale
 msc.type: authoredcontent
 ms.openlocfilehash: c88bae40a8aa092037c0b359ee391acaf161cf10
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65118300"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78624269"
 ---
-# <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Praktické cvičení: Udržitelné weby Azure: Správa změn a škálování
+# <a name="hands-on-lab-maintainable-azure-websites-managing-change-and-scale"></a>Praktické cvičení: Udržitelné weby Azure – správa změn a škálování
 
-podle [Campy Web týmu](https://twitter.com/webcamps)
+podle [týmu webového Campy](https://twitter.com/webcamps)
 
-[Stáhněte si Web Campy školení Kit](https://aka.ms/webcamps-training-kit)
+[Stáhnout web Campy Training Kit](https://aka.ms/webcamps-training-kit)
 
-> Microsoft Azure umožňuje snadno vytvářet a nasazovat weby do produkčního prostředí. Ale nebyly provedeny, když vaše aplikace je v provozu, je právě začínáte! Budete potřebovat pro zpracování se měnící požadavky, aktualizace databáze, škálování a další. Naštěstí služby Azure App Service vám kryje záda, spoustou funkcí, které vám pomůže ochránit vaše weby, které běží plynule.
+> Microsoft Azure usnadňuje sestavování a nasazování webů do produkčního prostředí. Ale nejste hotovi, když je vaše aplikace živá, teprve začínáte! Budete muset zpracovat měnící se požadavky, aktualizace databáze, škálování a další. Naštěstí Azure App Service máte na problém s mnoha funkcemi, které vám pomůžou zajistit bezproblémové fungování vašich webů.
 >
-> Azure nabízí bezpečného a flexibilního vývoje, možnosti nasazení a škálování webových aplikací libovolné velikosti. Pomocí svých stávajících nástrojů k vytváření a nasazování aplikací bez starostí o správu infrastruktury.
+> Azure nabízí možnosti bezpečného a flexibilního vývoje, nasazení a škálování libovolné webové aplikace velikosti. Využijte své stávající nástroje k vytváření a nasazování aplikací bez starostí se správou infrastruktury.
 >
-> Zřiďte provozní webové aplikace si během několika minut a snadno nasadit obsah vytvořený pomocí svůj oblíbený vývojový nástroj. Můžete nasadit existující lokalitu přímo ze správy zdrojových kódů s podporou **Git**, **Githubu**, **Bitbucket**, **TFS**a dokonce i  **DropBox**. Nasazení přímo z vašeho oblíbeného prostředí IDE nebo skripty s využitím **PowerShell** ve Windows nebo **rozhraní příkazového řádku** nástroje spuštěná v jakémkoli operačním systému. Po nasazení, informujte webů neustále o podporu pro průběžné nasazování.
+> Pomocí snadného nasazení obsahu vytvořeného pomocí oblíbeného vývojového nástroje můžete zřídit produkční webovou aplikaci sami v řádu minut. Existující web můžete nasadit přímo ze správy zdrojového kódu s podporou pro **Git**, **GitHub**, **Bitbucket**, **TFS**a dokonce i **Dropbox**. Nasaďte přímo z oblíbeného integrovaného vývojového prostředí (IDE) nebo ze skriptů pomocí **prostředí PowerShell** v nástrojích pro Windows nebo rozhraní příkazového **řádku** Po nasazení Udržujte Vaše weby stále aktuální díky podpoře průběžného nasazování.
 >
-> Azure poskytuje škálovatelné, odolné cloudové úložiště, zálohu a řešení obnovy pro jakákoli data, libovolném objemu. Při nasazování aplikací do produkčního prostředí, služeb úložiště, jako například tabulky, objekty BLOB a databází SQL, můžete škálovat aplikaci v cloudu.
+> Azure poskytuje škálovatelné, odolné cloudové úložiště, zálohování a řešení obnovení pro libovolná data, Velká i malá. Když nasazujete aplikace do provozního prostředí, služby úložiště, jako jsou tabulky, objekty BLOB a databáze SQL, vám pomůžou škálovat aplikace v cloudu.
 >
-> U databází SQL je potřeba aktualizovat databázi produktivní při nasazování nové verze aplikace. K **migrace Entity Framework Code First**, vývoj a nasazení modelu dat zjednodušili jsme se aktualizovat vaše prostředí během několika minut. Tato praktická cvičení se dozvíte, dalších tématech, které by mohly nastat při nasazení vaší webové aplikace do produkčního prostředí v Microsoft Azure.
+> Databáze SQL jsou důležité při nasazování nových verzí aplikace udržovat produktivní databázi v aktuálním stavu. Díky **migrace Entity Framework Code First**je vývoj a nasazení datového modelu zjednodušené, aby se vaše prostředí aktualizovala během několika minut. Tato praktická cvičení vám ukáže různá témata, se kterými se můžete setkat při nasazení webové aplikace do produkčních prostředí v Microsoft Azure.
 >
-> Všechny ukázky kódu a fragmenty kódu jsou součástí této webové Campy školicí sady, k dispozici na [ https://aka.ms/webcamps-training-kit ](https://aka.ms/webcamps-training-kit).
+> Veškerý ukázkový kód a fragmenty kódu jsou součástí sady web Campy Traination Kit, která je k dispozici na adrese [https://aka.ms/webcamps-training-kit](https://aka.ms/webcamps-training-kit).
 >
-> Další podrobné pokrytí v tomto tématu najdete v článku [vytváření skutečných cloudových aplikací s Azure e kniha](building-real-world-cloud-apps-with-windows-azure/introduction.md).
+> Podrobnější pokrytí tohoto tématu najdete v tématu [sestavování reálných cloudových aplikací pomocí elektronické knihy Azure](building-real-world-cloud-apps-with-windows-azure/introduction.md).
 
 <a id="Overview"></a>
 ## <a name="overview"></a>Přehled
@@ -41,871 +41,871 @@ podle [Campy Web týmu](https://twitter.com/webcamps)
 <a id="Objectives"></a>
 ### <a name="objectives"></a>Cíle
 
-V této praktická cvičení se dozvíte, jak:
+V této praktické laboratorní laboratoři se dozvíte, jak:
 
-- Povolení migrace rozhraní Entity Framework s existující model
-- Aktualizovat objektový model a databáze pomocí migrace rozhraní Entity Framework
+- Povolit Entity Framework migrace s existujícím modelem
+- Aktualizujte objektový model a databázi odpovídajícím způsobem pomocí Entity Framework migrace.
 - Nasazení do Azure App Service pomocí Gitu
-- Vrátit zpět na předchozí nasazení pomocí portálu pro správu Azure
-- Škálování webové aplikace pomocí služby Azure Storage
-- Konfigurace automatického škálování pro webovou aplikaci pomocí portálu pro správu Azure
-- Vytvoření a konfigurace projektu zátěžového testu v sadě Visual Studio
+- Vrácení zpět k předchozímu nasazení pomocí portálu pro správu Azure
+- Škálování webové aplikace pomocí Azure Storage
+- Konfigurace automatického škálování pro webovou aplikaci pomocí Portál pro správu Azure
+- Vytvoření a konfigurace projektu zátěžového testu v aplikaci Visual Studio
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-K dokončení této praktické testovací prostředí jsou vyžadovány následující položky:
+Následující postup je nutný k dokončení tohoto praktického laboratorního prostředí:
 
-- [Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/) nebo vyšší
-- [Sada Azure SDK for .NET 2.2](https://www.microsoft.com/windowsazure/sdk/)
-- [Systém správy verzí GIT](http://git-scm.com/download)
-- Předplatné Microsoft Azure
+- [Visual Studio Express 2013 pro web](https://www.microsoft.com/visualstudio/) nebo více
+- [Sada Azure SDK pro .NET 2,2](https://www.microsoft.com/windowsazure/sdk/)
+- [Systém správy verzí GITU](http://git-scm.com/download)
+- Microsoft Azure předplatné
 
-    - Zaregistrovat [bezplatnou zkušební verzi](https://aka.ms/watk-freetrial)
-    - Pokud jste Visual Studio Professional, Test Professional, Premium nebo Ultimate s MSDN nebo MSDN Platforms odběratele, aktivovat váš [výhodu MSDN](https://aka.ms/watk-msdn) hned a začít s vývojem a testování v Azure
-    - [BizSpark](https://aka.ms/watk-bizspark) členové automaticky obdrží Azure benefit prostřednictvím svého Visual Studia Ultimate s předplatným MSDN
-    - Členové [programu Microsoft Partner Network](https://aka.ms/watk-mpn) programu Cloud Essentials získáte měsíčně kredity Azure ve výši
+    - Zaregistrujte si [bezplatnou zkušební verzi](https://aka.ms/watk-freetrial)
+    - Pokud máte Visual Studio Professional, Test Professional, Premium nebo Ultimate s MSDN nebo MSDN Platforms předplatitelem, aktivujte si [výhodu MSDN](https://aka.ms/watk-msdn) hned teď, abyste mohli začít vyvíjet a testovat v Azure.
+    - [BizSpark](https://aka.ms/watk-bizspark) členové automaticky získají výhody Azure prostřednictvím předplatného Visual Studio Ultimate with MSDN.
+    - Členové programu [Microsoft Partner Network](https://aka.ms/watk-mpn) Cloud Essentials obdrží zdarma měsíční kredit Azure.
 
 <a id="Setup"></a>
-### <a name="setup"></a>Instalace
+### <a name="setup"></a>Nastavení
 
-Chcete-li spustit praktická cvičení v této praktické testovací prostředí, musíte nejdřív nastavit prostředí.
+Aby bylo možné spustit cvičení v této praktické laboratorní laboratoři, budete muset nejprve nastavit prostředí.
 
-1. Otevřete Průzkumníka Windows a přejděte do testovacího prostředí **zdroj** složky.
-2. Klikněte pravým tlačítkem na **Setup.cmd** a vyberte **spustit jako správce** ke spuštění procesu instalace, který bude konfiguraci prostředí a nainstalujte Visual Studio fragmenty kódu pro toto testovací prostředí.
-3. Pokud se zobrazí dialogové okno Řízení uživatelských účtů, zkontrolujte akce, aby bylo možné pokračovat.
+1. Otevřete Průzkumníka Windows a přejděte do **zdrojové** složky testovacího prostředí.
+2. Klikněte pravým tlačítkem na **Setup. cmd** a vyberte **Spustit jako správce** a spusťte proces instalace, který bude konfigurovat vaše prostředí a nainstaluje fragmenty kódu sady Visual Studio pro toto testovací prostředí.
+3. Pokud se zobrazí dialogové okno Řízení uživatelských účtů, potvrďte akci, abyste mohli pokračovat.
 
 > [!NOTE]
-> Ujistěte se, že jste zaškrtli všechny závislosti pro toto testovací prostředí před spuštěním instalace.
+> Před spuštěním instalačního programu se ujistěte, že jste kontrolovali všechny závislosti pro toto testovací prostředí.
 
 <a id="CodeSnippets"></a>
 ### <a name="using-the-code-snippets"></a>Používání fragmentů kódu
 
-V celém dokumentu testovacího prostředí budete vyzváni k vložení bloky kódu. Pro usnadnění práce většina tento kód je k dispozici jako Visual Studio fragmenty kódu, který se dá dostat z v rámci Visual Studio 2013, abyste ho nemuseli znovu přidat ručně.
+V celém dokumentu testovacího prostředí budete vyzváni k vložení bloků kódu. Pro usnadnění práce je většina tohoto kódu k dispozici jako fragmenty Visual Studio Code, ke kterým můžete přistupovat z Visual Studio 2013, abyste se vyhnuli nutnosti ho přidat ručně.
 
 > [!NOTE]
-> Každý cvičení se sadou počáteční řešení nachází v **začít** složky výkonu, který umožňuje postupovat podle jednotlivých výkon nezávisle na ostatních. Uvědomte si, že chybí z těchto řešení od fragmenty kódu, které se přidávají během cvičení a nemusí fungovat, dokud nedokončíte výkonu. Uvnitř zdrojový kód pro cvičení, můžete také najdete **End** složku, která obsahuje řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v odpovídající cvičení. Tato řešení můžete použít jako vodítko, pokud potřebujete další pomoc při práci prostřednictvím této praktické vyzkoušení.
+> Každé cvičení se doprovází od počátečního řešení ve složce **Begin** cvičení, které vám umožní sledovat jednotlivá cvičení nezávisle na ostatních. Všimněte si, že fragmenty kódu, které jsou přidány během cvičení, v těchto počátečních řešeních chybí a nemusí fungovat, dokud nedokončíte cvičení. Ve zdrojovém kódu cvičení také najdete **koncovou** složku obsahující řešení sady Visual Studio s kódem, který je výsledkem dokončení kroků v příslušném cvičení. Tato řešení můžete použít jako návod, pokud potřebujete další pomoc při práci s tímto praktickým cvičením.
 
 ---
 
 <a id="Exercises"></a>
 ## <a name="exercises"></a>Cvičení
 
-Toto praktické testovací prostředí obsahuje následující praktická cvičení:
+Tato praktická cvičení zahrnují následující cvičení:
 
 1. [Použití migrace Entity Framework](#Exercise1)
-2. [Nasazení webové aplikace do přípravného prostředí](#Exercise2)
-3. [V produkčním prostředí provádí vrácení nasazení zpět](#Exercise3)
-4. [Škálování s využitím služby Azure Storage](#Exercise4)
-5. [Použití automatického škálování pro Web Apps](#Exercise5) (volitelné pro Visual Studio 2013 Ultimate edition)
+2. [Nasazení webové aplikace do přípravy](#Exercise2)
+3. [Provádění vrácení nasazení v produkčním prostředí](#Exercise3)
+4. [Škálování pomocí Azure Storage](#Exercise4)
+5. [Použití automatického škálování pro Web Apps](#Exercise5) (volitelné pro Visual Studio 2013 Ultimate Edition)
 
 Odhadovaný čas dokončení tohoto testovacího prostředí: **75 minut**
 
 > [!NOTE]
-> Při prvním spuštění sady Visual Studio, musíte vybrat jednu z předdefinovaných nastavení kolekce. Každé předdefinované kolekce je navržená tak, aby odpovídala konkrétním vývojářským styl a určuje rozložení oken, chování editoru, fragmenty kódu technologie IntelliSense a možnosti dialogového okna. Postupy v tomto testovacím prostředí jsou uvedené akce potřebné k provedení dané úlohy v sadě Visual Studio při použití **obecným vývojovým nastavením** kolekce. Pokud se rozhodnete různá nastavení kolekce pro vaše vývojové prostředí, mohou existovat rozdíly v krocích, které byste měli vzít v úvahu.
+> Při prvním spuštění sady Visual Studio je nutné vybrat jednu z předdefinovaných kolekcí nastavení. Každá předdefinovaná kolekce je navržena tak, aby odpovídala konkrétnímu stylu vývoje a určuje rozložení oken, chování editoru, fragmenty kódu technologie IntelliSense a možnosti dialogového okna. Postupy v tomto testovacím prostředí popisují akce, které jsou nezbytné k provedení daného úkolu v sadě Visual Studio při použití kolekce **Obecné vývojové nastavení** . Pokud zvolíte pro vývojové prostředí jinou kolekci nastavení, mohou být v krocích, které byste měli vzít v úvahu, rozdíly.
 
 <a id="Exercise1"></a>
-### <a name="exercise-1-using-entity-framework-migrations"></a>Cvičení 1: Použití migrace Entity Framework
+### <a name="exercise-1-using-entity-framework-migrations"></a>Cvičení 1: použití migrace Entity Framework
 
-Při vývoji aplikace může časem měnit datový model. Tyto změny mohou ovlivnit existující model v databázi (Pokud vytváříte novou verzi) a je potřeba aktualizovat databázi zabráníte tak chybám.
+Když vyvíjíte aplikaci, váš datový model se může v průběhu času měnit. Tyto změny mohou ovlivnit existující model v databázi (Pokud vytváříte novou verzi) a je důležité udržovat databázi v aktuálním stavu, aby nedocházelo k chybám.
 
-Pro zjednodušení sledování tyto změny v modelu, **migrace Entity Framework Code First** automaticky zjišťuje změny porovnání modelu pomocí schématu databáze a generuje konkrétní kód k aktualizaci databáze, vytváří se nová *verze* vaší databáze.
+Chcete-li zjednodušit sledování těchto změn v modelu, **migrace Entity Framework Code First** automaticky zjišťovat změny, které porovnávají model s databázovým schématem, a vygeneruje konkrétní kód pro aktualizaci databáze a vytváří nové *verze* vaší databáze.
 
-V tomto cvičení se dozvíte, jak povolit **migrace** pro vaše aplikace a jak můžete snadno zjišťovat a generovat změny k aktualizaci databází.
+V tomto cvičení se dozvíte, jak povolit **migrace** pro vaši aplikaci a jak snadno zjišťovat a generovat změny pro aktualizaci databází.
 
 <a id="Ex1Task1"></a>
-#### <a name="task-1--enabling-migrations"></a>Úloha 1 – povolení migrace
+#### <a name="task-1--enabling-migrations"></a>Úloha 1 – povolení migrací
 
-V této úloze bude projít kroky povolení **migrace Entity Framework Code First** k **kvíz Informatik** databáze, změna modelu a vysvětlení, jak se tyto změny projeví v databáze.
+V této úloze provedete kroky povolení **migrace Entity Framework Code First** do databáze **kvízu informatik** , změnu modelu a porozumění způsobu, jakým se tyto změny projeví v databázi.
 
-1. Otevřete Visual Studio a otevřete **GeekQuiz.sln** soubor řešení od **Source\Ex1 UsingEntityFrameworkMigrations\Begin**.
-2. Sestavte řešení, aby bylo možné stáhnout a nainstalovat **NuGet** balíček závislostí. Chcete-li to provést, klikněte pravým tlačítkem na řešení a klikněte na tlačítko **sestavit řešení** nebo stiskněte klávesu **Ctrl + Shift + B**.
-3. Z **nástroje** v aplikaci Visual Studio, vyberte v nabídce **Správce balíčků NuGet**a potom klepněte na **konzoly Správce balíčků**.
-4. V **Konzola správce balíčků**, zadejte následující příkaz a stiskněte klávesu **Enter**. Vytvoří se při počáteční migraci na základě existující modelu.
+1. Otevřete Visual Studio a otevřete soubor řešení **GeekQuiz. sln** z **Source\Ex1-UsingEntityFrameworkMigrations\Begin**.
+2. Sestavte řešení, aby se daly stáhnout a nainstalovat závislosti balíčku **NuGet** . Provedete to tak, že kliknete pravým tlačítkem na řešení a kliknete na **Sestavit řešení** nebo stisknete **CTRL + SHIFT + B**.
+3. V nabídce **nástroje** v aplikaci Visual Studio vyberte **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**.
+4. V **konzole správce balíčků**zadejte následující příkaz a stiskněte klávesu **ENTER**. Vytvoří se počáteční migrace založená na stávajícím modelu.
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample1.ps1)]
 
-    ![Povolení migrace](maintainable-azure-websites-managing-change-and-scale/_static/image1.png "povolení migrace")
+    ![Povolování migrací](maintainable-azure-websites-managing-change-and-scale/_static/image1.png "Povolování migrací")
 
-    *Povolení migrace*
-
-    > [!NOTE]
-    > Tento příkaz přidá **migrace** složky do projektu se Informatik kvíz, který obsahuje soubor s názvem **Configuration.cs**. **Konfigurace** třída umožňuje konfigurovat chování migrace pro váš kontext.
-5. Pomocí migrace povolená, je potřeba aktualizovat **konfigurace** třídy k naplnění databáze s počáteční data, která **kvíz Informatik** vyžaduje. V části **migrace**, nahraďte **Configuration.cs** soubor s tím, který se nachází v **Source\Assets** složka tohoto testovacího prostředí.
+    *Povolování migrací*
 
     > [!NOTE]
-    > Protože **migrace** zavolá **počáteční hodnoty** metoda při každé aktualizaci databáze, je třeba mít jistotu, že nejsou duplicitní záznamy v databázi. **AddOrUpdate** metoda se pomůže zabránit duplicitní data.
-6. Pokud chcete přidat počáteční migraci, zadejte následující příkaz a stiskněte klávesu **Enter**.
+    > Tento příkaz přidá složku **migrace** do projektu informatik kvízu, který obsahuje soubor s názvem **Configuration.cs**. Třída **Configuration** umožňuje nakonfigurovat, jak se budou migrace chovat pro váš kontext.
+5. U povolených migrací je potřeba aktualizovat třídu **Configuration** , aby se databáze naplnila počátečními daty, která **informatik kvíz** vyžaduje. V části **migrace**nahraďte soubor **Configuration.cs** souborem, který se nachází ve složce **Source\Assets** v tomto testovacím prostředí.
 
     > [!NOTE]
-    > Ujistěte se, že neexistuje žádná databáze s názvem &quot;GeekQuizProd&quot; ve vaší instanci LocalDB.
+    > Vzhledem k tomu, že **migrace** zavolá metodu **počáteční** hodnoty s každou aktualizací databáze, je nutné zajistit, aby záznamy nebyly v databázi duplikovány. Metoda **AddOrUpdate** vám pomůže zabránit duplicitním datům.
+6. Chcete-li přidat počáteční migraci, zadejte následující příkaz a stiskněte klávesu **ENTER**.
+
+    > [!NOTE]
+    > Ujistěte se, že v instanci LocalDB není žádná databáze s názvem &quot;GeekQuizProd&quot;.
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample2.ps1)]
 
-    ![Přidání základní schéma migrace](maintainable-azure-websites-managing-change-and-scale/_static/image2.png "přidání základní schéma migrace")
+    ![Přidává se migrace základního schématu.](maintainable-azure-websites-managing-change-and-scale/_static/image2.png "Přidává se migrace základního schématu.")
 
-    *Přidání základního schématu migrace*
+    *Přidává se migrace základního schématu.*
 
     > [!NOTE]
-    > **Přidejte migraci** bude generování uživatelského rozhraní další migrace na základě změn, které jste provedli pro váš model, od vytvoření posledního migrace. V takovém případě je to první migraci projekt, přidá skripty k vytvoření všech tabulek, které jsou definovány v **TriviaContext** třídy.
-7. Spusťte migraci k aktualizaci databáze spuštěním následujícího příkazu. Pro tento příkaz můžete zadat **Verbose** příznak, chcete-li zobrazit příkazy SQL, zavádí do cílové databáze.
+    > **Příkaz Add-Migration** vygeneruje další migraci na základě změn, které jste provedli v modelu od vytvoření poslední migrace. V takovém případě se jako první migrace projektu přidá skripty pro vytvoření všech tabulek definovaných ve třídě **TriviaContext** .
+7. Spuštěním následujícího příkazu proveďte migraci k aktualizaci databáze. Pro tento příkaz určíte příznak **verbose** , který zobrazí příkazy SQL, které se aplikují na cílovou databázi.
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample3.ps1)]
 
-    ![Vytvoření první databáze](maintainable-azure-websites-managing-change-and-scale/_static/image3.png "vytváření počáteční databáze.")
+    ![Vytváření počáteční databáze](maintainable-azure-websites-managing-change-and-scale/_static/image3.png "Vytváření počáteční databáze")
 
-    *Vytvoření první databáze*
+    *Vytváření počáteční databáze*
 
     > [!NOTE]
-    > **Aktualizace databáze** se použije čekající migrace do databáze. V takovém případě se vytvoří databázi pomocí připojovacího řetězce definovaný v souboru web.config.
-8. Přejděte na **zobrazení** nabídce a otevřete **Průzkumník objektů systému SQL Server**.
+    > **Aktualizace – databáze** bude platit pro všechny probíhající migrace do databáze. V tomto případě vytvoří databázi pomocí připojovacího řetězce definovaného v souboru Web. config.
+8. Přejděte do nabídky **Zobrazit** a otevřete **Průzkumník objektů systému SQL Server**.
 
-    ![Otevřít v Průzkumníku objektů systému SQL Server](maintainable-azure-websites-managing-change-and-scale/_static/image4.png "otevřít v Průzkumníku objektů SQL serveru")
+    ![Otevřít v Průzkumník objektů systému SQL Server](maintainable-azure-websites-managing-change-and-scale/_static/image4.png "Otevřít v Průzkumník objektů systému SQL Server")
 
-    *Otevřít v Průzkumníku objektů SQL serveru*
-9. V **Průzkumník objektů systému SQL Server** okna, připojte se k instanci LocalDB kliknutím pravým tlačítkem myši **systému SQL Server** uzlu a vyberete **přidat SQL Server...**  možnost.
+    *Otevřít v Průzkumník objektů systému SQL Server*
+9. V okně **Průzkumník objektů systému SQL Server** se připojte k instanci LocalDB kliknutím pravým tlačítkem myši na uzel **SQL Server** a vybráním možnosti **Přidat SQL Server...** .
 
-    ![Přidání Instance serveru SQL](maintainable-azure-websites-managing-change-and-scale/_static/image5.png "přidání Instance serveru SQL")
+    ![Přidání instance SQL Server](maintainable-azure-websites-managing-change-and-scale/_static/image5.png "Přidání instance SQL Server")
 
-    *Přidání instance serveru SQL Server do Průzkumník objektů systému SQL Server*
-10. Nastavte **název serveru** k *(localdb) \v11.0* a nechat **ověřování Windows** jako režim ověřování. Klikněte na tlačítko **připojit** pokračujte.
+    *Přidání instance SQL Server do Průzkumník objektů systému SQL Server*
+10. Nastavte **název serveru** na *(LocalDB) \v11.0* a v režimu ověřování nechte **ověřování systému Windows** . Pokračujte kliknutím na **Připojit**.
 
-    ![Připojování na instanci LocalDB](maintainable-azure-websites-managing-change-and-scale/_static/image6.png "připojení na instanci LocalDB")
+    ![Připojování k LocalDB](maintainable-azure-websites-managing-change-and-scale/_static/image6.png "Připojování k LocalDB")
 
-    *Připojování na instanci LocalDB*
-11. Otevřít **GeekQuizProd** databáze a rozbalte **tabulky** uzlu. Jak je vidět **aktualizace databáze** příkaz vygeneruje všechny tabulky, které jsou definovány v **TriviaContext** třídy. Vyhledejte **dbo. TriviaQuestions** tabulky a otevřete uzel sloupce. V dalším úkolem, přidáte nový sloupec do této tabulky a aktualizujte databáze s využitím **migrace**.
+    *Připojování k LocalDB*
+11. Otevřete databázi **GeekQuizProd** a rozbalte uzel **tabulky** . Jak vidíte, příkaz **Update-Database** vygeneroval všechny tabulky definované ve třídě **TriviaContext** . Vyhledejte **dbo. TriviaQuestions** tabulku a otevřete uzel sloupce. V další úloze přidáte do této tabulky nový sloupec a aktualizujete databázi pomocí **migrací**.
 
-    ![Triviální prvek otázky, které sloupce](maintainable-azure-websites-managing-change-and-scale/_static/image7.png "triviální prvek otázky, které sloupce")
+    ![Sloupce otázek minihry](maintainable-azure-websites-managing-change-and-scale/_static/image7.png "Sloupce otázek minihry")
 
-    *Triviální prvek otázky, které sloupce*
+    *Sloupce otázek minihry*
 
 <a id="Ex1Task2"></a>
-#### <a name="task-2--updating-database-schema-using-migrations"></a>Úloha 2 – aktualizace schématu databáze pomocí migrace
+#### <a name="task-2--updating-database-schema-using-migrations"></a>Úloha 2 – aktualizace schématu databáze pomocí migrací
 
-V této úloze budete používat **migrace Entity Framework Code First** zjistí změnu ve vašem modelu a generovat kód potřebná k aktualizaci databáze. Budete aktualizovat **TriviaQuestions** entity tak, že do ní přidáte novou vlastnost. Potom spustíte příkazy vytvoří novou migraci chcete zahrnout do nového sloupce v tabulce.
+V této úloze použijete **migrace Entity Framework Code First** k detekci změny v modelu a vygenerujete potřebný kód pro aktualizaci databáze. Entitu **TriviaQuestions** aktualizujete tak, že do ní přidáte novou vlastnost. Potom spustíte příkazy pro vytvoření nové migrace, které budou zahrnovat nový sloupec v tabulce.
 
-1. V **Průzkumníka řešení**, dvakrát klikněte **TriviaQuestion.cs** soubor umístěný uvnitř **modely** složky.
-2. Přidat novou vlastnost s názvem **pomocný parametr**, jak je znázorněno v následujícím fragmentu kódu.
+1. V **Průzkumník řešení**dvakrát klikněte na soubor **TriviaQuestion.cs** , který se nachází uvnitř složky **modely** .
+2. Přidejte novou vlastnost s názvem **Hint**, jak je znázorněno v následujícím fragmentu kódu.
 
     [!code-csharp[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample4.cs)]
-3. V **Konzola správce balíčků**, zadejte následující příkaz a stiskněte klávesu **Enter**. Nová migrace se vytvoří, odrážející změnu v hodnotě náš model.
+3. V **konzole správce balíčků**zadejte následující příkaz a stiskněte klávesu **ENTER**. Vytvoří se nová migrace odrážející změnu v našem modelu.
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample5.ps1)]
 
-    ![Přidejte migraci](maintainable-azure-websites-managing-change-and-scale/_static/image8.png "přidat migrace")
+    ![Přidání – migrace](maintainable-azure-websites-managing-change-and-scale/_static/image8.png "Přidání – migrace")
 
-    *Přidat migrace*
+    *Přidání – migrace*
 
     > [!NOTE]
-    > Soubor migrace se skládá ze dvou způsobů **nahoru** a **dolů**.
+    > Soubor migrace se skládá ze dvou metod, **nahoru** a **dolů**.
     >
-    > - **Nahoru** metoda se použije k určení, co se změní aktuální verze našich aplikací nutnost používat k databázi.
-    > - **Dolů** používaných k vrácení změn, přidali jsme do **nahoru** metody.
+    > - Metoda **up** se použije k určení, které změny aktuální verze naší aplikace musí platit pro databázi.
+    > - **Dolů** se používá k vrácení změn, které jsme přidali do metody **up** .
     >
-    > Při migraci databáze zaktualizuje databázi, se aplikace spustí všechny migrace v pořadí, časové razítko a jenom na ty, které nebyly použity od poslední aktualizace ( \_MigrationHistory tabulka uchovává informace o migraci, které byly použity). **Nahoru** bude volána metoda všechny migrace a provede změny jsme zadali do databáze. Pokud se rozhodneme vrátit k předchozí migrace **dolů** volaná metoda vrátit ke svému změny v obráceném pořadí.
-4. V **Konzola správce balíčků**, zadejte následující příkaz a stiskněte klávesu **Enter**.
+    > Když migrace databáze aktualizuje databázi, spustí všechny migrace v pořadí časových razítek a jenom ty, které se od poslední aktualizace nepoužily (tabulka \_MigrationHistory udržuje přehled o tom, které migrace se použily). Metoda **up** pro všechny migrace bude volána a provede změny, které jsme určili v databázi. Pokud se rozhodnete vrátit k předchozí migraci, bude volána metoda **dolů** , která provede změny v obráceném pořadí.
+4. V **konzole správce balíčků**zadejte následující příkaz a stiskněte klávesu **ENTER**.
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample6.ps1)]
-5. Výstup **aktualizace databáze** příkaz vygeneruje **Alter Table** příkaz jazyka SQL, chcete-li přidat nový sloupec, **TriviaQuestions** tabulky, jak je znázorněno na následujícím obrázku.
+5. Výstup příkazu **Update-Database** vygeneroval příkaz **ALTER TABLE** jazyka SQL pro přidání nového sloupce do tabulky **TriviaQuestions** , jak je znázorněno na následujícím obrázku.
 
-    ![Přidat příkaz jazyka SQL sloupce generovány](maintainable-azure-websites-managing-change-and-scale/_static/image9.png "přidat generované sloupce příkaz jazyka SQL")
+    ![Přidat vygenerovaný příkaz SQL sloupce](maintainable-azure-websites-managing-change-and-scale/_static/image9.png "Přidat vygenerovaný příkaz SQL sloupce")
 
-    *Přidat generované sloupce příkaz jazyka SQL*
-6. V **Průzkumník objektů systému SQL Server**, aktualizujte **dbo. TriviaQuestions** tabulky a zkontrolujte, že nový **pomocný parametr** je zobrazen sloupec.
+    *Přidat vygenerovaný příkaz SQL sloupce*
+6. V **Průzkumník objektů systému SQL Server**aktualizujte **dbo. TriviaQuestions** tabulku a ověřte, že se zobrazuje nový sloupec s **nápovědou** .
 
-    ![Zobrazuje nový sloupec pomocný parametr](maintainable-azure-websites-managing-change-and-scale/_static/image10.png "zobrazuje nový sloupec pomocný parametr")
+    ![Zobrazení nového sloupce s nápovědou](maintainable-azure-websites-managing-change-and-scale/_static/image10.png "Zobrazení nového sloupce s nápovědou")
 
-    *Zobrazuje nový sloupec pomocný parametr*
-7. Zpátky **TriviaQuestion.cs** editoru přidejte **StringLength** omezení, které *pomocný parametr* vlastnost, jak je znázorněno v následujícím fragmentu kódu.
+    *Zobrazení nového sloupce s nápovědou*
+7. Zpět v editoru **TriviaQuestion.cs** přidejte do vlastnosti *Hint* omezení **StringLength** , jak je znázorněno v následujícím fragmentu kódu.
 
     [!code-csharp[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample7.cs)]
-8. V **Konzola správce balíčků**, zadejte následující příkaz a stiskněte klávesu **Enter**.
+8. V **konzole správce balíčků**zadejte následující příkaz a stiskněte klávesu **ENTER**.
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample8.ps1)]
-9. V **Konzola správce balíčků**, zadejte následující příkaz a stiskněte klávesu **Enter**.
+9. V **konzole správce balíčků**zadejte následující příkaz a stiskněte klávesu **ENTER**.
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample9.ps1)]
-10. Výstup **aktualizace databáze** příkaz vygeneruje **Alter Table** SQL. doje k aktualizaci *pomocný parametr* typ sloupce **TriviaQuestions** tabulky, jak je znázorněno na následujícím obrázku.
+10. Výstup příkazu **Update-Database** vygeneroval příkaz **ALTER TABLE** jazyka SQL, který aktualizuje typ sloupce *pomocného parametru* tabulky **TriviaQuestions** , jak je znázorněno na obrázku níže.
 
-    ![Příkaz ALTER vygenerovat příkaz SQL sloupec](maintainable-azure-websites-managing-change-and-scale/_static/image11.png "Alter vygenerovat příkaz SQL sloupec")
+    ![Vygenerované příkazy ALTER COLUMN SQL](maintainable-azure-websites-managing-change-and-scale/_static/image11.png "Vygenerované příkazy ALTER COLUMN SQL")
 
-    *Příkaz ALTER vygenerovat příkaz SQL sloupec*
-11. V **Průzkumník objektů systému SQL Server**, aktualizujte **dbo. TriviaQuestions** tabulky a zkontrolujte, že **pomocný parametr** typ sloupce je **nvarchar(150)**.
+    *Vygenerované příkazy ALTER COLUMN SQL*
+11. V **Průzkumník objektů systému SQL Server**aktualizujte **dbo. TriviaQuestions** tabulku a ověřte, zda je typ sloupce **pomocným parametrem** **nvarchar (150)** .
 
-    ![Zobrazení omezení new](maintainable-azure-websites-managing-change-and-scale/_static/image12.png "znázorňující omezení new")
+    ![Zobrazuje se nové omezení.](maintainable-azure-websites-managing-change-and-scale/_static/image12.png "Zobrazuje se nové omezení.")
 
-    *Zobrazuje nové omezení*
+    *Zobrazuje se nové omezení.*
 
 <a id="Exercise2"></a>
-### <a name="exercise-2-deploying-a-web-app-to-staging"></a>Cvičení 2: Nasazení webové aplikace do přípravného prostředí
+### <a name="exercise-2-deploying-a-web-app-to-staging"></a>Cvičení 2: nasazení webové aplikace do přípravy
 
-**Webové aplikace ve službě Azure App Service** umožňuje provádět fázované publikování. Fázované publikování vytváří slot pro každému výchozímu produkčnímu webu fázi webu a umožňuje vám přepínat mezi těmito sloty bez časové prodlevy. To je velmi užitečné ověřit změny před uvolněním veřejně, postupně integrovat obsah webu a vrátit zpět, jestliže změny nefungují podle očekávání.
+**Web Apps v Azure App Service** vám umožní provést dvoufázové publikování. Při dvoufázovém publikování se vytvoří pozice pro pracovní místo pro každý výchozí produkční web a umožní vám tyto sloty prohodit bez času. To je opravdu užitečné k ověření změn před vydáním veřejné, přírůstkově integrování obsahu webu a vrácení zpět, pokud změny nefungují podle očekávání.
 
-V tomto cvičení nasadíte **kvíz Informatik** aplikaci do přípravného prostředí vaší webové aplikace pomocí správy zdrojového kódu Gitu. K tomuto účelu bude vytvoření webové aplikace a zřízení požadovaných součástí na portálu pro správu, konfiguraci **Git** zdrojového kódu ze svého místního počítače do přípravného slotu úložiště a nabízených oznámení aplikace. Budete také aktualizovat vaši produkční databázi s **migrace Code First** jste vytvořili v předchozím cvičení. V tomto testovacím prostředí k ověření své činnosti pak spustí aplikaci. Jakmile budete spokojeni se pracuje podle vašich očekávání, bude podporovat aplikace do produkčního prostředí.
+V tomto cvičení nasadíte aplikaci **informatik kvíz** do přípravného prostředí vaší webové aplikace pomocí správy zdrojového kódu Git. K tomu vytvoříte webovou aplikaci a zřídíte požadované komponenty na portálu pro správu, nakonfigurujete úložiště **Git** a nahrajete zdrojový kód aplikace z místního počítače do přípravného slotu. Provozní databázi budete aktualizovat také pomocí **migrace Code First** , kterou jste vytvořili v předchozím cvičení. Pak spustíte aplikaci v tomto testovacím prostředí, abyste ověřili její činnost. Jakmile budete přesvědčeni, že funguje podle vašich očekávání, budete aplikaci propagovat na produkční.
 
 > [!NOTE]
-> Chcete-li fázované publikování, musí být webové aplikace v **standardní režim**. Všimněte si, že další poplatky podle tarifu při změně vaší webové aplikace do standardního režimu. Další informace o cenách najdete v tématu [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
+> Aby bylo možné povolit dvoufázové publikování, musí být webová aplikace ve **standardním režimu**. Všimněte si, že při změně webové aplikace na standardní režim budou účtovány další poplatky. Další informace o cenách najdete v tématu [App Service ceny](https://azure.microsoft.com/pricing/details/app-service/).
 
 <a id="Ex2Task1"></a>
-#### <a name="task-1--creating-a-web-app-in-azure-app-service"></a>Úloha 1 – Vytvoření webové aplikace ve službě Azure App Service
+#### <a name="task-1--creating-a-web-app-in-azure-app-service"></a>Úloha 1 – Vytvoření webové aplikace v Azure App Service
 
-V této úloze vytvoříte webovou aplikaci v **služby Azure App Service** z portálu pro správu. Můžete také nakonfigurovat **SQL Database** uchování dat aplikací a konfigurace místní úložiště Git pro správu zdrojového kódu.
+V této úloze vytvoříte webovou aplikaci v **Azure App Service** na portálu pro správu. Také nakonfigurujete **SQL Database** pro zachování dat aplikace a nakonfigurujete místní úložiště Git pro správu zdrojového kódu.
 
-1. Přejděte [portál pro správu Azure](https://manage.windowsazure.com) a přihlaste se pomocí účtu Microsoft, který je spojen s vaším předplatným.
+1. Přejít na [portál pro správu Azure](https://manage.windowsazure.com) a přihlaste se pomocí účet Microsoft přidruženého k vašemu předplatnému.
 
-    ![Přihlaste se k portálu pro správu Azure](maintainable-azure-websites-managing-change-and-scale/_static/image13.png)
+    ![Přihlaste se k portálu pro správu Azure.](maintainable-azure-websites-managing-change-and-scale/_static/image13.png)
 
-    *Přihlaste se k portálu pro správu Azure*
-2. Klikněte na tlačítko **nový** na příkazovém řádku v dolní části stránky.
+    *Přihlaste se k portálu pro správu Azure.*
+2. Na panelu příkazů v dolní části stránky klikněte na **Nový** .
 
-    ![Vytváří se nová webová aplikace](maintainable-azure-websites-managing-change-and-scale/_static/image14.png "vytvoření nové webové aplikace")
+    ![Vytváří se nová webová aplikace.](maintainable-azure-websites-managing-change-and-scale/_static/image14.png "Vytváří se nová webová aplikace.")
 
-    *Vytvoření nové webové aplikace*
-3. Klikněte na tlačítko **Compute**, **webu** a potom **vytvořit vlastní**.
+    *Vytváří se nová webová aplikace.*
+3. Klikněte na **COMPUTE**, **Web** a pak na **vlastní vytvořit**.
 
-    ![Vytvoření nové webové aplikace pomocí vytvořit vlastní](maintainable-azure-websites-managing-change-and-scale/_static/image15.png "vytvoření nové webové aplikace s použitím vlastní vytvoření")
+    ![Vytvoření nové webové aplikace pomocí vlastního vytvoření](maintainable-azure-websites-managing-change-and-scale/_static/image15.png "Vytvoření nové webové aplikace pomocí vlastního vytvoření")
 
-    *Vytvoření nové webové aplikace s použitím vlastní vytvoření*
-4. V **nový - vytvořit vlastní web** dialogového okna zadejte dostupného **adresy URL** (třeba *informatik kvíz*), vyberte umístění, do **oblasti** rozevírací seznam a vyberte **vytvořit novou databázi SQL** v **databáze** rozevíracího seznamu. Nakonec vyberte **publikování ze správy zdrojových kódů** zaškrtávací políčko a klikněte na tlačítko **Další**.
+    *Vytvoření nové webové aplikace pomocí vlastního vytvoření*
+4. V dialogovém okně **Nový web – vlastní vytvoření** zadejte dostupnou **adresu URL** (např. *informatik-kvíz*), vyberte umístění v rozevíracím seznamu **oblast** a v rozevíracím seznamu **databáze** vyberte **vytvořit novou databázi SQL** . Nakonec zaškrtněte políčko **publikovat ze správy zdrojového kódu** a klikněte na tlačítko **Další**.
 
-    ![Přizpůsobení novou webovou aplikaci](maintainable-azure-websites-managing-change-and-scale/_static/image16.png)
+    ![Přizpůsobení nové webové aplikace](maintainable-azure-websites-managing-change-and-scale/_static/image16.png)
 
-    *Přizpůsobení novou webovou aplikaci*
-5. Zadejte následující informace pro nastavení databáze:
+    *Přizpůsobení nové webové aplikace*
+5. Pro nastavení databáze zadejte následující informace:
 
-   - V **název** textové pole, zadejte název databáze (třeba *geekquiz\_db*)
-   - Na serveru **rozevíracího seznamu** seznamu vyberte **nový SQL server database**. Alternativně můžete vybrat existující server.
-   - V **uživatelské jméno pro databázi** a **heslo databáze** polí, zadejte uživatelské jméno správce a heslo pro server služby SQL database. Pokud zvolíte možnost server jste již vytvořili, zobrazí se výzva k zadání hesla.
+   - Do textového pole **název** zadejte název databáze (např. *geekquiz\_DB*).
+   - V **rozevíracím** seznamu Server vyberte **Nový server databáze SQL**. Případně můžete vybrat existující server.
+   - Do polí **uživatelské jméno databáze** a **heslo databáze** zadejte uživatelské jméno a heslo správce pro server služby SQL Database. Pokud vyberete server, který jste už vytvořili, zobrazí se výzva k zadání hesla.
 
-     ![Nastavení databáze](maintainable-azure-websites-managing-change-and-scale/_static/image17.png)
+     ![Určení nastavení databáze](maintainable-azure-websites-managing-change-and-scale/_static/image17.png)
 
-     *Nastavení databáze*
-6. Klikněte na tlačítko **Další** pokračujte.
-7. Vyberte **místního úložiště Git** pro správu zdrojového kódu a klikněte na tlačítko **Další**.
-
-    > [!NOTE]
-    > Můžete být vyzváni k nasazení pověření (uživatelské jméno a heslo).
-
-    ![Vytvoření úložiště Git](maintainable-azure-websites-managing-change-and-scale/_static/image18.png)
-
-    *Vytvoření úložiště Git*
-8. Počkejte, až se vytvoří nová webová aplikace.
+     *Určení nastavení databáze*
+6. Pokračujte kliknutím na **Další**.
+7. Vyberte **místní úložiště Git** pro správu zdrojového kódu, která se má použít, a klikněte na **Další**.
 
     > [!NOTE]
-    > Ve výchozím nastavení, Azure poskytuje domén na *azurewebsites.net* ale také vám dává možnost nastavit vlastní domény pomocí portálu pro správu Azure. Pokud používáte režimy určité služby Azure App Service však můžete spravovat pouze vlastních domén.
-    >
-    > Azure App Service je k dispozici v edicích Free, Shared, Basic, Standard a Premium. Všechny webové aplikace v režimu Free a Shared spustit v prostředí s více tenanty a kvóty pro využití procesoru, paměti a sítě. Maximální počet bezplatných aplikací může lišit podle vašeho plánu. Ve standardním režimu zvolte výpočetní prostředky, které aplikace spustit na vyhrazených virtuálních počítačích, které odpovídají na standardní Azure. Můžete najít v konfiguraci webové aplikace režim **škálování** nabídky vaší webové aplikace.
-    >
-    > ![Azure App Service režimy](maintainable-azure-websites-managing-change-and-scale/_static/image19.png "režimy služby Azure App Service")
-    >
-    > Pokud používáte **Shared** nebo **standardní** režimu, bude možné spravovat vlastní domény pro webovou aplikaci tak, že přejdete do vaší aplikace **konfigurovat** nabídky a kliknutím na **Správa domén** pod *názvy domén*.
-    >
-    > ![Spravovat domény](maintainable-azure-websites-managing-change-and-scale/_static/image20.png "spravovat domény")
-    >
-    > ![Manage Custom Domains](maintainable-azure-websites-managing-change-and-scale/_static/image21.png "Manage Custom Domains")
-9. Po vytvoření webové aplikace klikněte na odkaz v části **URL** sloupci zkontrolujte, že se nová webová aplikace spuštěná.
+    > Může se zobrazit výzva k zadání přihlašovacích údajů pro nasazení (uživatelské jméno a heslo).
 
-    ![Přejdete do nové webové aplikace](maintainable-azure-websites-managing-change-and-scale/_static/image22.png)
+    ![Vytváření úložiště Git](maintainable-azure-websites-managing-change-and-scale/_static/image18.png)
 
-    *Přejdete do nové webové aplikace*
+    *Vytváření úložiště Git*
+8. Počkejte, než se vytvoří nová webová aplikace.
 
-    ![Webová aplikace spuštěná](maintainable-azure-websites-managing-change-and-scale/_static/image23.png)
+    > [!NOTE]
+    > Ve výchozím nastavení poskytuje Azure domény na *azurewebsites.NET* , ale také umožňuje nastavit vlastní domény pomocí portálu pro správu Azure. Vlastní domény ale můžete spravovat jenom v případě, že používáte určité Azure App Service režimy.
+    >
+    > Azure App Service je k dispozici v edicích Free, Shared, Basic, Standard a Premium. V režimu Free a Shared běží všechny webové aplikace v prostředí s více klienty a mají kvóty pro využití procesoru, paměti a sítě. Maximální počet bezplatných aplikací se může u vašeho plánu lišit. Ve standardním režimu zvolíte, které aplikace se spouštějí na vyhrazených virtuálních počítačích, které odpovídají standardním výpočetním prostředkům Azure. V nabídce **škálování** webové aplikace můžete najít konfiguraci režimu webové aplikace.
+    >
+    > ![Azure App Service režimy](maintainable-azure-websites-managing-change-and-scale/_static/image19.png "Azure App Service režimy")
+    >
+    > Pokud používáte **sdílený** nebo **standardní** režim, budete moct spravovat vlastní domény pro vaši webovou aplikaci, a to tak, že přejdete do nabídky **Konfigurace** vaší aplikace a kliknete na **Spravovat domény** v části *názvy domén*.
+    >
+    > ![Správa domén](maintainable-azure-websites-managing-change-and-scale/_static/image20.png "Správa domén")
+    >
+    > ![Správa vlastních domén](maintainable-azure-websites-managing-change-and-scale/_static/image21.png "Správa vlastních domén")
+9. Po vytvoření webové aplikace klikněte na odkaz ve sloupci **Adresa URL** a ověřte, jestli je spuštěná nová webová aplikace.
 
-    *Webová aplikace spuštěná*
+    ![Procházení nové webové aplikace](maintainable-azure-websites-managing-change-and-scale/_static/image22.png)
+
+    *Procházení nové webové aplikace*
+
+    ![spuštěná webová aplikace](maintainable-azure-websites-managing-change-and-scale/_static/image23.png)
+
+    *spuštěná webová aplikace*
 
 <a id="Ex2Task2"></a>
-#### <a name="task-2--creating-the-production-sql-database"></a>Úloha 2 – Vytvoření produkční databáze SQL
+#### <a name="task-2--creating-the-production-sql-database"></a>Úloha 2 – Vytvoření produkčního SQL Database
 
-V této úloze budete používat **migrace Entity Framework Code First** k vytvoření databáze cílení **Azure SQL Database** instanci, kterou jste vytvořili v předchozí úloze.
+V této úloze použijete **migrace Entity Framework Code First** k vytvoření databáze cílící na instanci **Azure SQL Database** , kterou jste vytvořili v předchozím úkolu.
 
-1. Na portálu Management Portal, přejděte do webové aplikace, kterou jste vytvořili v předchozí úloze a přejděte do jeho **řídicí panel**.
-2. V **řídicí panel** klikněte na **zobrazit připojovací řetězce** odkaz pod **rychlý přehled** oddílu.
+1. V Portál pro správu přejděte do webové aplikace, kterou jste vytvořili v předchozím úkolu, a přejděte na **řídicí panel**.
+2. Na stránce **řídicí panel** klikněte v části **rychlý přehled** na odkaz **Zobrazit připojovací řetězce** .
 
-    ![Zobrazit připojovací řetězce](maintainable-azure-websites-managing-change-and-scale/_static/image24.png "zobrazit připojovací řetězce")
+    ![Zobrazit připojovací řetězce](maintainable-azure-websites-managing-change-and-scale/_static/image24.png "Zobrazit připojovací řetězce")
 
     *Zobrazit připojovací řetězce*
-3. Kopírovat **připojovací řetězec** hodnotu a zavřete dialogové okno.
+3. Zkopírujte hodnotu **připojovacího řetězce** a zavřete dialogové okno.
 
-    ![Připojovací řetězec v portálu pro správu Azure](maintainable-azure-websites-managing-change-and-scale/_static/image25.png "připojovací řetězec v portálu pro správu Azure")
+    ![Připojovací řetězec v Azure Portál pro správu](maintainable-azure-websites-managing-change-and-scale/_static/image25.png "Připojovací řetězec v Azure Portál pro správu")
 
-    *Připojovací řetězec v portálu pro správu Azure*
-4. Klikněte na tlačítko **databází SQL** zobrazíte seznam databází SQL v Azure
+    *Připojovací řetězec v Azure Portál pro správu*
+4. Kliknutím na **databáze SQL** zobrazíte seznam databází SQL v Azure.
 
-    ![Nabídka SQL Database](maintainable-azure-websites-managing-change-and-scale/_static/image26.png "nabídce databáze SQL")
+    ![Nabídka SQL Database](maintainable-azure-websites-managing-change-and-scale/_static/image26.png "Nabídka SQL Database")
 
     *Nabídka SQL Database*
-5. Databáze, kterou jste vytvořili v předchozí úloze vyhledejte a klikněte na Server.
+5. Vyhledejte databázi, kterou jste vytvořili v předchozí úloze, a klikněte na server.
 
-    ![Server služby SQL Database](maintainable-azure-websites-managing-change-and-scale/_static/image27.png "serveru služby SQL Database")
+    ![Server SQL Database](maintainable-azure-websites-managing-change-and-scale/_static/image27.png "Server služby SQL Database")
 
-    *Server služby SQL Database*
-6. V **rychlý Start** stránka serveru, klikněte na **konfigurovat**.
+    *Server SQL Database*
+6. Na stránce **rychlé zprovoznění** serveru klikněte na možnost **Konfigurovat**.
 
-    ![Konfigurovat nabídky](maintainable-azure-websites-managing-change-and-scale/_static/image28.png "konfigurovat nabídky")
+    ![Konfigurace nabídky](maintainable-azure-websites-managing-change-and-scale/_static/image28.png "Konfigurace nabídky")
 
     *Konfigurace nabídky*
-7. V **povolené IP adresy** části, klikněte na **přidat do povolených IP adres** odkaz umožňující vaše IP adresa pro připojení k databázi SQL serveru.
+7. V části **povolené IP adresy** klikněte na odkaz **Přidat na adresu povolených IP adres** , aby se vaše IP adresa mohla připojit k serveru SQL Database.
 
-    ![Povolené IP adresy](maintainable-azure-websites-managing-change-and-scale/_static/image29.png "povolené IP adresy")
+    ![Povolené IP adresy](maintainable-azure-websites-managing-change-and-scale/_static/image29.png "Povolené IP adresy")
 
     *Povolené IP adresy*
-8. Klikněte na tlačítko **Uložit** v dolní části stránky k dokončení kroku.
+8. Kliknutím na **Save (Uložit** ) v dolní části stránky dokončete krok.
 9. Přepněte zpět do sady Visual Studio.
-10. V **Konzola správce balíčků**, spusťte následující příkaz nahrazení *[YOUR-CONNECTION-STRING]* zástupného symbolu připojovacím řetězcem, který jste zkopírovali z Azure
+10. V **konzole správce balíčků**spusťte následující příkaz, kterým nahradíte zástupný symbol *[text-Connection-String]* připojovacím řetězcem, který jste zkopírovali z Azure.
 
     [!code-powershell[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample10.ps1)]
 
-    ![Aktualizace databáze cílení na Windows Azure SQL Database](maintainable-azure-websites-managing-change-and-scale/_static/image30.png "aktualizovat databázi cílení na Windows Azure SQL Database")
+    ![Aktualizace databáze cílící na Windows Azure SQL Database](maintainable-azure-websites-managing-change-and-scale/_static/image30.png "Aktualizace databáze cílící na Windows Azure SQL Database")
 
-    *Aktualizace databáze, které cílí na Azure SQL Database*
+    *Aktualizace cílení databáze Azure SQL Database*
 
 <a id="Ex2Task3"></a>
-#### <a name="task-3--deploying-geek-quiz-to-staging-using-git"></a>Úloha 3 – nasazení kvíz nadšence do přípravného prostředí pomocí Gitu
+#### <a name="task-3--deploying-geek-quiz-to-staging-using-git"></a>Úloha 3 – nasazení informatik kvízu do přípravy pomocí Gitu
 
-V této úloze povolíte fázované publikování ve webové aplikaci. Potom se pomocí Gitu publikovat aplikace Informatik kvíz přímo ze svého místního počítače do přípravného prostředí vaší webové aplikace.
+V této úloze povolíte připravené publikování ve vaší webové aplikaci. Pak použijete Git k publikování aplikace informatik kvízu přímo z místního počítače do přípravného prostředí vaší webové aplikace.
 
-1. Přejděte zpět na portál a klikněte na název webové aplikace v rámci **název** sloupec, který se zobrazí na stránkách správy.
+1. Vraťte se na portál a kliknutím na název webové aplikace pod sloupcem **název** zobrazíte stránky pro správu.
 
-    ![Otevření webové stránky správy aplikace](maintainable-azure-websites-managing-change-and-scale/_static/image31.png)
+    ![Otevření stránek správy webové aplikace](maintainable-azure-websites-managing-change-and-scale/_static/image31.png)
 
-    *Otevření webové stránky správy aplikace*
-2. Přejděte **škálování** stránky. V části **Obecné** vyberte **standardní** konfigurace a klikněte na **Uložit** na panelu příkazů.
+    *Otevření stránek správy webové aplikace*
+2. Přejděte na stránku **škálování** . V části **Obecné** vyberte pro konfiguraci možnost **Standard** a na panelu příkazů klikněte na **Uložit** .
 
     > [!NOTE]
-    > Spustit všechny webové aplikace v aktuální oblasti a předplatném v **standardní** režimu, ponechejte tuto položku **Vybrat vše** zaškrtnuto políčko **zvolit servery** konfigurace. Jinak, zrušte **Vybrat vše** zaškrtávací políčko.
+    > Chcete-li spustit všechny webové aplikace v aktuální oblasti a předplatném ve **standardním** režimu, ponechte zaškrtnuté políčko **zaškrtnout vše** v části **zvolit konfiguraci webů** . V opačném případě zrušte zaškrtnutí políčka **Vybrat vše** .
 
-    ![Upgrade webové aplikace do standardního režimu](maintainable-azure-websites-managing-change-and-scale/_static/image32.png "upgrade webové aplikace na standardní režim")
+    ![Upgrade webové aplikace na standardní režim](maintainable-azure-websites-managing-change-and-scale/_static/image32.png "Upgrade webové aplikace na standardní režim")
 
     *Upgrade webové aplikace na standardní režim*
-3. Klikněte na tlačítko **Ano** potvrďte provedené změny.
+3. Kliknutím na tlačítko **Ano** potvrďte změny.
 
-    ![Potvrzují se změny do standardního režimu](maintainable-azure-websites-managing-change-and-scale/_static/image33.png "budete pokračovat se změnou režimu webové aplikace")
+    ![Potvrzení změny do standardního režimu](maintainable-azure-websites-managing-change-and-scale/_static/image33.png "Pokračování ve změně režimu webové aplikace")
 
-    *Potvrzují se změny do standardního režimu*
-4. Přejděte na **řídicí panel** stránky a klikněte na tlačítko **fázované publikování na Povolit** pod **rychlý přehled** oddílu.
+    *Potvrzení změny do standardního režimu*
+4. Přejděte na stránku **řídicí panel** a klikněte na **povolit dvoufázové publikování** v části **rychlý přehled** .
 
-    ![Povolení fázované publikování](maintainable-azure-websites-managing-change-and-scale/_static/image34.png "povolení fázované publikování")
+    ![Povolení dvoufázové publikování](maintainable-azure-websites-managing-change-and-scale/_static/image34.png "Povolení dvoufázové publikování")
 
-    *Povolení fázované publikování*
-5. Klikněte na tlačítko **Ano** umožňující fázované publikování.
+    *Povolení dvoufázové publikování*
+5. Kliknutím na **Ano** povolíte dvoufázové publikování.
 
-    ![Fázované publikování na potvrzení](maintainable-azure-websites-managing-change-and-scale/_static/image35.png "kliknete na Ano, povolit fázované publikování")
+    ![Potvrzení připraveného publikování](maintainable-azure-websites-managing-change-and-scale/_static/image35.png "Kliknutím na Ano povolíte dvoufázové publikování.")
 
-    *Potvrzují se fázované publikování*
-6. V seznamu webových aplikací rozbalte na políčko nalevo od název vaší webové aplikace k zobrazení slot pro fázi webu. Obsahuje název vaší webové aplikace, za nímž následuje ***(pracovní)***. Klikněte na pracovním webu přejdete na stránku pro správu.
+    *Potvrzení připraveného publikování*
+6. V seznamu webových aplikací rozbalte značku vlevo od názvu vaší webové aplikace a zobrazte tak pracovní slot pro přípravu na pracovišti. Má název vaší webové aplikace, za nímž následuje ***(příprava)***. Kliknutím na pracovní web přejdete na stránku správy.
 
-    ![Přejdete na pracovní aplikaci](maintainable-azure-websites-managing-change-and-scale/_static/image36.png "přejdete do pracovní webové aplikace")
+    ![Navigace do pracovní webové aplikace](maintainable-azure-websites-managing-change-and-scale/_static/image36.png "Navigace do pracovní webové aplikace")
 
-    *Přejděte do pracovní aplikace*
-7. Všimněte si, že tuto stránku správy he vypadá jako jakoukoli jinou webovou aplikaci pro správu stránky. Přejděte **nasazení** stránky a zkopírujte **adresa URL pro Git** hodnotu. Použijete ji později v tomto cvičení.
+    *Navigace do pracovní aplikace*
+7. Všimněte si, že stránka správy vypadá jako jakákoli jiná stránka správy webové aplikace. Přejděte na stránku **nasazení** a zkopírujte hodnotu **adresy URL Gitu** . Budete ho používat později v tomto cvičení.
 
-    ![Kopírování hodnoty adresy URL pro Git](maintainable-azure-websites-managing-change-and-scale/_static/image37.png)
+    ![Kopíruje se hodnota adresy URL Gitu.](maintainable-azure-websites-managing-change-and-scale/_static/image37.png)
 
-    *Kopírování hodnoty adresy URL pro Git*
-8. Otevřete novou **Git Bash** konzoly a spusťte následující příkazy. Aktualizace *[YOUR cesta aplikace]* zástupný symbol s cestou **GeekQuiz** řešení, umístěný ve **Source\Ex1 DeployingWebSiteToStaging\Begin** složky Toto testovací prostředí.
+    *Kopíruje se hodnota adresy URL Gitu.*
+8. Otevřete novou konzolu **Git bash** a spusťte následující příkazy. Aktualizujte zástupný text *[vaše aplikace-cesta]* s cestou k řešení **GeekQuiz** , které najdete ve složce **Source\Ex1-DeployingWebSiteToStaging\Begin** tohoto testovacího prostředí.
 
     [!code-console[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample11.cmd)]
 
-    ![Inicializace Git a první potvrzení](maintainable-azure-websites-managing-change-and-scale/_static/image38.png)
+    ![Inicializace Gitu a první potvrzení](maintainable-azure-websites-managing-change-and-scale/_static/image38.png)
 
-    *Inicializace Git a první potvrzení*
-9. Spusťte následující příkaz tak, aby nabízel webovou aplikaci do vzdáleného **Git** úložiště. Zástupný symbol nahraďte adresu URL, které jste získali z portálu pro správu. Zobrazí se výzva k zadání hesla nasazení.
+    *Inicializace Gitu a první potvrzení*
+9. Spuštěním následujícího příkazu nahrajte webovou aplikaci do vzdáleného úložiště **Git** . Zástupný symbol nahraďte adresou URL, kterou jste získali z portálu pro správu. Zobrazí se výzva k zadání hesla pro nasazení.
 
     [!code-console[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample12.cmd)]
 
-    ![Doručením (push) do Windows Azure](maintainable-azure-websites-managing-change-and-scale/_static/image39.png)
+    ![Doručování do Windows Azure](maintainable-azure-websites-managing-change-and-scale/_static/image39.png)
 
-    *Doručením (push) do Azure*
+    *Doručování do Azure*
 
     > [!NOTE]
-    > Při nasazení obsahu na serveru FTP hostitele nebo úložiště GIT webové aplikace musí ověřit pomocí **přihlašovací údaje pro nasazení** , kterou jste vytvořili z webové aplikace **rychlý Start** nebo **řídicího panelu**  správu stránek. Pokud si nejste jisti přihlašovací údaje pro nasazení je snadno obnovit pomocí portálu pro správu. Otevřít webovou aplikaci **řídicí panel** stránky a klikněte na tlačítko **resetovat přihlašovací údaje pro nasazení** odkaz. Zadejte nové heslo a klikněte na tlačítko **OK**. Přihlašovací údaje pro nasazení jsou platná pro použití s všech webových aplikací přidružených k vašemu předplatnému.
-10. Pokud chcete ověřit, webové aplikace bylo úspěšně vloženo do Azure, přejděte zpět na portál pro správu a klikněte na tlačítko **Websites**.
-11. Vyhledejte vaši webovou aplikaci a rozbalte položku zobrazíte slot pro fázi webu. Klikněte na jeho **název** přejdete na stránku pro správu.
-12. Klikněte na tlačítko **nasazení** zobrazíte **historie nasazení**. Ověřte, zda je **aktivní nasazení** s vaší  *&quot;počáteční potvrzení&quot;*.
+    > Když nasadíte obsah do hostitele FTP nebo úložiště GIT webové aplikace, musíte provést ověření pomocí **přihlašovacích údajů pro nasazení** , které jste vytvořili na stránkách pro správu **rychlé zprovoznění** nebo **řídicího panelu** webové aplikace. Pokud vaše přihlašovací údaje pro nasazení neznáte, můžete je snadno obnovit pomocí portálu pro správu. Otevřete stránku **řídicí panel** webové aplikace a klikněte na odkaz **resetovat přihlašovací údaje pro nasazení** . Zadejte nové heslo a klikněte na **OK**. Přihlašovací údaje pro nasazení jsou platné pro použití se všemi webovými aplikacemi, které jsou přidružené k vašemu předplatnému.
+10. Aby bylo možné ověřit, zda byla webová aplikace úspěšně vložena do Azure, přejděte zpět na portál pro správu a klikněte na **weby**.
+11. Vyhledejte svou webovou aplikaci a rozbalte položku, abyste zobrazili pracovní pozici pracovního serveru. Kliknutím na jeho **název** přejdete na stránku správy.
+12. Kliknutím na **nasazení** zobrazte **historii nasazení**. Ověřte, že existuje **aktivní nasazení** s *&quot;úvodní&quot;potvrzení* .
 
     ![Aktivní nasazení](maintainable-azure-websites-managing-change-and-scale/_static/image40.png)
 
     *Aktivní nasazení*
-13. Nakonec klikněte na tlačítko **Procházet** na příkazovém řádku přejděte do webové aplikace.
+13. Nakonec na panelu příkazů klikněte na tlačítko **Procházet** a přejděte do webové aplikace.
 
     ![Procházet webovou aplikaci](maintainable-azure-websites-managing-change-and-scale/_static/image41.png)
 
     *Procházet webovou aplikaci*
-14. Pokud aplikace je úspěšně nasazená, zobrazí se přihlašovací stránky dotazníku nadšence.
+14. Pokud je aplikace úspěšně nasazená, zobrazí se stránka pro přihlášení kvízu informatik.
 
     > [!NOTE]
-    > Adresa URL nasazené aplikace obsahuje název vaší webové aplikace, za nímž následuje *– pracovní*.
+    > Adresa URL adresy nasazené aplikace obsahuje název webové aplikace následovaný po *přípravě*.
 
-    ![Aplikace běžící v testovacím prostředí](maintainable-azure-websites-managing-change-and-scale/_static/image42.png)
+    ![Aplikace spuštěná v přípravném prostředí](maintainable-azure-websites-managing-change-and-scale/_static/image42.png)
 
-    *Aplikace běžící v testovacím prostředí*
-15. Pokud chcete prozkoumat aplikace, klikněte na tlačítko **zaregistrovat** k registraci nového uživatele. Vyplňte podrobnosti účtu tak, že zadáte uživatelské jméno, e-mailovou adresu a heslo. V dalším kroku aplikace ukazuje na první otázku, kvíz. Odpovězte na několik otázek, abyste měli jistotu, že funguje podle očekávání.
+    *Aplikace spuštěná v přípravném prostředí*
+15. Pokud chcete aplikaci prozkoumat, klikněte na **zaregistrovat** a zaregistrujte nového uživatele. Vyplňte podrobnosti účtu zadáním uživatelského jména, e-mailové adresy a hesla. V dalším kroku aplikace zobrazuje první otázku kvízu. Odpovězte na pár otázek a ujistěte se, že funguje podle očekávání.
 
-    ![Aplikace je připravená k použití](maintainable-azure-websites-managing-change-and-scale/_static/image43.png)
+    ![Aplikace připravená k použití](maintainable-azure-websites-managing-change-and-scale/_static/image43.png)
 
-    *Aplikace je připravená k použití*
+    *Aplikace připravená k použití*
 
 <a id="Ex2Task4"></a>
-#### <a name="task-4--promoting-the-web-app-to-production"></a>Úloha 4 – Podpora webové aplikace do produkčního prostředí
+#### <a name="task-4--promoting-the-web-app-to-production"></a>Úloha 4 – propagace webové aplikace do produkčního prostředí
 
-Teď, když si ověříte, že webová aplikace pracuje správně v testovacím prostředí, budete chtít přesunout do výroby. V této úloze se Prohodit slot pro fázi webu s produkční slot webu.
+Teď, když jste ověřili, že webová aplikace funguje správně v přípravném prostředí, jste připraveni ji propagovat na produkční prostředí. V této úloze provedete záměnu pracovní pozice webu na pozici produkčního pracoviště.
 
-1. Přejděte zpět na portál pro správu a vyberte slot pro fázi webu. Klikněte na tlačítko **Prohodit** na panelu příkazů.
+1. Vraťte se na portál pro správu a vyberte pracovní pozici pracovního serveru. Na panelu příkazů klikněte na **prohodit** .
 
-    ![Zaměnit do produkčního prostředí](maintainable-azure-websites-managing-change-and-scale/_static/image44.png)
+    ![Přeměna do produkčního prostředí](maintainable-azure-websites-managing-change-and-scale/_static/image44.png)
 
-    *Zaměnit do produkčního prostředí*
-2. Klikněte na tlačítko **Ano** v potvrzovacím dialogovém okně, aby bylo možné pokračovat v operaci prohození. Azure bude okamžitě Prohodit obsah pracoviště s obsahem na pracovním webu.
+    *Přeměna do produkčního prostředí*
+2. Kliknutím na **Ano** v potvrzovacím dialogovém okně pokračujte v operaci swap. Azure okamžitě zamění obsah produkčního webu s obsahem pracovní lokality.
 
     > [!NOTE]
-    > Některá nastavení z připravenou verzi se automaticky zkopírují do produkční verze (například připojovací řetězec přepsání, mapování obslužných rutin, atd.), ale ostatní nastavení nedojde ke změně (např. koncové body DNS, vazby SSL atd.).
+    > Některá nastavení ze připravené verze se automaticky zkopírují do produkční verze (např. přepsání připojovacích řetězců, mapování obslužných rutin atd.), ostatní nastavení se ale nezmění (například koncové body DNS, vazby SSL atd.).
 
     ![Potvrzení operace prohození](maintainable-azure-websites-managing-change-and-scale/_static/image45.png)
 
     *Potvrzení operace prohození*
-3. Po dokončení prohození vyberte slot produkčního prostředí a klikněte na tlačítko **Procházet** na panelu příkazů otevřete pracoviště. Všimněte si, že adresa URL do adresního řádku.
+3. Po dokončení prohození vyberte produkční slot a kliknutím na tlačítko **Procházet** na panelu příkazů otevřete provozní Web. Všimněte si adresy URL v adresním řádku.
 
     > [!NOTE]
-    > Vám může být nutné aktualizovat prohlížeč vymazat mezipaměť. V aplikaci Internet Explorer, provedete stisknutím kombinace kláves **CTRL + R**.
+    > Možná budete muset aktualizovat prohlížeč, aby se mezipaměť vymazala. V Internet Exploreru to můžete udělat stisknutím **kombinace kláves CTRL + R**.
 
     ![Webová aplikace spuštěná v produkčním prostředí](maintainable-azure-websites-managing-change-and-scale/_static/image46.png)
-4. V **GitBash** konzole, aktualizovat vzdálenou adresu URL pro místní úložiště Git cílit na produkční slot. Chcete-li to provést, spusťte následující příkaz zástupné texty nahraďte uživatelské jméno pro nasazení a název vaší webové aplikace.
+4. V konzole **GitBash** aktualizujte VZDÁLENOU adresu URL pro místní úložiště Git, aby se cílí na produkční slot. Uděláte to tak, že spustíte následující příkaz, kterým nahradíte zástupné symboly vaším uživatelským jménem nasazení a název vaší webové aplikace.
 
     > [!NOTE]
-    > V následujícím cvičení vložíte změny do produkční lokality místo pracovní pouze pro zjednodušení tohoto prostředí. Ve skutečném scénáři se doporučuje ověřit změny v testovacím prostředí před zvýšením úrovně do produkčního prostředí.
+    > V následujících cvičeních provedete změny v produkčním webu místo přípravy jenom pro jednoduchost testovacího prostředí. Ve scénáři reálného světa se doporučuje před zvýšením úrovně produkčního prostředí ověřit změny v přípravném prostředí.
 
     [!code-console[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample13.cmd)]
 
 <a id="Exercise3"></a>
-### <a name="exercise-3-performing-deployment-rollback-in-production"></a>Cvičení 3: V produkčním prostředí provádí vrácení nasazení zpět
+### <a name="exercise-3-performing-deployment-rollback-in-production"></a>Cvičení 3: provádění vrácení nasazení v produkčním prostředí
 
-Existují scénáře, ve kterém nemáte přípravný slot provádět horké prohození mezi přípravným a produkčním prostředím, například pokud pracujete s **Free** nebo **Shared** režimu. V těchto scénářích měli byste otestovat vaši aplikaci v testovacím prostředí – místně nebo ve vzdálené lokalitě – před nasazením do produkčního prostředí. Je však možné, že problém nebyl zjištěn během fáze testování mohou nastat v produkční lokality. V takovém případě je důležité mít mechanismus pro snadno přepínat na předchozí a více stabilní verzi aplikace co nejrychleji.
+K dispozici jsou situace, kdy nemáte přípravný slot pro provádění horkého swapu mezi příchodem a výrobou, například pokud pracujete s **bezplatným** nebo **sdíleným** režimem. V těchto scénářích byste měli testovat aplikaci v testovacím prostředí – buď místně, nebo ve vzdálené lokalitě – před nasazením do produkčního prostředí. Je však možné, že v produkčním prostředí může dojít k problému, který nebyl zjištěn během testovací fáze. V takovém případě je důležité mít mechanismus snadného přepnutí na předchozí a více stabilní verze aplikace co nejrychleji.
 
-V **služby Azure App Service**, toto je to možné díky díky průběžné nasazování ze správy zdrojového kódu **znovu nasadit** akce, které jsou k dispozici na portálu management portal. Uchovává informace o nasazení přidružená k potvrzení změn do úložiště Azure a nabízí možnost znovu nasadit aplikaci pomocí kteréhokoli z předchozích nasazení, kdykoli.
+V **Azure App Service**umožňuje průběžné nasazování ze správy zdrojového kódu to díky akci **opětovného nasazení** , která je k dispozici na portálu pro správu. Azure sleduje nasazení přidružená k potvrzením, která jsou vložená do úložiště, a poskytuje možnost znovu nasadit aplikaci pomocí libovolného z předchozích nasazení.
 
-V tomto cvičení budete provádět změny kódu v **Informatik kvíz** aplikaci, která záměrně vkládá *chyb*. Budete nasazovat aplikaci do produkčního prostředí, abyste viděli chybu a pak bude využít výhod funkce opětovného nasazení se vrátíte do předchozího stavu.
+V tomto cvičení provedete změnu kódu v aplikaci **informatik kvízu** , která záměrně vloží *chybu*. Aplikaci nasadíte do produkčního prostředí, aby se zobrazila chyba. potom můžete využít funkci opětovného nasazení a vrátit se k předchozímu stavu.
 
 <a id="Ex3Task1"></a>
-#### <a name="task-1--updating-the-geek-quiz-application"></a>Úloha 1 – aktualizace aplikace kvíz Informatik
+#### <a name="task-1--updating-the-geek-quiz-application"></a>Úloha 1 – aktualizace aplikace informatik kvíz
 
-V této úloze bude Refaktorovat malou část kódu **TriviaController** třídy k extrakci část logiky, který načte kvíz vybranou možnost z databáze do nové metody.
+V tomto úkolu refaktorujte malé části kódu třídy **TriviaController** , abyste mohli extrahovat část logiky, která načte vybranou možnost kvízu z databáze do nové metody.
 
-1. Přepnout na instanci aplikace Visual Studio s **GeekQuiz** řešení v předchozím cvičení.
-2. V **Průzkumníka řešení**, otevřete **TriviaController.cs** soubor uvnitř **řadiče** složky.
-3. Vyhledejte **StoreAsync** metody a vyberte zvýrazněný kód na následujícím obrázku.
+1. Přepněte do instance sady Visual Studio s řešením **GeekQuiz** z předchozího cvičení.
+2. V **Průzkumník řešení**otevřete soubor **TriviaController.cs** ve složce **Controllers** .
+3. Vyhledejte metodu **StoreAsync** a vyberte kód zvýrazněný na následujícím obrázku.
 
-    ![Vyberte kód](maintainable-azure-websites-managing-change-and-scale/_static/image47.png)
+    ![Výběr kódu](maintainable-azure-websites-managing-change-and-scale/_static/image47.png)
 
-    *Vyberte kód*
-4. Klikněte pravým tlačítkem na vybraný kód, rozbalte **Refaktorovat** nabídky a vybereme **extrahovat metodu...** .
+    *Výběr kódu*
+4. Klikněte pravým tlačítkem myši na vybraný kód, rozbalte nabídku **refaktoration** a vyberte **Extrahovat metodu...** .
 
-    ![Extrahování kód jako novou metodu](maintainable-azure-websites-managing-change-and-scale/_static/image48.png)
+    ![Extrakce kódu jako nové metody](maintainable-azure-websites-managing-change-and-scale/_static/image48.png)
 
-    *Výběr metody extrahování*
-5. V **extrahovat metodu** dialogové okno, název nové metody *MatchesOption* a klikněte na tlačítko **OK**.
+    *Výběr metody extrakce*
+5. V dialogovém okně **Extrahovat metodu** pojmenujte novou metodu *MatchesOption* a klikněte na tlačítko **OK**.
 
-    ![Zadání názvu – metoda](maintainable-azure-websites-managing-change-and-scale/_static/image49.png)
+    ![Zadání názvu metody](maintainable-azure-websites-managing-change-and-scale/_static/image49.png)
 
-    *Zadejte název pro extrahovaný – metoda*
-6. Vybraný kód je pak extrahován do **MatchesOption** metody. Výsledný kód je znázorněno v následujícím fragmentu kódu.
+    *Určení názvu extrahované metody*
+6. Vybraný kód je poté extrahován do metody **MatchesOption** . Výsledný kód je zobrazen v následujícím fragmentu kódu.
 
     [!code-csharp[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample14.cs)]
-7. Stisknutím klávesy **stisknutím CTRL + S** a uložte změny.
+7. Změny uložte stisknutím **kombinace kláves CTRL + S** .
 
 <a id="Ex3Task2"></a>
-#### <a name="task-2--redeploying-the-geek-quiz-application"></a>Úloha 2 – opětovného nasazení aplikace kvíz Informatik
+#### <a name="task-2--redeploying-the-geek-quiz-application"></a>Úloha 2 – opětovné nasazení aplikace informatik kvíz
 
-Nyní budou nabízená oznámení změn, které jste provedli v předchozí úloze úložiště, které aktivují nové nasazení do produkčního prostředí. Potom se potíže, problém pomocí **vývojářské nástroje F12** poskytované Internet Exploreru a pak proveďte vrácení zpět na předchozí nasazení z portálu pro správu Azure.
+Nyní budete předávat změny, které jste provedli v předchozím úkolu, do úložiště, které aktivuje nové nasazení do provozního prostředí. Pak Troubleshot problém pomocí **vývojářských nástrojů F12** , které poskytuje Internet Explorer, a pak proveďte vrácení zpět k předchozímu nasazení z portálu pro správu Azure.
 
-1. Otevřete novou **Git Bash** konzoly nasaďte aktualizovanou aplikaci do služby Azure App Service.
-2. Spusťte následující příkazy, které odešlete změny do Azure. Aktualizace *[YOUR cesta aplikace]* zástupný symbol s cestou **GeekQuiz** řešení. Zobrazí se výzva k zadání hesla nasazení.
+1. Otevřete novou konzolu **Git bash** a nasaďte aktualizovanou aplikaci na Azure App Service.
+2. Spuštěním následujících příkazů nahrajte změny do Azure. Aktualizujte zástupný text *[Your-Application-Path]* cestou k řešení **GeekQuiz** . Zobrazí se výzva k zadání hesla pro nasazení.
 
     [!code-console[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample15.cmd)]
 
-    ![Nahráním refaktorovaný kódu do Azure](maintainable-azure-websites-managing-change-and-scale/_static/image50.png)
+    ![Vložení refaktoringového kódu do Azure](maintainable-azure-websites-managing-change-and-scale/_static/image50.png)
 
-    *Nahráním refaktorovaný kódu do Azure*
-3. Otevřete aplikaci Internet Explorer a přejděte do své webové aplikace (například `http://<your-web-site>.azurewebsites.net`). Přihlaste se pomocí dříve vytvořeného přihlašovacích údajů.
-4. Stisknutím klávesy **F12** ke spuštění nástroje pro vývoj, vyberte **sítě** kartě a klikněte na tlačítko **Přehrát** tlačítko Spustit záznam.
+    *Vložení refaktoringového kódu do Azure*
+3. Spusťte Internet Explorer a přejděte do vaší webové aplikace (např. `http://<your-web-site>.azurewebsites.net`). Přihlaste se pomocí dříve vytvořených přihlašovacích údajů.
+4. Stisknutím klávesy **F12** spusťte vývojové nástroje, vyberte kartu **síť** a kliknutím na tlačítko **Přehrát** spusťte záznam.
 
-    ![Spouštění nahrávání sítě](maintainable-azure-websites-managing-change-and-scale/_static/image51.png "od sítě záznam")
+    ![Spouští se záznam v síti.](maintainable-azure-websites-managing-change-and-scale/_static/image51.png "Spouští se záznam v síti.")
 
-    *Spouští se záznam sítě*
-5. Vyberte všechny možnosti kvíz. Zobrazí se, že se nic nestane.
-6. V **F12** okno, zobrazuje položku odpovídající požadavek POST HTTP protokolu HTTP **500** výsledek.
+    *Spouští se záznam v síti.*
+5. Vyberte libovolnou možnost kvízu. Uvidíte, že se nic nestane.
+6. V okně **F12** položka odpovídající požadavku POST HTTP zobrazí výsledek http **500** .
 
-    ![HTTP 500 chyb](maintainable-azure-websites-managing-change-and-scale/_static/image52.png)
+    ![Chyba HTTP 500](maintainable-azure-websites-managing-change-and-scale/_static/image52.png)
 
-    *HTTP 500 chyb*
-7. Vyberte **konzoly** kartu. Podrobnosti o příčině je zaznamenána chyba.
+    *Chyba HTTP 500*
+7. Vyberte kartu **Konzola** . S podrobnostmi o příčině se protokoluje chyba.
 
-    ![Zaznamenané chyby](maintainable-azure-websites-managing-change-and-scale/_static/image53.png)
+    ![Chyba protokolu](maintainable-azure-websites-managing-change-and-scale/_static/image53.png)
 
-    *Zaznamenané chyby*
-8. Vyhledejte část Podrobnosti o této chybě. Je zřejmé tato chyba je způsobena kódu, refaktoring jste v předchozích krocích.
+    *Chyba protokolu*
+8. Vyhledejte část s podrobnostmi o chybě. Tato chyba je jasně způsobena refaktoringem kódu, který jste protvrdili v předchozích krocích.
 
     `Details: LINQ to Entities does not recognize the method 'Boolean MatchesOption ...`.
-9. Nezavírejte prohlížeče.
-10. V nové instanci prohlížeče, přejděte [portál pro správu Azure](https://manage.windowsazure.com) a přihlaste se pomocí účtu Microsoft, který je spojen s vaším předplatným.
-11. Vyberte **Websites** a klikněte na webovou aplikaci, kterou jste vytvořili v cvičení 2.
-12. Přejděte **nasazení** stránky. Všimněte si, že provádí všechna potvrzení změn jsou uvedeny v historii nasazení.
+9. Nezavírejte prohlížeč.
+10. V nové instanci prohlížeče přejděte na [portál pro správu Azure](https://manage.windowsazure.com) a přihlaste se pomocí účet Microsoft přidruženého k vašemu předplatnému.
+11. Vyberte **websites** a klikněte na webovou aplikaci, kterou jste vytvořili v cvičení 2.
+12. Přejděte na stránku **nasazení** . Všimněte si, že všechna potvrzení změn jsou uvedena v historii nasazení.
 
     ![Seznam existujících nasazení](maintainable-azure-websites-managing-change-and-scale/_static/image54.png)
 
     *Seznam existujících nasazení*
-13. Vybrat předchozí potvrzení změn a klikněte na tlačítko **znovu nasadit** na panelu příkazů.
+13. Vyberte předchozí potvrzení a klikněte na panelu příkazů na **znovu nasadit** .
 
-    ![Znovu se nasazuje předchozí potvrzení změn](maintainable-azure-websites-managing-change-and-scale/_static/image55.png)
+    ![Opětovné nasazení předchozího potvrzení změn](maintainable-azure-websites-managing-change-and-scale/_static/image55.png)
 
-    *Znovu se nasazuje předchozí potvrzení změn*
-14. Po zobrazení výzvy k potvrzení klikněte na tlačítko **Ano**.
+    *Opětovné nasazení předchozího potvrzení změn*
+14. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-    ![Potvrzují se opětovné nasazení](maintainable-azure-websites-managing-change-and-scale/_static/image56.png)
-15. Po dokončení nasazení se přepněte zpět do instance prohlížeče s vaší webové aplikace a stisknutím klávesy **CTRL + F5**.
-16. Klikněte na některou z možností. Překlopit animace bude nyní provést a výsledek (*opravte nesprávné*) se zobrazí.
-17. (Volitelné) Přepněte **Git Bash** konzoly a spusťte následující příkazy se vrátit k předchozí potvrzení změn.
+    ![Potvrzení opětovného nasazení](maintainable-azure-websites-managing-change-and-scale/_static/image56.png)
+15. Po dokončení nasazení přepněte zpátky do instance prohlížeče s vaší webovou aplikací a stiskněte klávesy **CTRL + F5**.
+16. Klikněte na kteroukoli z možností. Nyní bude provedeno překlápění animace a zobrazí se výsledek (*správný/nesprávný*).
+17. Volitelné Přepněte do konzoly **Git bash** a spusťte následující příkazy, které se vrátí k předchozímu potvrzení změn.
 
     > [!NOTE]
-    > Tyto příkazy vytvoří nové potvrzení, který vrátí zpět všechny změny v úložišti Git, které byly provedeny v chybný potvrzení. Azure pak znovu nasadit aplikaci pomocí nové potvrzení.
+    > Tyto příkazy vytvoří nové potvrzení, které zruší všechny změny v úložišti Git, které byly provedeny v nesprávném potvrzení. Azure pak znovu nasadí aplikaci pomocí nového potvrzení změn.
 
     [!code-console[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample16.cmd)]
 
 <a id="Exercise4"></a>
-### <a name="exercise-4-scaling-using-azure-storage"></a>Cvičení 4: Škálování s využitím služby Azure Storage
+### <a name="exercise-4-scaling-using-azure-storage"></a>Cvičení 4: škálování pomocí Azure Storage
 
-**Objekty BLOB** představují nejjednodušší způsob, jak ukládat velké objemy nestrukturovaných textových nebo binárních dat jako jsou videa, zvukové soubory a obrázky. Přesunutí statický obsah aplikace do úložiště, umožňuje škálovat aplikaci podle poskytování obrázků nebo dokumentů přímo do prohlížeče.
+**Bloby** představují nejjednodušší způsob, jak ukládat velké objemy nestrukturovaných textových nebo binárních dat, jako je video, zvuk a obrázky. Když přesunete statický obsah vaší aplikace do úložiště, pomůže vám škálovat aplikaci tím, že obsluhuje obrázky nebo dokumenty přímo v prohlížeči.
 
-V tomto cvičení se přesune statický obsah aplikace do kontejneru objektů Blob. Pak se konfigurace aplikace pro přidání **přepisu adresy URL technologie ASP.NET pravidlo** v **Web.config** přesměrovat obsah do kontejneru objektů Blob.
+V tomto cvičení přesunete statický obsah vaší aplikace do kontejneru objektů BLOB. Potom nakonfigurujete aplikaci tak, aby do kontejneru objektů BLOB přidala **pravidlo pro přepsání adresy URL ASP.NET** v **souboru Web. config** .
 
 <a id="Ex4Task1"></a>
-#### <a name="task-1--creating-an-azure-storage-account"></a>Úloha 1 – Vytvoření účtu služby Azure Storage
+#### <a name="task-1--creating-an-azure-storage-account"></a>Úloha 1 – Vytvoření účtu Azure Storage
 
 V této úloze se dozvíte, jak vytvořit nový účet úložiště pomocí portálu pro správu.
 
-1. Přejděte [portál pro správu Azure](https://manage.windowsazure.com) a přihlaste se pomocí účtu Microsoft, který je spojen s vaším předplatným.
-2. Vyberte **nové | Data Services | Úložiště | Příkaz pro rychlé vytvoření** a začněte vytvářet nový účet úložiště. Zadejte jedinečný název pro účet a vyberte **oblasti** ze seznamu. Klikněte na tlačítko **vytvořit účet úložiště** pokračujte.
+1. Přejděte na [portál pro správu Azure](https://manage.windowsazure.com) a přihlaste se pomocí účet Microsoft přidruženého k vašemu předplatnému.
+2. Vybrat **Nový | Data Services | Úložiště | Rychlé vytvoření** a začněte vytvářet nový účet úložiště. Zadejte jedinečný název pro účet a vyberte **oblast** ze seznamu. Pokračujte kliknutím na **vytvořit účet úložiště** .
 
-    ![Vytváří se nový účet úložiště](maintainable-azure-websites-managing-change-and-scale/_static/image57.png "vytváření nového účtu úložiště")
+    ![Vytváří se nový účet úložiště.](maintainable-azure-websites-managing-change-and-scale/_static/image57.png "Vytváří se nový účet úložiště.")
 
-    *Vytváří se nový účet úložiště*
-3. V **úložiště** části, počkejte, dokud stav nového účtu úložiště se změní na *Online* budete pokračovat následujícím krokem.
+    *Vytváří se nový účet úložiště.*
+3. V části **úložiště** počkejte, než se stav nového účtu úložiště změní na *online* , aby bylo možné pokračovat v následujícím kroku.
 
-    ![Účet úložiště vytvořený](maintainable-azure-websites-managing-change-and-scale/_static/image58.png "vytvořený účet úložiště")
+    ![Účet úložiště se vytvořil.](maintainable-azure-websites-managing-change-and-scale/_static/image58.png "Účet úložiště se vytvořil.")
 
-    *Vytvoření účtu úložiště*
-4. Klikněte na název účtu úložiště a pak klikněte na tlačítko **řídicí panel** odkazu v horní části stránky. **Řídicí panel** stránce vám poskytne informace o stavu účtu a koncové body služby, které lze použít v rámci vašich aplikací.
+    *Účet úložiště se vytvořil.*
+4. Klikněte na název účtu úložiště a potom klikněte na odkaz **řídicí panel** v horní části stránky. Stránka **řídicí panel** poskytuje informace o stavu účtu a koncových bodech služby, které lze použít v rámci svých aplikací.
 
-    ![Zobrazení řídicího panelu úložiště účtu](maintainable-azure-websites-managing-change-and-scale/_static/image59.png "zobrazení řídicího panelu účtu úložiště")
+    ![Zobrazuje se řídicí panel účtu úložiště.](maintainable-azure-websites-managing-change-and-scale/_static/image59.png "Zobrazuje se řídicí panel účtu úložiště.")
 
-    *Zobrazení řídicí panel účtu úložiště*
-5. Klikněte na tlačítko **spravovat přístupové klíče** tlačítko v navigačním panelu.
+    *Zobrazuje se řídicí panel účtu úložiště.*
+5. Na navigačním panelu klikněte na tlačítko **Správa přístupových klíčů** .
 
-    ![Tlačítko Spravovat přístupové klíče](maintainable-azure-websites-managing-change-and-scale/_static/image60.png "tlačítko Spravovat přístupové klíče")
+    ![Tlačítko pro správu přístupových klíčů](maintainable-azure-websites-managing-change-and-scale/_static/image60.png "Tlačítko pro správu přístupových klíčů")
 
-    *Správa přístupových klíčů tlačítko*
-6. V **spravovat přístupové klíče** dialogové okno, kopie **název účtu úložiště** a **primární přístupový klíč** , kdykoli budete potřebovat v následujícím cvičení. Zavřete dialogové okno.
+    *Tlačítko pro správu přístupových klíčů*
+6. V dialogovém okně **Správa přístupových klíčů** zkopírujte **název účtu úložiště** a **Primární přístupový klíč** , protože je budete potřebovat v následujícím cvičení. Pak zavřete dialogové okno.
 
-    ![Přístupový klíč dialogového okna Spravovat](maintainable-azure-websites-managing-change-and-scale/_static/image61.png "dialogové okno Spravovat přístupový klíč")
+    ![Dialogové okno Správa přístupového klíče](maintainable-azure-websites-managing-change-and-scale/_static/image61.png "Dialogové okno Správa přístupového klíče")
 
-    *Přístupový klíč dialogového okna Spravovat*
+    *Dialogové okno Správa přístupového klíče*
 
 <a id="Ex4Task2"></a>
-#### <a name="task-2--uploading-an-asset-to-azure-blob-storage"></a>Úloha 2 – nahrání prostředek do úložiště objektů Blob v Azure
+#### <a name="task-2--uploading-an-asset-to-azure-blob-storage"></a>Úloha 2 – nahrání Assetu do Azure Blob Storage
 
-V této úloze použijete okno Průzkumníka serveru ze sady Visual Studio pro připojení k účtu úložiště. Pak vytvoříte kontejner objektů blob a odeslat soubor s logem kvíz nadšence do kontejneru.
+V této úloze použijete okno Průzkumník serveru ze sady Visual Studio pro připojení k vašemu účtu úložiště. Pak vytvoříte kontejner objektů BLOB a nahrajete do kontejneru soubor s logem informatik kvízu.
 
-1. Přepnout na instanci aplikace Visual Studio s **GeekQuiz** řešení v předchozím cvičení.
-2. V panelu nabídky vyberte **zobrazení** a potom klikněte na tlačítko **Průzkumníka serveru**.
-3. V **Průzkumníka serveru**, klikněte pravým tlačítkem myši **Azure** uzel a vyberte možnost **připojit se k Azure...** . Přihlaste se pomocí účtu Microsoft, který je spojen s vaším předplatným.
+1. Přepněte do instance sady Visual Studio s řešením **GeekQuiz** z předchozího cvičení.
+2. V řádku nabídek vyberte **Zobrazit** a pak klikněte na **Průzkumník serveru**.
+3. V **Průzkumník serveru**klikněte pravým tlačítkem myši na uzel **Azure** a vyberte **připojit k Azure...** . Přihlaste se pomocí účet Microsoft přidruženého k vašemu předplatnému.
 
-    ![Připojte se k Windows Azure](maintainable-azure-websites-managing-change-and-scale/_static/image62.png)
+    ![Připojení k Windows Azure](maintainable-azure-websites-managing-change-and-scale/_static/image62.png)
 
     *Připojení k Azure*
-4. Rozbalte **Azure** uzel, klikněte pravým tlačítkem na **úložiště** a vyberte **připojit externí úložiště...** .
-5. V **přidat nový účet úložiště** dialogového okna zadejte **název účtu** a **klíč účtu** jste získali v předchozí úloze a klikněte na **OK**.
+4. Rozbalte uzel **Azure** , klikněte pravým tlačítkem na **úložiště** a vyberte **připojit externí úložiště...** .
+5. V dialogovém okně **Přidat nový účet úložiště** zadejte **název účtu** a **klíč účtu** , který jste získali v předchozí úloze, a klikněte na tlačítko **OK**.
 
-    ![Přidat nový účet úložiště – dialogové okno](maintainable-azure-websites-managing-change-and-scale/_static/image63.png)
+    ![Dialogové okno Přidat nový účet úložiště](maintainable-azure-websites-managing-change-and-scale/_static/image63.png)
 
-    *Přidat nový účet úložiště – dialogové okno*
-6. Váš účet úložiště by se měla zobrazit v části **úložiště** uzlu. Rozbalte účet úložiště, klikněte pravým tlačítkem na **objekty BLOB** a vyberte **vytvořit kontejner objektů Blob...** .
+    *Dialogové okno Přidat nový účet úložiště*
+6. Váš účet úložiště by se měl zobrazit pod uzlem **úložiště** . Rozbalte svůj účet úložiště, klikněte pravým tlačítkem na **objekty blob** a vyberte **vytvořit kontejner objektů BLOB...** .
 
-    ![Vytvořit kontejner objektů Blob](maintainable-azure-websites-managing-change-and-scale/_static/image64.png "vytvořit kontejner objektů Blob")
+    ![Vytvořit kontejner objektů BLOB](maintainable-azure-websites-managing-change-and-scale/_static/image64.png "Vytvořit kontejner objektů blob")
 
-    *Vytvořit kontejner objektů Blob*
-7. V **vytvořit kontejner objektů Blob** dialogového okna zadejte název kontejneru objektů blob a klikněte na tlačítko **OK**.
+    *Vytvořit kontejner objektů BLOB*
+7. V dialogovém okně **vytvořit kontejner objektů BLOB** zadejte název kontejneru objektů BLOB a klikněte na **OK**.
 
-    ![Dialogové okno vytvořit kontejner objektů Blob](maintainable-azure-websites-managing-change-and-scale/_static/image65.png "dialogové okno vytvořit kontejner objektů Blob")
+    ![Dialogové okno vytvořit kontejner objektů BLOB](maintainable-azure-websites-managing-change-and-scale/_static/image65.png "Dialogové okno vytvořit kontejner objektů BLOB")
 
-    *Vytvoření dialogového okna kontejner objektů Blob*
-8. Nový kontejner objektů blob měla být přidána do **objekty BLOB** uzlu. Změňte přístupová oprávnění v kontejneru zveřejněte kontejneru. Chcete-li to provést, klikněte pravým tlačítkem **image** kontejner a vyberte **vlastnosti**.
+    *Dialogové okno vytvořit kontejner objektů BLOB*
+8. Nový kontejner objektů BLOB by měl být přidán do uzlu **objekty blob** . Změňte přístupová oprávnění v kontejneru tak, aby kontejner byl veřejný. Provedete to tak, že kliknete pravým tlačítkem na kontejner **imagí** a vyberete **vlastnosti**.
 
-    ![Image kontejneru vlastnosti](maintainable-azure-websites-managing-change-and-scale/_static/image66.png "Image vlastnosti kontejneru")
+    ![vlastnosti kontejneru imagí](maintainable-azure-websites-managing-change-and-scale/_static/image66.png "vlastnosti kontejneru imagí")
 
-    *Vlastnosti kontejneru obrázků*
-9. V **vlastnosti** okno, nastaveno **veřejné oprávnění ke čtení** k **kontejneru**.
+    *Vlastnosti kontejneru imagí*
+9. V okně **vlastnosti** nastavte **veřejný přístup pro čtení** na **kontejner**.
 
-    ![Změna vlastnosti veřejné oprávnění ke čtení](maintainable-azure-websites-managing-change-and-scale/_static/image67.png "při změně hodnoty vlastnosti veřejné oprávnění ke čtení")
+    ![Změna veřejné vlastnosti přístupu pro čtení](maintainable-azure-websites-managing-change-and-scale/_static/image67.png "Změna veřejné vlastnosti přístupu pro čtení")
 
-    *Změna vlastnosti veřejné oprávnění ke čtení*
-10. Po zobrazení výzvy, pokud jste si jistí, kterou chcete změnit vlastnost veřejného přístupu, klikněte na tlačítko **Ano**.
+    *Změna veřejné vlastnosti přístupu pro čtení*
+10. Když se zobrazí dotaz, jestli jste si jisti, že chcete změnit vlastnost veřejného přístupu, klikněte na **Ano**.
 
-    ![Microsoft Visual Studio upozornění](maintainable-azure-websites-managing-change-and-scale/_static/image68.png "upozornění Microsoft Visual Studio")
+    ![Upozornění Microsoft Visual Studio](maintainable-azure-websites-managing-change-and-scale/_static/image68.png "Upozornění Microsoft Visual Studio")
 
-    *Microsoft Visual Studio upozornění*
-11. V **Průzkumníka serveru**, klikněte pravým tlačítkem **image** kontejner objektů blob a vyberte **kontejner objektů Blob zobrazení**.
+    *Upozornění Microsoft Visual Studio*
+11. V **Průzkumník serveru**klikněte pravým tlačítkem na kontejner objektů BLOB **imagí** a vyberte **Zobrazit kontejner objektů BLOB**.
 
-    ![Zobrazit kontejner objektů Blob](maintainable-azure-websites-managing-change-and-scale/_static/image69.png "zobrazení kontejner objektů Blob")
+    ![Zobrazit kontejner objektů BLOB](maintainable-azure-websites-managing-change-and-scale/_static/image69.png "Zobrazit kontejner objektů BLOB")
 
-    *Zobrazit kontejner objektů Blob*
-12. Kontejner imagí by se otevřít v novém okně a legenda s žádné položky, které se má zobrazit. Klikněte na tlačítko **nahrát** ikonu pro nahrání souboru do kontejneru objektů blob.
+    *Zobrazit kontejner objektů BLOB*
+12. Kontejner imagí by měl být otevřen v novém okně a legenda bez položek by měla být zobrazena. Kliknutím na ikonu **nahrát** nahrajte soubor do kontejneru objektů BLOB.
 
-    ![Image kontejneru s žádné položky](maintainable-azure-websites-managing-change-and-scale/_static/image70.png "Image kontejneru s žádné položky")
+    ![Kontejner imagí bez záznamů](maintainable-azure-websites-managing-change-and-scale/_static/image70.png "Kontejner imagí bez záznamů")
 
-    *Image kontejneru s žádné položky*
-13. V **nahrát objekt Blob** dialogové okno, přejděte na **prostředky** složky testovacího prostředí. Vyberte **logo big.png** souboru a klikněte na tlačítko **otevřít**.
-14. Počkejte, až se soubor nahraje. Po dokončení nahrávání souboru by měl nacházet na Image kontejneru. Klikněte pravým tlačítkem na položku soubor a vyberte **kopírování adresy URL**.
+    *Kontejner imagí bez záznamů*
+13. V dialogovém okně **nahrát objekt BLOB** přejděte do složky **assets (prostředky** ) v testovacím prostředí. Vyberte soubor **logo-Big. png** a klikněte na **otevřít**.
+14. Počkejte, než se soubor nahraje. Až se nahrávání dokončí, soubor by měl být uvedený v kontejneru images. Pravým tlačítkem myši klikněte na položku soubor a vyberte možnost **Kopírovat adresu URL**.
 
-    ![Zkopírujte adresu URL objektu blob](maintainable-azure-websites-managing-change-and-scale/_static/image71.png "zkopírujte adresu URL souboru objektu blob")
+    ![Kopírovat adresu URL objektu BLOB](maintainable-azure-websites-managing-change-and-scale/_static/image71.png "Kopírovat adresu URL souboru objektu BLOB")
 
-    *Zkopírujte adresu URL objektu blob*
-15. Spusťte aplikaci Internet Explorer a vložte adresu URL. Na následujícím obrázku by měla být zobrazená v prohlížeči.
+    *Kopírovat adresu URL objektu BLOB*
+15. Otevřete Internet Explorer a vložte adresu URL. V prohlížeči by se měl zobrazit následující obrázek.
 
-    ![Obrázek loga big.png z úložiště objektů Blob Windows](maintainable-azure-websites-managing-change-and-scale/_static/image72.png "logo big.png image ze služby storage")
+    ![Obrázek logo-Big. png z Windows Blob Storage](maintainable-azure-websites-managing-change-and-scale/_static/image72.png "Obrázek logo-Big. png z úložiště")
 
-    *Logo big.png image z Azure Blob Storage*
+    *Obrázek logo-Big. png z Azure Blob Storage*
 
 <a id="Ex4Task3"></a>
-#### <a name="task-3--updating-the-solution-to-consume-static-content-from-azure-blob-storage"></a>Úloha 3 – aktualizuje se řešení využívají statický obsah z úložiště objektů Blob v Azure
+#### <a name="task-3--updating-the-solution-to-consume-static-content-from-azure-blob-storage"></a>Úloha 3 – aktualizace řešení pro využívání statického obsahu z Azure Blob Storage
 
-V této úloze nakonfigurujete **GeekQuiz** řešení, které využívají obrázek nahraný do Azure Blob Storage (a nikoli obraz umístěný ve webové aplikaci) tak, že přidáte pravidlo pro přepis adres URL technologie ASP.NET, v **web.config**souboru.
+V této úloze nakonfigurujete řešení **GeekQuiz** , aby se využila bitová kopie nahraná do Azure Blob Storage (namísto image umístěná ve webové aplikaci) přidáním pravidla pro přepsání adresy URL ASP.NET v souboru **Web. config** .
 
-1. V sadě Visual Studio, otevřete **Web.config** soubor uvnitř **GeekQuiz** projektu a vyhledejte **&lt;system.webServer&gt;** elementu.
-2. Přidejte následující kód pro přidání přepisování adres URL pravidla aktualizace zástupného textu s názvem vašeho účtu úložiště.
+1. V aplikaci Visual Studio otevřete soubor **Web. config** v rámci projektu **GeekQuiz** a vyhledejte prvek **&gt;&lt;System. webServer** .
+2. Přidejte následující kód, který přidá pravidlo pro přepsání adresy URL a aktualizuje zástupný text názvem svého účtu úložiště.
 
-    (Fragment - kódu *WebSitesInProduction - Ex4 - UrlRewriteRule*)
+    (Fragment kódu – *WebSitesInProduction-Ex4-UrlRewriteRule*)
 
     [!code-xml[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample17.xml)]
 
     > [!NOTE]
-    > Přepisování adres URL je proces zachycení příchozí webové žádosti a požadavku přesměrování na jiný prostředek. Adresa URL přepsání pravidel říká přepis adres modul, když se požadavek musí přesměrovat a kde by měl být přesměrován. Pravidlo pro přepis adres se skládá ze dvou řetězců: model v požadované adrese URL (obvykle, pomocí regulárních výrazů), a řetězec pro nahrazení vzoru, pokud nalezen. Další informace najdete v tématu [přepisování adres URL v technologii ASP.NET](https://msdn.microsoft.com/library/ms972974.aspx).
-3. Stisknutím klávesy **stisknutím CTRL + S** a uložte změny.
-4. Otevřete novou **Git Bash** konzoly nasaďte aktualizovanou aplikaci do služby Azure App Service.
-5. Spusťte následující příkazy, které odešlete změny do Azure. Aktualizace *[YOUR cesta aplikace]* zástupný symbol s cestou **GeekQuiz** řešení. Zobrazí se výzva k zadání hesla nasazení.
+    > Přepsání adresy URL je proces zachycení příchozího webového požadavku a přesměrování požadavku na jiný prostředek. Pravidla přepisu adresy URL přidávají modulu přepisu, když je potřeba přesměrovat požadavek a kde by se měla přesměrovat. Pravidlo přepisování se skládá ze dvou řetězců: vzor, který má být hledán v požadované adrese URL (obvykle pomocí regulárních výrazů), a řetězec, který má nahradit vzor, pokud byl nalezen. Další informace najdete v tématu [přepsání adresy URL v ASP.NET](https://msdn.microsoft.com/library/ms972974.aspx).
+3. Změny uložte stisknutím **kombinace kláves CTRL + S** .
+4. Otevřete novou konzolu **Git bash** a nasaďte aktualizovanou aplikaci na Azure App Service.
+5. Spuštěním následujících příkazů nahrajte změny do Azure. Aktualizujte zástupný text *[Your-Application-Path]* cestou k řešení **GeekQuiz** . Zobrazí se výzva k zadání hesla pro nasazení.
 
     [!code-console[Main](maintainable-azure-websites-managing-change-and-scale/samples/sample18.cmd)]
 
-    ![Nasazení aktualizací do Azure](maintainable-azure-websites-managing-change-and-scale/_static/image73.png)
+    ![Nasazení aktualizace do Azure](maintainable-azure-websites-managing-change-and-scale/_static/image73.png)
 
-    *Nasazení aktualizací do Azure*
+    *Nasazení aktualizace do Azure*
 
 <a id="Ex4Task4"></a>
 #### <a name="task-4--verification"></a>Úloha 4 – ověření
 
-V této úloze budete používat **aplikace Internet Explorer** a přejděte **Informatik kvíz** aplikace a zkontrolujte, že adresa URL přepsat pravidlo pro Image funguje a můžete se přesměrují na image hostovanou v **objektů Blob v Azure Úložiště**.
+V této úloze použijete **Internet Explorer** k procházení aplikace **informatik kvíz** a zkontrolujete, že pravidlo pro přepsání adresy URL pro Image funguje a že budete přesměrováni na Image hostovanou v **Azure Blob Storage**.
 
-1. Otevřete aplikaci Internet Explorer a přejděte do své webové aplikace (například `http://<your-web-site>.azurewebsites.net`). Přihlaste se pomocí dříve vytvořeného přihlašovacích údajů.
+1. Spusťte Internet Explorer a přejděte do vaší webové aplikace (např. `http://<your-web-site>.azurewebsites.net`). Přihlaste se pomocí dříve vytvořených přihlašovacích údajů.
 
-    ![Zobrazuje webovou aplikaci Informatik kvíz s imagí](maintainable-azure-websites-managing-change-and-scale/_static/image74.png "zobrazující webovou aplikaci Informatik kvíz s imagí")
+    ![Zobrazení webové aplikace kvízu informatik s obrázkem](maintainable-azure-websites-managing-change-and-scale/_static/image74.png "Zobrazení webové aplikace kvízu informatik s obrázkem")
 
-    *Zobrazuje webovou aplikaci Informatik kvíz s imagí*
-2. Stisknutím klávesy **F12** ke spuštění nástroje pro vývoj, vyberte **sítě** kartu a spusťte záznam.
+    *Zobrazení webové aplikace kvízu informatik s obrázkem*
+2. Stisknutím klávesy **F12** spusťte vývojové nástroje, vyberte kartu **síť** a spusťte záznam.
 
-    ![Spouštění nahrávání sítě](maintainable-azure-websites-managing-change-and-scale/_static/image75.png "od sítě záznam")
+    ![Spouští se záznam v síti.](maintainable-azure-websites-managing-change-and-scale/_static/image75.png "Spouští se záznam v síti.")
 
-    *Spouští se záznam sítě*
-3. Stisknutím klávesy **CTRL + F5** aktualizujte webovou stránku.
-4. Po dokončení načítání stránky byste měli vidět požadavku HTTP pro **/img/logo-big.png** adresu URL pomocí protokolu HTTP **301** výsledek (přesměrování) a další žádost o `http://[YOUR-STORAGE-ACCOUNT].blob.core.windows.net/images/logo-big.png` adresu URL s protokolem HTTP **200** výsledek.
+    *Spouští se záznam v síti.*
+3. Stisknutím **kombinace kláves CTRL + F5** aktualizujte webovou stránku.
+4. Po načtení stránky by se měla zobrazit žádost HTTP adresy URL **/img/logo-Big.png** s výsledkem http **301** (přesměrování) a jinou žádostí o `http://[YOUR-STORAGE-ACCOUNT].blob.core.windows.net/images/logo-big.png` url s výsledkem http **200** .
 
-    ![Ověřuje se adresa URL přesměrování](maintainable-azure-websites-managing-change-and-scale/_static/image76.png "zobrazující přesměrování v nástroje pro vývojáře")
+    ![Ověření přesměrování adresy URL](maintainable-azure-websites-managing-change-and-scale/_static/image76.png "Zobrazuje se přesměrování v nástrojích pro vývoj")
 
-    *Ověřuje se adresa URL pro přesměrování*
+    *Ověření přesměrování adresy URL*
 
 <a id="Exercise5"></a>
-### <a name="exercise-5-using-autoscale-for-web-apps"></a>Cvičení 5: Použití automatického škálování pro webové aplikace
+### <a name="exercise-5-using-autoscale-for-web-apps"></a>Cvičení 5: použití automatického škálování pro Web Apps
 
 > [!NOTE]
-> Tento postup je volitelné, protože vyžaduje podporu pro zatížení webové &amp; testování výkonu, která je dostupná jenom pro **Visual Studio 2013 Ultimate Edition**. Další informace o konkrétní součásti, které Visual Studio 2013, porovnat verze [tady](https://www.microsoft.com/visualstudio/eng/products/compare).
+> Toto cvičení je volitelné, protože vyžaduje podporu webového zatížení &amp; testování výkonu, které je k dispozici pouze pro **Visual Studio 2013 Ultimate Edition**. Další informace o konkrétních funkcích Visual Studio 2013 najdete v [tématu](https://www.microsoft.com/visualstudio/eng/products/compare)porovnání verzí.
 
-**Azure App Service Web Apps** poskytuje funkci automatického škálování pro web apps spouštěná ve **standardní režim**. Automatické škálování umožňuje Azure se dá automaticky škálovat počet instancí webové aplikace v závislosti na zatížení. Když je povolené automatické škálování, Azure kontroluje každých pět minut procesoru vaší webové aplikace a přidá instancí podle potřeby v daném okamžiku v čase. Pokud bude malé využití procesoru, Azure odebere instance každé dvě hodiny zajistit, že není snížený výkon webové aplikace.
+**Azure App Service Web Apps** poskytuje funkci automatického škálování pro webové aplikace běžící ve **standardním režimu**. Automatické škálování umožňuje Azure automaticky škálovat počet instancí webové aplikace v závislosti na zatížení. Když je zapnuté automatické škálování, Azure zkontroluje procesor vaší webové aplikace jednou za pět minut a v daném časovém okamžiku přidá instance podle potřeby. Pokud je využití procesoru nízké, Azure odstraní instance jednou za dvě hodiny, aby se zajistilo, že výkon vaší webové aplikace nebude degradován.
 
-V tomto cvičení jste projít kroky potřebnými ke konfiguraci **automatického škálování** funkce pro **kvíz Informatik** webové aplikace. Tato funkce bude ověřte spuštěním zátěžového testu sady Visual Studio pro generování dostatečného zatížení procesoru v aplikaci k aktivaci instance upgrade.
+V tomto cvičení provedete kroky nutné ke konfiguraci funkce **automatického škálování** pro webovou aplikaci **informatik kvíz** . Tuto funkci ověříte spuštěním zátěžového testu sady Visual Studio pro vygenerování dostatečného zatížení procesoru v aplikaci pro aktivaci upgradu instance.
 
 <a id="Ex5Task1"></a>
-#### <a name="task-1--configuring-autoscale-based-on-the-cpu-metric"></a>Úloha 1 – konfigurace automatického škálování na základě metriky využití procesoru
+#### <a name="task-1--configuring-autoscale-based-on-the-cpu-metric"></a>Úloha 1 – Konfigurace automatického škálování na základě metriky procesoru
 
-V této úloze bude používat portál pro správu Azure k povolení této funkce automatického škálování pro webovou aplikaci, kterou jste vytvořili v cvičení 2.
+V této úloze použijete portál pro správu Azure k povolení funkce automatického škálování pro webovou aplikaci, kterou jste vytvořili v cvičení 2.
 
-1. V [portál pro správu Azure](https://manage.windowsazure.com/)vyberte **Websites** a klikněte na webovou aplikaci, kterou jste vytvořili v cvičení 2.
-2. Přejděte **škálování** stránky. V části **kapacity** vyberte **procesoru** pro **škálování podle metriky** konfigurace.
-
-    > [!NOTE]
-    > Při horizontálním škálování podle využití procesoru, Azure dynamicky přizpůsobí počet instancí, které aplikace používá, pokud se změní využití procesoru.
-
-    ![Výběr škálování podle využití procesoru](maintainable-azure-websites-managing-change-and-scale/_static/image77.png "výběrem procesoru metriky pro automatické škálování")
-
-    *Výběr škálování podle využití procesoru*
-3. Změnit **cílový procesor** konfiguraci **20**-**40** procent.
+1. Na [portálu pro správu Azure](https://manage.windowsazure.com/)vyberte **weby** a klikněte na webovou aplikaci, kterou jste vytvořili v cvičení 2.
+2. Přejděte na stránku **škálování** . V části **kapacita** vyberte možnost **CPU** pro **škálování podle konfigurace metriky** .
 
     > [!NOTE]
-    > Tento rozsah představuje průměrné využití procesoru pro vaši webovou aplikaci. Azure bude přidávat nebo odebírat instance, které chcete zachovat svou webovou aplikaci v tomto rozsahu. Zadat minimální a maximální počet instancí používaných pro škálování v **počet instancí** konfigurace. Azure se nikdy dostanou nad nebo nad rámec tohoto limitu.
+    > Při škálování podle CPU Azure dynamicky přizpůsobí počet instancí, které aplikace používá, pokud se změní využití procesoru.
+
+    ![Výběr pro škálování podle procesoru](maintainable-azure-websites-managing-change-and-scale/_static/image77.png "Výběr metriky procesoru pro automatické škálování")
+
+    *Výběr pro škálování podle procesoru*
+3. Změňte **cílovou konfiguraci procesoru** na **20**-**40** procent.
+
+    > [!NOTE]
+    > Tento rozsah představuje průměrné využití procesoru vaší webové aplikace. Azure bude přidávat nebo odebírat instance, aby se vaše webová aplikace udržovala v tomto rozsahu. Minimální a maximální počet instancí použitých pro škálování je zadaný v konfiguraci **počtu instancí** . Azure nebude nikdy nad rámec tohoto limitu.
     >
-    > Výchozí hodnota **cílový procesor** hodnoty jsou změněny jen pro účely tohoto testovacího prostředí. Nakonfigurováním rozsahu procesoru malé hodnotami jsou zvyšuje šance na aktivační událost automatického škálování při moderování zatížení je umístěn na aplikaci.
+    > Výchozí hodnoty **CÍLOVÉHO procesoru** se upravují pouze pro účely tohoto testovacího prostředí. Konfigurací rozsahu procesoru s malými hodnotami zvýšíte pravděpodobnost aktivace automatického škálování, když se na aplikaci umístí střední zatížení.
 
-    ![Změna cílového procesoru chcete být 20 až 40 procent](maintainable-azure-websites-managing-change-and-scale/_static/image78.png "změna cíl CPU, který má být 20 až 40 procent")
+    ![Změna cílového procesoru na hodnotu mezi 20 a 40%](maintainable-azure-websites-managing-change-and-scale/_static/image78.png "Změna cílového procesoru na hodnotu mezi 20 a 40%")
 
-    *Změna cílový procesor bude 20 až 40 procent*
-4. Klikněte na tlačítko **Uložit** na panelu příkazů a uložte změny.
+    *Změna cílového procesoru na hodnotu mezi 20 a 40%*
+4. Změny uložte kliknutím na **Uložit** na panelu příkazů.
 
 <a id="Ex5Task2"></a>
 #### <a name="task-2--load-testing-with-visual-studio"></a>Úloha 2 – zátěžové testování pomocí sady Visual Studio
 
-Teď, když **automatického škálování** byl nakonfigurován, musíte vytvořit **načíst projekt testu výkonu webu a** v sadě Visual Studio k vygenerování nějaké zatížení CPU na webovou aplikaci.
+Teď, když je nakonfigurované **Automatické škálování** , vytvoříte v aplikaci Visual Studio **projekt webového výkonu a zátěžového testu** , který vygeneruje některé zatížení procesoru ve vaší webové aplikaci.
 
-1. Otevřít **Visual Studio Ultimate 2013** a vyberte **soubor | Nové | Projekt...**  spusťte nové řešení.
+1. Otevřete **Visual Studio Ultimate 2013** a vyberte **soubor | Nové | Projekt...** pro spuštění nového řešení.
 
-    ![Vytvoření nového projektu](maintainable-azure-websites-managing-change-and-scale/_static/image79.png "vytvoření nového projektu")
+    ![Vytvoření nového projektu](maintainable-azure-websites-managing-change-and-scale/_static/image79.png "Vytvoření nového projektu")
 
     *Vytvoření nového projektu*
-2. V **nový projekt** dialogu **webový výkon a projekt zátěžového testu** pod **Visual C# | Test** kartu. Ujistěte se, že **rozhraní .NET Framework 4.5** je vybrána, pojmenujte projekt *WebAndLoadTestProject*, zvolte **umístění** a klikněte na tlačítko **OK**.
+2. V dialogovém okně **Nový projekt** vyberte v vizuálu  **C# projekt testování výkonu webu a zátěžový test | Karta test** . Ujistěte se, že je vybraná možnost **.NET Framework 4,5** , název projektu *WebAndLoadTestProject*, vyberte **umístění** a klikněte na **OK**.
 
-    ![Vytvoření nového projektu webového a zátěžového testu](maintainable-azure-websites-managing-change-and-scale/_static/image80.png "vytvoření nového projektu webového a zátěžového testu")
+    ![Vytvoření nového projektu webového a zátěžového testu](maintainable-azure-websites-managing-change-and-scale/_static/image80.png "Vytvoření nového projektu webového a zátěžového testu")
 
     *Vytvoření nového projektu webového a zátěžového testu*
-3. V **WebTest1.webtest** klikněte pravým tlačítkem na **WebTest1** uzel a klikněte na tlačítko **přidejte žádosti**.
+3. V **WebTest1. webtest** klikněte pravým tlačítkem myši na uzel **WebTest1** a klikněte na **Přidat žádost**.
 
-    ![Žádost o přidání do WebTest1](maintainable-azure-websites-managing-change-and-scale/_static/image81.png "přidáním požadavku do WebTest1")
+    ![Přidání žádosti do WebTest1](maintainable-azure-websites-managing-change-and-scale/_static/image81.png "Přidání žádosti do WebTest1")
 
-    *Žádost o přidání do WebTest1*
-4. V **vlastnosti** okno nového uzlu žádost o aktualizaci **Url** vlastnost tak, aby odkazoval na adresu URL webové aplikace (například *[ http://geek-quiz.azurewebsites.net/ ](http://geek-quiz.azurewebsites.net/)*).
+    *Přidání žádosti do WebTest1*
+4. V okně **vlastnosti** nového uzlu požadavku aktualizujte vlastnost **Adresa URL** tak, aby odkazovala na adresu URL vaší webové aplikace (např. *[http://geek-quiz.azurewebsites.net/](http://geek-quiz.azurewebsites.net/)* ).
 
-    ![Změna vlastnosti adresy Url](maintainable-azure-websites-managing-change-and-scale/_static/image82.png "při změně hodnoty vlastnosti adresy Url")
+    ![Změna vlastnosti adresy URL](maintainable-azure-websites-managing-change-and-scale/_static/image82.png "Změna vlastnosti adresy URL")
 
-    *Změna vlastnosti adresy Url*
-5. V **WebTest1.webtest** okna, klikněte pravým tlačítkem na **WebTest1** a klikněte na tlačítko **přidejte smyčku...** .
+    *Změna vlastnosti adresy URL*
+5. V okně **WebTest1. webtest** klikněte pravým tlačítkem myši na **WebTest1** a klikněte na **Přidat smyčku...** .
 
-    ![Přidání smyčky do WebTest1](maintainable-azure-websites-managing-change-and-scale/_static/image83.png "přidání smyčky do WebTest1")
+    ![Přidání smyčky do WebTest1](maintainable-azure-websites-managing-change-and-scale/_static/image83.png "Přidání smyčky do WebTest1")
 
     *Přidání smyčky do WebTest1*
-6. V **přidat podmíněné pravidlo a položky do cyklu** dialogové okno, vyberte **smyčky For Loop** pravidla a upravit následující vlastnosti.
+6. V dialogovém okně **přidat podmíněné pravidlo a položky do cyklu** vyberte pravidlo **smyčky for** a upravte následující vlastnosti.
 
-   1. **Ukončovací hodnota:** 1000
-   2. **Název parametru kontextu:** Iterátor
+   1. **Koncová hodnota:** 1000
+   2. **Název kontextového parametru:** Iterátor
    3. **Přírůstková hodnota:** 1
 
-      ![Vyberte pravidlo smyčku For a aktualizace vlastností](maintainable-azure-websites-managing-change-and-scale/_static/image84.png "vyberte pravidlo smyčku For a aktualizace vlastností")
+      ![Výběr pravidla smyčky for a aktualizace vlastností](maintainable-azure-websites-managing-change-and-scale/_static/image84.png "Výběr pravidla smyčky for a aktualizace vlastností")
 
-      *Vyberte pravidlo smyčku For a aktualizace vlastností*
-7. V části **položky ve smyčce** vyberte žádosti, které jste předtím vytvořili pro první a poslední položka smyčky. Klikněte na tlačítko **OK** pokračujte.
+      *Výběr pravidla smyčky for a aktualizace vlastností*
+7. V části **smyčka Items (položky v cyklu** ) vyberte požadavek, který jste dříve vytvořili jako první a poslední položku pro smyčku. Pokračujte kliknutím na tlačítko **OK** .
 
-    ![Výběr položek první a poslední smyčky](maintainable-azure-websites-managing-change-and-scale/_static/image85.png "výběr položek první a poslední smyčky")
+    ![Výběr první a poslední položky pro smyčku](maintainable-azure-websites-managing-change-and-scale/_static/image85.png "Výběr první a poslední položky pro smyčku")
 
-    *Výběr položek první a poslední smyčky*
-8. V **Průzkumníku řešení**, klikněte pravým tlačítkem myši **WebAndLoadTestProject** projektu, rozbalte položku **přidat** nabídky a vybereme **zátěžového testu...** .
+    *Výběr první a poslední položky pro smyčku*
+8. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **WebAndLoadTestProject** , rozbalte nabídku **Přidat** a vyberte **zátěžový test...** .
 
-    ![Zátěžový Test do projektu přidáte, WebAndLoadTestProject](maintainable-azure-websites-managing-change-and-scale/_static/image86.png "zátěžový Test do projektu přidáte, WebAndLoadTestProject")
+    ![Přidání zátěžového testu do projektu WebAndLoadTestProject](maintainable-azure-websites-managing-change-and-scale/_static/image86.png "Přidání zátěžového testu do projektu WebAndLoadTestProject")
 
-    *Zátěžový Test do projektu přidáte, WebAndLoadTestProject*
-9. V **Průvodce novým zátěžovým testem** dialogové okno, klikněte na tlačítko **Další**.
+    *Přidání zátěžového testu do projektu WebAndLoadTestProject*
+9. V dialogovém okně **nový Průvodce zátěžovým testem** klikněte na **Další**.
 
-    ![Průvodce novým zátěžovým testem](maintainable-azure-websites-managing-change-and-scale/_static/image87.png "Průvodce novým zátěžovým testem")
+    ![Nový Průvodce zátěžovým testem](maintainable-azure-websites-managing-change-and-scale/_static/image87.png "Nový Průvodce zátěžovým testem")
 
-    *Průvodce novým zátěžovým testem*
-10. V **scénář** stránce **nepoužívat čas přemýšlení** a klikněte na tlačítko **Další**.
+    *Nový Průvodce zátěžovým testem*
+10. Na stránce **scénář** vyberte **Nepoužívat časy přemýšlení** a klikněte na **Další**.
 
-    ![Výběr nepoužívat čas přemýšlení](maintainable-azure-websites-managing-change-and-scale/_static/image88.png "výběr nepoužívat čas přemýšlení")
+    ![Výběr nepoužití časů promýšlení](maintainable-azure-websites-managing-change-and-scale/_static/image88.png "Výběr nepoužití časů promýšlení")
 
-    *Výběr nepoužívat čas přemýšlení*
-11. V **vzor zatížení** stránky, ujistěte se, že **konstantní zatížení** je vybraná možnost. Změnit **počet uživatelů** nastavení **250** uživatele a klikněte na tlačítko **Další**.
+    *Výběr nepoužití časů promýšlení*
+11. Na stránce **vzor zatížení** se ujistěte, že je vybraná možnost **konstantního zatížení** . Změňte nastavení **počet uživatelů** na **250** uživatelů a klikněte na **Další**.
 
-    ![Změna počtu uživatelů na 250](maintainable-azure-websites-managing-change-and-scale/_static/image89.png "změnu počtu uživatelů na 250")
+    ![Změna počtu uživatelů na 250](maintainable-azure-websites-managing-change-and-scale/_static/image89.png "Změna počtu uživatelů na 250")
 
     *Změna počtu uživatelů na 250*
-12. V **testovat Model kombinace** stránce **na základě pořadí sekvenčního testu** a klikněte na tlačítko **Další**.
+12. Na stránce **model kombinace testů** vyberte na **základě pořadí sekvenčních testů** a klikněte na **Další**.
 
     ![Výběr modelu kombinace testů](maintainable-azure-websites-managing-change-and-scale/_static/image90.png "Výběr modelu kombinace testů")
 
     *Výběr modelu kombinace testů*
-13. V **Model kombinace testů** klikněte na **přidat...**  přidat test do kombinaci.
+13. Na stránce **model** poměru testů klikněte na tlačítko **Přidat...** a přidejte do kombinace test.
 
-    ![Přidání testu do poměru testů](maintainable-azure-websites-managing-change-and-scale/_static/image91.png "přidání testu do poměru testů")
+    ![Přidání testu do kombinace testů](maintainable-azure-websites-managing-change-and-scale/_static/image91.png "Přidání testu do kombinace testů")
 
-    *Přidání testu do poměru testů*
-14. V **přidat testy** dialogové okno, klikněte dvakrát na **WebTest1** přidat test **vybrané testy** seznamu. Klikněte na tlačítko **OK** pokračujte.
+    *Přidání testu do kombinace testů*
+14. V dialogovém okně **Přidat testy** poklikejte na **WebTest1** a přidejte test do seznamu **vybraných testů** . Pokračujte kliknutím na tlačítko **OK** .
 
-    ![Přidat WebTest1 test](maintainable-azure-websites-managing-change-and-scale/_static/image92.png "přidání WebTest1 testu")
+    ![Přidání testu WebTest1](maintainable-azure-websites-managing-change-and-scale/_static/image92.png "Přidání testu WebTest1")
 
-    *Přidat WebTest1 test*
-15. Zpátky **poměru testů** klikněte na **Další**.
+    *Přidání testu WebTest1*
+15. Zpátky na stránce **kombinace testů** klikněte na **Další**.
 
-    ![Dokončení stránce poměru testů](maintainable-azure-websites-managing-change-and-scale/_static/image93.png "dokončení stránce poměru testů")
+    ![Dokončuje se stránka kombinace testů.](maintainable-azure-websites-managing-change-and-scale/_static/image93.png "Dokončuje se stránka kombinace testů.")
 
-    *Dokončení stránce poměru testů*
-16. V **kombinaci sítí** klikněte na **Další**.
+    *Dokončuje se stránka kombinace testů.*
+16. Na stránce **kombinace sítě** klikněte na **Další**.
 
-    ![Kliknete na další na stránce kombinaci sítí](maintainable-azure-websites-managing-change-and-scale/_static/image94.png "kliknete na další na stránce poměr sítí")
+    ![Kliknutí na tlačítko Další na stránce kombinace sítě](maintainable-azure-websites-managing-change-and-scale/_static/image94.png "Kliknutí na tlačítko Další na stránce kombinace sítě")
 
-    *Kliknutím na další stránce poměr sítí*
-17. V **kombinace prohlížečů** stránce **Internet Explorer 10.0** jako typ prohlížeče a klikněte na **Další**.
+    *Kliknutí na tlačítko Další na stránce kombinace sítě*
+17. Na stránce **kombinace prohlížečů** jako typ prohlížeče vyberte **Internet Explorer 10,0** a klikněte na **Další**.
 
-    ![Výběr typu prohlížeče](maintainable-azure-websites-managing-change-and-scale/_static/image95.png "vyberete typ prohlížeče")
+    ![Výběr typu prohlížeče](maintainable-azure-websites-managing-change-and-scale/_static/image95.png "Výběr typu prohlížeče")
 
-    *Vyberte typ prohlížeče*
-18. V **sady čítačů** klikněte na **Další**.
+    *Výběr typu prohlížeče*
+18. Na stránce **sady čítačů** klikněte na **Další**.
 
-    ![Kliknutím na další stránce sady čítačů](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "kliknutím na další stránce sady čítačů")
+    ![Kliknutí na další na stránce sady čítačů](maintainable-azure-websites-managing-change-and-scale/_static/image96.png "Kliknutí na další na stránce sady čítačů")
 
-    *Kliknutím na další stránce sady čítačů*
-19. V **parametrů běhu** nastavte **trvání zátěžového testu** k **5 minut** a klikněte na tlačítko **Dokončit**.
+    *Kliknutí na další na stránce sady čítačů*
+19. Na stránce **nastavení spuštění** nastavte **dobu trvání zátěžového testu** na **5 minut** a klikněte na tlačítko **Dokončit**.
 
-    ![Nastavení trvání zátěžového testu na 5 minut](maintainable-azure-websites-managing-change-and-scale/_static/image97.png "nastavení trvání zátěžového testu na 5 minut")
+    ![Nastavení doby trvání zátěžového testu na 5 minut](maintainable-azure-websites-managing-change-and-scale/_static/image97.png "Nastavení doby trvání zátěžového testu na 5 minut")
 
-    *Nastavení trvání zátěžového testu na 5 minut*
-20. V **Průzkumníka řešení**, dvakrát klikněte **Local.settings** souboru prozkoumat nastavení testu. Ve výchozím nastavení používá Visual Studio místního počítače ke spuštění testů.
+    *Nastavení doby trvání zátěžového testu na 5 minut*
+20. V **Průzkumník řešení**dvakrát klikněte na soubor **Local. Settings** a prozkoumejte nastavení testu. Ve výchozím nastavení používá Visual Studio místní počítač ke spuštění testů.
 
     > [!NOTE]
-    > Alternativně můžete nakonfigurovat testovacího projektu pro spuštění zátěžových testů v cloudu pomocí **testovací plány Azure**. Azure testovací plány poskytuje cloudové zátěžové testování služba, která simuluje zatížení realističtější, jak se vyhnout omezení místní prostředí jako kapacity procesoru, paměti a šířky pásma sítě. Další informace o používání Azure testovací plány pro spuštění zátěžových testů, naleznete v tématu [scénáře testování zatížení](/azure/devops/test/load-test/overview?view=vsts).
+    > Alternativně můžete nakonfigurovat projekt testů tak, aby spouštěl zátěžové testy v cloudu pomocí **Azure test Plans**. Azure Test Plans poskytuje cloudovou službu zátěžového testování, která simuluje realističtější zatížení, což vyloučí omezení místních prostředí, jako je kapacita procesoru, dostupná paměť a šířka pásma sítě. Další informace o použití Azure Test Plans ke spouštění zátěžových testů naleznete v tématu [scénáře zátěžového testování](/azure/devops/test/load-test/overview?view=vsts).
 
     ![Nastavení testu](maintainable-azure-websites-managing-change-and-scale/_static/image98.png)
 
 <a id="Ex5Task3"></a>
 #### <a name="task-3--autoscale-verification"></a>Úloha 3 – ověření automatického škálování
 
-Nyní spusťte zátěžový test, který jste vytvořili v předchozí úloze a naleznete v tématu jak webové aplikace chová při zatížení.
+Nyní spustíte zátěžový test, který jste vytvořili v předchozí úloze, a zjistíte, jak se webová aplikace chová při zatížení.
 
-1. V **Průzkumníka řešení**, dvakrát klikněte na panel **LoadTest1.loadtest** otevřete zátěžový test.
+1. V **Průzkumník řešení**dvakrát klikněte na **LoadTest1. LoadTest** a otevřete zátěžový test.
 
-    ![Otevírání LoadTest1.loadtest](maintainable-azure-websites-managing-change-and-scale/_static/image99.png "otevírání LoadTest1.loadtest")
+    ![Otevírání LoadTest1. LoadTest](maintainable-azure-websites-managing-change-and-scale/_static/image99.png "Otevírání LoadTest1. LoadTest")
 
-    *Otevírání LoadTest1.loadtest*
-2. V **LoadTest1.loadtest** okna, klikněte na první tlačítko na panelu nástrojů ke spuštění zátěžového testu.
+    *Otevírání LoadTest1. LoadTest*
+2. V okně **LoadTest1. LoadTest** kliknutím na první tlačítko v panelu nástrojů Spusťte zátěžový test.
 
-    ![Spuštění zátěžového testu](maintainable-azure-websites-managing-change-and-scale/_static/image100.png "spuštění zátěžového testu")
+    ![Spuštění zátěžového testu](maintainable-azure-websites-managing-change-and-scale/_static/image100.png "Spuštění zátěžového testu")
 
     *Spuštění zátěžového testu*
 3. Počkejte na dokončení zátěžového testu.
 
     > [!NOTE]
-    > Zátěžový test simuluje několik uživatelů, kteří současně zasílat požadavky do webové aplikace. Když test běží, můžete sledovat dostupné čítače, které chcete zjistit všechny chyby, upozornění nebo jiné informace související se zátěžovým testem.
+    > Zátěžový test simuluje více uživatelů, kteří odesílají požadavky do webové aplikace současně. Po spuštění testu můžete monitorovat dostupné čítače a odhalit případné chyby, varování nebo jiné informace, které se týkají vašeho běhu zátěžového testu.
 
-    ![Zátěžový test spuštěn](maintainable-azure-websites-managing-change-and-scale/_static/image101.png "čekání, až po dokončení zátěžového testu")
+    ![Zátěžový test běží](maintainable-azure-websites-managing-change-and-scale/_static/image101.png "Čeká se na dokončení zátěžového testu.")
 
-    *Spuštění zátěžového testu*
-4. Po dokončení testu, vraťte se do portálu pro správu a přejděte **škálování** stránce vaší webové aplikace. V části **kapacity** oddílu, měli byste vidět v grafu, že se automaticky nasadí novou instanci.
+    *Zátěžový test běží*
+4. Po dokončení testu se vraťte na portál pro správu a přejděte na stránku **škálování** vaší webové aplikace. V části **kapacita** byste měli vidět v grafu, že se automaticky nasadila nová instance.
 
-    ![Automaticky nasadit novou instanci](maintainable-azure-websites-managing-change-and-scale/_static/image102.png)
+    ![Automaticky nasazená nová instance](maintainable-azure-websites-managing-change-and-scale/_static/image102.png)
 
-    *Automaticky nasadit novou instanci*
+    *Automaticky nasazená nová instance*
 
     > [!NOTE]
-    > Může trvat několik minut, než se změna projeví v grafu (stiskněte **CTRL + F5** pravidelně obnovíte stránku). Pokud se nezobrazí žádné změny, zkuste následující:
+    > Může trvat několik minut, než se změny objeví v grafu (Pokud chcete stránku aktualizovat, stiskněte klávesu **CTRL + F5** pravidelně). Pokud žádné změny nevidíte, můžete vyzkoušet následující:
     >
     > - Prodloužit dobu trvání zátěžového testu (například na **10 minut**)
-    > - Omezit maximální a minimální hodnoty **cílový procesor** rozsah v konfiguraci automatického škálování webové aplikace
-    > - Spusťte zátěžový test v cloudu s využitím **testovací plány Azure**. Další informace o [zde](/azure/devops/test/load-test/index?view=vsts)
+    > - Snižte maximální a minimální hodnoty **cílového rozsahu procesoru** v konfiguraci automatického škálování vaší webové aplikace.
+    > - Spusťte zátěžový test v cloudu pomocí **Azure test Plans**. Další informace [](/azure/devops/test/load-test/index?view=vsts)
 
 ---
 
 <a id="Summary"></a>
 ## <a name="summary"></a>Souhrn
 
-V této praktické laboratoři jste zjistili, jak nastavit a nasadit aplikaci do produkční webové aplikace v Azure. Jste spustili pomocí detekce a aktualizaci vašich databází pomocí **migrace Entity Framework Code First**, pak navázat tak, že nasazování nových verzí vašeho webu pomocí **Git** a vrácení zpět k provádění nejnovější stabilní verze vaší lokality. Kromě toho jste zjistili, jak škálovat aplikace pomocí úložiště přesunout statického obsahu do kontejneru objektů Blob.
+V tomto praktickém cvičení jste zjistili, jak nastavit a nasadit aplikaci do produkčních webových aplikací v Azure. Začali jste zjišťováním a aktualizací databází pomocí **migrace Entity Framework Code First**a pak pokračovali nasazením nových verzí webu pomocí **Gitu** a vrácením se zpět do nejnovější stabilní verze vaší lokality. Kromě toho jste zjistili, jak škálovat aplikaci pomocí úložiště, aby se váš statický obsah přesunul do kontejneru objektů BLOB.

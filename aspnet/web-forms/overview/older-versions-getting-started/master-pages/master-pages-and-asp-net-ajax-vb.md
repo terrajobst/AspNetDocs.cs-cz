@@ -9,11 +9,11 @@ ms.assetid: 0ee9318c-29bb-4d58-b1dc-94e575b8ae10
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/master-pages-and-asp-net-ajax-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 7be4ff422b91321ff83ed1f1c731c9a0bfe768f1
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74638081"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78525604"
 ---
 # <a name="master-pages-and-aspnet-ajax-vb"></a>Stránky předlohy a ASP.NET AJAX (VB)
 
@@ -204,7 +204,7 @@ Obrázek 11 ukazuje tuto stránku, když se poprvé navštíví přes prohlíže
 
 **Obrázek 12**: kliknutím na tlačítko Obnovit spustíte časovač ([kliknutím zobrazíte obrázek v plné velikosti](master-pages-and-asp-net-ajax-vb/_static/image36.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Při sestavování webových aplikací s podporou jazyka AJAX pomocí rozhraní ASP.NET AJAX je nezbytné, aby každá webová stránka s povoleným AJAX zahrnovala ovládací prvek ScriptManager. Abychom tento proces usnadnili, můžeme do stránky předlohy přidat ScriptManager místo nutnosti nezapomeňte si přidat ScriptManager na každou stránku obsahu a všechny. Krok 1 ukázal, jak přidat ScriptManager do hlavní stránky, zatímco krok 2 se prohlédl při implementaci funkcionality AJAX na stránce obsahu.
 

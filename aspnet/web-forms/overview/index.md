@@ -1,6 +1,6 @@
 ---
 uid: web-forms/overview/index
-title: Webové formuláře ASP.NET pokyny | Dokumentace Microsoftu
+title: Doprovodné materiály pro webové formuláře v ASP.NET | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,13 +9,13 @@ ms.assetid: b3fb4480-0f41-495b-add6-163ca92dc8a3
 msc.legacyurl: /web-forms/overview
 msc.type: book
 ms.openlocfilehash: 4b38d6b54f53508f7b568207fe7f1a624a7af5f3
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59402268"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78639445"
 ---
-# <a name="aspnet-web-forms-guidance"></a>Webové formuláře ASP.NET pokyny
+# <a name="aspnet-web-forms-guidance"></a>Doprovodné materiály pro webové formuláře v ASP.NET
 
 - [Začínáme](getting-started/index.md)
 
@@ -71,12 +71,12 @@ ms.locfileid: "59402268"
         - [Nasazení aktualizace databáze](deployment/visual-studio-web-deployment/deploying-a-database-update.md)
         - [Nasazení příkazového řádku](deployment/visual-studio-web-deployment/command-line-deployment.md)
         - [Nasazení dalších souborů](deployment/visual-studio-web-deployment/deploying-extra-files.md)
-        - [Odstraňování potíží](deployment/visual-studio-web-deployment/troubleshooting.md)
+        - [Řešení potíží](deployment/visual-studio-web-deployment/troubleshooting.md)
     - [ASP.NET 4 – úvod do nasazení v podniku](deployment/deploying-web-applications-in-enterprise-scenarios/index.md)
 
         - [Scénáře nasazení webových aplikací v podniku pomocí sady Visual Studio 2010](deployment/deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md)
-        - [Nasazení podnikového webu: Přehled scénářů](deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
-        - [Správa životního cyklu aplikací: Od vývoje k ostrému provozu](deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production.md)
+        - [Nasazení podnikového webu: Přehledný scénář](deployment/deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
+        - [Správa životního cyklu aplikace: Od vývoje k ostrému provozu](deployment/deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production.md)
     - [ASP.NET 4 – nasazení v podniku (1. část)](deployment/web-deployment-in-the-enterprise/index.md)
 
         - [Nasazení webu v podniku](deployment/web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md)
@@ -130,14 +130,14 @@ ms.locfileid: "59402268"
 
     - [ASP.NET 4 – Tailspin Spyworks](older-versions-getting-started/tailspin-spyworks/index.md)
 
-        - [Část 1: Soubor -> Nový projekt](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md)
-        - [Část 2: Vrstva přístupu k datům](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2.md)
-        - [3. část: Nabídka rozložení a kategorie](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3.md)
+        - [1. část: Soubor > Nový projekt](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md)
+        - [2. část: Vrstva přístupu k datům](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-2.md)
+        - [3. část: Nabídka Rozložení a Kategorie](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-3.md)
         - [4. část: Seznam produktů](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-4.md)
         - [5. část: Obchodní logika](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-5.md)
-        - [6. část: Členství technologie ASP.NET](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6.md)
-        - [Část 7: Přidání funkce](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7.md)
-        - [Část 8: Závěrečné stránky, zpracování výjimek a závěr](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8.md)
+        - [6. část: Členství v ASP.NET](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-6.md)
+        - [7. část: Přidání funkcí](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-7.md)
+        - [8. část: Závěrečné stránky, zpracování výjimek a závěr](older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-8.md)
     - [ASP.NET 4 – Začínáme se sadou Entity Framework 4 a webovými formuláři](older-versions-getting-started/getting-started-with-ef/index.md)
 
         - [Začínáme s Entity Framework 4.0 Database First](older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-1.md)
@@ -150,7 +150,7 @@ ms.locfileid: "59402268"
         - [Začínáme s Entity Framework 4.0 Database First – 8. část](older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-8.md)
     - [ASP.NET 4 – Pokračujeme se sadou Entity Framework 4 a webovými formuláři](older-versions-getting-started/continuing-with-ef/index.md)
 
-        - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 1. část: Začínáme se službou](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
+        - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 1. část: Začínáme](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-1-getting-started.md)
         - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 2. část: Přidání vrstvy obchodní logiky a testy jednotek](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-2-adding-a-business-logic-layer-and-unit-tests.md)
         - [Entity Framework 4.0 a ovládací prvek ObjectDataSource, 3. část: Řazení a filtrování](older-versions-getting-started/continuing-with-ef/using-the-entity-framework-and-the-objectdatasource-control-part-3-sorting-and-filtering.md)
         - [Ošetření souběžnosti se sadou Entity Framework 4.0 v ASP.NET 4](older-versions-getting-started/continuing-with-ef/handling-concurrency-with-the-entity-framework-in-an-asp-net-web-application.md)
@@ -412,7 +412,7 @@ ms.locfileid: "59402268"
         - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (C#)](data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-cs.md)
         - [Filtrování záznamů hlavních záznamů/podrobností ovládacím prvkem DropDownList (VB)](data-access/masterdetail/master-detail-filtering-with-a-dropdownlist-vb.md)
         - [Filtrování záznamů hlavních záznamů/podrobností dvou ovládacích prvků DropDownList (VB)](data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-vb.md)
-        - [Filtrování záznamů hlavních záznamů/podrobností na dvou stránkách (VB)](data-access/masterdetail/master-detail-filtering-across-two-pages-vb.md)
+        - [Filtrování záznamů master/detail na dvou stránkách (VB)](data-access/masterdetail/master-detail-filtering-across-two-pages-vb.md)
         - [Zobrazení hlavního záznamu/podrobností výběrem hlavního záznamu prvkem GridView s podrobnostmi v prvku DetailView (VB)](data-access/masterdetail/master-detail-using-a-selectable-master-gridview-with-a-details-detailview-vb.md)
     - [Vlastní formátování](data-access/custom-formatting/index.md)
 
@@ -473,7 +473,7 @@ ms.locfileid: "59402268"
         - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (C#)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-cs.md)
         - [Filtrování záznamů master/detail na dvou stránkách (C#)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-cs.md)
         - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (C#)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-cs.md)
-        - [Filtrování záznamů master/detail ovládacím prvkem DropDownList (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
+        - [Filtrování záznamů hlavních záznamů/podrobností ovládacím prvkem DropDownList (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb.md)
         - [Filtrování záznamů master/detail na dvou stránkách (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-acess-two-pages-datalist-vb.md)
         - [Zobrazení záznamů master/detail v seznamu hlavních záznamů s odrážkami a podrobnostmi v prvku DataList (VB)](data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-using-a-bulleted-list-of-master-records-with-a-details-datalist-vb.md)
     - [Úpravy a odstranění dat prostřednictvím datového prvku DataList](data-access/editing-and-deleting-data-through-the-datalist/index.md)

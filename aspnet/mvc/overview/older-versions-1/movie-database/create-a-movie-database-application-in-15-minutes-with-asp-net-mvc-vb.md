@@ -9,11 +9,11 @@ ms.assetid: e4ba9786-734c-4eb3-91bb-089793325d0d
 msc.legacyurl: /mvc/overview/older-versions-1/movie-database/create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 0ce8161d29a8ab4005e2b20462b08c9e10ee815a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74595427"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78541886"
 ---
 # <a name="create-a-movie-database-application-in-15-minutes-with-aspnet-mvc-vb"></a>Vytvoření aplikace Movie Database za 15 minut s ASP.NET MVC (VB)
 
@@ -122,10 +122,10 @@ Dál je potřeba vytvořit novou databázovou tabulku. V okně Průzkumníka ser
 
 | **Název sloupce** | **Datový typ** | **Povoluje hodnoty null.** |
 | --- | --- | --- |
-| Id | Hmot | Nepravda |
-| Název | Nvarchar (100) | Nepravda |
-| Adresářů | Nvarchar (100) | Nepravda |
-| DateReleased | Datum a čas | Nepravda |
+| ID | Int | False |
+| Název | Nvarchar(100) | False |
+| Ředitel | Nvarchar(100) | False |
+| DateReleased | DateTime | False |
 
 První sloupec, sloupec ID, má dvě speciální vlastnosti. Nejprve je třeba označit sloupec ID jako sloupec primárního klíče. Po výběru sloupce ID klikněte na tlačítko **nastavit primární klíč** (je to ikona, která vypadá jako klíč). Za druhé je třeba označit sloupec ID jako sloupec identity. Ve sloupci okno Vlastnosti přejděte dolů k části specifikace identity a rozbalte ji. Změňte vlastnost **is identity** na hodnotu **Yes**. Až budete hotovi, tabulka by měla vypadat jako na obrázku 4.
 
@@ -158,7 +158,7 @@ Pomocí těchto kroků spusťte Průvodce model EDM (Entity Data Model):
 Po kliknutí na tlačítko Přidat se zobrazí průvodce model EDM (Entity Data Model) (viz obrázek 6). Pomocí těchto kroků dokončete Průvodce:
 
 1. V kroku **zvolit obsah modelu** vyberte možnost **Generovat z databáze** .
-2. V kroku **Vybrat datové připojení** použijte datové připojení *MoviesDB. mdf* a název *MoviesDBEntities* pro nastavení připojení. Klikněte na tlačítko **Další** .
+2. V kroku **Vybrat datové připojení** použijte datové připojení *MoviesDB. mdf* a název *MoviesDBEntities* pro nastavení připojení. Klikněte na tlačítko **Další**.
 3. V kroku **Zvolte databázové objekty** rozbalte uzel tabulky a vyberte tabulku filmy. Zadejte obor názvů *MovieApp. Models* a klikněte na tlačítko **Dokončit** .
 
 [![dialogového okna Nový projekt](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb/_static/image6.jpg)](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb/_static/image11.png)
@@ -179,7 +179,7 @@ Dvakrát klikněte na název třídy na návrhové ploše a změňte název tř�
 
 Dalším krokem je vytvoření kontroleru ASP.NET MVC. Kontroler zodpovídá za řízení způsobu interakce uživatele s aplikací ASP.NET MVC.
 
-Postupujte podle těchto kroků:
+Postupujte následovně:
 
 1. V okně Průzkumník řešení klikněte pravým tlačítkem na složku řadiče a vyberte možnost nabídky **Přidat, kontroler**.
 2. V dialogovém okně Přidat řadič zadejte název *HomeController* a zaškrtněte políčko **přidat metody akcí pro scénáře vytváření, aktualizace a podrobností** (viz obrázek 8).
@@ -211,7 +211,7 @@ Seznam videí se předává do zobrazení. Cokoli, co se předává metodě View
 
 [!code-vb[Main](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb/samples/sample2.vb)]
 
-Metoda index () vrací zobrazení s názvem index. Pro zobrazení seznamu záznamů o filmových databázích je potřeba toto zobrazení vytvořit. Postupujte podle těchto kroků:
+Metoda index () vrací zobrazení s názvem index. Pro zobrazení seznamu záznamů o filmových databázích je potřeba toto zobrazení vytvořit. Postupujte následovně:
 
 Před otevřením dialogového okna **Přidat zobrazení** nebo v rozevíracím seznamu **Třída zobrazení dat** by se měly sestavit projekt (vyberte možnost nabídky **sestavit, sestavit řešení**).
 
@@ -257,7 +257,7 @@ Tato druhá metoda Create () byla upravena v aktualizované třídě HomeControl
 
 [!code-vb[Main](create-a-movie-database-application-in-15-minutes-with-asp-net-mvc-vb/samples/sample4.vb)]
 
-Visual Studio usnadňuje vytvoření formuláře pro vytvoření nového záznamu filmové databáze (viz obrázek 12). Postupujte podle těchto kroků:
+Visual Studio usnadňuje vytvoření formuláře pro vytvoření nového záznamu filmové databáze (viz obrázek 12). Postupujte následovně:
 
 1. Klikněte pravým tlačítkem myši na metodu Create () v editoru kódu a vyberte možnost nabídky **Přidat zobrazení**.
 2. Ověřte, jestli je zaškrtnuté políčko **vytvořit zobrazení silného typu** .
@@ -319,7 +319,7 @@ V výpisu 6 jsem přidali další logiku k přetížení obou metod Edit (). Prv
 
 Všimněte si, že je nutné načíst původní film, a pak volat ApplyPropertyChanges (), chcete-li aktualizovat existující film v databázi.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Účelem tohoto kurzu je poskytnout představu o zkušenostech s vytvářením aplikace ASP.NET MVC. Doufám, že se vám zjistilo, že vytvoření webové aplikace ASP.NET MVC je velmi podobné prostředí pro vytváření Active Serverch stránek nebo ASP.NET aplikace.
 

@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-cascading-style-sheets-for-web-page-layout
-title: '[Postup:] Použití šablony stylů CSS pro rozložení webové stránky? | Dokumenty Microsoft'
+title: '[Postupy:] Použít šablony stylů CSS pro rozložení webových stránek? | Dokumenty Microsoft'
 author: rick-anderson
-description: V tomto videu jsme Další informace o použití &amp;lt; div&amp;gt; prvky v kombinaci s šablony stylů (CSS) k vytvoření robustních a vyšší výkon web p...
+description: V tomto videu se dozvíte, jak používat &amp;lt; div&amp;gt; prvky v kombinaci s kaskádovým šablonou stylů (CSS) k vytvoření robustního a vyššího výkonu Web p...
 ms.author: riande
 ms.date: 10/05/2007
 ms.assetid: c812231d-e811-4048-9922-b34df1d0f300
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-cascading-style-sheets-for-web-page-layout
 msc.type: video
 ms.openlocfilehash: 8ac51219a3734d3d2c8657bcfac159e28faa7d7c
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59417283"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640985"
 ---
-# <a name="how-do-i-use-cascading-style-sheets-for-web-page-layout"></a>[Postup:] Použití šablony stylů CSS pro rozložení webové stránky?
+# <a name="how-do-i-use-cascading-style-sheets-for-web-page-layout"></a>[Postupy:] Použít šablony stylů CSS pro rozložení webových stránek?
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V tomto videu jsme Další informace o použití `<div>` prvky v kombinaci s šablony stylů CSS (CSS) k vytvoření robustních a vyšší výkon webových stránek. `<div>`Přístup založený na budou porovnány s `<table>` na základě rozložení přístup používá většina webových serverů v posledních letech. Potom několik přístupů na základě šablony stylů CSS se nezobrazí, od absolutní pozici na plovoucí elementy. Můžeme také přečtěte si o výhodách oddělení strukturální HTML z návrh s použitím šablony stylů CSS.
+V tomto videu se dozvíte, jak používat prvky `<div>` v kombinaci s kaskádovým šablonou stylů (CSS) k vytváření robustních a vyšších výkonných webových stránek. Přístup založený na `<div>`se porovná s přístupem k rozložení založenému na `<table>`, který používá většina webů za posledních let. Pak se zobrazí několik přístupů založených na šablonách CSS, od absolutního umístění až po plovoucí prvky. Také se dozvíte o výhodách oddělení strukturálního HTML od návrhu s použitím šablon stylů CSS.
 
-[&#9654;Podívejte se na video (29 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-cascading-style-sheets-for-web-page-layout)
+[&#9654;Přehrát video (29 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-cascading-style-sheets-for-web-page-layout)

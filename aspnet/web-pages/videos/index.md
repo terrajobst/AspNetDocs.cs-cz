@@ -1,6 +1,6 @@
 ---
 uid: web-pages/videos/index
-title: Video | Dokumentace Microsoftu
+title: Videa | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,16 +9,16 @@ ms.assetid: febf2824-4e3d-4dc6-84c5-f99777ec6144
 msc.legacyurl: /web-pages/videos
 msc.type: book
 ms.openlocfilehash: 4c22b024240740d971740e9f043231ccbcdc47fb
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65127686"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78631745"
 ---
 # <a name="videos"></a>Videa
 
 > [!NOTE] 
-> Služba WebMatrix už nedoporučuje jako integrované vývojové prostředí pro ASP.NET Web Pages. Použití [sady Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
+> WebMatrix se už nedoporučuje jako integrované vývojové prostředí pro webové stránky ASP.NET. Použijte [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
 
 - [Úvod](introduction/index.md)
 
@@ -32,7 +32,7 @@ ms.locfileid: "65127686"
     - [Vytvoření a úprava stránky s daty v nástroji WebMatrix](introduction/create-an-edit-data-page-in-webmatrix.md)
     - [Vytvoření a odstranění stránky s daty v nástroji WebMatrix](introduction/create-a-delete-data-page-in-webmatrix.md)
     - [Publikování webu na internet nástrojem WebMatrix](introduction/publish-a-website-to-the-internet-using-webmatrix.md)
-- [Stránky technologie ASP.NET Razor](aspnet-razor-pages/index.md)
+- [ASP.NET Razor Pages](aspnet-razor-pages/index.md)
 
     - [Začínáme s nástrojem WebMatrix a webovými stránkami ASP.NET](aspnet-razor-pages/getting-started-with-webmatrix-and-aspnet-web-pages.md)
     - [Úvod do programování webu ASP.NET pomocí syntaxe Razor](aspnet-razor-pages/introduction-to-aspnet-web-programming-using-the-razor-syntax.md)

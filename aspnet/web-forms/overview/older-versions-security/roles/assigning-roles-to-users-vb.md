@@ -9,11 +9,11 @@ ms.assetid: fd208ee9-69cc-4467-9783-b4e039bdd1d3
 msc.legacyurl: /web-forms/overview/older-versions-security/roles/assigning-roles-to-users-vb
 msc.type: authoredcontent
 ms.openlocfilehash: b53df4494eb0faef7c5e4547c2bf95e5fb071298
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74577861"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78625326"
 ---
 # <a name="assigning-roles-to-users-vb"></a>Přiřazení rolí uživatelům (VB)
 
@@ -305,7 +305,7 @@ Kliknutím na tlačítko Další dojde k postbacku a aktualizace `ActiveStep` na
 
 **Obrázek 14**: Bruce, tito a Wanda jsou všichni vedoucí ([kliknutím zobrazíte obrázek v plné velikosti](assigning-roles-to-users-vb/_static/image42.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Rozhraní role nabízí metody pro načítání informací o rolích a metodách konkrétního uživatele k určení toho, co uživatelé patří do zadané role. Kromě toho existuje několik způsobů, jak přidat a odebrat jednoho nebo více uživatelů k jedné nebo více rolím. V tomto kurzu se zaměřujeme jenom na dvě z těchto metod: `AddUserToRole` a `RemoveUserFromRole`. Existují další varianty navržené pro přidání více uživatelů k jedné roli a přiřazení více rolí jednomu uživateli.
 

@@ -1,270 +1,270 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/data-source-controls
-title: Ovládací prvky zdroje dat | Dokumentace Microsoftu
+title: Ovládací prvky zdroje dat | Microsoft Docs
 author: microsoft
-description: DataGrid – ovládací prvek technologie ASP.NET 1.x označené skvělé zlepšení v přístupu k datům ve webových aplikacích. Však nebyl jako uživatelsky přívětivé, jako by byly...
+description: Ovládací prvek DataGrid v ASP.NET 1. x označil Skvělé zlepšení přístupu k datům ve webových aplikacích. Není to ale uživatelsky přívětivé, jak by bylo možné....
 ms.author: riande
 ms.date: 02/20/2005
 ms.assetid: 78fd0e92-f9c6-4e96-a5e9-0375b307a828
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/data-source-controls
 msc.type: authoredcontent
 ms.openlocfilehash: a2e2cfbec3e5aebf42a2de30bab7d45b4b610298
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65109564"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78639410"
 ---
 # <a name="data-source-controls"></a>Ovládací prvky zdroje dat
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> DataGrid – ovládací prvek technologie ASP.NET 1.x označené skvělé zlepšení v přístupu k datům ve webových aplikacích. Však nebyl jako uživatelsky přívětivé, jako by byly. Stále vyžaduje značné množství kódu, který z něj získat mnoho užitečných funkcí. Například je model v všechna data access přejeme v 1.x.
+> Ovládací prvek DataGrid v ASP.NET 1. x označil Skvělé zlepšení přístupu k datům ve webových aplikacích. Není to ale uživatelsky přívětivé, jak by bylo možné. Stále se vyžaduje značné množství kódu, aby bylo možné získat z něho mnohem užitečnou funkčnost. Jedná se o model všech přístupů k datům budoucna v 1. x.
 
-DataGrid – ovládací prvek technologie ASP.NET 1.x označené skvělé zlepšení v přístupu k datům ve webových aplikacích. Však nebyl jako uživatelsky přívětivé, jako by byly. Stále vyžaduje značné množství kódu, který z něj získat mnoho užitečných funkcí. Například je model v všechna data access přejeme v 1.x.
+Ovládací prvek DataGrid v ASP.NET 1. x označil Skvělé zlepšení přístupu k datům ve webových aplikacích. Není to ale uživatelsky přívětivé, jak by bylo možné. Stále se vyžaduje značné množství kódu, aby bylo možné získat z něho mnohem užitečnou funkčnost. Jedná se o model všech přístupů k datům budoucna v 1. x.
 
-ASP.NET 2.0 adresy se v části ovládací prvky zdroje dat. Ovládací prvky zdroje dat v technologii ASP.NET 2.0 poskytují vývojářům deklarativní model pro načítání dat, zobrazení dat a úpravy dat. Účelem ovládací prvky zdroje dat je poskytnout konzistentní reprezentace dat na ovládací prvky vázané na data bez ohledu na zdroj těchto údajů. V srdci ovládací prvky zdroje dat v technologii ASP.NET 2.0 je abstraktní třída DataSourceControl. Třída DataSourceControl poskytuje základní implementaci rozhraní IDataSource a rozhraní IListSource, druhá možnost, které vám umožní přiřadit ovládací prvek zdroje dat jako zdroj dat ovládací prvek vázaný na data (prostřednictvím nové vlastnosti DataSourceId prodiskutována později) a zobrazit data v něm jako seznam. Každý seznam data z ovládacího prvku zdroje dat je přístupný jako objekt zobrazení DataSourceView. Poskytuje přístup k zobrazení DataSourceView instance rozhraní IDataSource. Například metoda GetViewNames vrátí ICollection, která umožňuje vytvořit výčet DataSourceViews spojené s konkrétní data správy zdrojového kódu a metoda GetView umožňuje přístup ke konkrétní instanci zobrazení DataSourceView podle názvu.
+ASP.NET 2,0 Tento údaj řeší v rámci ovládacích prvků zdroje dat. Ovládací prvky zdroje dat v ASP.NET 2,0 poskytují vývojářům deklarativní model pro načítání dat, zobrazování dat a upravování dat. Účelem ovládacích prvků zdroje dat je poskytnout konzistentní reprezentace dat pro ovládací prvky vázané na data bez ohledu na zdroj těchto dat. Na srdce ovládacího prvku zdroje dat v ASP.NET 2,0 je abstraktní třída DataSourceControl. Třída DataSourceControl poskytuje základní implementaci rozhraní IDataSource a rozhraní IListSource, což je ten, který umožňuje přiřadit ovládací prvek zdroje dat jako zdroj dat ovládacího prvku vázaného na data (prostřednictvím nové vlastnosti DataSourceId. prodiskutováni později) a vystavte si data v seznamu. Každý seznam dat z ovládacího prvku zdroje dat je vystaven jako objekt DataSourceView. Přístup k instancím DataSourceView zajišťuje rozhraní IDataSource. Například metoda GetViewNames vrací rozhraní ICollection, které umožňuje vytvořit výčet objektů DataSourceView přidružených ke konkrétnímu ovládacímu prvku zdroje dat a metoda GetView umožňuje přístup ke konkrétní instanci třídy DataSourceView podle názvu.
 
-Ovládací prvky zdroje dat k dispozici žádné uživatelské rozhraní. Jsou implementovány jako serverové ovládací prvky, aby se podporovaly deklarativní syntaxe, a tak, aby v případě potřeby mají přístup do stavu stránky. Ovládací prvky zdroje dat zobrazené libovolný kód HTML do klienta.
+Ovládací prvky zdroje dat nemají žádné uživatelské rozhraní. Jsou implementovány jako serverové ovládací prvky, aby mohly podporovat deklarativní syntaxi a tak, že mají přístup ke stavu stránky, pokud je to požadováno. Ovládací prvky zdroje dat nevykreslují žádné značky HTML klientovi.
 
 > [!NOTE]
-> Jak uvidíte později, že jsou také ukládání do mezipaměti výhody získat pomocí ovládací prvky zdroje dat.
+> Jak uvidíte později, existují i výhody ukládání do mezipaměti získané pomocí ovládacích prvků zdroje dat.
 
 ## <a name="storing-connection-strings"></a>Ukládání připojovacích řetězců
 
-Předtím, než se dostaneme k pohledu na tom, jak nakonfigurovat ovládací prvky zdroje dat, by měla zahrnovat jsme novou funkci v technologii ASP.NET 2.0 týkající se připojovací řetězce. Technologie ASP.NET 2.0 přináší nový oddíl v konfiguračním souboru, který umožňuje snadno ukládání připojovacích řetězců, které může číst dynamicky za běhu. &lt;ConnectionStrings&gt; části zjednodušuje ukládání připojovacích řetězců.
+Předtím, než se podíváme na to, jak nakonfigurovat ovládací prvky zdroje dat, doporučujeme pro připojovací řetězce využít novou funkci v ASP.NET 2,0. ASP.NET 2,0 zavádí nový oddíl v konfiguračním souboru, který umožňuje snadno ukládat připojovací řetězce, které se dají dynamicky číst za běhu. Část &lt;connectionStrings&gt; umožňuje snadno ukládat připojovací řetězce.
 
 Následující fragment kódu přidá nový připojovací řetězec.
 
 [!code-xml[Main](data-source-controls/samples/sample1.xml)]
 
 > [!NOTE]
-> Stejně jako u &lt;appSettings&gt; části &lt;connectionStrings&gt; mimo se zobrazí část &lt;system.web&gt; oddílu v konfiguračním souboru.
+> Stejně jako v části &lt;appSettings&gt; se sekce &lt;connectionStrings&gt; zobrazí mimo oddíl &lt;System. Web&gt; konfiguračního souboru.
 
-Pokud chcete použít tento připojovací řetězec, můžete použijte následující syntaxi, při nastavení atributu ConnectionString serverového ovládacího prvku.
+Chcete-li použít tento připojovací řetězec, můžete použít následující syntaxi při nastavování atributu ConnectionString ovládacího prvku serveru.
 
 [!code-aspx[Main](data-source-controls/samples/sample2.aspx)]
 
-&lt;ConnectionStrings&gt; oddílu se dá zašifrovat taky tak, aby se nevystaví citlivé informace. Tuto možnost najdete v novějším modulu.
+&gt; oddílu &lt;connectionStrings lze také šifrovat, aby citlivé informace nebyly vystaveny. Tato možnost bude zahrnuta v pozdějším modulu.
 
-## <a name="caching-data-sources"></a>Ukládání do mezipaměti zdroje dat
+## <a name="caching-data-sources"></a>Ukládání zdrojů dat do mezipaměti
 
-Každý DataSourceControl poskytuje čtyři vlastnosti ke konfiguraci ukládání do mezipaměti; EnableCaching CacheDuration, CacheExpirationPolicy a CacheKeyDependency.
+Každý DataSourceControl poskytuje čtyři vlastnosti pro konfiguraci ukládání do mezipaměti. EnableCaching, CacheDuration, CacheExpirationPolicy a CacheKeyDependency.
 
 ## <a name="enablecaching"></a>EnableCaching
 
-EnableCaching je pro ovládací prvek zdroje dat je povolena vlastnost typu Boolean určující, jestli ukládání do mezipaměti.
+EnableCaching je logická vlastnost, která určuje, zda je povoleno ukládání do mezipaměti pro ovládací prvek zdroje dat.
 
-## <a name="cacheduration-property"></a>CacheDuration Property
+## <a name="cacheduration-property"></a>Vlastnost CacheDuration
 
-Vlastnost CacheDuration nastaví počet sekund, po které zůstává v platnosti do mezipaměti. Nastavení této vlastnosti na **0** způsobí, že v mezipaměti platnosti, dokud není výslovně zrušena.
+Vlastnost CacheDuration nastaví počet sekund, po které mezipaměť zůstává platná. Nastavení této vlastnosti na **hodnotu 0** způsobí, že mezipaměť zůstane platná, dokud není explicitně zrušena její platnost.
 
-## <a name="cacheexpirationpolicy-property"></a>CacheExpirationPolicy Property
+## <a name="cacheexpirationpolicy-property"></a>Vlastnost CacheExpirationPolicy
 
-Vlastnost CacheExpirationPolicy může být nastaven na hodnotu **absolutní** nebo **posuvné**. Nastavení na absolutní znamená, že je počet sekund, po určeném vlastností CacheDuration maximální množství času, které se data uložená v mezipaměti. Nastavením jeho posuvné čas vypršení platnosti se vynuluje, když každá operace provádí.
+Vlastnost CacheExpirationPolicy lze nastavit buď jako **absolutní** , nebo jako **posuvnou**. Nastavení na absolutní znamená, že maximální doba, po kterou budou data ukládána do mezipaměti, je počet sekund zadaný vlastností CacheDuration. Nastavením na klouzavé je čas vypršení platnosti obnoven při provedení každé operace.
 
 ## <a name="cachekeydependency-property"></a>CacheKeyDependency Property
 
-Pokud je hodnota řetězce zadaná pro vlastnost CacheKeyDependency, bude technologie ASP.NET nastavit novou závislost mezipaměti na základě tohoto řetězce. To umožňuje tak jednoduše změně nebo odebrání CacheKeyDependency explicitně zneplatnění mezipaměti.
+Pokud je pro vlastnost CacheKeyDependency zadána řetězcová hodnota, ASP.NET nastaví novou závislost mezipaměti založenou na tomto řetězci. To umožňuje explicitně zrušit platnost mezipaměti tím, že jednoduše změníte nebo odeberete CacheKeyDependency.
 
-**Důležité**: Pokud je povolené zosobnění a přístup k zdroji dat a/nebo obsah dat jsou založeny na identity klienta, doporučuje se, že ukládání do mezipaměti zakázáno nastavením EnableCaching na hodnotu False. Pokud je povoleno ukládání do mezipaměti v tomto scénáři a uživatelem, než uživatel, který původně požadovali data vydá požadavek na autorizaci ke zdroji dat se nevynucuje. Data se jednoduše obsluhovat z mezipaměti.
+**Důležité**: Pokud je povolené zosobnění a přístup ke zdroji dat nebo obsahu dat je založený na identitě klienta, doporučuje se ukládání do mezipaměti zakázat nastavením EnableCaching na hodnotu false. Pokud je v tomto scénáři povoleno ukládání do mezipaměti a uživatel jiný než uživatel, který původně požadoval, aby data vystavoval požadavek, autorizace pro zdroj dat není vynutila. Data budou jednoduše obsluhována z mezipaměti.
 
-## <a name="the-sqldatasource-control"></a>Ovládacím prvkem SqlDataSource
+## <a name="the-sqldatasource-control"></a>Ovládací prvek SqlDataSource
 
-Ovládacím prvkem SqlDataSource umožňuje vývojáři přístup k datům uloženým v relační databázi, který podporuje technologii ADO.NET. Zprostředkovatele System.Data.SqlClient může použít pro přístup k databázi serveru SQL Server, poskytovatel System.Data.OleDb, System.Data.Odbc zprostředkovatele nebo zprostředkovatele System.Data.OracleClient pro přístup k Oracle. Proto ve třídě SqlDataSource není jistě používá jenom pro přístup k datům v databázi serveru SQL Server.
+Ovládací prvek SqlDataSource umožňuje vývojáři získat přístup k datům uloženým v libovolné relační databázi, která podporuje ADO.NET. Může použít poskytovatele System. data. SqlClient pro přístup k databázi SQL Server, poskytovateli System. data. OleDb, zprostředkovateli System. data. ODBC nebo poskytovateli System. data. OracleClient pro přístup k Oracle. Proto se třída SqlDataSource nepoužívá jenom pro přístup k datům v databázi SQL Server.
 
-Pokud chcete používat ve třídě SqlDataSource, jednoduše zadejte hodnotu pro vlastnost ConnectionString a zadáte příkaz SQL nebo uloženou proceduru. Ovládacím prvkem SqlDataSource postará o práci s základní architekturu ADO.NET. Otevře připojení k, dotazuje zdroje dat nebo provede uloženou proceduru, vrátí data a potom jej zavře spojení za vás.
+Aby bylo možné použít SqlDataSource, stačí zadat hodnotu vlastnosti ConnectionString a zadat příkaz SQL nebo uloženou proceduru. Ovládací prvek SqlDataSource má za starosti práci s podkladovou architekturou ADO.NET. Otevře připojení, odešle dotaz na zdroj dat nebo spustí uloženou proceduru, vrátí data a pak připojení ukončí.
 
 > [!NOTE]
-> Protože třída DataSourceControl automaticky uzavře spojení za vás, by měla snížit počet volání zákazníka generovaných nevrácení připojení k databázi.
+> Vzhledem k tomu, že třída DataSourceControl automaticky ukončí připojení za vás, měla by snížit počet volání zákazníků vygenerovaných nevracením databázových připojení.
 
-Následující fragment kódu váže ovládací prvek DropDownList s ovládacím prvkem SqlDataSource pomocí připojovacího řetězce, která je uložena v konfiguračním souboru, jak je znázorněno výše.
+Fragment kódu níže váže ovládací prvek DropDownList k ovládacímu prvku SqlDataSource pomocí připojovacího řetězce, který je uložen v konfiguračním souboru, jak je uvedeno výše.
 
 [!code-aspx[Main](data-source-controls/samples/sample3.aspx)]
 
-Jak je znázorněno výše, určuje vlastnost DataSourceMode ve třídě SqlDataSource režim datového zdroje. V předchozím příkladu nastavena vlastnost DataSourceMode na hodnotu objektu DataReader. V takovém případě ve třídě SqlDataSource vrátí objekt IDataReader pomocí kurzoru dopředné a jen pro čtení. Zadaný typ, který je vrácen řídí poskytovatele, který se používá. V takovém případě používám zprostředkovatele System.Data.SqlClient jako zadané v poli &lt;connectionStrings&gt; část souboru web.config. Objekt, který je vrácen proto bude typu SqlDataReader. Zadáním hodnoty DataSourceMode datové sady, můžete data uložená v datové sadě na serveru. Tento režim umožňuje přidat funkce, jako je řazení, stránkování, atd. Pokud jsem byl datové vazby ve třídě SqlDataSource do ovládacího prvku GridView, můžu byste zvolili režim datové sady. V případě DropDownList, je režim DataReader správnou volbu.
+Jak je znázorněno výše, vlastnost DataSourceMode třídy SqlDataSource určuje režim zdroje dat. V předchozím příkladu je vlastnost DataSourceMode nastavena na hodnotu DataSourceMode. V takovém případě třída SqlDataSource vrátí objekt rozhraní IDataReader pomocí kurzoru určeného pouze pro čtení. Zadaný typ objektu, který je vrácen, je řízen poskytovatelem, který je použit. V tomto případě používáme poskytovatele System. data. SqlClient, jak je uvedeno v části &lt;connectionStrings&gt; souboru Web. config. Proto vrácený objekt bude typu SqlDataReader. Zadáním hodnoty DataSourceMode datové sady můžete data uložit do datové sady na serveru. Tento režim umožňuje přidat funkce, jako je například řazení, stránkování atd. Pokud mám datovou vazbu třídy SqlDataSource k ovládacímu prvku GridView, chtěl jsem si zvolit režim DataSet. V případě ovládacího prvkem DropDownList je však režim DataReader správnou volbou.
 
 > [!NOTE]
-> Při ukládání do mezipaměti SqlDataSource nebo prvku AccessDataSource, vlastnost DataSourceMode je nastavena na hodnotu DataSet. Pokud povolíte ukládání do mezipaměti s DataSourceMode DataReader dojde k vyvolání výjimky.
+> Při ukládání do mezipaměti třídy SqlDataSource nebo prvku AccessDataSource musí být vlastnost DataSourceMode nastavena na hodnotu DataSet. K výjimce dojde v případě, že povolíte ukládání do mezipaměti s datasourcemodí objektu DataSourceMode.
 
 ## <a name="sqldatasource-properties"></a>Vlastnosti SqlDataSource
 
-Následují některé vlastnosti ovládacím prvkem SqlDataSource.
+Níže jsou uvedeny některé vlastnosti ovládacího prvku SqlDataSource.
 
 ### <a name="cancelselectonnullparameter"></a>CancelSelectOnNullParameter
 
-Logická hodnota, která určuje, zda je příkazu select zrušena, pokud jeden z parametrů má hodnotu null. Hodnota TRUE, ve výchozím nastavení.
+Logická hodnota určující, zda je příkaz SELECT zrušen, pokud jeden z parametrů má hodnotu null. Ve výchozím nastavení true.
 
 ### <a name="conflictdetection"></a>ConflictDetection
 
-V situaci, kdy více uživatelů může být aktualizace zdroje dat ve stejnou dobu určuje vlastnost ConflictDetection chování ovládacím prvkem SqlDataSource. Tato vlastnost je vyhodnocen jako jedna z hodnot výčtu ConflictOptions. Tyto hodnoty jsou **CompareAllValues** a **hodnotu OverwriteChanges**. Pokud je nastaveno na hodnotu OverwriteChanges jméno poslední osoby k zápisu dat do zdroje dat přepíše jakékoli předchozí změny. Pokud ale vlastnost ConflictDetection je nastavena na CompareAllValues, parametry vytvořené pro sloupce vrácený SelectCommand a parametry jsou také vytvořená k uložení původní hodnoty v každém z těchto sloupců ve třídě SqlDataSource k povolení určení, zda hodnoty se změnily od posledního SelectCommand.
+V situaci, kdy více uživatelů může aktualizovat zdroj dat ve stejnou dobu, vlastnost ConflictDetection určuje chování ovládacího prvku SqlDataSource. Tato vlastnost je vyhodnocena jako jedna z hodnot výčtu ConflictOptions. Tyto hodnoty jsou **CompareAllValues** a **hodnotu OverwriteChanges**. Pokud je nastavená na hodnotu OverwriteChanges, poslední osoba, která zapíše data do zdroje dat, přepíše všechny předchozí změny. Pokud je však vlastnost ConflictDetection nastavena na hodnotu CompareAllValues, jsou vytvořeny také parametry pro sloupce vrácené vlastností SelectCommand a Parameters pro uložení původních hodnot v každém z těchto sloupců, které umožňují třídě SqlDataSource zobrazit Určete, zda se hodnoty od spuštění vlastnosti SelectCommand změnily.
 
-### <a name="deletecommand"></a>Událost DeleteCommand
+### <a name="deletecommand"></a>Vlastnost
 
-Nastaví nebo získá SQL řetězec použitý při odstranění řádků z databáze. To může být buď dotaz SQL nebo název uložené procedury.
+Nastaví nebo získá řetězec SQL, který se použije při odstraňování řádků z databáze. Může to být buď dotaz SQL, nebo název uložené procedury.
 
 ### <a name="deletecommandtype"></a>DeleteCommandType
 
-Nastaví nebo získá typ příkazu pro odstranění, buď dotaz SQL (Text) nebo uložené procedury (uložené procedury StoredProcedure).
+Nastaví nebo získá typ příkazu DELETE, buď dotaz SQL (text), nebo uloženou proceduru (StoredProcedure).
 
 ### <a name="deleteparameters"></a>DeleteParameters
 
-Vrátí parametry, které jsou používány DeleteCommand SqlDataSourceView objektu souvisejícího s ovládacím prvkem SqlDataSource.
+Vrátí parametry, které jsou používány pomocí události DeleteCommand objektu SqlDataSourceView přidruženého k ovládacímu prvku SqlDataSource.
 
 ### <a name="oldvaluesparameterformatstring"></a>OldValuesParameterFormatString
 
-Tato vlastnost se používá k určení formátu původní hodnoty parametrů v případech, ve kterém je nastavena vlastnost ConflictDetection na CompareAllValues. Výchozí hodnota je {0} to znamená, že původní hodnoty parametrů bude trvat stejný název jako původní parametr. Jinými slovy, pokud je název pole EmployeeID, původní hodnota parametru by @EmployeeID.
+Tato vlastnost slouží k určení formátu původních parametrů hodnot v případech, kdy je vlastnost ConflictDetection nastavena na hodnotu CompareAllValues. Výchozí hodnota je {0} to znamená, že parametry původních hodnot budou mít stejný název jako původní parametr. Jinými slovy, pokud je název pole EmployeeID, původní parametr hodnoty by byl @EmployeeID.
 
-### <a name="selectcommand"></a>Vlastnost SelectCommand
+### <a name="selectcommand"></a>SelectCommand
 
-Nastaví nebo získá řetězec SQL, který se používá k načtení dat z databáze. To může být buď dotaz SQL nebo název uložené procedury.
+Nastaví nebo získá řetězec SQL, který se používá k načtení dat z databáze. Může to být buď dotaz SQL, nebo název uložené procedury.
 
 ### <a name="selectcommandtype"></a>SelectCommandType
 
-Nastaví nebo získá typu příkazu select, buď dotaz SQL (Text) nebo uložené procedury (uložené procedury StoredProcedure).
+Nastaví nebo získá typ příkazu SELECT, buď dotaz SQL (text), nebo uloženou proceduru (StoredProcedure).
 
-### <a name="selectparameters"></a>Prvků vlastnosti SelectParameters obsahovat
+### <a name="selectparameters"></a>SelectParameters
 
-Vrátí parametry, které jsou používány SelectCommand SqlDataSourceView objektu souvisejícího s ovládacím prvkem SqlDataSource.
+Vrátí parametry, které jsou používány pomocí vlastnosti SelectCommand objektu SqlDataSourceView přidruženého k ovládacímu prvku SqlDataSource.
 
 ### <a name="sortparametername"></a>SortParameterName
 
-Získá nebo nastaví název parametru uložené procedury, která se používá při řazení dat načíst ovládací prvek zdroje dat. Platné pouze v případě, že SelectCommandType je nastavena na uložené procedury StoredProcedure.
+Získá nebo nastaví název parametru uložené procedury, který se používá při řazení dat načtených pomocí ovládacího prvku zdroje dat. Platí pouze v případě, že je SelectCommandType nastaveno na StoredProcedure.
 
 ### <a name="sqlcachedependency"></a>SqlCacheDependency
 
-Středníkem oddělený řetězec určující databáze a tabulky používané v závislosti mezipaměti SQL Server. (Závislosti mezipaměti SQL probereme v novějším modulu.)
+Středníkem oddělený řetězec určující databáze a tabulky používané v závislosti na SQL Server cache. (Závislosti mezipaměti SQL budou popsány v pozdějším modulu.)
 
-### <a name="updatecommand"></a>Událost UpdateCommand
+### <a name="updatecommand"></a>Událost
 
-Nastaví nebo získá řetězec SQL, který se používá při aktualizaci dat v databázi. To může být buď dotaz SQL nebo název uložené procedury.
+Nastaví nebo získá řetězec SQL, který se používá při aktualizaci dat v databázi. Může to být buď dotaz SQL, nebo název uložené procedury.
 
 ### <a name="updatecommandtype"></a>UpdateCommandType
 
-Nastaví nebo získá typ příkazu pro aktualizaci, buď dotaz SQL (Text) nebo uložené procedury (uložené procedury StoredProcedure).
+Nastaví nebo získá typ příkazu Update, buď dotaz SQL (text), nebo uloženou proceduru (StoredProcedure).
 
 ### <a name="updateparameters"></a>UpdateParameters
 
-Vrátí parametry, které jsou používány UpdateCommand SqlDataSourceView objektu souvisejícího s ovládacím prvkem SqlDataSource.
+Vrátí parametry, které jsou používány událostmi UpdateCommand objektu SqlDataSourceView přidruženého k ovládacímu prvku SqlDataSource.
 
 ## <a name="the-accessdatasource-control"></a>Ovládací prvek AccessDataSource
 
-Ovládací prvek AccessDataSource je odvozena od třídy SqlDataSource a je použitého k vazbě dat na databázi aplikace Microsoft Access. Vlastnost ConnectionString prvku AccessDataSource je vlastnost jen pro čtení. Namísto použití vlastnosti ConnectionString, je vlastnost DataFile použít tak, aby odkazoval na databázi aplikace Access, jak je znázorněno níže.
+Ovládací prvek AccessDataSource je odvozen z třídy SqlDataSource a je použit pro datovou vazby k databázi aplikace Microsoft Access. Vlastnost ConnectionString ovládacího prvku AccessDataSource je vlastnost jen pro čtení. Místo použití vlastnosti ConnectionString se vlastnost DataFile používá k odkazování na databázi Access, jak je znázorněno níže.
 
 [!code-aspx[Main](data-source-controls/samples/sample4.aspx)]
 
-Prvku AccessDataSource ProviderName základní SqlDataSource bude vždycky nastavený na System.Data.OleDb a připojuje k databázi pomocí zprostředkovatele Microsoft.Jet.OLEDB.4.0 OLE DB. Ovládací prvek AccessDataSource nelze použít pro připojení k databázi aplikace Access chráněný heslem. Pokud máte připojení k databázi chráněn heslem, používejte ovládacím prvkem SqlDataSource.
+AccessDataSource vždy nastaví ProviderName (ProviderName) základní třídy SqlDataSource na System. data. OleDb a připojí se k databázi pomocí poskytovatele OLE DB Microsoft. Jet. OLEDB. 4.0. Ovládací prvek AccessDataSource nelze použít pro připojení k databázi s přístupem chráněným heslem. Pokud je nutné se připojit k databázi chráněné heslem, měli byste použít ovládací prvek SqlDataSource.
 
 > [!NOTE]
-> Accessové databáze, které jsou uloženy v rámci tohoto webu musí být umístěné ve aplikace\_datový adresář. ASP.NET nebude povolovat ukládání souborů do tohoto adresáře, které budete procházet. Budete muset udělit oprávnění ke čtení a zápis do ní účet procesu\_adresář dat při použití databáze aplikace Access.
+> Přístup k databázím uloženým v rámci webu by měl být umístěn v adresáři App\_data. ASP.NET nepovoluje procházení souborů v tomto adresáři. Při použití databází Access bude třeba udělit účtu procesu oprávnění ke čtení a zápisu do aplikace\_datový adresář.
 
 ## <a name="the-xmldatasource-control"></a>Ovládací prvek XmlDataSource
 
-Prvek XmlDataSource slouží k data-bind XML data do ovládacích prvků vázaných na data. Můžete svázat do souboru XML pomocí vlastnosti DataFile nebo můžete vytvořit vazbu na řetězec XML pomocí vlastnosti Data. Prvek XmlDataSource poskytuje atributy ve formátu XML jako pole s možností vazby. V případech, kdy potřebujete k vytvoření vazby na hodnoty, které nejsou reprezentovány jako atributy je potřeba použít transformace XSL. Můžete také použít výrazy XPath pro filtrování dat XML.
+Prvek XmlDataSource se používá k vázání dat XML do ovládacích prvků vázaných na data. Můžete vytvořit propojení se souborem XML pomocí vlastnosti DataFile nebo můžete vytvořit propojení s řetězcem XML pomocí vlastnosti data. XmlDataSource zpřístupňuje atributy XML jako pole s možností vazby. V případech, kdy potřebujete vytvořit vazby na hodnoty, které nejsou reprezentované jako atributy, budete muset použít transformaci XSL. Můžete také použít výrazy XPath k filtrování dat XML.
 
 Vezměte v úvahu následující soubor XML:
 
 [!code-xml[Main](data-source-controls/samples/sample5.xml)]
 
-Všimněte si, že prvek XmlDataSource používá výraz XPath vlastnosti *osoby nebo osoby* Chcete-li filtrovat na jenom &lt;osoba&gt; uzly. DropDownList a data vazbu pomocí vlastnosti DataTextField atributu příjmení.
+Všimněte si, že XmlDataSource používá vlastnost XPath *persons/person* k filtrování pouze těch&gt; uzlů &lt;osoba. Vlastnost DropDownList potom vytvoří vázání dat k atributu LastName pomocí vlastnosti DataTextField.
 
-Zatímco ovládacího prvku XmlDataSource se používá především k vazbě dat na jen pro čtení dat XML, je možné upravit datový soubor XML. Všimněte si, že v takových případech automatické vložení, aktualizace nebo odstranění informací v souboru XML neprobíhá automaticky stejně jako s jinými ovládacími prvky dat zdroje. Místo toho budete muset psát kód ručně upravovat data, pomocí následujících metod ovládacího prvku XmlDataSource.
+I když je ovládací prvek XmlDataSource primárně použit pro datovou vazby k datům XML jen pro čtení, je možné upravit datový soubor XML. Všimněte si, že v takových případech automatické vkládání, aktualizace a odstraňování informací v souboru XML neprobíhá automaticky stejně jako jiné ovládací prvky zdroje dat. Místo toho budete muset napsat kód pro ruční úpravu dat pomocí následujících metod ovládacího prvku XmlDataSource.
 
 ### <a name="getxmldocument"></a>GetXmlDocument
 
-Načte třídou XMLDocument nastavenou na objekt, který obsahuje kód XML pomocí prvku XmlDataSource.
+Načte objekt XmlDocument obsahující kód XML, který získá XmlDataSource.
 
-### <a name="save"></a>Uložit
+### <a name="save"></a>Uložení
 
-Uloží zpět do zdroje dat. XmlDocument v paměti.
+Uloží z paměti XmlDocument zpátky do zdroje dat.
 
-Je důležité si uvědomit, že metodu Save bude fungovat jenom Pokud jsou splněny následující dvě podmínky:
+Je důležité si uvědomit, že metoda Save bude fungovat jenom v případě, že jsou splněné tyto dvě podmínky:
 
-1. Prvek XmlDataSource používá vlastnost DataFile k vytvoření vazby k souboru XML, nikoliv vlastnost datového připojení k datům XML v paměti.
-2. Žádná transformace je zadáno pomocí vlastnosti Transform nebo TransformFile.
+1. XmlDataSource používá vlastnost DataFile pro svázání se souborem XML namísto vlastnosti data pro svázání s daty XML v paměti.
+2. Pomocí vlastnosti Transform nebo TransformFile není určena žádná transformace.
 
-Všimněte si také, že metodu Save může vést k neočekávaným výsledkům při volání více uživatelů současně.
+Všimněte si také, že metoda Save může vracet neočekávané výsledky při volání více uživatelů současně.
 
 ## <a name="the-objectdatasource-control"></a>Ovládací prvek ObjectDataSource
 
-Ovládací prvky zdroje dat, které jsme pokryli do této chvíle jsou výborné možnosti pro dvouvrstvé aplikace, ve kterém ovládací prvek zdroje dat komunikuje přímo do úložiště dat. Mnoho skutečných aplikací jsou však vícevrstvých aplikací ve kterém ovládací prvek zdroje dat může být nutné ke komunikaci se obchodního objektu, které pak komunikuje s datové vrstvě. V těchto situacích ObjectDataSource krásně vyplní faktury. Prvku ObjectDataSource funguje ve spojení s zdrojový objekt. Ovládací prvek ObjectDataSource vytvoří instanci objektu zdroje, volání zadanou metodu a uvolnění instance objektu vše v rámci jedné žádosti, pokud objekt obsahuje instanci metody místo statické metody (Shared v jazyce Visual Basic). Proto musí být objekt bezstavové. To znamená že váš objekt by měl získat a uvolnit všechny prostředky v rámci rozsahu jednoho požadavku. Můžete řídit způsob vytvoření zdrojového objektu zpracováním událostí ObjectCreating ovládacího prvku ObjectDataSource. Můžete vytvořit instanci objektu zdroje a potom nastavte vlastnost ObjectInstance třídy ObjectDataSourceEventArgs do této instance. Ovládací prvek ObjectDataSource, bude používat instanci, která se vytvoří v případě ObjectCreating namísto vytvoření instance sama o sobě.
+Ovládací prvky zdroje dat, které jsme pokryli do tohoto bodu, jsou vynikajícími volbami pro dvě vícevrstvé aplikace, kde ovládací prvek zdroje dat komunikuje přímo s úložištěm dat. Mnohé z reálných aplikací však jsou vícevrstvé aplikace, ve kterých může být potřeba, aby ovládací prvek zdroje dat komunikoval s podnikovým objektem, který zase komunikuje s datovou vrstvou. V těchto situacích prvek ObjectDataSource vyplní vyúčtování jako nejúhledné. Prvek ObjectDataSource pracuje ve spojení se zdrojovým objektem. Ovládací prvek ObjectDataSource vytvoří instanci zdrojového objektu, volá zadanou metodu a odstraní instanci objektu All v rámci jednoho požadavku, pokud objekt obsahuje metody instance místo statických metod (sdílené v Visual Basic). Proto musí být objekt bezstavový. To znamená, že váš objekt by měl získat a uvolnit všechny požadované prostředky v rozsahu jediné žádosti. Způsob vytvoření zdrojového objektu lze řídit zpracováním události ObjectCreating ovládacího prvku ObjectDataSource. Můžete vytvořit instanci zdrojového objektu a potom nastavit vlastnost ObjectInstance třídy ObjectDataSourceEventArgs na tuto instanci. Ovládací prvek ObjectDataSource použije instanci, která je vytvořena v události ObjectCreating místo vytvoření vlastní instance.
 
-Pokud zdrojový objekt pro ovládací prvek ObjectDataSource zpřístupní veřejné statické metody (Shared v jazyce Visual Basic), které lze volat pro načítání a úpravy dat, bude ovládací prvek ObjectDataSource přímo volat tyto metody. Pokud ovládací prvek ObjectDataSource musí vytvořit instanci objektu zdroje abyste mohli volat metodu, musí obsahovat objekt veřejný konstruktor, který nepřijímá žádné parametry. Ovládací prvek ObjectDataSource zavolá tento konstruktor vytvoří novou instanci objektu zdroje.
+Pokud zdrojový objekt ovládacího prvku ObjectDataSource zveřejňuje veřejné statické metody (sdílené v Visual Basic), které lze volat pro načtení a úpravu dat, ovládací prvek ObjectDataSource bude volat tyto metody přímo. Pokud ovládací prvek ObjectDataSource musí vytvořit instanci zdrojového objektu, aby bylo možné provést volání metody, objekt musí obsahovat veřejný konstruktor, který nepřijímá žádné parametry. Ovládací prvek ObjectDataSource vyvolá tento konstruktor při vytvoření nové instance zdrojového objektu.
 
-Pokud zdrojový objekt neobsahuje veřejný konstruktor bez parametrů, můžete vytvořit instanci objektu zdroje, který se použije v případě ObjectCreating ovládacího prvku ObjectDataSource.
+Pokud zdrojový objekt neobsahuje veřejný konstruktor bez parametrů, můžete vytvořit instanci zdrojového objektu, který bude použit ovládacím prvkem ObjectDataSource v události ObjectCreating.
 
-## <a name="specifying-object-methods"></a>Určení objektových metod
+## <a name="specifying-object-methods"></a>Určení metod objektu
 
-Zdrojového objektu ovládacího prvku ObjectDataSource může obsahovat libovolný počet metod, které se používají k výběru, vložit, aktualizovat nebo odstranit data. Tyto metody jsou volány ovládacího prvku ObjectDataSource vycházet z názvu metody, jsme uvedli, pomocí metody SelectMethod, InsertMethod, UpdateMethod a DeleteMethod vlastnosti ovládacího prvku ObjectDataSource. Zdrojový objekt také může obsahovat volitelné SelectCount metodu, která je identifikovaná ovládacího prvku ObjectDataSource vlastnost SelectCountMethod, který vrací počet celkový počet objektů ve zdroji dat. Ovládací prvek ObjectDataSource bude volat metodu SelectCount po zavolání metody Select pro načtení celkový počet záznamů ve zdroji dat pro použití při stránkování.
+Zdrojový objekt ovládacího prvku ObjectDataSource může obsahovat libovolný počet metod, které se používají k výběru, vložení, aktualizaci nebo odstranění dat. Tyto metody jsou volány ovládacím prvkem ObjectDataSource na základě názvu metody, jak je určeno pomocí vlastnosti SelectMethod, určena metoda InsertMethod, UpdateMethod nebo DeleteMethod ovládacího prvku ObjectDataSource. Zdrojový objekt může také zahrnovat volitelnou metodu SelectCount, která je identifikována ovládacím prvkem ObjectDataSource pomocí vlastnosti SelectCountMethod, která vrací počet celkového počtu objektů ve zdroji dat. Ovládací prvek ObjectDataSource zavolá metodu SelectCount poté, co byla volána metoda Select, aby získala celkový počet záznamů ve zdroji dat pro použití při stránkování.
 
-## <a name="lab-using-data-source-controls"></a>Ovládací prvky zdroje dat pomocí testovacího prostředí
+## <a name="lab-using-data-source-controls"></a>Testovací prostředí využívající ovládací prvky zdroje dat
 
-## <a name="exercise-1---displaying-data-with-the-sqldatasource-control"></a>Cvičení 1 – zobrazení dat ovládacím prvkem SqlDataSource(VB)
+## <a name="exercise-1---displaying-data-with-the-sqldatasource-control"></a>Cvičení 1 – zobrazení dat pomocí ovládacího prvku SqlDataSource
 
-Následující cvičení používá ovládacím prvkem SqlDataSource pro připojení k databázi Northwind. Předpokládá, že máte přístup k databázi Northwind v instanci systému SQL Server 2000.
+Následující cvičení používá ovládací prvek SqlDataSource pro připojení k databázi Northwind. Předpokládá, že máte přístup k databázi Northwind na instanci SQL Server 2000.
 
-1. Vytvoření nového webu technologie ASP.NET.
-2. Přidejte nový soubor web.config.
+1. Vytvořte nový web ASP.NET.
+2. Přidejte nový soubor Web. config.
 
-    1. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a klikněte na tlačítko Přidat novou položku.
-    2. Ze seznamu šablon vyberte soubor webové konfigurace a klikněte na tlačítko Přidat.
-3. Upravit &lt;connectionStrings&gt; části následujícím způsobem: 
+    1. Klikněte pravým tlačítkem na projekt v Průzkumník řešení a klikněte na Přidat novou položku.
+    2. V seznamu šablon vyberte soubor webové konfigurace a klikněte na Přidat.
+3. Upravte &lt;&gt;ch connectionStrings v části následujícím způsobem: 
 
     [!code-aspx[Main](data-source-controls/samples/sample6.aspx)]
-4. Přepnout na zobrazení kódu a přidejte atribut ConnectionString a SelectCommand atributu &lt;asp: SqlDataSource&gt; řídit následujícím způsobem: 
+4. Přepněte do zobrazení kódu a přidejte atribut ConnectionString a atribut SelectCommand do &lt;ASP: SqlDataSource&gt; ovládací prvek následujícím způsobem: 
 
     [!code-aspx[Main](data-source-controls/samples/sample7.aspx)]
-5. V návrhovém zobrazení přidání nového ovládacího prvku GridView.
-6. V rozevírací nabídce zvolit zdroj dat v nabídce úlohy ovládacího prvku GridView zvolte SqlDataSource1.
-7. Klikněte pravým tlačítkem myši na Default.aspx a zvolte v nabídce zobrazení v prohlížeči. Po zobrazení výzvy k uložení klikněte na tlačítko Ano.
-8. GridView zobrazí data z tabulky produktů.
+5. Z zobrazení Návrh přidejte nový ovládací prvek GridView.
+6. V rozevíracím seznamu zvolit zdroj dat v nabídce Úkoly GridView vyberte možnost SqlDataSource1.
+7. Klikněte pravým tlačítkem na Default. aspx a v nabídce vyberte Zobrazit v prohlížeči. Po zobrazení výzvy k uložení klikněte na Ano.
+8. Prvek GridView zobrazí data z tabulky Products.
 
-## <a name="exercise-2---editing-data-with-the-sqldatasource-control"></a>Cvičení 2 - Úprava dat ovládacím prvkem SqlDataSource(VB)
+## <a name="exercise-2---editing-data-with-the-sqldatasource-control"></a>Cvičení 2 – Úprava dat pomocí ovládacího prvku SqlDataSource
 
-Následující cvičení předvádí, jak vytvořit vazbu na data DropDownList kontrolovat pomocí deklarativní syntaxe a slouží k úpravě dat v ovládacím prvku DropDownList.
+Následující cvičení ukazuje, jak vytvořit datovou vazby ovládacího prvku DropDownList pomocí deklarativní syntaxe a umožňuje upravit data zobrazená v ovládacím prvku DropDownList.
 
-1. V návrhovém zobrazení odstraňte z Default.aspx ovládacím prvku GridView. 
+1. V zobrazení Návrh odstraňte ovládací prvek GridView z default. aspx. 
 
-    **Důležité**: Ponechejte ovládací prvek SqlDataSource na stránce.
-2. Přidejte ovládací prvek DropDownList Default.aspx.
+    **Důležité**: ponechejte ovládací prvek SqlDataSource na stránce.
+2. Přidejte ovládací prvek DropDownList na Default. aspx.
 3. Přepněte do zobrazení zdroje.
-4. Přidat atribut DataSourceId, DataTextField a DataValueField k &lt;asp: DropDownList&gt; řídit následujícím způsobem: 
+4. Přidejte atribut DataSourceId, DataTextField a DataValueField do &lt;ASP: DropDownList&gt; ovládací prvek následujícím způsobem: 
 
     [!code-aspx[Main](data-source-controls/samples/sample8.aspx)]
-5. Uložit Default.aspx a zobrazit v prohlížeči. Poznámka: aby DropDownList obsahuje všechny produkty z databáze Northwind.
+5. Uložte default. aspx a zobrazte ho v prohlížeči. Všimněte si, že DropDownList obsahuje všechny produkty z databáze Northwind.
 6. Zavřete prohlížeč.
-7. V zobrazení zdroje Default.aspx přidání nového ovládacího prvku textového pole pod ovládacím prvkem DropDownList. Změňte vlastnost ID textového pole na txtProductName.
-8. V části ovládacího prvku textového pole přidáte nový ovládací prvek tlačítko. Změnit vlastnosti ID na tlačítko na btnUpdate a vlastnost Text na **název produktu aktualizace**.
-9. V zobrazení zdroje Default.aspx přidejte vlastnost UpdateCommand a dva nové UpdateParameters ke značce SqlDataSource následujícím způsobem: 
+7. V zobrazení zdroje default. aspx přidejte do ovládacího prvku DropDownList nový ovládací prvek TextBox. Změňte vlastnost ID textového pole na txtProductName.
+8. Do ovládacího prvku TextBox přidejte ovládací prvek tlačítko Nový. Změňte vlastnost ID tlačítka na btnUpdate a vlastnost text na hodnotu **aktualizovat název produktu**.
+9. V zobrazení zdrojového kódu default. aspx přidejte do tagu SqlDataSource vlastnost UpdateCommand a dvě nové UpdateParameters, jak je znázorněno níže: 
 
     [!code-aspx[Main](data-source-controls/samples/sample9.aspx)]
 
     > [!NOTE]
-    > Všimněte si, že existují dvě aktualizovat parametry (ProductName a ProductID) přidá tento kód. Tyto parametry jsou mapovány na vlastnosti Text txtProductName textového pole a vlastnosti SelectedValue ddlProducts DropDownList.
-10. Přepněte do zobrazení návrhu a dvakrát klikněte na ovládací prvek tlačítko pro přidání obslužné rutiny události.
-11. Přidejte následující kód btnUpdate\_klikněte na tlačítko kódu: 
+    > Všimněte si, že v tomto kódu jsou přidány dva parametry aktualizace (ProductName a ProductID). Tyto parametry jsou namapovány na vlastnost text v textovém poli txtProductName a na vlastnost SelectedValue třídy ddlProducts DropDownList.
+10. Přepněte na zobrazení Návrh a dvakrát klikněte na ovládací prvek tlačítko a přidejte obslužnou rutinu události.
+11. Přidejte následující kód do btnUpdate\_klikněte na kód: 
 
     [!code-csharp[Main](data-source-controls/samples/sample10.cs)]
-12. Klikněte pravým tlačítkem myši na Default.aspx a zvolte, chcete-li zobrazit v prohlížeči. Po zobrazení výzvy k uložení všech změn, klikněte na tlačítko Ano.
-13. ASP.NET 2.0 povolit částečné třídy pro kompilaci za běhu. Není nutné vytvořit aplikaci, chcete-li zobrazit změny kódu projeví.
+12. Klikněte pravým tlačítkem na Default. aspx a vyberte ho k zobrazení v prohlížeči. Po zobrazení výzvy k uložení všech změn klikněte na tlačítko Ano.
+13. Částečné třídy ASP.NET 2,0 umožňují kompilaci za běhu. Aby se projevily změny v kódu, není nutné vytvářet aplikaci.
 14. Vyberte produkt z DropDownList.
-15. Zadejte nový název pro vybraný produkt do textového pole a potom klikněte na tlačítko Aktualizovat.
-16. Název produktu je aktualizována v databázi.
+15. Do textového pole zadejte nový název pro vybraný produkt a pak klikněte na tlačítko Aktualizovat.
+16. V databázi se aktualizuje název produktu.
 
 ## <a name="exercise-3-using-the-objectdatasource-control"></a>Cvičení 3 pomocí ovládacího prvku ObjectDataSource
 
-V tomto cvičení vám ukáže způsob použití ovládacího prvku ObjectDataSource a zdrojový objekt interakci s databází Northwind.
+Toto cvičení demonstruje použití ovládacího prvku ObjectDataSource a zdrojového objektu pro interakci s databází Northwind.
 
-1. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a klikněte na Přidat novou položku.
-2. V seznamu šablon vyberte webový formulář. Změňte název na object.aspx a klikněte na tlačítko Přidat.
-3. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a klikněte na Přidat novou položku.
-4. V seznamu šablon vyberte třídu. Změnit název třídy NorthwindData.cs a klikněte na tlačítko Přidat.
-5. Klikněte na tlačítko Ano, po zobrazení výzvy k přidání třídy do aplikace\_složky s kódem.
-6. Přidejte následující kód do souboru NorthwindData.cs: 
+1. Klikněte pravým tlačítkem na projekt v Průzkumník řešení a klikněte na Přidat novou položku.
+2. V seznamu šablon vyberte možnost webový formulář. Změňte název na Object. aspx a klikněte na Přidat.
+3. Klikněte pravým tlačítkem na projekt v Průzkumník řešení a klikněte na Přidat novou položku.
+4. V seznamu šablony vyberte třída. Změňte název třídy na NorthwindData.cs a klikněte na Přidat.
+5. Po zobrazení výzvy k přidání třídy do složky\_kódu aplikace klikněte na Ano.
+6. Do souboru NorthwindData.cs přidejte následující kód: 
 
     [!code-csharp[Main](data-source-controls/samples/sample11.cs)]
-7. Přidejte následující kód k zobrazení zdroje object.aspx: 
+7. Do zobrazení zdroje objektu Object. aspx přidejte následující kód: 
 
     [!code-aspx[Main](data-source-controls/samples/sample12.aspx)]
-8. Uložte všechny soubory a procházet object.aspx.
-9. Zobrazení podrobností, úpravy zaměstnanci, zaměstnanci přidáním a odstraněním zaměstnanci pracovat s rozhraním.
+8. Uložte všechny soubory a procházení Object. aspx.
+9. Interakce s rozhraním zobrazením podrobností, úpravou zaměstnanců, přidáním zaměstnanců a odstraňováním zaměstnanců.

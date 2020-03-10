@@ -9,11 +9,11 @@ ms.assetid: 1c7d0916-0988-4b4f-9a03-935e4b5af6af
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/control-id-naming-in-content-pages-cs
 msc.type: authoredcontent
 ms.openlocfilehash: e849e5860dc988e112cc3a65d976c16ecdf77416
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74624382"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640383"
 ---
 # <a name="control-id-naming-in-content-pages-c"></a>Pojmenovávání ID ovládacích prvků na stránkách obsahu (C#)
 
@@ -205,7 +205,7 @@ Všimněte si, jak se ve volání `getElementById`zobrazí správná hodnota atr
 > [!NOTE]
 > Tento příklad JavaScriptu pouze ukazuje, jak přidat funkci JavaScriptu, která správně odkazuje na element HTML vykreslený ovládacím prvkem serveru. Chcete-li použít tuto funkci, musíte vytvořit další JavaScript pro volání funkce při načtení dokumentu nebo v případě, že se některá konkrétní akce uživatele zobrazí. Další informace o těchto a souvisejících tématech najdete v článku [práce se skriptem na straně klienta](https://msdn.microsoft.com/library/aa479302.aspx).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Některé ovládací prvky ASP.NET serveru fungují jako názvové kontejnery, což ovlivňuje vygenerované `id` hodnoty atributu jejich podřízených ovládacích prvků a také rozsah ovládacích prvků canvassed metodou `FindControl`. S ohledem na stránky předlohy, samotná hlavní stránka a její ovládací prvky ContentPlaceHolder mají pojmenování kontejnerů. V důsledku toho musíme na stránce obsahu pomocí `FindControl`naprogramovat trochu více práce, které programově odkazují na ovládací prvky. V tomto kurzu jsme prozkoumali dva postupy: přechod do ovládacího prvku ContentPlaceHolder a volání jeho `FindControl` metody; a hromadnou implementaci `FindControl`, která rekurzivně prohledává všechny názvové kontejnery.
 

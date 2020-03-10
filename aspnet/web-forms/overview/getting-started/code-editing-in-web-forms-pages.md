@@ -1,6 +1,6 @@
 ---
 uid: web-forms/overview/getting-started/code-editing-in-web-forms-pages
-title: Úprava kódu webových formulářů ASP.NET v sadě Visual Studio 2013 | Dokumentace Microsoftu
+title: Úpravy kódu ASP.NET webové formuláře v Visual Studio 2013 | Microsoft Docs
 author: Erikre
 description: ''
 ms.author: riande
@@ -9,173 +9,173 @@ ms.assetid: 5344b74e-b888-479a-92bc-601a33bd61a2
 msc.legacyurl: /web-forms/overview/getting-started/code-editing-in-web-forms-pages
 msc.type: authoredcontent
 ms.openlocfilehash: 3473ad476fbbebc58e12586334b4600f57cf17ed
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134243"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78632746"
 ---
 # <a name="code-editing-aspnet-web-forms-in-visual-studio-2013"></a>Úprava kódu webových formulářů ASP.NET v sadě Visual Studio 2013
 
-by [Erik Reitan](https://github.com/Erikre)
+od [Erik Reitan](https://github.com/Erikre)
 
-V mnoha stránkách webový formulář ASP.NET napíšete kód v jazyce Visual Basic, C# nebo jiném jazyce. Editor kódu v sadě Visual Studio vám umožňují psát kód rychle a pomáhá předejít chybám. Kromě toho nabízí editor způsoby, jak vytvořit opakovaně použitelný kód snížit množství práce, kterou je třeba provést.
+V mnoha stránkách webového formuláře ASP.NET můžete psát kód v Visual Basic, C#nebo v jiném jazyce. Editor kódu v aplikaci Visual Studio vám může pomoci při rychlém psaní kódu a pomáhá vyhnout se chybám. Kromě toho Editor poskytuje způsoby, jak vytvořit opakovaně použitelný kód, který vám pomůže snížit množství práce, kterou potřebujete.
 
-Tento návod ukazuje různé funkce editoru kódu sady Visual Studio.
+Tento názorný postup ukazuje různé funkce editoru kódu sady Visual Studio.
 
-V tomto návodu se dozvíte, jak:
+V tomto návodu se naučíte:
 
-- Opravte chyby kódování vložené.
-- Refaktorovat a přejmenovat kódu.
-- Přejmenujte proměnných a objektech.
+- Opravte chyby vloženého kódování.
+- Refaktorujte a přejmenujte kód.
+- Přejmenujte proměnné a objekty.
 - Vložte fragmenty kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto návodu budete potřebovat:
+Aby bylo možné dokončit tento návod, budete potřebovat:
 
-- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs) nebo [Microsoft Visual Studio Express 2013 for Web](https://www.microsoft.com/visualstudio/11/downloads#express-web). Rozhraní .NET Framework se instaluje automaticky. 
+- [Microsoft Visual Studio 2013](https://www.microsoft.com/visualstudio/11/downloads#vs) nebo [Microsoft Visual Studio Express 2013 pro web](https://www.microsoft.com/visualstudio/11/downloads#express-web). .NET Framework se nainstaluje automaticky. 
 
     > [!NOTE] 
     > 
-    > Microsoft Visual Studio 2013 a Microsoft Visual Studio Express 2013 for Web bude často se označuje jako Visual Studio v celé této sérii kurzů.  
+    > Microsoft Visual Studio 2013 a Microsoft Visual Studio Express 2013 pro web se často v této sérii kurzů označují jako Visual Studio.  
     >   
-    > Pokud používáte Visual Studio, Tento názorný průvodce předpokládá, že jste vybrali **vývoj pro Web** kolekce nastavení při prvním spuštění sady Visual Studio. Další informace najdete v tématu [jak: Vyberte nastavení prostředí vývoje webu](https://msdn.microsoft.com/library/ff521558.aspx).
+    > Pokud používáte sadu Visual Studio, tento návod předpokládá, že jste vybrali kolekci pro **Vývoj webu** nastavení při prvním spuštění sady Visual Studio. Další informace najdete v tématu [Postupy: výběr nastavení prostředí pro vývoj webu](https://msdn.microsoft.com/library/ff521558.aspx).
 
-## <a name="creating-a-web-application-project-and-a-page"></a>Vytvoření projektu webové aplikace a na stránce
+## <a name="creating-a-web-application-project-and-a-page"></a>Vytvoření projektu webové aplikace a stránky
 
 <a id="sectionToggle0"></a>
 
-V této části tohoto návodu vytvoříte projekt webové aplikace a přidejte novou stránku do ní.
+V této části návodu vytvoříte projekt webové aplikace a přidáte do něj novou stránku.
 
-### <a name="to-create-a-web-application-project"></a>Chcete-li vytvořit projekt webové aplikace
+### <a name="to-create-a-web-application-project"></a>Vytvoření projektu webové aplikace
 
 1. Otevřete Microsoft Visual Studio.
-2. Na **souboru** nabídce vyberte možnost **nový projekt**.  
-    ![Nabídka Soubor](code-editing-in-web-forms-pages/_static/image1.png)
+2. V nabídce **soubor** vyberte **Nový projekt**.  
+    ![nabídky soubor](code-editing-in-web-forms-pages/_static/image1.png)
 
     Zobrazí se dialogové okno **Nový projekt**.
-3. Vyberte **šablony**  - &gt; **Visual C#**  - &gt; **webové** šablony skupiny na levé straně.
-4. Zvolte **webová aplikace ASP.NET** šablon v prostředním sloupci.
-5. Pojmenujte svůj projekt ***BasicWebApp*** a klikněte na tlačítko **OK** tlačítko.   
-![Dialogové okno Nový projekt](code-editing-in-web-forms-pages/_static/image2.png)
-6. V dalším kroku vyberte **webových formulářů** šablony a kliknutím **OK** tlačítko pro vytvoření projektu.  
-![Dialogové okno Nový projekt ASP.NET](code-editing-in-web-forms-pages/_static/image3.png)  
+3. Na levé straně vyberte **šablony** -&gt; skupinu **Web** Templates &gt; **Visual C#**  -.
+4. V prostředním sloupci vyberte šablonu **webové aplikace ASP.NET** .
+5. Pojmenujte projekt ***BasicWebApp*** a klikněte na tlačítko **OK** .   
+Dialogové okno ![nový projekt](code-editing-in-web-forms-pages/_static/image2.png)
+6. Potom vyberte šablonu **webové formuláře** a kliknutím na tlačítko **OK** vytvořte projekt.  
+Dialogové okno ![nový projekt v ASP.NET](code-editing-in-web-forms-pages/_static/image3.png)  
 
-    Visual Studio vytvoří nový projekt, který obsahuje předem připravených funkce na základě šablony webových formulářů.
+    Visual Studio vytvoří nový projekt, který obsahuje předem sestavené funkce založené na šabloně webových formulářů.
 
-## <a name="creating-a-new-aspnet-web-forms-page"></a>Vytváří se nové technologie ASP.NET webové stránky s formuláři
+## <a name="creating-a-new-aspnet-web-forms-page"></a>Vytvoření nové stránky webových formulářů ASP.NET
 
-Při vytváření nové aplikace webových formulářů pomocí **webová aplikace ASP.NET** šablony projektu, Visual Studio přidá stránky ASP.NET (webové formuláře – stránka) s názvem *Default.aspx*, stejně jako několik dalších souborů a složky. Můžete použít *Default.aspx* stránku jako domovské stránky pro webové aplikace. Ale v tomto návodu vytvoříte a pracovat s novou stránku.
+Když vytvoříte novou aplikaci webového formuláře pomocí šablony projektu **webové aplikace ASP.NET** , Visual Studio přidá stránku ASP.NET (stránku webového formuláře) s názvem *Default. aspx*a také několik dalších souborů a složek. Stránku *Default. aspx* můžete použít jako domovskou stránku webové aplikace. Pro tento návod ale vytvoříte a budete pracovat s novou stránkou.
 
 ### <a name="to-add-a-page-to-the-web-application"></a>Přidání stránky do webové aplikace
 
-1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na název webové aplikace (v tomto kurzu je název aplikace **BasicWebSite**) a potom klikněte na tlačítko **přidat**  - &gt; **Nová položka**.   
-**Přidat novou položku** se zobrazí dialogové okno.
-2. Vyberte **Visual C#**  - &gt; **webové** šablony skupiny na levé straně. Vyberte **webový formulář** uprostřed seznamu a pojmenujte ho *FirstWebPage.aspx*.   
-    ![Přidat novou položku – dialogové okno](code-editing-in-web-forms-pages/_static/image4.png)
-3. Klikněte na tlačítko **přidat** přidat na stránku webové formuláře do projektu.  
- Visual Studio vytvoří novou stránku a otevře jej.
-4. Dále nastavte tuto novou stránku jako výchozí úvodní stránka. V **Průzkumníka řešení**, klikněte pravým tlačítkem na novou stránku s názvem *FirstWebPage.aspx* a vyberte **nastavit jako úvodní stránku**. Při příštím spuštění této aplikace pro testování náš postup, se automaticky zobrazí tuto novou stránku v prohlížeči.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na název webové aplikace (v tomto kurzu je název aplikace **BasicWebSite**) a pak klikněte na **Přidat** -&gt; **novou položku**.   
+Zobrazí se dialogové okno **Přidat novou položku** .
+2. Na levé straně vyberte skupinu **Visual C#**  -&gt; **Web** Templates. Pak v prostředním seznamu vyberte **webový formulář** a pojmenujte ho *FirstWebPage. aspx*.   
+    Dialogové okno ![přidat novou položku](code-editing-in-web-forms-pages/_static/image4.png)
+3. Kliknutím na tlačítko **Přidat** přidejte stránku webových formulářů do projektu.  
+ Visual Studio vytvoří novou stránku a otevře ji.
+4. Dále nastavte tuto novou stránku jako výchozí spouštěcí stránku. V **Průzkumník řešení**klikněte pravým tlačítkem myši na novou stránku s názvem *FirstWebPage. aspx* a vyberte možnost **nastavit jako úvodní stránku**. Při příštím spuštění této aplikace k otestování pokroku se tato nová stránka automaticky zobrazí v prohlížeči.
 
-## <a name="correcting-inline-coding-errors"></a>Oprava chyby kódování vložené
+## <a name="correcting-inline-coding-errors"></a>Oprava chyb vloženého kódu
 
-Editor kódu v sadě Visual Studio vám umožní zabránit chybám při psaní kódu, a pokud jste chybu, editor kódu umožňuje k opravě chyby. V této části tohoto návodu budete psát jediného řádku kódu, které ilustrují funkce opravy chyb v editoru.
+Editor kódu v aplikaci Visual Studio pomáhá vyhnout se chybám při psaní kódu a pokud jste provedli chybu, Editor kódu vám pomůže chybu opravit. V této části návodu napíšete řádek kódu, který ilustruje funkce oprav chyb v editoru.
 
-### <a name="to-correct-simple-coding-errors-in-visual-studio"></a>Chcete-li opravit chyby jednoduché psaní kódu v sadě Visual Studio
+### <a name="to-correct-simple-coding-errors-in-visual-studio"></a>Oprava chyb jednoduchého kódování v aplikaci Visual Studio
 
-1. V **návrhu** dvakrát klikněte na prázdnou stránku vytvořit obslužnou rutinu události pro **zatížení** události pro danou stránku.   
-   Obslužná rutina události používáte pouze jako bod kódu.
-2. Uvnitř obslužné rutiny, zadejte následující řádek, který obsahuje chybu a stisknutím klávesy **ENTER**:
+1. V zobrazení **Návrh** dvakrát klikněte na prázdnou stránku a vytvořte obslužnou rutinu pro událost **Load** pro stránku.   
+   Obslužnou rutinu události používáte pouze jako místo pro psaní kódu.
+2. Uvnitř obslužné rutiny zadejte následující řádek, který obsahuje chybu a stiskněte klávesu **ENTER**:
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample1.cs)]
 
-   Když stisknete klávesu **ENTER**, editor kódu umístí červenou a zelenou vlnovkou (obvykle volání &quot;podtržení&quot; řádky) v rámci oblasti kódu, které mají problémy. Zelená podtržení zobrazuje varování. Červené podtržení označuje chybu, která je potřeba opravit. 
+   Když stisknete klávesu **ENTER**, Editor kódu umístí zelenou a červenou vlnovku (obvykle volání &quot;vlnovkou&quot; čar) v oblasti kódu, u kterých dochází k problémům. Zelené podtržení označuje upozornění. Červené podtržení indikuje chybu, kterou je třeba opravit. 
 
-    Podržte ukazatel myši nad `myStr` zobrazíte popisek, který vás informuje o upozornění. Také podržte ukazatel myši nad červenou vlnovkou, chcete-li zobrazit chybová zpráva.
+    Podržením ukazatele myši nad `myStr` zobrazíte popis tlačítka, který vás upozorní. K zobrazení chybové zprávy se také podržíte ukazatel myši na červeném podtržení.
 
-    Následující obrázek ukazuje kód podtržení.
+    Následující obrázek ukazuje kód s podtržením.
 
-    ![Úvodní text v návrhovém zobrazení](code-editing-in-web-forms-pages/_static/image5.png "uvítací text v návrhovém zobrazení")  
-   Chyba je opravit přidáním středníkem `;` na konec řádku. Upozornění jednoduše vás upozorní, že jste nepoužili `myStr` ještě proměnné.  
+    ![Uvítací text v zobrazení Návrh](code-editing-in-web-forms-pages/_static/image5.png "Uvítací text v zobrazení Návrh")  
+   Chybu je třeba opravit přidáním středníku `;` na konec řádku. Upozornění jednoduše upozorňuje na to, že jste dosud nepoužili `myStr` proměnnou.  
 
     > [!NOTE] 
     > 
-    > Zobrazení aktuálního kódu formátování nastavení v sadě Visual Studio tak, že vyberete **nástroje**  - &gt; **možnosti**  - &gt; **písma a Barvy**.
+    > Aktuální nastavení formátování kódu v aplikaci Visual Studio si můžete zobrazit tak, že vyberete **nástroje** -&gt; **Možnosti** -&gt; **písma a barvy**.
 
 ## <a name="refactoring-and-renaming"></a>Refaktoring a přejmenování
 
-Refaktoring je metodologie softwaru, která zahrnuje restrukturalizaci váš kód, aby bylo snazší porozumět a chcete zachovat, při zachování její funkčnost. Jednoduchým příkladem může být, že napíšete kód v obslužné rutině události k získání dat z databáze. Při vývoji vaší stránce, zjistíte, že potřebujete přístup k datům z několika různých obslužných rutin. Proto se Refaktorovat kód na stránce tak, že vytvoření metody přístupu k datům stránky a vložením volání metody v obslužných rutinách.
+Refaktoring je softwarová metodologie, která zahrnuje restrukturalizaci kódu, aby bylo snazší pochopit a udržovat, a současně zachovat jeho funkčnost. Jednoduchým příkladem může být, že napíšete kód v obslužné rutině události pro získání dat z databáze. Při vývoji stránky zjistíte, že potřebujete přístup k datům z několika různých obslužných rutin. Proto refaktorujte kód stránky vytvořením metody přístupu k datům na stránce a vložením volání do metody v obslužných rutinách.
 
-Editor kódu obsahuje nástroje, které můžete provádět různé úlohy refaktoringu. V tomto návodu budete pracovat se dvěma refaktoringu technikami: přejmenováním proměnné a extrahování metod. Další možnosti refaktorování zahrnují zapouzdření polí, zvyšuje se úroveň lokálních proměnných na parametry metod a Správa parametrů metody. K dispozici tyto možnosti refaktorování, závisí na umístění v kódu.
+Editor kódu obsahuje nástroje, které vám pomůžou provádět různé úlohy refaktoringu. V tomto návodu budete pracovat se dvěma technikami refaktoringu: přejmenování proměnných a extrahování metod. Mezi další možnosti refaktoringu patří zapouzdření polí, zvýšení úrovně místních proměnných na parametry metody a Správa parametrů metod. Dostupnost těchto možností refaktoringu závisí na umístění v kódu.
 
 ### <a name="refactoring-code"></a>Refaktoring kódu
 
-Je běžným scénářem refaktoringu vytvoření (extract) metodu z kódu, který se nachází uvnitř jiného člena, jako je například metody. To snižuje velikost původního člena a díky opakovaně použitelného kódu byl extrahován.
+Běžným scénářem refaktoringu je vytvoření (extrakce) metody z kódu, který je uvnitř jiného člena, jako je například metoda. Tím se zmenší velikost původního členu a bude extrahování kódu znovu použitelné.
 
-V této části Průvodce jednoduchého kódu a pak z něj extrahovat metodu. Refaktoring je podporována pro jazyk C#, takže vytvoříte stránky, která používá C# jako programovací jazyk.
+V této části návodu napíšete nějaký jednoduchý kód a potom z něj extrahujete metodu. Refaktoring se podporuje pro C#, takže vytvoříte stránku, která bude používat C# jako svůj programovací jazyk.
 
-### <a name="to-extract-a-method-in-a-c-page"></a>Extrahovat metodu na stránce jazyka C#
+### <a name="to-extract-a-method-in-a-c-page"></a>Extrakce metody na C# stránce
 
-1. Přepnout na **návrhu** zobrazení.
-2. V **nástrojů**, z **standardní** kartu tak, že přetáhnete [tlačítko](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) ovládacího prvku na stránku.
-3. Dvakrát klikněte **tlačítko** ovládacího prvku k vytvoření obslužné rutiny pro jeho [klikněte na tlačítko](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx) události a poté přidejte následující zvýrazněný kód:
+1. Přepněte do zobrazení **návrhu** .
+2. Na **panelu nástrojů**na kartě **standardní** přetáhněte na stránku ovládací prvek [tlačítko](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.aspx) .
+3. Dvakrát klikněte na ovládací prvek **tlačítko** a vytvořte obslužnou rutinu události [kliknutí](https://msdn.microsoft.com/library/system.web.ui.webcontrols.button.click.aspx) a pak přidejte následující zvýrazněný kód:
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample2.cs?highlight=3-16)]
 
-   Kód vytvoří **ArrayList** objektu, používá smyčku k načtení hodnoty a pak používá další smyčky k zobrazení obsahu **ArrayList** objektu.
-4. Stisknutím klávesy **CTRL + F5** spuštění stránky a pak klikněte na tlačítko **tlačítko** abyste měli jistotu, že se zobrazí následující výstup:   
+   Kód vytvoří objekt **ArrayList** , používá smyčku k načtení s hodnotami a poté používá další smyčku k zobrazení obsahu objektu **ArrayList** .
+4. Stisknutím **kombinace kláves CTRL + F5** spusťte stránku a potom klikněte na **tlačítko** a ujistěte se, že se zobrazí následující výstup:   
 
     [!code-html[Main](code-editing-in-web-forms-pages/samples/sample3.html)]
-5. Vraťte se do editoru kódu a pak vyberte následující řádky v obslužné rutině události.   
+5. Vraťte se do editoru kódu a potom v obslužné rutině události vyberte následující řádky.   
 
     [!code-html[Main](code-editing-in-web-forms-pages/samples/sample4.html)]
-6. Klikněte pravým tlačítkem na výběr, klikněte na tlačítko **Refaktorovat**a klikněte na tlačítko **extrahovat metodu**. 
+6. Klikněte pravým tlačítkem myši na výběr, klikněte na **Refaktorovat**a pak zvolte **Extrahovat metodu**. 
 
-    **Extrahovat metodu** zobrazí se dialogové okno.
-7. V **nový název metody** zadejte **DisplayArray**a potom klikněte na tlačítko **OK**. 
+    Zobrazí se dialogové okno **Extrahovat metodu** .
+7. Do pole **název nové metody** zadejte **DisplayArray**a pak klikněte na **OK**. 
 
-    Editor kódu vytvoří novou metodu s názvem `DisplayArray`a vloží do nové metody ve volání **klikněte na tlačítko** obslužnou rutinu, ve kterém bylo původně určené smyčky.
+    Editor kódu vytvoří novou metodu s názvem `DisplayArray`a vloží volání nové metody v obslužné rutině **Click** , kde byla smyčka původně.
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample5.cs?highlight=12)]
-8. Stisknutím klávesy **CTRL + F5** stránce spustit znovu, a klikněte na tlačítko **tlačítko**.
+8. Stisknutím **kombinace kláves CTRL + F5** znovu spusťte stránku a klikněte na **tlačítko**.
 
-    Na stránce funguje stejně jako předtím. `DisplayArray` Metoda může být nyní volání z libovolného místa ve třídě stránky.
+    Stránka funguje stejně jako dříve. Metoda `DisplayArray` nyní může být volána odkudkoli ve třídě Page.
 
-## <a name="renaming-variables"></a>Přejmenováním proměnné
+## <a name="renaming-variables"></a>Přejmenování proměnných
 
-Při práci s proměnných a také objekty, můžete chtít poté, co je již odkazováno v kódu je přejmenovat. Přejmenování proměnných a objektech však může způsobit kód pro přerušení promeškali přejmenování jeden z odkazů. Proto vám pomůže refaktoring přejmenování provést.
+Když pracujete s proměnnými a také objekty, můžete je chtít přejmenovat poté, co již jsou odkazovány v kódu. Přejmenování proměnných a objektů může ale způsobit, že se kód přeruší, pokud jste převedli přejmenování jednoho z odkazů. Proto můžete použít refaktoring k provedení přejmenování.
 
-### <a name="to-use-refactoring-to-rename-a-variable"></a>Chcete-li použít refaktoring pro přejmenování proměnné
+### <a name="to-use-refactoring-to-rename-a-variable"></a>Použití refaktoringu k přejmenování proměnné
 
-1. V **klikněte na tlačítko** obslužná rutina události, vyhledejte následující řádek:
+1. V obslužné rutině události **Click** vyhledejte následující řádek:
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample6.cs)]
-2. Klikněte pravým tlačítkem na název proměnné `alist`, zvolte **Refaktorovat**a klikněte na tlačítko **přejmenovat**.
+2. Klikněte pravým tlačítkem myši na název proměnné `alist`, zvolte **Refaktorovat**a pak zvolte **Přejmenovat**.
 
-    **Přejmenovat** zobrazí se dialogové okno.
-3. V **nový název** zadejte **ArrayList1** a ujistěte se, že **náhled změn odkazu** vybral zaškrtávací políčko. Pak klikněte na tlačítko **OK**.
+    Zobrazí se dialogové okno **Přejmenovat** .
+3. Do pole **nový název** zadejte **ArrayList1** a ujistěte se, že je zaškrtnuté políčko **Náhled změn odkazu** . Pak klikněte na **OK**.
 
-    **Náhled změn** dialogové okno se zobrazí a zobrazí strom, který obsahuje všechny odkazy na proměnné, kterou chcete přejmenovat.
-4. Klikněte na tlačítko **použít** zavřete **náhled změn** dialogové okno.
+    Zobrazí se dialogové okno **Náhled změn** a zobrazí strom obsahující všechny odkazy na proměnnou, kterou přejmenováváte.
+4. Kliknutím na **použít** zavřete dialogové okno **Náhled změn** .
 
-    Proměnné, které se odkazují na instance, kterou jste vybrali, budou přejmenovány. Mějte na paměti, ale který proměnnou `alist` není přejmenována na následujícím řádku.
+    Proměnné, které odkazují konkrétně na instanci, kterou jste vybrali, se přejmenují. Všimněte si však, že proměnná `alist` na následujícím řádku není přejmenována.
 
     [!code-csharp[Main](code-editing-in-web-forms-pages/samples/sample7.cs)]
 
-    Proměnná `alist` v tomto řádku není přejmenovat, protože nepředstavuje stejnou hodnotu jako proměnnou `alist` přejmenovaný. Proměnná `alist` v `DisplayArray` deklarace je lokální proměnná pro tuto metodu. To ukazuje, že pomocí refaktoring přejmenování proměnné se liší od jednoduše provedením akce najít a nahradit v editoru; Refaktoring přejmenování proměnné se znalostí sémantiku proměnné, která funguje s.
+    Proměnná `alist` na tomto řádku není přejmenována, protože nepředstavuje stejnou hodnotu jako proměnná `alist`, kterou jste přejmenovali. Proměnná `alist` v deklaraci `DisplayArray` je místní proměnná pro tuto metodu. To ukazuje, že použití refaktoringu k přejmenování proměnných se liší od pouhého provedení akce Find-and-nahrazování v editoru; refaktoring přejmenuje proměnné se znalostí sémantiky proměnné, se kterou pracuje.
 
 ## <a name="inserting-snippets"></a>Vkládání fragmentů kódu
 
-Vzhledem k tomu, že existují mnoho úkolů kódování, které vývojáři webové formuláře se často potřeba provést, editor kódu poskytuje knihovnu fragmenty kódu nebo bloky předepsaného kódu. Tyto fragmenty kódu můžete vložit do stránky.
+Vzhledem k tomu, že existuje mnoho úloh kódování, které vývojáři webových formulářů často potřebují, poskytuje editor kódu knihovnu fragmentů nebo bloků předpsaného kódu. Tyto fragmenty kódu můžete vložit do své stránky.
 
-Každý jazyk, který použijete v sadě Visual Studio má mírné rozdíly tak, jak vložit fragmenty kódu. Informace o vkládání fragmentů kódu, naleznete v tématu [fragmenty kódu technologie IntelliSense jazyka Visual Basic](https://msdn.microsoft.com/library/18yz4be4.aspx). Informace o vkládání fragmentů kódu v jazyce Visual C# najdete v tématu [fragmenty kódu Visual C#](https://msdn.microsoft.com/library/z41h7fat.aspx).
+Každý jazyk, který používáte v aplikaci Visual Studio, obsahuje mírné rozdíly ve způsobu vkládání fragmentů kódu. Informace o vkládání fragmentů naleznete v tématu [Visual Basic fragmenty kódu technologie IntelliSense](https://msdn.microsoft.com/library/18yz4be4.aspx). Informace o vkládání fragmentů kódu v jazyce C#Visual naleznete v tématu [Visual C# Code fragmenty](https://msdn.microsoft.com/library/z41h7fat.aspx).
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento návod znázorňuje základní funkce editoru kódu sady Visual Studio 2010 pro opravu chyb v kódu, refaktoring kódu, přejmenováním proměnné a vkládání fragmentů kódu do vašeho kódu. Další funkce v editoru můžete vytvořit vývoj aplikací rychlý a snadný. Například můžete chtít:
+Tento návod znázornil základní funkce editoru kódu sady Visual Studio 2010 pro opravy chyb v kódu, refaktoring kódu, přejmenování proměnných a vkládání fragmentů kódu do kódu. Další funkce v editoru umožňují vývoj aplikací rychle a snadno. Můžete například potřebovat:
 
-- Další informace o funkcích technologie IntelliSense, jako je například úprava možnosti technologie IntelliSense, Správa fragmentů kódu a fragmenty kódu online hledání. Další informace najdete v tématu [pomocí technologie IntelliSense](https://msdn.microsoft.com/library/hcw1s69b.aspx).
-- Zjistěte, jak vytvořit své vlastní fragmenty kódu. Další informace najdete v tématu [vytváření a používání fragmenty kódu technologie IntelliSense](https://msdn.microsoft.com/library/ms165392.aspx)
-- Další informace o funkcích specifické pro jazyk Visual Basic fragmenty kódu technologie IntelliSense, jako je například přizpůsobení fragmenty kódu a řešení potíží. Další informace najdete v tématu [fragmenty kódu technologie IntelliSense jazyka Visual Basic](https://msdn.microsoft.com/library/18yz4be4.aspx)
-- Další informace o jazyce C#-konkrétní funkce technologie IntelliSense, jako je Refaktoring a fragmenty kódu. Další informace najdete v tématu [Visual C# IntelliSense](https://msdn.microsoft.com/library/43f44291.aspx).
+- Přečtěte si další informace o funkcích technologie IntelliSense, jako je například změna možností technologie IntelliSense, Správa fragmentů kódu a hledání fragmentů kódu online. Další informace najdete v tématu [použití technologie IntelliSense](https://msdn.microsoft.com/library/hcw1s69b.aspx).
+- Naučte se vytvářet vlastní fragmenty kódu. Další informace najdete v tématu [vytváření a používání fragmentů kódu technologie IntelliSense](https://msdn.microsoft.com/library/ms165392.aspx) .
+- Přečtěte si další informace o funkcích Visual Basic specifických pro fragmenty kódu technologie IntelliSense, jako je například přizpůsobení fragmentů kódu a řešení potíží. Další informace najdete v tématu [Visual Basic fragmentů kódu technologie IntelliSense](https://msdn.microsoft.com/library/18yz4be4.aspx) .
+- Přečtěte si další C#informace o funkcích technologie IntelliSense, jako je refaktoring a fragmenty kódu. Další informace najdete v tématu [Visual C# IntelliSense](https://msdn.microsoft.com/library/43f44291.aspx).

@@ -9,11 +9,11 @@ ms.assetid: 6898c601-6c31-432f-8388-e6843f8a17cb
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/shopping-cart
 msc.type: authoredcontent
 ms.openlocfilehash: d3b619ebd9448d30857ffbaf17fd245b1d54a662
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519294"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78641468"
 ---
 # <a name="shopping-cart"></a>Nákupní košík
 
@@ -56,11 +56,11 @@ Dříve v této sérii kurzů jste definovali schéma pro kategorii a data produ
 1. Klikněte pravým tlačítkem na složku *modely* a vyberte **Přidat** -&gt; **Nová položka**. 
 
     ![Nákupní košík – nová položka](shopping-cart/_static/image1.png)
-2. **Přidat novou položku** se zobrazí dialogové okno. Vyberte **kód**a pak vyberte **Třída**. 
+2. Zobrazí se dialogové okno **Přidat novou položku** . Vyberte **kód**a pak vyberte **Třída**. 
 
     ![Nákupní košík – dialogové okno Přidat novou položku](shopping-cart/_static/image2.png)
 3. Pojmenujte tuto novou třídu *CartItem.cs*.
-4. Klikněte na tlačítko **Add** (Přidat).  
+4. Klikněte na **Přidat**.  
    V editoru se zobrazí nový soubor třídy.
 5. Nahraďte výchozí kód následujícím kódem:   
 
@@ -130,7 +130,7 @@ Jak bylo zmíněno dříve, vytvoříte stránku zpracování s názvem *AddToCa
 #### <a name="to-create-the-add-to-cart-functionality"></a>Postup vytvoření funkce přidání do košíku:
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt **WingtipToys**a klikněte na **Přidat** -&gt; **novou položku**.  
-   **Přidat novou položku** se zobrazí dialogové okno.
+   Zobrazí se dialogové okno **Přidat novou položku** .
 2. Přidejte standardní novou stránku (webový formulář) do aplikace s názvem *AddToCart. aspx*. 
 
     ![Nákupní košík – přidat webový formulář](shopping-cart/_static/image4.png)
@@ -148,7 +148,7 @@ Jak už jsme uvedli, uživatel `ID` slouží k identifikaci produktů, které js
 Na stránce *ShoppingCart. aspx* se zobrazí produkty, které uživatel přidal do nákupního košíku. Bude také poskytovat možnost přidávat, odebírat a aktualizovat položky v nákupním košíku.
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na **WingtipToys**, klikněte na **Přidat** -&gt; **novou položku**.  
-   **Přidat novou položku** se zobrazí dialogové okno.
+   Zobrazí se dialogové okno **Přidat novou položku** .
 2. Přidejte novou stránku (webový formulář), která obsahuje stránku předlohy, výběrem možnosti **webový formulář pomocí stránky předlohy**. Pojmenujte novou stránku *ShoppingCart. aspx*.
 3. Vyberte **site. Master** a připojte stránku předlohy k nově vytvořené stránce *aspx* .
 4. Na stránce *ShoppingCart. aspx* nahraďte existující kód následujícím kódem:   
@@ -306,7 +306,7 @@ Aplikaci teď můžete spustit, abyste viděli, jak můžete přidat, odstranit 
 
     ![Nákupní košík – aktualizace košíku](shopping-cart/_static/image9.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste vytvořili nákupní košík pro ukázkovou aplikaci Wingtip Toys Web Forms. V tomto kurzu jste použili Entity Framework Code First, datové poznámky, ovládací prvky silného typu dat a vazby modelu.
 

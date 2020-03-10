@@ -9,11 +9,11 @@ ms.assetid: 07e15538-2f29-40c6-b2e7-e6115075ac83
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/security-basics-and-asp-net-support-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 1ccaac101a83d0e28b07b220b8b7b61a9039227e
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74642418"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640250"
 ---
 # <a name="security-basics-and-aspnet-support-c"></a>Základy zabezpečení a podpora ASP.NET (C#)
 
@@ -34,7 +34,7 @@ Toto je první kurz v řadě kurzů, které procházejí postupy pro ověřován
 - Vytváření, aktualizace a odstraňování uživatelských účtů
 - Omezení přístupu k webové stránce, adresáři nebo konkrétním funkcím na základě přihlášeného uživatele
 - Použijte ASP. .NET Framework Roles pro přidružení uživatelských účtů k rolím
-- Správa uživatelských rolí
+- Správa rolí uživatelů
 - Omezení přístupu k webové stránce, adresáři nebo konkrétním funkcím na základě role přihlášeného uživatele
 - Přizpůsobte a rozšíříte ASP. Webové ovládací prvky zabezpečení sítě
 
@@ -150,7 +150,7 @@ Vzhledem k tomu, že model poskytovatele zahrnuje jediné rozhraní API pro pře
 
 Pod rámec pokrývá různé přihlašovací ovládací prvky interakci s architekturou pro členství a role. Většinu ovládacích prvků pro přihlášení lze implementovat bez nutnosti napsat jediný řádek kódu. Tyto ovládací prvky podrobněji prověříme v budoucích kurzech, včetně technik pro rozšíření a přizpůsobení jejich funkcí.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Všechny webové aplikace, které podporují uživatelské účty, vyžadují podobné funkce, jako například: možnost přihlášení uživatelů a jejich stav přihlášení při návštěvě stránky. Webová stránka pro nové návštěvníky pro vytvoření účtu; a schopnost vývojáře stránky určit, který prostředek, data a funkce jsou k dispozici pro uživatele nebo role. Úkoly ověřování a autorizace uživatelů a správy uživatelských účtů a rolí se výjimečně snadno s ASP.NET aplikacemi díky ověřování prostřednictvím formulářů, autorizaci adres URL a architekturám členství a rolí.
 
@@ -168,7 +168,7 @@ Další informace o tématech popsaných v tomto kurzu najdete v následujícíc
 - [Autorizace ASP.NET](https://msdn.microsoft.com/library/wce3kxhd.aspx)
 - [Přehled ovládacích prvků přihlášení ASP.NET](https://msdn.microsoft.com/library/ms178329.aspx)
 - [Zkoumání členství, rolí a profilů v ASP.NET 2.0](http://aspnet.4guysfromrolla.com/articles/120705-1.aspx)
-- [Jak můžu: zabezpečit web pomocí členství a rolí?](https://asp.net/learn/videos/video-45.aspx) Obrazový
+- [Jak můžu: zabezpečit web pomocí členství a rolí?](https://asp.net/learn/videos/video-45.aspx) (Video)
 - [Úvod do členství](https://msdn.microsoft.com/library/yh26yfzy.aspx)
 - [Středisko pro vývojáře zabezpečení MSDN](https://msdn.microsoft.com/security/default.aspx)
 - [Professional ASP.NET 2,0 zabezpečení, členství a Správa rolí](http://www.wrox.com/WileyCDA/WroxTitle/productCd-0764596985.html) (ISBN: 978-0-7645-9698-8)

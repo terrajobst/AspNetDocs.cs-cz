@@ -1,123 +1,123 @@
 ---
 uid: whitepapers/side-by-side-with-10
-title: Technologie ASP.NET na straně by-Side Execution rozhraní .NET Framework 1.0 a 1.1 | Dokumentace Microsoftu
+title: ASP.NET souběžného spouštění .NET Framework 1,0 a 1,1 | Microsoft Docs
 author: rick-anderson
-description: Tento dokument White Paper popisuje, jak nainstalovat na váš počítač, umožní webové aplikaci ASP.NET spustit v jedné verze od .NET 1.0 a 1.1 rozhraní .NET...
+description: Tento dokument white paper popisuje, jak nainstalovat rozhraní .NET 1,0 i .NET 1,1 na váš počítač, což umožňuje spuštění webové aplikace v ASP.NET v obou verzích Fram...
 ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: bdea2003-e964-4db5-9092-d56cc7560616
 msc.legacyurl: /whitepapers/side-by-side-with-10
 msc.type: content
 ms.openlocfilehash: c123545099013af71569bce4707f2b3eb732c344
-ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67411216"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78632970"
 ---
 # <a name="aspnet-side-by-side-execution-of-net-framework-10-and-11"></a>ASP.NET – souběžné spuštění .NET Framework 1.0 a 1.1
 
-> Tento dokument White Paper popisuje postup instalace rozhraní .NET 1.0 a 1.1 rozhraní .NET na svém počítači umožní webové aplikaci ASP.NET spustit v jedné verze rozhraní framework.
+> Tento dokument white paper popisuje, jak nainstalovat rozhraní .NET 1,0 i .NET 1,1 na váš počítač, což umožňuje spuštění webové aplikace v ASP.NET v obou verzích rozhraní.
 > 
-> Platí pro technologii ASP.NET 1.0 a ASP.NET 1.1.
+> Platí pro ASP.NET 1,0 a ASP.NET 1,1.
 
-V technologii ASP.NET aplikace se říká, že souběžné spuštění, když jsou nainstalovány na stejném počítači, ale používají různé verze rozhraní .NET Framework. Následující téma popisuje postup konfigurace aplikací technologie ASP.NET pro spuštění vedle sebe a obsahuje podrobný postup:
+V ASP.NET jsou aplikace označeny jako spuštěné souběžně, když jsou nainstalovány ve stejném počítači, ale používají různé verze .NET Framework. Následující téma popisuje, jak nakonfigurovat aplikace ASP.NET pro souběžné spouštění a poskytuje podrobné kroky pro:
 
-- [Udržovat mapování vaší webové aplikace .NET Framework verze 1.0 během instalace](#1)
-- [Mapa webovou aplikaci na konkrétní verzi rozhraní .NET Framework](#2)
-- [Najít verzi rozhraní .NET Framework, která používá webový server](#3)
+- [Udržovat mapování webové aplikace na verzi .NET Framework 1,0 během instalace](#1)
+- [Mapování webové aplikace na konkrétní verzi .NET Framework](#2)
+- [Vyhledání verze .NET Framework, kterou používá web](#3)
 
-Tradičně Když komponenta nebo aplikace se aktualizuje na počítači, starší verze je odebrat a nahradí novější verze. Pokud nová verze není kompatibilní s předchozí verzí, to obvykle dělí jiné aplikace, které používají součást nebo aplikace. Rozhraní .NET Framework poskytuje podporu pro spuštění vedle sebe, což umožňuje více verzí sestavení nebo aplikace bude nainstalována do stejného počítače ve stejnou dobu. Protože najednou může být nainstalováno více verzí, můžete vybrat spravované aplikace která verze se má použít, aniž by to ovlivnilo aplikace, které používají jinou verzi.
+Tradičně platí, že při aktualizaci součásti nebo aplikace v počítači je starší verze odebrána a nahrazena novější verzí. Pokud nová verze není kompatibilní s předchozí verzí, obvykle se tím přeruší jiné aplikace, které používají komponentu nebo aplikaci. .NET Framework poskytuje podporu pro souběžné spouštění, které umožňuje nainstalovat více verzí sestavení nebo aplikace do stejného počítače současně. Vzhledem k tomu, že je možné nainstalovat více verzí současně, můžou spravované aplikace vybrat, která verze se má použít, aniž by to ovlivnilo aplikace, které používají jinou verzi.
 
-Ve výchozím nastavení během instalace rozhraní .NET Framework verze 1.1, všechny stávající aplikace ASP.NET jsou automaticky překonfigurovat tak, aby používali nejnovější verzi rozhraní .NET Framework. Pokud nechcete, aby vaše aplikace ASP.NET na rozhraní .NET Framework 1.1 ve výchozím nastavení, klikněte na tlačítko [tady](#1) se naučíte, pokud tomu chcete zabránit během instalace.
+Ve výchozím nastavení se při instalaci .NET Framework verze 1,1 všechny existující aplikace ASP.NET automaticky překonfigurují tak, aby používaly nejnovější verzi .NET Framework. Pokud nechcete, aby se aplikace ASP.NET ve výchozím nastavení .NET Framework 1,1, kliknutím [sem](#1) se dozvíte, jak v průběhu instalace zabránit.
 
-Pokud aktualizovat váš webový server na rozhraní .NET Framework 1.1 a má jednu nebo více webových aplikací ke spuštění rozhraní .NET Framework 1.0, budete muset aktualizovat mapu skriptů se Internetové informační služby (IIS). Mapování skriptů je mechanismus pro mapování přípona souboru .aspx pro konkrétní webové aplikace na verzi rozhraní .NET Framework. Klikněte na tlačítko [tady](#2) se dozvíte, jak namapovat webovou aplikaci na konkrétní verzi rozhraní .NET Framework.
+Pokud aktualizujete webový server na .NET Framework 1,1 a chcete, aby jedna nebo více webových aplikací běžela .NET Framework 1,0, je nutné aktualizovat mapu skriptů Internetová informační služba (IIS). Mapování skriptu je mechanismus pro mapování přípony souboru. aspx pro konkrétní webovou aplikaci na verzi .NET Framework. Kliknutím [sem](#2) se dozvíte, jak namapovat webovou aplikaci na konkrétní verzi .NET Framework.
 
-Můžete použít správce sítě Internet informace nebo ASP.NET IIS Registration Tool (Aspnet\_regiis.exe) k vyhledání, která verze rozhraní .NET Framework běží konkrétní webové aplikace. Klikněte na tlačítko [tady](#3) se naučíte, jak najít verzi rozhraní .NET Framework, která používá webový server.
+K vyhledání, na které .NET Framework verze je spuštěná konkrétní webová aplikace, můžete použít nástroj pro registraci internetových informací nebo ASP.NET služby IIS (ASPNET\_regiis. exe). Kliknutím [sem](#3) zjistíte, jak najít verzi .NET Framework, kterou používá web.
 
-Jedním z faktorů import při migraci na rozhraní .NET Framework 1.1 je, že každou verzi rozhraní .NET Framework používá svůj vlastní soubor Machine.config. V důsledku toho Web správce provedl změny souboru Machine.config, je nutné tyto změny migrovat do souboru Machine.config 1.1 rozhraní .NET Framework.
+Jedním z importovaných aspektů při migraci na .NET Framework 1,1 je, že každá verze .NET Framework používá vlastní soubor Machine. config. V důsledku toho, pokud webový správce provedl změny v souboru Machine. config, musí být tyto změny migrovány do souboru .NET Framework 1,1 Machine. config.
 
 <a id="1"></a>
 
-## <a name="maintaining-your-web-applications-mapping-to-net-framework-10-during-installation"></a>Správa mapování vaší webové aplikace na rozhraní .NET Framework 1.0 během instalace
+## <a name="maintaining-your-web-applications-mapping-to-net-framework-10-during-installation"></a>Údržba mapování webové aplikace na .NET Framework 1,0 během instalace
 
-Ve výchozím nastavení jsou automaticky během instalace používat novější verzi rozhraní .NET Framework překonfigurovat všech existujících aplikací ASP.NET. Používá novější verzi rozhraní .NET Framework, aplikace můžete plně využít vylepšení a nových funkcích v nové verzi. Ve stejnou dobu správce webu, který může být vhodné podrobnou kontrolu nad aplikace, které se aktualizují, můžete zabránit automatické přemapování všech existujících aplikací ASP.NET během instalace rozhraní .NET Framework.
+Ve výchozím nastavení se všechny existující aplikace ASP.NET při instalaci automaticky překonfigurují, aby používaly novější verzi .NET Framework. Pomocí novější verze .NET Framework můžou aplikace plně využívat vylepšení a nové funkce, které jsou součástí nové verze. Zároveň správce webu, který může chtít podrobnou kontrolu nad tím, které aplikace se aktualizují, může zabránit automatickému přemapování všech stávajících aplikací ASP.NET během instalace .NET Framework.
 
-Pokud chcete zabránit automatickému přemapování celé aplikace ASP.NET na novější verzi rozhraní .NET Framework, můžete použít správce webu možnost příkazového řádku/noaspupgrade s instalačním programem Dotnetfx.exe.
+Chcete-li zabránit automatickému přemapování celé aplikace ASP.NET na novější verzi .NET Framework, může správce webu použít možnost příkazového řádku/noaspupgrade s instalačním programem Dotnetfx. exe.
 
-**Aby se zabránilo celkový přemapování aplikace ASP.NET na novější verzi**
+**Zamezení úplného přemapování aplikace ASP.NET na novější verzi**
 
-1. Přejděte na **Start**.
-2. Klikněte na **spustit**.
-3. Typ **cmd**.
-4. Klikněte na **OK**.  
+1. Přejít na **začátek**.
+2. Klikněte na **Spustit**.
+3. Zadejte **příkaz cmd**.
+4. Klikněte na tlačítko **OK**.  
   
     ![](side-by-side-with-10/_static/image1.gif)
-5. Z příkazového řádku zadejte následující řádek, který spustí instalaci rozhraní .NET Framework: **Sady Dotnetfx.exe "instalace/noaspupgrade?** .  
+5. Na příkazovém řádku zadejte následující řádek, který spustí instalaci .NET Framework: **Dotnetfx. exe/c: "Install/noaspupgrade?** .  
   
     ![](side-by-side-with-10/_static/image2.gif)
-6. Klikněte na tlačítko **Ano** při instalaci rozhraní Microsoft .NET Framework 1.1. Tím se spustí proces instalace rozhraní .NET Framework 1.1.  
+6. V instalačním programu Microsoft .NET Framework 1,1 klikněte na **Ano** . Tím se spustí proces instalace .NET Framework 1,1.  
   
     ![](side-by-side-with-10/_static/image3.gif)
 
 <a id="2"></a>
 
-## <a name="map-a-web-application-to-a-specific-version-of-the-net-framework"></a>Mapa webovou aplikaci na konkrétní verzi rozhraní .NET Framework
+## <a name="map-a-web-application-to-a-specific-version-of-the-net-framework"></a>Mapování webové aplikace na konkrétní verzi .NET Framework
 
-Zahrnuje každá verze rozhraní .NET Framework verze nástroje ASP.NET IIS Registration Tool (Aspnet\_regiis.exe). Tento nástroj umožňuje správcům určit spuštění webové aplikace v rámci konkrétní verzi rozhraní .NET Framework. To se označuje jako mapování webové aplikace na verzi rozhraní .NET Framework. Správci musí vybrat Aspnet\_regiis.exe, která odpovídá verzi rozhraní .NET Framework, která bude spojená s webovou aplikací. Například správce, který chce určit, že webový server používat rozhraní .NET Framework 1.1 musí použít Aspnet\_regiis.exe, který je součástí rozhraní .NET Framework 1.1.
+Každá verze .NET Framework zahrnuje verzi registračního nástroje ASP.NET služby IIS (ASPNET\_regiis. exe). Tento nástroj umožňuje správcům určit, že webová aplikace bude spuštěna v konkrétní verzi .NET Framework. To se označuje jako mapování webové aplikace na verzi .NET Framework. Správci musí vybrat soubor ASPNET\_regiis. exe, který odpovídá verzi .NET Framework, která bude přidružena k webové aplikaci. Například správce, který chce určit, aby web používal .NET Framework 1,1, musí použít soubor ASPNET\_regiis. exe, který je součástí .NET Framework 1,1.
 
-Aspnet\_regiis.exe pro verzi 1.0 se nachází na:
+ASPNET\_regiis. exe pro verzi 1,0 se nachází v:
 
-- C:\WINDOWS\Microsoft.NET\Framework\\**v1.0.3705**\aspnet\_regiis
+- C:\WINDOWS\Microsoft.NET\Framework\\**v 1.0.3705**\ASPNET\_regiis
 
-Aspnet\_regiis.exe pro verzi 1,1 se nachází na:
+ASPNET\_regiis. exe pro verzi 1, 1 je umístěn v:
 
-- C:\WINDOWS\Microsoft.NET\Framework\\**v1.1.4322**\aspnet\_regiis
+- C:\WINDOWS\Microsoft.NET\Framework\\**v 1.1.4322**\ASPNET\_regiis
 
-Aspnet\_regiis.exe poskytuje dvě možnosti pro skript mapování webové aplikace:
+ASPNET\_regiis. exe poskytuje dvě možnosti mapování skriptu webové aplikace:
 
-- **-s** Nastaví mapu skriptů se v cestě a v jeho podřízených adresáře.
-- **-sn** Nastaví mapu skriptů se pouze na cestě.
+- **-s** Nastaví mapu skriptu v cestě a v jejích podřízených adresářích.
+- **-sn** Nastaví mapu skriptu pouze v cestě.
 
-Definuje cestu webové aplikace služby IIS metadat cesty, která je definována v podobě W3SVC/ROOT / {WebSiteNumber} / {aplikace\_Name}. Cesta metabáze je pro webové aplikace volá Portal nachází v rámci výchozí webový server, W3SVC/1/ROOT/portál.
+Cesta definuje cestu metadat služby IIS webové aplikace, která je definovaná ve formě W3SVC/ROOT/{WebSiteNumber}/{Application\_Name}. Například pro webovou aplikaci s názvem portál umístěný na výchozím webu je cesta metabáze W3SVC/1/ROOT/Portal.
 
 ![](side-by-side-with-10/_static/image4.gif)
 
-Všimněte si, že nástroj zvaný editoru metabáze můžete také použít k získání cesty metabáze. Tento nástroj si můžete stáhnout z webu Microsoft Support na [ https://support.microsoft.com/default.aspx?scid=kb; en-us; 232068.](https://support.microsoft.com/default.aspx?scid=kb;en-us;232068)
+Poznámka: k získání cesty k metabázi můžete použít také nástroj nazvaný Editor metabáze. Tento nástroj si můžete stáhnout z webu podpora Microsoftu na [https://support.microsoft.com/default.aspx?scid=kb; en-US; 232068.](https://support.microsoft.com/default.aspx?scid=kb;en-us;232068)
 
-- Spustit Aspnet\_mapy a jeho subapplication skriptu regiis.exe -s W3SVC/1/ROOT/portál aktualizovat na portálu služby IIS.  
+- Spuštěním ASPNET\_regiis. exe-s W3SVC/1/ROOT/Portal aktualizujte mapu skriptů služby IIS portálu a její podaplikaci.  
   
     ![](side-by-side-with-10/_static/image5.gif)
 
-- Spustit Aspnet\_regiis.exe -sn namapovat W3SVC/1/ROOT/portál aktualizovat portál skriptů služby IIS, aniž by to ovlivnilo aplikací na portálu? s podadresářů.  
+- Spuštěním ASPNET\_regiis. exe-SN W3SVC/1/ROOT/Portal aktualizujte mapu skriptů služby IIS portálu, aniž by to ovlivnilo aplikace v podadresářích portálu.  
   
     ![](side-by-side-with-10/_static/image6.gif)
 
 <a id="3"></a>
 
-## <a name="find-the-net-framework-version-that-a-web-application-is-using"></a>Najít verzi rozhraní .NET Framework, která používá webovou aplikaci
+## <a name="find-the-net-framework-version-that-a-web-application-is-using"></a>Najít .NET Framework verzi, kterou webová aplikace používá
 
-Správce může pomocí Správce služeb sítě Internet k vyhledání, která verze rozhraní .NET Framework běží webový server. Různé verze operačního systému jinak spusťte Správce služeb sítě Internet. Ke spuštění portálu service manager, postupujte podle kroků uvedených níže.
+Správce může použít Service Manager internetu k nalezení verze .NET Framework, na které běží Web. Různé verze operačního systému spouštějí Internet Service Manager odlišně. Chcete-li spustit nástroj Service Manager, postupujte podle kroků uvedených níže.
 
-**Chcete-li spustit Správce služeb sítě Internet**
+**Spuštění Service Manager Internetu**
 
-1. Přejděte na **Start**.
-2. Klikněte na **spustit**.
-3. Typ **inetmgr**.  
+1. Přejít na **začátek**.
+2. Klikněte na **Spustit**.
+3. Zadejte **inetmgr**.  
   
     ![](side-by-side-with-10/_static/image7.gif)
-4. Ze Správce služeb Internetu vyberte webovou aplikaci, jejíž verze rozhraní .NET Framework, budete chtít vědět.  
+4. Z Service Manager Internetu vyberte webovou aplikaci, jejíž verze .NET Framework chcete znát.  
   
     ![](side-by-side-with-10/_static/image8.gif)
-5. Klikněte pravým tlačítkem na webovou aplikaci a klikněte na **vlastnosti.**  
+5. Klikněte pravým tlačítkem na webovou aplikaci a pak klikněte na **Vlastnosti.**  
   
     ![](side-by-side-with-10/_static/image9.gif)
-6. V okně Vlastnosti vyberte **konfigurace.**  
+6. V okně vlastností vyberte **konfigurace.**  
   
     ![](side-by-side-with-10/_static/image10.gif)
-7. V tabulce mapování aplikace vyberte **.aspx**a klikněte na tlačítko **upravit**.  
+7. V tabulce mapování aplikace vyberte **. aspx**a klikněte na **Upravit**.  
   
     ![](side-by-side-with-10/_static/image11.gif)
-8. Z **spustitelný soubor** textového pole, najdete v adresáři verze posunutím. Pokud adresář verze je v.1.1.4322, aplikace se mapuje na rozhraní .NET Framework 1.1. Naopak pokud adresář verze je v1.0.3705, aplikace se mapuje na rozhraní .NET Framework 1.0.  
+8. V textovém poli **spustitelný soubor** vyhledejte v adresáři verze posouváním. Pokud je adresář verze v. 1.1.4322, aplikace je namapována na .NET Framework 1,1. Naopak, pokud je adresář verze v 1.0.3705, aplikace je namapována na .NET Framework 1,0.  
   
     ![](side-by-side-with-10/_static/image12.gif)

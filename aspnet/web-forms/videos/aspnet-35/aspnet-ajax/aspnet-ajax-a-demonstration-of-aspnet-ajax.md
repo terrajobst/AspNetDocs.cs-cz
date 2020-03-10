@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/aspnet-35/aspnet-ajax/aspnet-ajax-a-demonstration-of-aspnet-ajax
-title: 'ASP.NET AJAX: Ukázka jazyka ASP.NET AJAX | Dokumentace Microsoftu'
+title: 'ASP.NET AJAX: Ukázka ASP.NET AJAX | Microsoft Docs'
 author: JoeStagner
-description: Podívejte se, jak snadné je vytvořit úplně od začátku "Seznam úkolů" aplikace pro správu pomocí technologie ASP.NET 2.0 a potom zlepšit uživatelské prostředí pomocí technologie ASP.NET AJAX...
+description: Podívejte se, jak snadné je vytvořit zcela nové aplikace pro správu seznamu úkolů pomocí ASP.NET 2,0, a pak Vylepšete uživatelské prostředí pomocí ASP.NET AJAX...
 ms.author: riande
 ms.date: 02/24/2009
 ms.assetid: f2b4fff1-523f-4636-aa70-63fcc1257a1f
 msc.legacyurl: /web-forms/videos/aspnet-35/aspnet-ajax/aspnet-ajax-a-demonstration-of-aspnet-ajax
 msc.type: video
 ms.openlocfilehash: f14a8207e9883cdee2e35ec98d7fd64c82470d46
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59387837"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638892"
 ---
 # <a name="aspnet-ajax-a-demonstration-of-aspnet-ajax"></a>ASP.NET AJAX: Ukázka jazyka ASP.NET AJAX
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-Podívejte se, jak snadné je vytvořit úplně od začátku "Seznam úkolů" aplikace pro správu pomocí technologie ASP.NET 2.0 a potom zlepšit uživatelské prostředí, pomocí rozšíření ASP.NET AJAX.
+Podívejte se, jak snadné je sestavovat od začátku aplikaci pro správu seznamu úkolů pomocí ASP.NET 2,0, a pak zvyšte uživatelské prostředí pomocí rozšíření AJAX ASP.NET.
 
-[&#9654;Podívejte se na video (20 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-ajax-a-demonstration-of-aspnet-ajax)
+[&#9654;Sledovat video (20 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/aspnet-ajax-a-demonstration-of-aspnet-ajax)
 
 > [!div class="step-by-step"]
 > [Předchozí](creating-and-using-an-ajax-enabled-web-service-in-a-web-site.md)
-> [další](adonet-data-services-with-aspnet-ajax-support.md)
+> [Další](adonet-data-services-with-aspnet-ajax-support.md)

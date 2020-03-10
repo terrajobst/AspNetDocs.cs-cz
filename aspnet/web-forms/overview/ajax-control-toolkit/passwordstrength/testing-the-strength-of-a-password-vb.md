@@ -9,11 +9,11 @@ ms.assetid: 9215a37f-3133-4887-8ed2-3689f3a53551
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/passwordstrength/testing-the-strength-of-a-password-vb
 msc.type: authoredcontent
 ms.openlocfilehash: b614e1788eeafc175dd792ec6d3e4619f9ea2b7a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74606261"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78627300"
 ---
 # <a name="testing-the-strength-of-a-password-vb"></a>Testování síly hesla (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Hesla jsou vyžadována téměř kdekoli, takže opožděným uživatelům je, aby si vyžádali jednoduchá hesla, která se snadno přeruší. Ovládací prvek `PasswordStrength` v sadě nástrojů AJAX pro ASP.NET umožňuje zjistit, jak dobrá je heslo.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Ovládací prvek `PasswordStrength` rozšiřuje textové pole a kontroluje, zda je v něm dostatečné heslo. Nabízí širokou část možností prostřednictvím atributů; Tady jsou jenom některé z nich:
 

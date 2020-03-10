@@ -9,11 +9,11 @@ ms.assetid: 89a1d2bc-fdfd-4c5c-a3b0-49a08baaf63a
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/asp-net-hosting-options-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 2eafa750167d89fa996a442633e79dce3d5b85bd
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74620777"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78637170"
 ---
 # <a name="aspnet-hosting-options-c"></a>Možnosti hostování v technologii ASP.NET (C#)
 
@@ -76,7 +76,7 @@ Mezi dva důležité důležité informace při výběru poskytovatele webového
 > [!NOTE]
 > Některé společnosti pro hostování webů zaměřují svou firmu na konkrétní technologický zásobník, jako je .NET nebo [lampa](http://en.wikipedia.org/wiki/LAMP_stack) (**L** Inux **, Pache** , **M** ySQL a **P** HP), takže se ujistěte, že společnost, kterou vyberete, hostuje ASP.NET aplikace. Také zkontrolujte, zda podporují verzi ASP.NET, kterou používáte k sestavení aplikace. A pokud vytváříte aplikaci založenou na datech, ujistěte se, že webový hostitel nabízí stejný databázový server a verzi, kterou používáte.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Webové aplikace ASP.NET jsou obvykle navrženy, vytvořeny a testovány v místním vývojovém prostředí. Jakmile je verze připravena k vydání, bude přesunuta do produkčního prostředí. I když je možné hostovat ASP.NET weby na vašem osobním počítači nebo na serverech v rámci vaší společnosti, mnoho podniků a jednotlivců si zvolí jako poskytovatele webového hostitele vlastní hostování.
 

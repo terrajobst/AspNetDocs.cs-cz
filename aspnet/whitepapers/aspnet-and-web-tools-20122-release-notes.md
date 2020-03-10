@@ -1,287 +1,287 @@
 ---
 uid: whitepapers/aspnet-and-web-tools-20122-release-notes
-title: ASP.NET a Web Tools 2012.2 poznámky k verzi | Dokumentace Microsoftu
+title: Zpráva k vydání verze ASP.NET and Web Tools 2012,2 | Microsoft Docs
 author: rick-anderson
-description: Zpráva k vydání verze pro ASP.NET and Web Tools 2012.2
+description: Poznámky k verzi ASP.NET and Web Tools 2012,2.
 ms.author: riande
 ms.date: 02/14/2013
 ms.assetid: bdb18d02-9f61-4676-836d-6fdea94f9282
 msc.legacyurl: /whitepapers/aspnet-and-web-tools-20122-release-notes
 msc.type: content
 ms.openlocfilehash: a4ea1d7c146309e1d5e8be944d496e9fd87bca3e
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65125712"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78523777"
 ---
 # <a name="aspnet-and-web-tools-20122-release-notes"></a>ASP.NET a webové nástroje – poznámky k verzi 2012.2
 
-> Tento dokument popisuje verzi technologie ASP.NET and Web Tools 2012.2. Je aktualizace Visual Studio webové nástroje a technologie ASP.NET.
+> Tento dokument popisuje vydání ASP.NET and Web Tools 2012,2. Jedná se o aktualizaci webových nástrojů sady Visual Studio a ASP.NET.
 
 - [Poznámky k instalaci](#_Installation)
 - [Dokumentace](#_Documentation)
 - [Podpora](#_Support)
 - [Požadavky na software](#_Software_Requirements)
-- [Novinky v ASP.NET and Web Tools 2012.2](#_New_Features_in)
+- [Nové funkce v ASP.NET and Web Tools 2012,2](#_New_Features_in)
 
     - [Nástroje](#_Tooling)
     - [Publikování na webu](#_Web_Publishing)
     - [Šablony ASP.NET MVC](#_Templates)
     - [Webové rozhraní API v ASP.NET](#_ASP.NET_Web_API)
 
-    - [Funkce SignalR technologie ASP.NET](#_ASP.NET_SignalR)
-    - [ASP.NET přátelské adresy URL](#_ASP.NET_Friendly_URLs)
-- [Známé problémy a změny způsobující chyby](#_Known_Issues_and)
+    - [ASP.NET signál](#_ASP.NET_SignalR)
+    - [Popisné adresy URL ASP.NET](#_ASP.NET_Friendly_URLs)
+- [Známé problémy a zásadní změny](#_Known_Issues_and)
 
 <a id="_Installation"></a>
 ## <a name="installation-notes"></a>Poznámky k instalaci
 
-ASP.NET and Web Tools 2012.2 pro sadu Visual Studio 2012 můžete nainstalovat s použitím [instalačního programu webové platformy](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ASPDOTNETandWebTools2012_2). Toto je aktualizace pro sadu Visual Studio 2012 nebo Visual Studio Express 2012 pro Web, který se vyžaduje. Pokud nemáte nainstalovanou sadu Visual Studio, nainstaluje se Visual Studio Express 2012 pro Web.
+ASP.NET and Web Tools 2012,2 pro Visual Studio 2012 lze nainstalovat pomocí [instalačního programu webové platformy](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ASPDOTNETandWebTools2012_2). Jedná se o aktualizaci sady Visual Studio 2012 nebo Visual Studio Express 2012 pro web, která je povinná. Pokud nemáte nainstalovanou aplikaci Visual Studio, nainstaluje se Visual Studio Express 2012 pro web.
 
-Můžete také nainstalovat ASP.NET and Web Tools 2012.2 ručně. Musíte mít Visual Studio 2012 nebo Visual Studio Express 2012 pro Web nainstalovat. Potom použijte následující pokyny: 
+ASP.NET and Web Tools 2012,2 můžete také nainstalovat ručně. Je nutné, aby byla nainstalována aplikace Visual Studio 2012 nebo Visual Studio Express 2012 pro web. Pak postupujte podle následujících pokynů: 
 
-1. Stáhněte si [technologie ASP.NET a Web Frameworks 2012.2](https://download.microsoft.com/download/6/5/6/6562AFBE-9503-4E64-970C-1427133FCD73/AspNetWebTools2012Setup.exe) instalačního programu ze služby Stažení softwaru.
-2. Když výzvami klepnutím na tlačítko spustit. Můžete také uložit soubor spustit později.
-3. Zkontrolujte verzi sady Visual Studio budete aktualizovat. Můžete to provést spuštěním chcete provést aktualizaci sady Visual Studio. Pak klikněte na položku nabídky Nápověda.   
+1. Stáhněte si instalační program [ASP.NET a web frameworks 2012,2 z webu](https://download.microsoft.com/download/6/5/6/6562AFBE-9503-4E64-970C-1427133FCD73/AspNetWebTools2012Setup.exe) Download Center.
+2. Po zobrazení výzvy klikněte na spustit. Soubor můžete také uložit a spustit ho později.
+3. Ověřte verzi sady Visual Studio, kterou budete aktualizovat. To můžete provést spuštěním sady Visual Studio, kterou chcete aktualizovat. Pak klikněte na položku nabídky Help.   
     ![](aspnet-and-web-tools-20122-release-notes/_static/image1.jpg)
-4. Pokud se zobrazí položka nabídky &quot;o Microsoft Visual Studio 2012 pro Web&quot; pak si stáhnout [Web Developer Tools 2012.2 – Visual Studio Express 2012 pro Web](https://go.microsoft.com/fwlink/?LinkID=282228). Jinak stáhněte [Web Developer Tools 2012.2 – Visual Studio 2012](https://go.microsoft.com/fwlink/?LinkID=282228).
-5. Když výzvami klepnutím na tlačítko spustit. Můžete také uložit soubor spustit později.
+4. Pokud se zobrazí položka nabídky &quot;o Microsoft Visual Studio 2012 pro webové&quot; Stáhněte si [web Vývojářské nástroje 2012,2-Visual Studio Express 2012 pro web](https://go.microsoft.com/fwlink/?LinkID=282228). Jinak stáhněte [Web Vývojářské nástroje 2012,2 – Visual Studio 2012](https://go.microsoft.com/fwlink/?LinkID=282228).
+5. Po zobrazení výzvy klikněte na spustit. Soubor můžete také uložit a spustit ho později.
 
 > [!NOTE]
-> Verze technologie ASP.NET and Web Tools 2012.2 nezahrnuje SQL Server Data Tools. SQL Server a Windows Azure SQL Database poskytuje širší nabídku sad databázové nástroje, včetně offline podporou projektu vývoje, porovnání schématu a možnosti nasazení rozšířené databáze. Další informace nebo informace o instalaci systému SQL Server Data Tools najdete [ https://go.microsoft.com/fwlink/?LinkID=237127 ](https://go.microsoft.com/fwlink/?LinkID=237127).
+> Verze ASP.NET and Web Tools 2012,2 nezahrnuje nástroje SQL Server Data Tools. SQL Server a databáze Windows Azure SQL poskytují bohatší sadu databázových nástrojů, včetně vývoje v rámci projektu, porovnání schémat a vylepšené možnosti nasazení databáze. Další informace nebo informace o instalaci nástrojů SQL Server Data Tools najdete v [https://go.microsoft.com/fwlink/?LinkID=237127](https://go.microsoft.com/fwlink/?LinkID=237127).
 
 <a id="_Documentation"></a>
 ## <a name="documentation"></a>Dokumentace
 
-Kurzy a další informace o ASP.NET and Web Tools 2012.2 jsou k dispozici na webu technologie ASP.NET ( https://www.asp.net).
+Kurzy a další informace o ASP.NET and Web Tools 2012,2 jsou k dispozici na webu ASP.NET (https://www.asp.net).
 
 <a id="_Support"></a>
 ## <a name="support"></a>Podpora
 
-ASP.NET and Web Tools 2012.2 oficiálně všeobecně dostupné a podporované. Můžete použít normální podpora kanálu. Je také možné poslat otázky na fóra ASP.NET ([https://forums.asp.net/](https://forums.asp.net/)), kde jsou často schopni poskytovat podporu neformální členové komunity technologie ASP.NET.
+ASP.NET and Web Tools 2012,2 je oficiálně vydaná a podporovaná. Můžete použít svůj normální kanál podpory. Můžete také publikovat otázky do fór ASP.NET ([https://forums.asp.net/](https://forums.asp.net/)), kde členové komunity ASP.NET mají často možnost zajistit neformální podporu.
 
 <a id="_Software_Requirements"></a>
 ## <a name="software-requirements"></a>Požadavky na software
 
-ASP.NET and Web Tools 2012.2 vyžaduje Visual Studio 2012 nebo Visual Studio Express 2012 pro Web.
+ASP.NET and Web Tools 2012,2 vyžaduje Visual Studio 2012 nebo Visual Studio Express 2012 pro web.
 
 <a id="_New_Features_in"></a>
-## <a name="new-features-in-aspnet-and-web-tools-20122"></a>Novinky v ASP.NET and Web Tools 2012.2
+## <a name="new-features-in-aspnet-and-web-tools-20122"></a>Nové funkce v ASP.NET and Web Tools 2012,2
 
-Tato část popisuje funkce, které byly zavedeny v ASP.NET and Web Tools 2012.2 verzi.
+Tato část popisuje funkce, které byly představeny ve verzi ASP.NET and Web Tools 2012,2.
 
 <a id="_Tooling"></a>
 ### <a name="tooling"></a>Nástroje
 
 - Inspektor stránek 
 
-    - Podpora jazyka JavaScript výběr mapování povolení nástroje Page Inspector k mapování položek, které byly dynamicky přidány na stránku zpět na odpovídající kód jazyka JavaScript.
-    - Umožňuje zobrazit aktualizace šablon stylů CSS v reálném čase.
-    - Další informace najdete v článku [Automatická synchronizace šablon stylů CSS a JavaScript výběr mapování v nástroje Page Inspector](https://blogs.msdn.com/b/webdev/archive/2012/12/14/css-auto-sync-and-javascript-selection-mapping-in-page-inspector.aspx).
+    - Podporuje mapování výběru JavaScriptu, které umožňuje inspektoru stránky mapovat položky, které se dynamicky přidaly na stránku zpátky do odpovídajícího kódu JavaScriptu.
+    - Možnost Zobrazit aktualizace šablon stylů CSS v reálném čase.
+    - Další informace najdete v tématu [Automatická synchronizace šablon stylů CSS a mapování výběru JavaScriptu v nástroji Page Inspector](https://blogs.msdn.com/b/webdev/archive/2012/12/14/css-auto-sync-and-javascript-selection-mapping-in-page-inspector.aspx).
 - Editor 
 
-    - Podpora pro CoffeeScript, Mustache, Handlebars a JsRender zvýraznění syntaxe.
-    - HTML editor poskytuje Intellisense pro Knockout vazby.
-    - MENŠÍ úpravy a kompilátoru podpory umožňuje vytvářet dynamické šablon stylů CSS pomocí menší.
-    - Vložit formát JSON jako třídy rozhraní .NET. Pomocí tohoto příkazu speciální vložit JSON vložit do jazyka C# nebo VB.NET soubor kódu a sady Visual Studio automaticky generovat třídy .NET odvodit z JSON.
-- Podpora Mobile Emulator přidá háky rozšíření tak, aby emulátory třetích stran je možné nainstalovat jako rozšíření VSIX. Nainstalované emulátory se zobrazí v rozevírací nabídce F5, tak, aby vývojáři můžete zobrazit náhled svých webů na různých mobilních zařízení. Další informace o tuto funkci v blogu Scotta Hanselmana na [nově zavedené integraci se sadou Visual Studio Browserstackem](http://www.hanselman.com/blog/CrossBrowserDebuggingIntegratedIntoVisualStudioWithBrowserStack.aspx).
+    - Podporuje zvýrazňování syntaxe pro CoffeeScript, Mustache, handlebars a JsRender.
+    - Editor HTML poskytuje IntelliSense pro vyseknutí vazeb.
+    - MÉNĚ úprav a podpora kompilátoru, aby bylo možné vytvářet dynamickou šablonu stylů CSS s menším množstvím.
+    - Vložte JSON jako třídu .NET. Pomocí tohoto speciálního příkazu pro vložení vložte JSON do C# souboru kódu nebo VB.NET a Visual Studio automaticky vygeneruje třídy .NET odvozené od JSON.
+- Podpora emulátoru mobilního emulátoru přidává rozšiřující zavěšení, aby bylo možné nainstalovat emulátory třetích stran jako VSIX. Instalované emulátory se zobrazí v rozevírací nabídce F5, aby mohli vývojáři zobrazit náhled svých webů v různých mobilních zařízeních. Přečtěte si další informace o této funkci v záznamu blogu Scott Hanselman na [nové integraci browserstackem se sadou Visual Studio](http://www.hanselman.com/blog/CrossBrowserDebuggingIntegratedIntoVisualStudioWithBrowserStack.aspx).
 
 <a id="_Web_Publishing"></a>
 ### <a name="web-publishing"></a>Publikování na webu
 
-- Webové projekty teď mají stejné možnosti publikování jako projektů webových aplikací včetně publikování na Windows Azure websites.
-- Selektivní publikování &#8211; pro jeden nebo více souborů můžete provádět následující akce (po publikování do koncového bodu nasazení webu): 
+- Projekty webu teď mají stejné prostředí pro publikování jako projekty webových aplikací, včetně publikování na webech Windows Azure.
+- Selektivní publikování &#8211; jednoho nebo více souborů, můžete provádět následující akce (po publikování na nasazení webu koncový bod): 
 
     - Publikujte vybrané soubory.
-    - Zobrazíte rozdíl mezi místního souboru a na vzdálený soubor.
-    - Aktualizujte místní soubor vzdáleného souboru nebo aktualizovat vzdálený soubor s místním souborem.
+    - Podívejte se na rozdíl mezi místním souborem a vzdáleným souborem.
+    - Aktualizujte místní soubor se vzdáleným souborem nebo aktualizujte vzdálený soubor místním souborem.
 
 <a id="_Templates"></a>
 ### <a name="aspnet-mvc-templates"></a>Šablony ASP.NET MVC
 
-- Nová šablona aplikací pro Facebook usnadňuje vytváření Facebook Canvas aplikací. V několika jednoduchých kroků můžete vytvořit aplikaci pro Facebook, která získává data od přihlášeného uživatele a integruje se s jeho přáteli. Šablona obsahuje novou knihovnu, která se stará o všechny záležitosti související se sestavováním aplikací pro Facebook, včetně ověřování, oprávnění k přístupu k datům sítě Facebook a další. Další informace o použití aplikace Facebook šablony najdete v části [ https://go.microsoft.com/fwlink/?LinkID=269921 ](https://go.microsoft.com/fwlink/?LinkID=269921).
-- Nová šablona MVC jednostránkové aplikace umožňuje vývojářům vytvářet interaktivní webové klientské aplikace s využitím HTML 5, CSS 3 a Oblíbené Knockout a jQuery knihoven jazyka JavaScript, nad rámec rozhraní ASP.NET Web API. Šablona obsahuje aplikaci seznamu "úkolů", která demonstruje obvyklé postupy při sestavování aplikací JavaScript HTML5 využívající rozhraní API serveru RESTful. Další informace na [ https://www.asp.net/single-page-application ](../single-page-application/index.md).
-- Nyní můžete vytvořit rozšíření VSIX, který přidává nové šablony do dialogového okna Nový projekt ASP.NET MVC. Získejte informace zde: [https://go.microsoft.com/fwlink/?LinkId=275019](https://go.microsoft.com/fwlink/?LinkId=275019)
-- Balíček FixedDisplayModes &#8211; šablon projektu MVC byly aktualizovány zahrnout nový balíček NuGet "FixedDisplayModes", který obsahuje alternativní řešení chyb v MVC 4. Další informace o opravě obsažené v balíčku, najdete v tomto příspěvku na blogu ([https://blogs.msdn.com/b/rickandy/archive/2012/09/17/asp-net-mvc-4-mobile-caching-bug-fixed.aspx](https://blogs.msdn.com/b/rickandy/archive/2012/09/17/asp-net-mvc-4-mobile-caching-bug-fixed.aspx)) od týmu MVC.
+- Nová šablona aplikací pro Facebook usnadňuje vytváření aplikací pro prostředí Facebook Canvas. Pomocí pár jednoduchých kroků můžete vytvořit aplikaci pro Facebook, která získává data od přihlášeného uživatele a integruje se s jeho přáteli. Šablona obsahuje novou knihovnu, která se stará o všechny záležitosti související se sestavováním aplikací pro Facebook, jako jsou oprávnění, ověřování, přístup k datům sítě Facebook a další. Další informace o použití šablony aplikace Facebook naleznete v tématu [https://go.microsoft.com/fwlink/?LinkID=269921](https://go.microsoft.com/fwlink/?LinkID=269921).
+- Nová šablona MVC jednostránkové aplikace umožňuje vývojářům sestavit interaktivní webovou aplikaci na straně klienta, která navíc k rozhraní ASP.NET Web API využívá technologie HTML 5, CSS 3 a oblíbené knihovny Knockout a jQuery jazyka JavaScript. Šablona obsahuje aplikaci seznamu "todo", která ukazuje běžné postupy pro sestavení aplikace jazyka HTML5 v JavaScriptu, která používá rozhraní API RESTful serveru. Další informace najdete na [https://www.asp.net/single-page-application](../single-page-application/index.md).
+- Nyní můžete vytvořit VSIX, který přidá nové šablony do dialogového okna Nový projekt ASP.NET MVC. Přečtěte si, jak tady: [https://go.microsoft.com/fwlink/?LinkId=275019](https://go.microsoft.com/fwlink/?LinkId=275019)
+- Šablony projektů &#8211; FixedDisplayModes balíčku MVC byly aktualizovány tak, aby zahrnovaly nový balíček NuGet FixedDisplayModes, který obsahuje alternativní řešení pro chybu v MVC 4. Další informace o opravě obsažené v balíčku najdete v tomto blogovém příspěvku ([https://blogs.msdn.com/b/rickandy/archive/2012/09/17/asp-net-mvc-4-mobile-caching-bug-fixed.aspx](https://blogs.msdn.com/b/rickandy/archive/2012/09/17/asp-net-mvc-4-mobile-caching-bug-fixed.aspx)) od týmu MVC.
 
 <a id="_ASP.NET_Web_API"></a>
-### <a name="aspnet-web-api"></a>Rozhraní API pro ASP.NET Web
+### <a name="aspnet-web-api"></a>Webové rozhraní API ASP.NET
 
-Rozhraní ASP.NET Web API se rozšířily o několik nových funkcí:
+Webové rozhraní API pro ASP.NET bylo vylepšené o několik nových funkcí:
 
-- ASP.NET Web API OData
-- Trasování rozhraní ASP.NET Web API
-- Stránka nápovědy webové rozhraní API technologie ASP.NET
+- ASP.NET webového rozhraní API OData
+- Trasování webového rozhraní API ASP.NET
+- Stránka s webovou pomocí rozhraní API pro ASP.NET
 
-#### <a name="aspnet-web-api-odata"></a>ASP.NET Web API OData
+#### <a name="aspnet-web-api-odata"></a>ASP.NET webového rozhraní API OData
 
-Rozhraní ASP.NET Web API OData poskytuje flexibilitu, které potřebujete k tvorbě koncových bodů protokolu OData s formátovaným obchodní logikou libovolný zdroj dat. S ASP.NET Web API OData řízení velikosti sémantiky OData, kterou chcete zveřejnit. ASP.NET Web API OData je součástí šablony projektu ASP.NET MVC 4 a je také k dispozici z NuGet ([http://www.nuget.org/packages/microsoft.aspnet.webapi.odata](http://www.nuget.org/packages/microsoft.aspnet.webapi.odata)).
+ASP.NET Web API OData vám poskytne flexibilitu, kterou potřebujete k vytváření koncových bodů OData s bohatou obchodní logikou prostřednictvím libovolného zdroje dat. Pomocí ASP.NET webového rozhraní API OData ovládáte množství sémantiky OData, které chcete zveřejnit. ASP.NET Web API OData je součástí šablon projektů ASP.NET MVC 4 a je dostupný i z NuGet ([http://www.nuget.org/packages/microsoft.aspnet.webapi.odata](http://www.nuget.org/packages/microsoft.aspnet.webapi.odata)).
 
-ASP.NET Web API OData v současné době podporuje následující funkce:
+ASP.NET Web API OData aktuálně podporuje následující funkce:
 
-- Povolí sémantiku dotazu OData s použitím atributu [Queryable].
-- Snadno ověření dotazů OData a omezit sadu možností podporovaných dotazů, operátory a funkce.
-- Parametr vytvořit vazbu na ODataQueryOptions přímo pro získání reprezentaci strom abstraktní syntaxe dotazu, který lze potom ověří a použije rozhraní IEnumerable nebo IQueryable.
-- Povolte stránkování řízené služby a nové generace stránce odkaz zadáním výsledek omezení atributu [Queryable].
-- Požádat o vložených počet celkový počet odpovídajících prostředků pomocí $inlinecount.
-- Ovládací prvek šíření hodnoty null.
-- / Všechny operátory v $filter.
-- Odvodit entity data model podle úmluvy nebo explicitně přizpůsobení modelu Entity Framework Code-First podobným způsobem.
-- Odvozením z EntitySetController sady entit vystavení.
-- Jednoduchý a přizpůsobitelný konvence pro vystavení navigační vlastnosti, manipulaci s odkazy a provádění akcí OData.
-- Zjednodušená čínština, směrování pomocí metody rozšíření MapODataRoute.
-- Podpora verzního zveřejněním více modelů EDM.
-- Dokument služby a zpřístupnit $metadata tak můžete vygenerovat klientů (.NET, Windows Phone, Windows Store atd.) pro vaše webové rozhraní API.
-- Podpora pro podrobné formáty OData Atom, JSON a JSON.
-- Vytvoření, aktualizace, částečně aktualizovat (opravu) a odstranění entit.
-- Dotazování a manipulaci s relací mezi entitami.
-- Vytvořte vztah odkazy, které propojí až trasy.
+- Pro povolení sémantiky dotazů OData použijte atribut [Queryable].
+- Umožňuje snadno ověřit dotazy OData a omezit sadu podporovaných možností dotazů, operátorů a funkcí.
+- Parametr BIND pro ODataQueryOptions přímo pro získání abstraktní reprezentace stromu syntaxe dotazu, který lze následně ověřit a použít na rozhraní IQueryable nebo IEnumerable.
+- Povolí stránkování řízené službou a další generování odkazů na stránce zadáním omezení výsledků pro atribut [Queryable].
+- Vyžádá zadání vloženého počtu celkového počtu vyhovujících prostředků pomocí $inlinecount.
+- Řízení šíření hodnoty null.
+- Libovolný/všechny operátory v $filter.
+- Odvodí model dat entity podle konvence nebo explicitně upravte model způsobem podobným Entity Framework kód jako první.
+- Vystavení sad entit odvozením z EntitySetController.
+- Jednoduché, přizpůsobitelné konvence pro vystavení navigačních vlastností, manipulace s odkazy a implementace akcí OData.
+- Zjednodušené směrování pomocí metody rozšíření MapODataRoute.
+- Podpora správy verzí vyvoláním více modelů EDM.
+- Vystavte dokument služby a $metadata, abyste pro vaše webové rozhraní API mohli vygenerovat klienty (.NET, Windows Phone, Windows Store atd.).
+- Podpora pro podrobné formáty Atom, JSON a JSON pro OData.
+- Vytvořit, aktualizovat, částečně aktualizovat (opravit) a odstranit entity.
+- Dotazování a manipulace s relacemi mezi entitami.
+- Vytvořte propojení vztahů, která jsou propojená s vašimi trasami.
 - Komplexní typy.
-- Typ dědičnosti entit.
+- Dědičnost typu entity
 - Vlastnosti kolekce.
-- Výčty.
-- Akce OData.
-- Postavené na stejném základu jako služeb WCF Data Services, a to ODataLib ([http://www.nuget.org/packages/microsoft.data.odata](http://www.nuget.org/packages/microsoft.data.odata)).
+- Výčt.
+- Akce OData
+- Postavené na stejném základu jako WCF Data Services, konkrétně ODataLib ([http://www.nuget.org/packages/microsoft.data.odata](http://www.nuget.org/packages/microsoft.data.odata)).
 
-Další informace o ASP.NET Web API OData najdete v části [ https://go.microsoft.com/fwlink/?LinkId=271141 ](https://go.microsoft.com/fwlink/?LinkId=271141).
+Další informace o ASP.NET Web API OData najdete v tématu [https://go.microsoft.com/fwlink/?LinkId=271141](https://go.microsoft.com/fwlink/?LinkId=271141).
 
-#### <a name="aspnet-web-api-tracing"></a>Trasování rozhraní ASP.NET Web API
+#### <a name="aspnet-web-api-tracing"></a>Trasování webového rozhraní API ASP.NET
 
-Trasování rozhraní ASP.NET Web API integruje data trasování z vašeho webového rozhraní API .NET trasování. Nyní je povolen ve výchozím nastavení v šabloně projektu webového rozhraní API. Sledování dat pro vaše webového rozhraní API je odeslán do okna výstup a je k dispozici pomocí nástroje IntelliTrace. Trasování rozhraní ASP.NET Web API umožňuje informace trasování o webové rozhraní API hostovaná na Windows Azure díky integraci se sadou [Windows Azure Diagnostics](https://msdn.microsoft.com/library/windowsazure/hh411529.aspx). Můžete také nainstalovat a povolit trasování rozhraní ASP.NET Web API v libovolné aplikaci pomocí balíčku NuGet trasování ASP.NET Web API ([http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing](http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing)).
+Trasování webového rozhraní API ASP.NET integruje data trasování z vašich webových rozhraní API pomocí trasování .NET. V šabloně projektu webového rozhraní API je teď ve výchozím nastavení povolená. Data trasování pro vaše webová rozhraní API se odesílají do okna výstup a zpřístupňují se prostřednictvím IntelliTrace. Trasování webového rozhraní API ASP.NET umožňuje trasovat informace o webovém rozhraní API při hostování na platformě Windows Azure prostřednictvím integrace s [Windows Azure Diagnostics](https://msdn.microsoft.com/library/windowsazure/hh411529.aspx). Můžete taky nainstalovat a povolit trasování ASP.NET webového rozhraní API v libovolné aplikaci pomocí balíčku NuGet ASP.NET webového rozhraní API pro trasování ([http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing](http://www.nuget.org/packages/microsoft.aspnet.webapi.tracing)).
 
-Další informace o konfiguraci a použití trasování rozhraní ASP.NET Web API najdete v části [ https://go.microsoft.com/fwlink/?LinkID=269874 ](https://go.microsoft.com/fwlink/?LinkID=269874).
+Další informace o konfiguraci a použití trasování webového rozhraní API v ASP.NET najdete [https://go.microsoft.com/fwlink/?LinkID=269874](https://go.microsoft.com/fwlink/?LinkID=269874).
 
-#### <a name="aspnet-web-api-help-page"></a>Stránka nápovědy webové rozhraní API technologie ASP.NET
+#### <a name="aspnet-web-api-help-page"></a>Stránka s webovou pomocí rozhraní API pro ASP.NET
 
-Technologie ASP.NET webové stránce nápovědy k API je nyní zahrnutá ve výchozím nastavení v šabloně projektu webového rozhraní API. Technologie ASP.NET webové stránce nápovědy k API automaticky generuje dokumentaci pro webová rozhraní API, včetně koncové body HTTP, podporovaných metod HTTP, parametry a datové části zprávy příklad požadavku a odpovědi. Dokumentace ke službě se automaticky použije komentáře v kódu. Technologie ASP.NET webové stránce nápovědy k API můžete také přidat do jakékoli aplikace s použitím balíčku ASP.NET Web API pomáhají stránka NuGet ([http://www.nuget.org/packages/microsoft.aspnet.webapi.helppage](http://www.nuget.org/packages/microsoft.aspnet.webapi.helppage)).
+V šabloně projektu webového rozhraní API je teď ve výchozím nastavení zahrnutá Stránka s ASP.NET webové rozhraní API. Stránka s nápovědu webového rozhraní API pro ASP.NET automaticky generuje dokumentaci k webovým rozhraním API, včetně koncových bodů HTTP, podporovaných metod HTTP, parametrů a ukázkové datové části zprávy žádosti a odpovědi. Dokumentace se automaticky načte z komentářů ve vašem kódu. Stránku s usnadněním webového rozhraní API pro ASP.NET můžete přidat do libovolné aplikace pomocí balíčku NuGet stránky ASP.NET pro Web API ([http://www.nuget.org/packages/microsoft.aspnet.webapi.helppage](http://www.nuget.org/packages/microsoft.aspnet.webapi.helppage)).
 
-Další informace o vytváření a přizpůsobení viz stránka nápovědy k ASP.NET Web API [ https://go.microsoft.com/fwlink/?LinkId=271140 ](https://go.microsoft.com/fwlink/?LinkId=271140).
+Další informace o nastavení a přizpůsobení stránky pro nápovědu webového rozhraní API pro ASP.NET najdete v tématu [https://go.microsoft.com/fwlink/?LinkId=271140](https://go.microsoft.com/fwlink/?LinkId=271140).
 
 <a id="_ASP.NET_SignalR"></a>
-### <a name="aspnet-signalr"></a>ASP.NET SignalR
+### <a name="aspnet-signalr"></a>Funkce SignalR technologie ASP.NET
 
-Funkce SignalR technologie ASP.NET umožňuje snadno přidat funkce webu v reálném čase pro aplikace ASP.NET používá objekty Websocket, pokud je k dispozici a automaticky použije se další postupy při není.
+ASP.NET Signal usnadňuje přidání webových funkcí v reálném čase do vaší aplikace ASP.NET, a to pomocí WebSockets, pokud jsou k dispozici, a automaticky se vrátí k jiným technikům, když ne.
 
-Další informace o použití funkce SignalR technologie ASP.NET naleznete v tématu [ https://go.microsoft.com/fwlink/?LinkId=271271 ](https://go.microsoft.com/fwlink/?LinkId=271271).
+Další informace o používání ASP.NET signalizace najdete v tématu [https://go.microsoft.com/fwlink/?LinkId=271271](https://go.microsoft.com/fwlink/?LinkId=271271).
 
 <a id="_ASP.NET_Friendly_URLs"></a>
-### <a name="aspnet-friendly-urls"></a>ASP.NET přátelské adresy URL
+### <a name="aspnet-friendly-urls"></a>Přátelské adresy URL technologie ASP.NET
 
-ASP.NET FriendlyURLs umožňuje velmi snadno pro webové vývojáře formuláře ke generování adresy URL čisticí vyhledávání (bez přípony .aspx). Není nutné málo o nic konfigurovat a je možné se stávajícími aplikacemi ASP.NET v4.0. Funkce FriendlyURLs také usnadňuje vývojářům přidat podporu mobilních do svých aplikací díky podpoře přepínání mezi zobrazeními desktop a mobile.
+ASP.NET FriendlyURLs umožňuje vývojářům webových formulářů velmi snadno generovat adresy URL pro prohlížení čisticích souborů (bez přípony. aspx). Nevyžaduje žádnou konfiguraci a dá se použít s existujícími aplikacemi ASP.NET v 4.0. Funkce FriendlyURLs také usnadňuje vývojářům přidávat mobilní podporu do svých aplikací tím, že podporují přepínání mezi zobrazeními počítačů a mobilních zobrazení.
 
-Další informace o instalaci a používání přátelské adresy URL technologie ASP.NET naleznete v tématu [ http://www.hanselman.com/blog/IntroducingASPNETFriendlyUrlsCleanerURLsEasierRoutingAndMobileViewsForASPNETWebForms.aspx ](http://www.hanselman.com/blog/IntroducingASPNETFriendlyUrlsCleanerURLsEasierRoutingAndMobileViewsForASPNETWebForms.aspx).
+Další informace o instalaci a použití ASP.NETch adres URL najdete v tématu [http://www.hanselman.com/blog/IntroducingASPNETFriendlyUrlsCleanerURLsEasierRoutingAndMobileViewsForASPNETWebForms.aspx](http://www.hanselman.com/blog/IntroducingASPNETFriendlyUrlsCleanerURLsEasierRoutingAndMobileViewsForASPNETWebForms.aspx).
 
 <a id="_Known_Issues_and"></a>
-## <a name="known-issues-and-breaking-changes"></a>Známé problémy a změny způsobující chyby
+## <a name="known-issues-and-breaking-changes"></a>Známé problémy a zásadní změny
 
-Tato část popisuje známé problémy a velké změny, které jsou ve verzi ASP.NET and Web Tools 2012.2.
+V této části jsou popsány známé problémy a zásadní změny, které jsou součástí verze ASP.NET and Web Tools 2012,2.
 
-### <a name="installation-issues"></a>Potíže s instalací
+### <a name="installation-issues"></a>Problémy s instalací
 
-#### <a name="out-of-order-installs-of-visual-studio-2012"></a>Mimo pořadí instalací sady Visual Studio 2012
+#### <a name="out-of-order-installs-of-visual-studio-2012"></a>Instalace sady Visual Studio 2012 mimo pořadí
 
-Instalace další SKU pro Visual Studio 2012 po instalaci technologie ASP.NET and Web Tools 2012.2 bude vyžadovat operace opravy. Vezměte v úvahu následující posloupnost:
+Instalace další SKU sady Visual Studio 2012 po instalaci ASP.NET and Web Tools 2012,2 bude vyžadovat operaci opravy. Vezměte v úvahu následující sekvenci:
 
-1. Nainstalovat Visual Studio 2012 Express pro Web
-2. Instalace technologie ASP.NET and Web Tools 2012.2
+1. Instalace sady Visual Studio 2012 Express for Web
+2. Nainstalovat ASP.NET and Web Tools 2012,2
 3. Instalace sady Visual Studio 2012 Professional, Premium nebo Ultimate
 
-Krok 2 pouze způsobí instalace aktualizací pro Express for Web. Chcete-li zajistit, aby obsahoval další SKU během kroku 3 nainstalovat aktualizaci je potřeba opravit ASP.NET and Web Tools 2012.2 můžete nainstalovat aktualizace pro poslední SKU nainstalovaná. To platí i pokud vrátit zpět na SKU v kroku 1 a 3.
+Krok 2 má za následek jenom instalaci aktualizací pro Express for Web. Aby bylo zajištěno, že další SKU nainstalovaná během kroku 3 obsahuje aktualizaci, budete muset opravit ASP.NET and Web Tools 2012,2 a nainstalovat aktualizace pro poslední nainstalovanou SKU. To platí také v případě, že SKU v krocích 1 a 3 jsou stornovány.
 
-#### <a name="installing-microsoft-aspnet-and-web-tools-20122-when-visual-studio-is-open"></a>Instalace Microsoft ASP.NET and Web Tools 2012.2 při otevření sady Visual Studio
+#### <a name="installing-microsoft-aspnet-and-web-tools-20122-when-visual-studio-is-open"></a>Instalace Microsoft ASP.NET and Web Tools 2012,2, když je Visual Studio otevřené
 
-Pokud během instalace nástroje Microsoft ASP.NET and Web Tools 2012.2 je otevřen VS, Visual Studio může skončit ve špatném stavu. Doporučuje se, že uživatelé zavřete všechny instance sady Visual Studio, než budete pokračovat v instalaci.
+Pokud je v nástroji VS otevřený během instalace Microsoft ASP.NET and Web Tools 2012,2, může Visual Studio končit špatným stavem. Doporučujeme, aby uživatelé před pokračováním v instalaci zavřeli všechny instance sady Visual Studio.
 
-#### <a name="canceling-aspnet-and-web-tools-20122-setup-in-the-middle-of-installation"></a>Ruší se instalace technologie ASP.NET and Web Tools 2012.2 uprostřed instalace
+#### <a name="canceling-aspnet-and-web-tools-20122-setup-in-the-middle-of-installation"></a>Ruší se instalace ASP.NET and Web Tools 2012,2 během instalace.
 
-Ruší se ASP.NET and Web Tools 2012.2 ponechá nastavení uprostřed instalace sady Visual Studio ve špatném stavu. Chcete-li vyřešit tento problém, postupujte takto: 
+Zrušení instalace ASP.NET and Web Tools 2012,2 při instalaci ponechá Visual Studio v nesprávném stavu. K vyřešení tohoto problému použijte následující postup: 
 
-- Přejít na Přidat nebo odebrat programy
-- Odinstalujte Microsoft ASP.NET and Web Tools 2012.2, pokud jsou k dispozici.
-- Znovu nainstalovat technologii Microsoft ASP.NET and Web Tools 2012.2
+- Přejít na Přidat odebrat programy
+- Pokud je k dispozici Microsoft ASP.NET and Web Tools 2012,2, odinstalujte ji.
+- Přeinstalujte Microsoft ASP.NET and Web Tools 2012,2
 
-#### <a name="after-uninstalling-aspnet-and-web-tools-20122-the-aspnet-mvc-4-templates-and-razor-v2-web-site-templates-are-missing"></a>Po odinstalování serveru ASP.NET and Web Tools 2012.2 rozhraní ASP.NET MVC 4 nebyly nalezeny šablony a šablony webu Razor v2
+#### <a name="after-uninstalling-aspnet-and-web-tools-20122-the-aspnet-mvc-4-templates-and-razor-v2-web-site-templates-are-missing"></a>Po odinstalování ASP.NET and Web Tools 2012,2 chybí šablony ASP.NET MVC 4 a web Razor v2.
 
-Odinstalování technologie ASP.NET and Web Tools 2012.2 také odinstalovat všechny architektury ASP.NET MVC 4 a šablony webu Razor v2 ze sady Visual Studio 2012.
+Odinstalace ASP.NET and Web Tools 2012,2 také odinstaluje všechny šablony webu ASP.NET MVC 4 a Razor v2 ze sady Visual Studio 2012.
 
-Alternativním řešením je opravte instalaci sady Visual Studio 2012 a znovu nainstalujte aplikaci ASP.NET MVC 4 a šablony webu Razor v2.
+Alternativním řešením je opravit instalaci sady Visual Studio 2012 pro přeinstalaci šablon webu ASP.NET MVC 4 a Razor v2.
 
-### <a name="tooling-issues"></a>Problémy nástroje
+### <a name="tooling-issues"></a>Problémy s nástrojem
 
-#### <a name="nuget-error-reported-during-project-creation"></a>NuGet Chyba hlášená během vytváření projektu
+#### <a name="nuget-error-reported-during-project-creation"></a>Chyba NuGet nahlášená během vytváření projektu
 
-Po instalaci technologie ASP.NET and Web Tools 2012.2 může zobrazit následující chyba při vytváření projektu aplikace MVC 4
+Po instalaci ASP.NET and Web Tools 2012,2 se při vytváření projektu MVC 4 může zobrazit následující chyba.
 
 ![](aspnet-and-web-tools-20122-release-notes/_static/image1.png)
 
-ASP.NET and Web Tools 2012.2 dodává NuGet 2.1 a provede upgrade rozšíření v sadě Visual Studio 2012. V některých případech se nepodaří správně aktualizovat VSIX instalátor VSIX. Následující postup vám umožní k vyřešení tohoto problému:
+ASP.NET and Web Tools 2012,2 dodává NuGet 2,1 a aktualizuje rozšíření v aplikaci Visual Studio 2012. V některých případech se instalačnímu programu VSIX nepodaří správně aktualizovat VSIX. Následující kroky vám umožní vyřešit tento problém:
 
-1. Jako správce spusťte Visual Studio 2012
-2. Přejděte na nástroje -&gt;rozšíření a aktualizace a odinstalujte NuGet.
+1. Spusťte Visual Studio 2012 jako správce.
+2. Přejít na nástroje – rozšíření&gt;a aktualizace a odinstalace NuGet.
 3. Zavřete Visual Studio.
-4. Přejděte do instalační složky sady ASP.NET and Web Tools 2012.2:
+4. Přejděte do instalační složky ASP.NET and Web Tools 2012,2:
 
-    1. For Visual Studio 2012: **Program Files\Microsoft ASP.NET\ASP.NET webové Stack\Visual Studio 2012**
-    2. Pro Visual Studio 2012 Express pro Web: **Program Files\Microsoft ASP.NET\ASP.NET webové Stack\Visual Studio Express 2012 pro Web**
-5. Dvakrát klikněte na NuGet.Tools.vsix přeinstalovat nástroj NuGet
+    1. Pro Visual Studio 2012: **Program Files\Microsoft ASP. NET\ASP.NET Web Stack\Visual Studio 2012**
+    2. Pro Visual Studio 2012 Express for Web: **Program Files\Microsoft ASP. NET\ASP.NET Web Stack\Visual Studio Express 2012 for Web**
+5. Poklikejte na NuGet. Tools. vsix a přeinstalujte NuGet.
 
-### <a name="web-api-issues"></a>Problémy s webových rozhraní API
+### <a name="web-api-issues"></a>Problémy s webovým rozhraním API
 
-#### <a name="parsing-issues-in-filter-and-datetime-literals"></a>Analýza problémů $filter a literály data a času
+#### <a name="parsing-issues-in-filter-and-datetime-literals"></a>Analýza problémů v $filter a literálech DateTime
 
-Analyzátor identifikátoru URI protokolu OData se nepodařilo správně analyzovat literály částečná data a času. Například $filter = počáteční hodnotou datetime eq'2012-12-31T12:00' se nepodařilo správně analyzovat. Alternativní řešení, je použít úplné literálu $filter = počáteční hodnotou datetime eq'2012-12-31T12:00:00 ".
+Analyzátor identifikátoru URI OData nedokáže správně analyzovat částečné literály DateTime. Například $filter = Start EQ DateTime "2012-12-31T12:00" se nezdařilo správně analyzovat. Alternativním řešením je použití úplného literálu, $filter = Start EQ DateTime ' 2012-12-31T12:00:00 '.
 
-#### <a name="odata-doesnt-support-case-insensitive-property-names"></a>OData nepodporuje názvy vlastností velká a malá písmena.
+#### <a name="odata-doesnt-support-case-insensitive-property-names"></a>OData nepodporuje názvy vlastností s rozlišováním velkých a malých písmen.
 
-OData nepodporuje názvy vlastností velkých a malých písmen v dotazů OData a cestu odata. Zobrazit pracovní položky:
+OData nepodporuje názvy vlastností nerozlišující velikosti písmen v dotazech OData a cestě OData. Viz pracovní položky:
 
 - [http://aspnetwebstack.codeplex.com/workitem/366](http://aspnetwebstack.codeplex.com/workitem/366)
 - [http://aspnetwebstack.codeplex.com/workitem/704](http://aspnetwebstack.codeplex.com/workitem/704)
 
-Pokud uživatelé používají jinou velikostí písmen na javascript na straně klienta a na straně serveru, jsou pravděpodobně bude tento problém nastane. Tento problém je záměrné v protokolu odata. Mnoho uživatelů sestavy, ale tento problém. Obejít ho, uživatelé mají k opravě případům v adrese URL.
+Pokud mají uživatelé v JavaScriptu na straně klienta a na straně serveru různá velká písmena, budou se pravděpodobně setkat s tímto problémem. Tento problém je záměrné v protokolu OData. Mnoho uživatelů ale tento problém oznamuje. Aby uživatelé mohli tento problém obejít, musí opravit případy v adrese URL.
 
-#### <a name="default-odata-routing-conventions-doesnt-support-postput-on-navigation-property"></a>OData výchozích konvencí směrování nepodporuje POST a PUT na navigační vlastnost.
+#### <a name="default-odata-routing-conventions-doesnt-support-postput-on-navigation-property"></a>Výchozí konvence směrování OData nepodporuje vlastnost POST/PUT pro navigační vlastnost.
 
-OData výchozích konvencí směrování nepodporuje POST a PUT na navigační vlastnost. Zobrazit pracovní položky [ http://aspnetwebstack.codeplex.com/workitem/366 ](http://aspnetwebstack.codeplex.com/workitem/366). Tato konvence běžně používaných ve výchozích konvencí jsme nebyly nalezeny.
+Výchozí konvence směrování OData nepodporuje vlastnost POST/PUT pro navigační vlastnost. Viz pracovní položka [http://aspnetwebstack.codeplex.com/workitem/366](http://aspnetwebstack.codeplex.com/workitem/366). Tato často používaná konvence ve výchozích konvencích neexistuje.
 
-Vyřešíte to uživatelé potřebují k rozšíření novou konvenci směrování pro její podporu.
+Aby uživatelé mohli tento problém obejít, je potřeba, aby rozšířili novou konvenci směrování, aby ji podporovala.
 
-### <a name="facebook-template-issues"></a>Problémy se šablonou služby Facebook
+### <a name="facebook-template-issues"></a>Problémy s šablonou Facebooku
 
-#### <a name="facebook-application-template-only-works-using-net-45"></a>Šablona aplikací pro Facebook funguje jenom pomocí rozhraní .NET 4.5
+#### <a name="facebook-application-template-only-works-using-net-45"></a>Šablona aplikace pro Facebook funguje pouze pomocí .NET 4,5
 
-V rozevíracím seznamu framework v dialogovém okně Nový projekt zobrazíte šablona aplikací pro Facebook v architektuře ASP.NET MVC 4 je třeba vybrat .NET 4.5.
+V rozevíracím seznamu Framework v dialogovém okně Nový projekt musíte vybrat .NET 4,5, abyste viděli šablonu aplikace Facebook v ASP.NET MVC 4.
 
-#### <a name="real-time-update-controller"></a>V reálném čase aktualizace Kontroleru
+#### <a name="real-time-update-controller"></a>Kontroler aktualizací v reálném čase
 
-Šablona Facebook aplikací umožňuje uživatelům snadno vytvořit Kontroleru webového rozhraní API pro zpracování v reálném čase aktualizace ze sítě Facebook. Pokud je vývojovém počítači za serverem NAT, Kontrolér nemusí fungovat bez další konfigurace sítě. Podrobnosti najdete tady: [http://facebook.stackoverflow.com/questions/5259467/can-a-computer-behind-a-nat-router-receive-realtime-updates-from-facebook](http://facebook.stackoverflow.com/questions/5259467/can-a-computer-behind-a-nat-router-receive-realtime-updates-from-facebook)
+Šablona aplikace na Facebooku umožňuje uživateli snadno vytvořit kontroler webového rozhraní API pro zpracování aktualizací v reálném čase z Facebooku. Pokud je váš vývojový počítač za překladem adres (NAT), nemusí váš kontroler fungovat bez další konfigurace sítě. Podrobnosti najdete tady: [http://facebook.stackoverflow.com/questions/5259467/can-a-computer-behind-a-nat-router-receive-realtime-updates-from-facebook](http://facebook.stackoverflow.com/questions/5259467/can-a-computer-behind-a-nat-router-receive-realtime-updates-from-facebook)
 
-#### <a name="query-string-values-conflict-with-facebook-oauth-parameters"></a>Řetězcové hodnoty jsou v konfliktu s OAuth pro Facebook parametry dotazu
+#### <a name="query-string-values-conflict-with-facebook-oauth-parameters"></a>Konflikty hodnot řetězců dotazů pomocí parametrů OAuth pro Facebook
 
-Následující pole jsou v konfliktu s OAuth pro Facebook dialogu volání zpět adresy URL. Nepřidávejte vlastní hodnoty řetězce dotazu s následujícími názvy: kód, chyba, chyba\_popis, chyba\_důvod.
+Následující pole jsou v konfliktu s adresou URL zpětného volání dialogového okna Facebook OAuth. Nepřidávat vlastní hodnoty řetězce dotazu s následujícími názvy: kód, chyba, chyba\_popis, chyba\_důvod.
 
-#### <a name="using-page-inspector-with-facebook-template"></a>Použití Page Inspectoru pomocí šablony služby Facebook
+#### <a name="using-page-inspector-with-facebook-template"></a>Použití funkce Page Inspector se šablonou Facebook
 
-Funkce nástroje Page Inspector nelze použít v sadě Visual Studio 2012 při ladění aplikace Facebook. Nástroj Page Inspector v současné době nepodporuje prvky IFRAME.
+Během ladění aplikace na Facebooku nemůžete použít funkci Page Inspector v aplikaci Visual Studio 2012. Inspektor stránky v současné době nepodporuje prvky IFrame.
 
-### <a name="single-page-application-template-issues"></a>Problémy se šablonou jednostránkové aplikace
+### <a name="single-page-application-template-issues"></a>Problémy šablony aplikace s jednou stránkou
 
-#### <a name="with-jquery-19knockout-221-update-when-running-default-mvc-spa-project-new-todo-item-edit-enter-focus-event-is-not-handled-properly"></a>S JQuery zadat při spuštění projektu výchozí jednostránková aplikace MVC, nové úpravy položek todo 1.9/Knockout 2.2.1 update události fokusu nezpracovává správně.
+#### <a name="with-jquery-19knockout-221-update-when-running-default-mvc-spa-project-new-todo-item-edit-enter-focus-event-is-not-handled-properly"></a>Při použití aktualizace JQuery 1.9/vyseknutí 2.2.1 při spuštění výchozího projektu MVC SPA se nezpracovává nová událost pro úpravu položky ToDo s fokusem.
 
-S JQuery 1.9/Knockout 2.2.1 aktualizací při spuštění výchozího projektu jednostránková aplikace MVC, nové úpravy položek todo, zadejte, už fokus zpět do nového pole pro úpravy položek todo po zadání nová položka seznamu úkolů.
+Při použití aktualizace JQuery 1.9/vyseknutí 2.2.1 při spuštění výchozího projektu MVC pro ověřování po vstupu do seznamu úkolů se už po zadání nové položky ToDo do seznamu úkolů nepřejdete do nového pole pro úpravu položky ToDo.
 
-Alternativní řešení odkazu [ http://knockoutjs.com/documentation/hasfocus-binding.html ](http://knockoutjs.com/documentation/hasfocus-binding.html)a proveďte opravu podobně jako následující ukázkový kód:
+Na referenční informace o alternativním řešení [http://knockoutjs.com/documentation/hasfocus-binding.html](http://knockoutjs.com/documentation/hasfocus-binding.html)a udělejte podobnou opravu následujícímu ukázkovému kódu:
 
-Soubor todo.model.js  
- Funkce todolist(data), přidejte následující:  
- **self.isSelected = ko.observable(false);**
+Soubor todo. model. js  
+ Function ToDoList (data), přidejte následující:  
+ **samy.-Select = Ko. propozorovatelný (NEPRAVDA);**
 
-Funkce todoList.prototype.addTodo, přidejte následující blacked text:  
- **self.isSelected(true);**  
- self.newTodoTitle(&quot;&quot;);
+Function todoList. prototyp. addTodo přidejte následující černý text:  
+ **samo. s volbou (true);**  
+ osobní. newTodoTitle (&quot;&quot;);
 
-Souboru index.cshtml, přidejte následující blacked text:  
- &lt;formulář data-bind =&quot;odeslat: addTodo&quot;&gt;  
- &lt;input class=&quot;addTodo&quot; type=&quot;text&quot; data-bind=&quot;value: newTodoTitle, placeholder: 'Type tady přidáte', blurOnEnter: true, **hasfocus: isSelected**, událostí: {rozostření: addTodo}&quot; /&gt;  
- &lt;formuláře&gt;
+Soubor index. cshtml přidejte následující černý text:  
+ data formuláře &lt;– BIND =&quot;odeslat: addTodo&quot;&gt;  
+ &lt;Input Class =&quot;addTodo&quot; typ =&quot;text&quot; data-BIND =&quot;hodnota: newTodoTitle, zástupný symbol: ' sem zadejte text pro přidání ', blurOnEnter: true, **HasFocus: selektivně**, událost: {rozostření: addTodo}&quot; /&gt;  
+ &lt;&gt;

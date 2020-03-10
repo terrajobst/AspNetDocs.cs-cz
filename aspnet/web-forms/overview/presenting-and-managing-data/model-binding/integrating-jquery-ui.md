@@ -1,116 +1,116 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/integrating-jquery-ui
-title: Integrace s vazby modelu a webových formulářů JQuery UI Datepicker | Dokumentace Microsoftu
+title: Integrace DatePicker uživatelského rozhraní JQuery s vazbami modelů a webovými formuláři | Microsoft Docs
 author: Rick-Anderson
-description: V této sérii kurzů ukazuje základní aspekty v použití vazby modelu s projektem aplikace webových formulářů ASP.NET. Data interakce díky vazby modelu další přímo-...
+description: Tato série kurzů ukazuje základní aspekty použití vazby modelu s projektem webových formulářů ASP.NET. Vazba modelu umožňuje interakci dat více-...
 ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 3cbab37b-fb0f-4751-9ec4-74e068c3f380
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/integrating-jquery-ui
 msc.type: authoredcontent
 ms.openlocfilehash: c8d711dd44950116f3a3e09d5d12c507918c543f
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132000"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78642476"
 ---
-# <a name="integrating-jquery-ui-datepicker-with-model-binding-and-web-forms"></a>Integrace prvku Datepicker uživatelského rozhraní JQuery s vazby modelu a webové formuláře
+# <a name="integrating-jquery-ui-datepicker-with-model-binding-and-web-forms"></a>Integrace DatePicker uživatelského rozhraní JQuery s vazbami modelů a webovými formuláři
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> V této sérii kurzů ukazuje základní aspekty v použití vazby modelu s projektem aplikace webových formulářů ASP.NET. Vazby modelu díky dat interakce více přímočaré než pracující s daty objektů zdroje (například ObjectDataSource nebo SqlDataSource). Tato série začíná úvodní materiály a přesune pokročilejších pojmech v budoucích kurzech.
+> Tato série kurzů ukazuje základní aspekty použití vazby modelu s projektem webových formulářů ASP.NET. Vazba modelu umožňuje, aby data byla v interakci s více přímým přesměrováním než při práci s objekty zdroje dat (například ObjectDataSource nebo SqlDataSource). Tato série začíná úvodním materiálem a v pozdějších kurzech přechází na pokročilejší koncepty.
 > 
-> Tento kurz ukazuje, jak přidat uživatelské rozhraní JQuery [Datepicker widgetu](http://jqueryui.com/datepicker/) webový formulář a vazba k aktualizaci databáze s vybranou hodnotu použití modelu.
+> V tomto kurzu se dozvíte, jak přidat [widget DatePicker](http://jqueryui.com/datepicker/) uživatelského rozhraní jQuery do webového formuláře a použít vazbu modelu k aktualizaci databáze s vybranou hodnotou.
 > 
-> V tomto kurzu vychází z vytvořeného v projektu [první](retrieving-data.md) a [druhý](updating-deleting-and-creating-data.md) části této série.
+> Tento kurz sestaví na projektu vytvořeném v [první](retrieving-data.md) a [druhé](updating-deleting-and-creating-data.md) části řady.
 > 
-> Je možné [Stáhnout](https://go.microsoft.com/fwlink/?LinkId=286116) dokončený projekt v jazyce C# nebo VB. Ke stažení kódu funguje pomocí sady Visual Studio 2012 nebo Visual Studio 2013. Používá šablonu Visual Studio 2012, která se trochu liší od sady Visual Studio 2013 šablonu uvedenou v tomto kurzu.
+> Můžete [si stáhnout](https://go.microsoft.com/fwlink/?LinkId=286116) celý projekt v C# nebo VB. Kód ke stažení funguje buď se sadou Visual Studio 2012 nebo Visual Studio 2013. Používá šablonu sady Visual Studio 2012, která se mírně liší od Visual Studio 2013 šablony zobrazené v tomto kurzu.
 
-## <a name="what-youll-build"></a>Co budete vytvářet
+## <a name="what-youll-build"></a>Co sestavíte
 
-V tomto kurzu budete:
+V tomto kurzu:
 
-1. Přidání vlastnosti do modelu k zaznamenání student získal datum registrace
-2. Povolit uživateli vybrat datum registrace pomocí widgetu JQuery UI Datepicker
-3. Vynutit ověřovacích pravidel pro datum registrace
+1. Přidejte do modelu vlastnost pro záznam data registrace studenta.
+2. Povolit uživateli vybrat datum registrace pomocí widgetu DatePicker uživatelského rozhraní JQuery
+3. Vyhovět ověřovacím pravidlům pro datum zápisu
 
-Ve widgetu JQuery UI Datepicker umožňuje uživatelům snadno vybrat datum z kalendáře, která se zobrazí, když uživatel pracuje s polem. Pomocí tohoto widgetu můžete být uživatelům pohodlnější než ručním zadáním datum. Integrace stránku, která používá vazbu modelu pro operace s daty v ovládacím prvku Datepicker vyžaduje jenom malé množství další práce.
+Pomůcka DatePicker uživatelského rozhraní JQuery umožňuje uživatelům snadno vybrat datum z kalendáře, který se zobrazí, když uživatel pracuje s polem. Použití tohoto widgetu může být vhodnější pro uživatele, než ruční zadání data. Integrace widgetu DatePicker do stránky, která používá vazbu modelu pro datové operace, vyžaduje jenom malé množství další práce.
 
-## <a name="add-a-new-property-to-the-model"></a>Přidat nové vlastnosti do modelu
+## <a name="add-a-new-property-to-the-model"></a>Přidat do modelu novou vlastnost
 
-Nejprve přidejte **data a času** vlastností pro své studenty pro model a migrovat tuto změnu do databáze. Otevřít **UniversityModels.cs**a přidat zvýrazněný kód do modelu studentů.
+Nejprve do svého modelu studenta přidáte vlastnost **DateTime** a tuto změnu migrujete do databáze. Otevřete **UniversityModels.cs**a přidejte zvýrazněný kód do modelu studenta.
 
 [!code-csharp[Main](integrating-jquery-ui/samples/sample1.cs?highlight=16-18)]
 
-**RangeAttribute** je zahrnuta k vynucení ověřovacích pravidel pro vlastnost. Pro účely tohoto kurzu budeme předpokládat, že Contoso univerzitě byla založena na 1. lednu 2013, a proto dřívější registrace data nejsou platná.
+**RangeAttribute** je součástí pro vymáhání ověřovacích pravidel pro vlastnost. Pro účely tohoto kurzu předpokládáme, že je společnost Contoso University založená na 1. lednu 2013 a proto jsou dřívější data registrace neplatná.
 
-V okně Správa balíčků přidejte migraci spuštěním příkazu **přidat migrace AddEnrollmentDate**. Všimněte si, že migrace kódu přidá nový sloupec Datum a čas do tabulky studentů. Tak, aby odpovídaly hodnota, kterou jste zadali v RangeAttribute, přidejte výchozí hodnotu pro nový sloupec, jak je znázorněno v následující zvýrazněný kód.
+V okně Správa balíčků přidejte migraci spuštěním příkazu **Add-Migration AddEnrollmentDate**. Všimněte si, že kód migrace přidá nový sloupec DateTime do tabulky student. Aby se shodovala s hodnotou, kterou jste zadali v RangeAttribute, přidejte výchozí hodnotu pro nový sloupec, jak je znázorněno v následujícím zvýrazněném kódu.
 
 [!code-csharp[Main](integrating-jquery-ui/samples/sample2.cs?highlight=11)]
 
 Uložte změny do souboru migrace.
 
-Nemusíte znovu počáteční hodnoty data. Proto otevřete **Configuration.cs** ve složce migrace a odstranit nebo okomentovat kód v **počáteční hodnoty** metody. Soubor uložte a zavřete.
+Data nemusíte znovu naplnit. Proto ve složce migrace otevřete **Configuration.cs** a odeberte nebo Odkomentujte kód v metodě **osazení** . Uložte soubor a zavřete ho.
 
-Nyní, spusťte příkaz **aktualizace databáze**. Všimněte si, že sloupec nyní existuje v databázi a všechny existující záznamy mají výchozí hodnotu pro EnrollmentDate.
+Nyní spusťte příkaz **Update-Database**. Všimněte si, že sloupec teď v databázi existuje a všechny existující záznamy mají výchozí hodnotu pro EnrollmentDate.
 
 ## <a name="add-dynamic-controls-for-enrollment-date"></a>Přidat dynamické ovládací prvky pro datum registrace
 
-Nyní přidáte ovládací prvky pro zobrazení a úpravy datum registrace. V tomto okamžiku je hodnota upravovat pomocí textového pole. V pozdější části kurzu změníte do textového pole na ovládacím prvku JQuery Datepicker.
+Nyní přidáte ovládací prvky pro zobrazení a úpravu data registrace. V tomto okamžiku je hodnota upravována prostřednictvím textového pole. Později v tomto kurzu změníte textové pole na widget JQuery DatePicker.
 
-Za prvé, je důležité si uvědomit, že není potřeba provádět změny na **AddStudent.aspx** souboru. Ovládací prvek DynamicEntity se automaticky generují nové vlastnosti.
+Nejprve je důležité si uvědomit, že nemusíte dělat žádné změny v souboru **AddStudent. aspx** . Ovládací prvek DynamicEntity automaticky vykreslí novou vlastnost.
 
-Otevřít **Students.aspx**a přidejte následující zvýrazněný kód.
+Otevřete **studenty. aspx**a přidejte následující zvýrazněný kód.
 
 [!code-aspx[Main](integrating-jquery-ui/samples/sample3.aspx?highlight=13)]
 
-Spusťte aplikaci a Všimněte si, že hodnota datum registrace můžete nastavit tak, že zadáte datum. Při přidání nového studenta:
+Spusťte aplikaci a Všimněte si, že můžete nastavit hodnotu pro datum zápisu zadáním data. Při přidávání nového studenta:
 
 ![nastavit datum](integrating-jquery-ui/_static/image1.png)
 
-Nebo úpravu existující hodnoty:
+Nebo úprava existující hodnoty:
 
 ![Upravit datum](integrating-jquery-ui/_static/image2.png)
 
-Zadáte datum funguje, ale nemusí být uživatelské prostředí, které chcete poskytnout. V další části vám umožní výběr data prostřednictvím kalendáře.
+Zadání data funguje, ale nemusí se jednat o činnost zákazníka, kterou chcete poskytnout. V další části povolíte výběr data prostřednictvím kalendáře.
 
-## <a name="install-nuget-package-to-work-with-jquery-ui"></a>Nainstalujte balíček NuGet pro práci s uživatelským rozhraním JQuery
+## <a name="install-nuget-package-to-work-with-jquery-ui"></a>Nainstalovat balíček NuGet pro práci s uživatelským rozhraním JQuery
 
-**Uživatelského rozhraní džusu** balíček NuGet umožňuje snadnou integraci widgety uživatelského rozhraní JQuery do webové aplikace. Pokud chcete použít tento balíček, ji nainstalujte prostřednictvím balíčku NuGet.
+Balíček NuGet **uživatelského rozhraní sady šťáv** umožňuje snadnou integraci WIDGETŮ uživatelského rozhraní jQuery do vaší webové aplikace. Pokud chcete tento balíček použít, nainstalujte ho přes NuGet.
 
-![Přidat džusu uživatelského rozhraní](integrating-jquery-ui/_static/image3.png)
+![Přidat uživatelské rozhraní šťávy](integrating-jquery-ui/_static/image3.png)
 
-Verze džusu uživatelského rozhraní, který nainstalujete dojít ke konfliktu s verzí JQuery ve vaší aplikaci. Než budete pokračovat s tímto kurzem, spusťte aplikaci. Pokud dojde k chybě jazyka JavaScript, budete muset sjednotit JQuery verze. Můžete přidat do složky skriptů (verze 1.8.2 v době psaní tohoto kurzu) očekávaná verze JQuery nebo v Site.master zadejte cestu k souboru JQuery.
+Verze rozhraní, kterou nainstalujete, může být v konfliktu s verzí JQuery ve vaší aplikaci. Než budete pokračovat v tomto kurzu, zkuste aplikaci spustit. Pokud dojde k chybě JavaScriptu, je nutné sjednotit verzi JQuery. Můžete buď přidat očekávanou verzi JQuery do složky Scripts (1.8.2 verze v době psaní tohoto kurzu), nebo v souboru site. Master zadat cestu k souboru JQuery.
 
 [!code-aspx[Main](integrating-jquery-ui/samples/sample4.aspx)]
 
-## <a name="customize-datetime-template-to-include-datepicker-widget"></a>Přizpůsobení šablony data a času zahrnout Datepicker widgetu
+## <a name="customize-datetime-template-to-include-datepicker-widget"></a>Přizpůsobit šablonu DateTime tak, aby zahrnovala widget DatePicker
 
-Přidejte ovládací prvek Datepicker widgetu do šablony dynamických dat pro hodnotu data a času úpravy. Do šablony přidáte widgetu, automaticky je vykreslen ve formuláři pro přidání nového studenta a v mřížkovém zobrazení pro úpravy studenty. Otevřít **data a času\_Edit.ascx**a přidejte následující zvýrazněný kód.
+Přidáte pomůcku DatePicker do šablony dynamických dat pro úpravu hodnoty DateTime. Přidáním widgetu do šablony se automaticky vykreslí ve formuláři pro přidání nového studenta a v zobrazení mřížky pro úpravy studentů. Otevřete **DateTime\_Edit. ascx**a přidejte následující zvýrazněný kód.
 
 [!code-aspx[Main](integrating-jquery-ui/samples/sample5.aspx?highlight=3)]
 
-V souboru kódu na pozadí nastavíte minimální a maximální datum pro ovládací prvek DatePicker. Nastavením těchto hodnot se uživatelům zabránit v přechodu na neplatná data. Načte minimální a maximální hodnoty z **RangeAttribute** u vlastnosti data a času, pokud je zadáno. Otevřít **data a času\_Edit.ascx.cs**a přidejte následující zvýrazněný kód na stránku\_načíst metodu.
+V souboru kódu na pozadí nastavíte minimální a maximální datum pro DatePicker. Nastavením těchto hodnot zabráníte uživatelům přejít na neplatná data. Pokud je k dispozici, načtete minimální a maximální hodnoty z **RangeAttribute** ve vlastnosti DateTime. Otevřete **datový typ DateTime\_Edit.ascx.cs**a přidejte následující zvýrazněný kód na stránku\_načtení metody.
 
 [!code-csharp[Main](integrating-jquery-ui/samples/sample6.cs?highlight=9-14)]
 
-Spusťte webovou aplikaci a přejděte na stránku AddStudent. Zadejte hodnoty pro pole a Všimněte si, že po kliknutí na textové pole pro datum registrace se zobrazí v kalendáři.
+Spusťte webovou aplikaci a přejděte na stránku AddStudent. Zadejte hodnoty pro pole a Všimněte si, že po kliknutí na textové pole pro datum zápisu se zobrazí kalendář.
 
 ![Výběr data](integrating-jquery-ui/_static/image4.png)
 
-Vyberte datum a klikněte na tlačítko **vložit**. RangeAttribute vynucuje ověření na serveru. Nastavením vlastnosti minDate na ovládací prvek Datepicker můžete také použít ověření na straně klienta. Kalendář, nebude uživatel přejít na datum před hodnotu minDate.
+Vyberte datum a klikněte na tlačítko **Vložit**. RangeAttribute vynutil ověřování na serveru. Nastavením vlastnosti minDate v DatePicker použijete také ověřování na straně klienta. Kalendář neumožní uživateli přejít na datum před hodnotou minDate.
 
-Při úpravě záznamu v zobrazení mřížky se zobrazí také v kalendáři.
+Při úpravách záznamu v zobrazení mřížky se zobrazí také kalendář.
 
-![Ovládací prvek DatePicker v prvku GridView](integrating-jquery-ui/_static/image5.png)
+![DatePicker v prvku GridView](integrating-jquery-ui/_static/image5.png)
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto kurzu jste zjistili, jak začlenit JQuery widgetu do webového formuláře, který používá vazbu modelu.
+V tomto kurzu jste zjistili, jak začlenit widget JQuery do webového formuláře, který používá vazbu modelu.
 
-V dalším [kurzu](using-query-string-values-to-retrieve-data.md), při výběru dat použijete hodnotu řetězce dotazu.
+V dalším [kurzu](using-query-string-values-to-retrieve-data.md)budete při výběru dat používat hodnotu řetězce dotazu.
 
 > [!div class="step-by-step"]
 > [Předchozí](sorting-paging-and-filtering-data.md)
-> [další](using-query-string-values-to-retrieve-data.md)
+> [Další](using-query-string-values-to-retrieve-data.md)

@@ -1,166 +1,166 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-4
-title: Začínáme s Entity Framework 4.0 Database First a technologie ASP.NET 4 webových formulářů – 4. část | Dokumentace Microsoftu
+title: Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 4 | Microsoft Docs
 author: tdykstra
-description: Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Frameworku. Ukázková aplikace je...
+description: Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework vytvořit aplikace webových formulářů ASP.NET. Ukázková aplikace je...
 ms.author: riande
 ms.date: 12/03/2010
 ms.assetid: ceb9e60f-957c-4d25-9331-cc527de96a33
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-4
 msc.type: authoredcontent
 ms.openlocfilehash: eb75a76038466bf30738387ed4739687de1df944
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133298"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638164"
 ---
-# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-4"></a>Začínáme s Entity Framework 4.0 Database First a 4 webových formulářů ASP.NET – 4. část
+# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-4"></a>Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 4
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-> Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Framework 4.0 a Visual Studio 2010. Informace o této sérii kurzů, naleznete v tématu [z prvního kurzu této série](the-entity-framework-and-aspnet-getting-started-part-1.md)
+> Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework 4,0 a sady Visual Studio 2010 vytvářet aplikace webových formulářů ASP.NET. Informace o řadě kurzů najdete v [prvním kurzu v řadě](the-entity-framework-and-aspnet-getting-started-part-1.md) .
 
-## <a name="working-with-related-data"></a>Práce s souvisejících dat
+## <a name="working-with-related-data"></a>Práce se souvisejícími daty
 
-V předchozím kurzu jste použili `EntityDataSource` ovládacího prvku k filtrování, řazení a seskupení dat. V tomto kurzu budete zobrazit a aktualizovat související data.
+V předchozím kurzu jste použili ovládací prvek `EntityDataSource` k filtrování, řazení a seskupování dat. V tomto kurzu zobrazíte a aktualizujete související data.
 
-Vytvoříte Instruktoři stránku, která zobrazuje seznam Instruktoři. Když vyberete instruktorem, zobrazí se seznam kurzy vedené této instruktorem. Při výběru kurz se zobrazí podrobnosti o kurz a seznam studentů zaregistrovaný do kurzu. Můžete upravit název instruktorem, datum přijetí a přiřazení kanceláře. Přiřazení office je sada entit, ke které přistupujete prostřednictvím navigační vlastnost.
+Vytvoříte stránku instruktory, která zobrazuje seznam instruktorů. Když vyberete instruktora, zobrazí se seznam kurzů, které tento instruktor výukoval. Když vyberete kurz, zobrazí se podrobnosti o kurzu a seznam studentů zaregistrovaných v tomto kurzu. Můžete upravit název instruktora, datum přijetí a přiřazení kanceláře. Přiřazení kanceláře je samostatná sada entit, ke které přistupujete prostřednictvím navigační vlastnosti.
 
-Můžete propojit s hlavními daty podrobná data v kódu nebo v kódu. V této části kurzu budete používat obě metody.
+Můžete propojit hlavní data s podrobnostmi o datech v kódu nebo v kódu. V této části kurzu použijete obě metody.
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-4/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image1.png)
 
-## <a name="displaying-and-updating-related-entities-in-a-gridview-control"></a>Zobrazení a aktualizace související entity v ovládacím prvku GridView
+## <a name="displaying-and-updating-related-entities-in-a-gridview-control"></a>Zobrazení a aktualizace souvisejících entit v ovládacím prvku GridView
 
-Vytvoření nové webové stránky s názvem *Instructors.aspx* , která používá *Site.Master* stránku předlohy a přidejte následující kód k `Content` ovládací prvek s názvem `Content2`:
+Vytvořte novou webovou stránku s názvem *instruktors. aspx* , která používá hlavní stránku *Web. Master* , a přidejte následující kód do ovládacího prvku `Content` s názvem `Content2`:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample1.aspx)]
 
-Tento kód vytvoří `EntityDataSource` ovládací prvek, který vybere Instruktoři a umožňuje aktualizace. `div` Element konfiguruje značky k vykreslení na levé straně, kde sloupec na pravé straně můžete přidat později.
+Tento kód vytvoří ovládací prvek `EntityDataSource`, který vybere instruktory a povolí aktualizace. Element `div` konfiguruje značku pro vykreslení vlevo, takže můžete přidat sloupec hned později.
 
-Mezi `EntityDataSource` kódu a zavření `</div>` značky, přidejte následující kód, který vytváří `GridView` ovládacího prvku a `Label` ovládací prvek, který budete používat pro chybové zprávy:
+Mezi značkami `EntityDataSource` a uzavírací `</div>`ovou značkou přidejte následující kód, který vytvoří ovládací prvek `GridView` a ovládací prvek `Label`, který budete používat pro chybové zprávy:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample2.aspx)]
 
-To `GridView` ovládací prvek umožňuje výběr řádku, zvýrazní vybraný řádek s malým šedou barvu a určuje obslužné rutiny (které vytvoříte později) `SelectedIndexChanged` a `Updating` události. Určuje také `PersonID` pro `DataKeyNames` vlastnosti, tak, aby hodnota klíče vybraného řádku může být předán jiný ovládací prvek, který přidáte později.
+Tento ovládací prvek `GridView` umožňuje výběr řádků, zvýrazní vybraný řádek barevnou šedou barvou pozadí a určí obslužné rutiny (které vytvoříte později) pro události `SelectedIndexChanged` a `Updating`. Určuje také `PersonID` pro vlastnost `DataKeyNames`, takže hodnota klíče vybraného řádku může být předána jinému ovládacímu prvku, který později přidáte.
 
-Obsahuje přiřazení kanceláře instruktorem, který je uložený ve vlastnosti navigace z posledního sloupce `Person` entity protože pochází z související entity. Všimněte si, že `EditItemTemplate` prvek určuje `Eval` místo `Bind`, protože `GridView` ovládací prvek nemůže vytvořit vazbu přímo na vlastnosti navigace za účelem jejich aktualizace. Budete aktualizovat přiřazení kanceláře v kódu. K tomu budete potřebovat odkaz na `TextBox` ovládací prvek a budete získat a uložit v `TextBox` ovládacího prvku `Init` událostí.
+Poslední sloupec obsahuje přiřazení kanceláře instruktora, které je uloženo v navigační vlastnosti entity `Person`, protože pochází z přidružené entity. Všimněte si, že prvek `EditItemTemplate` určuje `Eval` namísto `Bind`, protože ovládací prvek `GridView` nemůže přímo navazovat vazby na navigační vlastnosti, aby je bylo možné aktualizovat. V kódu aktualizujete přiřazení Office. Chcete-li to provést, budete potřebovat odkaz na ovládací prvek `TextBox` a získáte ho a uložíte v události `Init` ovládacího prvku `TextBox`.
 
-Následující `GridView` je ovládací prvek `Label` ovládací prvek, který se používá pro chybové zprávy. Ovládací prvek `Visible` vlastnost `false`, a stav zobrazení je vypnutý, takže popisku se zobrazí, pouze když kód umožněno její zobrazení v odpovědi na chybu.
+Následujícím ovládacím prvkem `GridView` je `Label` ovládací prvek, který se používá pro chybové zprávy. Vlastnost `Visible` ovládacího prvku je `false`a stav zobrazení je vypnutý, takže popisek se zobrazí pouze v případě, že kód je viditelný v reakci na chybu.
 
-Otevřít *Instructors.aspx.cs* soubor a přidejte následující `using` – příkaz:
+Otevřete soubor *Instructors.aspx.cs* a přidejte následující příkaz `using`:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample3.cs)]
 
-Přidejte pole soukromé třídy hned po deklaraci částečné třídy název k uložení odkazu do textového pole přiřazení sady office.
+Přidejte pole soukromé třídy hned po deklaraci názvu částečné třídy, aby obsahovalo odkaz na textové pole přiřazení sady Office.
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample4.cs)]
 
-Zástupné procedury pro přidání `SelectedIndexChanged` obslužná rutina události, že přidáte kód pro pozdější. Také přidejte obslužnou rutinu pro přiřazení kanceláře `TextBox` ovládacího prvku `Init` události tak, aby uchováváte odkaz na `TextBox` ovládacího prvku. Použijete tento odkaz k získání hodnoty za účelem aktualizace entity přidružené navigační vlastnosti zadané uživatelem.
+Přidejte zástupnou proceduru pro obslužnou rutinu události `SelectedIndexChanged`, kterou přidáte pro pozdější kód. Přidejte také obslužnou rutinu pro `Init` událost `TextBox` ovládacího prvku přiřazení sady Office, abyste mohli uložit odkaz na ovládací prvek `TextBox`. Tento odkaz použijete k získání hodnoty zadané uživatelem za účelem aktualizace entity přidružené k navigační vlastnosti.
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample5.cs)]
 
-Budete používat `GridView` ovládacího prvku `Updating` událost k aktualizaci `Location` vlastnosti přidruženého `OfficeAssignment` entity. Přidejte následující obslužnou rutinu pro `Updating` události:
+Pomocí události `Updating` ovládacího prvku `GridView` můžete aktualizovat vlastnost `Location` přidružené entity `OfficeAssignment`. Přidejte následující obslužnou rutinu pro událost `Updating`:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample6.cs)]
 
-Tento kód se spustí, když uživatel klikne **aktualizace** v `GridView` řádek. Kód používá technologii LINQ to Entities k načtení `OfficeAssignment` entity, který je spojen s aktuálním `Person` entity, pomocí `PersonID` vybraného řádku z argumentu události.
+Tento kód se spustí, když uživatel klikne na **aktualizovat** na řádku `GridView`. Kód používá LINQ to Entities k načtení `OfficeAssignment` entity, která je přidružena k aktuální `Person` entitě pomocí `PersonID` vybraného řádku z argumentu události.
 
-Kód provede jednu z následujících akcí v závislosti na hodnotě v `InstructorOfficeTextBox` ovládacího prvku:
+Kód pak provede jednu z následujících akcí v závislosti na hodnotě v ovládacím prvku `InstructorOfficeTextBox`:
 
-- Pokud textové pole má hodnotu a neexistuje žádná `OfficeAssignment` entitu, kterou chcete aktualizovat, ho vytvoří.
-- Pokud textové pole má hodnotu a dojde `OfficeAssignment` entity, aktualizuje `Location` hodnotu vlastnosti.
-- Pokud textové pole je prázdné a `OfficeAssignment` entita existuje, odstraní entitu.
+- Pokud textové pole má hodnotu a neexistuje žádná `OfficeAssignment` entita, která by se měla aktualizovat, vytvoří se.
+- Pokud textové pole má hodnotu a existuje `OfficeAssignment` entita, aktualizuje hodnotu vlastnosti `Location`.
+- Pokud je textové pole prázdné a existuje-`OfficeAssignment` entita, odstraní entitu.
 
-Potom ho uloží změny do databáze. Pokud dojde k výjimce, zobrazí chybovou zprávu.
+Potom změny uloží do databáze. Pokud dojde k výjimce, zobrazí se chybová zpráva.
 
-Spuštění stránky.
+Spusťte stránku.
 
 [![Image02](the-entity-framework-and-aspnet-getting-started-part-4/_static/image4.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image3.png)
 
-Klikněte na tlačítko **upravit** a změnit všechna pole do textových polí.
+Klikněte na tlačítko **Upravit** a všechna pole změnit na textová pole.
 
 [![Image03](the-entity-framework-and-aspnet-getting-started-part-4/_static/image6.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image5.png)
 
-Změňte některou z těchto hodnot, včetně **přiřazení kanceláře**. Klikněte na tlačítko **aktualizace** a zobrazí se změny projeví v seznamu.
+Změňte některou z těchto hodnot včetně **přiřazení Office**. Klikněte na **aktualizovat** a zobrazí se změny v seznamu.
 
 ## <a name="displaying-related-entities-in-a-separate-control"></a>Zobrazení souvisejících entit v samostatném ovládacím prvku
 
-Každý kurzů vedených můžete představuje jeden či více kurzů, tak přidáte `EntityDataSource` ovládacího prvku a `GridView` ovládacího prvku na seznam kurzů spojené s instruktorem, podle toho, která je vybrána v Instruktoři `GridView` ovládacího prvku. K vytvoření nadpisu a `EntityDataSource` ovládací prvek pro entity, kurzy, přidejte následující kód mezi chybová zpráva `Label` ovládacího prvku a uzavírací `</div>` značky:
+Každý instruktor může vytvořit výuku jednoho nebo více kurzů, takže přidáte ovládací prvek `EntityDataSource` a ovládací prvek `GridView` k vypsání kurzů přidružených k určitému instruktorovi, který je vybrán v ovládacím prvku `GridView` instruktory. Chcete-li vytvořit záhlaví a ovládací prvek `EntityDataSource` pro entity kurzů, přidejte následující kód mezi chybovou zprávu `Label` ovládací prvek a uzavírací `</div>` Značka:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample7.aspx)]
 
-`Where` Parametru obsahuje hodnotu `PersonID` z kurzů vedených výběru jehož řádku v `InstructorsGridView` ovládacího prvku. `Where` Vlastnost obsahuje výběru příkaz, který získá všechny přidružené `Person` entit na základě `Course` entity `People` navigační vlastnost a vybere `Course` entity pouze tehdy, pokud jeden z přidružených `Person`obsahuje vybrané entity `PersonID` hodnotu.
+Parametr `Where` obsahuje hodnotu `PersonID` instruktora, jejíž řádek je vybrán v ovládacím prvku `InstructorsGridView`. Vlastnost `Where` obsahuje příkaz pro dílčí výběr, který získá všechny přidružené `Person` entity z vlastnosti navigace `People` `Course` entity a vybere entitu `Course`, pokud jedna z přidružených entit `Person` obsahuje vybranou `PersonID` hodnotu.
 
-Chcete-li vytvořit `GridView` ovládacího prvku. přidejte následující kód bezprostředně `CoursesEntityDataSource` ovládacího prvku (před uzavírací značku `</div>` značky):
+Chcete-li vytvořit ovládací prvek `GridView`. Přidejte následující značku hned za ovládací prvek `CoursesEntityDataSource` (před uzavírací značku `</div>`):
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample8.aspx)]
 
-Vzhledem k tomu, že žádné kurzů se zobrazí, pokud je vybrána žádná instruktorem, `EmptyDataTemplate` element je součástí.
+Vzhledem k tomu, že se nezobrazí žádné kurzy, pokud není vybrán žádný instruktor, je zahrnut `EmptyDataTemplate` element.
 
-Spuštění stránky.
+Spusťte stránku.
 
 [![Image04](the-entity-framework-and-aspnet-getting-started-part-4/_static/image8.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image7.png)
 
-Vyberte instruktorem, který má jeden či více kurzů přiřazené a kurzu nebo kurzů se zobrazí v seznamu. (Poznámka: i když je schéma databáze umožňuje více, v testu dat uvedených v databázi žádná kurzů vedených ve skutečnosti má více než jeden kurz. Můžete přidat kurzy k databázi sami pomocí **Průzkumníka serveru** okno nebo *CoursesAdd.aspx* stránky, které přidáte v pozdějších kurzech.)
+Vyberte instruktora s přiřazeným jedním nebo více kurzy a v seznamu se zobrazí kurz nebo kurzy. (Poznámka: Přestože schéma databáze umožňuje více kurzů, v datech testu dodaných s databází nemá žádný instruktor více než jeden kurz. Do databáze můžete přidat kurzy, a to pomocí okna **Průzkumník serveru** nebo stránky *CoursesAdd. aspx* , kterou přidáte v pozdějším kurzu.)
 
 [![Image05](the-entity-framework-and-aspnet-getting-started-part-4/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image9.png)
 
-`CoursesGridView` Ovládací prvek zobrazuje jenom několik polí kurzu. Chcete-li zobrazit všechny podrobnosti o kurzu, budete používat `DetailsView` ovládací prvek pro kurz, který uživatel vybere. V *Instructors.aspx*, přidejte následující kód za uzavírací `</div>` značky (ujistěte se, že umístěte tento kód **po** div uzavírací značku, ne před):
+Ovládací prvek `CoursesGridView` zobrazuje pouze několik polí kurzu. Chcete-li zobrazit všechny podrobnosti o kurzu, použijte ovládací prvek `DetailsView` pro kurz, který uživatel vybere. V *instruktors. aspx*přidejte následující značky za uzavírací značku `</div>` (Nezapomeňte umístit toto označení **za** uzavírací značku div, nikoli před ní):
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample9.aspx)]
 
-Tento kód vytvoří `EntityDataSource` ovládací prvek, který je vázán `Courses` sady entit. `Where` Vlastnost vybere kurz pomocí `CourseID` hodnotu vybraný řádek v kurzy `GridView` ovládacího prvku. Určuje kód obslužné rutiny pro `Selected` událost, které budete používat později pro zobrazení známek studentů, což je další úroveň v hierarchii níže.
+Tento kód vytvoří ovládací prvek `EntityDataSource`, který je svázán se sadou entit `Courses`. Vlastnost `Where` vybere kurz pomocí `CourseID` hodnoty vybraného řádku v ovládacím prvku kurzy `GridView`. Značka určuje obslužnou rutinu pro událost `Selected`, kterou použijete později pro zobrazení studijních známek, což je další nižší úroveň v hierarchii.
 
-V *Instructors.aspx.cs*, vytvořte následující zástupné procedury pro `CourseDetailsEntityDataSource_Selected` metody. (Budete vyplníte tuto zástupnou proceduru později v tomto kurzu, teď ho potřebujete, aby se na stránce kompilace a spuštění)
+V *Instructors.aspx.cs*vytvořte následující zástupnou proceduru pro metodu `CourseDetailsEntityDataSource_Selected`. (Tento zástupný kód vyplníte později v tomto kurzu. zatím ho budete potřebovat, aby se stránka zkompiluje a spustí.)
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample10.cs)]
 
-Spuštění stránky.
+Spusťte stránku.
 
 [![Image06](the-entity-framework-and-aspnet-getting-started-part-4/_static/image12.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image11.png)
 
-Zpočátku nejsou žádné podrobnosti o kurzu protože není vybrána žádná kurzu. Vyberte instruktorem, který má přiřazené kurz a pak vyberte kurzu zobrazíte podrobnosti.
+Zpočátku neexistují žádné podrobnosti o kurzu, protože není vybraný žádný kurz. Vyberte instruktora s přiřazeným kurzem a potom vyberte kurz, ve kterém se zobrazí podrobnosti.
 
 [![Image07](the-entity-framework-and-aspnet-getting-started-part-4/_static/image14.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image13.png)
 
-## <a name="using-the-entitydatasource-selected-event-to-display-related-data"></a>Používat EntityDataSource "vybranou" událost pro zobrazení souvisejících dat
+## <a name="using-the-entitydatasource-selected-event-to-display-related-data"></a>Zobrazení souvisejících dat pomocí události "vybrané" v EntityDataSource
 
-A konečně budete chtít zobrazit všechny registrovaná studentů a jejich známek pro vybraný kurz. K tomuto účelu použijete `Selected` událost `EntityDataSource` ovládací prvek vázán ke kurzu `DetailsView`.
+Nakonec chcete zobrazit všechny zaregistrované studenty a jejich třídy pro vybraný kurz. K tomu budete používat událost `Selected` ovládacího prvku `EntityDataSource` vázaného na `DetailsView`kurzu.
 
-V *Instructors.aspx*, přidejte následující kód za `DetailsView` ovládacího prvku:
+V *instruktors. aspx*přidejte následující značku za ovládací prvek `DetailsView`:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample11.aspx)]
 
-Tento kód vytvoří `ListView` ovládací prvek, který zobrazí seznam studentů a jejich známek pro vybraný kurz. Není zadán žádný zdroj dat, protože budete databind ovládacího prvku v kódu. `EmptyDataTemplate` Element poskytuje zpráva má zobrazit, když je vybrána žádná kurzu – v takovém případě nejsou žádní studenti. Chcete-li zobrazit. `LayoutTemplate` Element vytvoří tabulku HTML k zobrazení seznamu a `ItemTemplate` určuje sloupce, které chcete zobrazit. ID studenta a studenta způsobují `StudentGrade` entity a jméno studenta je z `Person` entita, která je k dispozici v Entity Framework `Person` navigační vlastnost `StudentGrade` entity.
+Tento kód vytvoří ovládací prvek `ListView`, který zobrazí seznam studentů a jejich třídy pro vybraný kurz. Není zadán žádný zdroj dat, protože ovládací prvek bude svázán v kódu. Element `EmptyDataTemplate` obsahuje zprávu, která se zobrazí, když není vybraný žádný kurz – v takovém případě se žádné studenty nemůžou zobrazit. Element `LayoutTemplate` vytvoří tabulku HTML pro zobrazení seznamu a `ItemTemplate` Určuje sloupce, které se mají zobrazit. ID studenta a stupeň studenta jsou z entity `StudentGrade` a jméno studenta pochází z `Person` entity, kterou Entity Framework zpřístupňuje v `Person` navigační vlastnosti entity `StudentGrade`.
 
-V *Instructors.aspx.cs*, nahraďte podložit out `CourseDetailsEntityDataSource_Selected` metodu s následujícím kódem:
+V *Instructors.aspx.cs*nahraďte metodu podložit-out `CourseDetailsEntityDataSource_Selected` následujícím kódem:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample12.cs)]
 
-Argument události pro tuto událost poskytuje vybraná data v podobě kolekce, který má nulové položky, pokud není nic vybráno nebo jednu položku Pokud `Course` vybrané entity. Pokud `Course` vybraná entita, tento kód použije `First` způsobů, jak převést kolekci na jeden objekt. Potom získá `StudentGrade` entity z navigační vlastnost, převede je do kolekce a vytvoří vazbu `GradesListView` ovládacího prvku do kolekce.
+Argument události pro tuto událost poskytuje vybraná data ve formě kolekce, která bude obsahovat nula položek, pokud není nic vybráno, nebo jednu položku, je-li vybrána entita `Course`. Pokud je vybrána entita `Course`, kód používá metodu `First` k převedení kolekce na jeden objekt. Poté získá `StudentGrade` entit z navigační vlastnosti, převede je na kolekci a naváže ovládací prvek `GradesListView` na kolekci.
 
-To stačí k zobrazení tříd, ale můžete chtít mít jistotu, že zpráva v šabloně prázdné data se zobrazí stránka se zobrazí v prvním a vždy, když není vybrán kurzu. K tomuto účelu vytvořte následující metodu, která budete volat ze dvou míst:
+To je dostačující pro zobrazení stupňů, ale chcete se ujistit, že se při prvním zobrazení stránky zobrazí zpráva v prázdné šabloně a když není vybraný kurz. Uděláte to tak, že vytvoříte následující metodu, kterou budete volat ze dvou míst:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample13.cs)]
 
-Tato nová metoda z volání `Page_Load` metodu pro zobrazení prázdných datových čas šablony první stránka se zobrazí. A volejte jej z `InstructorsGridView_SelectedIndexChanged` metoda vzhledem k tomu, že tuto událost se vyvolá, když je vybrána instruktorem, což znamená, že nové kurzy se načtou do kurzy `GridView` ovládacího prvku a žádné zatím není vybraná. Tady jsou dvě volání:
+Zavolejte tuto novou metodu z metody `Page_Load` k zobrazení prázdné datové šablony při prvním zobrazení stránky. A zavolejte ji z metody `InstructorsGridView_SelectedIndexChanged`, protože tato událost je vyvolána, když je vybrán instruktor, což znamená, že nové kurzy jsou načteny do kurzů `GridView` řízení a ještě není vybráno žádné. Toto jsou dvě volání:
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample14.cs)]
 
 [!code-csharp[Main](the-entity-framework-and-aspnet-getting-started-part-4/samples/sample15.cs)]
 
-Spuštění stránky.
+Spusťte stránku.
 
 [![Image08](the-entity-framework-and-aspnet-getting-started-part-4/_static/image16.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image15.png)
 
-Vyberte instruktorem, který má kurzu přiřazen a pak vyberte kurzu.
+Vyberte instruktora s přiřazeným kurzem a potom vyberte kurz.
 
 [![Image09](the-entity-framework-and-aspnet-getting-started-part-4/_static/image18.png)](the-entity-framework-and-aspnet-getting-started-part-4/_static/image17.png)
 
-Nyní jste viděli několik způsobů, jak pracovat se souvisejícími daty. V následujícím kurzu se dozvíte víc o přidání relace mezi existující entity, jak odebrat relace a tom, jak přidat novou entitu, která má vztah k existující entity.
+Teď jste viděli několik způsobů, jak pracovat se souvisejícími daty. V následujícím kurzu se dozvíte, jak přidat relace mezi stávajícími entitami, jak odebrat relace a jak přidat novou entitu, která má relaci s existující entitou.
 
 > [!div class="step-by-step"]
 > [Předchozí](the-entity-framework-and-aspnet-getting-started-part-3.md)
-> [další](the-entity-framework-and-aspnet-getting-started-part-5.md)
+> [Další](the-entity-framework-and-aspnet-getting-started-part-5.md)

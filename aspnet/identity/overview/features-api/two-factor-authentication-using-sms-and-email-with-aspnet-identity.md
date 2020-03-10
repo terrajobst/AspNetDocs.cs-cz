@@ -10,11 +10,11 @@ ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/features-api/two-factor-authentication-using-sms-and-email-with-aspnet-identity
 msc.type: authoredcontent
 ms.openlocfilehash: 527b4392846e60dae0b216fdeabf21fd6618e4d7
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77456735"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616681"
 ---
 # <a name="two-factorauthentication-using-sms-and-email-with-aspnet-identity"></a>Dvojúrovňové ověřování pomocí SMS a e-mailu s ASP.NET Identity
 
@@ -272,7 +272,7 @@ I když můžete nastavit uzamčení účtu při neúspěchu při pokusu o přih
 
 <a id="addRes"></a>
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 - [ASP.NET identity doporučené prostředky](../getting-started/aspnet-identity-recommended-resources.md) Úplný seznam blogů identity, videí, výukových kurzů a skvělých odkazů
 - [Aplikace MVC 5 s přihlašováním na Facebooku, Twitter, LinkedIn a Google OAuth2](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md) také ukazuje, jak přidat informace o profilu do tabulky uživatelů.

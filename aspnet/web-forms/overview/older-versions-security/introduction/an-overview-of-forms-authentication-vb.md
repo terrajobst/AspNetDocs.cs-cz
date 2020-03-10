@@ -9,11 +9,11 @@ ms.assetid: 83267f7d-64d9-41ee-82cf-da91b1bf534d
 msc.legacyurl: /web-forms/overview/older-versions-security/introduction/an-overview-of-forms-authentication-vb
 msc.type: authoredcontent
 ms.openlocfilehash: d8ceb6b5290300992e52199caa9314c573de1942
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74626741"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78633901"
 ---
 # <a name="an-overview-of-forms-authentication-vb"></a>Přehled ověřování prostřednictvím formulářů (VB)
 
@@ -205,7 +205,7 @@ Jak vidíte, existují tři platné uživatelské účty – Scott, Jisun a Sam-
 
 Když uživatel zadá platné přihlašovací údaje, uvedli jsem, že se pak přesměrují na příslušnou stránku. Jakou stránku i to je vhodné? Odvolá se, když uživatel navštíví stránku, které nemají oprávnění k zobrazení, FormsAuthenticationModule je automaticky přesměruje na přihlašovací stránku. V takovém případě zahrnuje požadovanou adresu URL v řetězci QueryString prostřednictvím parametru ReturnUrl. To znamená, že pokud se uživatel pokusil navštívit ProtectedPage. aspx a že k tomu nebyli oprávněni, FormsAuthenticationModule je přesměruje na:
 
-Login. aspx? ReturnUrl = ProtectedPage. aspx
+Login.aspx?ReturnUrl=ProtectedPage.aspx
 
 Po úspěšném přihlášení by uživatel měl být přesměrován zpět na ProtectedPage. aspx. Případně můžou uživatelé navštívit přihlašovací stránku na vlastní Volition. V takovém případě se po přihlášení uživatele musí odeslat na stránku Default. aspx kořenové složky.
 
@@ -221,7 +221,7 @@ GetAuthCookie je užitečné v případě, že před zápisem souboru cookie do 
 
 Vzhledem k tomu, že chceme uživatele přihlašovat a přesměrovat je na příslušnou stránku, použijte RedirectFromLoginPage. Aktualizujte obslužnou rutinu události kliknutí na LoginButton a nahraďte dva řádky TODO s komentářem následujícím řádkem kódu:
 
-FormsAuthentication. RedirectFromLoginPage (UserName. text; RememberMe. Checked)
+FormsAuthentication.RedirectFromLoginPage(UserName.Text, RememberMe.Checked)
 
 Při vytváření lístku pro ověřování pomocí formulářů použijeme vlastnost text uživatelského jména pro parametr *username* lístku Forms pro ověřování a zaškrtnuté políčko RememberMe pro parametr *persistCookie* .
 
@@ -396,7 +396,7 @@ Obrázek 18: při návštěvě Jisun se zobrazí default. aspx. Všimněte si, �
 > [!NOTE]
 > Doporučujeme, abyste si na stránce odhlašovací. aspx přizpůsobili, abyste skryli LoginContent ContentPlaceHolder (jako jsme to v kroku 4 pro Login. aspx). Důvodem je skutečnost, že přihlášení LinkButton vykreslené ovládacím prvkem ovládací stavu přihlášení (ten pod Hello, cizí) pošle uživateli přihlašovací stránku, která předá aktuální adresu URL v parametru QueryString ReturnUrl. V krátkém případě, že se uživatel, který se odhlásil, klikne na ovládací stavu přihlášení a pak se přihlásí, bude přesměrován zpět na logout. aspx, což by mohlo snadno Zaměňujte uživatele.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme začali s přezkoumáním pracovního postupu ověřování pomocí formulářů a pak v aplikaci ASP.NET implementovat ověřování pomocí formulářů. Ověřování pomocí formulářů používá FormsAuthenticationModule, která má dvě zodpovědnosti: identifikace uživatelů na základě lístku pro ověřování pomocí formulářů a přesměrování neautorizovaných uživatelů na přihlašovací stránku.
 

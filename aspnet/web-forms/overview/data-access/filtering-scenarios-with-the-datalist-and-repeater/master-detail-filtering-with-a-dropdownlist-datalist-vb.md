@@ -9,11 +9,11 @@ ms.assetid: ad0f1014-1eff-465f-bdc6-93058de00e44
 msc.legacyurl: /web-forms/overview/data-access/filtering-scenarios-with-the-datalist-and-repeater/master-detail-filtering-with-a-dropdownlist-datalist-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 537f8e76bc0cbfa759a014b63ae5f68b5d3ca64d
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74629883"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78606419"
 ---
 # <a name="masterdetail-filtering-with-a-dropdownlist-vb"></a>Filtrování hlavních záznamů / podrobností ovládacím prvkem DropDownList (VB)
 
@@ -137,7 +137,7 @@ Důvodem je, že `0` hodnoty pro "--zvolit kategorii –" položka seznamu je, p
 
 Pokud místo toho chcete zobrazit *všechny* produkty v případě, že je vybrána možnost--zvolit kategorii--, použijte místo toho hodnotu `-1`. Čtečka bystří tento postup vrátí zpět v rámci *filtrování hlavního/podrobného filtru pomocí kurzu DropDownList* . Aktualizovali jsme `GetProductsByCategoryID(categoryID)` metodu `ProductsBLL` třídy, takže pokud byla předána hodnota *`categoryID`* `-1`, všechny záznamy produktů byly vráceny.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Při zobrazení hierarchicky souvisejících dat často pomáhá prezentovat data pomocí hlavních a podrobných sestav, od kterých může uživatel začít perusing data z horní části hierarchie a přejít k podrobnostem. V tomto kurzu jsme prozkoumali vytvoření jednoduché sestavy hlavní/podrobnosti zobrazující produkty vybrané kategorie. To bylo provedeno pomocí ovládacího prvku DropDownList pro seznam kategorií a DataList pro produkty patřící do vybrané kategorie.
 

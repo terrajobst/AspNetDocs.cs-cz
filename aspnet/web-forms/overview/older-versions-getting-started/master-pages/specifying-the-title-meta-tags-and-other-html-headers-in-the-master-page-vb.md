@@ -9,11 +9,11 @@ ms.assetid: ea8196f5-039d-43ec-8447-8997ad4d3900
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 160af664cdf27f9ede1273aaf915da749a39ad48
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74637737"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78643071"
 ---
 # <a name="specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb"></a>Zadání názvu, metaznaček a dalších hlaviček HTML na stránce předlohy (VB)
 
@@ -139,7 +139,7 @@ Teď je potřeba aktualizovat stránky ASP.NET na našem webu tak, aby se místo
 
 [!code-vb[Main](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb/samples/sample7.vb)]
 
-Na:
+Komu:
 
 [!code-vb[Main](specifying-the-title-meta-tags-and-other-html-headers-in-the-master-page-vb/samples/sample8.vb)]
 
@@ -276,7 +276,7 @@ Výše uvedený kód přidá prvek klíčová slova `<meta>` do oblasti `<head>`
 > [!NOTE]
 > Chcete-li přidat libovolný kód, vytvořte instanci [`LiteralControl`](https://msdn.microsoft.com/library/system.web.ui.literalcontrol.aspx) , nastavte její vlastnost `Text` a pak ji přidejte do kolekce `Controls` `Header`.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme se vyhledali různými způsoby, jak přidat `<head>` označení oblasti na stránce. Hlavní stránka by měla zahrnovat `HtmlHead` instanci (`<head runat="server">`) s ovládacím prvky ContentPlaceHolder. Instance `HtmlHead` umožňuje stránkám obsahu programově přistupovat k oblasti `<head>` a deklarativně a programově nastavit nadpis stránky. ovládací prvek ContentPlaceHolder umožňuje přidat vlastní kód do oddílu `<head>` deklarativně prostřednictvím ovládacího prvku obsahu.
 

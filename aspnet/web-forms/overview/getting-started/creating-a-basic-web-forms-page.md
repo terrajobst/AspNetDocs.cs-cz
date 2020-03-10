@@ -9,11 +9,11 @@ ms.assetid: a2f1c635-0817-4a9a-8c13-d5b5d29727c0
 msc.legacyurl: /web-forms/overview/getting-started/creating-a-basic-web-forms-page
 msc.type: authoredcontent
 ms.openlocfilehash: 5d13a51128eecd92a82cfd06054448582a348e11
-ms.sourcegitcommit: 84b1681d4e6253e30468c8df8a09fe03beea9309
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73445679"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78629757"
 ---
 # <a name="using-visual-studio-2013-to-create-a-basic-aspnet-45-web-forms-page"></a>Vytvoření základní stránky webových formulářů ASP.NET 4,5 pomocí Visual Studio 2013
 
@@ -32,7 +32,7 @@ Tento názorný postup vám poskytne Úvod do vývojového prostředí webu v [M
 - Přidávání obslužných rutin událostí.
 - Spouštění a testování stránky ze sady Visual Studio.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby bylo možné dokončit tento návod, budete potřebovat:
 
@@ -56,7 +56,7 @@ V této části návodu vytvoříte projekt webové aplikace a přidáte do něj
 2. V nabídce **soubor** vyberte **Nový projekt**.  
     ![nabídky soubor](creating-a-basic-web-forms-page/_static/image1.png)
 
-    Zobrazí se dialogové okno **Nový projekt** .
+    Zobrazí se dialogové okno **Nový projekt**.
 3. Na levé straně vyberte **šablony** -&gt; skupinu **Web** Templates &gt; **Visual C#**  -.
 4. V prostředním sloupci vyberte šablonu **webové aplikace ASP.NET** .
 5. Pojmenujte projekt ***BasicWebApp*** a klikněte na tlačítko **OK** .   
@@ -180,7 +180,7 @@ Sada Visual Studio nabízí různé způsoby, jak nastavit vlastnosti ovládací
 
     > [!NOTE] 
     > 
-    > Všechny ovládací prvky jsou uvnitř prvku **formuláře** , který má také atribut **runat =&quot;Server&quot;** . Atribut **runat =&quot;server&quot;** a **ASP:** prefix ovládacího prvku označí ovládací prvky tak, aby byly zpracovány pomocí ASP.NET na serveru při spuštění stránky. Kód mimo **&lt;formuláře runat =&quot;server&quot;&gt;** a **&lt;skriptu runat =&quot;Server&quot;&gt;** prvky se nemění do prohlížeče, což je důvod, proč kód ASP.NET musí být uvnitř elementu. jehož počáteční značka obsahuje atribut **runat =&quot;server&quot;** .
+    > Všechny ovládací prvky jsou uvnitř prvku **formuláře** , který má také atribut **runat =&quot;Server&quot;** . Atribut **runat =&quot;server&quot;** a **ASP:** prefix ovládacího prvku označí ovládací prvky tak, aby byly zpracovány pomocí ASP.NET na serveru při spuštění stránky. Kód mimo **&lt;formuláře runat =&quot;server&quot;&gt;** a **&lt;skriptu runat =&quot;Server&quot;&gt;** prvky se nemění do prohlížeče, což je důvod, proč kód ASP.NET musí být uvnitř elementu, jehož počáteční značka obsahuje atribut **runat =&quot;Server&quot;** .
 4. V dalším kroku přidáte k ovládacímu prvku [popisek](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) další vlastnost. Umístěte kurzor přímo po **ASP: Label** do značky **&lt;asp: Label&gt;** a stiskněte **MEZERNÍK**.
 
     Zobrazí se rozevírací seznam, ve kterém se zobrazí seznam dostupných vlastností, které můžete nastavit pro ovládací prvek [popisek](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) . Tato funkce, která se označuje jako **IntelliSense**, pomáhá v zobrazení **zdroje** s syntaxí serverových ovládacích prvků, prvků HTML a dalších položek na stránce. Následující ilustrace znázorňuje rozevírací seznam **technologie IntelliSense** pro ovládací prvek [popisek](https://msdn.microsoft.com/library/system.web.ui.webcontrols.label.aspx) .

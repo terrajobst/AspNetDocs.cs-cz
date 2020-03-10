@@ -9,11 +9,11 @@ ms.assetid: f9adcb5d-6d70-4885-a3bf-ed95efb4da1a
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/recovering-and-changing-passwords-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 0ed1df9455af94a86ce59ecc06c55846a4880596
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74618832"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78629211"
 ---
 # <a name="recovering-and-changing-passwords-vb"></a>Obnovení a změna hesel (VB)
 
@@ -253,7 +253,7 @@ Až zadáte nové heslo, potvrďte ho ve druhém textovém poli a klikněte na t
 > [!NOTE]
 > Stránka `UserInformation.aspx` aktuálně funguje pouze v případě, že je rozhraní členství nakonfigurováno pro ukládání hesel ve formátu Clear nebo hash. Chybí kód k zašifrování nového hesla, i když jste pozváni k přidání této funkce. Způsob, jakým je nutné přidat potřebný kód, je použít Decompiler jako [reflektor](http://www.aisto.com/roeder/dotnet/) k prohlédnutí zdrojového kódu pro metody v .NET Framework; Začněte kontrolou `ChangePassword` metody `SqlMembershipProvider` třídy. Toto je metoda, kterou jste použili k zápisu kódu pro vytvoření hodnoty hash hesla.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 ASP.NET nabízí dva ovládací prvky, které uživatelům pomůžou spravovat jejich heslo. Ovládací prvek PasswordRecovery je vhodný pro uživatele, kteří zapomněli svá hesla. V závislosti na konfiguraci rozhraní členství má uživatel buď e-mailem své stávající heslo, nebo nové náhodně generované heslo. Ovládací prvek ChangePassword umožňuje uživateli aktualizovat heslo.
 

@@ -9,11 +9,11 @@ ms.assetid: 13a5a423-9235-4dde-b408-2fd10f791d63
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/core-differences-between-iis-and-the-asp-net-development-server-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 7fea3939bd910a052340215c207013e2269f32a2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74617573"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78642595"
 ---
 # <a name="core-differences-between-iis-and-the-aspnet-development-server-c"></a>Hlavní rozdíly mezi službou IIS a serverem ASP.NET Development Server (C#)
 
@@ -79,7 +79,7 @@ Nakonec jsem nakonfigurovali webovou aplikaci tak, aby používala ověřování
 
 [!code-xml[Main](core-differences-between-iis-and-the-asp-net-development-server-cs/samples/sample3.xml)]
 
-Řetězce
+Za:
 
 [!code-xml[Main](core-differences-between-iis-and-the-asp-net-development-server-cs/samples/sample4.xml)]
 
@@ -110,7 +110,7 @@ Tento kód instruuje službu IIS 7, aby používala moduly ověřování a autor
 > [!NOTE]
 > Pokud váš poskytovatel webového hostitele stále používá službu IIS 6, nemůžete použít funkci integrovaného kanálu. Jedním z možných řešení je umístit soukromé dokumenty do složky, která zakáže přístup k protokolu HTTP (například `App_Data`), a pak vytvořit stránku, která bude obsluhovat tyto dokumenty. Tato stránka může být volána `GetPDF.aspx`a je předána název souboru PDF prostřednictvím parametru QueryString. Stránka `GetPDF.aspx` nejdříve ověří, zda má uživatel oprávnění k zobrazení souboru, a pokud ano, použije metodu [`Response.WriteFile(filePath)`](https://msdn.microsoft.com/library/system.web.httpresponse.writefile.aspx) k odeslání obsahu požadovaného souboru PDF zpět žádajícímu klientovi. Tento postup by taky mohl fungovat pro IIS 7, pokud jste nechtěli povolit integrovaný kanál.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Webové aplikace v produkčním prostředí jsou hostovány pomocí softwaru webového serveru služby IIS společnosti Microsoft. Ve vývojovém prostředí se ale aplikace může hostovat pomocí služby IIS nebo vývojového serveru ASP.NET. V ideálním případě by se měl stejný software webového serveru používat v obou prostředích, protože při použití jiného softwaru se v kombinaci přidá další proměnná. Nicméně snadné použití vývojového serveru ASP.NET umožňuje atraktivní výběr ve vývojovém prostředí. Dobrá zpráva je, že existuje jenom několik základních rozdílů mezi službou IIS a vývojovým serverem ASP.NET a pokud si o těchto rozdílech víte, jak zajistit, aby aplikace fungovala a fungovala stejným způsobem bez ohledu na hlediska.
 

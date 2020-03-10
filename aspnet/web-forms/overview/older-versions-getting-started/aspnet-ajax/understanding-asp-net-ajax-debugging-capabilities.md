@@ -9,11 +9,11 @@ ms.assetid: 7f9380c6-19f7-4c82-a019-916ec6dffc9c
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-debugging-capabilities
 msc.type: authoredcontent
 ms.openlocfilehash: 08ced380f3551407d757524dbc84b5feeeb5482b
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74601443"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78629505"
 ---
 # <a name="understanding-aspnet-ajax-debugging-capabilities"></a>Principy a možnosti ladění pomocí technologie ASP.NET AJAX
 
@@ -307,7 +307,7 @@ Technologie Microsoft ASP.NET AJAX poskytuje Solid Foundation pro vytváření a
 
 V tomto článku jste se seznámili s několika různými postupy pro ladění stránek ASP.NET AJAX, včetně aplikace Internet Explorer se sadou Visual Studio 2008, pomocníka pro vývoj webů a Firebug. Tyto nástroje mohou zjednodušit celkový proces ladění, protože můžete získat přístup k proměnným datům, procházením kódu řádek a zobrazení příkazů trasování. Kromě různých popsaných ladicích nástrojů jste si také viděli, jak lze v aplikaci použít třídu sys. Debug knihovny ASP.NET AJAX, a jak lze třídu ScriptManager použít k načtení ladění nebo vydání verzí skriptů.
 
-## <a name="bio"></a>Dostupnost
+## <a name="bio"></a>Bio
 
 Dan Wahlin (Microsoft nejvíc Professional for ASP.NET and XML Web Services) je instruktor pro vývoj a architekturu pro vývoj rozhraní .NET na úrovni technického školení ([www.interfacett.com)](http://www.interfacett.com). Daň ze sady XML pro vývojáře na webu ASP.NET ([www.XMLforASP.NET](http://www.XMLforASP.NET)) je v kanceláři mluvčího v INETA a mluví na několika konferencích. Specialista na spolupracovníka Windows DNA (Wrox), ASP.NET: tipy, kurzy a Code (Sams), ASP.NET 1,1 řešení Insider, Professional ASP.NET 2,0 AJAX (Wrox), ASP.NET 2,0 MVP Hackatony a vytvořil XML pro vývojáře ASP.NET (Sams). Když není psaní kódu, článků nebo knih, Dan, požívá psaní a zaznamenávání hudby a hraní Golfů a basketbalový s jeho manželkou a dětem.
 

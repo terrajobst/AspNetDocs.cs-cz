@@ -9,11 +9,11 @@ ms.assetid: b1abb452-642a-4ff3-8504-37b85590ff79
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs
 msc.type: authoredcontent
 ms.openlocfilehash: e52ed94f78d053701771690fce432d5a1d465b62
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74637277"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78641328"
 ---
 # <a name="logging-error-details-with-aspnet-health-monitoring-c"></a>Protokolování podrobností o chybách pomocí monitorování stavu v ASP.NET (C#)
 
@@ -128,7 +128,7 @@ Oddíl `<rules>` nyní obsahuje dvě pravidla. První z nich s názvem "všechny
 **Obrázek 2**: podrobnosti o chybě se odesílají v e-mailové zprávě.  
 ([Kliknutím zobrazíte obrázek v plné velikosti.](logging-error-details-with-asp-net-health-monitoring-cs/_static/image6.png))
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Systém sledování stavu ASP.NET je navržený tak, aby správcům umožnil monitorovat stav nasazené webové aplikace. Události monitorování stavu jsou vyvolány, když jsou určité akce odložení, například při zastavení aplikace, když se uživatel úspěšně přihlásí k webu nebo když dojde k neošetřené výjimce. Tyto události mohou být protokolovány do libovolného počtu zdrojů protokolů. Tento kurz ukázal, jak protokolovat podrobnosti neošetřených výjimek do databáze a prostřednictvím e-mailové zprávy.
 

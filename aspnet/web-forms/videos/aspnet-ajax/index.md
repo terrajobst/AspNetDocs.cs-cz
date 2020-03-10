@@ -2,22 +2,22 @@
 uid: web-forms/videos/aspnet-ajax/index
 title: ASP.NET AJAX | Microsoft Docs
 author: rick-anderson
-description: Způsoby, jak pracovat s ASP.NET AJAX k vytvoření stránky s velmi rychlou odezvou, i v případě, že nejste odborníkem na jazyce JavaScript.
+description: Způsob práce s ASP.NET AJAX pro vytváření vysoce reagujících stránek, i když nejste odborník na JavaScript.
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 754b8c66-cefc-42d6-9f02-685efabdfcc6
 msc.legacyurl: /web-forms/videos/aspnet-ajax
 msc.type: chapter
 ms.openlocfilehash: 52cc785a92bc3e902f0f3266333d6157c6a78354
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116144"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78628623"
 ---
 # <a name="aspnet-ajax"></a>ASP.NET AJAX
 
-> Způsoby, jak pracovat s ASP.NET AJAX k vytvoření stránky s velmi rychlou odezvou, i v případě, že nejste odborníkem na jazyce JavaScript.
+> Způsob práce s ASP.NET AJAX pro vytváření vysoce reagujících stránek, i když nejste odborník na JavaScript.
 
 - [Začínáme s ASP.NET AJAX](how-do-i-get-started-with-aspnet-ajax.md)
 - [Implementace dynamických částečných aktualizací stránek technologií ASP.NET AJAX](how-do-i-implement-dynamic-partial-page-updates-with-aspnet-ajax.md)

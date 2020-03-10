@@ -9,11 +9,11 @@ ms.assetid: 11ae4f64-01ba-4823-95f4-a2fe1f84f7d7
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-with-two-dropdownlists-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 166d6a7664a326361dc2a3f115eddb988cd39d20
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74578400"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78528495"
 ---
 # <a name="masterdetail-filtering-with-two-dropdownlists-vb"></a>Filtrování hlavních záznamů / podrobností dvou ovládacích prvků DropDownList (VB)
 
@@ -165,7 +165,7 @@ Po přidání tohoto explicitního volání metody `DataBind()` prvku `ProductDe
 
 **Obrázek 21**: `ProductDetails` DetailsView se explicitně aktualizuje, když se aktivuje událost `DataBound` `ProductsByCategory` DropDownList ([kliknutím zobrazíte obrázek v plné velikosti](master-detail-filtering-with-two-dropdownlists-vb/_static/image63.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 DropDownList slouží jako ideální prvek uživatelského rozhraní pro sestavy hlavních a podrobností, kde existuje vztah 1:1 mezi hlavními a podrobnými záznamy. V předchozím kurzu jsme viděli, jak použít jeden objekt DropDownList k filtrování produktů zobrazených ve vybrané kategorii. V tomto kurzu jsme nahradili prvku GridView v produktech pomocí ovládacího prvku DropDownList a použili prvek DetailsView k zobrazení podrobností o vybraném produktu. Koncepty popsané v tomto kurzu lze snadno rozšířit na datové modely zahrnující více relací 1:1, jako jsou například zákazníci, objednávky a položky objednávek. Obecně platí, že vždy můžete přidat DropDownList pro každou entitu "jedna" v relaci 1: n.
 

@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/vs-2005/the-effects-of-viewstate
-title: Účinky mechanismu ViewState | Dokumentace Microsoftu
+title: Účinky vlastnosti ViewState | Microsoft Docs
 author: rick-anderson
-description: ASP.NET framework poskytuje mechanismu ViewState automaticky pomocí dat vpřed a zpět mezi prohlížeči requ Udržovat stav aplikace...
+description: Rozhraní ASP.NET Framework poskytuje mechanismus ViewState k automatickému udržování stavu aplikace tím, že předává data směrem dopředu a dozadu mezi prohlížečem REQU...
 ms.author: riande
 ms.date: 02/26/2007
 ms.assetid: 112e3efc-6865-4296-80a0-35910c4b3b12
 msc.legacyurl: /web-forms/videos/vs-2005/the-effects-of-viewstate
 msc.type: video
 ms.openlocfilehash: 7ec8719a25452efed9a0d46afa05b36f3cb07ce1
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59414800"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640964"
 ---
-# <a name="the-effects-of-viewstate"></a>Účinky mechanismu ViewState
+# <a name="the-effects-of-viewstate"></a>Účinky vlastnosti ViewState
 
-podle Eric Lee
+od Eric Novák
 
-ASP.NET framework poskytuje mechanismus ViewState provedením data vpřed a zpět mezi požadavky na prohlížeč automaticky udržovat stav aplikace. V tomto videu uvidíme, jak ovládací prvky některé technologie ASP.NET například DropDownList a textové pole Udržovat stav je založen na hodnoty zpětného vystavení formuláře, nikoli vlastnosti ViewState, umožňuje inteligentní pro vývojáře k zakázání nepotřebných ViewState. Pomocí Visual Studio Team System můžeme vidět jak to významně snižuje velikost dat požadavků a odpovědí a zlepšuje výkon a škálovatelnost aplikace.
+Rozhraní ASP.NET Framework poskytuje mechanizmu ViewState k automatickému udržování stavu aplikace tím, že data předají dopředu a dozadu mezi požadavky prohlížeče. V tomto videu vidíte, jak některé ovládací prvky ASP.NET, jako je například DropDownList a TextBox, udržují stav na základě hodnot formuláře zpětného volání, a to tak, že inteligentní vývojář zakáže nepotřebnou vlastnost ViewState. Pomocí sady Visual Studio Team System můžeme zjistit, jak to významně snižuje velikost údajů o požadavcích a odpovědích a zvyšuje výkon a škálovatelnost aplikace.
 
-[&#9654;Podívejte se na video (10 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/the-effects-of-viewstate)
+[&#9654;Sledovat video (10 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/the-effects-of-viewstate)
 
 > [!div class="step-by-step"]
 > [Předchozí](using-the-load-test-agent.md)
-> [další](how-do-i-integrate-defect-tracking-with-testing.md)
+> [Další](how-do-i-integrate-defect-tracking-with-testing.md)

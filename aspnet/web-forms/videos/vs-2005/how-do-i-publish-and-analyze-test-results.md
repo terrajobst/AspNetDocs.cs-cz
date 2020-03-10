@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-publish-and-analyze-test-results
-title: '[Postup:] Publikování a analyzovat výsledky testů? | Dokumenty Microsoft'
+title: '[Postupy:] Publikovat a analyzovat Výsledky testů? | Dokumenty Microsoft'
 author: rick-anderson
-description: Visual Studio Team System umožňuje grafu změny v kvalitě kódu projektu v průběhu projektu. Toto video obsahuje pokyny o tom, jak publ....
+description: Visual Studio Team System umožňuje sestavovat změny kvality kódu projektu v průběhu projektu. Toto video poskytuje pokyny, jak publ...
 ms.author: riande
 ms.date: 07/16/2007
 ms.assetid: 9fb155e0-1379-482c-963d-af7dc0397d76
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-publish-and-analyze-test-results
 msc.type: video
 ms.openlocfilehash: 80289680e4d40ec903524d9f4752b71d13db790e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59413500"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78641188"
 ---
-# <a name="how-do-i-publish-and-analyze-test-results"></a>[Postup:] Publikování a analyzovat výsledky testů?
+# <a name="how-do-i-publish-and-analyze-test-results"></a>[Postupy:] Publikovat a analyzovat Výsledky testů?
 
-podle [Chris Menegay](https://twitter.com/CMenegay)
+autor – [Chris Menegay](https://twitter.com/CMenegay)
 
-Visual Studio Team System umožňuje grafu změny v kvalitě kódu projektu v průběhu projektu. Toto video obsahuje pokyny o tom, jak publikovat výsledky testů do databáze projektu Team Foundation Server a přidružit výsledky s číslem sestavení. Vidíme, že po publikování výsledků jsme můžete zobrazit grafická reprezentace změny v našich výsledků testu sestavení použít Správce sestav.
+Visual Studio Team System umožňuje sestavovat změny kvality kódu projektu v průběhu projektu. Toto video poskytuje pokyny k publikování výsledků testů do databáze Team Foundation Server projektu a k přidružení výsledků k číslu buildu. Vidíte, že po publikování výsledků můžeme použít Správce sestav k zobrazení grafické reprezentace změn v našich výsledcích testů sestavení.
 
-[&#9654;Podívejte se na video (7 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-publish-and-analyze-test-results)
+[&#9654;Sledovat video (7 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-publish-and-analyze-test-results)
 
 > [!div class="step-by-step"]
 > [Předchozí](how-do-i-use-generic-tests.md)
-> [další](how-do-i-discover-application-changes-prior-to-deployment.md)
+> [Další](how-do-i-discover-application-changes-prior-to-deployment.md)

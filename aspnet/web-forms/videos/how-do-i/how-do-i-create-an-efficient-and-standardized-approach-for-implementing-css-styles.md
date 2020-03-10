@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles
-title: 'Postup: Vytvoření efektivního standardního přístupu k implementaci stylů CSS? | Dokumenty Microsoft'
+title: 'Jak můžu: vytvořit efektivní a standardizovaný přístup pro implementaci stylů CSS? | Dokumenty Microsoft'
 author: rick-anderson
-description: V toto video pixelů na Chris ukazuje, jak uspořádat a implementaci stylů CSS, které poskytují standardizované vzhled a chování na webu. Kromě toho jsou stylů...
+description: V tomto videu Chris pixelů na ukazuje, jak organizovat a implementovat styly CSS, které poskytují standardizovaný vzhled a chování webu. Kromě toho jsou styly...
 ms.author: riande
 ms.date: 01/15/2010
 ms.assetid: 1d902492-c6a3-4ab8-8e3d-57384ac893d5
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles
 msc.type: video
 ms.openlocfilehash: 34d5d109785f5c8fb1daec65293f9b77e947c338
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59403867"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78523476"
 ---
-# <a name="how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles"></a>Postup: Vytvoření efektivního standardního přístupu k implementaci stylů CSS?
+# <a name="how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles"></a>Jak můžu: vytvořit efektivní a standardizovaný přístup pro implementaci stylů CSS?
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V toto video pixelů na Chris ukazuje, jak uspořádat a implementaci stylů CSS, které poskytují standardizované vzhled a chování na webu. Kromě toho styly jsou uspořádány zajistit maximální flexibilitu a možnost opakovaného využití. Sadu stylů se vytvoří, který se zaměřuje na vizuálního vzhledu webu. Nejprve ukázkového webu se vytvoří pomocí souboru šablony stylů CSS pro ukázkové stránky. První skupiny vytvořené styly jsou zaměřeno na poskytování kontejnerů pro obsah v celém webu. V dalším kroku se přidají sadu stylů, které se zaměřují na zobrazení "stavu" prvky uživatelského rozhraní. Nakonec se vytvoří sadu stylů pro pomůcky interakci uživatele. Jednotlivé styly se používá s prvky HTML na stránce s ukázkou. Je také diskuzi o používání stejným způsobem implementace pro styly tohoto prvku rozložení ovládacích prvků na webu.
+V tomto videu Chris pixelů na ukazuje, jak organizovat a implementovat styly CSS, které poskytují standardizovaný vzhled a chování webu. Kromě toho jsou styly uspořádány tak, aby poskytovaly maximální flexibilitu a možnost opětovné použitelnosti. Vytvoří se sada stylů, která se zaměřuje na vizuální vzhled webu. Nejprve je vytvořen ukázkový web se souborem CSS pro ukázkovou stránku. První skupiny vytvořených stylů se orientují směrem k poskytování kontejnerů pro obsah v rámci celé lokality. Dále se přidá sada stylů, která se zaměřuje na zobrazení "stavu" prvků uživatelského rozhraní. Nakonec se vytvoří sada stylů pro pomůcky interakce s uživatelem. Jednotlivé styly jsou použity s prvky jazyka HTML na stránce ukázka. K dispozici je také informace o použití stejného přístupu implementace pro styly, které řídí rozložení prvku na webu.
 
-[&#9654;Podívejte se na video (27 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles)
+[&#9654;Přehrát video (27 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-an-efficient-and-standardized-approach-for-implementing-css-styles)

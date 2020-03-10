@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-use-a-visual-studio-2008-web-deployment-project
-title: '[Postup:] Použít projekt webové nasazení sady Visual Studio 2008 | Dokumentace Microsoftu'
+title: '[Postupy:] Použití projektu nasazení webu sady Visual Studio 2008 | Microsoft Docs'
 author: rick-anderson
-description: V tomto videu pixelů na Chris ukazuje, jak vytvářet projekty nasazení s jemnější stupeň kontroly nad jak pomocí doplňku Visual Studio 2008 webové nasazení...
+description: V tomto videu Chris pixelů na ukazuje, jak pomocí doplňku pro nasazení webu sady Visual Studio 2008 vytvářet projekty nasazení s jemnějším stupněm kontroly nad tím, jak...
 ms.author: riande
 ms.date: 09/11/2008
 ms.assetid: 9517a342-e414-4c93-b0a6-5b52b391c908
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-use-a-visual-studio-2008-web-deployment-project
 msc.type: video
 ms.openlocfilehash: 9b4266b0909e95424b28415442f1e2ef5ceae382
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59395677"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78641027"
 ---
-# <a name="how-do-i-use-a-visual-studio-2008-web-deployment-project"></a>[Postup:] Použít projekt webové nasazení sady Visual Studio 2008
+# <a name="how-do-i-use-a-visual-studio-2008-web-deployment-project"></a>[Postupy:] Použití projektu nasazení webu sady Visual Studio 2008
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V toto video pixelů na Chris ukazuje, jak vytvářet projekty nasazení s jemnější stupeň kontroly nad kompilaci a nasazení webu pomocí doplňku webové nasazení sady Visual Studio 2008. Nejdřív zjistěte, kde ke stažení a instalaci webové nasazení projektu doplňku pro sadu Visual Studio 2008. Vytvořte projekt webu a přidružený webový projekt nasazení. Přečtěte si výběr dostupných možností konfigurace pro webový projekt nasazení. V tématu stručný přehled aspnet\_kompilátoru a aspnet\_sloučit nástroje příkazového řádku, které jsou součástí projektu nasazení webu. Dále se naučíte, jak vytvořit různé konfigurace pro webový projekt nasazení, například, jeden pro ladění a jeden pro režimy verze. Vytvořte projekt webové aplikace a odpovídající nasazení webového projektu. A konečně naleznete v tématu Jak shodují s nastaveními pro webový projekt jsou možnosti a proces pro projekt webové aplikace.
+V tomto videu Chris pixelů na ukazuje, jak pomocí doplňku pro nasazení webu sady Visual Studio 2008 vytvářet projekty nasazení s jemnějším stupněm kontroly nad tím, jak je web kompilován a nasazen. Nejprve se Naučte, kde stáhnout a nainstalovat doplněk projektu nasazení webu pro Visual Studio 2008. Pak vytvořte projekt webu a přidružený projekt nasazení webu. Seznamte se s dostupnými možnostmi konfigurace pro projekt nasazení webu. Podívejte se na stručnou recenzi kompilátoru ASPNET\_a ASPNET\_slučovací nástroje příkazového řádku, které jsou nedílnou součástí projektu nasazení webu. Dále se naučíte, jak vytvořit více konfigurací pro projekt nasazení webu, například jeden pro ladění a jeden pro režimy vydání. Pak vytvořte projekt webové aplikace a odpovídající projekt nasazení webu. Nakonec si přečtěte, jak jsou možnosti a procesy pro projekt webové aplikace stejné jako u projektu webu.
 
-[&#9654;Podívejte se na video (26 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-a-visual-studio-2008-web-deployment-project)
+[&#9654;Přehrát video (26 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-a-visual-studio-2008-web-deployment-project)

@@ -1,24 +1,24 @@
 ---
 uid: web-pages/videos/introduction/change-the-visual-style-of-a-web-page
-title: Změna vizuálního stylu webové stránky | Dokumentace Microsoftu
+title: Změna vizuálního stylu webové stránky | Microsoft Docs
 author: rick-anderson
-description: 3. část vám pomůže začít s stylů CSS a styl abyste měli více krásné stránky.
+description: Část 3 vám pomůže začít pracovat se šablonami stylů CSS a stylů, aby bylo možné vytvořit stránku lépe.
 ms.author: riande
 ms.date: 04/12/2011
 ms.assetid: 78b37794-a65a-483e-8936-57d167ff9ee9
 msc.legacyurl: /web-pages/videos/introduction/change-the-visual-style-of-a-web-page
 msc.type: video
 ms.openlocfilehash: 5ff91ddabb637d663a4a14f26521d405bc78de71
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398719"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78631731"
 ---
 # <a name="change-the-visual-style-of-a-web-page"></a>Změna vizuálního stylu webové stránky
 
-podle [Advaiya](https://twitter.com/Advaiyasolns)
+od [Advaiya](https://twitter.com/Advaiyasolns)
 
-3. část vám pomůže začít s stylů CSS a styl abyste měli více krásné stránky.
+Část 3 vám pomůže začít pracovat se šablonami stylů CSS a stylů, aby bylo možné vytvořit stránku lépe.
 
-[&#9654;Podívejte se na video (4 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/change-the-visual-style-of-a-web-page)
+[&#9654;Přehrát video (4 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/change-the-visual-style-of-a-web-page)

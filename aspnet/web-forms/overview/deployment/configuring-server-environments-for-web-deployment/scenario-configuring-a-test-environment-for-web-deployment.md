@@ -1,63 +1,63 @@
 ---
 uid: web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment
-title: 'Scénář: Konfigurace testovacího prostředí pro nasazení webu | Dokumentace Microsoftu'
+title: 'Scénář: konfigurace testovacího prostředí pro nasazení webu | Microsoft Docs'
 author: jrjlee
-description: Toto téma popisuje běžné webové scénáře nasazení pro vývojáře nebo testovací prostředí a vysvětluje úlohy, které potřebujete k dokončení pro nastavení incidentech...
+description: Toto téma popisuje Typický scénář nasazení webu pro vývojová a testovací prostředí a vysvětluje úkoly, které je potřeba provést, aby bylo možné nastavit si...
 ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 44a22ac7-1fc7-4174-b946-c6129fb6a19b
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/scenario-configuring-a-test-environment-for-web-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: d580e550f2461837f0e8a4e477273348b49cb53e
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132397"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78637814"
 ---
 # <a name="scenario-configuring-a-test-environment-for-web-deployment"></a>Scénář: Konfigurace testovacího prostředí pro nasazení webu
 
-podle [Jason Lee](https://github.com/jrjlee)
+od [Jason Novák](https://github.com/jrjlee)
 
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Toto téma popisuje běžné webové scénář nasazení pro vývojáře nebo testovací prostředí a vysvětluje úlohy, které potřebujete k dokončení pro nastavení prostředí podobné.
+> Toto téma popisuje Typický scénář nasazení webu pro vývojová a testovací prostředí a vysvětluje úkoly, které je potřeba provést, aby bylo možné nastavit podobné prostředí.
 
-Když vývojáři pracují na webové aplikace, jsou často budete poskytnut přístup k prostředí serveru, který můžete použít k testování změny do svých aplikací v reálné nastavení. Tento druh vývojové nebo testovací prostředí obvykle má tyto vlastnosti:
+Když vývojáři pracují na webových aplikacích, často mají přístup k prostředí serveru, které můžou použít k testování změn ve svých aplikacích ve realistickém nastavení. Tento druh vývojového nebo testovacího prostředí má obvykle tyto charakteristiky:
 
-- Prostředí se skládá z jediného webového serveru a jednoho databázového serveru.
-- Vývojáři obvykle oprávnění správce na serverech, aby mohly nakonfigurujte prostředí tak, aby požadavkům jejich aplikací.
-- Změny aplikací se nasazují na základě časté, takže prostředí musí podporovat krokování nebo automatizovat nasazení.
+- Prostředí se skládá z jednoho webového serveru a jednoho databázového serveru.
+- Vývojáři mají obvykle na serverech oprávnění správce, aby je mohli nakonfigurovat tak, aby se prostředí nakonfigurovali na požadavky svých aplikací.
+- Změny aplikací se nasazují často, takže prostředí musí podporovat nasazení v jednom kroku nebo automatizované.
 
-Například v našem [kurz scénář](../deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md), Matt Hink je pro vývojáře společnosti Fabrikam, Inc. Matt pracuje na řešení Správce kontaktů a pravidelně je potřeba nasadit změny do testovacího prostředí. Matt je správcem na webovém serveru testu a testovací databázový server. Matt na začátku musí být možné přímo nasadit řešení na testovací prostředí.
+Například v našem [scénáři](../deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)je matný Hink vývojářem ve společnosti Fabrikam, Inc. matný na řešení Správce kontaktů a pravidelně potřebuje nasazovat změny do testovacího prostředí. Matné je správce testovacího webového serveru a testovacího serveru databáze. Nejprve musí být matný schopný nasadit řešení přímo do testovacího prostředí.
 
 ![](scenario-configuring-a-test-environment-for-web-deployment/_static/image1.png)
 
-Jako práce postupuje a další vývojáři připojit k týmu, kontaktujte správce řešení je nakonfigurovaný pro průběžnou integraci (CI) v Team Foundation Server (TFS). Pokaždé, když vývojář vrátí obsah, Team Build by měl sestavte řešení, spuštění všech testů jednotek a automaticky nasadit řešení na testovací prostředí.
+Jak pracovní postup a další vývojáři se připojují k týmu, řešení Správce kontaktů je nakonfigurované pro kontinuální integraci (CI) v Team Foundation Server (TFS). Kdykoli vývojář provede kontrolu obsahu, sestavení týmu by mělo vytvořit řešení, spustit všechny testy jednotek a automaticky nasadit řešení do testovacího prostředí.
 
 ![](scenario-configuring-a-test-environment-for-web-deployment/_static/image2.png)
 
 ## <a name="solution-overview"></a>Přehled řešení
 
-Testovací prostředí musí podporovat krokování nebo automatizovat nasazení ze vzdáleného počítače, takže máte na výběr dva hlavní přístupy. Můžete:
+Testovací prostředí musí podporovat jedno nebo automatizované nasazení ze vzdáleného počítače, takže máte možnost volit ze dvou hlavních přístupů. Můžete:
 
-- Konfigurace serveru webových testů pro podporu nasazení pomocí Služba agenta nasazení webu ("vzdáleného agenta").
-- Konfigurace serveru webových testů pro podporu nasazení pomocí obslužné rutiny pro nasazení webu.
+- Nakonfigurujte testovací webový server tak, aby podporoval nasazení pomocí webové Deployment Agent služby ("vzdálený agent").
+- Nakonfigurujte testovací webový server tak, aby podporoval nasazení pomocí obslužné rutiny Nasazení webu.
 
 > [!NOTE]
-> Můžete také použít [nasazení webu na vyžádání](https://technet.microsoft.com/library/ee517345(WS.10).aspx) ("temp agent"). Toto je podobný přístup vzdáleného agenta z hlediska požadavky a omezení.
+> Můžete také použít [nasazení webu na vyžádání](https://technet.microsoft.com/library/ee517345(WS.10).aspx) ("dočasný agent"). To se podobá přístupu ke vzdálenému agentům z pohledu požadavků a omezení.
 
-V tomto případě vývojáři oprávnění správce na cílových serverech a testovacího prostředí není předmětem pravidla striktní bezpečnostní omezení, tedy logickou volbou konfigurace serveru webového testu pro podporu nasazení pomocí vzdáleného agenta. To není tak složitý a vyžaduje menší počáteční nastavení, než obslužná rutina nasazení webového přístupu. Také budete muset konfigurovat databázový server pro podporu vzdáleného přístupu a nasazení.
+V takovém případě mají vývojáři na cílových serverech oprávnění správce a testovací prostředí nepodléhá přísným omezením zabezpečení, takže logická volba je nakonfigurovat testovací webový server tak, aby podporoval nasazení pomocí vzdáleného agenta. To je méně složité a vyžaduje méně počáteční konfiguraci než přístup k obslužné rutině Nasazení webu. Také budete muset nakonfigurovat databázový server tak, aby podporoval vzdálený přístup a nasazení.
 
-Tato témata poskytují všechny informace, které potřebujete k dokončení těchto úloh:
+Tato témata obsahují všechny informace, které potřebujete k dokončení těchto úloh:
 
-- [Konfigurace webového serveru pro nasazení webu (vzdálený Agent) publikování](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md). Toto téma popisuje, jak vytvořit web server, který podporuje nasazení webu publikování, pomocí agenta vzdáleného přístupu od čisté sestavení systému Windows Server 2008 R2.
-- [Konfigurovat databázový Server pro publikování nasazeného webu](configuring-a-database-server-for-web-deploy-publishing.md). Toto téma popisuje, jak konfigurovat databázový server pro podporu vzdáleného přístupu a nasazení, od výchozí instalaci systému SQL Server 2008 R2.
+- [Nakonfigurujte webový server pro publikování nasazení webu (vzdálený Agent)](configuring-a-web-server-for-web-deploy-publishing-remote-agent.md). Toto téma popisuje, jak vytvořit webový server, který podporuje publikování Nasazení webu, pomocí přístupu vzdáleného agenta počínaje čistým sestavením systému Windows Server 2008 R2.
+- [Nakonfigurujte databázový server pro publikování nasazení webu](configuring-a-database-server-for-web-deploy-publishing.md). Toto téma popisuje, jak nakonfigurovat databázový server pro podporu vzdáleného přístupu a nasazení, počínaje od výchozí instalace SQL Server 2008 R2.
 
 ## <a name="further-reading"></a>Další čtení
 
-Pokyny k nastavení typické přípravné prostředí, najdete v části [scénář: Konfigurace přípravného prostředí pro nasazení webu](scenario-configuring-a-staging-environment-for-web-deployment.md). Pokyny ke konfiguraci typickém produkčním prostředí najdete v tématu [scénář: Konfigurace provozního prostředí pro nasazení webu](scenario-configuring-a-production-environment-for-web-deployment.md).
+Pokyny ke konfiguraci typického přípravného prostředí najdete v tématu [scénář: Konfigurace přípravného prostředí pro nasazení webu](scenario-configuring-a-staging-environment-for-web-deployment.md). Pokyny ke konfiguraci typického provozního prostředí najdete v tématu [scénář: Konfigurace provozního prostředí pro nasazení webu](scenario-configuring-a-production-environment-for-web-deployment.md).
 
 > [!div class="step-by-step"]
 > [Předchozí](choosing-the-right-approach-to-web-deployment.md)
-> [další](scenario-configuring-a-staging-environment-for-web-deployment.md)
+> [Další](scenario-configuring-a-staging-environment-for-web-deployment.md)

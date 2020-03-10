@@ -9,11 +9,11 @@ ms.assetid: 5811b8ff-ed56-40fc-9397-6b69ae09a8f6
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/working-with-computed-columns-vb
 msc.type: authoredcontent
 ms.openlocfilehash: e425d7363c2cdea6efb0ba51f3fc2b6a5330bf2a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74602783"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78524484"
 ---
 # <a name="working-with-computed-columns-vb"></a>Práce s vypočítanými sloupci (VB)
 
@@ -210,7 +210,7 @@ Pokračujte a aktualizujte hodnotu jednoho nebo více upravitelných sloupců a 
 > [!NOTE]
 > Prvek GridView aktuálně používá BoundFields pro upravitelná pole, což vede k výchozímu rozhraní pro úpravy. Vzhledem k tomu, že pole `CompanyName` je požadováno, mělo by být převedeno na TemplateField, který obsahuje RequiredFieldValidator. Ponechám se to jako cvičení pro zúčastněný čtenář. Podrobné pokyny k převodu vlastnost BoundField na TemplateField a přidání ovládacích prvků ověřování najdete v kurzu [Přidání ovládacích prvků ověřování do kurzu pro úpravy a vložení rozhraní](../editing-inserting-and-deleting-data/adding-validation-controls-to-the-editing-and-inserting-interfaces-vb.md) .
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Při definování schématu pro tabulku Microsoft SQL Server umožňuje zahrnutí počítaných sloupců. Jedná se o sloupce, jejichž hodnoty se počítají z výrazu, který obvykle odkazuje na hodnoty z jiných sloupců ve stejném záznamu. Vzhledem k tomu, že hodnoty pro vypočítané sloupce jsou založené na výrazu, jsou jen pro čtení a nelze jí přiřadit hodnotu v `INSERT` nebo v příkazu `UPDATE`. To přináší problémy při použití vypočítaného sloupce v hlavním dotazu TableAdapter, který se pokusí automaticky vygenerovat odpovídající příkazy `INSERT`, `UPDATE`a `DELETE`.
 

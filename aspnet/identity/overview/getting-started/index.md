@@ -1,8 +1,8 @@
 ---
 uid: identity/overview/getting-started/index
-title: Začínáme s ASP.NET Identity – ASP.NET 4.x
+title: Začínáme s ASP.NET Identity-ASP.NET 4. x
 author: rick-anderson
-description: ASP.NET Identity systém je navržený tak, chcete-li nahradit předchozí systémy členství technologie ASP.NET a jednoduché členství. Zahrnuje podporu profilu, integraci OAuth...
+description: ASP.NET Identity systém je navržený tak, aby nahradil předchozí členství v ASP.NET a jednoduché systémy členství. Zahrnuje podporu profilů, integraci OAuth...
 ms.author: riande
 ms.date: 10/02/2013
 ms.assetid: 72bb0051-a696-437e-a4e6-ca1225a6e271
@@ -10,15 +10,15 @@ ms.custom: seoapril2019
 msc.legacyurl: /identity/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 78679828dadacc1ba36eeaced9c21b741806ba47
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65121516"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78616583"
 ---
 # <a name="getting-started-with-aspnet-identity"></a>Začínáme s ASP.NET Identity
 
-> ASP.NET Identity systém je navržený tak, chcete-li nahradit předchozí systémy členství technologie ASP.NET a jednoduché členství. Zahrnuje podporu profilu, integrace s OAuth, funguje s OWIN a je součástí šablony ASP.NET, které jsou součástí sady Visual Studio 2013.
+> ASP.NET Identity systém je navržený tak, aby nahradil předchozí členství v ASP.NET a jednoduché systémy členství. Zahrnuje podporu profilů, integraci OAuth, spolupracuje s OWIN a je součástí šablon ASP.NET dodaných s Visual Studio 2013.
 
 - [Úvod do ASP.NET Identity](introduction-to-aspnet-identity.md)
 - [ASP.NET Identity – doporučené zdroje informací](aspnet-identity-recommended-resources.md)

@@ -9,11 +9,11 @@ ms.assetid: d7729af4-1eda-4ff2-8b61-dbbe4fc11d10
 msc.legacyurl: /whitepapers/aspnet4
 msc.type: content
 ms.openlocfilehash: ecde48f6bd88ee5f569bfeb8b70c26a50bc869c2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74576873"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78630170"
 ---
 # <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
 
@@ -496,7 +496,7 @@ K úplnému nahrazení funkce definice schopností prohlížeče ASP.NET použij
 
 #### <a name="caching-the-httpbrowsercapabilities-object"></a>Ukládání objektu HttpBrowserCapabilities do mezipaměti
 
-Předchozí příklad obsahuje jeden problém, což znamená, že kód se spustí pokaždé, když se vyvolá vlastní zprostředkovatel, aby se získal objekt *HttpBrowserCapabilities* . Tato situace může nastat několikrát během každé žádosti. V příkladu kód poskytovatele nedělá mnoho. Nicméně pokud kód ve vlastním zprostředkovateli provádí významnou práci, aby získal objekt *HttpBrowserCapabilities* , může to mít vliv na výkon. Chcete-li zabránit tomu, aby se to stalo, můžete objekt *HttpBrowserCapabilities* Uložit do mezipaměti. Postupujte podle těchto kroků:
+Předchozí příklad obsahuje jeden problém, což znamená, že kód se spustí pokaždé, když se vyvolá vlastní zprostředkovatel, aby se získal objekt *HttpBrowserCapabilities* . Tato situace může nastat několikrát během každé žádosti. V příkladu kód poskytovatele nedělá mnoho. Nicméně pokud kód ve vlastním zprostředkovateli provádí významnou práci, aby získal objekt *HttpBrowserCapabilities* , může to mít vliv na výkon. Chcete-li zabránit tomu, aby se to stalo, můžete objekt *HttpBrowserCapabilities* Uložit do mezipaměti. Postupujte následovně:
 
 1. Vytvořte třídu, která je odvozena z *HttpCapabilitiesProvider*, podobně jako v následujícím příkladu: 
 
@@ -781,7 +781,7 @@ Aby bylo filtrování snazší, přidal se do ASP.NET 4 nový ovládací prvek *
 
 Ovládací prvek *třídou QueryExtender* podporuje celou řadu možností filtrování. Následující části popisují tyto možnosti a poskytují příklady, jak je používat.
 
-#### <a name="search"></a>Hledat
+#### <a name="search"></a>Hledání
 
 Pro možnost hledání provede ovládací prvek *třídou QueryExtender* hledání v zadaných polích. V následujícím příkladu ovládací prvek používá text, který je zadán v ovládacím prvku TextBoxSearch a vyhledává jeho obsah ve sloupcích `ProductName` a `Supplier.CompanyName` v datech, která jsou vrácena z ovládacího prvku *LinqDataSource* .
 
@@ -927,8 +927,8 @@ Ve výchozím nastavení platí, že pokud webová aplikace nebo web cílí na .
 
 Hodnota pro *controlRenderingCompatibility* je řetězec, který umožňuje v budoucích verzích povolit nové definice verzí. V aktuální verzi jsou pro tuto vlastnost podporovány následující hodnoty:
 
-- "3,5". Toto nastavení označuje starší verze vykreslování a značek. Značky vykreslené ovládacími prvky jsou 100% zpětně kompatibilní a nastavení vlastnosti *xhtmlConformance* je dodrženo.
-- "4,0". Pokud má vlastnost toto nastavení, ovládací prvky webového serveru ASP.NET:
+- "3.5". Toto nastavení označuje starší verze vykreslování a značek. Značky vykreslené ovládacími prvky jsou 100% zpětně kompatibilní a nastavení vlastnosti *xhtmlConformance* je dodrženo.
+- "4.0". Pokud má vlastnost toto nastavení, ovládací prvky webového serveru ASP.NET:
 - Vlastnost *xhtmlConformance* je vždy považována za "Strict". V důsledku toho ovládací prvky vykreslují striktní značky XHTML 1,0.
 - Zákaz nevstupních ovládacích prvků již nevykresluje neplatné styly.
 - prvky *div* kolem skrytých polí jsou nyní ve stylu, takže nekolidují s uživatelem vytvořenými pravidly šablon stylů CSS.
@@ -977,7 +977,7 @@ Pak můžete definovat třídu šablony stylů CSS, která se vztahuje pouze na 
 Ve výchozím nastavení následující ovládací prvky webového serveru ASP.NET, které podporují šablony, jsou automaticky zabaleny do vnější tabulky, která se používá k aplikování vložených stylů:
 
 - *Třídě*
-- *Hlas*
+- *Přihlášení*
 - *PasswordRecovery*
 - *Metodu ChangePassword*
 - *Tip*
@@ -1319,7 +1319,7 @@ Visual Studio 2010 poskytuje předdefinované úlohy a cíle nástroje MSBuild p
 
 <a id="0.2__Toc224729057"></a><a id="0.2__Toc253429294"></a><a id="0.2__Toc243304665"></a>
 
-### <a name="webconfig-transformation"></a>Transformace Web. config
+### <a name="webconfig-transformation"></a>Web.config Transformation
 
 V případě nasazení webové aplikace Visual Studio 2010 zavádí [XML Document Transforming (XDT)](http://vishaljoshi.blogspot.com/2009/03/web-deployment-webconfig-transformation_23.html), což je funkce, která umožňuje transformovat `Web.config` soubor z nastavení pro vývoj na produkční nastavení. Nastavení transformace jsou určena v transformačních souborech s názvem `web.debug.config`, `web.release.config`a tak dále. (Názvy těchto souborů odpovídají konfiguracím MSBuild.) Transformační soubor obsahuje pouze změny, které je třeba provést v nasazeném souboru `Web.config`. Změny se určují pomocí jednoduché syntaxe.
 
@@ -1347,7 +1347,7 @@ Další informace najdete v tématu [Postup: nasazení projektu webové aplikace
 
 <a id="0.2__Toc224729060"></a><a id="0.2__Toc253429297"></a><a id="0.2__Toc243304668"></a>
 
-### <a name="resources"></a>Prostředky
+### <a name="resources"></a>Zdroje
 
 Následující weby poskytují další informace o ASP.NET 4 a Visual Studio 2010.
 

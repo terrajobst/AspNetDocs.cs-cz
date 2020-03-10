@@ -1,6 +1,6 @@
 ---
 uid: web-forms/videos/index
-title: Video | Dokumentace Microsoftu
+title: Videa | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,11 +9,11 @@ ms.assetid: f215d6b9-8a84-4bd8-8881-e9527d814950
 msc.legacyurl: /web-forms/videos
 msc.type: book
 ms.openlocfilehash: 0082330e75a905469c66b04277d70416555c30c3
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59397211"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78633635"
 ---
 # <a name="videos"></a>Videa
 
@@ -73,7 +73,7 @@ ms.locfileid: "59397211"
     - [Zjištění možností prohlížeče webovými stránkami ASP.NET](how-do-i/how-do-i-detect-browser-capabilities-in-aspnet-web-pages.md)
     - [Mapování serverového ovládacího prvku ASP.NET na adaptér použitý k jeho vykreslení](how-do-i/how-do-i-map-an-aspnet-server-control-to-the-adaptor-used-to-render-it.md)
     - [Předání informací z jedné stránky na jinou pomocí řetězce dotazu](how-do-i/how-do-i-pass-information-from-one-page-to-another-using-a-query-string.md)
-    - [Použít aspnet\_merge.exe nástroj ke sloučení sestavení](how-do-i/how-do-i-use-the-aspnet_mergeexe-utility-to-merge-assemblies.md)
+    - [Použití nástroje ASPNET\_Merge. exe ke sloučení sestavení](how-do-i/how-do-i-use-the-aspnet_mergeexe-utility-to-merge-assemblies.md)
     - [Implementace události zpětného vystavení (PostBack) mezi stránkami v ASP.NET](how-do-i/how-do-i-implement-a-cross-page-postback-in-aspnet.md)
     - [Programové přidání ovládacích prvků na stránku ASP.NET](how-do-i/how-do-i-add-controls-to-an-aspnet-web-page-programmatically.md)
     - [Použití skrytého pole k ukládání a manipulaci informací na straně klienta](how-do-i/how-do-i-use-a-hidden-field-to-store-and-manipulate-client-side-information.md)
@@ -222,15 +222,15 @@ ms.locfileid: "59397211"
     - [[Úvod do ASP.NET 2.0:] Prvky uživatelského rozhraní](migrating/intro-to-aspnet-20-user-interface-elements.md)
     - [[Migrace z] klasického ASP na ASP.NET](migrating/migrating-from-classic-asp-to-aspnet.md)
     - [Úvod do ASP.NET pro vývojáře v JSP: Vítejte v ASP.NET 2.0](migrating/intro-to-aspnet-for-jsp-developers-welcome-to-aspnet-20.md)
-    - [Úvod do ASP.NET pro vývojáře v JSP: Vytváření aplikací](migrating/intro-to-aspnet-for-jsp-developers-building-applications.md)
+    - [Úvod do ASP.NET pro vývojáře v JSP: Tvorba aplikací](migrating/intro-to-aspnet-for-jsp-developers-building-applications.md)
     - [Úvod do ASP.NET pro vývojáře v ColdFusion: Přidání ASP.NET do vašeho repertoáru](migrating/intro-to-aspnet-for-coldfusion-developers-adding-aspnet-to-your-repertoire.md)
-    - [Úvod do ASP.NET pro vývojáře v ColdFusion: Vytvoření aplikace ASP.NET](migrating/introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application.md)
+    - [Úvod do ASP.NET pro vývojáře v ColdFusion: Tvorba aplikace ASP.NET](migrating/introduction-to-aspnet-for-coldfusion-developers-building-an-aspnet-application.md)
     - [Interoperabilita PHP s platformou Windows](migrating/interop-between-php-and-the-windows-platform.md)
 - [Tvorba aplikací verze 2.0](building-20-applications/index.md)
 
     - [[1. lekce:] Začínáme s aplikací Visual Web Developer Express](building-20-applications/lesson-1-getting-started-with-visual-web-developer-express.md)
     - [[2. lekce:] Vytváření uživatelského rozhraní webových formulářů](building-20-applications/lesson-2-creating-a-web-forms-user-interface.md)
-    - [[Lekce 3:] Orientujte ve více událostí a postbacku](building-20-applications/lesson-3-understanding-more-about-events-and-postback.md)
+    - [[Lekce 3:] Informace o událostech a postbacku](building-20-applications/lesson-3-understanding-more-about-events-and-postback.md)
     - [[4. lekce:] Principy stavu webové aplikace](building-20-applications/lesson-4-understanding-web-application-state.md)
     - [[5. lekce:] Ladění a trasování webu](building-20-applications/lesson-5-debugging-and-tracing-your-website.md)
     - [[6. lekce:] Práce se šablonami stylů a stránkami předloh](building-20-applications/lesson-6-working-with-stylesheets-and-master-pages.md)
@@ -344,7 +344,7 @@ ms.locfileid: "59397211"
     - [Nastavení vývojového prostředí pro ASP.NET 2.0](aspnet-ajax/set-up-your-development-environment-for-aspnet-20.md)
     - [Přizpůsobené zpracování chyb ovládacího prvku UpdatePanel technologie ASP.NET AJAX](aspnet-ajax/how-do-i-customize-error-handling-for-the-aspnet-ajax-updatepanel.md)
     - [Použití klientských šablon ASP.NET AJAX](aspnet-ajax/how-do-i-use-aspnet-ajax-client-templates.md)
-- [Přístup k datům](data-access/index.md)
+- [Přístup k datům](data-access/index.md)
 
     - [Datové služby ADO.NET](data-access/adonet-data-services/index.md)
 
@@ -353,15 +353,15 @@ ms.locfileid: "59397211"
         - [Práce s datovými sadami a filtry z aplikace ASP](data-access/adonet-data-services/how-to-work-with-datasets-and-filters-from-an-asp-application.md)
     - [Jak na to s LINQ](data-access/how-do-i-with-linq/index.md)
 
-        - [Technologie LINQ to SQL: Přehled](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-overview.md)
-        - [Technologie LINQ to SQL: Datový Model](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-data-model.md)
-        - [Technologie LINQ to SQL: Dotazování na databázi](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-querying-the-database.md)
-        - [Technologie LINQ to SQL: Aktualizace databáze](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-the-database.md)
-        - [Technologie LINQ to SQL: LinqDataSource](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-linqdatasource.md)
-        - [Technologie LINQ to SQL: Custom LinqDataSource](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-custom-linqdatasource.md)
-        - [Technologie LINQ to SQL: Použití uložených procedur](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-using-stored-procedures.md)
-        - [Technologie LINQ to SQL: Aktualizace pomocí uložených procedur](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-with-stored-procedures.md)
-        - [Technologie LINQ to SQL: Spuštění libovolné SQL](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-executing-arbitrary-sql.md)
+        - [LINQ to SQL: Přehled](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-overview.md)
+        - [LINQ to SQL: Datový model](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-data-model.md)
+        - [LINQ to SQL: Dotazy do databáze](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-querying-the-database.md)
+        - [LINQ to SQL: Aktualizace databáze](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-the-database.md)
+        - [LINQ to SQL: LinqDataSource](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-linqdatasource.md)
+        - [LINQ to SQL: Vlastní zdroj LinqDataSource](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-custom-linqdatasource.md)
+        - [LINQ to SQL: Použití uložených procedur](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-using-stored-procedures.md)
+        - [LINQ to SQL: Aktualizace uloženými procedurami](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-updating-with-stored-procedures.md)
+        - [LINQ to SQL: Provedení libovolného příkazu SQL](data-access/how-do-i-with-linq/how-do-i-linq-to-sql-executing-arbitrary-sql.md)
     - [Videa o jazyce LINQ od týmu VB](data-access/linq-videos-from-the-vb-team/index.md)
 
         - [Začínáme s jazykem LINQ](data-access/linq-videos-from-the-vb-team/how-do-i-get-started-with-linq.md)

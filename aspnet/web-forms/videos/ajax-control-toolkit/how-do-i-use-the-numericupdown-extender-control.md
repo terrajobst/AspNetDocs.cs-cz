@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-numericupdown-extender-control
-title: '[Postup:] Použít rozšiřující ovládací prvek NumericUpDown? | Dokumenty Microsoft'
+title: '[Postupy:] Použít ovládací prvek pro nastavení ovládacího prvku NumericUpDown? | Dokumenty Microsoft'
 author: JoeStagner
-description: V tomto videu Zkoumáme, rozšiřující ovládací prvek NumericUpDown z technologie ASP.NET AJAX Control Toolkit. Vidíme, jak zařízení extender NumericUpDown přidá "nahoru" a "dolů"...
+description: V tomto videu prověříme ovládací prvek ovládacího prvku NumericUpDown na ovládacím prvku ASP.NET AJAX Control Toolkit. Zobrazuje se způsob, jakým objekt NumericUpDown rozšiřuje přidání ' up ' a ' Down '...
 ms.author: riande
 ms.date: 06/12/2007
 ms.assetid: 2aee17e4-06d1-4875-985e-8fb817dc8bcd
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-numericupdown-extender-control
 msc.type: video
 ms.openlocfilehash: 695ade1162b26556304f2df28f0ebf0d21f6170a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59396626"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638934"
 ---
-# <a name="how-do-i-use-the-numericupdown-extender-control"></a>[Postup:] Použít rozšiřující ovládací prvek NumericUpDown?
+# <a name="how-do-i-use-the-numericupdown-extender-control"></a>[Postupy:] Použít ovládací prvek pro nastavení ovládacího prvku NumericUpDown?
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-V tomto videu Zkoumáme, rozšiřující ovládací prvek NumericUpDown z technologie ASP.NET AJAX Control Toolkit. Vidíme, jak zařízení extender NumericUpDown přidá do standardního ovládacího prvku textového pole ASP.NET "nahoru" a "dolů". Tlačítka umožní uživateli zvýšení nebo snížení číslo, cyklicky procházet seznam známé hodnoty nebo volání webové služby k načtení další hodnoty. Tímto způsobem vývojářům plnou kontrolu nad hodnotami, které uživatel může odeslat do webové aplikace.
+V tomto videu prověříme ovládací prvek ovládacího prvku NumericUpDown na ovládacím prvku ASP.NET AJAX Control Toolkit. Zobrazuje se způsob, jakým ovládací prvek NumericUpDown rozšiřuje tlačítko "nahoru" a "dolů" do standardního ovládacího prvku TextBox ASP.NET. Tlačítka umožňují uživateli zvýšit nebo snížit číslo, cyklicky procházet seznam známých hodnot nebo volat webovou službu, aby načetla další hodnotu. Tímto způsobem může vývojář plně řídit hodnoty, které může uživatel odeslat webové aplikaci.
 
-[&#9654;Podívejte se na video (21 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-numericupdown-extender-control)
+[&#9654;Sledovat video (21 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-numericupdown-extender-control)
 
 > [!div class="step-by-step"]
 > [Předchozí](how-do-i-use-the-pagingbulletedlist-extender-control.md)
-> [další](how-do-i-use-the-aspnet-ajax-validatorcallout-extender.md)
+> [Další](how-do-i-use-the-aspnet-ajax-validatorcallout-extender.md)

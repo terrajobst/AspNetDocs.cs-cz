@@ -1,92 +1,92 @@
 ---
 uid: web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
-title: Konfigurace oprávnění pro tým nasazení sestavení | Dokumentace Microsoftu
+title: Konfigurace oprávnění pro nasazení týmového sestavení | Microsoft Docs
 author: jrjlee
-description: Toto téma popisuje, jak nakonfigurovat oprávnění, které umožňují sestavení serveru nasazení obsahu do webové servery a databázové servery jako součást automatizovaného b...
+description: Toto téma popisuje, jak nakonfigurovat oprávnění, aby mohl server sestavení nasadit obsah na webové servery a databázové servery jako součást automatizovaného b...
 ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 2488a91e-b0a8-465a-b874-3233f724b56b
 msc.legacyurl: /web-forms/overview/deployment/configuring-team-foundation-server-for-web-deployment/configuring-permissions-for-team-build-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: 5699f72af6b8d7f18d1a2c631dfdedd63c66e1e6
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133858"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638423"
 ---
 # <a name="configuring-permissions-for-team-build-deployment"></a>Konfigurace oprávnění pro nasazení týmového sestavení
 
-podle [Jason Lee](https://github.com/jrjlee)
+od [Jason Novák](https://github.com/jrjlee)
 
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Toto téma popisuje, jak nakonfigurovat oprávnění, které umožňují sestavení serveru nasazení obsahu do webové servery a databázové servery jako součást automatizovaného procesu sestavení.
+> Toto téma popisuje, jak nakonfigurovat oprávnění, aby mohl server sestavení nasadit obsah na webové servery a databázové servery jako součást procesu automatizovaného sestavení.
 
-Toto téma je součástí série kurzů podle požadavků na nasazení enterprise fiktivní společnosti s názvem společnosti Fabrikam, Inc. V této sérii kurzů používá ukázkové řešení&#x2014; [řešení Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;představující webovou aplikaci s realistické úroveň složitosti, včetně aplikace ASP.NET MVC 3, komunikace Windows Služba Foundation (WCF) a databázový projekt.
+Toto téma je součástí série kurzů založených na požadavcích podnikového nasazení fiktivní společnosti s názvem Fabrikam, Inc. Tato série kurzů používá ukázkové řešení&#x2014;, pomocí kterého [řešení](../web-deployment-in-the-enterprise/the-contact-manager-solution.md)&#x2014;správce kontaktů představuje webovou aplikaci s realistickou úrovní složitosti, včetně aplikace ASP.NET MVC 3, služby Windows Communication Foundation (WCF) a databázového projektu.
 
-Metody nasazení v srdci těchto kurzů je založen na rozdělení přístupu soubor projektu je popsáno v [vysvětlení souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve které je řízena procesem sestavení dva soubory projektu&#x2014;jeden obsahující pokyny, které platí pro všechny cílové prostředí a jeden obsahuje nastavení pro konkrétní prostředí sestavení a nasazení pro sestavení. V okamžiku sestavení souboru projektu specifických pro prostředí se sloučí do souboru projektu bez ohledu na prostředí a vytvoří kompletní sadu pokynů sestavení.
+Metoda nasazení na srdce těchto kurzů je založena na způsobu rozdělení souborů projektu popsaných v tématu [Principy souboru projektu](../web-deployment-in-the-enterprise/understanding-the-project-file.md), ve kterém je proces sestavení řízen dvěma soubory&#x2014;projektu jeden, který obsahuje pokyny pro sestavení, které platí pro každé cílové prostředí, a jedno obsahující nastavení sestavení a nasazení specifické pro konkrétní prostředí. V době sestavení je soubor projektu specifický pro prostředí sloučen do souboru projektu prostředí – nezávislá a vytvoří kompletní sadu instrukcí pro sestavení.
 
-## <a name="task-overview"></a>Přehled úloh
+## <a name="task-overview"></a>Přehled úlohy
 
-Při instalaci služby Team Foundation Server (TFS) 2010 sestavení, zadejte identitu, se kterým se má službu spustit. Ve výchozím nastavení je to účet síťové služby. Alternativně můžete nakonfigurovat službu sestavení ke spuštění pomocí účtu domény.
+Při instalaci služby Team Foundation Server (TFS) 2010 Build Service zadáte identitu, se kterou chcete službu spustit. Ve výchozím nastavení je to účet síťové služby. Případně můžete službu sestavení nakonfigurovat tak, aby běžela pomocí doménového účtu.
 
-Úkoly nasazení, které vyžadují ověřování Windows a plánujete automatizovat pomocí Team Build, bude spuštěna s použitím identity služby sestavení. V důsledku toho budete muset udělit identitu služby sestavení jakékoli požadovaná oprávnění pro vaše webové servery a databázové servery.
+Všechny úlohy nasazení, které vyžadují ověřování systému Windows a které plánujete automatizovat pomocí sestavení týmu, se spustí pomocí identity sestavovací služby. V takovém případě je potřeba udělit identitě sestavovací služby veškerá požadovaná oprávnění na webových serverech a na vašich databázových serverech.
 
 > [!NOTE]
-> Účet Network Service používá účet počítače pro ověření do jiných počítačů. Účty počítače mít podobu *[název domény]\[název počítače]* **$**&#x2014;například **FABRIKAM\TFSBUILD$**. V důsledku toho pokud je sestavovací služba spuštěná, používat identitu síťové služby, byste měli udělit libovolné požadovaná oprávnění pro identitu účtu počítače pro váš server sestavení.
+> Účet síťové služby používá účet počítače k ověřování pro jiné počítače. Účty počítačů mají podobu * [název domény]\[název počítače] * **$** &#x2014;například **FABRIKAM\TFSBUILD $** . V takovém případě, pokud je vaše sestavovací služba spuštěna pomocí identity síťové služby, měli byste udělit všechna požadovaná oprávnění k identitě účtu počítače pro server sestavení.
 
 ## <a name="configuring-web-server-permissions"></a>Konfigurace oprávnění webového serveru
 
-Jak je popsáno v [výběr právo přístupu k nasazení webu](../configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment.md), existují dva hlavní přístupy, které můžete použít, pokud chcete nasadit webových balíčků na vzdáleném webovém serveru:
+Jak je popsáno v tématu [Volba správného přístupu k nasazení webu](../configuring-server-environments-for-web-deployment/choosing-the-right-approach-to-web-deployment.md), existují dva hlavní přístupy, které můžete použít, pokud chcete nasadit webové balíčky na vzdálený webový server:
 
-- Nasadit aplikaci ze vzdáleného umístění pomocí cílení *webová služba agenta nasazení* (označované také jako vzdálený agent) na cílovém serveru.
-- Nasadit aplikaci ze vzdáleného umístění pomocí cílení *Internetová informační služba* (*služby IIS) obslužné rutiny webu nasadit* na cílovém serveru.
+- Nasaďte aplikaci ze vzdáleného umístění tak, že na cílovém serveru zacílíte na *službu Web Deployment Agent* (také označovanou jako vzdálený Agent).
+- Nasaďte aplikaci ze vzdáleného umístění tím, že na cílovém serveru zacílíte*obslužnou rutinu nasazení webu Internetová informační služba (IIS)* .
 
-Vzdálený agent v tomto případě má dva klíče omezení:
+Vzdálený agent má v tomto případě dvě klíčová omezení:
 
-- Vzdálený agent podporuje pouze ověřování NTLM. Jinými slovy, nasazení musí používat identitu služby sestavení&#x2014;nelze zosobnit jiného účtu.
-- Použití vzdáleného agenta, musí být účet, který nasazení provádí správce na cílovém serveru.
+- Vzdálený Agent podporuje pouze ověřování NTLM. Jinými slovy, nasazení musí používat identitu&#x2014;sestavovací služby. nemůžete zosobnit jiný účet.
+- Chcete-li použít vzdáleného agenta, musí být účet, který provádí nasazení, správcem cílového serveru.
 
-Společně tyto dvě omezení Ujistěte se, vzdálený agent přístup nežádoucí pro automatické nasazení Team Build. Chcete-li tuto metodu použijte, je třeba službu sestavení účtu správce na všechny cílové webové servery.
+Tato dvě omezení společně přistupují ke vzdálenému agentovi při automatizovaném nasazení týmového sestavení. Chcete-li použít tento přístup, je nutné, aby byl účet služby sestavení správcem na všech cílových webových serverech.
 
-Naproti tomu obslužná rutina nasazení webového přístupu nabízí různé výhody:
+Naproti tomu Nasazení webu přístup k obslužné rutině nabízí různé výhody:
 
-- Obslužné rutiny nasazení webu podporuje základní ověřování přes protokol HTTPS, který umožňuje předání přihlašovacích údajů účtu alternativní nástroj nasazení webu služby IIS (Web Deploy).
-- Můžete nakonfigurovat cílové webové servery umožňuje uživatelům bez oprávnění správce pro nasazení obsahu pro konkrétní weby služby IIS pomocí obslužné rutiny nasazení webu.
+- Obslužná rutina Nasazení webu podporuje základní ověřování přes protokol HTTPS, které umožňuje předat přihlašovací údaje alternativního účtu k nástroji pro nasazení webu služby IIS (Nasazení webu).
+- Cílové webové servery můžete nakonfigurovat tak, aby umožňovaly uživatelům bez oprávnění správce nasadit obsah na konkrétní weby IIS pomocí obslužné rutiny Nasazení webu.
 
-V důsledku toho je vhodnější jasně cílit obslužné rutiny nasazení webu při automatizaci nasazení webového balíčku z nástroje týmové sestavení. Toto je doporučený postup:
+V důsledku toho je vhodné při automatizaci nasazení webového balíčku z týmového sestavení přesně cílit na obslužnou rutinu Nasazení webu. Toto je doporučený postup:
 
-1. Vytvořte účet domény s nízkým oprávněním, který chcete použít pro nasazení.
-2. Nakonfigurujte obslužné rutiny nasazení webu a účtu udělit požadovaná oprávnění pro nasazení obsahu pro konkrétní web služby IIS, jak je popsáno v [konfigurace webového serveru pro nasazení publikování na webu (nasazení obslužná rutina webových)](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md).
-3. Vyvolání Web Deploy a cílové obslužné rutiny nasazení webu, použití základního ověřování a poskytnutí přihlašovacích údajů účtu domény právě vytvořili, a provést nasazení.
+1. Vytvořte doménový účet s nízkou úrovní oprávnění, který bude použit pro nasazení.
+2. Nakonfigurujte obslužnou rutinu Nasazení webu a udělte účtu požadovaná oprávnění k nasazení obsahu na konkrétní web IIS, jak je popsáno v tématu [Konfigurace webového serveru pro nasazení webu publikování (nasazení webu obslužné rutiny)](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md).
+3. K provedení tohoto nasazení můžete vyvolat Nasazení webu a cílit na obslužnou rutinu Nasazení webu pomocí základního ověřování a zadáním přihlašovacích údajů účtu domény, který jste vytvořili.
 
-V [Správce kontaktů](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) ukázkové řešení, určete typ ověřování (základní nebo NTLM), přihlašovací údaje pro nasazení webu a adresu koncového bodu (vzdálený agent nebo obslužné rutiny nasazení webu) v souboru projektu pro konkrétní prostředí. Tyto hodnoty slouží k formulování a spusťte příkaz Webdeploy při spuštění souboru projektu. Další informace najdete v tématu [nasazení webových balíčků](../web-deployment-in-the-enterprise/deploying-web-packages.md).
+V ukázkovém řešení [Contact Manageru](../web-deployment-in-the-enterprise/the-contact-manager-solution.md) zadáte typ ověřování (Basic nebo NTLM), přihlašovací údaje nasazení webu a adresu koncového bodu (vzdálený agent nebo nasazení webu obslužné rutiny) v souboru projektu specifického pro prostředí. Tyto hodnoty se používají k formulování a spuštění Nasazení webu příkazu při spuštění souboru projektu. Další informace najdete v tématu [nasazení webových balíčků](../web-deployment-in-the-enterprise/deploying-web-packages.md).
 
-Další informace o konfiguraci webové nasazení obslužnou rutinu, včetně postupu konfigurace oprávnění, najdete v části [konfigurace webového serveru pro nasazení publikování na webu (nasazení obslužná rutina webových)](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md). Další informace o konfiguraci vzdáleného agenta najdete v tématu [konfigurace webového serveru pro nasazení publikování na webu (vzdálený Agent)](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent.md).
+Další informace o konfiguraci obslužné rutiny Nasazení webu, včetně postupu konfigurace oprávnění, najdete v tématu [Konfigurace webového serveru pro nasazení webu publikování (nasazení webu obslužné rutiny)](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md). Další informace o konfiguraci vzdáleného agenta najdete v tématu [Konfigurace webového serveru pro nasazení webu publikování (vzdálený Agent)](../configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-remote-agent.md).
 
-## <a name="configuring-database-server-permissions"></a>Konfigurace databáze serveru oprávnění
+## <a name="configuring-database-server-permissions"></a>Konfigurace oprávnění databázového serveru
 
-Nasazení databáze na SQL Server, musíte mít:
+Pokud chcete nasadit databázi do SQL Server, musíte:
 
-- Vytvořte přihlašovací údaje pro nasazení účtu v instanci systému SQL Server.
-- Udělit přihlášení **DBCreator** oprávnění v instanci systému SQL Server.
-- Po počátečním nasazení přidat přihlášení **db\_vlastníka** role na cílové databázi. To je povinné, protože na další nasazení, můžete se úprava existující databázi místo vytvoření nové databáze.
+- Vytvořte přihlašovací údaje pro účet nasazení v instanci SQL Server.
+- Udělte přihlašovacímu jménu oprávnění **dbcreator** pro instanci SQL Server.
+- Po počátečním nasazení přidejte přihlašovací údaje do role **vlastníka\_DB** v cílové databázi. To je nutné kvůli dalším nasazením, přičemž místo vytvoření nové databáze měníte stávající databázi.
 
-Můžete se ověřit do instance SQL serveru pomocí ověřování protokolem NTLM nebo ověřování serveru SQL Server:
+Můžete provést ověření u SQL Server instance pomocí ověřování NTLM nebo ověřování SQL Server:
 
-- Pokud používáte ověřování protokolem NTLM, budete muset udělit oprávnění k účtu sestavovací služby je popsáno výše.
-- Pokud používáte ověřování SQL serveru, musíte udělit oprávnění je popsáno výše pro účet systému SQL Server. Také musíte zahrnout připojovací řetězec, který používáte k nasazení databáze SQL serveru uživatelské jméno a heslo.
+- Pokud používáte ověřování NTLM, je nutné udělit oprávnění popsaná výše k účtu sestavovací služby.
+- Pokud používáte ověřování SQL Server, musíte udělit oprávnění popsaná výše k účtu SQL Server. V připojovacím řetězci, který použijete k nasazení databáze, musíte také zadat uživatelské jméno a heslo SQL Server.
 
-Podrobné informace o tom, jak nakonfigurovat oprávnění pro nasazení databáze, najdete v části [konfigurace databázového serveru pro publikování nasazení na webu](../configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing.md).
+Podrobné informace o tom, jak nakonfigurovat oprávnění pro nasazení databáze, najdete v tématu [Konfigurace databázového serveru pro nasazení webu publikování](../configuring-server-environments-for-web-deployment/configuring-a-database-server-for-web-deploy-publishing.md).
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto okamžiku byste měli rozumět oprávnění požadovaná spolu s open, možnosti ověřování při automatizaci nasazení webové aplikace a databáze z nástroje týmové sestavení. Také by měl být schopni implementovat potřebná oprávnění na webové servery služby IIS a servery databázového serveru SQL Server.
+V tuto chvíli byste měli pochopit požadovaná oprávnění, společně s možnostmi ověřování, které jsou otevřené pro vás, při automatizaci nasazení webové aplikace a databáze z týmového sestavení. Měli byste taky mít přístup k potřebným oprávněním pro webové servery služby IIS a SQL Server databázových serverů.
 
 ## <a name="further-reading"></a>Další čtení
 
-Další informace o konfiguraci prostředí Windows serveru pro podporu vzdáleného nasazení najdete v tématu [konfigurace serveru prostředí pro nasazení webu](../configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment.md).
+Další informace o konfiguraci prostředí Windows serveru pro podporu vzdáleného nasazení najdete v tématu [Konfigurace serverových prostředí pro nasazení webu](../configuring-server-environments-for-web-deployment/configuring-server-environments-for-web-deployment.md).
 
 > [!div class="step-by-step"]
 > [Předchozí](deploying-a-specific-build.md)

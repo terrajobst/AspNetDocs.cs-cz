@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/index
-title: ASP.NET 4 – nasazení webu s SQL serverem Compact pomocí sady Visual Studio | Dokumentace Microsoftu
+title: ASP.NET 4 – nasazení webu s SQL Server Compact pomocí sady Visual Studio | Microsoft Docs
 author: rick-anderson
-description: V této sérii kurzů ukazuje, jak vytvořit webovou aplikaci ASP.NET, která používá SQL Server Compact dostupné přes internet nasazením třetích stran h...
+description: V této sérii kurzů se dozvíte, jak vytvořit webovou aplikaci v ASP.NET, která používá SQL Server Compact k dispozici prostřednictvím Internetu, a to nasazením na h třetí strany...
 ms.author: riande
 ms.date: 11/29/2011
 ms.assetid: 6798c7e4-f08e-4802-9fa5-443f67d5df62
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider
 msc.type: chapter
 ms.openlocfilehash: bb9a47eeb4197348e85bb469b68c0055e7c696a0
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65119446"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78633978"
 ---
 # <a name="aspnet-4---web-deployment-with-sql-server-compact-using-visual-studio"></a>ASP.NET 4 – nasazení webu s SQL Serverem Compact pomocí sady Visual Studio
 
-> V této sérii kurzů ukazuje, jak vytvořit webovou aplikaci ASP.NET, která používá SQL Server Compact dostupné přes internet nasazením do poskytovatele hostitelských služeb třetích stran. Vyžaduje sadu Visual Studio 2012 RC nebo Visual Studio 2010. Aktuálnější informace o nasazení funkcí nebo informace o tom, jak nasadit edicích systému SQL Server než SQL Server Compact, přečtěte si téma [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
+> V této sérii kurzů se dozvíte, jak vytvořit webovou aplikaci v ASP.NET, která používá SQL Server Compact k dispozici prostřednictvím Internetu, a to nasazením na poskytovatele hostování třetí strany. Vyžaduje Visual Studio 2012 RC nebo Visual Studio 2010. Chcete-li získat aktuální informace o funkcích nasazení nebo informace o tom, jak nasadit SQL Server jiné edice než SQL Server Compact, přečtěte si téma [nasazení webu ASP.NET pomocí sady Visual Studio](../../deployment/visual-studio-web-deployment/introduction.md).
 
 - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – úvod](deployment-to-a-hosting-provider-introduction-1-of-12.md)
 - [Nasazení webu pomocí sady Visual Studio s SQL Serverem Compact – nasazení databází SQL Serveru Compact](deployment-to-a-hosting-provider-deploying-sql-server-compact-databases-2-of-12.md)

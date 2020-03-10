@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/formats-and-model-binding/content-negotiation
-title: Obsah vyjednávání v rozhraní ASP.NET Web API – ASP.NET 4.x
+title: Vyjednávání obsahu v ASP.NET Web API – ASP.NET 4. x
 author: MikeWasson
-description: Popisuje způsob implementace rozhraní ASP.NET Web API vyjednávání obsahu HTTP pro technologii ASP.NET 4.x.
+description: Popisuje, jak webové rozhraní API ASP.NET implementuje vyjednávání obsahu protokolu HTTP pro ASP.NET 4. x.
 ms.author: riande
 ms.date: 05/20/2012
 ms.custom: seoapril2019
@@ -10,99 +10,99 @@ ms.assetid: 0dd51b30-bf5a-419f-a1b7-2817ccca3c7d
 msc.legacyurl: /web-api/overview/formats-and-model-binding/content-negotiation
 msc.type: authoredcontent
 ms.openlocfilehash: cb6668ff6de276d3778ce11f27ce597d8bf1f9c7
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59380156"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78622267"
 ---
-# <a name="content-negotiation-in-aspnet-web-api"></a>Vyjednávání obsahu v rozhraní ASP.NET Web API
+# <a name="content-negotiation-in-aspnet-web-api"></a>Vyjednávání obsahu ve webovém rozhraní API ASP.NET
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-Tento článek popisuje, jak rozhraní ASP.NET Web API implementuje vyjednávání obsahu pro technologii ASP.NET 4.x.
+Tento článek popisuje, jak webové rozhraní API ASP.NET implementuje vyjednávání obsahu pro ASP.NET 4. x.
 
-Specifikace protokolu HTTP (RFC 2616) definuje vyjednávání obsahu jako "proces výběru nejlepší reprezentaci pro danou odpověď, když jsou k dispozici více reprezentací." Hlavní mechanismus pro vyjednávání obsahu protokolu HTTP jsou tyto hlavičky požadavku:
+Specifikace HTTP (RFC 2616) definuje vyjednávání obsahu jako "proces výběru nejlepší reprezentace pro danou odpověď, pokud jsou k dispozici více reprezentují." Primárním mechanismem pro vyjednávání obsahu v HTTP jsou tyto hlavičky požadavků:
 
-- **Přijměte:** Typy médií, které jsou přijatelné pro odpovědi, například "application/json", "application/xml" nebo vlastního typu, jako &quot;application/vnd.example+xml&quot;
-- **Accept-Charset:** Které znakové sady jsou přijatelné, například UTF-8 nebo ISO 8859-1.
-- **Přijmout kódování:** Jaké kódování obsahu jsou přijatelné, například gzip.
-- **Přijměte jazyka:** Upřednostňované přirozeného jazyka, jako "en-us".
+- **Přijmout:** Které typy médií jsou přijatelné pro odpověď, jako je například Application/JSON, Application/XML nebo vlastní typ média, jako je například &quot;application/vnd. example + XML&quot;
+- **Přijmout – charset:** Které znakové sady jsou přijatelné, například UTF-8 nebo ISO 8859-1.
+- **Přijmout – kódování:** Které kódování obsahu jsou přijatelné, například gzip.
+- **Přijmout – jazyk:** Preferovaný přirozený jazyk, například "en-US".
 
-Server můžete se také podívat na další části požadavku HTTP. Například pokud požadavek obsahuje hlavičku X-Requested-With, označující požadavek AJAX na serveru může být jako výchozí JSON Pokud neexistuje žádné hlavičky Accept.
+Server se také může podívat na jiné části požadavku HTTP. Pokud například požadavek obsahuje hlavičku X-with, která označuje požadavek AJAX, server může být ve výchozím nastavení JSON, pokud není k dispozici hlavička Accept.
 
-V tomto článku se podíváme na použití hlavičky Accept a Accept-Charset webového rozhraní API. (V tuto chvíli není předdefinovanou podporu Accept-Encoding nebo Accept-Language.)
+V tomto článku se podíváme na to, jak webové rozhraní API používá hlavičky Accept a Accept-Charset. (V současnosti není k dispozici žádná integrovaná podpora pro Accept-Encoding nebo Accept-Language.)
 
 ## <a name="serialization"></a>Serializace
 
-Pokud kontroler webového rozhraní API vrátí prostředků jako typ CLR, kanál serializuje návratovou hodnotu a zapisuje je do datové části odpovědi HTTP.
+Pokud kontroler webového rozhraní API vrátí prostředek jako typ CLR, kanál tuto vrácenou hodnotu zavolá a zapíše ho do těla odpovědi HTTP.
 
-Představte si třeba následující akce kontroleru:
+Zvažte například následující akci kontroleru:
 
 [!code-csharp[Main](content-negotiation/samples/sample1.cs)]
 
-Klient může odeslat požadavek protokolu HTTP:
+Klient může tuto žádost HTTP odeslat:
 
 [!code-console[Main](content-negotiation/samples/sample2.cmd)]
 
-V odpovědi může server odeslat:
+V reakci může server odeslat:
 
 [!code-console[Main](content-negotiation/samples/sample3.cmd)]
 
-V tomto příkladu klient vyžádal JSON, Javascript nebo "nic" (\*/\*). Server odpověděl zprávou JSON s reprezentací provedených `Product` objektu. Všimněte si, že hlavička Content-Type v odpovědi nastavena na &quot;application/json&quot;.
+V tomto příkladu si klient vyžádal buď JSON, JavaScript, nebo "cokoli" (\*/\*). Server odpověděl pomocí reprezentace JSON objektu `Product`. Všimněte si, že hlavička Content-Type v odpovědi je nastavená na &quot;Application/JSON&quot;.
 
-Kontroler může také vrátit **objekt HttpResponseMessage** objektu. Pokud chcete nastavit objektu CLR pro tělo odpovědi, zavolejte **CreateResponse** – metoda rozšíření:
+Kontroler může také vracet objekt **HttpResponseMessage** . Chcete-li určit objekt CLR pro tělo odpovědi, zavolejte metodu rozšíření **CreateResponse** :
 
 [!code-csharp[Main](content-negotiation/samples/sample4.cs)]
 
-Tato možnost nabízí větší kontrolu nad podrobnosti odpovědi. Stavový kód, můžete nastavit přidání hlavičky protokolu HTTP a tak dále.
+Tato možnost nabízí větší kontrolu nad podrobnostmi odpovědi. Můžete nastavit stavový kód, přidat hlavičky HTTP a tak dále.
 
-Objekt, který serializuje prostředek, se nazývá *formátovací modul médií*. Formátovací moduly médií odvozovat **objekt MediaTypeFormatter** třídy. Webové rozhraní API poskytuje formátovací moduly médií pro XML a JSON, a můžete vytvořit vlastní formátovací moduly pro podporu jiných typů médií. Informace o tvorbě vlastní formátování najdete v tématu [formátovací moduly médií](media-formatters.md).
+Objekt, který serializaci prostředku, se nazývá *formátovací modul média*. Formátovací moduly médií jsou odvozeny od třídy **MediaTypeFormatter** . Webové rozhraní API poskytuje formátovací moduly médií pro XML a JSON a můžete vytvořit vlastní formátovací moduly pro podporu jiných typů médií. Informace o zápisu vlastního formátovacího modulu najdete v tématu [Formátování médií](media-formatters.md).
 
-## <a name="how-content-negotiation-works"></a>Jak obsahu vyjednávání funguje
+## <a name="how-content-negotiation-works"></a>Jak funguje vyjednávání obsahu
 
-Nejprve kanál získá **IContentNegotiator** služba **HttpConfiguration** objektu. Také získá formátovací moduly médií ze seznamu **HttpConfiguration.Formatters** kolekce.
+Nejprve kanál získá službu **IContentNegotiator** z objektu **HttpConfiguration** . Také získá seznam formátovacích modulů médií z kolekce **HttpConfiguration. formátovacích** rutin.
 
-Dále volá kanál **IContentNegotiator.Negotiate**a předejte:
+Dále kanál volá **IContentNegotiator. Negotiate**a předává:
 
-- Typ objektu určeného k serializaci
-- Kolekce formátovací moduly médií
+- Typ objektu, který se má serializovat
+- Kolekce formátovacích modulů médií
 - Požadavek HTTP
 
-**Negotiate** metoda vrací dva druhy údajů:
+Metoda **Negotiate** vrátí dvě části informací:
 
-- Formátování, které použito
+- Který formátovací modul použít
 - Typ média pro odpověď
 
-Pokud není formátování nalezeno, **Negotiate** vrátí metoda **null**, a klient obdrží chybu HTTP 406 (nepřijatelné).
+Pokud není nalezen žádný formátovací modul, metoda **Negotiate** vrátí **hodnotu null**a klient obdrží chybu protokolu HTTP 406 (není přijatelné).
 
-Následující kód ukazuje, jak můžete kontroler přímo vyvolat vyjednávání obsahu:
+Následující kód ukazuje, jak může řadič přímo vyvolat vyjednávání obsahu:
 
 [!code-csharp[Main](content-negotiation/samples/sample5.cs)]
 
-Tento kód je ekvivalentní k co kanál provádí automaticky.
+Tento kód je ekvivalentní k tomu, co kanál automaticky dělá.
 
-## <a name="default-content-negotiator"></a>Výchozí Negotiator obsahu
+## <a name="default-content-negotiator"></a>Výchozí Negociační obsahu
 
-**DefaultContentNegotiator** třída poskytuje výchozí implementaci třídy **IContentNegotiator**. Vyberte formátovací modul používá několik kritérií.
+Třída **DefaultContentNegotiator** poskytuje výchozí implementaci **IContentNegotiator**. Pro výběr formátovacího modulu používá několik kritérií.
 
-Formátovací modul, nejprve musí být schopen daný typ serializovat. To je ověřený pomocí volání **MediaTypeFormatter.CanWriteType**.
+Nejprve musí být formátovací modul schopný serializovat typ. To se ověřuje voláním **MediaTypeFormatter. CanWriteType**.
 
-Vyjednavač obsahu dále zjistí jednotlivé formátovací moduly a vyhodnotí, jak dobře odpovídá požadavku HTTP. K vyhodnocení shody, vyjednavače obsahu prohledá dvě věci ve formátování:
+V dalším kroku se prozkoumá vyjednávání obsahu u každého formátovacího modulu a vyhodnotí, jak dobře odpovídá požadavku HTTP. Pro vyhodnocení shody vyhledává vyjednávání obsahu dvě věci formátování:
 
-- **SupportedMediaTypes** kolekce, která obsahuje seznam podporovanými typy médií. Vyjednavač obsahu se pokusí shodovat se tento seznam u této žádosti hlavičky Accept. Všimněte si, že může obsahovat hlavičku Accept rozsahy. Například "text/plain" je nalezena shoda s text /\* nebo \* / \*.
-- **MediaTypeMappings** kolekce, která obsahuje seznam **MediaTypeMapping** objekty. **MediaTypeMapping** třída poskytuje obecný způsob, jak porovnávají požadavky HTTP s typy médií. Je třeba namapovat vlastní hlavičku HTTP pro určitý typ média.
+- Kolekce **SupportedMediaTypes** , která obsahuje seznam podporovaných typů médií. Nástroj pro vyjednávání obsahu se pokusí spárovat tento seznam s hlavičkou Accept žádosti. Všimněte si, že hlavička Accept může zahrnovat rozsahy. Například "text/jednoduchá" je shoda pro text/\* nebo \*/\*.
+- Kolekce **MediaTypeMappings** , která obsahuje seznam objektů **MediaTypeMapping** . Třída **MediaTypeMapping** poskytuje obecný způsob, jak porovnat požadavky HTTP s typy médií. Například může namapovat vlastní hlavičku HTTP na konkrétní typ média.
 
-Pokud existuje více odpovídá, shoda s nejvyšší kvality faktor wins. Příklad:
+Je-li k dispozici více shod, odpovídá nejvyšší faktor kvality služby WINS. Příklad:
 
 [!code-console[Main](content-negotiation/samples/sample6.cmd)]
 
-V tomto příkladu má application/json faktor implicitní kvality 1.0, takže je upřednostňované nad application/xml.
+V tomto příkladu má Application/JSON předpokládaný faktor kvality 1,0, takže se upřednostňuje přes Application/XML.
 
-Pokud nejsou nalezeny žádné shody, vyjednavače obsahu pokusí porovnávaný typ média obsahu žádosti případné. Například pokud požadavek obsahuje JSON data, vyjednavače obsahu vypadá formátování JSON.
+Pokud se nenaleznou žádné shody, vyzkouší se kolize obsahu u typu média těla žádosti, pokud existuje. Pokud například požadavek obsahuje data JSON, vyhledá Negociační modul pro obsah formátování JSON.
 
-Pokud ještě neexistují žádné odpovídající položky, vyjednavače obsahu jednoduše vybere první formátovací modul, který dokáže daný typ serializovat.
+Pokud se stále neshodují, probíhají pouze první formátovací modul, který může serializovat typ.
 
 ## <a name="selecting-a-character-encoding"></a>Výběr kódování znaků
 
-Po výběru formátovacího modulu vyjednavače obsahu zvolí nejvhodnější kódování znaků pohledem **SupportedEncodings** vlastnosti formátování a shod pro hlavičku Accept-Charset v požadavku (pokud existuje).
+Po výběru formátovacího modulu se vybírá nejlepší kódování znaků tím, že se na formátovací modul vyhledá vlastnost **SupportedEncodings** a v žádosti se porovná s hlavičkou Accept-Charset (pokud existuje).

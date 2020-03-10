@@ -9,11 +9,11 @@ ms.assetid: 9f24fb82-c7ac-48da-b8e2-51b3da17e365
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/retrieving-data
 msc.type: authoredcontent
 ms.openlocfilehash: 81cca22cb4752d071d2a68986ae9ac2bed737594
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74633173"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640194"
 ---
 # <a name="retrieving-and-displaying-data-with-model-binding-and-web-forms"></a>Načítání a zobrazování dat s vazbami modelů a webovými formuláři
 
@@ -99,7 +99,7 @@ V tomto kurzu:
 
 Ve složce **modely** přidejte třídu s názvem **UniversityModels.cs**.
 
-   1. Klikněte pravým tlačítkem na **modely**, vyberte **Přidat**a **Nová položka**. Zobrazí se dialogové okno **Přidat novou položku** .
+   1. Klikněte pravým tlačítkem na **modely**, vyberte **Přidat**a **Nová položka**. Zobrazí se dialogové okno **Přidat novou položku**.
 
    2. V levém navigačním panelu vyberte **kód**a pak **Třída**.
 
@@ -187,7 +187,7 @@ S vyplněnými daty databáze jste nyní připraveni načíst tato data a zobraz
  
    4. Uložte Students.aspx.cs.
 
-## <a name="run-your-application"></a>Spuštění aplikace 
+## <a name="run-your-application"></a>Spusťte aplikaci 
 
 Spusťte webovou aplikaci (**F5**) a přejděte na stránku **Students** , kde se zobrazí následující:
 
@@ -207,7 +207,7 @@ Visual Studio nevytvoří pouze metodu v kódu na pozadí se správným podpisem
 
 Tento kód znovu není nutné přidat do projektu. V dalším kurzu implementujete metody pro aktualizaci, odstranění a přidávání nových dat.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste vytvořili třídy datového modelu a z těchto tříd vygenerovali databázi. Vyplnili jste tabulky databáze testovacími daty. Použili jste vazbu modelu k načtení dat z databáze a následně jste zobrazili data v prvku GridView.
 

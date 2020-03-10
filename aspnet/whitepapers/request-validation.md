@@ -1,91 +1,91 @@
 ---
 uid: whitepapers/request-validation
-title: Ověření požadavku – obrana před Skriptovými útoky | Dokumentace Microsoftu
+title: Ověření žádosti – zabránění útokům na skripty | Microsoft Docs
 author: rick-anderson
-description: Tento dokument popisuje žádosti o ověření funkce technologie ASP.NET, pokud ve výchozím nastavení, aplikace nebude zpracování nekódovaného submitt obsahu HTML...
+description: Tento dokument popisuje funkci ověření žádosti ASP.NET, kde ve výchozím nastavení aplikace brání v zpracování nekódovaného HTML obsahu Odeslat...
 ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: fa429113-5f8f-4ef4-97c5-5c04900a19fa
 msc.legacyurl: /whitepapers/request-validation
 msc.type: content
 ms.openlocfilehash: 807cccd6fe1acdd6359b014387abd3878840d4cd
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130505"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640845"
 ---
 # <a name="request-validation---preventing-script-attacks"></a>Ověření požadavku – obrana před skriptovými útoky
 
-> Tento dokument popisuje žádosti o ověření funkce technologie ASP.NET, pokud ve výchozím nastavení, aplikace nebude zpracování nešifrovaného obsahu HTML odeslat na server. Tato žádost o ověření funkce lze zakázat, když aplikace byla navržena tak, aby bezpečně zpracovávat data ve formátu HTML.
+> Tento dokument popisuje funkci ověření žádosti ASP.NET, kde ve výchozím nastavení aplikace brání zpracování nekódovaného obsahu HTML odeslaného na server. Tuto funkci ověření žádosti lze zakázat, pokud je aplikace navržena tak, aby bezpečně zpracovala data ve formátu HTML.
 > 
-> Platí pro technologii ASP.NET 1.1 a ASP.NET 2.0.
+> Platí pro ASP.NET 1,1 a ASP.NET 2,0.
 
-Ověření požadavku, která je součástí technologie ASP.NET od verze 1.1, zabrání serveru přijetí obsahu obsahující bez kódování HTML. Tato funkce je určena k zabránění útoků prostřednictvím injektáže skriptu kterým kód skriptu klienta nebo HTML lze neúmyslně odeslané na server, ukládat a předloží ostatním uživatelům. Stále důrazně doporučujeme, že ověření všech vstupních dat a to v případě potřeby použije kódování HTML.
+Žádost o ověření, funkce ASP.NET od verze 1,1, brání serveru v přijetí obsahu obsahujícího nešifrovaný kód HTML. Tato funkce je navržená tak, aby zabránila útokům prostřednictvím injektáže skriptu, přičemž kód skriptu nebo HTML může být nevědomě odeslán na server, uložený a následně prezentovan jiným uživatelům. I když je to vhodné, důrazně doporučujeme ověřit všechna vstupní data a kódování HTML.
 
-Například můžete vytvořit webovou stránku, která požádá uživatele e-mailovou adresu a potom úložiště, která e-mailovou adresu v databázi. Pokud uživatel zadá &lt;skript&gt;upozornění ("hello ze skriptu")&lt;/SCRIPT&gt; místo platné e-mailové adresy, když se tato data, tento skript může provést Pokud obsah není správně kódovaný. Žádosti o ověření funkce technologie ASP.NET to zabraňuje děje.
+Například vytvoříte webovou stránku, která žádá o e-mailovou adresu uživatele a uloží tuto e-mailovou adresu do databáze. Pokud uživatel zadá &lt;upozornění&gt;skriptu ("Hello ze skriptu")&lt;/SCRIPT&gt; namísto platné e-mailové adresy, když se tato data zobrazí, tento skript se dá spustit, pokud obsah není správně kódovaný. Funkce ověření žádosti ASP.NET brání tomu, aby se stalo.
 
-## <a name="why-this-feature-is-useful"></a>Proč se tato funkce je užitečná
+## <a name="why-this-feature-is-useful"></a>Proč je tato funkce užitečná
 
-Mnoho serverů nejsou vědomi, že jsou otevřeny útocích prostřednictvím injektáže jednoduchý skript. Zda účelem tyto útoky je autorskou webu zobrazením HTML nebo potenciálně spusťte skript klienta přesměrovat uživatele na web se hacker, útoky prostřednictvím injektáže skriptu jsou problém, který vývojářům webů musí potýkat s.
+Mnoho webů neví, že jsou otevřené pro jednoduché útoky prostřednictvím injektáže skriptu. Bez ohledu na to, jestli je účel těchto útoků v lokalitě, zobrazením HTML, nebo na potenciálně spouštěný klientský skript pro přesměrování uživatele na web hackerů, útoky prostřednictvím injektáže skriptu jsou problémy, ke kterým musí soupeří webové vývojáře.
 
-Útoků prostřednictvím injektáže skriptu jsou obavy z všechny webové vývojáře, zda používají technologie ASP.NET, ASP nebo jiným vývojovým technologiím, web.
+Útoky prostřednictvím injektáže skriptu jsou obavy ze všech webových vývojářů, ať už používají ASP.NET, ASP nebo jiné technologie pro vývoj na webu.
 
-Žádosti o ověření funkce ASP.NET proaktivně zabraňuje těmto útokům díky neumožňuje nekódovaného obsah ve formátu HTML ke zpracování serverem, pokud vývojář rozhodne povolit tento obsah.
+Funkce ověření žádosti ASP.NET proaktivně zabraňuje těmto útokům tím, že nepovolí zpracování nekódovaného obsahu HTML serverem, pokud se nerozhodne vývojář povolit tento obsah.
 
-## <a name="what-to-expect-error-page"></a>Co můžete očekávat: Chybová stránka
+## <a name="what-to-expect-error-page"></a>Co očekávat: chybová stránka
 
-Níže uvedeném snímku obrazovky ukazuje některé ukázkový kód ASP.NET:
+Níže uvedený snímek obrazovky ukazuje ukázkový kód ASP.NET:
 
 ![](request-validation/_static/image1.png)
 
-Tento kód výsledky používané jednoduchá stránka, která umožňuje zadejte nějaký text do textového pole, klikněte na tlačítko a zobrazení textu v ovládacím prvku popisek:
+Výsledkem spuštění tohoto kódu je jednoduchá stránka, která umožňuje zadat nějaký text do textového pole, kliknout na tlačítko a zobrazit text v ovládacím prvku popisek:
 
 ![](request-validation/_static/image2.png)
 
-Však byly JavaScriptu, jako například `<script>alert("hello!")</script>` zadali a odeslání, dostali bychom výjimku:
+Nicméně byly JavaScripty, například `<script>alert("hello!")</script>` k zadání a odeslání, by se vám zobrazila výjimka:
 
 ![](request-validation/_static/image3.png)
 
-Chybová zpráva uvádí, že "potenciálně nebezpečné Request.Form byla zjištěna hodnota' a poskytuje další informace naleznete v popisu přesně co se stalo a jak změnit chování. Příklad:
+Chybová zpráva uvádí, že byla zjištěna hodnota potenciálně nebezpečného nebezpečného požadavku. Form a v popisu je uveden seznam s podrobnostmi o tom, co se stalo a jak změnit chování. Příklad:
 
-Ověření požadavku byla zjištěna potenciálně nebezpečná klienta vstupní hodnota a zpracování žádosti bylo přerušeno. Tato hodnota může znamenat pokus o narušení zabezpečení aplikace, například s útoky skriptování napříč weby. Zakážete ověření požadavku tak, že nastavíte `validateRequest=false` v direktivě stránky nebo v konfiguračním oddílu. Je však důrazně doporučujeme, aby vaše aplikace explicitně zkontrolovala všechny vstupy v tomto případě.
+Ověření žádosti zjistilo potenciálně nebezpečnou vstupní hodnotu klienta a zpracování žádosti bylo přerušeno. Tato hodnota může znamenat pokus o ohrožení zabezpečení aplikace, jako je například útok na skriptování mezi weby. Ověření žádosti můžete zakázat nastavením `validateRequest=false` v direktivě stránky nebo v konfiguračním oddílu. Důrazně však doporučujeme, aby aplikace v tomto případě explicitně kontrolovala všechny vstupy.
 
-## <a name="disabling-request-validation-on-a-page"></a>Zakázání ověření požadavku na stránce.
+## <a name="disabling-request-validation-on-a-page"></a>Zakázání ověření žádosti na stránce
 
-Zakázání ověření požadavku na stránce, je nutné nastavit `validateRequest` atribut direktivy stránky k `false`:
+Chcete-li zakázat ověření žádosti na stránce, je nutné nastavit atribut `validateRequest` direktivy stránky na `false`:
 
 [!code-aspx[Main](request-validation/samples/sample1.aspx)]
 
 > [!CAUTION]
-> Při žádosti o ověření je zakázané, můžete odeslat obsah na stránku. je odpovědnost vývojáře stránky je zajistit, že obsah je správně kódovaný nebo zpracovány.
+> Je-li požadavek na ověření zakázán, lze obsah odeslat na stránku. je zodpovědný vývojář stránky, aby zajistil, že je obsah správně kódován nebo zpracován.
 
 ## <a name="disabling-request-validation-for-your-application"></a>Zakázání ověření žádosti pro vaši aplikaci
 
-Zakázání ověření žádosti pro vaši aplikaci, musíte upravit nebo vytvořit soubor Web.config pro vaši aplikaci a nastavte atribut validateRequest `<pages />` části `false`:
+Chcete-li zakázat ověření žádosti pro vaši aplikaci, je nutné upravit nebo vytvořit soubor Web. config pro aplikaci a nastavit atribut validateRequest oddílu `<pages />` na `false`:
 
 [!code-xml[Main](request-validation/samples/sample2.xml)]
 
-Pokud chcete zakázat ověření žádosti pro všechny aplikace na serveru, můžete provést tuto změny souboru Machine.config.
+Pokud chcete zakázat ověření žádosti pro všechny aplikace na serveru, můžete tuto úpravu provést v souboru Machine. config.
 
 > [!CAUTION]
-> Při žádosti o ověření je zakázané, můžete obsah odeslat do aplikace; je starosti vývojář aplikace, aby tento obsah je správně kódovaný nebo zpracovány.
+> Pokud je žádost o ověření zakázána, může být obsah odeslán do aplikace. je zodpovědný za to, že vývojář aplikace zajišťuje správné kódování nebo zpracování obsahu.
 
-Následující kód je upravit tak, aby vypnout ověření žádosti:
+Následující kód je upraven pro vypnutí ověřování žádosti:
 
 ![](request-validation/_static/image4.png)
 
-Když teď následující JavaScript byla zadán do textového pole `<script>alert("hello!")</script>` výsledek by byl:
+Nyní, pokud byl do textového pole zadán následující kód jazyka JavaScript `<script>alert("hello!")</script>` výsledek by byl:
 
 ![](request-validation/_static/image5.png)
 
-K tomu nedocházelo, s ověřením požadavku vypnuté, budeme potřebovat do formátu HTML kódování obsahu.
+Aby nedocházelo k tomu, že se ověření žádosti vypnulo, musíme obsah zakódovat ve formátu HTML.
 
-## <a name="how-to-html-encode-content"></a>Jak do formátu HTML kódování obsahu
+## <a name="how-to-html-encode-content"></a>Jak kódovat obsah HTML
 
-Pokud jste zakázali žádost o ověření, je vhodné pro obsah s kódováním HTML, který se uloží pro budoucí použití. Kódování HTML se automaticky nahradit libovolný "&lt;'nebo'&gt;" (společně s několika dalších symbolů) s jejich odpovídající kód HTML kódovaný reprezentace. Například "&lt;"nahrazuje"&amp;lt;' a '&gt;"nahrazuje"&amp;gt;". Tyto speciální kódy zobrazíte pomocí prohlížeče "&lt;'nebo'&gt;" v prohlížeči.
+Pokud jste zakázali ověřování žádostí, je vhodné zakódovat obsah HTML, který bude uložen pro budoucí použití. Kódování HTML automaticky nahradí všechny "&lt;" nebo "&gt;" (společně s několika dalšími symboly) odpovídající reprezentaci kódované v HTML. Například '&lt;' nahrazuje '&amp;lt; ' a '&gt;' je nahrazen '&amp;gt; '. Prohlížeče používají tyto speciální kódy k zobrazení&lt;nebo&gt;v prohlížeči.
 
-Obsah je možné snadno kódovaný jazykem HTML na serveru pomocí `Server.HtmlEncode(string)` rozhraní API. Obsah může být také snadno HTML-dekódovat, to znamená, nastavení bylo vráceno zpět na standardní HTML pomocí `Server.HtmlDecode(string)` metody.
+Obsah může být na serveru snadno kódovaný HTML pomocí rozhraní `Server.HtmlEncode(string)` API. Obsah může být také snadno dekódovat HTML, to znamená vrácení zpět na standardní HTML pomocí metody `Server.HtmlDecode(string)`.
 
 ![](request-validation/_static/image6.png)
 

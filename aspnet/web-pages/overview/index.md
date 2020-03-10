@@ -1,6 +1,6 @@
 ---
 uid: web-pages/overview/index
-title: Pokyny k webové stránky | Dokumentace Microsoftu
+title: Doprovodné materiály pro webové stránky | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,13 +9,13 @@ ms.assetid: 1a2ed0e8-63da-4110-9896-e2731d86f7c4
 msc.legacyurl: /web-pages/overview
 msc.type: book
 ms.openlocfilehash: b4c9e9eb85f6ba9a1e2b2d0a1bbaf027ee25bc0d
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381845"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640817"
 ---
-# <a name="web-pages-guidance"></a>Pokyny k webové stránky
+# <a name="web-pages-guidance"></a>Doprovodné materiály k webovým stránkám
 
 - [Začínáme](getting-started/index.md)
 
@@ -73,10 +73,10 @@ ms.locfileid: "59381845"
     - [Ukládání do mezipaměti kvůli lepšímu výkonu webu](performance-and-traffic/15-caching-to-improve-the-performance-of-your-website.md)
     - [Analýza provozu](performance-and-traffic/14-analyzing-traffic.md)
     - [Sdružování a minifikace prostředků na webu s webovými stránkami ASP.NET (Razor)](performance-and-traffic/bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site.md)
-- [Referenční dokumentace ke knihovně API](api-reference/index.md)
+- [Referenční materiály k rozhraní API](api-reference/index.md)
 
     - [Rozhraní API ASP.NET – rychlé odkazy](api-reference/asp-net-web-pages-api-reference.md)
-- [Verze](releases/index.md)
+- [Vydané verze](releases/index.md)
 
     - [Novinky webových stránek v ASP.NET 3.2](releases/whats-new-in-aspnet-web-pages-32.md)
     - [Novinky webových stránek v ASP.NET 3.1](releases/whats-new-aspnet-web-pages-31.md)

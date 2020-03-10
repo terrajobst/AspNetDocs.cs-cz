@@ -9,11 +9,11 @@ ms.assetid: 0a1917e0-884a-4576-8e93-9ed660faae51
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/nobot/fighting-bots-cs
 msc.type: authoredcontent
 ms.openlocfilehash: fef55edf12a024e4dd66e2a18ea371ab4dac861f
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74606446"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78627412"
 ---
 # <a name="fighting-bots-c"></a>Boj s roboty (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Automatizované roboty sádry Weblogs a další weby s nevyžádanými zprávami, odesílání formulářů komentářů bez zásahu uživatele. Ovládací prvek NoBot v ASP.NET AJAX Control Toolkit může přispět k boji s těmito robotyy.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Jedním z běžných způsobů, jak předpovědět roboty, je použití CAPTCHAs plně automatizovaného testu veřejné Turing testování, které sděluje počítačům a Člověkům. Test Turing byl původně testem, který někdo potřebuje k rozhodnutí, jestli je komunikační partner člověk nebo počítač. Na webu se CAPTCHA obvykle skládá z obrázku s některými dedeformovanými písmeny. Nápad je, že písmena na obrázku může přečíst jenom člověk, zatímco algoritmy optického rozpoznávání se nezdaří.
 

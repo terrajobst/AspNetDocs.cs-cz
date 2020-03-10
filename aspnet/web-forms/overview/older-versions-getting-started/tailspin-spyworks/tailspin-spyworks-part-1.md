@@ -1,103 +1,103 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1
-title: 'Část 1: Soubor -> Nový projekt | Dokumentace Microsoftu'
+title: 'Část 1: soubor-> Nový projekt | Microsoft Docs'
 author: JoeStagner
-description: V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace Tailspin Spyworks. 1. část obsahuje přehled a soubor/nový projekt.
+description: V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace Tailspin Spyworks. Část 1 pokrývá přehled a soubor/nový projekt.
 ms.author: riande
 ms.date: 07/21/2010
 ms.assetid: 15d4652b-d5aa-4172-b186-2c7f96ba316d
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1
 msc.type: authoredcontent
 ms.openlocfilehash: 05a3ace3d8fef9c1f3593f7948e42b4725d70134
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130556"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78636127"
 ---
-# <a name="part-1-file--new-project"></a>Část 1: Soubor > Nový projekt
+# <a name="part-1-file--new-project"></a>1\. část: Soubor > Nový projekt
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-> Tailspin Spyworks ukazuje, jak mimořádně jednoduché je vytvářet výkonné a škálovatelné aplikace pro platformu .NET. Zobrazuje vypnout použití skvělých nových funkcí v technologii ASP.NET 4 k sestavení nebo online úložiště, včetně nákupu, Pokladna a správu.
+> Tailspin Spyworks ukazuje, jak neobyčejně jednoduché je vytvářet výkonné a škálovatelné aplikace pro platformu .NET. Ukazuje, jak používat Skvělé nové funkce v ASP.NET 4 k vytvoření online obchodu, včetně nákupu, rezervace a správy.
 > 
-> V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace Tailspin Spyworks. 1. část obsahuje přehled a soubor/nový projekt.
+> V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace Tailspin Spyworks. Část 1 pokrývá přehled a soubor/nový projekt.
 
-## <a id="_Toc260221666"></a>  Přehled
+## <a id="_Toc260221666"></a>Přehled
 
-Tento kurz je Úvod do webových formulářů ASP.NET. Jsme budete spuštění pomalu, takže Začátečník úrovně webové vývojové prostředí je v pořádku.
+Tento kurz představuje úvod k ASP.NET WebForms. Začneme pomaleji, takže prostředí pro vývoj na webu na úrovni začátečník je v pořádku.
 
-Aplikace, kterou jsme vám sestavení je jednoduché online úložiště.
+Aplikace, kterou budeme sestavovat, je jednoduchý online obchod.
 
 ![](tailspin-spyworks-part-1/_static/image1.jpg)
 
-Návštěvníci můžete přejít pomocí produktů podle kategorie:
+Uživatelé můžou procházet produkty podle kategorie:
 
 ![](tailspin-spyworks-part-1/_static/image2.jpg)
 
-Mohou zobrazit jednoho produktu a přidat do košíku jejich:
+Můžou si zobrazit jeden produkt a přidat ho do svého košíku:
 
 ![](tailspin-spyworks-part-1/_static/image3.jpg)
 
-Jejich košíku odebrat všechny položky, které už nechcete, můžete zkontrolovat:
+Můžou si prohlédnout svůj košík a odebrat položky, které už nepotřebují:
 
 ![](tailspin-spyworks-part-1/_static/image4.jpg)
 
-Přistoupíte k ověření je vyzve k
+Při pokračování na rezervaci se zobrazí výzva k zadání
 
 ![](tailspin-spyworks-part-1/_static/image5.jpg)
 
 ![](tailspin-spyworks-part-1/_static/image6.jpg)
 
-Po změně pořadí, se zobrazí obrazovka s potvrzením jednoduchý:
+Po objednání se zobrazí jednoduchá potvrzovací obrazovka:
 
 ![](tailspin-spyworks-part-1/_static/image7.jpg)
 
-Budete Začneme tím, že vytvoříte nový projekt webových formulářů ASP.NET v sadě Visual Studio 2010 a postupně přidáme funkce, které chcete vytvořit kompletní funkční aplikaci. Cestou se budeme zabývat přístup k databázi, zobrazením seznamu a mřížky, stránky aktualizace dat, ověřování dat pomocí stránek předlohy pro rozložení konzistentní stránek, AJAX, ověřování, členství uživatele a další.
+Začneme vytvořením nového projektu WebForms ASP.NET v aplikaci Visual Studio 2010 a my postupně přidáváme funkce pro vytvoření kompletní funkční aplikace. Podél toho se podíváme na přístup k databázi, zobrazení seznamu a mřížky, stránky aktualizace dat, ověření dat, použití stránek předloh pro konzistentní rozložení stránky, AJAX, ověřování, členství uživatelů a další.
 
-Podrobný postup sledovat, nebo si můžete stáhnout hotovou aplikaci [http://tailspinspyworks.codeplex.com/](http://tailspinspyworks.codeplex.com/)
+Můžete postupovat podle kroků nebo si můžete stáhnout dokončenou aplikaci z [http://tailspinspyworks.codeplex.com/](http://tailspinspyworks.codeplex.com/)
 
-Můžete použít Visual Studio 2010 nebo na bezplatné Visual Web Developer 2010 z [ https://www.microsoft.com/express/Web/ ](https://www.microsoft.com/express/Web/). K sestavení aplikace, můžete použít SQL Server nebo bezplatný systém SQL Server Express pro hostování databáze.
+Můžete použít buď Visual Studio 2010, nebo bezplatný Visual Web Developer 2010 z [https://www.microsoft.com/express/Web/](https://www.microsoft.com/express/Web/). K sestavení aplikace můžete použít buď SQL Server, nebo bezplatný SQL Server Express k hostování databáze.
 
-## <a id="_Toc260221667"></a>  Soubor / nový projekt
+## <a id="_Toc260221667"></a>Soubor/nový projekt
 
-Začneme tak, že vyberete nový projekt v sadě Visual Studio v nabídce Soubor. Tím se zobrazí dialogové okno Nový projekt.
+Začneme tak, že vybereme nový projekt v nabídce soubor v aplikaci Visual Studio. Tím se otevře dialogové okno Nový projekt.
 
 ![](tailspin-spyworks-part-1/_static/image8.jpg)
 
-Vybereme Visual C# / webové šablony skupiny na levé straně a potom v prostředním sloupci zvolte šablonu "Webovou aplikaci ASP.NET". Pojmenujte svůj projekt TailspinSpyworks a kliknutím na tlačítko OK.
+Na levé straně vybereme skupinu Visual C# /web Templates a potom v prostředním sloupci zvolíte šablonu webová aplikace v ASP.NET. Pojmenujte projekt TailspinSpyworks a stiskněte tlačítko OK.
 
 ![](tailspin-spyworks-part-1/_static/image9.jpg)
 
-Tím se vytvoří našem projektu. Pojďme se podívat na složky, které jsou součástí naší aplikace v Průzkumníku řešení na pravé straně.
+Tím se vytvoří náš projekt. Pojďme se podívat na složky, které jsou součástí naší aplikace v Průzkumník řešení na pravé straně.
 
 ![](tailspin-spyworks-part-1/_static/image10.jpg)
 
-Prázdné řešení není zcela prázdný – přidá strukturu základní složky:
+Prázdné řešení není zcela prázdné – přidá základní strukturu složek:
 
 ![](tailspin-spyworks-part-1/_static/image1.png)
 
-Všimněte si konvence implementované výchozí šablona projektu ASP.NET 4.
+Poznamenejte si konvence implementované výchozí šablonou projektu ASP.NET 4.
 
-- Složce "Účet" implementuje základní uživatelské rozhraní pro ASP. Subsystém členství vaší sítě.
-- Složce "Skripty" slouží jako úložiště pro soubory jazyka JavaScript na straně klienta a souborů .js jQuery core jsou dostupné ve výchozím nastavení.
-- Složce "Styly" se používá k uspořádání naše vizuální prvky webového serveru (šablony stylů CSS)
+- Složka "Account" implementuje základní uživatelské rozhraní pro ASP. Podsystém členství v síti.
+- Složka "skripty" slouží jako úložiště pro soubory JavaScriptu na straně klienta a základní soubory jQuery. js jsou ve výchozím nastavení k dispozici.
+- Složka Styles (styly) slouží k uspořádání webových vizuálů webu (šablony stylů CSS).
 
-Při stisknutí klávesy F5 ke spuštění aplikace a vykreslování stránku default.aspx jsme v tomto tématu.
+Po stisknutí klávesy F5 ke spuštění naší aplikace a vykreslení stránky default. aspx se zobrazí následující.
 
 ![](tailspin-spyworks-part-1/_static/image11.jpg)
 
-Vylepšení našich první aplikaci budete moct soubor Style.css z výchozí šablony webových formulářů nahradit třídy šablony stylů CSS a přidružené obrazových souborů, které budou vykreslovat visual asthetics, která chceme v naší aplikace Tailspin Spyworks.
+Naše první vylepšení aplikace bude nahradit soubor style. CSS od výchozích šablon WebForms s třídami šablony stylů CSS a přidruženými obrazovými soubory, které vykreslí vizuální asthetics, které chceme pro naši aplikaci Tailspin Spyworks.
 
-Až to uděláte naši stránku default.aspx vykreslí následujícím způsobem.
+Až to uděláte, stránka default. aspx se takto vykreslí.
 
 ![](tailspin-spyworks-part-1/_static/image12.jpg)
 
-Všimněte si, že odkazy obrázku nahoře napravo od stránce a položky nabídky, které byly přidány k hlavní stránce. Pouze "Sign In" a "Účet" odkazy odkazují na stránky, které existují (generované výchozí šablony) a zbytek stránky, které jsme se implementují jako jsme integrovali naši aplikaci.
+Všimněte si odkazů na obrázek v pravém horním rohu stránky a položek nabídky, které byly přidány do stránky předlohy. Pouze odkazy "přihlásit" a "účet" odkazují na stránky, které existují (vygenerované výchozí šablonou), a na ostatní stránky, které budeme implementovat při sestavování naší aplikace.
 
-Budeme také přemístit stránky předlohy se stránkou k adresáři styly. Je to jenom předvoleb však může být věcí o něco jednodušší Pokud se rozhodneme, aby naši aplikaci "skinable" v budoucnu.
+Také přemístím stránku předlohy do adresáře Styles. I když se jedná jenom o předvolbu, může to chvíli udělat, pokud se rozhodnete, že aplikaci bude možné v budoucnu udělat jako srozumitelnou.
 
-Po této budeme muset změnit na stránce předlohy generované odkazy do všech souborů .aspx ve výchozím nastavení stránky webových formulářů ASP.NET.
+Až to uděláte, budete muset změnit odkazy na hlavní stránku ve všech souborech. aspx vygenerovaných výchozími stránkami WebForms ASP.NET.
 
 > [!div class="step-by-step"]
 > [Next](tailspin-spyworks-part-2.md)

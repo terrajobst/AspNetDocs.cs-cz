@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/how-do-i-change-how-my-fields-render
-title: Změna způsobu vykreslování polí? | Dokumenty Microsoft
+title: Návody změnit způsob vykreslování polí? | Dokumenty Microsoft
 author: shanselman
-description: V tomto videu se dozvíte, jak změnit způsob, který se vykreslí datová pole. Připojíte se ovládací prvky třetích stran pro některá pole.
+description: V tomto videu se naučíte, jak změnit způsob vykreslování datových polí. Pro některá pole budete zapojovat ovládací prvky třetích stran.
 ms.author: riande
 ms.date: 05/08/2008
 ms.assetid: f99da654-2148-4e66-867c-6e837b84e9d0
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-do-i-change-how-my-fields-render
 msc.type: video
 ms.openlocfilehash: d0ee7dc47c6ec5ffd76baa6827b81a9ff02c6bfc
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59381013"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78624920"
 ---
-# <a name="how-do-i-change-how-my-fields-render"></a>Změna způsobu vykreslování polí?
+# <a name="how-do-i-change-how-my-fields-render"></a>Návody změnit způsob vykreslování polí?
 
-podle [Scott Hanselman](https://github.com/shanselman)
+[Scott Hanselman](https://github.com/shanselman)
 
-V tomto videu se dozvíte, jak změnit způsob, který se vykreslí datová pole. Připojíte se ovládací prvky třetích stran pro některá pole.
+V tomto videu se naučíte, jak změnit způsob vykreslování datových polí. Pro některá pole budete zapojovat ovládací prvky třetích stran.
 
-[&#9654;Podívejte se na video (13 min)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-change-how-my-fields-render)
+[&#9654;Přehrát video (13 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-change-how-my-fields-render)
 
 > [!div class="step-by-step"]
 > [Předchozí](how-do-i-enable-inline-gridview-editing.md)
-> [další](how-do-i-handle-business-logic-exceptions.md)
+> [Další](how-do-i-handle-business-logic-exceptions.md)

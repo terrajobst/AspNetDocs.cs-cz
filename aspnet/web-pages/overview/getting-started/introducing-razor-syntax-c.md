@@ -9,11 +9,11 @@ ms.assetid: aa67d304-583b-4bf8-a231-195656cfb587
 msc.legacyurl: /web-pages/overview/getting-started/introducing-razor-syntax-c
 msc.type: authoredcontent
 ms.openlocfilehash: c2f420bb7c2f7d2e31654c20fb9ec7497a30a9f7
-ms.sourcegitcommit: 6f0e10e4ca61a1e5534b09c655fd35cdc6886c8a
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74564877"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78641573"
 ---
 # <a name="introduction-to-aspnet-web-programming-using-the-razor-syntax-c"></a>Úvod do webového programování v ASP.NET pomocí syntaxe Razor (C#)
 
@@ -53,7 +53,7 @@ Znak `@` spouští vložené výrazy, bloky s jedním příkazem a bloky s více
 
 Tyto příkazy vypadají jako při spuštění stránky v prohlížeči:
 
-![Razor – Img1](introducing-razor-syntax-c/_static/image1.jpg)
+![Razor-Img1](introducing-razor-syntax-c/_static/image1.jpg)
 
 > [!TIP] 
 > 
@@ -73,7 +73,7 @@ Tyto příkazy vypadají jako při spuštění stránky v prohlížeči:
 
 Výsledek zobrazený v prohlížeči:
 
-![Razor – Img2](introducing-razor-syntax-c/_static/image2.jpg)
+![Razor-Img2](introducing-razor-syntax-c/_static/image2.jpg)
 
 ### <a name="3-inside-a-block-you-end-each-code-statement-with-a-semicolon"></a>3. uvnitř bloku se každý příkaz kódu ukončí středníkem.
 
@@ -89,7 +89,7 @@ Hodnoty můžete ukládat do *proměnné*, včetně řetězců, čísel a dat at
 
 Výsledek zobrazený v prohlížeči:
 
-![Razor – img3](introducing-razor-syntax-c/_static/image3.jpg)
+![Razor-Img3](introducing-razor-syntax-c/_static/image3.jpg)
 
 <a id="ID_StringLiterals"></a>
 ### <a name="5-you-enclose-literal-string-values-in-double-quotation-marks"></a>5. Uzavřete řetězcové hodnoty literálu do dvojitých uvozovek.
@@ -108,7 +108,7 @@ Chcete-li vložit dvojité uvozovky, použijte doslovné řetězcový literál a
 
 Tady je výsledek použití obou z těchto příkladů na stránce:
 
-![Razor – Img4](introducing-razor-syntax-c/_static/image4.jpg)
+![Razor-Img4](introducing-razor-syntax-c/_static/image4.jpg)
 
 > [!NOTE]
 > Všimněte si, že znak `@` slouží k označení doslovnéch řetězcových literálů C# v a k označení kódu na stránkách ASP.NET.
@@ -134,7 +134,7 @@ Pokud deklarujete proměnnou jako `var lastName = "Smith";` a pokusíte se na ni
 
 Výsledek zobrazený v prohlížeči:
 
-![Razor – Img5](introducing-razor-syntax-c/_static/image5.jpg)
+![Razor-Img5](introducing-razor-syntax-c/_static/image5.jpg)
 
 ### <a name="8-you-can-write-code-that-makes-decisions"></a>8. můžete napsat kód, který provede rozhodnutí.
 
@@ -146,7 +146,7 @@ Příkaz `if(IsPost)` je zkrácený způsob psaní `if(IsPost == true)`. Spolu s
 
 Výsledek zobrazený v prohlížeči (po kliknutí na **Odeslat**):
 
-![Razor – Img6](introducing-razor-syntax-c/_static/image6.jpg)
+![Razor-Img6](introducing-razor-syntax-c/_static/image6.jpg)
 
 > [!TIP] 
 > 
@@ -178,7 +178,7 @@ Tento postup ukazuje, jak vytvořit stránku, která znázorňuje základní pro
     - Značka `<form>` obsahuje atribut `method="post"`. To určuje, že když uživatel klikne na **Přidat**, stránka se pošle na server pomocí metody HTTP POST. Po odeslání stránky se `if(IsPost)` test vyhodnotí jako true a spustí se podmíněný kód a zobrazí se výsledek přidání čísel.
 3. Uložte stránku a spusťte ji v prohlížeči. (Před spuštěním se ujistěte, že je stránka vybraná v pracovním prostoru **soubory** .) Zadejte dvě celá čísla a potom klikněte na tlačítko **Přidat** . 
 
-    ![Razor – Img7](introducing-razor-syntax-c/_static/image7.jpg)
+    ![Razor-Img7](introducing-razor-syntax-c/_static/image7.jpg)
 
 ## <a name="basic-programming-concepts"></a>Základní koncepty programování
 
@@ -200,7 +200,7 @@ Syntaxe Razor vychází z technologie od Microsoftu s názvem ASP.NET, která je
 
 Syntaxe Razor poskytuje veškerou sílu ASP.NET, ale s využitím zjednodušené syntaxe, která se snadno naučíte, pokud jste odborníkem na začátečníky a máte vyšší produktivitu. I když se tato syntaxe snadno používá, její rodinný vztah k ASP.NET a .NET Framework znamená, že když se vaše weby stanou sofistikovanější, máte sílu větší architektury, kterou máte k dispozici.
 
-![Razor – Img8](introducing-razor-syntax-c/_static/image8.jpg)
+![Razor-Img8](introducing-razor-syntax-c/_static/image8.jpg)
 
 > [!TIP] 
 > 
@@ -315,7 +315,7 @@ Následující příklad ukazuje několik typických použití proměnných na w
 
 Pokud na stránce zkombinujete předchozí příklady, zobrazí se v prohlížeči:
 
-![Razor – Img9](introducing-razor-syntax-c/_static/image9.jpg)
+![Razor-Img9](introducing-razor-syntax-c/_static/image9.jpg)
 
 ### <a name="converting-and-testing-data-types"></a>Převod a testování datových typů
 
@@ -533,7 +533,7 @@ Operátor je klíčové slovo nebo znak, který oznamuje ASP.NET, jaký druh př
 
 :::row:::
     :::column:::
-        `+=``-=`
+        `+=` `-=`
     :::column-end:::
     :::column:::
     Operátory přírůstku a snížení, které přidají a odečtou 1 (v uvedeném pořadí) z proměnné.
@@ -603,7 +603,7 @@ Operátor je klíčové slovo nebo znak, který oznamuje ASP.NET, jaký druh př
 
 :::row:::
     :::column:::
-        `&&``||`
+        `&&` `||`
     :::column-end:::
     :::column:::
     Logický operátor AND a OR, který se používá k propojení podmínek.
@@ -648,7 +648,7 @@ Obvykle neznáte absolutní fyzickou cestu k webu na serveru hostujícího webu,
 
 ### <a name="referencing-the-virtual-root-the--operator-and-href-method"></a>Odkazování na virtuální kořenový adresář: operátor ~ a metoda href
 
-V souboru *. cshtml* nebo *. vbhtml* můžete odkazovat na virtuální kořenovou cestu pomocí operátoru `~`. To je velmi užitečné, protože můžete přesouvat stránky v lokalitě a jakékoli odkazy, které obsahují na jiné stránky, nebudou přerušeny. K dispozici je také užitečné v případě, že jste web někdy přesunuli do jiného umístění. Následuje několik příkladů:
+V souboru *. cshtml* nebo *. vbhtml* můžete odkazovat na virtuální kořenovou cestu pomocí operátoru `~`. To je velmi užitečné, protože můžete přesouvat stránky v lokalitě a jakékoli odkazy, které obsahují na jiné stránky, nebudou přerušeny. K dispozici je také užitečné v případě, že jste web někdy přesunuli do jiného umístění. Zde je několik příkladů:
 
 [!code-cshtml[Main](introducing-razor-syntax-c/samples/sample47.cshtml)]
 
@@ -709,7 +709,7 @@ Smyčka začíná klíčovým slovem `for`, po kterém následují tři příkaz
 
 Uvnitř složených závorek je kód, který se spustí pro každou iteraci smyčky. Kód vytvoří nový odstavec (`<p>` element) pokaždé a přidá řádek do výstupu a zobrazí hodnotu `i` (čítač). Když spustíte tuto stránku, v příkladu se vytvoří 11 řádků, ve kterých se zobrazí výstup, a text na každém řádku, který označuje číslo položky.
 
-![Razor – img11](introducing-razor-syntax-c/_static/image11.jpg)
+![Razor-Img11](introducing-razor-syntax-c/_static/image11.jpg)
 
 Pokud pracujete s kolekcí nebo polem, často používáte smyčku `foreach`. Kolekce je skupina podobných objektů a smyčka `foreach` umožňuje provádět úlohy na každé položce v kolekci. Tento typ smyčky je vhodný pro kolekce, protože na rozdíl od `for` smyčky nemusíte zvyšovat čítač nebo nastavit limit. Místo toho kód smyčky `foreach` jednoduše projde přes kolekci, dokud není dokončena.
 
@@ -719,7 +719,7 @@ Například následující kód vrátí položky v kolekci `Request.ServerVariab
 
 Za klíčovým slovem `foreach` následuje závorky, kde deklarujete proměnnou reprezentující jednu položku v kolekci (v příkladu `var item`) následovaný klíčovým slovem `in` následovaným kolekcí, kterou chcete procyklovat. V těle `foreach` smyčky můžete k aktuální položce přistupovat pomocí proměnné, kterou jste předtím deklarovali.
 
-![Razor – Img12](introducing-razor-syntax-c/_static/image12.jpg)
+![Razor-Img12](introducing-razor-syntax-c/_static/image12.jpg)
 
 Chcete-li vytvořit obecnější smyčku pro účely, použijte příkaz `while`:
 
@@ -765,7 +765,7 @@ Počet položek v poli můžete určit získáním jeho vlastnosti `Length`. Chc
 
 Výstup kódu řetězcového pole zobrazeného v prohlížeči:
 
-![Razor – Img13](introducing-razor-syntax-c/_static/image13.jpg)
+![Razor-Img13](introducing-razor-syntax-c/_static/image13.jpg)
 
 Slovník je kolekce párů klíč/hodnota, kde zadáte klíč (nebo název) pro nastavení nebo načtení příslušné hodnoty:
 
@@ -817,7 +817,7 @@ Jak vidíte, parametry jsou předány v jiném pořadí. Pokud však spustíte p
 
 V programovacích podmínkách se tyto situace nazývají *výjimky*. Pokud váš kód narazí na výjimku, vygeneruje (vyvolá) chybovou zprávu, která je na nejvyšší úrovni uživatelům obtěžující:
 
-![Razor – Img14](introducing-razor-syntax-c/_static/image14.jpg)
+![Razor-Img14](introducing-razor-syntax-c/_static/image14.jpg)
 
 V situacích, kdy se váš kód může setkat s výjimkami, a aby se předešlo chybovým zprávám tohoto typu, můžete použít příkazy `try/catch`. V příkazu `try` spustíte kód, který kontrolujete. V jednom nebo více příkazech `catch` můžete vyhledat konkrétní chyby (konkrétní typy výjimek), ke kterým mohlo dojít. Můžete zahrnout tolik příkazů `catch`, kolik potřebujete pro hledání chyb, které očekáváte.
 
@@ -830,7 +830,7 @@ Pokud váš kód nezpracovává výjimku, zobrazila se chybová stránka, např�
 
 [!code-cshtml[Main](introducing-razor-syntax-c/samples/sample67.cshtml)]
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 **Programování pomocí Visual Basic**
 

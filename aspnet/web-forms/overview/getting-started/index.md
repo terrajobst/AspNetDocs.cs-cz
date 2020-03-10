@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/getting-started/index
-title: Začínáme s webovými formuláři ASP.NET | Dokumentace Microsoftu
+title: Začínáme s webovými formuláři ASP.NET | Microsoft Docs
 author: rick-anderson
-description: Další informace o webové formuláře ASP.NET webové formuláře ASP.NET umožňuje sestavení dynamické weby s využitím známý model přetažení myší, založené na událostech. Návrhová plocha a hund...
+description: Seznamte se s ASP.NET webovými formuláři ASP.NET webové formuláře vám umožní vytvářet dynamické weby pomocí známého modelu založeného na událostech a přetahování. Návrhová plocha a Hund...
 ms.author: riande
 ms.date: 08/08/2011
 ms.assetid: f645d3b1-1092-43c6-a28a-074b413924b4
 msc.legacyurl: /web-forms/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: d76e65ae807b1da97d07199e7f0fce21fbf14af6
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133437"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78632718"
 ---
 # <a name="getting-started-with-aspnet-web-forms"></a>Začínáme s webovými formuláři ASP.NET
 
-> Model webových formulářů a jak vytvářet stránky a použijte ovládací prvky.
+> Model webových formulářů a vytváření stránek a používání ovládacích prvků.
 
 - [Začínáme s webovými formuláři ASP.NET 4.5 a sadou Visual Studio 2013](getting-started-with-aspnet-45-web-forms/index.md)
 

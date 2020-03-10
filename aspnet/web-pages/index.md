@@ -1,26 +1,26 @@
 ---
 uid: web-pages/index
-title: Webové stránky ASP.NET | Dokumentace Microsoftu
+title: Webové stránky ASP.NET | Microsoft Docs
 author: rick-anderson
-description: Stáhněte si WebMatrix a zjistěte, jak rychle sestavit webové stránky v jednoduchý způsob kombinování serverového kódu s HTML.
+description: Stáhněte si WebMatrix & Naučte se, jak rychle vytvářet webové stránky zjednodušeným způsobem pro kombinování kódu serveru pomocí HTML.
 ms.author: riande
 ms.date: 05/18/2012
 ms.assetid: 5418ba96-ff49-4a43-9cbb-09dea4949d23
 msc.legacyurl: /web-pages
 msc.type: categoryindex
 ms.openlocfilehash: 56bf82e22b3562893ef842a90d42aa7b6ff5858f
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65114534"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640950"
 ---
-# <a name="aspnet-web-pages"></a>ASP.NET – webové stránky
+# <a name="aspnet-web-pages"></a>ASP.NET Web Pages
 
 > [!NOTE] 
-> Služba WebMatrix už nedoporučuje jako integrované vývojové prostředí pro ASP.NET Web Pages. Použití [sady Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
+> WebMatrix se už nedoporučuje jako integrované vývojové prostředí pro webové stránky ASP.NET. Použijte [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
 
-- [Pokyny](overview/index.md)
+- [Doprovodné materiály](overview/index.md)
 
     - [Začínáme](overview/getting-started/index.md)
 
@@ -78,10 +78,10 @@ ms.locfileid: "65114534"
         - [Ukládání do mezipaměti kvůli lepšímu výkonu webu](overview/performance-and-traffic/15-caching-to-improve-the-performance-of-your-website.md)
         - [Analýza provozu](overview/performance-and-traffic/14-analyzing-traffic.md)
         - [Sdružování a minifikace prostředků na webu s webovými stránkami ASP.NET (Razor)](overview/performance-and-traffic/bundling-and-minifying-assets-in-an-aspnet-web-pages-razor-site.md)
-    - [Referenční dokumentace ke knihovně API](overview/api-reference/index.md)
+    - [Referenční materiály k rozhraní API](overview/api-reference/index.md)
 
         - [Rozhraní API ASP.NET – rychlé odkazy](overview/api-reference/asp-net-web-pages-api-reference.md)
-    - [Verze](overview/releases/index.md)
+    - [Vydané verze](overview/releases/index.md)
 
         - [Novinky webových stránek v ASP.NET 3.2](overview/releases/whats-new-in-aspnet-web-pages-32.md)
         - [Novinky webových stránek v ASP.NET 3.1](overview/releases/whats-new-aspnet-web-pages-31.md)
@@ -102,7 +102,7 @@ ms.locfileid: "65114534"
         - [Vytvoření a úprava stránky s daty v nástroji WebMatrix](videos/introduction/create-an-edit-data-page-in-webmatrix.md)
         - [Vytvoření a odstranění stránky s daty v nástroji WebMatrix](videos/introduction/create-a-delete-data-page-in-webmatrix.md)
         - [Publikování webu na internet nástrojem WebMatrix](videos/introduction/publish-a-website-to-the-internet-using-webmatrix.md)
-    - [Stránky technologie ASP.NET Razor](videos/aspnet-razor-pages/index.md)
+    - [ASP.NET Razor Pages](videos/aspnet-razor-pages/index.md)
 
         - [Začínáme s nástrojem WebMatrix a webovými stránkami ASP.NET](videos/aspnet-razor-pages/getting-started-with-webmatrix-and-aspnet-web-pages.md)
         - [Úvod do programování webu ASP.NET pomocí syntaxe Razor](videos/aspnet-razor-pages/introduction-to-aspnet-web-programming-using-the-razor-syntax.md)

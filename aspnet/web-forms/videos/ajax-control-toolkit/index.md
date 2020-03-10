@@ -1,23 +1,23 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/index
-title: Sada nástrojů AJAX Control Toolkit | Dokumentace Microsoftu
+title: AJAX Control Toolkit | Microsoft Docs
 author: rick-anderson
-description: Jak vytvořit velmi rychlou odezvou technologie ASP.NET webové stránky s využitím sadou nástrojů Ajax Control Toolkit.
+description: Jak vytvořit velmi reagující webové stránky ASP.NET pomocí sady nástrojů Ajax Control Toolkit.
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 6f7b1c74-cc73-42f9-8ef0-8b3d058dabfa
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit
 msc.type: chapter
 ms.openlocfilehash: c92d686cdb7883efbb5e5b2997e4a490f83607f0
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131526"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638927"
 ---
 # <a name="ajax-control-toolkit"></a>Ajax Control Toolkit
 
-> Jak vytvořit velmi rychlou odezvou technologie ASP.NET webové stránky s využitím sadou nástrojů Ajax Control Toolkit.
+> Jak vytvořit velmi reagující webové stránky ASP.NET pomocí sady nástrojů Ajax Control Toolkit.
 
 - [Začínáme se sadou nástrojů AJAX Control Toolkit v ASP.NET](how-do-i-get-started-with-the-aspnet-ajax-control-toolkit.md)
 - [ASP.NET AJAX – extender ovládacího prvku CascadingDropDown](how-do-i-use-the-aspnet-ajax-cascadingdropdown-control-extender.md)

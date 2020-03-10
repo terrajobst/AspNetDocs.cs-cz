@@ -1,23 +1,23 @@
 ---
 uid: web-forms/videos/aspnet-web-forms-vnext/index
-title: ASP.NET 4.5 | Dokumentace Microsoftu
+title: ASP.NET 4,5 | Microsoft Docs
 author: rick-anderson
-description: O nových funkcích webových formulářů zavedené v ASP.NET 4.5.
+description: O nových funkcích webových formulářů, které byly představeny v ASP.NET 4,5.
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 98c78dad-22bf-45cd-807e-c2f3f59011b9
 msc.legacyurl: /web-forms/videos/aspnet-web-forms-vnext
 msc.type: chapter
 ms.openlocfilehash: e791cba586f71ffae251b007b14588e4c1e818f1
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116125"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638808"
 ---
 # <a name="aspnet-45"></a>ASP.NET 4.5
 
-> O nových funkcích webových formulářů zavedené v ASP.NET 4.5.
+> O nových funkcích webových formulářů, které byly představeny v ASP.NET 4,5.
 
 - [Ovládací prvky dat silného typu](aspnet-vnext-videos-strongly-typed-data-controls.md)
 - [Vazby modelu (1. část) – výběr dat](aspnet-vnext-videos-model-binding-part-1-selecting-data.md)

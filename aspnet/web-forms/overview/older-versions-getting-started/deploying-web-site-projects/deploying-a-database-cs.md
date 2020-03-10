@@ -9,11 +9,11 @@ ms.assetid: ff537a10-9f1f-43fe-9bcb-3dda161ba8f5
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-a-database-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 83657be794e1ea31f6ad2f2b4adc274724d60cf2
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74579913"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638206"
 ---
 # <a name="deploying-a-database-c"></a>Nasazení databáze (C#)
 
@@ -153,7 +153,7 @@ To všechno je! V tomto okamžiku je vývojová databáze duplikována do produk
 
 V tuto chvíli jsme nasadili pouze vývojovou databázi do produkčního prostředí. Ještě jsme se nepodívali na nasazení samotné webové aplikace ani nezkoumali, jaké změny konfigurace jsou potřeba k tomu, aby aplikace v produkčním prostředí používala provozní databázi. Tyto problémy pokryjeme v dalším kurzu.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Nasazení webové aplikace řízené daty vyžaduje kopírování databáze používané během vývoje do provozního prostředí. Mnoho poskytovatelů webových hostitelů nabízí nástroje, které zjednodušují proces nasazení databáze. Například pomocí DiscountASP.NET můžete FTP soubor databáze `.mdf` (nebo zálohu) a pak připojit databázi k databázovému serveru z ovládacích panelů. Další možnost, která funguje bez ohledu na to, jaké funkce váš poskytovatel webového hostitele nabízí, je nástroj Průvodce publikováním databáze od Microsoftu, který generuje skript příkazů SQL pro vytvoření schématu a dat vývojových databází. Po vygenerování tohoto skriptu ho můžete spustit v provozní databázi.
 

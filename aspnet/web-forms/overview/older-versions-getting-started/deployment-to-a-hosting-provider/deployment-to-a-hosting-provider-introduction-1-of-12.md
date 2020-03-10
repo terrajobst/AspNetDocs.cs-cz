@@ -9,11 +9,11 @@ ms.assetid: a2d7f33b-8c4a-4b48-9fb1-9139cf9b9878
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deployment-to-a-hosting-provider/deployment-to-a-hosting-provider-introduction-1-of-12
 msc.type: authoredcontent
 ms.openlocfilehash: ea88da1e6d510f706fc7ca370cfa32974c1243f8
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74587755"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78525632"
 ---
 # <a name="deploying-an-aspnet-web-application-with-sql-server-compact-using-visual-studio-introduction---1-of-12"></a>Nasazení webové aplikace v ASP.NET s SQL Server Compact pomocí sady Visual Studio: Úvod – 1 z 12
 
@@ -77,7 +77,7 @@ Pokud během nasazení dojde k chybě nebo pokud nasazená lokalita neběží sp
 
 Komentáře k kurzům jsou úvodní a při aktualizaci tohoto kurzu se budou brát v úvahu opravy nebo návrhy na vylepšení, která jsou k dispozici v komentářích kurzu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte v počítači nainstalovaný systém Windows 7 nebo novější a jeden z následujících produktů:
 

@@ -1,42 +1,42 @@
 ---
 uid: web-pages/pluralsight
-title: Služba WebMatrix a webové stránky videa školení od Pluralsightu | Dokumentace Microsoftu
+title: Výukové video od WebMatrixu a webových stránek od Pluralsight | Microsoft Docs
 author: rick-anderson
-description: Služba WebMatrix &amp; webové stránky školení od Pluralsightu Tento podrobný kurz se vám pomůžou začít pracovat s nástrojem WebMatrix a webové stránky ASP.NET. Zabývá se everythi...
+description: WebMatrix &amp; webové stránky školení od Pluralsight Tento podrobný kurz vám pomůže začít pracovat s webovými stránkami WebMatrix a ASP.NET. Zahrnuje everythi...
 ms.author: riande
 ms.date: 05/18/2012
 ms.assetid: 79eca52c-e7ad-44ab-a3e4-d8093e9da5a7
 msc.legacyurl: /web-pages/pluralsight
 msc.type: content
 ms.openlocfilehash: ce6d8a678e07945eff05baa080bb877bf06f6c6e
-ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67411233"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78628910"
 ---
 # <a name="webmatrix-and-web-pages-video-training-from-pluralsight"></a>Videokurz o nástroji WebMatrix a webových stránkách od společnosti Pluralsight
 
 > [!NOTE] 
-> Služba WebMatrix už nedoporučuje jako integrované vývojové prostředí pro ASP.NET Web Pages. Použití [sady Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
+> WebMatrix se už nedoporučuje jako integrované vývojové prostředí pro webové stránky ASP.NET. Použijte [Visual Studio](xref:aspnet/web-pages/overview/getting-started/program-asp-net-web-pages-in-visual-studio) nebo [Visual Studio Code](https://code.visualstudio.com/).
 
 ### <a name="videos"></a>Videa
 
-- [Představení služby WebMatrix](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m1&mode=live&clip=0&course=webmatrix-introduction)
-- [Lokality a soubory pracovních prostorů](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m2&mode=live&clip=0&course=webmatrix-introduction)
+- [Představujeme WebMatrix](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m1&mode=live&clip=0&course=webmatrix-introduction)
+- [Pracovní prostory webů a souborů](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m2&mode=live&clip=0&course=webmatrix-introduction)
 - [Práce s databázemi](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m3&mode=live&clip=0&course=webmatrix-introduction)
-- [Práce s dokumenty standardní webu](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m4&mode=live&clip=0&course=webmatrix-introduction)
+- [Práce se standardními webovými dokumenty](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m4&mode=live&clip=0&course=webmatrix-introduction)
 - [Webové stránky ASP.NET](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m5&mode=live&clip=0&course=webmatrix-introduction)
-- [Vytváření sestav a nasazení](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m8&mode=live&clip=0&course=webmatrix-introduction)
+- [Vytváření sestav a nasazování](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m8&mode=live&clip=0&course=webmatrix-introduction)
 - [Správa zdrojového kódu](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m9&mode=live&clip=0&course=webmatrix-introduction)
 - [Mobilní weby](https://pluralsight.com/training/Player?author=matt-milner&name=webmatrix-introduction-m10&mode=live&clip=0&course=webmatrix-introduction)
 
-"Tento kurz zaznamenaných Matt Milner pro Pluralsight je skvělý způsob, jak získat všechny podrobnosti, které je potřeba vytvořit dynamické datově řízené aplikace využívající rozhraní ASP.NET Web Pages, ale také výkonnou novou syntaxi Razor. Velké objemy díky Pluralsight pro tento zdroj zdarma! Přehrávač videa, obsah a tok je velice dobře Hotovo. Neváhejte se teď podívat!"
+"Tento kurz zaznamenaný podkladem Milner pro Pluralsight je skvělým způsobem, jak získat všechny podrobnosti, které potřebujete k vytváření dynamických aplikací založených na datech využívajících ASP.NET webové stránky, ale také i k výkonným novým syntaxe Razor. Děkujeme, že Pluralsight pro tento bezplatný zdroj. Přehrávač videa, obsah a tok jsou opravdu správně dokončeny. Doporučuje se to hned vrátit! "
 
-Scott Hanselman, hlavní manažer programu, webová platforma a nástroje Azure, Microsoft
+Scott Hanselman, hlavní správce programů, webová platforma a nástroje Azure, Microsoft
 
-![pluralsight-logo-playbutton](pluralsight/_static/image1.png)
+![Pluralsight – logo – playButton](pluralsight/_static/image1.png)
 
-Odemknout přístup na 3 000 + vývoje, IT a creative kurzů, které můžete sledovat, kdykoli a kdekoli.
+Odemkněte přístup k 3000 a vývojům, IT a kreativním kurzům, které můžete sledovat kdykoli a kdekoli.
 
-**Počínaje 35 $ / nedojde**[vyzkoušejte bezplatnou zkušební verzi nebo odběru nyní](https://www.pluralsight.com/pricing&amp;utm_source=microsoft&amp;utm_medium=sponsored-page&amp;utm_content=webmatrix&amp;utm_campaign=microsoft-sponsored-course)
+**Začíná na 35 USD/měsíc.** [Spusťte bezplatnou zkušební verzi nebo si ji přihlaste](https://www.pluralsight.com/pricing&amp;utm_source=microsoft&amp;utm_medium=sponsored-page&amp;utm_content=webmatrix&amp;utm_campaign=microsoft-sponsored-course) .

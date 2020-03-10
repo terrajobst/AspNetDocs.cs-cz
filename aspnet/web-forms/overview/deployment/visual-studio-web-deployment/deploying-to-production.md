@@ -9,11 +9,11 @@ ms.assetid: 416438a1-3b2f-4d27-bf53-6b76223c33bf
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-production
 msc.type: authoredcontent
 ms.openlocfilehash: ddc3d15f0436c4c3a24491cf0377111768da67df
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74617646"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78632781"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-deploying-to-production"></a>ASP.NET nasazení webu pomocí sady Visual Studio: nasazení do produkčního prostředí
 
@@ -33,7 +33,7 @@ Připomenutí: Pokud se zobrazí chybová zpráva nebo něco nefunguje při proc
 
 ## <a name="get-a-microsoft-azure-account"></a>Získat účet Microsoft Azure
 
-Pokud ještě nemáte účet Azure, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [bezplatná zkušební verze Azure](https://azure.microsoft.com/free/?WT.mc_id=A443DD604).
+Pokud ještě nemáte účet Azure, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/?WT.mc_id=A443DD604).
 
 ## <a name="create-a-staging-environment"></a>Vytvoření přípravného prostředí
 
@@ -72,7 +72,7 @@ V této části kurzu vytvoříte webovou aplikaci a databázi pro použití v p
 9. V poli **Server** vyberte **Nový SQL Database Server**.
 10. Zadejte jméno správce a heslo.
 
-    Sem nezadáváte existující jméno a heslo. Zadáváte nové jméno a heslo, které teď definujete pro pozdější použití při přístupu k databázi.
+    Sem nezadáváte existující jméno a heslo. Zadáváte nový název a heslo, které teď definujete pro pozdější použití, až budete chtít získat přístup k databázi.
 11. V poli **oblast** vyberte stejnou oblast, kterou jste zvolili pro webovou aplikaci.
 
     Zachování webového serveru a databázového serveru ve stejné oblasti vám dává nejlepší výkon a minimalizuje náklady.
@@ -118,7 +118,7 @@ Teď, když jste vytvořili webovou aplikaci a databázi pro testovací prostře
 
     Otevře se průvodce **publikováním webu** .
 2. Klikněte na kartu **profil** .
-3. Klikněte na **importovat**.
+3. Klikněte na **Importovat**.
 4. Přejděte do souboru *. publishsettings* , který jste stáhli dříve, a pak klikněte na **otevřít**.
 
     ![Dialogové okno Importovat nastavení publikování](deploying-to-production/_static/image7.png)
@@ -127,7 +127,7 @@ Teď, když jste vytvořili webovou aplikaci a databázi pro testovací prostře
     Po ověření připojení se zobrazí zelená značka zaškrtnutí vedle tlačítka **ověřit připojení** .
 
     U některých poskytovatelů hostingu se po kliknutí na **ověřit připojení**může zobrazit dialogové okno s **chybou certifikátu** . Pokud tak učiníte, ověřte, že název serveru je očekávaný. Pokud je název serveru správný, vyberte **Uložit tento certifikát pro budoucí relace sady Visual Studio** a klikněte na **přijmout**. (Tato chyba znamená, že se poskytovatel hostingu rozhodl vyhnout se nákladům na nákup certifikátu SSL pro adresu URL, na kterou nasazujete. Pokud dáváte přednost navázání zabezpečeného připojení pomocí platného certifikátu, obraťte se na svého poskytovatele hostingu.)
-6. Klikněte na tlačítko **Další**.
+6. Klikněte na **Další**.
 
     ![ikona úspěšného připojení a tlačítko Další na kartě připojení](deploying-to-production/_static/image8.png)
 7. Na kartě **Nastavení** rozbalte **možnost publikování souboru**a pak vyberte **vyloučit soubory ze složky\_dat aplikace**.
@@ -198,11 +198,11 @@ V tomto kurzu vytvoříte soubor *robots. txt* .
 
     Chcete, aby vyhledávací weby mohly zařadit do katalogu produkční aplikace, takže je potřeba tento soubor vyloučit z produkčního nasazení. Uděláte to tak, že nakonfigurujete nastavení v produkčním publikačním profilu při jeho vytváření.
 
-### <a name="deploy-to-staging"></a>Nasadit do přípravy
+### <a name="deploy-to-staging"></a>Nasazení do přípravného prostředí
 
 1. Otevřete Průvodce **publikováním webu** tak, že kliknete pravým tlačítkem na projekt contoso University a kliknete na **publikovat**.
 2. Ujistěte se, že je vybraný **pracovní** profil.
-3. Klikněte na **publikovat**.
+3. Klikněte na **Publikovat**.
 
     Okno **výstup** zobrazuje, jaké akce nasazení byly provedeny, a oznamuje úspěšné dokončení nasazení. Výchozí prohlížeč se automaticky otevře na adresu URL nasazené webové aplikace.
 
@@ -278,7 +278,7 @@ Soubor *. pubxml* obsahuje nastavení, která se týkají konkrétního publika�
 
     Vše je stejné jako u přípravy s výjimkou adresy URL a chybějícího souboru *robots. txt* .
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Teď jste úspěšně nasadili a otestovali webovou aplikaci, která je veřejně dostupná přes Internet.
 
@@ -287,7 +287,7 @@ Teď jste úspěšně nasadili a otestovali webovou aplikaci, která je veřejn�
 V dalším kurzu aktualizujete kód aplikace a nasadíte změnu do testovacích, pracovních a produkčních prostředí.
 
 > [!NOTE]
-> I když se vaše aplikace používá v produkčním prostředí, měli byste implementovat plán obnovení. To znamená, že byste měli pravidelně zálohovat vaše databáze z produkční aplikace do zabezpečeného úložiště a měli byste uchovávat několik generací takových záloh. Při aktualizaci databáze byste měli vytvořit záložní kopii hned před změnou. Pak pokud uděláte chybu a nezjistíte ji, dokud ji nenainstalujete do produkčního prostředí, budete moct databázi obnovit do stavu, ve kterém byla, než se nastala poškozená. Další informace najdete v tématu [Azure SQL Database zálohování a obnovení](https://msdn.microsoft.com/library/windowsazure/jj650016.aspx).
+> I když se vaše aplikace používá v produkčním prostředí, měli byste implementovat plán obnovení. To znamená, že byste měli pravidelně zálohovat vaše databáze z produkční aplikace do zabezpečeného úložiště a měli byste uchovávat několik generací takových záloh. Při aktualizaci databáze byste měli vytvořit záložní kopii hned před změnou. Pak pokud uděláte chybu a nezjistíte ji, dokud ji nenainstalujete do produkčního prostředí, budete moct databázi obnovit do stavu, ve kterém byla, než se nastala poškozená. Další informace najdete v tématu [Zálohování a obnovení služby Azure SQL Database](https://msdn.microsoft.com/library/windowsazure/jj650016.aspx).
 > 
 > 
 > [!NOTE]

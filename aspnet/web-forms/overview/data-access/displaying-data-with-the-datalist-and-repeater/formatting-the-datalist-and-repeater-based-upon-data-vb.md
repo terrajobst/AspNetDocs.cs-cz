@@ -9,11 +9,11 @@ ms.assetid: e2f401ae-37bb-4b19-aa97-d6b385d40f88
 msc.legacyurl: /web-forms/overview/data-access/displaying-data-with-the-datalist-and-repeater/formatting-the-datalist-and-repeater-based-upon-data-vb
 msc.type: authoredcontent
 ms.openlocfilehash: c9b60e4dacd992962942034e84c01cb82e039c81
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74636727"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78626278"
 ---
 # <a name="formatting-the-datalist-and-repeater-based-upon-data-vb"></a>Formátování ovládacích prvků DataList a Repeater na základě dat (VB)
 
@@ -167,7 +167,7 @@ Díky volání funkcí formátování si chvíli počkejte, než se zobrazí ná
 
 **Obrázek 5**: u drahých produktů je cena nahrazena textem, volá se za cenu nabídky ([kliknutím zobrazíte obrázek v plné velikosti).](formatting-the-datalist-and-repeater-based-upon-data-vb/_static/image15.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Formátování obsahu ovládacího prvku DataList nebo Repeater v závislosti na datech lze provést pomocí dvou technik. Prvním postupem je vytvořit obslužnou rutinu události pro událost `ItemDataBound`, která se aktivuje, když se každý záznam ve zdroji dat váže k novému `DataListItem` nebo `RepeaterItem`. V obslužné rutině události `ItemDataBound` lze zkontrolovat data aktuální položky, a poté lze použít formátování na obsah šablony nebo pro `DataListItem` na celou položku samotnou.
 
