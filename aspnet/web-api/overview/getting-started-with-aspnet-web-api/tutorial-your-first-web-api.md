@@ -1,193 +1,193 @@
 ---
 uid: web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
-title: Začínáme s rozhraním ASP.NET Web API 2 (C#) – ASP.NET 4.x
+title: Začínáme s webovým rozhraním API ASP.NETC#() – ASP.NET 4. x
 author: MikeWasson
-description: Kurz s kódem. Vytvoření webového rozhraní API, které vrátí seznam produktů pomocí rozhraní ASP.NET Web API.
+description: Kurz s kódem. Pomocí webového rozhraní API ASP.NET můžete vytvořit webové rozhraní API, které vrátí seznam produktů.
 ms.author: riande
 ms.date: 11/28/2017
 ms.custom: seoapril2019
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
 ms.openlocfilehash: 3e35c2bc0e46dfdb4544b772775eddd533f27be3
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65125225"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78556796"
 ---
-# <a name="get-started-with-aspnet-web-api-2-c"></a>Začínáme s rozhraním ASP.NET Web API 2 (C#)
+# <a name="get-started-with-aspnet-web-api-2-c"></a>Začínáme s webovým rozhraním API 2C#() pro ASP.NET
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
 [Stáhnout dokončený projekt](https://code.msdn.microsoft.com/Sample-code-of-Getting-c56ccb28)
 
-V tomto kurzu použijete rozhraní ASP.NET Web API k vytvoření webového rozhraní API, který vrátí seznam produktů.
+V tomto kurzu použijete webové rozhraní API ASP.NET k vytvoření webového rozhraní API, které vrátí seznam produktů.
 
-Protokol HTTP není jen pro poskytovat webové stránky. HTTP je také výkonnou platformu pro vytváření rozhraní API, která zpřístupňují služby a data. HTTP je snadné, flexibilní a všudypřítomná. Téměř jakoukoli platformu, která si můžete představit obsahuje knihovny HTTP, takže služeb HTTP můžete oslovit širokou škálu klientů, včetně prohlížečů, mobilní zařízení a tradičních desktopových aplikací.
+HTTP není pouze pro obsluhu webových stránek. HTTP je také výkonná platforma pro vytváření rozhraní API, která zveřejňují služby a data. HTTP je jednoduché, flexibilní a všudypřítomný. Skoro libovolná platforma, na kterou si můžete představit, má knihovnu HTTP, takže služby HTTP mohou dosáhnout široké škály klientů, včetně prohlížečů, mobilních zařízení a tradičních aplikací klasické pracovní plochy.
 
-Rozhraní ASP.NET Web API je architektura určená k vytváření webových rozhraní API jako nadstavby rozhraní .NET Framework. 
+Webové rozhraní API ASP.NET je rozhraní pro vytváření webových rozhraní API nad .NET Framework. 
 
-## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=button+cta&utm_content=download+vs2017)
 - Webové rozhraní API 2
 
-Zobrazit [vytvoření webového rozhraní API pomocí ASP.NET Core a Visual Studio pro Windows](https://docs.microsoft.com/aspnet/core/tutorials/first-web-api) pro novější verze tohoto kurzu.
+Novější verzi tohoto kurzu najdete v tématu [Vytvoření webového rozhraní API s ASP.NET Core a sadou Visual Studio pro Windows](https://docs.microsoft.com/aspnet/core/tutorials/first-web-api) .
 
-## <a name="create-a-web-api-project"></a>Vytvořte projekt webového rozhraní API
+## <a name="create-a-web-api-project"></a>Vytvoření projektu webového rozhraní API
 
-V tomto kurzu použijete rozhraní ASP.NET Web API k vytvoření webového rozhraní API, který vrátí seznam produktů. Front-endové webové stránky používá jQuery pro zobrazení výsledků.
+V tomto kurzu použijete webové rozhraní API ASP.NET k vytvoření webového rozhraní API, které vrátí seznam produktů. Webová stránka front-end používá jQuery k zobrazení výsledků.
 
 ![](tutorial-your-first-web-api/_static/image1.png)
 
-Spusťte sadu Visual Studio a vyberte **nový projekt** z **Start** stránky. Nebo z **souboru** nabídce vyberte možnost **nový** a potom **projektu**.
+Spusťte Visual Studio a na **úvodní** stránce vyberte **Nový projekt** . Nebo v nabídce **soubor** vyberte **Nový** a pak **projekt**.
 
-V **šablony** vyberte **nainstalované šablony** a rozbalte **Visual C#** uzlu. V části **Visual C#** vyberte **webové**. V seznamu šablon projektu vyberte **webová aplikace ASP.NET**. Pojmenujte projekt "ProductsApp" a klikněte na tlačítko **OK**.
+V podokně **šablony** vyberte **Nainstalované šablony** a rozbalte uzel  **C# vizuál** . V **části C#vizuál** vyberte **Web**. V seznamu šablon projektu vyberte **ASP.NET webová aplikace**. Pojmenujte projekt "ProductsApp" a klikněte na tlačítko **OK**.
 
 ![](tutorial-your-first-web-api/_static/image2.png)
 
-V **nový projekt ASP.NET** dialogového okna, vyberte **prázdný** šablony. V části &quot;přidat složky a základní odkazy pro&quot;, zkontrolujte **webového rozhraní API**. Klikněte na **OK**.
+V dialogovém okně **Nový projekt ASP.NET** vyberte **prázdnou** šablonu. V části &quot;přidat složky a základní reference pro&quot;zaškrtněte **webové rozhraní API**. Klikněte na tlačítko **OK**.
 
 ![](tutorial-your-first-web-api/_static/image3.png)
 
 > [!NOTE]
-> Můžete také vytvořit projekt webového rozhraní API pomocí &quot;webového rozhraní API&quot; šablony. Šablona webového rozhraní API používá rozhraní ASP.NET MVC pro zajištění stránek nápovědy rozhraní API. Používám prázdnou šablonu pro účely tohoto kurzu, protože chci ukázat webového rozhraní API bez MVC. Obecně platí nemusíte vědět, ASP.NET MVC pro použití webového rozhraní API.
+> Můžete také vytvořit projekt webového rozhraní API pomocí šablony &quot;Web API&quot;. Šablona webového rozhraní API používá ASP.NET MVC k poskytnutí stránek s nápovědě k rozhraní API. Používám prázdnou šablonu pro tento kurz, protože chci zobrazit webové rozhraní API bez MVC. Obecně platí, že k používání webového rozhraní API nemusíte znát ASP.NET MVC.
 
 ## <a name="adding-a-model"></a>Přidání modelu
 
-A *modelu* je objekt, který představuje data ve vaší aplikaci. Rozhraní ASP.NET Web API můžete automaticky serializovat modelu JSON, XML nebo jiném formátu a pak napište serializovaná data do datové části zprávy s odpovědí HTTP. Za předpokladu, může klienta číst formát serializace, může deserializovat objekt. Většina klientů můžete analyzovat, XML nebo JSON. Kromě toho klienta můžete určit, jaký formát chce nastavením hlavičky Accept ve zprávě požadavku HTTP.
+*Model* je objekt, který představuje data v aplikaci. Webové rozhraní API ASP.NET může model automaticky serializovat do formátu JSON, XML nebo jiného formátu a pak zapsat Serializovaná data do těla zprávy odpovědi HTTP. Pokud klient může číst formát serializace, může objekt deserializovat. Většina klientů může analyzovat kód XML nebo JSON. Kromě toho může klient určit, který formát chce, nastavením hlavičky Accept ve zprávě požadavku HTTP.
 
-Začněme vytvořením jednoduchého modelu, který představuje produkt.
+Pojďme začít vytvořením jednoduchého modelu, který představuje produkt.
 
-Pokud již není Průzkumník řešení viditelný, klikněte na tlačítko **zobrazení** nabídky a vybereme **Průzkumníka řešení**. V Průzkumníku řešení klikněte pravým tlačítkem na složku modely. V místní nabídce vyberte **přidat** vyberte **třídy**.
+Pokud Průzkumník řešení ještě není vidět, klikněte na nabídku **zobrazení** a vyberte možnost **Průzkumník řešení**. V Průzkumník řešení klikněte pravým tlačítkem na složku modely. V místní nabídce vyberte **Přidat** a pak vyberte **Třída**.
 
 ![](tutorial-your-first-web-api/_static/image4.png)
 
-Název třídy &quot;produktu&quot;. Přidejte následující vlastnosti pro `Product` třídy.
+Pojmenujte třídu &quot;&quot;produktu. Do třídy `Product` přidejte následující vlastnosti.
 
 [!code-csharp[Main](tutorial-your-first-web-api/samples/sample1.cs)]
 
 ## <a name="adding-a-controller"></a>Přidání kontroleru
 
-V rozhraní Web API *řadič* je objekt, který zpracovává požadavky HTTP. Přidáme kontroler, který může vrátit seznam produktů nebo jednoho produktu určeným ID.
+Ve webovém rozhraní API je *kontroler* objekt, který zpracovává požadavky HTTP. Přidáme kontroler, který může vracet buď seznam produktů, nebo jeden produkt určený IDENTIFIKÁTORem.
 
 > [!NOTE]
-> Pokud jste použili technologie ASP.NET MVC, jste obeznámeni s řadiči. Kontrolerů webového rozhraní API jsou podobné řadiče MVC, ale dědit **objektu ApiController** místo na třídě **řadič** třídy.
+> Pokud jste použili ASP.NET MVC, už jste obeznámeni s řadiči. Řadiče webového rozhraní API se podobají řadičům MVC, ale dědí třídu **ApiController** namísto třídy **Controller** .
 
-V **Průzkumníka řešení**, klikněte pravým tlačítkem na složku řadiče. Vyberte **přidat** a pak vyberte **řadič**.
+V **Průzkumník řešení**klikněte pravým tlačítkem myši na složku Controllers. Vyberte **Přidat** a pak vybrat **kontroler**.
 
 ![](tutorial-your-first-web-api/_static/image5.png)
 
-V **přidat vygenerované uživatelské rozhraní** dialogového okna, vyberte **Kontroleru webového rozhraní API – prázdný**. Klikněte na **Přidat**.
+V dialogovém okně **Přidat generování uživatelského rozhraní** vyberte možnost **KONTROLER webového rozhraní API – prázdné**. Klikněte na **Přidat**.
 
 ![](tutorial-your-first-web-api/_static/image6.png)
 
-V **přidat kontroler** dialogového okna, názvu kontroleru &quot;ProductsController&quot;. Klikněte na **Přidat**.
+V dialogovém okně **Přidat řadič** pojmenujte kontrolér &quot;ProductsController&quot;. Klikněte na **Přidat**.
 
 ![](tutorial-your-first-web-api/_static/image7.png)
 
-Základní kostry aplikace vytvoří soubor s názvem ProductsController.cs ve složce řadiče.
+Generování uživatelského rozhraní vytvoří ve složce Controllers soubor s názvem ProductsController.cs.
 
 ![](tutorial-your-first-web-api/_static/image8.png)
 
 > [!NOTE]
-> Není nutné převést vaše řadiče do složky s názvem řadiče. Název složky je jenom pohodlný způsob, jak uspořádat zdrojové soubory.
+> Řadiče nemusíte vkládat do složky s názvem Controllers. Název složky je pouze pohodlný způsob, jak uspořádat zdrojové soubory.
 
-Pokud tento soubor ještě není otevřený, klikněte dvakrát na soubor otevřete. Nahraďte kód v tomto souboru následujícím kódem:
+Pokud tento soubor ještě není otevřený, otevřete ho tak, že na něj dvakrát kliknete. Nahraďte kód v tomto souboru následujícím kódem:
 
 [!code-csharp[Main](tutorial-your-first-web-api/samples/sample2.cs)]
 
-Pro zjednodušení tento příklad produktech ukládají do pole s pevnou uvnitř třídy kontroleru. V reálné aplikaci, by samozřejmě dotaz na databázi nebo použít jiný zdroj externí data.
+Aby byl příklad jednoduchý, produkty jsou uloženy v pevném poli uvnitř třídy Controller. Samozřejmě můžete v reálné aplikaci zadat dotaz na databázi nebo použít jiný externí zdroj dat.
 
 Kontroler definuje dvě metody, které vracejí produkty:
 
-- `GetAllProducts` Metoda vrátí celý seznam produktů jako **IEnumerable&lt;produktu&gt;**  typu.
-- `GetProduct` Metoda vyhledá jeden produkt pomocí jeho ID.
+- Metoda `GetAllProducts` vrátí celý seznam produktů jako typ **&gt;&lt;typu produktu IEnumerable** .
+- Metoda `GetProduct` vyhledá jeden produkt podle jeho ID.
 
-A to je vše! Máte pracovní webové rozhraní API. Každá metoda v řadiči odpovídá jedné nebo více identifikátorů URI:
+A to je vše! Máte funkční webové rozhraní API. Každá metoda na kontroleru odpovídá jednomu nebo více identifikátorům URI:
 
-| Metoda kontroleru | Identifikátor URI |
+| Metoda kontroleru | URI |
 | --- | --- |
-| GetAllProducts | / api/produkty |
-| GetProduct | / webové rozhraníAPI/produkty/*id* |
+| GetAllProducts | /api/products |
+| Getproduct | *ID* /API/Products/ |
 
-Pro `GetProduct` metody, *id* v identifikátoru URI je zástupný symbol. Například pokud chcete získat produkt s ID 5, identifikátor URI je `api/products/5`.
+Pro metodu `GetProduct` je *ID* v identifikátoru URI zástupný symbol. Chcete-li například získat produkt s ID 5, je identifikátor URI `api/products/5`.
 
-Další informace o jak směruje požadavky HTTP pro metody kontroleru webového rozhraní API najdete v tématu [směrování v rozhraní ASP.NET Web API](../web-api-routing-and-actions/routing-in-aspnet-web-api.md).
+Další informace o tom, jak webové rozhraní API směruje požadavky HTTP na metody kontroleru, najdete v tématu [směrování ve webovém rozhraní api ASP.NET](../web-api-routing-and-actions/routing-in-aspnet-web-api.md).
 
-## <a name="calling-the-web-api-with-javascript-and-jquery"></a>Volání webového rozhraní API s použitím jazyka Javascript a jQuery
+## <a name="calling-the-web-api-with-javascript-and-jquery"></a>Volání webového rozhraní API pomocí JavaScriptu a jQuery
 
-V této části přidáme stránku HTML, který používá AJAX, aby volala webové rozhraní API. Použijeme jQuery provádět volání jazyka AJAX a také aktualizovat na stránce s výsledky.
+V této části přidáme stránku HTML, která pro volání webového rozhraní API používá AJAX. Pomocí jQuery provedeme volání AJAX a také aktualizujeme stránku s výsledky.
 
-V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a vyberte **přidat**a pak vyberte **nová položka**.
+V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost **Přidat**a pak vyberte možnost **Nová položka**.
 
 ![](tutorial-your-first-web-api/_static/image9.png)
 
-V **přidat novou položku** dialogového okna, vyberte **webové** pod uzlem **Visual C#** a pak vyberte **stránku HTML** položky. Pojmenujte stránku &quot;index.html&quot;.
+V dialogovém okně **Přidat novou položku** vyberte v části **vizuál C#** uzel **Web** a pak vyberte položku **stránky HTML** . Pojmenujte stránku &quot;index. html&quot;.
 
 ![](tutorial-your-first-web-api/_static/image10.png)
 
-Všechno, co je v tomto souboru nahraďte následujícím kódem:
+Nahraďte vše v tomto souboru následujícím způsobem:
 
 [!code-html[Main](tutorial-your-first-web-api/samples/sample3.html)]
 
-Existuje několik způsobů, jak získat jQuery. V tomto příkladu byl použit [Microsoft Ajax CDN](../../../ajax/cdn/overview.md). Můžete také stáhnout z [ http://jquery.com/ ](http://jquery.com/)a technologie ASP.NET "Webového rozhraní API" jQuery také zahrnuje šablony projektu.
+Existuje několik způsobů, jak získat jQuery. V tomto příkladu jsem použil [Microsoft Ajax CDN](../../../ajax/cdn/overview.md). Můžete si ho také stáhnout z [http://jquery.com/](http://jquery.com/)a šablona projektu ASP.NET "webové rozhraní API" zahrnuje také jQuery.
 
-### <a name="getting-a-list-of-products"></a>Načítá se seznam produktů
+### <a name="getting-a-list-of-products"></a>Získání seznamu produktů
 
-Pokud chcete získat seznam produktů, odeslat požadavek HTTP GET na &quot;/api/produkty&quot;.
+Pokud chcete získat seznam produktů, odešlete požadavek HTTP GET na &quot;/API/Products&quot;.
 
-JQuery [getJSON](http://api.jquery.com/jQuery.getJSON/) funkce odešle požadavek AJAX. Odpověď obsahuje pole objektů JSON. `done` Funkce určuje zpětné volání, která je volána, pokud je žádost úspěšná. Při zpětném volání aktualizujeme modelu DOM se informace o produktu.
+Funkce jQuery [getjson](http://api.jquery.com/jQuery.getJSON/) pošle požadavek AJAX. Pro odpověď obsahuje pole objektů JSON. Funkce `done` určuje zpětné volání, které je voláno, pokud je požadavek úspěšný. Ve zpětném volání aktualizujeme model DOM informacemi o produktu.
 
 [!code-html[Main](tutorial-your-first-web-api/samples/sample4.html)]
 
 ### <a name="getting-a-product-by-id"></a>Získání produktu podle ID
 
-Získat produktů podle ID, odeslat požadavek HTTP GET na &quot;/webové rozhraní API/produkty/*id*&quot;, kde *id* je ID produktu.
+Pokud chcete získat produkt podle ID, odešlete požadavek HTTP GET na &quot;*ID* /API/Products/&quot;, kde *ID* je ID produktu.
 
 [!code-javascript[Main](tutorial-your-first-web-api/samples/sample5.js)]
 
-Stále říkáme `getJSON` odeslat požadavek AJAX, ale tentokrát klademe ID v identifikátoru URI požadavku. Odpověď z této žádosti se JSON s reprezentací provedených jednoho produktu.
+Pořád budeme volat `getJSON` k odeslání požadavku AJAX, ale tentokrát vložíme ID do identifikátoru URI požadavku. Odpověď z tohoto požadavku je reprezentace jediného produktu ve formátu JSON.
 
 ## <a name="running-the-application"></a>Spuštění aplikace
 
-Stisknutím klávesy F5 spusťte ladění aplikace. Webové stránce by měl vypadat nějak takto:
+Stisknutím klávesy F5 spusťte ladění aplikace. Webová stránka by měla vypadat takto:
 
 ![](tutorial-your-first-web-api/_static/image11.png)
 
-K získání produktu podle ID, zadejte ID a klikněte na tlačítko Hledat:
+Pokud chcete získat produkt podle ID, zadejte ID a klikněte na Hledat:
 
 ![](tutorial-your-first-web-api/_static/image12.png)
 
-Pokud zadáte neplatné ID, server vrátí chybu HTTP:
+Pokud zadáte neplatné ID, server vrátí chybu protokolu HTTP:
 
 ![](tutorial-your-first-web-api/_static/image13.png)
 
-## <a name="using-f12-to-view-the-http-request-and-response"></a>Chcete-li zobrazit požadavků HTTP a odpovědí pomocí F12
+## <a name="using-f12-to-view-the-http-request-and-response"></a>Použití nástroje F12 k zobrazení žádosti a odpovědi HTTP
 
-Při práci se službou HTTP, může být velmi užitečná k naleznete požadavek HTTP a zprávy s požadavkem. Můžete to provést pomocí vývojářských nástrojů F12 v aplikaci Internet Explorer 9. Z aplikace Internet Explorer 9, stiskněte klávesu **F12** otevřete nástroje. Klikněte na tlačítko **sítě** kartu a stiskněte klávesu **spustit zachytávání**. Nyní přejděte zpět na webovou stránku a stiskněte klávesu **F5** k opětovnému načtení webové stránky. Aplikace Internet Explorer zaznamená přenos pomocí protokolu HTTP mezi prohlížečem a webový server. Souhrnné zobrazení se zobrazuje veškerý síťový provoz pro stránku:
+Když pracujete se službou HTTP, může být velmi užitečné zobrazit žádosti HTTP a požadovat zprávy. To můžete provést pomocí vývojářských nástrojů F12 v aplikaci Internet Explorer 9. V aplikaci Internet Explorer 9 otevřete stisknutím klávesy **F12** nástroje. Klikněte na kartu **síť** a potom stiskněte **Spustit zachytávání**. Nyní se vraťte na webovou stránku a stisknutím klávesy **F5** znovu načtěte webovou stránku. Internet Explorer bude zachytit přenos HTTP mezi prohlížečem a webovým serverem. V souhrnném zobrazení se zobrazuje veškerá síťová komunikace pro stránku:
 
 ![](tutorial-your-first-web-api/_static/image14.png)
 
-Vyhledejte položku pro relativní identifikátor URI "produktů s rozhraním api / /". Vyberte tuto položku a klikněte na tlačítko **přejít na podrobnou zobrazení**. V zobrazení podrobností jsou karty zobrazíte hlaviček žádostí a odpovědí a úřadů. Například, pokud kliknete **hlavičky požadavku** kartě, zobrazí se, že klient vyžádal &quot;application/json&quot; v hlavičce Accept.
+Vyhledejte položku relativního identifikátoru URI "API/Products/". Vyberte tuto položku a klikněte na **Přejít k podrobnému zobrazení**. V podrobném zobrazení jsou k dispozici karty pro zobrazení požadavků a hlaviček odpovědí. Pokud například kliknete na kartu **hlavičky žádosti** , vidíte, že klient požádal o &quot;aplikace/JSON&quot; v hlavičce Accept.
 
 ![](tutorial-your-first-web-api/_static/image15.png)
 
-Pokud kliknete na kartě tělo odpovědi, uvidíte, jak byl seznam produktů serializovat do formátu JSON. Jiné prohlížeče mají podobné funkce. Další užitečné nástroje je [Fiddler](http://www.fiddler2.com/fiddler2/), webový ladicí proxy server. Můžete Fiddleru zobrazíte provoz protokolu HTTP a také k vytváření žádostí HTTP, která poskytuje plnou kontrolu nad hlavičky protokolu HTTP v požadavku.
+Pokud kliknete na kartu tělo odpovědi, uvidíte, jak se seznam produktů serializován do formátu JSON. Jiné prohlížeče mají podobné funkce. Dalším užitečným nástrojem je [Fiddler](http://www.fiddler2.com/fiddler2/), webový ladicí proxy server. Fiddler můžete použít k zobrazení provozu protokolu HTTP a také k vytvoření požadavků HTTP, které vám umožní plnou kontrolu hlaviček protokolu HTTP v žádosti.
 
-## <a name="see-this-app-running-on-azure"></a>Zobrazit tuto aplikaci běžící v Azure
+## <a name="see-this-app-running-on-azure"></a>Podívejte se na tuto aplikaci spuštěnou v Azure
 
-Chcete zobrazit dokončené web spuštěný jako živou webovou aplikaci? Kompletní verze aplikace můžete nasadit ke svému účtu Azure jednoduše kliknutím na následující tlačítko.
+Chcete zobrazit dokončený web běžící jako živá webová aplikace? Úplnou verzi aplikace můžete nasadit do svého účtu Azure pouhým kliknutím na následující tlačítko.
 
 [![](https://azuredeploy.net/deploybutton.png)](https://deploy.azure.com/?WT.mc_id=deploy_azure_aspnet&repository=https://github.com/tfitzmac/WebAPI-ProductsApp#/form/setup)
 
-Potřebujete účet Azure k nasazení tohoto řešení do Azure. Pokud ještě nemáte účet, máte následující možnosti:
+K nasazení tohoto řešení do Azure potřebujete účet Azure. Pokud ještě nemáte účet, máte následující možnosti:
 
-- [Zdarma otevřít účet Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A443DD604) – budete dostávat kredity můžete použít k vyzkoušení placených služeb Azure a dokonce i po jejich použití až můžete účet ponechat a dál používat bezplatné služby Azure.
-- [Aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604) – vaše předplatné MSDN vám dává kredity každý měsíc, můžete použít k placení za služby Azure.
+- [Otevřete si bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A443DD604) – získáte kredity, které můžete použít k vyzkoušení placených služeb Azure a dokonce i po jejich použití, můžete účet ponechat a používat bezplatné služby Azure.
+- [Aktivujte výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A443DD604) – vaše předplatné MSDN vám každý měsíc dává kredity, které můžete použít pro placené služby Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Kompletní příklad, který podporuje akce POST, PUT a DELETE a zapisuje do databáze služby protokolu HTTP, naleznete v tématu [pomocí webového rozhraní API 2 s Entity Framework 6](../data/using-web-api-with-entity-framework/part-1.md).
-- Další informace o vytváření plynulé a rychlost reakce webové aplikace založené na službě HTTP v tématu [jednostránkové aplikace ASP.NET](../../../single-page-application/index.md).
-- Informace o tom, jak nasadit webový projekt sady Visual Studio do služby Azure App Service najdete v tématu [vytvoření webové aplikace ASP.NET ve službě Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/).
+- Úplnější příklad služby HTTP, která podporuje akce POST, PUT a DELETE a zápisy do databáze, najdete v tématu [použití webového rozhraní API 2 s Entity Framework 6](../data/using-web-api-with-entity-framework/part-1.md).
+- Další informace o vytváření kapalinových a reagujících webových aplikací nad službou HTTP najdete v tématu [aplikace ASP.NET Single Page](../../../single-page-application/index.md).
+- Informace o tom, jak nasadit webový projekt aplikace Visual Studio do Azure App Service, najdete [v tématu Vytvoření webové aplikace v ASP.NET v Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/).

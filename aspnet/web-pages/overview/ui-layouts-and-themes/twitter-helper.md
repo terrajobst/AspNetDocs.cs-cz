@@ -1,76 +1,76 @@
 ---
 uid: web-pages/overview/ui-layouts-and-themes/twitter-helper
-title: Rozhraní ASP.NET Web Pages pomocná rutina twitteru | Dokumentace Microsoftu
+title: Pomocník pro Twitter s webovými stránkami ASP.NET | Microsoft Docs
 author: Rick-Anderson
-description: V tomto tématu a aplikace ukazují, jak přidat do projektu služby WebMatrix 3 Pomocník Twitter. Obsahuje kód Pomocník Twitter a ukazuje způsob volání pomocné rutiny...
+description: Toto téma a aplikace ukazují, jak přidat pomocníka pro Twitter do projektu WebMatrix 3. Obsahuje pomocný kód pro Twitter a ukazuje, jak zavolat pomoc...
 ms.author: riande
 ms.date: 11/26/2018
 ms.assetid: c1a1244e-b9c8-42e6-a00b-8456a4ec027c
 msc.legacyurl: /web-pages/overview/ui-layouts-and-themes/twitter-helper
 msc.type: authoredcontent
 ms.openlocfilehash: 76e32b7c808467a9a87c70017dac02bdb895e1df
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132775"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78638556"
 ---
 # <a name="twitter-helper-with-aspnet-web-pages"></a>Pomocná rutina Twitteru na webových stránkách ASP.NET
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
 > [!IMPORTANT]
-> Pomocné rutiny twitteru jsou zastaralé. Na Twitteru nejnovější zapojení nástroje pro weby, naleznete v tématu [Twitter pro Websites přehled](https://developer.twitter.com/en/docs/twitter-for-websites/overview).
+> Pomocníky pro Twitter jsou zastaralé. Nejnovější nástroje pro zapojení do Twitteru pro weby najdete v tématu [Přehled Twitteru pro websites](https://developer.twitter.com/en/docs/twitter-for-websites/overview).
 
-> V tomto tématu a aplikace ukazují, jak přidat do projektu služby WebMatrix 3 Pomocník Twitter. Obsahuje kód Pomocník Twitter a ukazuje, jak volat metodu helper.
+> Toto téma a aplikace ukazují, jak přidat pomocníka pro Twitter do projektu WebMatrix 3. Obsahuje pomocný kód pro Twitter a ukazuje, jak volat pomocné metody.
 > 
-> Tento kód pro soubor Twitter.cshtml vyvinula společnost **Tian Pan** společnosti Microsoft.
+> Tento kód pro soubor Twitter. cshtml vyvinula aplikace **Tian pan** od Microsoftu.
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
 > - Webové stránky ASP.NET (Razor) 3
 >   
 > 
-> V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
+> Tento kurz funguje také s ASP.NET webovými stránkami 2.
 
 ## <a name="introduction"></a>Úvod
 
-Toto téma ukazuje, jak přidat Pomocník Twitter pro vaši aplikaci a pomocí syntaxe Razor pro volání metody helper. Pomocník Twitter umožňuje snadno začlenit tlačítka Twitteru a pomůcky ve vaší aplikaci. Chcete-li pomocí widgetu Twitter, jako je například timeline uživatele nebo výsledky hledání pro hashtagu, musíte nejdřív vytvořit [widgetů na Twitteru](https://twitter.com/settings/widgets). Po vytvoření vaší widgetů, zobrazí se id widgetu. Toto id widgetu předat jako parametr při volání pomocné metody, které ukazují widgetu.
+Toto téma ukazuje, jak přidat pomocníka pro Twitter do vaší aplikace a použít syntaxe Razor pro volání pomocných metod. Pomocník pro Twitter usnadňuje začleňování tlačítek a widgetů Twitteru do vaší aplikace. Pokud chcete použít pomůcku Twitteru, například časovou osu uživatele nebo výsledky hledání pro hashtag, musíte nejdřív vytvořit [widget na Twitteru](https://twitter.com/settings/widgets). Po vytvoření widgetu se zobrazí ID widgetu. Toto ID widgetu předáte jako parametr při volání pomocných metod, které znázorňují widget.
 
-Toto téma bylo napsáno pro verzi 1.1 rozhraní Twitter API. Přímo do projektu přidáte kód Pomocník Twitter, můžete aktualizovat kód pomocného objektu, pokud se změní rozhraní Twitter API.
+Toto téma bylo napsáno pro verzi 1,1 rozhraní API pro Twitter. Přímým přidáním pomocníka pro Twitter do projektu můžete kód pomocné rutiny aktualizovat, pokud se změní rozhraní API pro Twitter.
 
-Informace o instalaci služby WebMatrix najdete v tématu [Úvod do ASP.NET Web Pages 2 – Začínáme](../getting-started/introducing-aspnet-web-pages-2/getting-started.md).
+Informace o instalaci WebMatrixu najdete v tématu [představení ASP.NET webových stránek 2-Začínáme](../getting-started/introducing-aspnet-web-pages-2/getting-started.md).
 
-## <a name="add-twitter-helper-to-your-project"></a>Pomocník Twitter přidat do projektu
+## <a name="add-twitter-helper-to-your-project"></a>Přidat pomocníka pro Twitter do projektu
 
-Chcete-li přidat Pomocník Twitter, nejprve přidejte složku s názvem **aplikace\_kód** do projektu. Vytvořte soubor s názvem **Twitter.cshtml**.
+Pokud chcete přidat pomocníka pro Twitter, nejdřív přidejte do projektu složku s názvem **App\_Code** . Pak vytvořte soubor s názvem **Twitter. cshtml**.
 
-![Složku App_Code](twitter-helper/_static/image1.png)
+![App_Code složka](twitter-helper/_static/image1.png)
 
-Nahraďte kód v Twitter.cshtml následujícím kódem.
+Nahraďte výchozí kód v Twitter. cshtml následujícím kódem.
 
 [!code-cshtml[Main](twitter-helper/samples/sample1.cshtml)]
 
-## <a name="call-twitter-methods-from-your-web-pages"></a>Volání metody Twitteru z webových stránek
+## <a name="call-twitter-methods-from-your-web-pages"></a>Volání metod Twitteru z webových stránek
 
-Následující příklad ukazuje způsob použití metody Pomocník Twitter ze stránky ve vašem projektu. Ve vašem projektu můžete k nahrazení hodnoty parametrů s hodnotami, které jsou relevantní pro vaše potřeby. ID zadané widgetu můžete prozkoumat, jak fungují metody, ale budete chtít vytvořit vlastní pomůcky pro váš projekt.
+Následující příklad ukazuje způsob použití pomocných metod Twitteru ze stránky v projektu. V projektu budete chtít nahradit hodnoty parametrů hodnotami, které jsou relevantní pro vaše potřeby. Pomocí poskytnutých ID widgetů můžete prozkoumat, jak metody fungují, ale budete chtít vygenerovat vlastní widgety pro váš projekt.
 
-Ne všechny parametry uvedené níže jsou požadovány. Volitelné parametry umožňují přizpůsobit, jak se zobrazí tlačítko nebo widgetu. Například použijte tlačítko pouze vyžaduje uživatelské jméno dodržovat, ale tento příklad ukazuje, jak zahrnují počet sledujících a jak určit velikost tlačítka a jazyk.
+Ne všechny parametry uvedené níže jsou povinné. Volitelné parametry slouží k přizpůsobení způsobu zobrazení tlačítka nebo pomůcky. Například tlačítko sledovat vyžaduje pouze zadání uživatelského jména, ale tento příklad ukazuje, jak zahrnout Počet sledujících a jak určit velikost tlačítka a jazyk.
 
 [!code-html[Main](twitter-helper/samples/sample2.html)]
 
-## <a name="see-the-results"></a>Zobrazit výsledky
+## <a name="see-the-results"></a>Zobrazení výsledků
 
-Ve výše uvedeném kódu vytvoří následující tlačítka a pomůcky. Tato tlačítka a pomůcky jsou plně funkční, není snímky obrazovky. Je zobrazeno tlačítko postupujte ve španělštině, protože parametr jazyka byla nastavena na hodnotu **es**.
+Výše uvedený kód vytváří následující tlačítka a widgety. Tato tlačítka a widgety jsou plně funkční, nikoli snímky obrazovky. Tlačítko sledovat se zobrazí v španělštině, protože parametr Language byl nastaven na **ES**.
 
-### <a name="follow-button"></a>Použijte tlačítko
+### <a name="follow-button"></a>Tlačítko sledovat
 
-[Postupujte podle @aspnet)](https://twitter.com/aspnet)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>`
+[Sledovat @aspnet)](https://twitter.com/aspnet)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>`
 
-### <a name="tweet-button"></a>Tlačítko tweetu
+### <a name="tweet-button"></a>Tlačítko pro možnost pro.
 
-[Tweet](https://twitter.com/share)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>`
+[`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>` ve](https://twitter.com/share) stejném
 
 ### <a name="user-timeline-profile"></a>Časová osa uživatele (profil)
 
@@ -78,12 +78,12 @@ Ve výše uvedeném kódu vytvoří následující tlačítka a pomůcky. Tato t
 
 ### <a name="favorites"></a>Oblíbené položky
 
-[Oblíbené Tweety podle @Microsoft](https://twitter.com/Microsoft/favorites)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`
+[Oblíbené tweety podle @Microsoft](https://twitter.com/Microsoft/favorites)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`
 
 ### <a name="list"></a>Seznam
 
-[Tweetuje z @Microsoft/MS \_příjemce\_pruhy](https://twitter.com/microsoft/ms-consumer-brands/)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`
+[Tweety z @Microsoft/MS\_\_pásma příjemce](https://twitter.com/microsoft/ms-consumer-brands/)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`
 
-### <a name="search"></a>Hledat
+### <a name="search"></a>Hledání
 
-[Tweetuje o &quot;#asp.net&quot;](https://twitter.com/search?q=%23asp.net)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`
+[Tweety o &quot;#asp .net&quot;](https://twitter.com/search?q=%23asp.net)`<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>`

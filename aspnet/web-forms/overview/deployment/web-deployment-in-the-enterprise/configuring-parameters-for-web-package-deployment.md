@@ -1,134 +1,134 @@
 ---
 uid: web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
-title: Konfigurace parametrů nasazení webového balíčku | Dokumentace Microsoftu
+title: Konfigurace parametrů pro nasazení webového balíčku | Microsoft Docs
 author: jrjlee
-description: Toto téma popisuje, jak nastavit hodnoty parametrů, jako jsou názvy webových aplikací Internetové informační služby (IIS), připojovacích řetězců a koncové body služby...
+description: Toto téma popisuje, jak nastavit hodnoty parametrů, jako jsou názvy webových aplikací Internetová informační služba (IIS), připojovací řetězce a koncové body služby,...
 ms.author: riande
 ms.date: 05/04/2012
 ms.assetid: 37947d79-ab1e-4ba9-9017-52e7a2757414
 msc.legacyurl: /web-forms/overview/deployment/web-deployment-in-the-enterprise/configuring-parameters-for-web-package-deployment
 msc.type: authoredcontent
 ms.openlocfilehash: f04ace98d81a33053b10cab7e40dbd75a6c0992c
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108729"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78544952"
 ---
 # <a name="configuring-parameters-for-web-package-deployment"></a>Konfigurace parametrů nasazení webového balíčku
 
-podle [Jason Lee](https://github.com/jrjlee)
+od [Jason Novák](https://github.com/jrjlee)
 
 [Stáhnout PDF](https://msdnshared.blob.core.windows.net/media/MSDNBlogsFS/prod.evol.blogs.msdn.com/CommunityServer.Blogs.Components.WeblogFiles/00/00/00/63/56/8130.DeployingWebAppsInEnterpriseScenarios.pdf)
 
-> Toto téma popisuje, jak nastavit hodnoty parametrů, jako jsou názvy webových aplikací Internetové informační služby (IIS), připojovacích řetězců a koncové body služby, při nasazení webového balíčku do vzdáleného webového serveru služby IIS.
+> Toto téma popisuje, jak nastavit hodnoty parametrů, jako jsou názvy webových aplikací Internetová informační služba (IIS), připojovací řetězce a koncové body služby při nasazení webového balíčku na vzdálený webový server služby IIS.
 
-Při sestavení projektu webové aplikace, sestavení a procesem vytváření balíčku generuje tři soubory klíčů:
+Při sestavování projektu webové aplikace generuje proces sestavení a vytváření balíčku tři soubory klíče:
 
-- A *[název projektu] ZIP* souboru. Toto je balíčku pro nasazení webu pro váš projekt webové aplikace. Tento balíček obsahuje všechny sestavení, soubory, skripty databáze a prostředků potřebných pro opětovné vytvoření webové aplikace na vzdáleném serveru webové služby IIS.
-- A *[název projektu].deploy.cmd* souboru. Tato položka obsahuje sadu nasazení webu (MSDeploy.exe) příkazy s parametry, které publikují balíčku pro nasazení webu na vzdáleného webového serveru služby IIS.
-- A *[název projektu]. SetParameters.xml* souboru. To poskytuje sadu hodnot parametrů příkazu MSDeploy.exe. Můžete aktualizovat hodnoty v tomto souboru a předat ji pro nástroj nasazení webu jako parametr příkazového řádku při nasazení webového balíčku.
+- Soubor *[název projektu]. zip* . Toto je balíček pro nasazení webu pro váš projekt webové aplikace. Tento balíček obsahuje všechna sestavení, soubory, databázové skripty a prostředky potřebné k opětovnému vytvoření webové aplikace na vzdáleném webovém serveru služby IIS.
+- Soubor *[název projektu]. deploy. cmd* . Obsahuje sadu příkazů parametrizovaného Nasazení webu (MSDeploy. exe), které publikují balíček pro nasazení webu na vzdáleném webovém serveru služby IIS.
+- *[Název projektu]. SetParameters. XML* soubor. To poskytuje sadu hodnot parametrů pro příkaz MSDeploy. exe. Hodnoty v tomto souboru můžete aktualizovat a předat Nasazení webu jako parametr příkazového řádku při nasazení webového balíčku.
 
 > [!NOTE]
-> Další informace o sestavení a procesem vytváření balíčku naleznete v tématu [sestavení a balení projektů webových aplikací](building-and-packaging-web-application-projects.md).
+> Další informace o procesu sestavení a balení naleznete v tématu [sestavování a balení projektů webových aplikací](building-and-packaging-web-application-projects.md).
 
-*SetParameters.xml* souboru generuje dynamicky ze souboru projektu vaší webové aplikace a všechny konfigurační soubory v rámci svého projektu. Při sestavení a zabalení webové publikování kanálu (WPP) projektu budou automaticky zjišťovat velké množství proměnné, které se budou pravděpodobně měnit mezi prostředími nasazení, jako cíl služby IIS webová aplikace a připojovacích řetězců databáze. Tyto hodnoty jsou automaticky v balíčku pro nasazení webu s parametry a přidat do *SetParameters.xml* souboru. Například, pokud chcete přidat připojovací řetězec pro *web.config* soubor v projektu webové aplikace, proces sestavení tuto změnu zjistí a přidá záznam, tím *SetParameters.xml* souboru odpovídajícím způsobem.
+Soubor *SetParameters. XML* je dynamicky generován ze souboru projektu webové aplikace a všech konfiguračních souborů v rámci projektu. Když sestavíte a zabalíte svůj projekt, kanál pro publikování na webu (WPP) automaticky detekuje spoustu proměnných, které se pravděpodobně mění mezi prostředími nasazení, jako je cílová webová aplikace služby IIS a všechny databázové připojovací řetězce. Tyto hodnoty jsou automaticky parametrizované v balíčku pro nasazení webu a přidají se do souboru *SetParameters. XML* . Například pokud přidáte připojovací řetězec do souboru *Web. config* v projektu webové aplikace, proces sestavení tuto změnu detekuje a přidá odpovídající položku do souboru *SetParameters. XML* .
 
-V mnoha případech budou tato automatická Parametrizace dostatečné. Ale pokud vaši uživatelé potřebují k odlišení další nastavení mezi prostředími nasazení, jako je nastavení aplikace nebo adresy URL koncového bodu služby, budete muset říct WPP parametrizovat tyto hodnoty v balíčku pro nasazení a přidejte odpovídající položky *SetParameters.xml* souboru. Následující části popisují, jak to provést.
+V mnoha případech bude tento automatický Parametrizace dostačující. Pokud ale uživatelé potřebují měnit jiná nastavení mezi prostředími nasazení, jako je nastavení aplikace nebo adresy URL koncového bodu služby, je potřeba sdělit, že WPP tyto hodnoty v balíčku pro nasazení, a přidat odpovídající položky do souboru *SetParameters. XML* . Následující části popisují, jak to provést.
 
-### <a name="automatic-parameterization"></a>Automatické Parametrizace
+### <a name="automatic-parameterization"></a>Automaticky Parametrizace
 
-Při sestavení a zabalení webové aplikace, bude WPP automaticky parametrizovat Tyhle věci:
+Při sestavování a zabalení webové aplikace bude funkce WPP tyto věci automaticky parametrizovat:
 
-- Cíl služby IIS webová název a cesta k aplikaci.
-- Žádné připojovací řetězce ve vaší *web.config* souboru.
-- Připojovací řetězce pro všechny databáze, které přidáte **balení/publikování kódu SQL** karty na stránkách vlastností projektu.
+- Cesta a název cílové webové aplikace služby IIS.
+- Všechny připojovací řetězce v souboru *Web. config* .
+- Připojovací řetězce pro všechny databáze, které přidáte na kartu **Package/PUBLISH SQL** na stránkách vlastností projektu.
 
-Například, pokud chcete sestavit a zabalit [Správce kontaktů](the-contact-manager-solution.md) toto ukázkové řešení bez zásahu do procesu Parametrizace žádným způsobem, WPP vygenerují *ContactManager.Mvc.SetParameters.xml* souboru:
+Pokud byste například chtěli sestavit a zabalit ukázkové řešení [Contact Manageru](the-contact-manager-solution.md) , aniž byste se dodotkli Parametrizace procesu jakýmkoli způsobem, modul WPP by vygeneroval tento *ContactManager soubor. Mvc. SetParameters. XML* :
 
 [!code-xml[Main](configuring-parameters-for-web-package-deployment/samples/sample1.xml)]
 
 V tomto případě:
 
-- **Název webové aplikace IIS** parametrem je cesta služby IIS, ve které chcete nasadit webovou aplikaci. Výchozí hodnota je založena **balení/publikování webu** stránky na stránkách vlastností projektu.
-- **ApplicationServices Web.config připojovací řetězec** parametru byla vygenerována z **connectionStrings nebo přidat** element v *web.config* souboru. Představuje připojovací řetězec, který by aplikace měla použít pro kontaktování databáze členství. Hodnota, které zadáte tady, se nahradí nasazených *web.config* souboru. Výchozí hodnota je převzata z před nasazením *web.config* souboru.
+- Parametr **názvu webové aplikace služby IIS** je cesta služby IIS, kam chcete nasadit webovou aplikaci. Výchozí hodnota je pořízena z **webové stránky balení/publikování** na stránkách vlastností projektu.
+- Parametr **připojovacího řetězce ApplicationServices-Web. config** byl vygenerován z prvku **connectionStrings/Add** v souboru *Web. config* . Představuje připojovací řetězec, který má aplikace použít pro kontaktování databáze členství. Hodnota, kterou zde zadáte, bude nahrazena nasazeným souborem *Web. config* . Výchozí hodnota je pořízena ze souboru *Web. config* předběžného nasazení.
 
-WPP parametrizuje také tyto vlastnosti v balíčku pro nasazení, který generuje. Při instalaci balíčku pro nasazení, můžete zadat hodnoty pro tyto vlastnosti. Pokud nainstalujete balíček ručně pomocí Správce služby IIS, jak je popsáno v [ruční instalace webových balíčků](manually-installing-web-packages.md), Průvodce instalací vás vyzve k zadání hodnot všech parametrů. Při instalaci balíčku vzdáleně pomocí *. deploy.cmd* sdílené, jak je popsáno v [nasazení webových balíčků](deploying-web-packages.md), nasazení webu bude vypadat na tuto *SetParameters.xml* do souboru Zadejte hodnoty parametrů. Můžete upravit hodnoty *SetParameters.xml* soubor ručně nebo ho můžete přizpůsobit jako součást automatizovaného procesu sestavení a nasazení. Tento proces je popsán dále v tomto tématu podrobněji.
+WPP také parameterizes tyto vlastnosti v balíčku pro nasazení, který generuje. Hodnoty těchto vlastností můžete zadat při instalaci balíčku pro nasazení. Pokud balíček nainstalujete ručně pomocí Správce služby IIS, jak je popsáno v tématu [Ruční instalace webových balíčků](manually-installing-web-packages.md), Průvodce instalací vás vyzve k zadání hodnot pro všechny parametry. Pokud nainstalujete balíček vzdáleně pomocí souboru *. deploy. cmd* , jak je popsáno v tématu [nasazení webových balíčků](deploying-web-packages.md), nasazení webu se podíváme na tento soubor *SetParameters. XML* za účelem zadání hodnot parametrů. Hodnoty v souboru *SetParameters. XML* lze upravit ručně nebo můžete přizpůsobit soubor jako součást procesu automatizovaného sestavení a nasazení. Tento postup je podrobněji popsán dále v tomto tématu.
 
 ### <a name="custom-parameterization"></a>Vlastní Parametrizace
 
-Ve složitějších scénářích nasazení bude často potřeba parametrizovat další vlastnosti, před nasazením do projektu. Obecně řečeno by měl parametrizovat všechny vlastnosti a nastavení, která se liší mezi cílové prostředí. Můžou mezi ně patří:
+Ve složitějších scénářích nasazení často budete chtít před nasazením projektu parametrizovat další vlastnosti. Obecně řečeno byste měli parametrizovat jakékoli vlastnosti a nastavení, které se budou lišit mezi cílovými prostředími. To může zahrnovat:
 
-- Koncové body v služby *web.config* souboru.
-- Nastavení aplikace v *web.config* souboru.
-- Všechny deklarativní vlastnosti, které chcete vyzvat uživatele k zadání.
+- Koncové body služby v souboru *Web. config* .
+- Nastavení aplikace v souboru *Web. config* .
+- Všechny další deklarativní vlastnosti, které chcete vyzvat uživatele k zadání.
 
-Nejjednodušší způsob, jak parametrizovat těchto vlastností je přidat *parameters.xml* soubor do kořenové složky projektu webové aplikace. Například v řešení Správce kontaktů obsahuje projekt ContactManager.Mvc *parameters.xml* soubor v kořenové složce.
+Nejjednodušší způsob, jak parametrizovat tyto vlastnosti, je přidat soubor *Parameters. XML* do kořenové složky projektu webové aplikace. Například v řešení Správce kontaktů obsahuje projekt ContactManager. Mvc soubor *Parameters. XML* v kořenové složce.
 
 ![](configuring-parameters-for-web-package-deployment/_static/image1.png)
 
-Pokud tento soubor otevřít, uvidíte, že obsahuje jediný **parametr** položka. Položka pomocí dotazu jazyka XML cesta (XPath) vyhledá a Parametrizace adresy URL koncového bodu služby ContactService Windows Communication Foundation (WCF) v *web.config* souboru.
+Pokud tento soubor otevřete, uvidíte, že obsahuje jednu položku **parametru** . Položka používá dotaz jazyka XML Path (XPath) k vyhledání a zadání adresy URL koncového bodu služby ContactService Windows Communication Foundation (WCF) v souboru *Web. config* .
 
 [!code-xml[Main](configuring-parameters-for-web-package-deployment/samples/sample2.xml)]
 
-Kromě Parametrizace adresu URL koncového bodu v balíčku pro nasazení, WPP přidá také odpovídající záznam do *SetParameters.xml* soubor, který získá vygenerována, společně s balíčku pro nasazení.
+Kromě toho, že Parametrizace adresa URL koncového bodu v balíčku pro nasazení, modul WPP také přidá odpovídající položku do souboru *SetParameters. XML* , který se vygeneroval společně s balíčkem pro nasazení.
 
 [!code-xml[Main](configuring-parameters-for-web-package-deployment/samples/sample3.xml)]
 
-Pokud ručně nainstalovat balíček pro nasazení, Správce služby IIS zobrazí výzvu pro adresu koncového bodu služby vedle vlastnosti, které byly parametrizované automaticky. Pokud nainstalujete spuštěním balíčku pro nasazení *. deploy.cmd* soubor, můžete upravit *SetParameters.xml* souboru zadejte hodnotu pro adresu koncového bodu služby spolu s hodnotami pro vlastnosti, které byly automaticky parametrizovány.
+Při ruční instalaci balíčku pro nasazení vás Správce služby IIS vyzve k zadání adresy koncového bodu služby spolu s vlastnostmi, které byly parametrizované automaticky. Pokud nainstalujete balíček pro nasazení spuštěním souboru *. deploy. cmd* , můžete upravit soubor *SetParameters. XML* a zadat hodnotu pro adresu koncového bodu služby společně s hodnotami pro vlastnosti, které byly parametrizovany automaticky.
 
-Úplné podrobnosti o tom, jak vytvořit *parameters.xml* souborů naleznete v tématu [jak: Použití parametrů ke konfiguraci nastavení když balíček pro nasazení je nainstalován](https://msdn.microsoft.com/library/ff398068.aspx). Postup s názvem **používat parametry nasazení pro nastavení souboru Web.config** obsahuje podrobné pokyny.
+Úplné informace o tom, jak vytvořit soubor *Parameters. XML* , naleznete v tématu [How to: use Parameters to Configure Settings Deployment Settings to When a Package](https://msdn.microsoft.com/library/ff398068.aspx). Podrobné pokyny najdete v proceduře s názvem pro **použití parametrů nasazení pro soubor Web. config** .
 
-## <a name="modifying-the-setparametersxml-file"></a>Úprava souboru SetParameters.xml
+## <a name="modifying-the-setparametersxml-file"></a>Úprava souboru SetParameters. XML
 
-Pokud plánujete nasadit balíček webových aplikací ručně&#x2014;buď spuštěním *. deploy.cmd* souboru nebo spuštěním MSDeploy.exe z příkazového řádku&#x2014;není nutné nic vám ruční úpravy  *SetParameters.xml* souboru předcházející nasazení. Nicméně pokud pracujete v řešení podnikové úrovni, budete muset nasadit balíček webových aplikací jako součást větší, automatizovaného procesu sestavení a nasazení. V tomto scénáři budete potřebovat Microsoft Build Engine (MSBuild) Chcete-li změnit *SetParameters.xml* souboru za vás. Můžete to provést pomocí MSBuild **xmlpoke –** úloh.
+Pokud máte v úmyslu nasadit balíček webové aplikace ručně&#x2014;spuštěním souboru *. deploy. cmd* nebo spuštěním příkazu MSDeploy. exe z příkazového řádku&#x2014;, není k dispozici žádný stav, který by bylo možné před nasazením ručně upravovat v souboru *SetParameters. XML* . Pokud však pracujete na podnikovém řešení, bude pravděpodobně nutné nasadit balíček webové aplikace v rámci většího, automatizovaného procesu sestavení a nasazení. V tomto scénáři potřebujete Microsoft Build Engine (MSBuild) pro úpravu souboru *SetParameters. XML* za vás. To můžete provést pomocí úlohy **XmlPoke –** MSBuild.
 
-[Ukázkové řešení Správce kontaktů](the-contact-manager-solution.md) tento proces. Chcete-li zobrazit podrobnosti, které jsou relevantní pro tento příklad se upravily příklady kódu, které následují.
+Tento proces je znázorněno v [ukázkovém řešení Správce kontaktů](the-contact-manager-solution.md) . Příklady kódu, které následují, byly upraveny tak, aby zobrazovaly pouze podrobnosti, které jsou relevantní pro tento příklad.
 
 > [!NOTE]
-> Širší přehled modelu soubor projektu v ukázkovém řešení a úvod do projektu vlastní soubory v obecné, najdete v tématu [vysvětlení souboru projektu](understanding-the-project-file.md) a [Principy procesu sestavení](understanding-the-build-process.md).
+> Další informace o modelu projektu projektu v ukázkovém řešení a Úvod do vlastních souborů projektu obecně naleznete v tématu [porozumění souboru projektu](understanding-the-project-file.md) a [porozumění procesu sestavení](understanding-the-build-process.md).
 
-Nejprve hodnoty parametrů, které vás zajímají jsou definovány jako vlastnosti v souboru projektu specifických pro prostředí (například *Env Dev.proj*).
+Za prvé jsou hodnoty parametru zájmu definovány jako vlastnosti v souboru projektu konkrétního prostředí (například *ENV-dev. proj*).
 
 [!code-xml[Main](configuring-parameters-for-web-package-deployment/samples/sample4.xml)]
 
 > [!NOTE]
-> Pokyny k přizpůsobení souborů projektu specifických pro prostředí pro prostředí serveru, naleznete v tématu [nakonfigurovat vlastnosti nasazení pro cílové prostředí](../configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment.md).
+> Pokyny k přizpůsobení souborů projektu specifických pro prostředí pro vlastní serverová prostředí najdete v tématu [Konfigurace vlastností nasazení pro cílové prostředí](../configuring-server-environments-for-web-deployment/configuring-deployment-properties-for-a-target-environment.md).
 
-Dále *Publish.proj* import souboru tyto vlastnosti. Protože každý *SetParameters.xml* je přidružené k souboru *. deploy.cmd* souboru a My trváme na soubor projektu pro každé vyvolání *. deploy.cmd* souboru projektu Vytvoří soubor MSBuild *položky* pro každou *. deploy.cmd* souboru a definuje vlastnosti, které vás zajímají jako *metadata položky*.
+Dále soubor *Publish. proj* importuje tyto vlastnosti. Vzhledem k tomu, že každý soubor *SetParameters. XML* je přidružen k souboru *. deploy. cmd* a nakonec chceme, aby soubor projektu vyvolal každý soubor *. deploy. cmd* , soubor projektu vytvoří *položku* MSBuild pro každý soubor *. deploy. cmd* a definuje vlastnosti zájmu jako *Metadata položek*.
 
 [!code-xml[Main](configuring-parameters-for-web-package-deployment/samples/sample5.xml)]
 
 V tomto případě:
 
-- **ParametersXml** metadat hodnota označuje umístění *SetParameters.xml* souboru.
-- **IisWebAppName** hodnota je cesta služby IIS, do které chcete nasadit webovou aplikaci.
-- **MembershipDBConnectionString** hodnotu připojovacího řetězce pro databázi členství a **MembershipDBConnectionName** hodnotu **název** atribut odpovídajícího parametru ve *SetParameters.xml* souboru.
-- **ServiceEndpointValue** hodnota je adresa koncového bodu pro služby WCF na cílovém serveru a **ServiceEndpointParamName** hodnotu atributu název příslušného parametru v *SetParameters.xml* souboru.
+- Hodnota metadat **ParametersXml** označuje umístění souboru *SetParameters. XML* .
+- Hodnota **IisWebAppName** je cesta služby IIS, na kterou chcete nasadit webovou aplikaci.
+- Hodnota **MembershipDBConnectionString** je připojovací řetězec pro databázi členství a hodnota **MembershipDBConnectionName** je atributem **názvu** odpovídajícího parametru v souboru *SetParameters. XML* .
+- Hodnota **ServiceEndpointValue** je adresa koncového bodu pro službu WCF na cílovém serveru a hodnota **ServiceEndpointParamName** je atributem názvu odpovídajícího parametru v souboru *SetParameters. XML* .
 
-Nakonec v *Publish.proj* soubor, **PublishWebPackages** cílit používá **xmlpoke –** úloh k úpravě tyto hodnoty *SetParameters.xml* souboru.
+Nakonec v souboru *Publish. proj* **PublishWebPackages** cíl používá úlohu **XmlPoke –** pro úpravu těchto hodnot v souboru *SetParameters. XML* .
 
 [!code-xml[Main](configuring-parameters-for-web-package-deployment/samples/sample6.xml)]
 
-Můžete si všimnout, že každá **xmlpoke –** úloha určuje čtyři hodnoty atributů:
+Všimnete si, že každá úloha **XmlPoke –** určuje čtyři hodnoty atributu:
 
-- **XmlInputPath** atribut oznamuje úkolu, kde najít soubor, který chcete upravit.
-- **Dotazu** atribut je dotaz XPath, který identifikuje uzel XML, který chcete změnit.
-- **Hodnotu** atribut je nová hodnota chcete vložit do vybraného uzlu XML.
-- **Podmínku** atribut je kritéria, na kterých by měl spustit nebo nepoběží úkolu. V těchto případech podmínka zajistí, že není pokusíte vložit hodnotu null nebo prázdný do *SetParameters.xml* souboru.
+- Atribut **XmlInputPath** informuje úlohu, kde má být nalezen soubor, který chcete upravit.
+- Atribut **dotazu** je dotaz XPath, který IDENTIFIKUJE uzel XML, který chcete změnit.
+- **Hodnota** atributu je nová hodnota, kterou chcete vložit do vybraného uzlu XML.
+- Atribut **Condition** je kritéria, podle kterých se má úloha spustit, nebo není spuštěná. V těchto případech podmínka zajistí, že se do souboru *SetParameters. XML* nepokoušíte vložit hodnotu null nebo prázdnou hodnotu.
 
 ## <a name="conclusion"></a>Závěr
 
-Toto téma popisuje role *SetParameters.xml* souboru a vysvětlení, jak se vygeneruje, když vytváříte projekt webové aplikace. Je vysvětleno, jak můžete parametrizovat další nastavení tak, že přidáte *parameters.xml* soubor do projektu. Také popisuje, jak můžete upravit *SetParameters.xml* souboru jako součást procesu sestavení větší, automatizované, s použitím **xmlpoke –** úloh v souborech projektu.
+Toto téma popisuje roli souboru *SetParameters. XML* a vysvětluje, jak se generuje při sestavování projektu webové aplikace. Vysvětluje, jak můžete parametrizovat další nastavení přidáním souboru *Parameters. XML* do projektu. Také popisuje, jak lze upravit soubor *SetParameters. XML* v rámci většího, automatizovaného procesu sestavení pomocí úlohy **XmlPoke –** v souborech projektu.
 
-Dalším tématu s názvem [nasazení webových balíčků](deploying-web-packages.md), popisuje, jak nasadit webový balíček buď spuštěním *. deploy.cmd* souboru nebo pomocí MSDeploy.exe příkazy přímo. V obou případech můžete zadat vaše *SetParameters.xml* soubor jako parametr nasazení.
+Další téma [nasazení webových balíčků](deploying-web-packages.md)popisuje, jak lze nasadit webový balíček buď spuštěním souboru *. deploy. cmd* nebo pomocí příkazu MSDeploy. exe přímo. V obou případech můžete jako parametr nasazení zadat soubor *SetParameters. XML* .
 
 ## <a name="further-reading"></a>Další čtení
 
-Informace o tom, jak vytvořit webových balíčků naleznete v tématu [sestavení a balení projektů webových aplikací](building-and-packaging-web-application-projects.md). Informace o tom, jak ve skutečnosti nasazení webového balíčku najdete v tématu [nasazení webových balíčků](deploying-web-packages.md). Podrobný názorný postup pro vytvoření *parameters.xml* souborů naleznete v tématu [jak: Použití parametrů ke konfiguraci nastavení když balíček pro nasazení je nainstalován](https://msdn.microsoft.com/library/ff398068.aspx).
+Informace o tom, jak vytvořit webové balíčky, naleznete v tématu [sestavování a balení projektů webových aplikací](building-and-packaging-web-application-projects.md). Pokyny ke skutečnému nasazení webového balíčku najdete v tématu [nasazení webových balíčků](deploying-web-packages.md). Podrobný návod, jak vytvořit soubor *Parameters. XML* , naleznete v tématu [How to: use Parameters to Configure Deployment Settings to When a Package](https://msdn.microsoft.com/library/ff398068.aspx).
 
-Další obecné informace o parametrizaci v nasazení webu, naleznete v tématu [webové nasazení Parametrizace v akci](https://go.microsoft.com/?linkid=9805119) (příspěvek na blogu).
+Obecnější informace o parametrizace v Nasazení webu najdete v tématu [nasazení webu parametrizace v akci](https://go.microsoft.com/?linkid=9805119) (Blogový příspěvek).
 
 > [!div class="step-by-step"]
 > [Předchozí](building-and-packaging-web-application-projects.md)
-> [další](deploying-web-packages.md)
+> [Další](deploying-web-packages.md)
