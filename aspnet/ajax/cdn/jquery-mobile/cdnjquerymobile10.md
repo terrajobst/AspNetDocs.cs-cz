@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-mobile/cdnjquerymobile10
-title: jQuery Mobile 1.0 ve službě Microsoft Ajax CDN | Dokumentace Microsoftu
+title: jQuery Mobile 1,0 ve službě Microsoft Ajax CDN | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,15 +9,15 @@ ms.assetid: f236d9f1-1e1c-47a0-be96-40758bf1c22f
 msc.legacyurl: /ajax/cdn/jquery-mobile/cdnjquerymobile10
 msc.type: content
 ms.openlocfilehash: aba7930d02be04b85c7036da06005e8795da2b75
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59394078"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78563124"
 ---
-# <a name="jquery-mobile-10-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="b6611-102">jQuery Mobile 1.0 ve službě Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="b6611-102">jQuery Mobile 1.0 on the Microsoft Ajax CDN</span></span>
+# <a name="jquery-mobile-10-on-the-microsoft-ajax-cdn"></a><span data-ttu-id="f37b2-102">jQuery Mobile 1.0 ve službě Microsoft Ajax CDN</span><span class="sxs-lookup"><span data-stu-id="f37b2-102">jQuery Mobile 1.0 on the Microsoft Ajax CDN</span></span>
 
-<span data-ttu-id="b6611-103">Knihovna jQuery Mobile 1.0 zahrnuje následující soubory:</span><span class="sxs-lookup"><span data-stu-id="b6611-103">The jQuery Mobile 1.0 library includes the following files:</span></span>
+<span data-ttu-id="f37b2-103">Knihovna jQuery Mobile 1,0 obsahuje následující soubory:</span><span class="sxs-lookup"><span data-stu-id="f37b2-103">The jQuery Mobile 1.0 library includes the following files:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0/jquery.mobile-1.0.js
 - https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.0/jquery.mobile-1.0.min.js

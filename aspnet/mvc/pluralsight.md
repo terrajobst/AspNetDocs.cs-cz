@@ -1,40 +1,40 @@
 ---
 uid: mvc/pluralsight
-title: MVC školicí Video od Pluralsightu | Dokumentace Microsoftu
+title: Výukové video k MVC z Pluralsight | Microsoft Docs
 author: rick-anderson
-description: MVC videa školení od Pluralsightu této bezplatné školicí video bude vám pomůžou začít pracovat s ASP.NET MVC. Zahrnuje všechno od nastavení vývojový...
+description: Výukové video k MVC z Pluralsight toto bezplatné video školení vám umožní začít pracovat s ASP.NET MVC. Pokrývá vše od nastavení vývoje...
 ms.author: riande
 ms.date: 03/09/2011
 ms.assetid: 87612fe1-258c-4f50-88d8-c3047dec3f14
 msc.legacyurl: /mvc/pluralsight
 msc.type: content
 ms.openlocfilehash: 200e6b8cf8c32fbf70b383fc02e2fd74cbc313e5
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59419870"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78537917"
 ---
-# <a name="mvc-video-training-from-pluralsight"></a><span data-ttu-id="e1796-104">Videokurz o MVC od společnosti Pluralsight</span><span class="sxs-lookup"><span data-stu-id="e1796-104">MVC Video Training from Pluralsight</span></span>
+# <a name="mvc-video-training-from-pluralsight"></a><span data-ttu-id="96720-104">Videokurz o MVC od společnosti Pluralsight</span><span class="sxs-lookup"><span data-stu-id="96720-104">MVC Video Training from Pluralsight</span></span>
 
-### <a name="videos"></a><span data-ttu-id="e1796-105">Videa</span><span class="sxs-lookup"><span data-stu-id="e1796-105">Videos</span></span>
+### <a name="videos"></a><span data-ttu-id="96720-105">Videa</span><span class="sxs-lookup"><span data-stu-id="96720-105">Videos</span></span>
 
-- [<span data-ttu-id="e1796-106">Úvod a požadavky</span><span class="sxs-lookup"><span data-stu-id="e1796-106">Introduction and Prerequisites</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m1-introduction&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [<span data-ttu-id="e1796-107">Specifikace OWIN a sada komponent Katana</span><span class="sxs-lookup"><span data-stu-id="e1796-107">OWIN and Katana</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m2-katana&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [<span data-ttu-id="e1796-108">Identity a zabezpečení</span><span class="sxs-lookup"><span data-stu-id="e1796-108">Identity and Security</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m3-identity&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [<span data-ttu-id="e1796-109">Bootstrap</span><span class="sxs-lookup"><span data-stu-id="e1796-109">Bootstrap</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m4-bootstrap&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [<span data-ttu-id="e1796-110">Webové rozhraní API 2</span><span class="sxs-lookup"><span data-stu-id="e1796-110">Web API 2</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m5-webapi2&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [<span data-ttu-id="e1796-111">Entity Framework 6</span><span class="sxs-lookup"><span data-stu-id="e1796-111">Entity Framework 6</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m6-ef6&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [<span data-ttu-id="e1796-112">SignalR</span><span class="sxs-lookup"><span data-stu-id="e1796-112">SignalR</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m7-signalr&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
-- [<span data-ttu-id="e1796-113">Webové nástroje pro vývojáře a Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="e1796-113">Web Developer Tools and Visual Studio 2013</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m8-visualstudio&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [<span data-ttu-id="96720-106">Úvod a požadavky</span><span class="sxs-lookup"><span data-stu-id="96720-106">Introduction and Prerequisites</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m1-introduction&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [<span data-ttu-id="96720-107">Specifikace OWIN a sada komponent Katana</span><span class="sxs-lookup"><span data-stu-id="96720-107">OWIN and Katana</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m2-katana&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [<span data-ttu-id="96720-108">Identita a zabezpečení</span><span class="sxs-lookup"><span data-stu-id="96720-108">Identity and Security</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m3-identity&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [<span data-ttu-id="96720-109">Bootstrap</span><span class="sxs-lookup"><span data-stu-id="96720-109">Bootstrap</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m4-bootstrap&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [<span data-ttu-id="96720-110">Webové rozhraní API 2</span><span class="sxs-lookup"><span data-stu-id="96720-110">Web API 2</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m5-webapi2&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [<span data-ttu-id="96720-111">Entity Framework 6</span><span class="sxs-lookup"><span data-stu-id="96720-111">Entity Framework 6</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m6-ef6&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [<span data-ttu-id="96720-112">SignalR</span><span class="sxs-lookup"><span data-stu-id="96720-112">SignalR</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m7-signalr&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
+- [<span data-ttu-id="96720-113">Webové Vývojářské nástroje a Visual Studio 2013</span><span class="sxs-lookup"><span data-stu-id="96720-113">Web Developer Tools and Visual Studio 2013</span></span>](https://pluralsight.com/training/Player?author=scott-allen&name=aspdotnet-mvc5-fundamentals-m8-visualstudio&mode=live&clip=0&course=aspdotnet-mvc5-fundamentals)
 
-> <span data-ttu-id="e1796-114">Tento kurz MVC 5 zaznamenaných K. Scott Allen pro Pluralsight poskytuje báječný způsob, jak rychle získejte si přehled na nejnovější verzi technologie ASP.NET MVC.</span><span class="sxs-lookup"><span data-stu-id="e1796-114">This MVC 5 course recorded by K. Scott Allen for Pluralsight provides a fantastic way to quickly get up to speed on the latest release of ASP.NET MVC.</span></span> <span data-ttu-id="e1796-115">Styl Scottova prezentace je snadné sledovat a technicky poutavé a jsou výborné kurzu formátu, přehrávače videa a celkové tempo.</span><span class="sxs-lookup"><span data-stu-id="e1796-115">Scott's presentation style is easy to follow and technically compelling, and the course format, video player, and overall cadence are really great.</span></span> <span data-ttu-id="e1796-116">Plus – je to zdarma, proto neexistuje žádný excuse není naučit MVC 5 ještě dnes!</span><span class="sxs-lookup"><span data-stu-id="e1796-116">Plus – it's free, so there's no excuse not to learn MVC 5 today!</span></span>
+> <span data-ttu-id="96720-114">Tento kurz MVC 5 zaznamenaný pomocí K. Scott Allen pro Pluralsight poskytuje fantastická způsob, jak rychle získat nejnovější verzi služby ASP.NET MVC.</span><span class="sxs-lookup"><span data-stu-id="96720-114">This MVC 5 course recorded by K. Scott Allen for Pluralsight provides a fantastic way to quickly get up to speed on the latest release of ASP.NET MVC.</span></span> <span data-ttu-id="96720-115">Styl prezentace Scott je snadno použitelný a technicky přesvědčivý a formát kurzu, přehrávač videa a celkový tempo jsou opravdu skvělé.</span><span class="sxs-lookup"><span data-stu-id="96720-115">Scott's presentation style is easy to follow and technically compelling, and the course format, video player, and overall cadence are really great.</span></span> <span data-ttu-id="96720-116">Plus – je zdarma, takže není k dispozici žádné výmluvou MVC 5 ještě dnes!</span><span class="sxs-lookup"><span data-stu-id="96720-116">Plus – it's free, so there's no excuse not to learn MVC 5 today!</span></span>
 >
-> <span data-ttu-id="e1796-117">&mdash;Scott Guthrie, výkonný viceprezident, Cloud od Microsoftu a Enterprise skupiny, Microsoft</span><span class="sxs-lookup"><span data-stu-id="e1796-117">&mdash;Scott Guthrie, Executive Vice President, Microsoft Cloud and Enterprise group, Microsoft</span></span>
+> <span data-ttu-id="96720-117">&mdash;Scott Guthrie, výkonný viceprezident, Microsoft Cloud a skupina Enterprise, Microsoft</span><span class="sxs-lookup"><span data-stu-id="96720-117">&mdash;Scott Guthrie, Executive Vice President, Microsoft Cloud and Enterprise group, Microsoft</span></span>
 
-![pluralsight-logo-playbutton](pluralsight/_static/image1.png)
+![Pluralsight – logo – playButton](pluralsight/_static/image1.png)
 
-<span data-ttu-id="e1796-119">Odemknout přístup na 3 000 + vývoje, IT a creative kurzů, které můžete sledovat, kdykoli a kdekoli.</span><span class="sxs-lookup"><span data-stu-id="e1796-119">Unlock access to 3,000+ dev, IT, and creative courses that you can watch anytime, anywhere.</span></span>
+<span data-ttu-id="96720-119">Odemkněte přístup k 3000 a vývojům, IT a kreativním kurzům, které můžete sledovat kdykoli a kdekoli.</span><span class="sxs-lookup"><span data-stu-id="96720-119">Unlock access to 3,000+ dev, IT, and creative courses that you can watch anytime, anywhere.</span></span>
 
-* [<span data-ttu-id="e1796-120">ASP.NET MVC 5 Fundamentals</span><span class="sxs-lookup"><span data-stu-id="e1796-120">ASP.NET MVC 5 Fundamentals</span></span>](https://www.pluralsight.com/courses/aspdotnet-mvc5-fundamentals)
-* [<span data-ttu-id="e1796-121">Pluralsight – ceny a plány</span><span class="sxs-lookup"><span data-stu-id="e1796-121">Pluralsight Pricing and plans</span></span>](https://www.pluralsight.com/pricing)
+* [<span data-ttu-id="96720-120">ASP.NET MVC 5 – základy</span><span class="sxs-lookup"><span data-stu-id="96720-120">ASP.NET MVC 5 Fundamentals</span></span>](https://www.pluralsight.com/courses/aspdotnet-mvc5-fundamentals)
+* [<span data-ttu-id="96720-121">Ceny a plány Pluralsight</span><span class="sxs-lookup"><span data-stu-id="96720-121">Pluralsight Pricing and plans</span></span>](https://www.pluralsight.com/pricing)

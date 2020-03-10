@@ -1,30 +1,30 @@
 ---
 uid: mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs/index
-title: Začínáme s ASP.NET MVC 3 (C#) | Dokumentace Microsoftu
+title: Začínáme s ASP.NET MVC 3 (C#) | Microsoft Docs
 author: rick-anderson
-description: Základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express pomocí jazyka C#.
+description: Základy vytváření webových aplikací MVC s ASP.NET pomocí sady Microsoft Visual Web Developer 2010 Express using C#.
 ms.author: riande
 ms.date: 04/12/2012
 ms.assetid: 807b50ae-2e7c-450c-b559-e04bd56457bd
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-aspnet-mvc3/cs
 msc.type: chapter
 ms.openlocfilehash: 7dcb210dfa5aef51188f2a5dd2dd85c56a475217
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130113"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78540675"
 ---
-# <a name="getting-started-with-aspnet-mvc-3-c"></a><span data-ttu-id="cea1a-103">Začínáme s ASP.NET MVC 3 (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-103">Getting Started with ASP.NET MVC 3 (C#)</span></span>
+# <a name="getting-started-with-aspnet-mvc-3-c"></a><span data-ttu-id="dd2af-103">Začínáme s ASP.NET MVC 3 (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-103">Getting Started with ASP.NET MVC 3 (C#)</span></span>
 
-> <span data-ttu-id="cea1a-104">Základy vytváření ASP.NET MVC webovou aplikaci pomocí Microsoft Visual Web Developer 2010 Express pomocí jazyka C#.</span><span class="sxs-lookup"><span data-stu-id="cea1a-104">The basics of building an ASP.NET MVC Web application using Microsoft Visual Web Developer 2010 Express using C#.</span></span>
+> <span data-ttu-id="dd2af-104">Základy vytváření webových aplikací MVC s ASP.NET pomocí sady Microsoft Visual Web Developer 2010 Express using C#.</span><span class="sxs-lookup"><span data-stu-id="dd2af-104">The basics of building an ASP.NET MVC Web application using Microsoft Visual Web Developer 2010 Express using C#.</span></span>
 
-- [<span data-ttu-id="cea1a-105">Úvod do ASP.NET MVC 3 (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-105">Intro to ASP.NET MVC 3 (C#)</span></span>](intro-to-aspnet-mvc-3.md)
-- [<span data-ttu-id="cea1a-106">Přidání kontroleru (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-106">Adding a Controller (C#)</span></span>](adding-a-controller.md)
-- [<span data-ttu-id="cea1a-107">Přidání zobrazení (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-107">Adding a View (C#)</span></span>](adding-a-view.md)
-- [<span data-ttu-id="cea1a-108">Přidání modelu (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-108">Adding a Model (C#)</span></span>](adding-a-model.md)
-- [<span data-ttu-id="cea1a-109">Přístup k datům modelu z kontroleru (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-109">Accessing your Model's Data from a Controller (C#)</span></span>](accessing-your-models-data-from-a-controller.md)
-- [<span data-ttu-id="cea1a-110">Zkoumání metod Edit a zobrazení pro úpravy (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-110">Examining the Edit Methods and Edit View (C#)</span></span>](examining-the-edit-methods-and-edit-view.md)
-- [<span data-ttu-id="cea1a-111">Přidání nového pole do modelu a tabulky Movie (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-111">Adding a New Field to the Movie Model and Table (C#)</span></span>](adding-a-new-field.md)
-- [<span data-ttu-id="cea1a-112">Přidání ověření do modelu (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-112">Adding Validation to the Model (C#)</span></span>](adding-validation-to-the-model.md)
-- [<span data-ttu-id="cea1a-113">Vylepšení podrobností a metod Delete (C#)</span><span class="sxs-lookup"><span data-stu-id="cea1a-113">Improving the Details and Delete Methods (C#)</span></span>](improving-the-details-and-delete-methods.md)
+- [<span data-ttu-id="dd2af-105">Úvod do ASP.NET MVC 3 (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-105">Intro to ASP.NET MVC 3 (C#)</span></span>](intro-to-aspnet-mvc-3.md)
+- [<span data-ttu-id="dd2af-106">Přidání kontroleru (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-106">Adding a Controller (C#)</span></span>](adding-a-controller.md)
+- [<span data-ttu-id="dd2af-107">Přidání zobrazení (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-107">Adding a View (C#)</span></span>](adding-a-view.md)
+- [<span data-ttu-id="dd2af-108">Přidání modelu (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-108">Adding a Model (C#)</span></span>](adding-a-model.md)
+- [<span data-ttu-id="dd2af-109">Přístup k datům modelu z kontroleru (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-109">Accessing your Model's Data from a Controller (C#)</span></span>](accessing-your-models-data-from-a-controller.md)
+- [<span data-ttu-id="dd2af-110">Zkoumání metod Edit a zobrazení pro úpravy (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-110">Examining the Edit Methods and Edit View (C#)</span></span>](examining-the-edit-methods-and-edit-view.md)
+- [<span data-ttu-id="dd2af-111">Přidání nového pole do modelu a tabulky Movie (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-111">Adding a New Field to the Movie Model and Table (C#)</span></span>](adding-a-new-field.md)
+- [<span data-ttu-id="dd2af-112">Přidání ověření do modelu (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-112">Adding Validation to the Model (C#)</span></span>](adding-validation-to-the-model.md)
+- [<span data-ttu-id="dd2af-113">Vylepšení podrobností a metod Delete (C#)</span><span class="sxs-lookup"><span data-stu-id="dd2af-113">Improving the Details and Delete Methods (C#)</span></span>](improving-the-details-and-delete-methods.md)

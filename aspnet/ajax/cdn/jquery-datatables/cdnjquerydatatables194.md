@@ -1,6 +1,6 @@
 ---
 uid: ajax/cdn/jquery-datatables/cdnjquerydatatables194
-title: jQuery DataTables otázku 1.9.4 | Dokumentace Microsoftu
+title: 1\.9.4Y jQuery DataTables | Microsoft Docs
 author: rick-anderson
 description: ''
 ms.author: riande
@@ -9,15 +9,15 @@ ms.assetid: f117b38e-38b9-4f3c-911b-21c1621a7797
 msc.legacyurl: /ajax/cdn/jquery-datatables/cdnjquerydatatables194
 msc.type: content
 ms.openlocfilehash: 8d5bf3951cbdbfa6b872b6031bdc454b015d4c80
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59383366"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78563208"
 ---
-# <a name="jquery-datatables-194"></a><span data-ttu-id="5dc87-102">jQuery DataTables 1.9.4</span><span class="sxs-lookup"><span data-stu-id="5dc87-102">jQuery DataTables 1.9.4</span></span>
+# <a name="jquery-datatables-194"></a><span data-ttu-id="eddf9-102">jQuery DataTables 1.9.4</span><span class="sxs-lookup"><span data-stu-id="eddf9-102">jQuery DataTables 1.9.4</span></span>
 
-<span data-ttu-id="5dc87-103">Následující soubory pro architekturu jQuery DataTables moduly plug-in jsou hostované v síti CDN:</span><span class="sxs-lookup"><span data-stu-id="5dc87-103">The following files for the jQuery DataTables plugins are hosted on the CDN:</span></span>
+<span data-ttu-id="eddf9-103">Následující soubory pro moduly plug-in jQuery DataTables jsou hostovány v CDN:</span><span class="sxs-lookup"><span data-stu-id="eddf9-103">The following files for the jQuery DataTables plugins are hosted on the CDN:</span></span>
 
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.js
 - https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js

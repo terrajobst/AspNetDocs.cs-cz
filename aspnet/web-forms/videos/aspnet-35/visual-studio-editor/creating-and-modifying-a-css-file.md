@@ -1,27 +1,27 @@
 ---
 uid: web-forms/videos/aspnet-35/visual-studio-editor/creating-and-modifying-a-css-file
-title: Vytváření a úpravy souboru CSS | Dokumentace Microsoftu
+title: Vytvoření a úprava souboru CSS | Microsoft Docs
 author: tmiranda
-description: Toto video představuje funkce šablon stylů CSS stylu sady Visual Studio 2008. Funkce šablon stylů CSS Visual Studio 2008 usnadňují vytváření šablony stylů...
+description: V tomto videu se seznámíte s funkcemi CSS (Cascading Style Sheet) sady Visual Studio 2008. Funkce šablon stylů CSS sady Visual Studio 2008 usnadňují vytváření šablon stylů a...
 ms.author: riande
 ms.date: 11/15/2007
 ms.assetid: e7c3b221-87ce-444e-9106-bb0609665009
 msc.legacyurl: /web-forms/videos/aspnet-35/visual-studio-editor/creating-and-modifying-a-css-file
 msc.type: video
 ms.openlocfilehash: 050c328a9a73226124f7545d804fe9729aab4176
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398407"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78572959"
 ---
-# <a name="creating-and-modifying-a-css-file"></a><span data-ttu-id="b4672-104">Vytvoření a úpravy souboru CSS</span><span class="sxs-lookup"><span data-stu-id="b4672-104">Creating and Modifying a CSS File</span></span>
+# <a name="creating-and-modifying-a-css-file"></a><span data-ttu-id="9af4f-104">Vytvoření a úpravy souboru CSS</span><span class="sxs-lookup"><span data-stu-id="9af4f-104">Creating and Modifying a CSS File</span></span>
 
-<span data-ttu-id="b4672-105">by [Todd Miranda](https://github.com/tmiranda)</span><span class="sxs-lookup"><span data-stu-id="b4672-105">by [Todd Miranda](https://github.com/tmiranda)</span></span>
+<span data-ttu-id="9af4f-105">od [Todd Miranda](https://github.com/tmiranda)</span><span class="sxs-lookup"><span data-stu-id="9af4f-105">by [Todd Miranda](https://github.com/tmiranda)</span></span>
 
-<span data-ttu-id="b4672-106">Toto video představuje funkce šablon stylů CSS stylu sady Visual Studio 2008.</span><span class="sxs-lookup"><span data-stu-id="b4672-106">This video introduces the cascading style sheet (CSS) features of Visual Studio 2008.</span></span> <span data-ttu-id="b4672-107">Funkce šablon stylů CSS Visual Studio 2008 usnadňují vytváření šablony stylů a styly prostřednictvím vlastnosti stylu rozhraní.</span><span class="sxs-lookup"><span data-stu-id="b4672-107">Visual Studio 2008's CSS features make it easy to create style sheets and styles through a property style interface.</span></span> <span data-ttu-id="b4672-108">Tím se odebere vývojář z museli potýkat se podrobnosti implementace šablon stylů CSS.</span><span class="sxs-lookup"><span data-stu-id="b4672-108">This removes the developer from having to deal with the implementation details of CSS.</span></span>
+<span data-ttu-id="9af4f-106">V tomto videu se seznámíte s funkcemi CSS (Cascading Style Sheet) sady Visual Studio 2008.</span><span class="sxs-lookup"><span data-stu-id="9af4f-106">This video introduces the cascading style sheet (CSS) features of Visual Studio 2008.</span></span> <span data-ttu-id="9af4f-107">Funkce šablon stylů CSS sady Visual Studio 2008 usnadňují vytváření šablon stylů a stylů prostřednictvím rozhraní stylu vlastností.</span><span class="sxs-lookup"><span data-stu-id="9af4f-107">Visual Studio 2008's CSS features make it easy to create style sheets and styles through a property style interface.</span></span> <span data-ttu-id="9af4f-108">Tím se vývojář nemusel zabývat podrobnostmi o implementaci šablon stylů CSS.</span><span class="sxs-lookup"><span data-stu-id="9af4f-108">This removes the developer from having to deal with the implementation details of CSS.</span></span>
 
-[<span data-ttu-id="b4672-109">&#9654;Podívejte se na video (15 minut)</span><span class="sxs-lookup"><span data-stu-id="b4672-109">&#9654; Watch video (15 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-and-modifying-a-css-file)
+[<span data-ttu-id="9af4f-109">&#9654;Sledovat video (15 minut)</span><span class="sxs-lookup"><span data-stu-id="9af4f-109">&#9654; Watch video (15 minutes)</span></span>](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/creating-and-modifying-a-css-file)
 
 > [!div class="step-by-step"]
-> [<span data-ttu-id="b4672-110">Předchozí</span><span class="sxs-lookup"><span data-stu-id="b4672-110">Previous</span></span>](quick-tour-of-the-visual-studio-2008-integrated-development-environment.md)
+> [<span data-ttu-id="9af4f-110">Předchozí</span><span class="sxs-lookup"><span data-stu-id="9af4f-110">Previous</span></span>](quick-tour-of-the-visual-studio-2008-integrated-development-environment.md)

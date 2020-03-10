@@ -1,32 +1,32 @@
 ---
 uid: single-page-application/index
-title: ASP.NET jedné stránce aplikace | Dokumentace Microsoftu
+title: ASP.NET aplikace s jednou stránkou | Microsoft Docs
 author: rick-anderson
-description: Stažení aktualizace 2012 Fall technologie ASP.NET a mít lepší začátku do konce pro vytváření aplikací s významnou interakce na straně klienta pomocí jazyka JavaScript...
+description: Stáhněte si ASP.NET aktualizace Update 2012 a vylepšete ucelené prostředí pro vytváření aplikací s významnými interakcemi na straně klienta pomocí JavaScrip...
 ms.author: riande
 ms.date: 11/14/2012
 ms.assetid: 4760328c-3d73-4757-a36f-ab80a5b3f611
 msc.legacyurl: /single-page-application
 msc.type: categoryindex
 ms.openlocfilehash: 74ebdc39a81d31fb3c1ef3e5bab1857915cdc247
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400932"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78558252"
 ---
-# <a name="aspnet-single-page-application"></a><span data-ttu-id="9d326-103">ASP.NET jedním jednostránková aplikace</span><span class="sxs-lookup"><span data-stu-id="9d326-103">ASP.NET Single Page Application</span></span>
+# <a name="aspnet-single-page-application"></a><span data-ttu-id="0b7d0-103">ASP.NET aplikace s jednou stránkou</span><span class="sxs-lookup"><span data-stu-id="0b7d0-103">ASP.NET Single Page Application</span></span>
 
-- [<span data-ttu-id="9d326-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="9d326-104">Overview</span></span>](overview/index.md)
+- [<span data-ttu-id="0b7d0-104">Přehled</span><span class="sxs-lookup"><span data-stu-id="0b7d0-104">Overview</span></span>](overview/index.md)
 
-    - [<span data-ttu-id="9d326-105">Úvod</span><span class="sxs-lookup"><span data-stu-id="9d326-105">Introduction</span></span>](overview/introduction/index.md)
+    - [<span data-ttu-id="0b7d0-105">Úvod</span><span class="sxs-lookup"><span data-stu-id="0b7d0-105">Introduction</span></span>](overview/introduction/index.md)
 
-        - [<span data-ttu-id="9d326-106">Jednostránková aplikace: Šablona KnockoutJS</span><span class="sxs-lookup"><span data-stu-id="9d326-106">Single Page Application: KnockoutJS template</span></span>](overview/introduction/knockoutjs-template.md)
-        - [<span data-ttu-id="9d326-107">Znáte jiné knihovny než Knockout?</span><span class="sxs-lookup"><span data-stu-id="9d326-107">Know a library other than Knockout?</span></span>](overview/introduction/other-libraries.md)
-    - [<span data-ttu-id="9d326-108">Šablony</span><span class="sxs-lookup"><span data-stu-id="9d326-108">Templates</span></span>](overview/templates/index.md)
+        - [<span data-ttu-id="0b7d0-106">Jednostránková aplikace: šablona KnockoutJS</span><span class="sxs-lookup"><span data-stu-id="0b7d0-106">Single Page Application: KnockoutJS template</span></span>](overview/introduction/knockoutjs-template.md)
+        - [<span data-ttu-id="0b7d0-107">Znáte jiné knihovny než Knockout?</span><span class="sxs-lookup"><span data-stu-id="0b7d0-107">Know a library other than Knockout?</span></span>](overview/introduction/other-libraries.md)
+    - [<span data-ttu-id="0b7d0-108">Šablony</span><span class="sxs-lookup"><span data-stu-id="0b7d0-108">Templates</span></span>](overview/templates/index.md)
 
-        - [<span data-ttu-id="9d326-109">Šablona Backbone</span><span class="sxs-lookup"><span data-stu-id="9d326-109">Backbone Template</span></span>](overview/templates/backbonejs-template.md)
-        - [<span data-ttu-id="9d326-110">Šablona Breeze/Angular</span><span class="sxs-lookup"><span data-stu-id="9d326-110">Breeze/Angular template</span></span>](overview/templates/breezeangular-template.md)
-        - [<span data-ttu-id="9d326-111">Šablona Breeze/Knockout</span><span class="sxs-lookup"><span data-stu-id="9d326-111">Breeze/Knockout template</span></span>](overview/templates/breezeknockout-template.md)
-        - [<span data-ttu-id="9d326-112">Šablona EmberJS</span><span class="sxs-lookup"><span data-stu-id="9d326-112">EmberJS template</span></span>](overview/templates/emberjs-template.md)
-        - [<span data-ttu-id="9d326-113">Šablona Hot Towel</span><span class="sxs-lookup"><span data-stu-id="9d326-113">Hot Towel template</span></span>](overview/templates/hottowel-template.md)
+        - [<span data-ttu-id="0b7d0-109">Šablona Backbone</span><span class="sxs-lookup"><span data-stu-id="0b7d0-109">Backbone Template</span></span>](overview/templates/backbonejs-template.md)
+        - [<span data-ttu-id="0b7d0-110">Šablona Breeze/Angular</span><span class="sxs-lookup"><span data-stu-id="0b7d0-110">Breeze/Angular template</span></span>](overview/templates/breezeangular-template.md)
+        - [<span data-ttu-id="0b7d0-111">Šablona Breeze/Knockout</span><span class="sxs-lookup"><span data-stu-id="0b7d0-111">Breeze/Knockout template</span></span>](overview/templates/breezeknockout-template.md)
+        - [<span data-ttu-id="0b7d0-112">Šablona EmberJS</span><span class="sxs-lookup"><span data-stu-id="0b7d0-112">EmberJS template</span></span>](overview/templates/emberjs-template.md)
+        - [<span data-ttu-id="0b7d0-113">Šablona Hot Towel</span><span class="sxs-lookup"><span data-stu-id="0b7d0-113">Hot Towel template</span></span>](overview/templates/hottowel-template.md)
