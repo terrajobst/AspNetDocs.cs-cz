@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-hovermenu-extender
-title: '[Postup:] Použít technologie ASP.NET AJAX – Extender HoverMenu? | Dokumenty Microsoft'
+title: '[Postupy:] Používáte ASP.NET AJAX nabídky hovermenu Extender? | Dokumenty Microsoft'
 author: JoeStagner
-description: Dozvíte se víc o použití nabídky HoverMenu rozšiřující ovládací prvek k vytvoření kontextové nabídky, která se zobrazí pokaždé, když uživatel najede myší nad prvek jsme...
+description: Zjistěte, jak používat ovládací prvek nabídky hovermenu pro rozšíření k vytvoření kontextové nabídky, která se zobrazí pokaždé, když uživatel najede myší na prvek my...
 ms.author: riande
 ms.date: 01/31/2007
 ms.assetid: 61086ed8-ad8b-499a-84d2-5b6b68ede15a
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-hovermenu-extender
 msc.type: video
 ms.openlocfilehash: b01b64e0a1b798f0ac7a487fc32b8430f82dae90
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59414709"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78586623"
 ---
-# <a name="how-do-i-use-the-aspnet-ajax-hovermenu-extender"></a>[Postup:] Použít technologie ASP.NET AJAX – Extender HoverMenu?
+# <a name="how-do-i-use-the-aspnet-ajax-hovermenu-extender"></a>[Postupy:] Používáte ASP.NET AJAX nabídky hovermenu Extender?
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-Objevte, jak použít rozšiřující ovládací prvek nabídky HoverMenu k vytvoření kontextové nabídky, která se zobrazí pokaždé, když uživatel najede myší nad prvkem webové stránky.
+Zjistěte, jak používat ovládací prvek nabídky hovermenu pro rozšíření k vytvoření kontextové nabídky, která se zobrazí pokaždé, když uživatel najede myší na prvek webové stránky.
 
-[&#9654;Podívejte se na video (7 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-hovermenu-extender)
+[&#9654;Sledovat video (7 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-hovermenu-extender)
 
 > [!div class="step-by-step"]
 > [Předchozí](how-do-i-use-the-aspnet-ajax-filteredtextbox-extender.md)
-> [další](how-do-i-use-the-aspnet-ajax-togglebutton-extender.md)
+> [Další](how-do-i-use-the-aspnet-ajax-togglebutton-extender.md)

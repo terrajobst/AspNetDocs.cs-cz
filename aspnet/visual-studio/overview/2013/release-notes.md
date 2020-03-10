@@ -9,11 +9,11 @@ ms.assetid: 08815768-2702-42ae-ae85-0a59934a11d1
 msc.legacyurl: /visual-studio/overview/2013/release-notes
 msc.type: authoredcontent
 ms.openlocfilehash: d8af9c8e7ee1316a5eac90c5959d07c628154e09
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600441"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78557930"
 ---
 # <a name="aspnet-and-web-tools-for-visual-studio-2013-release-notes"></a>ASP.NET a webové nástroje pro Visual Studio 2013 – poznámky k verzi
 
@@ -131,7 +131,7 @@ Visual Studio 2013 také přináší CoffeeScript i méně editorů. Editor LESS
 
 V Visual Studio 2013 se sadou Azure SDK pro .NET 2,2 můžete pomocí **Průzkumník serveru** komunikovat přímo se vzdálenými webovými aplikacemi. Můžete se přihlásit ke svému účtu Azure, vytvářet nové webové aplikace, konfigurovat aplikace, zobrazovat protokoly v reálném čase a další. Po vydání sady SDK 2,2 budete moci spustit v režimu ladění vzdáleně v Azure. Většina nových funkcí pro Azure App Service Web Apps v sadě Visual Studio 2012 funguje i při instalaci aktuální verze sady Azure SDK pro .NET.
 
-Další informace naleznete v následujících zdrojích:
+Další informace najdete v následujících zdrojích:
 
 - [Vytvoření webové aplikace v ASP.NET v Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/)
 - [Řešení potíží s webovou aplikací v Azure App Service pomocí sady Visual Studio](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
@@ -280,7 +280,7 @@ Vzhledem k tomu, že objekt zabezpečení pro požadavek se předá na **vlákno
 
 Díky dalšímu skvělému příspěvku z Brock Allen teď ASP.NET nyní plně podporuje sdílení žádostí mezi zdroji (CORS).
 
-Zabezpečení prohlížeče brání webové stránce v provádění požadavků AJAX na jinou doménu. [CORS](http://www.w3.org/TR/cors/) je standard W3C, který umožňuje serveru zmírnit zásady stejného zdroje. Při použití CORS může server explicitně umožnit některé žádosti o více zdrojů a současně odmítat jiné.
+Zabezpečení prohlížečů brání webovým stránkám v odesílání požadavků AJAX na jinou doménu. [CORS](http://www.w3.org/TR/cors/) je standard W3C, který umožňuje serveru zmírnit zásady stejného zdroje. Při použití CORS může server explicitně umožnit některé žádosti o více zdrojů a současně odmítat jiné.
 
 Webové rozhraní API 2 teď podporuje CORS, včetně automatického zpracování požadavků na kontrolu před výstupem. Další informace najdete v tématu [Povolení žádostí mezi zdroji v ASP.NET webovém rozhraní API](../../../web-api/overview/security/enabling-cross-origin-requests-in-web-api.md).
 
@@ -392,10 +392,10 @@ Pro klienty se systémy iOS a Android se přidala podpora pomocí komponent Mono
 
 Pro lepší vývoj pro různé platformy se klienti Silverlight, WinRT a Windows Phone nahradili jedním přenosným klientem rozhraní .NET, který podporuje tyto platformy:
 
-- NET 4,5
+- NET 4.5
 - Silverlight 5
 - WinRT (.NET pro aplikace pro Windows Store)
-- Windows Phone 8
+- Windows Phone 8
 
 <a id="selfhost"></a>
 
@@ -597,7 +597,7 @@ Tato část popisuje známé problémy a zásadní změny ASP.NET and Web Tools 
 - [Nové obnovení balíčku nefunguje s WIX projekty](https://nuget.codeplex.com/workitem/3598) – bude opraveno v nadcházejícím stažení NuGet. exe a aktualizace [balíčku NuGet. CommandLine](http://www.nuget.org/packages/NuGet.CommandLine/) .
 - [Automatické obnovení balíčku nefunguje pro projekty ve složce řešení](https://nuget.codeplex.com/workitem/3625) – bude opraveno v NuGet 2,8.
 
-### <a name="aspnet-web-api"></a>Rozhraní ASP.NET Web API
+### <a name="aspnet-web-api"></a>Webové rozhraní API ASP.NET
 
 1. `ODataQueryOptions<T>.ApplyTo(IQueryable)` nevrací `IQueryable<T>` vždy, protože jsme přidali podporu pro `$select` a `$expand`.
 
@@ -624,7 +624,7 @@ Tato část popisuje známé problémy a zásadní změny ASP.NET and Web Tools 
 
 1. Pokud máte zobrazení, která se AntiForgerToken ověřováním, při použití MVC5 a OrgAuth může při odesílání dat do zobrazení docházet k následující chybě:
 
-    **Chyba**:
+    **Chyba:**
 
     *Chyba serveru v aplikaci/*
 
@@ -659,7 +659,7 @@ Tato část popisuje známé problémy a zásadní změny ASP.NET and Web Tools 
 
     `@Html.EditorFor(person => person.Age)`
 
-    Na:
+    Komu:
 
     `@Html.TextBoxFor(person => person.Age)`
 4. ASP.NET MVC 5 už nepodporuje částečnou důvěryhodnost. Projekty, které propojuje s binárními soubory MVC nebo WebAPI, by měly odebrat atribut [atributy SecurityTransparent](https://msdn.microsoft.com/library/system.security.securitytransparentattribute.aspx) a atribut [AllowPartiallyTrustedCallers](https://msdn.microsoft.com/library/system.security.allowpartiallytrustedcallersattribute.aspx) . Odebrání těchto atributů odstraní chyby kompilátoru, například následující.

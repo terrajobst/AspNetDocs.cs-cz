@@ -9,11 +9,11 @@ ms.assetid: d34f90a1-6de3-482a-a326-f87fdcbaaaff
 msc.legacyurl: /mvc/overview/older-versions-1/views/creating-page-layouts-with-view-master-pages-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 97c0ecf1953cc54030656dd710a5150243877110
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74593958"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78541221"
 ---
 # <a name="creating-page-layouts-with-view-master-pages-vb"></a>Vytvoření rozložení stránek pomocí stránek předlohy pro zobrazení (VB)
 
@@ -123,7 +123,7 @@ Stránka zobrazení obsahu v seznamu 5 přepíše značku `<asp:ContentPlaceHold
 
 [!code-aspx[Main](creating-page-layouts-with-view-master-pages-vb/samples/sample6.aspx)]
 
-### <a name="summary"></a>Přehled
+### <a name="summary"></a>Souhrn
 
 V tomto kurzu jste získali základní informace o zobrazení stránek předlohy a zobrazení stránek obsahu. Zjistili jste, jak vytvořit nové stránky předlohy zobrazení a vytvořit zobrazení stránek obsahu na základě nich. Prozkoumali jsme také, jak můžete upravit obsah stránky předlohy zobrazení z konkrétní stránky obsahu zobrazení.
 

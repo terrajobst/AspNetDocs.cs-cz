@@ -1,66 +1,66 @@
 ---
 uid: mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
-title: Přidávání metody Create a vytvořit zobrazení | Dokumentace Microsoftu
+title: Přidání metody Create a zobrazení vytvořit | Microsoft Docs
 author: shanselman
-description: Toto je kurz pro začátečníky, který vysvětluje základy ASP.NET MVC. Vytvořte jednoduchou webovou aplikaci, která čte a zapisuje z databáze.
+description: Toto je úvodní kurz pro začátečníky, který představuje základy ASP.NET MVC. Vytvořte jednoduchou webovou aplikaci, která čte a zapisuje z databáze.
 ms.author: riande
 ms.date: 08/14/2010
 ms.assetid: a3a90963-0286-4fa0-9b3d-c230cc18b0a3
 msc.legacyurl: /mvc/overview/older-versions-1/getting-started-with-mvc/getting-started-with-mvc-part6
 msc.type: authoredcontent
 ms.openlocfilehash: 05a281720f76b107fe8d902ef60d5d2e72af3ef5
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65122901"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78543657"
 ---
 # <a name="adding-a-create-method-and-create-view"></a>Přidání metody Create a zobrazení Create
 
-podle [Scott Hanselman](https://github.com/shanselman)
+[Scott Hanselman](https://github.com/shanselman)
 
-> Toto je kurz pro začátečníky, který vysvětluje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Přejděte [výukové centrum pro ASP.NET MVC](../../../index.md) najít další technologie ASP.NET MVC, kurzů a ukázek.
+> Toto je úvodní kurz pro začátečníky, který představuje základy ASP.NET MVC. Vytvoříte jednoduchou webovou aplikaci, která čte a zapisuje z databáze. Navštivte [centrum učení služby ASP.NET MVC](../../../index.md) , kde najdete další kurzy a ukázky pro ASP.NET MVC.
 
-V této části budeme implementovat podporu nutná pro povolení uživatelům vytvářet nové filmy v databázi. Provedeme to pomocí implementace akce URL videa nebo vytvoření.
+V této části budeme implementovat podporu nutnou k tomu, aby uživatelé mohli vytvářet nové filmy v naší databázi. Provedeme to implementací akce/Movies/Create URL.
 
-Implementace adresu URL videa nebo vytvoření provádí dva kroky. Když uživatel navštíví první adresa URL videa nebo vytvoření chceme, aby se budou zobrazovat formuláře HTML, který můžete vyplnit zadat nový film. Potom když uživatel odešle formulář opravdu zavřít a příspěvky, které data zpět na server, chcete načíst odeslaných obsah a uložte ho do databáze.
+Implementace adresy URL/Movies/Create je proces dvou kroků. Když uživatel poprvé navštíví adresu URL/Movies/Create, chtěli bychom zobrazit formulář HTML, který může vyplnit a zadat nový film. Až uživatel formulář odešle a odešle data zpátky na server, chceme načíst publikovaný obsah a uložit ho do naší databáze.
 
-Tyto dva kroky v rámci dvou metod Create() jsme budete implementovat v rámci naší MoviesController třídy. Zobrazí se jedné metody &lt;formuláře&gt; , uživatel by měl vyplnit k vytvoření nové video. Druhá metoda zajistí zpracování odeslaných dat, když uživatel odešle &lt;formuláře&gt; zpět na server a uložit nový film v rámci naší databázi.
+Tyto dva kroky implementujeme v rámci dvou metod Create () v rámci naší třídy MoviesController. Jedna z metod zobrazí &lt;formulář&gt;, že uživatel by měl vyplnit a vytvořit nový film. Druhá metoda zpracuje zpracování publikovaných dat, když uživatel odešle formulář &lt;&gt; zpátky na server a uloží nový film v naší databázi.
 
-Níže je kód přidáme k naší MoviesController třídu pro implementaci toto:
+Níže je kód, který přidáme do naší třídy MoviesController k implementaci:
 
 [!code-csharp[Main](getting-started-with-mvc-part6/samples/sample1.cs)]
 
-Ve výše uvedeném kódu obsahuje kód, který budeme ho potřebovat v rámci Kontroleru.
+Výše uvedený kód obsahuje veškerý kód, který budeme potřebovat v rámci našeho kontroleru.
 
-Pojďme teď implementovat šablony vytvořit zobrazení, který použijeme k zobrazení formuláře pro uživatele. Jsme budete klikněte pravým tlačítkem myši v první metodě vytvoření a vyberte "Přidat zobrazení" Vytvoření šablony zobrazení pro naše film formuláře.
+Pojďme teď implementovat šablonu pro vytvoření zobrazení, kterou použijeme k zobrazení formuláře uživateli. Klikneme pravým tlačítkem na první metodu create a výběrem možnosti Přidat zobrazení vytvořte šablonu zobrazení pro náš formulář filmu.
 
-Vybereme, které jsme se, že přejdete na zobrazení šabloně předat "Video" jako jeho třída zobrazení dat a označuje, že chceme "generování uživatelského rozhraní" "Vytvořit" šablonu.
+Vybereme, že budeme předat šablonu zobrazení jako "film" jako svou třídu zobrazení dat a označit, že chceme "vytvořit" šablonu.
 
-[![Přidání zobrazení](getting-started-with-mvc-part6/_static/image2.png)](getting-started-with-mvc-part6/_static/image1.png)
+[![přidat zobrazení](getting-started-with-mvc-part6/_static/image2.png)](getting-started-with-mvc-part6/_static/image1.png)
 
-Po kliknutí na tlačítko Přidat, vytvoří se pro vás \Movies\Create.aspx zobrazit šablonu. Protože jsme vybrali "Vytváření" z rozevíracího seznamu "Zobrazit obsah", dialogové okno Přidat zobrazení automaticky "vygenerovanou" některé výchozí obsah pro nás. Vytvoří základní kostry aplikace HTML &lt;formuláře&gt;, místo, kde chyba ověření zprávy přejít, a protože generování uživatelského rozhraní ví o filmech, vytvoří pro každou vlastnost Naše třída popisek a pole.
+Po kliknutí na tlačítko Přidat se vytvoří šablona zobrazení \Movies\Create.aspx za vás. Vzhledem k tomu, že jsme vybrali možnost vytvořit v rozevíracím seznamu zobrazit obsah, dialogové okno Přidat zobrazení automaticky vygeneruje výchozí obsah pro nás. Generování uživatelského rozhraní vytvořilo&gt;&lt;formuláře, místo pro chybové zprávy o ověřování, a vzhledem k tomu, že generování uživatelského rozhraní ví o videu, vytvořilo popisek a pole pro každou vlastnost naší třídy.
 
 [!code-aspx[Main](getting-started-with-mvc-part6/samples/sample2.aspx)]
 
-Vzhledem k tomu, že naše databáze automaticky poskytuje filmu ID, Odebereme těchto polí tohoto referenčního modelu. ID z našich zobrazení pro vytváření. Odebrat 7 řádky za &lt;legendy&gt;pole&lt;/legend&gt; budou předvádět pole ID, nechceme.
+Vzhledem k tomu, že naše databáze automaticky poskytuje video s ID, pojďme odebrat ta pole, která odkazují na model. ID z našeho zobrazení pro vytvoření Po zobrazení &lt;&gt;&gt;&lt;pole s ID, které nechcete, odeberte 7 řádků.
 
-Pojďme teď vytvořit nový film a přidejte ho do databáze. Budeme to provést spuštěním aplikaci znovu spustit a přejděte "/ filmy" adresa URL a klepnutím na odkaz Přidat nové video "Vytvořit".
+Pojďme teď vytvořit nový film a přidat ho do databáze. To provedeme opětovným spuštěním aplikace a návštěvou adresy URL "/Movies" a kliknutím na odkaz "vytvořit" přidáte nový film.
 
-[![Vytvoření – Windows Internet Explorer](getting-started-with-mvc-part6/_static/image4.png)](getting-started-with-mvc-part6/_static/image3.png)
+[![vytvoření – Windows Internet Explorer](getting-started-with-mvc-part6/_static/image4.png)](getting-started-with-mvc-part6/_static/image3.png)
 
-Když kliknete na tlačítko vytvořit, jsme budete mít účtování zpět (přes HTTP POST) data na tomto formuláři /Movies/Create metodu, kterou jsme právě vytvořili. Stejně jako při systém automaticky trvalo "numTimes" a "name" parametr z adresy URL a mapovat na parametry pro metodu dříve bude systém automaticky trvat, než pole formuláře POST a jejich namapování na objekt. V tomto případě hodnoty z polí v HTML, jako třeba "ReleaseDate" a "Title" automaticky zařadí se do správné vlastnosti novou instanci třídy videa.
+Po kliknutí na tlačítko vytvořit se pošle zpátky (prostřednictvím HTTP POST) data z tohoto formuláře do metody/Movies/Create, kterou jsme právě vytvořili. Stejně jako v případě, že systém automaticky převezme parametr "numTimes" a "Name" z adresy URL a namapovaný na parametry v metodě výše, systém automaticky převezme pole formuláře z příspěvku a namapuje je na objekt. V tomto případě budou hodnoty z polí v HTML, jako je například "ReleaseDate" a "title" automaticky vloženy do správných vlastností nové instance filmu.
 
-Podívejme se na druhý způsob vytvoření z našich MoviesController znovu. Všimněte si, jak ho přebírá objekt "Video" jako argument:
+Pojďme se podívat na druhý způsob vytvoření z našich MoviesControllerů. Všimněte si, jak přebírá objekt "film" jako argument:
 
 [!code-csharp[Main](getting-started-with-mvc-part6/samples/sample3.cs)]
 
-Toto video bylo předáno pak [HttpPost] verzi metodě akce vytvořit, a My uloženo v databázi a pak uživatel přesměrován zpět na metodu akce Index(), kde uložený výsledek se zobrazí v seznamu video:
+Tento objekt filmu byl poté předán do verze [HttpPost] naší metody Create Action a my jsme ho uložili do databáze a pak přesměroval uživatele zpět na metodu akce index (), která zobrazí uložený výsledek v seznamu filmů:
 
-[![Seznam film – Windows Internet Explorer](getting-started-with-mvc-part6/_static/image6.png)](getting-started-with-mvc-part6/_static/image5.png)
+[![seznam filmů – Windows Internet Explorer](getting-started-with-mvc-part6/_static/image6.png)](getting-started-with-mvc-part6/_static/image5.png)
 
-Jsme nejsou kontrolu, pokud naše videa jsou správné, i když a databázi neumožní nám uložit videa s bez názvu. Bylo by dobré, pokud jsme mohli říct uživatelům, který před databáze došlo k chybě. Provedeme dále přidáním podpory ověřování pro naši aplikaci.
+Nekontrolujeme, jestli jsou filmy správné, ale i databáze neumožní uložit film bez názvu. To je skvělé, kdybyste mohli sdělit uživateli, že předtím, než databáze vyvolala chybu. To provedeme dalším přidáním podpory ověřování do naší aplikace.
 
 > [!div class="step-by-step"]
 > [Předchozí](getting-started-with-mvc-part5.md)
-> [další](getting-started-with-mvc-part7.md)
+> [Další](getting-started-with-mvc-part7.md)

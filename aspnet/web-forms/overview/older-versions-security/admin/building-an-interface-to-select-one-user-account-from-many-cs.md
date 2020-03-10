@@ -9,11 +9,11 @@ ms.assetid: 9e4e687c-b4ec-434f-a4ef-edb0b8f365e4
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/building-an-interface-to-select-one-user-account-from-many-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 8057cfbcd33c74376076363bc27940cebd522c08
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74576003"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78642532"
 ---
 # <a name="building-an-interface-to-select-one-user-account-from-many-c"></a>Vytvoření rozhraní pro výběr jednoho uživatelského účtu z mnoha (C#)
 
@@ -218,7 +218,7 @@ Obrázky 8 a 9 ukazují vlastní rozhraní stránkování v akci. Obrázek 8 uka
 
 **Obrázek 9**: kliknutí na další odkaz zobrazí druhou stránku uživatelských účtů ([kliknutím zobrazíte obrázek v plné velikosti).](building-an-interface-to-select-one-user-account-from-many-cs/_static/image27.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Správci často potřebují vybrat uživatele ze seznamu účtů. V předchozích kurzech jsme se podívali na používání rozevíracího seznamu naplněný uživateli, ale tento postup se nedokáže dobře škálovat. V tomto kurzu jsme prozkoumali lepší alternativu: filtrovací rozhraní, jehož výsledky se zobrazují ve stránkovém prvku GridView. Pomocí tohoto uživatelského rozhraní můžou správci rychle a efektivně najít a vybrat jeden uživatelský účet mezi tisíci.
 

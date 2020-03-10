@@ -9,11 +9,11 @@ ms.assetid: 0fab5e35-8c1f-43d4-8635-b8aba8766a71
 msc.legacyurl: /signalr/overview/getting-started/introduction-to-signalr
 msc.type: authoredcontent
 ms.openlocfilehash: 8dbc31a5c8d59fa55dc5b513c1a51d24d18a685f
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519398"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78536433"
 ---
 # <a name="introduction-to-signalr"></a>Úvod ke knihovně SignalR
 
@@ -39,7 +39,7 @@ Signalizace poskytuje jednoduché rozhraní API pro vytváření vzdálených pr
 
 ![Vyvolání metod pomocí signalizace](introduction-to-signalr/_static/image1.png)
 
-Služba SignalR automaticky řeší správu připojení a dovoluje vám vysílat zprávy pro všechny připojené klienty najednou, jako v chatovací místnosti. Můžete také odesílat zprávy konkrétním klientům. Připojení mezi klientem a serverem je trvalé, na rozdíl od klasického připojení HTTP, které se při každé komunikaci obnovuje.
+Signaler zpracovává správu připojení automaticky a umožňuje vysílat zprávy všem připojeným klientům současně, jako je chatovací místnost. Můžete také odesílat zprávy konkrétním klientům. Připojení mezi klientem a serverem je trvalé, na rozdíl od klasického připojení HTTP, které je pro každou komunikaci znovu navázáno.
 
 Signalizace podporuje funkci nabízeného oznámení "serveru, při které kód serveru může volat klientský kód v prohlížeči pomocí vzdáleného volání procedur (RPC), nikoli model požadavků, který je v současnosti společný na webu.
 

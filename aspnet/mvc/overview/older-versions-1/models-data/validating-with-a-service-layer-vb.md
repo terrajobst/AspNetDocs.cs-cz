@@ -1,100 +1,100 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-vb
-title: Ověřování vrstvou služby (VB) | Dokumentace Microsoftu
+title: Ověřování pomocí vrstvy služby (VB) | Microsoft Docs
 author: StephenWalther
-description: Další informace o přesunutí logiky ověřování mimo vaše akce kontroleru a do samostatné služby vrstvy. V tomto kurzu, Stephen Walther vysvětluje, jak budete...
+description: Naučte se, jak přesunout logiku ověřování z akcí kontroleru a do samostatné vrstvy služby. V tomto kurzu Stephen Walther vysvětluje, jak vás...
 ms.author: riande
 ms.date: 03/02/2009
 ms.assetid: 344bb38e-4965-4c47-bda1-f6d29ae5b83a
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-a-service-layer-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 704657ffe6f50eaf3eb0d91d0d334567003ab7f4
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65122349"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78542824"
 ---
 # <a name="validating-with-a-service-layer-vb"></a>Ověřování vrstvou služby (VB)
 
-podle [Stephen Walther](https://github.com/StephenWalther)
+od [Stephen Walther](https://github.com/StephenWalther)
 
-> Další informace o přesunutí logiky ověřování mimo vaše akce kontroleru a do samostatné služby vrstvy. V tomto kurzu Stephen Walther vysvětluje, jak díky čemuž můžete udržovat sharp oddělené oblasti zájmu izolováním vrstvě služby mezi kontroleru.
+> Naučte se, jak přesunout logiku ověřování z akcí kontroleru a do samostatné vrstvy služby. V tomto kurzu Stephen Walther vysvětluje, jak můžete udržovat ostré oddělení potíží tím, že izolujete vrstvu služby od vrstvy řadiče.
 
-Cílem tohoto kurzu je k popisu jednu z metod ověřování v aplikaci ASP.NET MVC. V tomto kurzu se dozvíte, jak k přesunutí logiky ověřování mimo řadičů a do samostatné služby vrstvy.
+Cílem tohoto kurzu je popsat jednu metodu provádění ověřování v aplikaci ASP.NET MVC. V tomto kurzu se naučíte přesunout logiku ověřování z vašich řadičů a do samostatné vrstvy služby.
 
-## <a name="separating-concerns"></a>Oddělení otázky
+## <a name="separating-concerns"></a>Oddělení obav
 
-Když sestavíte aplikaci ASP.NET MVC, by neměla logiky databáze umístíte text do vaší akce kontroleru. Kombinování logiky databáze a kontroler je aplikace obtížné udržovat v čase. Doporučujeme umísťovat celý logiky databáze ve vrstvě oddělené úložiště.
+Při sestavování aplikace ASP.NET MVC byste neměli umístit logiku databáze do akcí kontroleru. Kombinování databáze a logiky kontroleru usnadňuje údržbu vaší aplikace v průběhu času. Doporučení je, abyste všechny své databázové logiky umístili do samostatné vrstvy úložiště.
 
-Výpis 1 například obsahuje jednoduché úložiště s názvem ProductRepository. Úložiště produkt obsahuje všechny kód přístupu k datům pro aplikaci. Seznam zahrnuje také rozhraní IProductRepository, který implementuje úložiště produktu.
+Například výpis 1 obsahuje jednoduché úložiště s názvem ProductRepository. Úložiště produktu obsahuje veškerý kód pro přístup k datům pro aplikaci. Výpis zahrnuje také rozhraní IProductRepository, které implementuje úložiště produktu.
 
-**Výpis 1 - Models\ProductRepository.vb**
+**Výpis 1 – Models\ProductRepository.vb**
 
 [!code-vb[Main](validating-with-a-service-layer-vb/samples/sample1.vb)]
 
-Řadič v informacích 2 používá vrstvy úložiště v jeho Index() a Create() akce. Všimněte si, že tento kontroler neobsahuje žádnou logiku databáze. Vytvoření vrstvy úložiště umožňuje udržovat jasně oddělit oblasti zájmu. Kontrolery jsou zodpovědné za logiku řízení toku aplikace a úložiště je zodpovědný za logikou přístupu k datům.
+Kontroler v seznamu 2 používá vrstvu úložiště v akcích index () a Create (). Všimněte si, že tento kontroler neobsahuje žádnou databázovou logiku. Vytvoření vrstvy úložiště vám umožní udržovat čisté oddělení obav. Řadiče jsou zodpovědné za logiku řízení toku aplikace a úložiště zodpovídá za logiku přístupu k datům.
 
-**Výpis 2 - Controllers\ProductController.vb**
+**Výpis 2 – Controllers\ProductController.vb**
 
 [!code-vb[Main](validating-with-a-service-layer-vb/samples/sample2.vb)]
 
 ## <a name="creating-a-service-layer"></a>Vytvoření vrstvy služby
 
-Tedy aplikace tok řízení logika patří kontroler a logiky přístupu k datům patří v úložišti. V takovém případě místo, kam dáte logiky ověřování? Jednou z možností je umístit logiky ověřování v *vrstva služby*.
+Takže logika řízení toku aplikace patří do řadiče a logika přístupu k datům patří do úložiště. V takovém případě, kam umístíte logiku ověřování? Jednou z možností je umístit logiku ověřování ve *vrstvě služeb*.
 
-Vrstva služby představuje další vrstvu v aplikaci ASP.NET MVC, která zprostředkovává komunikaci mezi řadičem a vrstvy úložiště. Vrstva služby obsahuje logiku. Konkrétně obsahuje logiku ověřování.
+Vrstva služeb je další vrstva v aplikaci ASP.NET MVC, která řeší komunikaci mezi řadičem a vrstvou úložiště. Vrstva služby obsahuje obchodní logiku. Konkrétně obsahuje logiku ověřování.
 
-Například vrstva služby produkt ve verzi 3 výpis obsahuje metodu CreateProduct(). Metoda CreateProduct() volá ValidateProduct() metodu pro ověření nového produktu před předáním produktu do úložiště produktu.
+Například vrstva produktové služby v seznamu 3 má metodu CreateProduct (). Metoda CreateProduct () volá metodu ValidateProduct () pro ověření nového produktu před předáním produktu do úložiště produktu.
 
-**Listing 3 - Models\ProductService.vb**
+**Výpis 3 – Models\ProductService.vb**
 
 [!code-vb[Main](validating-with-a-service-layer-vb/samples/sample3.vb)]
 
-Kontroler produktu se aktualizoval v informacích 4 nahrazujícím vrstvu služby vrstvě úložiště. Vrstva kontroleru hovoří se vrstva služby. Přednášky vrstvu služby vrstvě úložiště. Každá vrstva má samostatné odpovědnost.
+V seznamu 4 byl aktualizován produkt, aby místo vrstvy úložiště používal vrstvu služby. Vrstva kontroleru mluví do vrstvy služeb. Vrstva služby mluví s vrstvou úložiště. Každá vrstva má samostatnou zodpovědnost.
 
-**Část 4 – Controllers\ProductController.vb**
+**Výpis 4 – Controllers\ProductController.vb**
 
 [!code-vb[Main](validating-with-a-service-layer-vb/samples/sample4.vb)]
 
-Všimněte si, že služby se vytvoří v konstruktoru kontroler produktu. Po vytvoření služby se předá slovníku stavů modelu ve službě. Služba produktu pomocí modelu stavu projít ověřením chybové zprávy zpět do kontroleru.
+Všimněte si, že Produktová služba je vytvořena v konstruktoru produktového kontroleru. Po vytvoření produktové služby je slovník stavu modelu předán službě. Produktová služba používá stav modelu k předání chybových zpráv ověřování zpět do kontroleru.
 
-## <a name="decoupling-the-service-layer"></a>Oddělení vrstva služby
+## <a name="decoupling-the-service-layer"></a>Oddělení vrstvy služby
 
-Můžeme se nepodařilo izolovat kontroleru a vrstvy služby v jednom ohledu. Kontroler a vrstvy služby komunikují prostřednictvím ze stavů modelu. Jinými slovy vrstva služby obsahuje závislost na konkrétní funkce architektury ASP.NET MVC.
+Nepovedlo se nám izolovat řadiče a vrstvy služeb v jednom ohledu. Vrstva řadiče a služeb komunikuje přes stav modelu. Jinými slovy, vrstva služby má závislost na konkrétní funkci architektury ASP.NET MVC.
 
-Chcete izolovat vrstva služby z našich řadič vrstvy co největší míře. Teoreticky jsme měl vrstvy služby pomocí libovolného typu aplikace a ne jenom aplikace ASP.NET MVC. Například v budoucnu může chceme vytvořit front-endu pro naši aplikaci WPF. Jsme měli hledal způsob, jak odebrat závislost na rozhraní ASP.NET MVC stavu modelu z našich vrstvy služby.
+Doporučujeme izolovat vrstvu služby z naší vrstvy řadiče co nejvíce. Teoreticky byste měli být schopni používat vrstvu služby s jakýmkoli typem aplikace, a ne pouze aplikace ASP.NET MVC. V budoucnu můžeme například pro naši aplikaci vytvořit front-end pro WPF. Měli bychom najít způsob, jak z naší vrstvy služby odebrat závislost na stav modelu ASP.NET MVC.
 
-Výpis 5 vrstva služby byla aktualizována tak, aby již nepoužíval ze stavů modelu. Místo toho používá jakoukoli třídu, která implementuje rozhraní IValidationDictionary.
+V seznamu 5 se vrstva služby aktualizovala tak, aby už nepoužívala stav modelu. Místo toho používá libovolnou třídu, která implementuje rozhraní IValidationDictionary.
 
-**Výpis 5 - Models\ProductService.vb (oddělené)**
+**Výpis 5-Models\ProductService.vb (oddělené)**
 
 [!code-vb[Main](validating-with-a-service-layer-vb/samples/sample5.vb)]
 
-IValidationDictionary rozhraní je definováno v informacích 6. Toto jednoduché rozhraní má jedné metody a vlastnosti jediné.
+Rozhraní IValidationDictionary je definováno v výpisu 6. Toto jednoduché rozhraní má jedinou metodu a jedinou vlastnost.
 
-**Výpis 6 - Models\IValidationDictionary.cs**
+**Výpis 6 – Models\IValidationDictionary.cs**
 
 [!code-vb[Main](validating-with-a-service-layer-vb/samples/sample6.vb)]
 
-Výpis 7, s názvem třídy ModelStateWrapper implementuje rozhraní IValidationDictionary. Můžete vytvořit instanci třídy ModelStateWrapper předáním slovníku stavů modelu do konstruktoru.
+Třída v seznamu 7 s názvem třídy ModelStateWrapper implementuje rozhraní IValidationDictionary. Můžete vytvořit instanci třídy ModelStateWrapper předáním slovníku stavu modelu do konstruktoru.
 
-**Listing 7 - Models\ModelStateWrapper.vb**
+**Výpis 7 – Models\ModelStateWrapper.vb**
 
 [!code-vb[Main](validating-with-a-service-layer-vb/samples/sample7.vb)]
 
-Nakonec aktualizované řadič v informacích 8 používá ModelStateWrapper při vytvoření vrstvy služby 've svém konstruktoru.
+Nakonec aktualizovaný kontroler v seznamu 8 používá ModelStateWrapper při vytváření vrstvy služby ve svém konstruktoru.
 
-**Výpis 8 - Controllers\ProductController.vb**
+**Výpis 8 – Controllers\ProductController.vb**
 
 [!code-vb[Main](validating-with-a-service-layer-vb/samples/sample8.vb)]
 
-Použití IValidationDictionary rozhraní a třídy ModelStateWrapper nám umožňuje zcela izolovat naše vrstva služby z našich vrstvy kontroleru. Vrstva služby již není závislý na stavu modelu. Můžete předat jakoukoli třídu, která implementuje rozhraní IValidationDictionary pro vrstvu služby. Aplikace WPF může například implementovat rozhraní IValidationDictionary s třída jednoduchých kolekcí.
+Použití rozhraní IValidationDictionary a třídy ModelStateWrapper nám umožňuje zcela izolovat naši vrstvu služeb od naší vrstvy kontroleru. Vrstva služby již není závislá na stavu modelu. Můžete předat libovolnou třídu, která implementuje rozhraní IValidationDictionary, do vrstvy služby. Například aplikace WPF může implementovat rozhraní IValidationDictionary s jednoduchou třídou kolekce.
 
 ## <a name="summary"></a>Souhrn
 
-Cílem tohoto kurzu byla fattica jedním z přístupů k provedení ověření v aplikaci ASP.NET MVC. V tomto kurzu jste zjistili, jak chcete přesunout všechny logiky ověřování mimo řadičů a do samostatné služby vrstvy. Také jste zjistili, jak izolovat vrstvě služby mezi řadiče vytvořením ModelStateWrapper třídy.
+Cílem tohoto kurzu bylo projednat jeden přístup k provádění ověřování v aplikaci ASP.NET MVC. V tomto kurzu jste zjistili, jak přesunout veškerou logiku ověřování z vašich řadičů do samostatné vrstvy služby. Zjistili jste také, jak izolovat vrstvu služby z vaší vrstvy kontroleru vytvořením třídy ModelStateWrapper.
 
 > [!div class="step-by-step"]
 > [Předchozí](validating-with-the-idataerrorinfo-interface-vb.md)
-> [další](validation-with-the-data-annotation-validators-vb.md)
+> [Další](validation-with-the-data-annotation-validators-vb.md)

@@ -1,269 +1,269 @@
 ---
 uid: mvc/overview/older-versions/using-oauth-providers-with-mvc
-title: Použití poskytovatelů OAuth v MVC 4 | Dokumentace Microsoftu
+title: Použití zprostředkovatelů OAuth s MVC 4 | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 4, který umožňuje uživatelům přihlásit se pomocí přihlašovacích údajů z externího poskytovatele, jako je například Facebo...
+description: V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 4, která umožňuje uživatelům přihlásit se pomocí přihlašovacích údajů od externího poskytovatele, jako je například Facebo...
 ms.author: riande
 ms.date: 06/19/2013
 ms.assetid: 7a87f16f-0e19-4f15-a88a-094ae866c4a2
 msc.legacyurl: /mvc/overview/older-versions/using-oauth-providers-with-mvc
 msc.type: authoredcontent
 ms.openlocfilehash: 5dfd1305376a62f4987caea242ca0f6aac1018e9
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65129638"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78539079"
 ---
 # <a name="using-oauth-providers-with-mvc-4"></a>Použití poskytovatelů OAuth v MVC 4
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 4, který umožňuje uživatelům přihlášení pomocí přihlašovacích údajů z externího poskytovatele, jako je Facebook, Twitter, Microsoft nebo Google a pak do ní některé funkce z těchto zprostředkovatelů do vaší Webová aplikace. Pro zjednodušení tento kurz se zaměřuje na práci s přihlašovacími údaji ze sítě Facebook.
+> V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci ASP.NET MVC 4, která uživatelům umožňuje přihlásit se pomocí přihlašovacích údajů od externího poskytovatele, jako je Facebook, Twitter, Microsoft nebo Google, a potom integrovat některé funkce od těchto poskytovatelů do vaší Webová aplikace V zájmu jednoduchosti se tento kurz zaměřuje na práci s přihlašovacími údaji z Facebooku.
 > 
-> Externí přihlašovací údaje používané k webové aplikaci ASP.NET MVC 5, naleznete v tématu [vytvoření aplikace ASP.NET MVC 5 pomocí Facebooku a Google OAuth2 nebo OpenID Sign-on](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md).
+> Pokud chcete použít externí přihlašovací údaje ve webové aplikaci ASP.NET MVC 5, přečtěte si téma [Vytvoření aplikace ASP.NET MVC 5 s Facebookem a Google OAuth2 a OpenID Signing](../security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md).
 > 
-> Povolení tyto přihlašovací údaje ve webových stránek poskytuje výraznou výhodu, protože milionům uživatelů již mají účty u těchto externích poskytovatelů. Tito uživatelé mohou být více ochotni zaregistrujte svůj web, pokud nemají k vytvoření a zapamatovat si novou sadu přihlašovacích údajů. Navíc po přihlášení uživatele prostřednictvím některého z těchto zprostředkovatelů, můžete začlenit sociální operace od poskytovatele.
+> Povolení těchto přihlašovacích údajů na webech přináší významnou výhodu, protože miliony uživatelů již mají účty s těmito externími poskytovateli. Tito uživatelé můžou být přihlášeni k vašemu webu, pokud je nepotřebují vytvořit a zapamatovat si novou sadu přihlašovacích údajů. Až se uživatel přihlásí pomocí jednoho z těchto poskytovatelů, můžete do poskytovatele začlenit sociální operace.
 
-## <a name="what-youll-build"></a>Co budete vytvářet
+## <a name="what-youll-build"></a>Co sestavíte
 
 V tomto kurzu existují dva hlavní cíle:
 
-1. Povolte tak uživateli přihlášení pomocí přihlašovacích údajů od poskytovatele OAuth.
-2. Načíst informace o účtu ze zprostředkovatele a integrovat tyto informace se registrace účtu pro vašeho webu.
+1. Povolí uživateli přihlášení pomocí přihlašovacích údajů z poskytovatele OAuth.
+2. Načtěte informace o účtu ze zprostředkovatele a integrujte tyto informace s registrací účtu pro váš web.
 
-I když se v příkladech v tomto kurzu se zaměřit na jako zprostředkovatel ověřování pomocí Facebooku, můžete upravit kód, který použije některý zprostředkovatele. Postup implementace jakýkoli poskytovatel jsou velmi podobné kroky, které se zobrazí v tomto kurzu. Lze si pouze všimnout významné rozdíly při vytvoření přímého volání rozhraní API poskytovatele nastavení.
+I když se příklady v tomto kurzu zaměřují na použití Facebooku jako poskytovatele ověřování, můžete kód upravit tak, aby používal libovolného poskytovatele. Postup implementace libovolného poskytovatele se velmi podobá postupům, které se zobrazí v tomto kurzu. Při přímém volání sady rozhraní API poskytovatele se zobrazí jenom významné rozdíly.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- [Microsoft Visual Studio 2012](https://www.microsoft.com/visualstudio/eng/downloads#vs) nebo [Microsoft Visual Studio Express 2012 pro Web](https://www.microsoft.com/visualstudio/eng/downloads#d-2012-express)
+- [Microsoft Visual Studio 2012](https://www.microsoft.com/visualstudio/eng/downloads#vs) nebo [Microsoft Visual Studio Express 2012 pro web](https://www.microsoft.com/visualstudio/eng/downloads#d-2012-express)
 
 Nebo
 
 - Microsoft Visual Studio 2010 SP1 nebo [Visual Web Developer Express 2010 SP1](https://www.microsoft.com/visualstudio/eng/downloads#d-2010-express)
 - [ASP.NET MVC 4](https://go.microsoft.com/fwlink/?LinkId=243392)
 
-Kromě toho toto téma předpokládá, že máte základní znalosti o ASP.NET MVC a sady Visual Studio. Pokud potřebujete Úvod do ASP.NET MVC 4, přečtěte si [Úvod do ASP.NET MVC 4](getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md).
+Kromě toho toto téma předpokládá, že máte základní znalosti o ASP.NET MVC a Visual Studiu. Pokud potřebujete Úvod do ASP.NET MVC 4, přečtěte si [Úvod do ASP.NET MVC 4](getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md).
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
-V sadě Visual Studio vytvořte novou aplikaci ASP.NET MVC 4 Web s názvem &quot;OAuthMVC&quot;. Můžete cílit rozhraní .NET Framework 4.5 nebo 4.
+V aplikaci Visual Studio vytvořte novou webovou aplikaci ASP.NET MVC 4 a pojmenujte ji &quot;OAuthMVC&quot;. Můžete cílit buď na .NET Framework 4,5 nebo 4.
 
-![Vytvoření projektu](using-oauth-providers-with-mvc/_static/image1.png)
+![vytvořit projekt](using-oauth-providers-with-mvc/_static/image1.png)
 
-V okně nového projektu ASP.NET MVC 4 vyberte **internetovou aplikaci** a nechat **Razor** jako zobrazovací modul.
+V novém okně projektu ASP.NET MVC 4 vyberte možnost **Internet aplikace** a ponechte **Razor** jako zobrazovací modul.
 
-![Vyberte Internetové aplikace.](using-oauth-providers-with-mvc/_static/image2.png)
+![vybrat internetovou aplikaci](using-oauth-providers-with-mvc/_static/image2.png)
 
-## <a name="enable-a-provider"></a>Povolit zprostředkovatele
+## <a name="enable-a-provider"></a>Povolení poskytovatele
 
-Při vytváření webové aplikace MVC 4 s šablonou Internetové aplikace se projekt vytvoří se soubor s názvem AuthConfig.cs v aplikaci\_spouštěcí složka.
+Když vytvoříte webovou aplikaci MVC 4 se šablonou internetové aplikace, projekt se vytvoří se souborem s názvem AuthConfig.cs ve složce App\_Start.
 
 ![Soubor AuthConfig](using-oauth-providers-with-mvc/_static/image3.png)
 
-AuthConfig soubor obsahuje kód pro registraci klientů u zprostředkovatele externího ověřování. Ve výchozím nastavení, tento kód je zakomentovaný, takže žádná externí zprostředkovatele není povolena.
+Soubor AuthConfig obsahuje kód pro registraci klientů pro externí poskytovatele ověřování. Ve výchozím nastavení je tento kód zakomentován, takže žádný z externích zprostředkovatelů není povolen.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample1.cs)]
 
-Musíte zrušením komentáře u tohoto kódu pro použití externího ověřování klienta. Zrušením komentáře u zprostředkovatelů, které chcete zahrnout do vaší lokality. Pro účely tohoto kurzu vám umožní pouze pověření služby Facebook.
+Chcete-li použít externího klienta ověřování, je nutné tento kód odkomentovat. Odkomentujete pouze poskytovatele, které chcete zahrnout do webu. V tomto kurzu povolíte jenom přihlašovací údaje pro Facebook.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample2.cs)]
 
-Všimněte si, že v příkladu výše, že metoda obsahuje prázdné řetězce pro registračních parametrů. Pokud se pokusíte spustit nyní aplikaci, aplikace vyvolá výjimku argument, protože nejsou povolené prázdné řetězce pro parametry. Poskytnout platné hodnoty, musíte zaregistrovat svůj web u externích poskytovatelů, jak je znázorněno v následující části.
+Všimněte si, že metoda v předchozím příkladu obsahuje prázdné řetězce pro parametry registrace. Pokud se pokusíte spustit aplikaci nyní, aplikace vyvolá výjimku argumentu, protože pro parametry nejsou povoleny prázdné řetězce. Chcete-li zadat platné hodnoty, je nutné zaregistrovat svůj web u externích zprostředkovatelů, jak je znázorněno v následující části.
 
 ## <a name="registering-with-an-external-provider"></a>Registrace u externího poskytovatele
 
-K ověřování uživatelů pomocí přihlašovacích údajů z externího poskytovatele, musíte zaregistrovat svůj web s tímto poskytovatelem. Při registraci vašeho webu, zobrazí se parametry (například klíč nebo id a tajný klíč) Pokud chcete zahrnout při registraci klienta. Účet musí mít s poskytovateli, kterou chcete použít.
+Chcete-li ověřit uživatele s přihlašovacími údaji od externího poskytovatele, je nutné zaregistrovat svůj web u poskytovatele. Při registraci lokality se zobrazí parametry (například klíč, ID a tajný kód), které se mají zahrnout při registraci klienta. Musíte mít účet s poskytovateli, které chcete použít.
 
-Tento kurz neukazuje všechny kroky, které musíte provést při registraci těchto poskytovatelů. Kroky nejsou obvykle obtížné. Zajištění úspěšné registrace vašeho webu, postupujte podle pokynů uvedených v těchto lokalitách. Abyste mohli začít s registrací vašeho webu, najdete v článku webu pro vývojáře pro:
+V tomto kurzu se nezobrazují všechny kroky, které musíte provést při registraci u těchto poskytovatelů. Postup obvykle není obtížné. Chcete-li úspěšně zaregistrovat web, postupujte podle pokynů uvedených na těchto webech. Chcete-li začít s registrací lokality, přečtěte si web pro vývojáře:
 
 - [Facebook](https://developers.facebook.com/)
 - [Google](https://developers.google.com/)
 - [Microsoft](http://manage.dev.live.com/)
 - [Twitter](https://dev.twitter.com/)
 
-Při registraci vašeho webu pomocí Facebooku, můžete zadat &quot;localhost&quot; domény, lokality a `&quot;http://localhost/&quot;` pro adresu URL, jak je znázorněno na následujícím obrázku. Pomocí místního hostitele spolupracuje s poskytovateli většinu, ale aktuálně nefunguje pro zprostředkovatele společnosti Microsoft. Pro poskytovatele Microsoft uvést adresu URL webu platná.
+Při registraci webu na Facebooku můžete zadat &quot;localhost&quot; pro doménu lokality a `&quot; http://localhost/&quot;` pro adresu URL, jak je znázorněno na následujícím obrázku. Použití místního hostitele funguje s většinou zprostředkovatelů, ale v současné době nepracuje u poskytovatele Microsoftu. Pro poskytovatele Microsoftu musíte zahrnout platnou adresu URL webu.
 
-![registrace serveru](using-oauth-providers-with-mvc/_static/image4.png)
+![Registrovat web](using-oauth-providers-with-mvc/_static/image4.png)
 
-Na předchozím obrázku byly odebrány hodnoty pro id aplikace, tajný klíč aplikace a kontaktní e-mailu. Při registraci ve skutečnosti vašeho webu, tyto hodnoty budou k dispozici. Můžete si hodnoty pro id aplikace a tajný kód aplikace, vzhledem k tomu, které přidáte do vaší aplikace.
+V předchozím obrázku se odebraly hodnoty ID aplikace, tajného klíče aplikace a kontaktní e-mailové adresy. Když ve skutečnosti zaregistrujete lokalitu, budou tyto hodnoty k dispozici. Hodnoty pro ID aplikace a tajný klíč aplikace si poznamenejte, protože je přidáte do své aplikace.
 
-## <a name="creating-test-users"></a>Vytvoření testovacích uživatelů
+## <a name="creating-test-users"></a>Vytváření testovacích uživatelů
 
-Pokud vám nevadí, otestujte svůj web pomocí existujícího účtu sítě Facebook, můžete tuto část přeskočit.
+Pokud si nejste při testování svého webového serveru použili existující účet Facebook, můžete tuto část přeskočit.
 
-Můžete snadno vytvořit testovací uživatele pro vaši aplikaci v rámci stránky správy aplikace Facebook. Můžete je použít testovací účty pro přihlášení k webu. Vytvoření testovacích uživatelů kliknutím **role** v levém navigačním podokně a klepněte na odkaz **vytvořit** odkaz.
+Můžete snadno vytvořit testovací uživatele pro aplikaci na stránce správy aplikace Facebook. Pomocí těchto testovacích účtů se můžete přihlásit k webu. Testovací uživatele vytvoříte kliknutím na odkaz **role** v levém navigačním podokně a kliknutím na odkaz **vytvořit** .
 
 ![Vytvoření testovacích uživatelů](using-oauth-providers-with-mvc/_static/image5.png)
 
-Facebook lokality automaticky vytvoří počet testovací účty, které požadujete.
+Web Facebook automaticky vytvoří počet zkušebních účtů, které požadujete.
 
-## <a name="adding-application-id-and-secret-from-the-provider"></a>Přidání id aplikace a tajný kód od poskytovatele
+## <a name="adding-application-id-and-secret-from-the-provider"></a>Přidání ID aplikace a tajného klíče ze zprostředkovatele
 
-Teď, když jste obdrželi id a tajný kód ze sítě Facebook, vraťte se do souboru AuthConfig a přidejte je jako hodnoty parametrů. Hodnoty zobrazené níže nejsou skutečné hodnoty.
+Teď, když jste dostali ID a tajný kód z Facebooku, vraťte se do souboru AuthConfig a přidejte je jako hodnoty parametru. Níže uvedené hodnoty nejsou reálné hodnoty.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample3.cs)]
 
-## <a name="log-in-with-external-credentials"></a>Přihlaste se pomocí přihlašovacích údajů externí
+## <a name="log-in-with-external-credentials"></a>Přihlášení pomocí externích přihlašovacích údajů
 
-To je všechno, co musíte udělat, abyste povolte externí přihlašovací údaje na vašem webu. Spusťte aplikaci a klikněte na odkaz přihlášení v pravém horním rohu. Šablona automaticky rozpozná registrovány jako poskytovatel sítě Facebook a obsahuje tlačítko pro zprostředkovatele. Když si zaregistrujete několik zprostředkovatelů, tlačítko pro každé z nich je automaticky zahrnuty.
+To je všechno, co musíte udělat, abyste na svém webu mohli povolit externí přihlašovací údaje. Spusťte aplikaci a klikněte na odkaz pro přihlášení v pravém horním rohu. Šablona automaticky rozpozná, že jste zaregistrováni Facebook jako poskytovatele a obsahuje tlačítko pro poskytovatele. Pokud zaregistrujete více zprostředkovatelů, bude automaticky zahrnuto tlačítko pro každé z nich.
 
 ![externí přihlášení](using-oauth-providers-with-mvc/_static/image6.png)
 
-V tomto kurzu ale nenajdete, jak přizpůsobit přihlašovací tlačítka pro externí poskytovatele. Informace najdete v tématu [přizpůsobení uživatelské rozhraní pro přihlášení při použití účtu OAuth/OpenID](https://blogs.msdn.com/b/pranav_rastogi/archive/2012/08/24/customizing-the-login-ui-when-using-oauth-openid.aspx).
+Tento kurz nepopisuje, jak přizpůsobit tlačítka pro přihlášení externích poskytovatelů. Informace najdete v tématu [přizpůsobení uživatelského rozhraní přihlášení při použití OAuth/OpenID](https://blogs.msdn.com/b/pranav_rastogi/archive/2012/08/24/customizing-the-login-ui-when-using-oauth-openid.aspx).
 
-Klikněte na tlačítko Facebooku se chcete přihlásit pomocí přihlašovacích údajů k Facebooku. Při výběru jednoho z externích poskytovatelů, jsou přesměrován na dané lokalitě a tyto služby výzva k přihlášení.
+Kliknutím na tlačítko Facebook se přihlaste s přihlašovacími údaji pro Facebook. Když vyberete jednoho z externích zprostředkovatelů, budete přesměrováni na tuto lokalitu a vyzve se k přihlášení této služby.
 
-Následující obrázek ukazuje na přihlašovací obrazovce pro Facebook. Poznamenává, že používáte Facebookový účet k přihlášení na web s názvem oauthmvcexample.
+Na následujícím obrázku vidíte přihlašovací obrazovku pro Facebook. V takovém případě se k přihlášení k webu s názvem oauthmvcexample používá účet Facebook.
 
-![ověřování facebooku](using-oauth-providers-with-mvc/_static/image7.png)
+![ověřování Facebooku](using-oauth-providers-with-mvc/_static/image7.png)
 
-Po přihlášení pomocí přihlašovacích údajů k Facebooku, na stránce informuje uživatele, že web bude mít přístup k základní informace.
+Po přihlášení pomocí přihlašovacích údajů k Facebooku stránka informuje uživatele o tom, že tento web bude mít přístup k základním informacím.
 
-![žádost o oprávnění](using-oauth-providers-with-mvc/_static/image8.png)
+![požádat o oprávnění](using-oauth-providers-with-mvc/_static/image8.png)
 
-Po výběru **přejít do aplikace**, uživatel musí zaregistrovat pro lokalitu. Následující obrázek ukazuje na registrační stránku po uživatel přihlásil se pomocí přihlašovacích údajů k Facebooku. Uživatelské jméno je obvykle předem vyplněná název od poskytovatele.
+Po výběru možnosti **Přejít do aplikace**musí uživatel zaregistrovat lokalitu. Následující obrázek ukazuje registrační stránku poté, co se uživatel přihlásí pomocí přihlašovacích údajů k Facebooku. Uživatelské jméno je obvykle předem vyplněno názvem od poskytovatele.
 
 ![register](using-oauth-providers-with-mvc/_static/image9.png)
 
-Klikněte na tlačítko **zaregistrovat** dokončit registraci. Zavřete prohlížeč.
+Registraci dokončíte kliknutím na **Registrovat** . Zavřete prohlížeč.
 
-Uvidíte, že byl přidán nový účet k vaší databázi. V Průzkumníku serveru, otevřete **objekt DefaultConnection** databáze a otevřete **tabulky** složky.
+Můžete vidět, že se nový účet přidal do vaší databáze. V Průzkumník serveru otevřete databázi **DefaultConnection** a otevřete složku Tables ( **tabulky** ).
 
 ![tabulky databáze](using-oauth-providers-with-mvc/_static/image10.png)
 
-Klikněte pravým tlačítkem myši **UserProfile** tabulce a vybrat **zobrazit Data tabulky**.
+Klikněte pravým tlačítkem myši na tabulku **USERPROFILE** a vyberte možnost **Zobrazit data tabulky**.
 
-![zobrazení dat](using-oauth-providers-with-mvc/_static/image11.png)
+![Zobrazit data](using-oauth-providers-with-mvc/_static/image11.png)
 
-Zobrazí se nový účet, který jste přidali. Podívejte se na data v **webová stránka\_OAuthMembership** tabulky. Zobrazí se další data související s externí zprostředkovatele pro účet, který jste právě přidali.
+Zobrazí se nový účet, který jste přidali. Podívejte se na data na **webové stránce\_tabulce OAuthMembership** . Pro účet, který jste právě přidali, se zobrazí další data týkající se externího poskytovatele.
 
-Pokud chcete povolit externí ověřování, jste hotovi. Ale můžete dál integrovat informace od poskytovatele do nový proces registrace uživatele, jak je znázorněno v následujících částech.
+Pokud chcete povolit jenom externí ověřování, budete hotovi. Informace ze zprostředkovatele ale můžete dál integrovat do nového procesu registrace uživatele, jak je znázorněno v následujících oddílech.
 
-## <a name="create-models-for-additional-user-information"></a>Vytváření modelů pro dalších informací o uživatelích
+## <a name="create-models-for-additional-user-information"></a>Vytvořit modely pro další informace o uživateli
 
-Protože jste si všimli v předchozích částech, není potřeba žádné další informace pro registraci předdefinovaný účet pro práci. Většina externích poskytovatelů však předat zpět Další informace o uživateli. Následující části vysvětlují, jak zachovat tyto informace a uložte ho do databáze. Konkrétně si zachovají hodnoty pro celé jméno uživatele, identifikátor URI uživatele osobní webové stránky a hodnotu, která označuje, zda má Facebooku ověřit účet.
+Jak jste si všimli v předchozích částech, nemusíte načítat žádné další informace, aby byla integrovaná registrace účtu fungovat. Většina externích zprostředkovatelů ale přechází k dalším informacím o uživateli. V následujících částech se dozvíte, jak tyto informace uchovat a jak je Uložit do databáze. Konkrétně si zachováte hodnoty pro úplné jméno uživatele, identifikátor URI osobní webové stránky uživatele a hodnotu, která indikuje, jestli je účet ověřený na Facebooku.
 
-Budete používat [migrace Code First](https://msdn.microsoft.com/data/jj591621) přidat tabulku pro ukládání dalších informací o uživatelích. V tabulce přidáváte do existující databáze, proto musíte nejdřív vytvořit snímek aktuální databázi. Vytvořením snímek aktuální databázi, můžete později vytvořit migraci, která obsahuje pouze nové tabulky. Chcete-li vytvořit snímek aktuální databázi:
+Pomocí [migrace Code First](https://msdn.microsoft.com/data/jj591621) přidáte tabulku pro ukládání dalších informací o uživateli. Přidáte tabulku do existující databáze, takže nejprve budete muset vytvořit snímek aktuální databáze. Vytvořením snímku aktuální databáze můžete později vytvořit migraci, která obsahuje pouze novou tabulku. Vytvoření snímku aktuální databáze:
 
-1. Otevřít **Konzola správce balíčků**
-2. Spusťte příkaz **povolení migrace**
-3. Spusťte příkaz **přidat migrace počáteční – IgnoreChanges**
-4. Spusťte příkaz **aktualizace databáze**
+1. Otevřete **konzolu Správce balíčků** .
+2. Spuštění příkazu **Povolit – migrace**
+3. Spuštění příkazu **Přidat-migraci – počáteční – IgnoreChanges**
+4. Spuštění příkazu **Update-Database**
 
-Nyní přidáte nové vlastnosti. Ve složce modely otevřete soubor AccountModels.cs a najít RegisterExternalLoginModel třídu. Třída RegisterExternalLoginModel obsahuje hodnoty, které vrátit ze zprostředkovatele ověřování. Přidáte vlastnosti s názvem FullName a odkaz, jak je zdůrazněno níže.
+Teď budete přidávat nové vlastnosti. Ve složce modely otevřete soubor AccountModels.cs a najděte třídu RegisterExternalLoginModel. Třída RegisterExternalLoginModel obsahuje hodnoty, které se vrátí od poskytovatele ověřování. Přidejte vlastnosti pojmenované FullName a Link, jak je zvýrazněno níže.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample4.cs?highlight=9-13)]
 
-Také v AccountModels.cs, přidejte novou třídu s názvem ExtraUserInformation. Tato třída představuje nové tabulky, který se vytvoří v databázi.
+Také v AccountModels.cs přidejte novou třídu s názvem ExtraUserInformation. Tato třída představuje novou tabulku, která bude vytvořena v databázi.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample5.cs)]
 
-Ve třídě UsersContext přidáte zvýrazněný kód uvedený níže pro vytvoření vlastnosti DbSet pro novou třídu.
+Ve třídě UsersContext přidejte zvýrazněný kód pro vytvoření vlastnosti Negenerickými pro novou třídu.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample6.cs?highlight=9)]
 
-Nyní jste připraveni vytvořit novou tabulku. Otevřete konzolu Správce balíčků znovu a tentokrát:
+Nyní jste připraveni vytvořit novou tabulku. Znovu otevřete konzolu Správce balíčků a tentokrát:
 
-1. Spusťte příkaz **AddExtraUserInformation přidat migrace**
-2. Spusťte příkaz **aktualizace databáze**
+1. Spusťte příkaz **Add-Migration AddExtraUserInformation**
+2. Spuštění příkazu **Update-Database**
 
-Nová tabulka nyní v databázi existuje.
+Nová tabulka teď v databázi existuje.
 
-## <a name="retrieve-the-additional-data"></a>Načíst další data.
+## <a name="retrieve-the-additional-data"></a>Načtení dalších dat
 
-Existují dva způsoby, jak načíst další uživatelská data. Prvním způsobem je chcete zachovat data uživatele, který je předán zpět, ve výchozím nastavení, během žádosti o ověření. Druhý způsob je konkrétně volat rozhraní API poskytovatele a požádat o další informace. Hodnoty pro jméno a příjmení a odkazu jsou automaticky předány zpět pomocí Facebooku. Přistoupíte přímo pomocí volání rozhraní API Facebooku se načte hodnotu určující, zda má Facebooku ověřit účet. Nejprve bude vyplněné hodnoty pro jméno a příjmení a odkaz a později získáte hodnotu ověřené.
+Existují dva způsoby, jak načíst další uživatelská data. Prvním způsobem je uchovávat uživatelská data, která se ve výchozím nastavení předávají, během žádosti o ověření. Druhý způsob je konkrétně zavolat rozhraní API poskytovatele a požádat o další informace. Hodnoty pro FullName a Link jsou automaticky předávány Facebookem. Hodnota, která označuje, zda je na Facebooku ověřeno, že je účet načten prostřednictvím volání rozhraní API Facebooku. Nejdřív naplníte hodnoty pro FullName a Link a později se zobrazí ověřená hodnota.
 
-Chcete-li načíst další uživatelská data, otevřete **AccountController.cs** soubor **řadiče** složky.
+Pokud chcete načíst další uživatelská data, otevřete soubor **AccountController.cs** ve složce **Controllers** .
 
-Tento soubor obsahuje logiku pro protokolování, registrace a správy účtů. Zejména, Všimněte si, že volání metody **ExternalLoginCallback** a **ExternalLoginConfirmation**. V rámci těchto metod můžete přidat kód pro přizpůsobení operací externí přihlášení pro vaši aplikaci. První řádek **ExternalLoginCallback** metoda obsahuje:
+Tento soubor obsahuje logiku pro protokolování, registraci a správu účtů. Zejména si všimněte, že metody s názvem **ExternalLoginCallback** a **ExternalLoginConfirmation**. V rámci těchto metod můžete přidat kód pro přizpůsobení vnějších operací přihlášení pro aplikaci. První řádek metody **ExternalLoginCallback** obsahuje:
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample7.cs)]
 
-Další uživatelská data je předán **ExtraData** vlastnost **AuthenticationResult** objekt, který je vrácen z **VerifyAuthentication** metody. Klient sítě Facebook obsahuje následující hodnoty **ExtraData** vlastnost:
+Další uživatelská data jsou předána zpět ve vlastnosti **ExtraData** objektu **AuthenticationResult** , který je vrácen z metody **VerifyAuthentication** . Klient Facebooku obsahuje ve vlastnosti **ExtraData** následující hodnoty:
 
 - id
-- name
-- Odkaz
+- jméno
+- odkaz
 - gender (pohlaví)
 - accesstoken
 
-Ostatní zprostředkovatelé budou mít podobné, ale mírně odlišné data ve vlastnosti ExtraData.
+Jiní poskytovatelé budou mít podobná, ale mírně odlišná data ve vlastnosti ExtraData.
 
-Pokud uživatel je nový na váš web, bude načítat některé další data a předat data do zobrazení potvrzení. Poslední blok kódu v metodě se spustí pouze v případě, že uživatel je nový na váš web. Nahraďte následující řádek:
+Pokud je uživatel ve vašem webu nový, načtou se další data a předají se tato data do zobrazení potvrzení. Poslední blok kódu v metodě je spuštěn pouze v případě, že je uživatel ve vašem webu nový. Nahraďte následující řádek:
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample8.cs)]
 
-Tento řádek:
+s tímto řádkem:
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample9.cs)]
 
-Tato změna zahrnuje pouze hodnoty vlastností FullName a odkaz.
+Tato změna zahrnuje pouze hodnoty vlastností FullName a Link.
 
-V **ExternalLoginConfirmation** metoda, upravte kód zvýraznily níže můžete uložit dalších informací o uživatelích.
+V metodě **ExternalLoginConfirmation** upravte kód tak, jak je zvýrazněný níže, aby se uložily Další informace o uživateli.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample10.cs?highlight=4,7-13)]
 
 ## <a name="adjusting-the-view"></a>Úprava zobrazení
 
-Zobrazí se další uživatelská data, která se načítají ze zprostředkovatele na stránce registrace.
+Další uživatelská data, která načtete od poskytovatele, se zobrazí na stránce registrace.
 
-V **zobrazení**/**účet** složku, otevřete **ExternalLoginConfirmation.cshtml**. Pod existující pole pro uživatelské jméno přidejte pole pro jméno a příjmení, propojení a PictureLink.
+Ve složce **zobrazení**/**účtu** otevřete **ExternalLoginConfirmation. cshtml**. Pod existujícím polem pro uživatelské jméno přidejte pole pro FullName, Link a PictureLink.
 
 [!code-cshtml[Main](using-oauth-providers-with-mvc/samples/sample11.cshtml)]
 
-Nyní jste téměř připraveni aplikaci spustit a zaregistrovat nového uživatele s dodatečnými informacemi, které jsou uloženy. Musíte mít účet, který není serveru již zaregistrován. Můžete buď použití různých testovacích účtu nebo odstranit řádky v tabulce **UserProfile** a **webové stránky\_OAuthMembership** tabulky pro účet, který chcete znovu použít. Odstraněním tyto řádky zajistí, že účet je zaregistrovat znovu.
+Teď jste skoro připraveni spustit aplikaci a zaregistrovat nového uživatele s dalšími uloženými informacemi. Musíte mít účet, který ještě není zaregistrovaný v lokalitě. Můžete buď použít jiný testovací účet, nebo odstranit řádky v účtu **USERPROFILE** a **webpages\_OAuthMembership** tabulky pro účet, který chcete znovu použít. Odstraněním těchto řádků se ujistíte, že je účet zaregistrovaný znovu.
 
-Spusťte aplikaci a zaregistrovat nové uživatele. Všimněte si, že tentokrát stránku potvrzení obsahuje více hodnot.
+Spusťte aplikaci a zaregistrujte nového uživatele. Všimněte si, že tato stránka potvrzení obsahuje více hodnot.
 
 ![register](using-oauth-providers-with-mvc/_static/image12.png)
 
-Po dokončení registrace, ukončete prohlížeč. Podívejte se v databázi a Všimněte si nových hodnot v **ExtraUserInformation** tabulky.
+Po dokončení registrace zavřete prohlížeč. Vyhledejte v databázi, abyste si všimli nových hodnot v tabulce **ExtraUserInformation** .
 
-## <a name="install-nuget-package-for-facebook-api"></a>Nainstalujte balíček NuGet pro rozhraní API Facebooku
+## <a name="install-nuget-package-for-facebook-api"></a>Nainstalovat balíček NuGet pro Facebook API
 
-Poskytuje služby Facebook [API](https://developers.facebook.com/docs/reference/apis/) , že můžete volat k provádění operací. Můžete volat rozhraní API Facebooku přesměrováním odesílání požadavků HTTP nebo pomocí instalace balíčku NuGet, který usnadňuje odesílání těchto požadavků. Pomocí balíčku NuGet se zobrazí v tomto kurzu, ale instalace NuGet balíček není nezbytné. Tento kurz ukazuje, jak použít balíček SDK Facebooku jazyk C#. Existují další balíčky NuGet, které vám pomůže s volání rozhraní API sítě Facebook.
+Facebook poskytuje [rozhraní API](https://developers.facebook.com/docs/reference/apis/) , které můžete volat k provádění operací. Rozhraní API Facebooku můžete volat buď přímým odesláním požadavků HTTP, nebo pomocí instalace balíčku NuGet, který usnadňuje odesílání těchto požadavků. V tomto kurzu se zobrazí použití balíčku NuGet, ale instalace balíčku NuGet není nezbytná. V tomto kurzu se dozvíte, jak C# používat balíček sady Facebook SDK. K dispozici jsou další balíčky NuGet, které pomáhají s voláním rozhraní API Facebooku.
 
-Z **spravovat balíčky NuGet** windows, vyberte balíček SDK Facebooku jazyk C#.
+V oknech **Spravovat balíčky NuGet** vyberte balíček sady Facebook C# SDK.
 
 ![instalovat balíček](using-oauth-providers-with-mvc/_static/image13.png)
 
-Facebook C# SDK bude používat k volání operace, která vyžaduje přístupový token pro daného uživatele. V další části ukazuje, jak získat přístupový token.
+K volání operace, která C# pro uživatele vyžaduje přístupový token, použijete Facebook SDK. V další části se dozvíte, jak získat přístupový token.
 
-## <a name="retrieve-access-token"></a>Načtení přístupového tokenu
+## <a name="retrieve-access-token"></a>Načíst přístupový token
 
-Většina externích poskytovatelů předávání zpátky přístupový token po ověření přihlašovacích údajů uživatele. Tento přístupový token je velmi důležité, protože umožňuje volat operace, které jsou dostupné pouze pro ověřené uživatele. Načítání a ukládání přístupového tokenu je proto zásadní Pokud byste chtěli poskytnout více funkcí.
+Většina externích zprostředkovatelů po ověření přihlašovacích údajů uživatele předává zpět přístupový token. Tento přístupový token je velmi důležitý, protože umožňuje volat operace, které jsou k dispozici jenom pro ověřené uživatele. Proto pokud chcete poskytnout více funkcí, je nutné načíst a uložit přístupový token.
 
-V závislosti na externího zprostředkovatele může být přístupový token platný pro pouze omezené množství času. Aby bylo zajištěno, že máte platný přístupový token, se budou načítat ho pokaždé, když uživatel přihlásí a uložte ho jako hodnotu relace místo uložení do databáze.
+V závislosti na externím poskytovateli může být přístupový token platný jenom po omezené množství času. Abyste měli jistotu, že máte platný přístupový token, načtěte ho pokaždé, když se uživatel přihlásí, a místo uložení do databáze ho uložte jako hodnotu relace.
 
-V **ExternalLoginCallback** metoda, přístupový token je také se předat zpátky **ExtraData** vlastnost **AuthenticationResult** objektu. Přidejte zvýrazněný kód, který **ExternalLoginCallback** uložit přístupový token v **relace** objektu. Tento kód spuštěný pokaždé, když se uživatel přihlásí pomocí účtu sítě Facebook.
+V metodě **ExternalLoginCallback** je přístupový token také předán zpátky ve vlastnosti **ExtraData** objektu **AuthenticationResult** . Přidejte zvýrazněný kód do **ExternalLoginCallback** k uložení přístupového tokenu do objektu **Session** . Tento kód se spustí pokaždé, když se uživatel přihlásí pomocí účtu Facebook.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample12.cs?highlight=11-14)]
 
-Přestože tento příklad načte přístupový token z Facebooku, můžete načíst přístupový token z jakékoli externího poskytovatele pomocí stejný klíč s názvem &quot;accesstoken&quot;.
+I když tento příklad načte přístupový token z Facebooku, můžete získat přístupový token z libovolného externího poskytovatele pomocí stejného klíče s názvem &quot;AccessToken&quot;.
 
 ## <a name="logging-off"></a>Odhlášení
 
-Výchozí hodnota **odhlášení** metoda přihlásí uživatele přesunete mimo svou aplikaci, ale není přihlášení uživatele z externího poskytovatele. Přihlášení uživatele z Facebooku a zabránit token uchování až uživatel odhlásí, můžete přidat následující zvýrazněný kód **odhlášení** metodu AccountController.
+Výchozí metoda **odhlášení** zaznamená uživatele z vaší aplikace, ale neprotokoluje uživatele z externího poskytovatele. Pokud chcete odhlásit uživatele z Facebooku a zabránit tomu, aby se token zachoval po odhlášení uživatele, můžete do metody **odhlášení** v AccountController přidat následující zvýrazněný kód.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample13.cs?highlight=6-14)]
 
-Hodnota je zadat v `next` parametr je adresa URL pro použití po uživatel přihlásí ze sítě Facebook. Při testování v místním počítači, by se správným číslem portu zadejte pro místní lokalitu. V produkčním prostředí by poskytují výchozí stránku, třeba contoso.com.
+Hodnota, kterou zadáte v parametru `next`, je adresa URL, která se má použít po odhlášení uživatele z Facebooku. Při testování na místním počítači byste zadali správné číslo portu pro místní web. V produkčním prostředí byste zadali výchozí stránku, například contoso.com.
 
-## <a name="retrieve-user-information-that-requires-the-access-token"></a>Načítání informací o uživatelích, které vyžaduje přístupový token
+## <a name="retrieve-user-information-that-requires-the-access-token"></a>Načíst informace o uživateli, které vyžadují přístupový token
 
-Teď, když máte uložené přístupový token a nainstalován balíček SDK Facebooku jazyk C#, můžete je použít společně k vyžádání dalších informací o uživatelích ze sítě Facebook. V **ExternalLoginConfirmation** metody vytvoření instance **FacebookClient** třídy předáním hodnoty přístupový token. Požádat o hodnotu **ověřit** vlastnost pro aktuální, ověřeného uživatele. **Ověřit** vlastnost určuje, zda Facebooku ověřila účtu pomocí jiné prostředky, jako je odeslání zprávy na mobilní telefon. Uloží tuto hodnotu v databázi.
+Po uložení přístupového tokenu a instalaci balíčku Facebook C# SDK můžete použít společně k vyžádání dalších informací o uživateli z Facebooku. V metodě **ExternalLoginConfirmation** vytvořte instanci třídy **FacebookClient** předáním hodnoty přístupového tokenu. Pro aktuálního ověřeného uživatele požádejte o hodnotu **ověřené** vlastnosti. Vlastnost **ověřený** označuje, zda Facebook ověřil účet jiným způsobem, například odeslání zprávy na mobilní telefon. Uloží tuto hodnotu do databáze.
 
 [!code-csharp[Main](using-oauth-providers-with-mvc/samples/sample14.cs?highlight=7-18,25)]
 
-Bude nutné znovu odstranit záznamy v databázi pro uživatele, nebo použijte jiný účet Facebook.
+Znovu budete muset buď odstranit záznamy v databázi pro uživatele, nebo použít jiný účet Facebook.
 
-Spusťte aplikaci a zaregistrovat nové uživatele. Podívejte se na **ExtraUserInformation** tabulky a zobrazit tak hodnotu pro vlastnost ověřeno.
+Spusťte aplikaci a zaregistrujte nového uživatele. Podívejte se na tabulku **ExtraUserInformation** , kde se zobrazí hodnota vlastnosti ověřený.
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto kurzu jste vytvořili lokalitu, která je integrovaná se službou Facebook pro ověřování uživatelů a registrační data. Jste se dozvěděli o výchozí chování, který je nastaven pro webové aplikace MVC 4 a tom, jak přizpůsobit výchozí chování.
+V tomto kurzu jste vytvořili lokalitu, která je integrovaná s Facebookem pro ověřování uživatelů a registrační data. Seznámili jste se s výchozím chováním nastaveným pro webovou aplikaci MVC 4 a postupem přizpůsobení tohoto výchozího chování.
 
 ## <a name="related-topics"></a>Související témata
 
-- [Vytvoření aplikace ASP.NET MVC pomocí ověření a SQL DB a nasazení do služby Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)
+- [Vytvořte aplikaci ASP.NET MVC s ověřováním a SQL DB a nasaďte ji do Azure App Service](https://docs.microsoft.com/aspnet/core/security/authorization/secure-data)

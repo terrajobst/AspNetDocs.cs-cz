@@ -9,11 +9,11 @@ ms.assetid: 5cbeb9f8-5f92-4ba8-87ae-0b4d460ae6d4
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/displaying-binary-data-in-the-data-web-controls-cs
 msc.type: authoredcontent
 ms.openlocfilehash: f38de7adcd77b3dc2622759646168cf533b8308f
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74642720"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78588387"
 ---
 # <a name="displaying-binary-data-in-the-data-web-controls-c"></a>Zobrazení binárních dat ve webových ovládacích prvcích dat (C#)
 
@@ -180,7 +180,7 @@ Chvíli počkejte, než tuto stránku zobrazíte v prohlížeči. Všimněte si,
 
 **Obrázek 13**: kategorie s – obrázek se zobrazí pro každý řádek ([kliknutím zobrazíte obrázek v plné velikosti](displaying-binary-data-in-the-data-web-controls-cs/_static/image20.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jsme prozkoumali, jak prezentovat binární data. Způsob, jakým jsou data uvedena, závisí na typu dat. Pro soubory brožur PDF jsme uživatelům nabídli odkaz na zobrazení brožury, který po kliknutí přivedl uživatele přímo k souboru PDF. V případě obrázku kategorie s jsme nejprve vytvořili stránku, která načte a vrátí binární data z databáze a pak tuto stránku použila k zobrazení všech kategorií s v prvku GridView.
 

@@ -1,57 +1,57 @@
 ---
 uid: mvc/overview/older-versions-1/overview/understanding-the-asp-net-mvc-execution-process
-title: Principy procesu spuštění ASP.NET MVC | Dokumentace Microsoftu
+title: Principy procesu provádění ASP.NET MVC | Microsoft Docs
 author: microsoft
-description: Zjistěte, jak rozhraní ASP.NET MVC zpracovává žádost prohlížeče krok za krokem.
+description: Přečtěte si, jak rozhraní ASP.NET MVC zpracovává požadavky prohlížeče krok za krokem.
 ms.author: riande
 ms.date: 01/27/2009
 ms.assetid: d1608db3-660d-4079-8c15-f452ff01f1db
 msc.legacyurl: /mvc/overview/older-versions-1/overview/understanding-the-asp-net-mvc-execution-process
 msc.type: authoredcontent
 ms.openlocfilehash: 28940947253e0af43886cf1231f8aaf4615526cc
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65125473"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78541515"
 ---
 # <a name="understanding-the-aspnet-mvc-execution-process"></a>Principy procesu spuštění ASP.NET MVC
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> Zjistěte, jak rozhraní ASP.NET MVC zpracovává žádost prohlížeče krok za krokem.
+> Přečtěte si, jak rozhraní ASP.NET MVC zpracovává požadavky prohlížeče krok za krokem.
 
-Požadavky na aplikace založené na ASP.NET MVC nejdřív projít **UrlRoutingModule** objekt, který je modul HTTP. Tento modul analyzuje požadavek a provádí výběr trasy. **UrlRoutingModule** objekt vybere první objekt trasy, která odpovídá aktuální požadavek. (Objekt trasy je třída, která implementuje **RouteBase**, a je obvykle instance **trasy** třídy.) Pokud neodpovídají žádné trasy **UrlRoutingModule** objekt nemá žádný účinek a umožňuje vrátit zpět k pravidelné žádosti ASP.NET nebo IIS zpracování požadavku.
+Požadavky na webovou aplikaci založenou na ASP.NET MVC se nejdřív procházejí objektem **UrlRoutingModule** , který je modulem http. Tento modul analyzuje požadavek a provede výběr směrování. Objekt **UrlRoutingModule** vybere první objekt směrování, který odpovídá aktuálnímu požadavku. (Objekt směrování je třída, která implementuje **RouteBase**a je obvykle instancí třídy **Směrování** .) Pokud se žádné trasy neshodují, objekt **UrlRoutingModule** neprovede žádnou akci a umožní, aby se požadavek vrátil do normálního zpracování žádosti ASP.NET nebo služby IIS.
 
-Z vybraného **trasy** objektu, **UrlRoutingModule** získává objekt **IRouteHandler** objekt, který je přidružený **trasy**objektu. V aplikaci MVC to bude obvykle instance **MvcRouteHandler**. **IRouteHandler** vytvoří instanci **IHttpHandler** objektu a předává je **IHttpContext** objektu. Ve výchozím nastavení **IHttpHandler** instance pro MVC je **MvcHandler** objektu. **MvcHandler** objekt potom vybere kontroler, který bude žádost zpracovat.
+Z vybraného objektu **Směrování** Získá objekt **UrlRoutingModule** objekt **IRouteHandler** , který je spojen s objektem **Směrování** . Obvykle se v aplikaci MVC jedná o instanci **MvcRouteHandler**. Instance **IRouteHandler** vytvoří objekt **IHttpHandler** a předá ho objektu **IHttpContext** . Ve výchozím nastavení je instance **IHttpHandler** pro MVC objektem **MvcHandler** . Objekt **MvcHandler** pak vybere kontroler, který požadavek nakonec zpracuje.
 
 > [!NOTE]
-> Při spuštění aplikace ASP.NET MVC Web ve službě IIS 7.0, bez přípony názvu souboru je vyžadována pro projekty MVC. Ale ve službě IIS 6.0, obslužná rutina vyžaduje namapovat příponu názvu souboru .mvc na knihovnu DLL ISAPI technologie ASP.NET.
+> Když webová aplikace MVC v ASP.NET běží ve službě IIS 7,0, není pro projekty MVC potřeba žádná přípona názvu souboru. Ve službě IIS 6,0 však obslužná rutina vyžaduje mapování názvu souboru. Mvc na knihovnu DLL ASP.NET ISAPI.
 
-Modul a obslužné rutiny jsou vstupními body k rozhraní ASP.NET MVC. Provádějí následující akce:
+Modul a obslužná rutina jsou vstupními body rozhraní ASP.NET MVC. Provádějí tyto akce:
 
-- Vyberte příslušný řadič v MVC webovou aplikaci.
-- Získání instance konkrétní kontroleru.
-- Volání kontroler **Execute** metody.
+- Vyberte příslušný kontroler ve webové aplikaci MVC.
+- Získat konkrétní instanci kontroleru.
+- Zavolejte metodu **Execute** řadiče.
 
-Následuje seznam fáze spuštění pro projekt MVC:
+Následující seznam obsahuje fáze provádění pro webový projekt MVC:
 
-- Zobrazí první požadavek pro aplikaci 
+- Přijetí první žádosti o aplikaci 
 
-    - V souboru Global.asax **trasy** objekty jsou přidány do **směrovací tabulky** objektu.
+    - V souboru Global. asax jsou objekty **Směrování** přidány do objektu **Route** .
 - Provést směrování 
 
-    - **UrlRoutingModule** modul použije první odpovídající **trasy** objekt **směrovací tabulky** kolekce k vytvoření **RouteData** objekt, který pak použije k vytvoření **RequestContext** (**IHttpContext**) objektu.
-- Vytvořte obslužnou rutinu požadavků MVC 
+    - Modul **UrlRoutingModule** používá první vyhovující objekt **Směrování** **v kolekci metody** pro vytvoření objektu **parametr RouteData** , který potom používá k vytvoření objektu **Třída requestContext** (**IHttpContext**).
+- Obslužná rutina žádosti o vytvoření MVC 
 
-    - **MvcRouteHandler** vytvoří instanci objektu **MvcHandler** třídy a předává je **RequestContext** instance.
-- Vytvoření kontroleru 
+    - Objekt **MvcRouteHandler** vytvoří instanci třídy **MvcHandler** a předá ji instanci **Třída requestContext** .
+- Vytvořit kontroler 
 
-    - **MvcHandler** objektu používá **RequestContext** k identifikaci instance **IControllerFactory** objektu (obvykle instance  **DefaultControllerFactory** třídy) k vytvoření instance kontroleru se.
-- Spustit kontroler – **MvcHandler** instance volá řadiče s **Execute** – metoda. |
-- Vyvolání akce 
+    - Objekt **MvcHandler** používá instanci **Třída requestContext** k identifikaci objektu **IControllerFactory** (obvykle instancí třídy **DefaultControllerFactory** ) k vytvoření instance kontroleru pomocí.
+- Spustit kontroler – instance **MvcHandler** volá metodu **Execute** příkazu Controller. |
+- Vyvolat akci 
 
-    - Většina řadičů dědí **řadič** základní třídy. Pro kontrolery, které uděláte to tak **ControllerActionInvoker** objekt, který je spojen s řadičem Určuje, jakou metodu akce kontroleru třídy volat a pak volá tuto metodu.
-- Spuštění výsledku 
+    - Většina řadičů dědí ze základní třídy **řadiče** . Pro řadiče, které to dělají, určí objekt **ControllerActionInvoker** , který je přidružen k řadiči, metodu Action třídy Controller, která má být volána, a poté zavolá tuto metodu.
+- Výsledek provedení 
 
-    - Metoda typické akce může přijímat uživatelský vstup, připravit data odpovídající odpověď a následné provádění výsledek tak, že vrací typ výsledku. Typy integrovaných výsledků, které mohou být provedeny, patří: **ViewResult** (který vykreslí zobrazení a je většina často používaný výsledným typem), **RedirectToRouteResult**, **RedirectResult**, **ContentResult**,  **JsonResult**, a **EmptyResult**.
+    - Typická metoda Action může obdržet uživatelský vstup, připravit příslušná data odpovědi a pak výsledek spustit vrácením typu výsledku. Předdefinované typy výsledků, které lze provést, zahrnují následující: **ViewResult** (který vykresluje zobrazení a je nejčastěji používaný výsledný typ), **RedirectToRouteResult**, **RedirectResult**, **ContentResult**, **JsonResult**a **EmptyResult**.

@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/data-access/custom-formatting/index
-title: Vlastní formátování | Dokumentace Microsoftu
+title: Vlastní formátování | Microsoft Docs
 author: rick-anderson
-description: Tyto kurzy podívejte se na tom, jak přizpůsobit zobrazení dat během vazby dat s použitím obslužné rutiny událostí do ovládacího prvku GridView, DetailsView a FormView ovládacích prvků.
+description: Tyto kurzy se podíváme na postup přizpůsobení zobrazení dat během vytváření datových vazeb pomocí obslužných rutin událostí v ovládacích prvcích GridView, DetailsView a FormView.
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 320b7d26-837f-4fa7-a242-1ab82f8bdbe9
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting
 msc.type: chapter
 ms.openlocfilehash: e7e54bd1c5d4b0e9a0afcd011c3389c267b891ec
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65128692"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78531603"
 ---
 # <a name="custom-formatting"></a>Vlastní formátování
 
-> Tyto kurzy podívejte se na tom, jak přizpůsobit zobrazení dat během vazby dat s použitím obslužné rutiny událostí do ovládacího prvku GridView, DetailsView a FormView ovládacích prvků.
+> Tyto kurzy se podíváme na postup přizpůsobení zobrazení dat během vytváření datových vazeb pomocí obslužných rutin událostí v ovládacích prvcích GridView, DetailsView a FormView.
 
 - [Vlastní formátování založené na datech (C#)](custom-formatting-based-upon-data-cs.md)
 - [Použití vlastností TemplateField v ovládacím prvku GridView (C#)](using-templatefields-in-the-gridview-control-cs.md)

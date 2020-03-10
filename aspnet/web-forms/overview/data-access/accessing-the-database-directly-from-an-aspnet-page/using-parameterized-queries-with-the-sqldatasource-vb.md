@@ -9,11 +9,11 @@ ms.assetid: e322f34c-83b7-41ea-ab65-ab1e0bdcc609
 msc.legacyurl: /web-forms/overview/data-access/accessing-the-database-directly-from-an-aspnet-page/using-parameterized-queries-with-the-sqldatasource-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 19b93ff6c0878ae6ed546d347cafef95fd2a01e6
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74598045"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78552323"
 ---
 # <a name="using-parameterized-queries-with-the-sqldatasource-vb"></a>Použití parametrizovaných dotazů s ovládacím prvkem SqlDataSource (VB)
 
@@ -245,7 +245,7 @@ S tímto sčítáním stránka obsahuje prvek GridView, který zobrazuje produkt
 
 **Obrázek 15**: nezadávejte zdroj parametru ani výchozí hodnotu ([kliknutím zobrazíte obrázek v plné velikosti](using-parameterized-queries-with-the-sqldatasource-vb/_static/image30.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Třída SqlDataSource umožňuje vývojářům stránek definovat parametrizované dotazy, jejichž hodnoty parametrů mohou být pevně kódované, získány z předem definovaných zdrojů parametrů nebo přiřazeny programově. V tomto kurzu jsme zjistili, jak vytvořit parametrizovaný dotaz pomocí Průvodce konfigurací zdroje dat pro dotazy SQL ad hoc i pro uložené procedury. Zjistili jsme také použití pevně zakódovaných zdrojů parametrů, webového ovládacího prvku jako zdroje parametrů a programovému zadání hodnoty parametru.
 

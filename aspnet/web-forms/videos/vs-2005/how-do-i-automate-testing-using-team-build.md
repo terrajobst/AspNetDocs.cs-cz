@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/vs-2005/how-do-i-automate-testing-using-team-build
-title: '[Postup:] Automatizujte testování pomocí týmového sestavení? | Dokumenty Microsoft'
+title: '[Postupy:] Automatizace testování pomocí týmového sestavení? | Dokumenty Microsoft'
 author: rick-anderson
-description: V tomto videu jsme dozvíte, jak definovat automatické testy, které se spustí během týmového sestavení pomocí Visual Studio Team System a jak jsme můžete přejít dolů k...
+description: V tomto videu se dozvíte, jak pomocí sady Visual Studio Team System definovat automatizované testy, které se spustí během sestavení týmu, a jak můžeme přejít k podrobnostem do...
 ms.author: riande
 ms.date: 08/01/2007
 ms.assetid: 8e8fd5a9-0e98-415a-93f5-9ad7524ae9bb
 msc.legacyurl: /web-forms/videos/vs-2005/how-do-i-automate-testing-using-team-build
 msc.type: video
 ms.openlocfilehash: 9692a2a981d8521fa2e4f9344d2bcdfbf2e97ffd
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59416542"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78565014"
 ---
-# <a name="how-do-i-automate-testing-using-team-build"></a>[Postup:] Automatizujte testování pomocí týmového sestavení?
+# <a name="how-do-i-automate-testing-using-team-build"></a>[Postupy:] Automatizace testování pomocí týmového sestavení?
 
-podle [Chris Menegay](https://twitter.com/CMenegay)
+autor – [Chris Menegay](https://twitter.com/CMenegay)
 
-V tomto videu jsme dozvíte, jak definovat automatické testy, které se spustí během týmového sestavení pomocí Visual Studio Team System a jak jsme můžete přejít dolů k výsledky testů. Můžeme také další informace, které [testovací nástroje Build Task](https://msdn.microsoft.com/vstudio/aa718351.aspx#bttt) poskytuje alternativní způsob určení testů ke spuštění během týmového sestavení.
+V tomto videu se dozvíte, jak pomocí sady Visual Studio Team System definovat automatizované testy, které se spustí během sestavení týmu, a jak můžeme přejít k podrobnostem výsledků těchto testů. Také se dozvíte, že [úloha sestavení testovacích nástrojů](https://msdn.microsoft.com/vstudio/aa718351.aspx#bttt) poskytuje alternativní způsob určení testů, které mají být spuštěny během sestavení týmu.
 
-[&#9654;Podívejte se na video (6 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-automate-testing-using-team-build)
+[&#9654;Sledovat video (6 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-automate-testing-using-team-build)
 
 > [!div class="step-by-step"]
 > [Předchozí](how-do-i-implement-continuous-integration-with-team-foundation.md)
-> [další](how-do-i-deploy-a-web-application-during-a-team-build.md)
+> [Další](how-do-i-deploy-a-web-application-during-a-team-build.md)

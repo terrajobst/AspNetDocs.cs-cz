@@ -9,11 +9,11 @@ ms.assetid: d57dfa2b-d627-45cb-b5b1-abbf3159d770
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/configuring-the-data-access-layer-s-connection-and-command-level-settings-vb
 msc.type: authoredcontent
 ms.openlocfilehash: fa2868fc0dd8acd76f600b47d92adb984ce8d105
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74573624"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78551805"
 ---
 # <a name="configuring-the-data-access-layers-connection--and-command-level-settings-vb"></a>Konfigurace připojení vrstvy přístupu k datům a nastavení na úrovni příkazu (VB)
 
@@ -141,7 +141,7 @@ Tuto metodu lze vyvolat z knihoven BLL nebo prezentační vrstvy pro nastavení 
 > [!NOTE]
 > Vlastnosti `Adapter` a `CommandCollection` jsou označeny jako `Private`, což znamená, že mohou být k dispozici pouze z kódu v rámci TableAdapter. Na rozdíl od vlastnosti `Connection` se tyto modifikátory přístupu nedají konfigurovat. Proto pokud potřebujete vystavit vlastnosti na úrovni příkazu jiným vrstvám v architektuře, je nutné použít předchozí přístup ke třídě popsané výše a poskytnout `Public` metodu nebo vlastnost, která čte nebo zapisuje do `Private` objektů příkazů.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Objekty TableAdapter v rámci typové datové sady slouží k zapouzdření podrobností a složitosti přístupu k datům. Pomocí objekty TableAdapter se nemusíte starat o zápis kódu ADO.NET pro připojení k databázi, vystavení příkazu nebo naplnění výsledků do objektu DataTable. Vše se zpracovává automaticky pro nás.
 

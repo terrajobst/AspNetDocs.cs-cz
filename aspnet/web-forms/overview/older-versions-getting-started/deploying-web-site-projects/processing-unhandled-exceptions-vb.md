@@ -1,163 +1,163 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb
-title: Zpracování neošetřených výjimek (VB) | Dokumentace Microsoftu
+title: Zpracování neošetřených výjimek (VB) | Microsoft Docs
 author: rick-anderson
-description: Pokud dojde k chybě za běhu na webovou aplikaci v produkčním prostředí je důležité informovat vývojáře a protokolovat chyby tak, aby může být zjištěna v la...
+description: Pokud dojde k chybě za běhu u webové aplikace v produkčním prostředí, je důležité informovat vývojáře a protokolovat chybu, aby mohla být diagnostikována v La...
 ms.author: riande
 ms.date: 06/09/2009
 ms.assetid: 051296f0-9519-4e78-835c-d868da13b0a0
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb
 msc.type: authoredcontent
-ms.openlocfilehash: 1c28f520f710f77689548158e88d87d1051235d8
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.openlocfilehash: 8d2e12af29bd95ce9898fa6a5e81be8b7a761f76
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65124223"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78586063"
 ---
 # <a name="processing-unhandled-exceptions-vb"></a>Zpracování neošetřených výjimek (VB)
 
-podle [Scott Meisnerová](https://twitter.com/ScottOnWriting)
+[Scott Mitchell](https://twitter.com/ScottOnWriting)
 
-[Zobrazení nebo stažení ukázkového kódu](https://github.com/aspnet/AspNetDocs/tree/master/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb/samples) ([stažení](/aspnet/core/tutorials/index#how-to-download-a-sample))
+[Zobrazit nebo stáhnout ukázkový kód](https://github.com/dotnet/AspNetDocs/tree/master/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/processing-unhandled-exceptions-vb/samples) ([Jak stáhnout](/aspnet/core/tutorials/index#how-to-download-a-sample))
 
-> Pokud dojde k chybě za běhu na webovou aplikaci v produkčním prostředí je důležité informovat vývojáře a protokolovat chyby tak, aby může být zjištěna později v čase. Tento kurz obsahuje přehled toho, jak ASP.NET zpracovává chyby za běhu a zkoumá jeden způsob, jak mají vlastní kód spustit pokaždé, když se bubliny neošetřené výjimce až modul runtime ASP.NET.
+> Pokud dojde k běhové chybě na webové aplikaci v produkčním prostředí, je důležité informovat vývojáře a protokolovat chybu, aby mohla být diagnostikována v pozdějším časovém bodě. Tento kurz poskytuje přehled o tom, jak ASP.NET zpracovává běhové chyby a vypadá jedním ze způsobů, jak mít vlastní kód proveden kdykoli po neošetřené bublině výjimky až do modulu runtime ASP.NET.
 
 ## <a name="introduction"></a>Úvod
 
-Když dojde k neošetřené výjimce v aplikaci ASP.NET, bubliny až modul runtime ASP.NET, která vyvolává `Error` událostí a zobrazí se příslušná chybová stránka. Existují tři různé typy chybové stránky: modulu Runtime chybě žlutý obrazovky z smrti (YSOD); Podrobnosti o výjimce YSOD; a vlastní chybové stránky. V [předchozím kurzu](displaying-a-custom-error-page-vb.md) jsme nakonfigurovali aplikaci, aby používala vlastní chybové stránky pro vzdálené uživatele a YSOD podrobnosti o výjimce pro návštěvníků místně.
+Pokud dojde k neošetřené výjimce v aplikaci ASP.NET, poukáže se až na modul runtime ASP.NET, který vyvolá událost `Error` a zobrazí příslušnou chybovou stránku. Existují tři různé typy chybových stránek: Chyba za běhu žlutá obrazovka smrti (YSOD); Podrobnosti výjimky YSOD; a vlastní chybové stránky. V [předchozím kurzu](displaying-a-custom-error-page-vb.md) jsme nakonfigurovali aplikaci tak, aby pro vzdálené uživatele používala vlastní chybovou stránku, a podrobnosti o výjimce YSOD pro uživatele, kteří navštěvují místně.
 
-Pomocí vhodných lidských vlastní chybové stránky, která odpovídá vzhledu a chování webu je upřednostňována před výchozí YSOD chyba modulu Runtime, ale zobrazení vlastní chybové stránky je pouze jednu část komplexní řešení pro zpracování chyb. Při výskytu chyby v aplikaci v produkčním prostředí, je důležité, že vývojáři se zobrazí oznámení o chybě tak, aby mohli unearth příčina výjimky a řešit. Podrobnosti o chybě kromě toho mají být protokolovány tak, aby chyby můžete prozkoumat a diagnostikovat později v čase.
+Použití vlastní uživatelsky přívětivé chybové stránky, která se shoduje s vzhledem a chováním webu, je preferována Výchozí chyba modulu runtime YSOD, ale zobrazení vlastní chybové stránky je jenom jedna část komplexního řešení pro zpracování chyb. Pokud dojde k chybě v aplikaci v produkčním prostředí, je důležité, aby byli vývojáři upozorněni na chybu, aby mohli odstát příčinu výjimky a vyřešit ji. Kromě toho by se měly zaprotokolovat podrobnosti o chybě, aby bylo možné chybu prozkoumat a diagnostikovat v pozdějším časovém bodě.
 
-Tento kurz ukazuje, jak získat přístup k podrobnosti k neošetřené výjimce, takže můžete protokolovat a vývojář oznámení. Dva kurzy tohohle po prozkoumání Chyba protokolování knihovny, které, po hodně konfigurace, budou automaticky informovat vývojáře chyby za běhu a protokolovat jejich podrobnosti.
+V tomto kurzu se dozvíte, jak získat přístup k podrobnostem o neošetřené výjimce tak, aby mohly být zaprotokolovány a vývojář upozorněni. V těchto dvou kurzech, které následují po provedení této akce, prozkoumejte knihovny protokolování chyb, které po bitu konfigurace automaticky upozorní vývojáře na chyby za běhu a zaprotokolují jejich podrobnosti.
 
 > [!NOTE]
-> Informace vyšetřovány v tomto kurzu jsou nejužitečnější tehdy, pokud budete potřebovat ke zpracování neošetřených výjimek způsobem jedinečný nebo vlastní. V případech, kdy je potřeba jenom zaprotokolování výjimky a upozornění vývojář pomocí knihovny protokolování chyb je způsob, jak přejít. Následující dva kurzy poskytovat přehled o dvou tyto knihovny.
+> Informace, které jsou zkoumány v tomto kurzu, jsou nejužitečnější, pokud potřebujete zpracovat neošetřené výjimky v některém jedinečném nebo vlastním přizpůsobeném způsobem. V případech, kdy stačí pouze zaprotokolovat výjimku a odeslat oznamovateli výstrahu pomocí knihovny protokolování chyb, je způsob, jak jít. Další dva kurzy poskytují přehled dvou takových knihoven.
 
-## <a name="executing-code-when-theerrorevent-is-raised"></a>Při provádění kódu`Error`událost je aktivována
+## <a name="executing-code-when-theerrorevent-is-raised"></a>Spouštění kódu při vyvolání události`Error`
 
-Události poskytují objekt mechanismus pro signalizaci, že něco zajímavého došlo a pro jiný objekt ke spouštění kódu vytvořeného v odpovědi. Jako vývojář ASP.NET jsou zvyklí na přemýšlejí o události. Pokud budete chtít spouštět nějaký kód při návštěvníka klikne na určité tlačítko, vytvořit obslužnou rutinu události pro toto tlačítko `Click` událostí a ukládejte kód existuje. Vzhledem k tomu, že modul runtime ASP.NET vyvolá jeho [ `Error` události](https://msdn.microsoft.com/library/system.web.httpapplication.error.aspx) pokaždé, když dojde k neošetřené výjimce vyplývá, že kód pro protokolování podrobností o chybách společnosti přejde v obslužné rutině události. Jak se vytváří obslužná rutina události, ale `Error` události?
+Události poskytují objekt mechanismus pro signalizaci, že došlo k něčemu nějakého zajímavého, a pro jiný objekt ke spuštění kódu v reakci. Jako vývojář ASP.NET jste zvyklí v souvislosti s událostmi. Pokud chcete spustit nějaký kód, když návštěvník klikne na konkrétní tlačítko, vytvoříte obslužnou rutinu události pro `Click` událost tlačítka a umístíte svůj kód. Vzhledem k tomu, že modul runtime ASP.NET vyvolává svou [událost`Error`](https://msdn.microsoft.com/library/system.web.httpapplication.error.aspx) vždy, když dojde k neošetřené výjimce, následuje postup, který by měl kód pro protokolování podrobností o chybě jít v obslužné rutině události. Ale jak vytvoříte obslužnou rutinu události pro událost `Error`?
 
-`Error` Událostí je jednou z mnoha událostí v [ `HttpApplication` třídy](https://msdn.microsoft.com/library/system.web.httpapplication.aspx) na určité fáze kanálu HTTP, která jsou vyvolány během životního cyklu požadavku. Například `HttpApplication` třídy [ `BeginRequest` události](https://msdn.microsoft.com/library/system.web.httpapplication.beginrequest.aspx) je vyvolána na začátku každého požadavku; jeho [ `AuthenticateRequest` události](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx) se vyvolá, když modul zabezpečení zjistila žadatel. Tyto `HttpApplication` události poskytují vývojář stránky znamená kvadrantu vlastní logiku v různých fázích životního cyklu požadavku.
+Událost `Error` je jednou z mnoha událostí ve [třídě`HttpApplication`](https://msdn.microsoft.com/library/system.web.httpapplication.aspx) , která se vyvolala v určitých fázích kanálu http během životnosti žádosti. Například [událost`BeginRequest`](https://msdn.microsoft.com/library/system.web.httpapplication.beginrequest.aspx) `HttpApplication` třídy je vyvolána na začátku každého požadavku; jeho [událost`AuthenticateRequest`](https://msdn.microsoft.com/library/system.web.httpapplication.authenticaterequest.aspx) je vyvolána, když modul zabezpečení identifikoval žadatele. Tyto `HttpApplication` události dávají vývojářům stránky způsob, jak provádět vlastní logiku v různých místech životního cyklu žádosti.
 
-Obslužné rutiny událostí pro `HttpApplication` události je možné použít ve zvláštním souboru s názvem `Global.asax`. Chcete-li vytvořit tento soubor na vašem webu, přidat novou položku do kořenového adresáře vašeho webu pomocí šablony globální třída aplikace s názvem `Global.asax`.
+Obslužné rutiny událostí `HttpApplication` lze umístit do speciálního souboru s názvem `Global.asax`. Chcete-li vytvořit tento soubor na svém webu, přidejte novou položku do kořenového adresáře webu pomocí šablony globální třídy aplikace s názvem `Global.asax`.
 
 [![](processing-unhandled-exceptions-vb/_static/image2.png)](processing-unhandled-exceptions-vb/_static/image1.png)
 
-**Obrázek 1**: Přidat `Global.asax` do vaší webové aplikace  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](processing-unhandled-exceptions-vb/_static/image3.png))
+**Obrázek 1**: Přidání `Global.asax` do webové aplikace  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](processing-unhandled-exceptions-vb/_static/image3.png))
 
-Obsah a struktura `Global.asax` soubor vytvořený pomocí sady Visual Studio se liší mírně podle toho, jestli používáte projektů webových aplikací (WAP) nebo projektu webové stránky (soubor WSP). S protokolem WAP `Global.asax` je implementovaný jako dva samostatné soubory – `Global.asax` a `Global.asax.vb`. `Global.asax` Soubor obsahuje nic ale `@Application` direktiva, která odkazuje `.vb` událost obslužné rutiny, které vás zajímají jsou definovány v; soubor `Global.asax.vb` souboru. Pro WSPs, bude vytvořena pouze jeden soubor, `Global.asax`, a obslužné rutiny událostí, které jsou definovány v `<script runat="server">` bloku.
+Obsah a struktura `Global.asax`ho souboru vytvořeného v aplikaci Visual Studio se mírně liší podle toho, zda používáte projekt webové aplikace (WAP) nebo webový projekt (WSP). Pomocí WAP se `Global.asax` implementuje jako dva samostatné soubory – `Global.asax` a `Global.asax.vb`. `Global.asax` soubor neobsahuje žádnou hodnotu, ale direktivu `@Application`, která odkazuje na soubor `.vb`; obslužné rutiny událostí pro důležité jsou definovány v souboru `Global.asax.vb`. Pro WSPs je vytvořen pouze jeden soubor, `Global.asax`a obslužné rutiny událostí jsou definovány v bloku `<script runat="server">`.
 
-`Global.asax` Soubor vytvořený v protokolem WAP šablona globální třídy aplikace Visual Studio obsahuje obslužné rutiny události s názvem `Application_BeginRequest`, `Application_AuthenticateRequest`, a `Application_Error`, které jsou obslužné rutiny událostí pro `HttpApplication` události `BeginRequest`, `AuthenticateRequest`, a `Error`v uvedeném pořadí. Existují také obslužné rutiny události s názvem `Application_Start`, `Session_Start`, `Application_End`, a `Session_End`, které jsou obslužné rutiny událostí, které se aktivují, když webové aplikace spustí, když spustí novou relaci, při ukončení aplikace a ukončení relace v uvedeném pořadí. `Global.asax` Soubor vytvořený v WSP pomocí sady Visual Studio obsahuje pouze `Application_Error`, `Application_Start`, `Session_Start`, `Application_End`, a `Session_End` obslužných rutin událostí.
+`Global.asax` soubor vytvořený v šabloně WAP šablonou globální třídy aplikace sady Visual Studio obsahuje obslužné rutiny událostí s názvem `Application_BeginRequest`, `Application_AuthenticateRequest`a `Application_Error`, které jsou obslužnými rutinami událostí `HttpApplication` `BeginRequest`, `AuthenticateRequest`a `Error`v uvedeném pořadí. K dispozici jsou také obslužné rutiny událostí s názvem `Application_Start`, `Session_Start`, `Application_End`a `Session_End`, což jsou obslužné rutiny událostí, které se aktivují při spuštění webové aplikace, při spuštění nové relace, při ukončení aplikace a ukončení relace v uvedeném pořadí. `Global.asax` soubor vytvořený v WSP pomocí sady Visual Studio obsahuje jenom obslužné rutiny událostí `Application_Error`, `Application_Start`, `Session_Start`, `Application_End`a `Session_End`.
 
 > [!NOTE]
-> Při nasazení aplikace ASP.NET je nutné zkopírovat `Global.asax` souboru do produkčního prostředí. `Global.asax.vb` Soubor, který je vytvořen v WAP, není potřeba zkopírovat do produkčního prostředí, protože tento kód je zkompilován sestavení projektu.
+> Při nasazování aplikace ASP.NET potřebujete zkopírovat soubor `Global.asax` do provozního prostředí. `Global.asax.vb` soubor, který je vytvořen v WAP, není nutné kopírovat do produkčního prostředí, protože tento kód je zkompilován do sestavení projektu.
 
-Obslužné rutiny událostí, vytvoří šablona globální třídy aplikace Visual Studio nejsou vyčerpávající. Můžete přidat obslužnou rutinu události pro všechny `HttpApplication` události pojmenováním obslužná rutina události `Application_EventName`. Můžete například přidat následující kód, který `Global.asax` souboru se má vytvořit obslužnou rutinu události pro [ `AuthorizeRequest` události](https://msdn.microsoft.com/library/system.web.httpapplication.authorizerequest.aspx):
+Obslužné rutiny událostí vytvořené šablonou globální třídy aplikace sady Visual Studio nejsou vyčerpávající. Můžete přidat obslužnou rutinu události pro jakoukoli událost `HttpApplication` pojmenováním `Application_EventName`obslužné rutiny události. Do souboru `Global.asax` například můžete přidat následující kód, který vytvoří obslužnou rutinu události pro [událost`AuthorizeRequest`](https://msdn.microsoft.com/library/system.web.httpapplication.authorizerequest.aspx):
 
 [!code-vb[Main](processing-unhandled-exceptions-vb/samples/sample1.vb)]
 
-Podobně můžete odebrat všechny obslužné rutiny událostí vytvořených šablonou globální třída aplikace, které nejsou potřebné. Pro účely tohoto kurzu požadujeme pouze, aby obslužná rutina události `Error` události; teď můžete odebrat ostatní obslužné rutiny událostí z `Global.asax` souboru.
+Podobně můžete odebrat jakékoli obslužné rutiny událostí vytvořené šablonou globální třídy aplikace, které nejsou potřeba. Pro tento kurz vyžadujeme pro událost `Error` jenom obslužnou rutinu události; Nebojte se odebrat další obslužné rutiny událostí ze souboru `Global.asax`.
 
 > [!NOTE]
-> *Z modulů HTTP* nabízejí jiný způsob, jak definovat obslužné rutiny událostí pro `HttpApplication` události. Z modulů HTTP jsou vytvořeny jako soubor třídy, který můžete umístit přímo v rámci projektu webové aplikace nebo rozdělen do samostatné knihovně tříd. Protože se může být rozdělen do knihovny tříd, modulů HTTP nabízí flexibilní a opakovaně použitelné model pro vytváření `HttpApplication` obslužných rutin událostí. Vzhledem k tomu `Global.asax` soubor je konkrétní do webové aplikace, kde se nachází, mohou být zkompilovány z modulů HTTP do sestavení, v tomto okamžiku přidání modulu protokolu HTTP na web je snadné – stačí vyřazením sestavení `Bin` složky a registrace V modulu `Web.config`. V tomto kurzu není podívejte se na vytváření a používání modulů HTTP, ale dvě protokolování chyb knihovny použité v následujících kurzech dva jsou implementovány jako moduly protokolu HTTP. Další informace o výhodách z modulů HTTP najdete [pomocí protokolu HTTP moduly a obslužné rutiny pro vytvoření modulární komponenty technologie ASP.NET](https://msdn.microsoft.com/library/aa479332.aspx).
+> *Moduly HTTP* nabízejí jiný způsob definování obslužných rutin událostí pro `HttpApplication` události. Moduly HTTP jsou vytvořeny jako soubor třídy, který lze umístit přímo do projektu webové aplikace nebo rozdělit do samostatné knihovny tříd. Vzhledem k tomu, že je možné je rozdělit do knihovny tříd, moduly HTTP nabízejí flexibilnější a opakovaně použitelný model pro vytváření obslužných rutin událostí `HttpApplication`. Vzhledem k tomu, že `Global.asax` soubor je specifický pro webovou aplikaci, ve které se nachází, moduly HTTP lze zkompilovat do sestavení, kdy je potřeba přidat modul HTTP na web stejně snadno jako vyřazení sestavení ve složce `Bin` a registrace modulu v `Web.config`. Tento kurz se nezobrazuje při vytváření a používání modulů HTTP, ale dvě knihovny protokolování chyb, které se používají v následujících dvou kurzech, se implementují jako moduly HTTP. Další informace o výhodách modulů HTTP najdete v tématu [použití modulů HTTP a obslužných rutin k vytvoření zapojitelné součásti ASP.NET](https://msdn.microsoft.com/library/aa479332.aspx).
 
-## <a name="retrieving-information-about-the-unhandled-exception"></a>Načítání informací o neošetřené výjimky
+## <a name="retrieving-information-about-the-unhandled-exception"></a>Načítají se informace o neošetřené výjimce.
 
-V tuto chvíli máme soubor Global.asax s `Application_Error` obslužné rutiny události. Spustí tuto obslužnou rutinu události potřebujeme upozornit vývojáře chyby a protokolovat její podrobnosti. K provedení následujících úkolů, musíme nejprve určit podrobnosti o výjimce, která byla vygenerována. Použití objektu serveru [ `GetLastError` metoda](https://msdn.microsoft.com/library/system.web.httpserverutility.getlasterror.aspx) se načíst podrobnosti o neošetřené výjimky, která způsobila `Error` události, která se aktivuje.
+V tomto okamžiku máme soubor Global. asax s obslužnou rutinou události `Application_Error`. Když se spustí Tato obslužná rutina události, musíme sdělit vývojářům chybu a zaznamenat její podrobnosti. Aby bylo možné tyto úlohy provést, je nejdříve potřeba určit podrobnosti o výjimce, která byla vyvolána. K načtení podrobností o neošetřené výjimce, která způsobila vyvolání události `Error`, použijte [metodu`GetLastError`](https://msdn.microsoft.com/library/system.web.httpserverutility.getlasterror.aspx) objektu serveru.
 
 [!code-vb[Main](processing-unhandled-exceptions-vb/samples/sample2.vb)]
 
-`GetLastError` Metoda vrátí objekt typu `Exception`, což je základní typ pro všechny výjimky v rozhraní .NET Framework. Nicméně ve výše uvedeném kódu I jsem přetypování objekt výjimky vrácené `GetLastError` do `HttpException` objektu. Pokud `Error` Probíhá vyvolání události, protože došlo k výjimce během zpracování prostředků technologie ASP.NET a zabalení výjimky, která byla vyvolána v rámci `HttpException`. Chcete-li získat skutečný výjimku, která se srážejí použijte událost chyby `InnerException` vlastnost. Pokud `Error` vyvolání události z důvodu výjimky založené na protokolu HTTP, třeba požadavek na neexistující stránku `HttpException` je vyvolána výjimka, ale nemá vnitřní výjimku.
+Metoda `GetLastError` vrátí objekt typu `Exception`, což je základní typ pro všechny výjimky v .NET Framework. Nicméně v kódu výše přetypování objekt výjimky vrácený `GetLastError` do objektu `HttpException`. Pokud dojde k vyvolání události `Error`, protože při zpracování prostředku ASP.NET došlo k výjimce, vyvolaná výjimka je zabalena do `HttpException`. Chcete-li získat skutečnou výjimku, která vyvolala událost chyby, použijte vlastnost `InnerException`. Pokud byla událost `Error` vyvolána z důvodu výjimky založené na protokolu HTTP, jako je například požadavek na neexistující stránku, je vyvolána `HttpException`, ale nemá vnitřní výjimku.
 
-Následující kód používá `GetLastErrormessage` k načtení informací o výjimce, která aktivuje `Error` události, ukládání `HttpException` do proměnné s názvem `lastErrorWrapper`. Pak ukládá typu, zprávy a trasování zásobníku původní výjimky do tří proměnných řetězce, kontroluje se, pokud `lastErrorWrapper` skutečné výjimka, která aktivuje `Error` událostí (v případě výjimky založené na protokolu HTTP) nebo pokud je pouze Obálka pro výjimku, která byla vyvolána při zpracování požadavku.
+Následující kód používá `GetLastErrormessage` k načtení informací o výjimce, která aktivovala událost `Error` a uložení `HttpException` do proměnné s názvem `lastErrorWrapper`. Poté uloží typ, zprávu a trasování zásobníku z prvotní výjimky ve třech proměnných řetězce, zkontroluje, zda je `lastErrorWrapper` skutečnou výjimkou, která aktivovala událost `Error` (v případě výjimek založených na protokolu HTTP), nebo je pouze obálkou pro výjimku, která byla vyvolána při zpracování žádosti.
 
 [!code-vb[Main](processing-unhandled-exceptions-vb/samples/sample3.vb)]
 
-V tomto okamžiku máte všechny informace, je nutné napsat kód, který do databázové tabulky se budou protokolovat podrobnosti této výjimky. Můžete vytvořit databázovou tabulku se sloupci pro všechny podrobnosti o chybě, které vás zajímají – typ, zprávy, trasování zásobníku a tak dále - společně s další užitečné požadované informace, například adresu URL požadované stránky a jméno aktuálně přihlášeného uživatele. V `Application_Error` obslužné rutiny události by potom připojte k databázi a vložení záznamu do tabulky. Podobně můžete přidat kód pro vývojáře o chybě e-mailem upozorní.
+V tomto okamžiku máte všechny informace, které potřebujete k psaní kódu, který bude protokolovat podrobnosti o výjimce do databázové tabulky. Můžete vytvořit databázovou tabulku se sloupci pro každou z podrobností o chybě, která je zajímavá – typ, zprávu, trasování zásobníku a tak dále, a další užitečné informace, jako je adresa URL požadované stránky a jméno aktuálně přihlášeného uživatele. V `Application_Error` obslužné rutině události se pak můžete připojit k databázi a vložit do tabulky záznam. Podobně můžete přidat kód pro upozornění vývojáře chyby prostřednictvím e-mailu.
 
-Knihovny protokolování chyba prozkoumat v následujících dvou kurzech poskytují takové funkce hned po spuštění, takže není nutné vytvářet tento protokolování chyb a oznámení sami. Ale pro ilustraci, který `Error` vyvolávání událostí a že `Application_Error` obslužná rutina události je možné protokolovat podrobnosti o chybě a upozornění vývojář, přidejte kód, který upozorní vývojáře, když dojde k chybě.
+Knihovny protokolování chyb v následujících dvou kurzech poskytují funkce, které jsou vyhodnoceny jako dostupné, takže není potřeba sestavovat Toto protokolování chyb a oznámení sami. Nicméně pro ilustraci, že je vyvolána událost `Error` a že se obslužná rutina `Application_Error` události dá použít k protokolování podrobností o chybách a oznámení vývojáři, přidáme kód, který upozorní vývojáře, když dojde k chybě.
 
-## <a name="notifying-a-developer-when-an-unhandled-exception-occurs"></a>Vývojář upozornění, když dojde k neošetřené výjimce
+## <a name="notifying-a-developer-when-an-unhandled-exception-occurs"></a>Upozorňování vývojáře, když dojde k neošetřené výjimce
 
-Když dojde k neošetřené výjimce v produkčním prostředí je potřeba upozornit vývojový tým tak, aby můžete vyhodnotit chyby a určete, jaké akce je třeba provést. Například pokud dojde k chybě při připojování k databázi, musíte do dvojitých Zkontrolujte připojovací řetězec a možná, otevřete lístek podpory s webového hostování společnosti. Pokud k výjimce došlo z důvodu programovací chyba, další kód nebo logiku ověřování možná muset přidat k zabránění takové chyby v budoucnu.
+Pokud dojde k neošetřené výjimce v produkčním prostředí, je důležité upozornit vývojového týmu, aby mohli vyhodnotit chybu a určit, jaké akce je třeba provést. Například pokud dojde k chybě při připojování k databázi, budete muset dvakrát ověřit připojovací řetězec a případně otevřít lístek podpory ve vaší společnosti pro hostování vašeho webu. Pokud došlo k výjimce z důvodu chyby programování, může být nutné přidat další kód nebo logiku ověřování, aby se předešlo takovým chybám v budoucnu.
 
-Třídy, v rozhraní .NET Framework [ `System.Net.Mail` obor názvů](https://msdn.microsoft.com/library/system.net.mail.aspx) usnadňují odesílání e-mailu. [ `MailMessage` Třídy](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx) představuje e-mailovou zprávu a má vlastnosti, jako je `To`, `From`, `Subject`, `Body`, a `Attachments`. `SmtpClass` Se používá k odesílání `MailMessage` pomocí zadaný server SMTP; nastavení serveru SMTP se dá nastavit prostřednictvím kódu programu nebo deklarativně v [ `<system.net>` element](https://msdn.microsoft.com/library/6484zdc1.aspx) v `Web.config file`. Další informace o odesílání e-mailové zprávy v aplikaci ASP.NET najdete v mé článku [odesílání e-mailu v ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)a [nejčastější dotazy týkající se System.Net.Mail](http://systemnetmail.com/).
+.NET Framework třídy v [oboru názvů`System.Net.Mail`](https://msdn.microsoft.com/library/system.net.mail.aspx) usnadňují posílání e-mailů. [Třída`MailMessage`](https://msdn.microsoft.com/library/system.net.mail.mailmessage.aspx) představuje e-mailovou zprávu a má vlastnosti jako `To`, `From`, `Subject`, `Body`a `Attachments`. `SmtpClass` slouží k odeslání objektu `MailMessage` pomocí zadaného serveru SMTP; nastavení serveru SMTP lze zadat programově nebo deklarativně v [prvku`<system.net>`](https://msdn.microsoft.com/library/6484zdc1.aspx) v `Web.config file`. Další informace o posílání e-mailových zpráv v aplikaci ASP.NET najdete v článku o [posílání e-mailů v ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)a v tématu [Nejčastější dotazy k System .NET. mailu](http://systemnetmail.com/).
 
 > [!NOTE]
-> `<system.net>` Element obsahuje nastavení serveru SMTP, který se používá `SmtpClient` třídy při odesílání e-mailu. Váš web pravděpodobně firma poskytující hosting má server SMTP, který můžete použít k odesílání e-mailu z vaší aplikace. Informace o nastavení serveru SMTP, kterou byste měli použít ve webové aplikaci naleznete v části Podpora webového hostitele.
+> Element `<system.net>` obsahuje nastavení serveru SMTP používaného třídou `SmtpClient` při posílání e-mailu. Vaše společnost hostující váš web má pravděpodobně server SMTP, který můžete použít k odeslání e-mailu z aplikace. Informace o nastaveních serveru SMTP, která byste měli použít ve své webové aplikaci, najdete v části věnované podpoře svého webového hostitele.
 
-Přidejte následující kód, který `Application_Error` obslužnou rutinu události pro odeslání vývojář e-mailu, když dojde k chybě:
+Přidejte následující kód do obslužné rutiny události `Application_Error` k odeslání e-mailu vývojáři, když dojde k chybě:
 
 [!code-vb[Main](processing-unhandled-exceptions-vb/samples/sample4.vb)]
 
-Ve výše uvedeném kódu je poměrně dlouhé, hromadné ho vytvoří HTML, který se zobrazí v e-mailu pro vývojáře. Kód spustí odkazováním `HttpException` vrácených `GetLastError` – metoda (`lastErrorWrapper`). Skutečné výjimky, ke které došlo v požadavku se načítají prostřednictvím `lastErrorWrapper.InnerException` a je přiřazená k proměnné `lastError`. Typ, zprávy a zásobníků informace o trasování je načten z `lastError` a uložení do proměnných tři řetězce.
+I když je výše uvedený kód poměrně dlouhý, je hromadně vytvořen kód HTML, který se zobrazí v e-mailu odeslanému vývojáři. Kód začíná odkazem na `HttpException` vrácenou metodou `GetLastError` (`lastErrorWrapper`). Skutečná výjimka, která byla vyvolána požadavkem, je načtena prostřednictvím `lastErrorWrapper.InnerException` a je přiřazena k proměnné `lastError`. Informace o typu, zprávě a trasování zásobníku jsou načteny z `lastError` a uloženy ve třech řetězcových proměnných.
 
-Další, `MailMessage` objekt s názvem `mm` se vytvoří. E-mailu je ve formátu HTML a zobrazí adresu URL požadované stránky, název aktuálně přihlášeného uživatele a informace o výjimce (typ, zprávy a trasování zásobníku). Jednu z výhod `HttpException` třída je, že můžete vygenerovat HTML použité k vytvoření výjimky podrobnosti žlutý obrazovky z smrti (YSOD) voláním [GetHtmlErrorMessage metoda](https://msdn.microsoft.com/library/system.web.httpexception.gethtmlerrormessage.aspx). Tato metoda se tady používá k načtení značek YSOD podrobnosti o výjimce a přidejte ho do e-mailu jako přílohu. Varování o jedno slovo: Pokud výjimka, která aktivuje `Error` událost byla výjimka založené na protokolu HTTP (třeba požadavek na neexistující stránku) pak bude `GetHtmlErrorMessage` vrátí metoda `null`.
+Dále je vytvořen objekt `MailMessage` s názvem `mm`. Tělo e-mailu je formátováno ve formátu HTML a zobrazuje adresu URL požadované stránky, jméno aktuálně přihlášeného uživatele a informace o výjimce (typ, zpráva a trasování zásobníku). Jednou ze studených věcí o `HttpException` třídy je, že můžete vygenerovat kód HTML, který se používá k vytvoření podrobného povýšení obrazovky s podrobnostmi o smrti (YSOD) voláním [metody GetHtmlErrorMessage](https://msdn.microsoft.com/library/system.web.httpexception.gethtmlerrormessage.aspx). Tato metoda se tady používá k načtení podrobností o výjimce YSOD značky a jejímu přidání do e-mailu jako přílohy. Jedno slovo s upozorněním: Pokud výjimka, která aktivovala událost `Error`, byla výjimkou založenou na protokolu HTTP (například požadavek na neexistující stránku), vrátí metoda `GetHtmlErrorMessage` `null`.
 
-Posledním krokem je odeslat `MailMessage`. To se provádí tak, že vytvoříte nový `SmtpClient` metoda a volání jeho `Send` metoda.
+Posledním krokem je odeslání `MailMessage`. To se provádí vytvořením nové metody `SmtpClient` a voláním její metody `Send`.
 
 > [!NOTE]
-> Před použitím tohoto kódu ve webové aplikaci budete chtít změnit hodnoty `ToAddress` a `FromAddress` konstanty support@example.com e-mailu adresu e-mailové oznámení chyb by měly být odeslány na a pocházejí z. Také budete muset zadat nastavení serveru SMTP v `<system.net>` tématu `Web.config`. Vyhledejte poskytovatele webového hostitele k určení nastavení serveru SMTP použít.
+> Před použitím tohoto kódu ve webové aplikaci budete chtít změnit hodnoty v `ToAddress` a `FromAddress` konstanty z support@example.com na libovolnou e-mailovou adresu, ze které se má e-mail s oznámením o chybách Odeslat a odkud z něj pochází. Také budete muset zadat nastavení serveru SMTP v části `<system.net>` v `Web.config`. Pokud chcete zjistit, jaké nastavení serveru SMTP chcete použít, obraťte se na svého poskytovatele webového hostitele.
 
-S tímto kódem na místě kdykoliv dojde k chybě vývojáře přijde e-mailové zprávě, která shrnuje chybu a také YSOD. V předchozím kurzu jsme prokázali Chyba za běhu navštívit Genre.aspx a předáním neplatný `ID` hodnotu pomocí řetězce dotazu, jako je třeba `Genre.aspx?ID=foo`. Na stránce s `Global.asax` soubor na místě produkuje stejné prostředí pro uživatele v předchozím kurzu – ve vývojovém prostředí budete i další zobrazíte výjimky podrobnosti žlutý obrazovka smrti, zatímco v produkčním prostředí budete Zobrazit vlastní chybovou stránku. Kromě tohoto chování existující vývojář se odešle e-mailu.
+V případě, že je tento kód na místě, kdy je k dispozici chyba, vývojář pošle e-mailovou zprávu, která shrnuje chybu a obsahuje YSOD. V předchozím kurzu jsme ukázali chybu za běhu, a to návštěvou Žánr. aspx a předáním neplatné `ID`é hodnoty pomocí řetězce dotazu, jako je `Genre.aspx?ID=foo`. Navštívení stránky pomocí souboru `Global.asax` v místě přináší stejné uživatelské prostředí jako v předchozím kurzu – ve vývojovém prostředí budete nadále zobrazovat podrobnosti o výjimce žlutá obrazovka smrti, zatímco v produkčním prostředí uvidíte vlastní chybovou stránku. Kromě tohoto existujícího chování vývojář posílá e-mail.
 
-**Obrázek 2** ukazuje přijetí při návštěvě e-mailu `Genre.aspx?ID=foo`. E-mailu shrnuje informace o výjimce, zatímco `YSOD.htm` přílohy zobrazí obsah, který se zobrazí v YSOD podrobnosti o výjimce (naleznete v tématu **obrázek 3**).
+**Obrázek 2** ukazuje e-mail přijatý při návštěvě `Genre.aspx?ID=foo`. Tělo e-mailu shrnuje informace o výjimce, zatímco `YSOD.htm` příloha zobrazuje obsah zobrazený v podrobnostech výjimky YSOD (viz **Obrázek 3**).
 
 [![](processing-unhandled-exceptions-vb/_static/image5.png)](processing-unhandled-exceptions-vb/_static/image4.png)
 
-**Obrázek 2**: Vývojář přijde e-mailové oznámení pokaždé, když dojde k neošetřené výjimce  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](processing-unhandled-exceptions-vb/_static/image6.png))
+**Obrázek 2**: vývojář pošle e-mailové oznámení vždy, když dojde k neošetřené výjimce.  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](processing-unhandled-exceptions-vb/_static/image6.png))
 
 [![](processing-unhandled-exceptions-vb/_static/image8.png)](processing-unhandled-exceptions-vb/_static/image7.png)
 
-**Obrázek 3**: E-mailové oznámení obsahuje podrobnosti o výjimce YSOD jako přílohu  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](processing-unhandled-exceptions-vb/_static/image9.png))
+**Obrázek 3**: e-mailové oznámení obsahují podrobnosti o výjimce YSOD jako příloha.  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](processing-unhandled-exceptions-vb/_static/image9.png))
 
-## <a name="what-about-using-the-custom-error-page"></a>A co pomocí vlastní chybovou stránku?
+## <a name="what-about-using-the-custom-error-page"></a>Jak používat vlastní chybovou stránku?
 
-Tento kurz vám ukázal, jak používat `Global.asax` a `Application_Error` obslužné rutiny události k provádění kódu, když dojde k neošetřené výjimce. Konkrétně jsme použili této obslužné rutiny události upozornění pro vývojáře chyby; Společnost Microsoft může ji rozšířit, aby přihlásit také podrobnosti o chybě databáze. Přítomnost `Application_Error` obslužná rutina události nemá vliv na prostředí koncového uživatele. Stále vidí nakonfigurované chybovou stránku, už to YSOD podrobnosti o chybě, YSOD chyba modulu Runtime nebo vlastní chybovou stránku.
+Tento kurz ukázal způsob použití `Global.asax` a obslužné rutiny události `Application_Error` ke spuštění kódu, když dojde k neošetřené výjimce. Konkrétně jsme tuto obslužnou rutinu události použili k oznamování vývojářů chyby. Můžeme ho roztáhnout, aby se do databáze zaprotokoloval také podrobnosti o chybě. Přítomnost obslužné rutiny události `Application_Error` nemá vliv na činnost koncového uživatele. Pořád uvidí konfigurovanou chybovou stránku, nastavili jsme podrobnosti o chybě YSOD, chyba modulu runtime YSOD nebo vlastní chybovou stránku.
 
-Je přirozené zajímat, jestli `Global.asax` souboru a `Application_Error` událostí je nezbytné, pokud používáte vlastní chybové stránky. Když došlo k chybě uživatele se zobrazí vlastní chybovou stránku tak proč nelze klademe kódu, kterého chcete upozornit vývojáře a protokolovat podrobnosti o chybě do třídy modelu code-behind vlastní chybové stránky? Zatímco určitě můžete přidat kód do třídy modelu code-behind vlastní chybovou stránku nemáte přístup k podrobnosti o výjimce, která aktivuje `Error` událost v případě technikou Prozkoumali jsme v předchozím kurzu. Volání `GetLastError` vrátí metoda z vlastní chybovou stránku `Nothing`.
+Při použití vlastní chybové stránky je důležité, abyste si zajímá, jestli `Global.asax` soubor a `Application_Error` událost. Pokud dojde k chybě, zobrazí se uživateli vlastní chybová stránka, takže nemůžeme vložit kód pro informování vývojáře a zaprotokolovat podrobnosti o chybách do třídy kódu na pozadí vlastní chybové stránky? I když můžete přidat kód do třídy kódu na pozadí vlastní chybové stránky, nemáte přístup k podrobnostem o výjimce, která aktivovala událost `Error` při použití techniky, kterou jsme prozkoumali v předchozím kurzu. Volání metody `GetLastError` z vlastní chybové stránky vrátí `Nothing`.
 
-Důvod pro toto chování je vzhledem k tomu, že se vlastní chybová stránka je kontaktovat prostřednictvím přesměrování. Vyvolá neošetřenou výjimku dosáhne-li modul runtime ASP.NET modul ASP.NET jeho `Error` událostí (která spustí `Application_Error` obslužná rutina události) a potom *přesměruje* uživateli vlastní chybovou stránku vydáním `Response.Redirect(customErrorPageUrl)`. `Response.Redirect` Metoda odešle odpověď klientovi stavovým kódem HTTP 302, že prohlížeč požádat o novou adresu URL, a to vlastní chybovou stránku. Prohlížeč pak automaticky požaduje tuto novou stránku. Poznáte, že vlastní chybové stránky byl požadován odděleně od stránce původu chybu, protože adresního řádku prohlížeče se změní na adresu URL vlastní chybové stránky (viz **obrázek 4**).
+Důvodem tohoto chování je, že vlastní chybová stránka se dorazí přes přesměrování. Když Neošetřená výjimka dosáhne běhového prostředí ASP.NET, modul ASP.NET vyvolá událost `Error` (která spustí obslužnou rutinu události `Application_Error`) a poté *přesměruje* uživatele na vlastní chybovou stránku vyvoláním `Response.Redirect(customErrorPageUrl)`. Metoda `Response.Redirect` odesílá klientovi odpověď se stavovým kódem HTTP 302, který instruuje prohlížeč, aby si vyžádal novou adresu URL, konkrétně vlastní chybovou stránku. Prohlížeč pak tuto novou stránku automaticky vyžádá. Můžete říct, že vlastní chybová stránka byla vyžádána nezávisle na stránce, kde došlo k chybě, protože se v adresním řádku prohlížeče změnila adresa URL vlastní chybové stránky (viz **Obrázek 4**).
 
 [![](processing-unhandled-exceptions-vb/_static/image11.png)](processing-unhandled-exceptions-vb/_static/image10.png)
 
-**Obrázek 4**: Když dojde k chybě v prohlížeči přesměrován na adresu URL vlastní chybové stránky  
- ([Kliknutím ji zobrazíte obrázek v plné velikosti](processing-unhandled-exceptions-vb/_static/image12.png))
+**Obrázek 4**: když dojde k chybě, prohlížeč se přesměruje na adresu URL vlastní chybové stránky.  
+ ([Kliknutím zobrazíte obrázek v plné velikosti.](processing-unhandled-exceptions-vb/_static/image12.png))
 
-Výsledkem je, že žádost, ve kterém došlo k neošetřené výjimce končí, když server odpoví přesměrování HTTP 302. Další požadavek na vlastní chybovou stránku je zbrusu novou žádost o; už v tomto okamžiku ASP.NET modul vyřadil informace o této chybě a navíc nemá žádný způsob, jak přidružit nový požadavek na vlastní chybovou stránku neošetřené výjimky v předchozí žádosti. To je důvod, proč `GetLastError` vrátí `null` při volání z vlastní chybovou stránku.
+Čistým účinkem je to, že žádost, kde došlo k neošetřené výjimce, končí, když server odpoví pomocí přesměrování HTTP 302. Následující požadavek na vlastní chybovou stránku je zcela nový požadavek. v tomto okamžiku modul ASP.NET zahodil informace o chybě, a navíc nemá žádný způsob, jak přidružit neošetřenou výjimku v předchozí žádosti s novým požadavkem na vlastní chybovou stránku. To je důvod, proč `GetLastError` vrátí `null` při volání z vlastní chybové stránky.
 
-Je však možné mít vlastní chybovou stránku provedených během stejný požadavek, který způsobil chybu. [ `Server.Transfer(url)` ](https://msdn.microsoft.com/library/system.web.httpserverutility.transfer.aspx) Metoda přenese vykonávání na zadanou adresu URL a z procesů v rámci stejné žádosti. Můžete přesunout kód `Application_Error` obslužné rutiny události k použití modelu code-behind třídy vlastní chybovou stránku, nahraďte ji v `Global.asax` následujícím kódem:
+Je ale možné, že se vlastní chybová stránka spustí během stejné žádosti, která způsobila chybu. Metoda [`Server.Transfer(url)`](https://msdn.microsoft.com/library/system.web.httpserverutility.transfer.aspx) přenáší provádění na zadanou adresu URL a zpracuje ji v rámci stejné žádosti. Můžete přesunout kód v obslužné rutině události `Application_Error` do třídy s kódem na pozadí vlastní chybové stránky a nahradit ji v `Global.asax` následujícím kódem:
 
 [!code-vb[Main](processing-unhandled-exceptions-vb/samples/sample5.vb)]
 
-Teď, když dojde k neošetřené výjimce `Application_Error` obslužná rutina události přenese ovládací prvek na odpovídající vlastní chybovou stránku, na základě kódu stavu protokolu HTTP. Vzhledem k tomu, že byl ovládací prvek převeden, vlastní chybovou stránku má přístup k informacím o neošetřené výjimky prostřednictvím `Server.GetLastError` a může informovat vývojáře o chybě a protokolovat její podrobnosti. `Server.Transfer` Volání přestane modul ASP.NET z přesměruje uživatele na vlastní chybovou stránku. Místo toho vlastní chybovou stránku obsahu je vrácen jako odpověď na stránku, který vytvořil chybu.
+Nyní když dojde k neošetřené výjimce, obslužná rutina události `Application_Error` přenáší řízení na příslušnou vlastní chybovou stránku na základě stavového kódu HTTP. Vzhledem k tomu, že došlo k přenosu ovládacího prvku, vlastní chybová stránka má přístup k neošetřeným informacím o výjimce prostřednictvím `Server.GetLastError` a může oznamovateli informovat vývojáře o chybě a zaznamenat její podrobnosti. `Server.Transfer` volání zastaví modul ASP.NET před přesměrováním uživatele na vlastní chybovou stránku. Místo toho se jako odpověď na stránku, která generovala chybu, vrátí obsah vlastní chybové stránky.
 
 ## <a name="summary"></a>Souhrn
 
-Když dojde k neošetřené výjimce ve webové aplikaci ASP.NET, modul runtime ASP.NET vyvolá `Error` událostí a zobrazí se nakonfigurované chybová stránka. Pro vývojáře v chybě, můžete být informováni protokolovat podrobnosti nebo zpracovat nějak další tak, že vytvoříte obslužnou rutinu události pro událost chyby. Existují dva způsoby, jak vytvořit obslužnou rutinu události pro `HttpApplication` události, jako jsou `Error`: v `Global.asax` souboru nebo z modulu HTTP. Tento kurz vám ukázal, jak vytvořit `Error` obslužné rutině událostí ve `Global.asax` soubor, který upozorní vývojáře chybu prostřednictvím e-mailovou zprávu.
+Pokud dojde k neošetřené výjimce ve webové aplikaci ASP.NET, modul runtime ASP.NET vyvolá událost `Error` a zobrazí nakonfigurovanou chybovou stránku. Pro tuto chybu můžeme oznamovatele informovat, zaznamenat její podrobnosti nebo je zpracovat jiným způsobem tak, že vytvoříte obslužnou rutinu události pro událost Error. Existují dva způsoby, jak vytvořit obslužnou rutinu události pro `HttpApplication` události jako `Error`: v souboru `Global.asax` nebo v modulu HTTP. V tomto kurzu jste si ukázali, jak vytvořit obslužnou rutinu události `Error` v souboru `Global.asax`, která vývojářům oznamuje chybu prostřednictvím e-mailové zprávy.
 
-Vytvoření `Error` obslužná rutina události je užitečné, pokud budete potřebovat ke zpracování neošetřených výjimek způsobem jedinečný nebo vlastní. Však vytvářet své vlastní `Error` obslužné rutiny události k zaprotokolování výjimky nebo upozornit vývojáře není co nejefektivněji využít váš čas jako již existují knihovny pro protokolování zdarma a snadno se používá chyba může být také nastaven v řádu minut. Následující dva kurzy zkontrolujte dvě tyto knihovny.
+Vytvoření obslužné rutiny události `Error` je užitečné, pokud potřebujete zpracovat neošetřené výjimky v některém jedinečném nebo vlastním přizpůsobeném způsobem. Nicméně vytvoření vlastní obslužné rutiny události `Error` k zaznamenání výjimky nebo pro informování vývojáře není nejúčinnějším využitím času, protože již existuje a snadno se používají knihovny protokolování chyb, které je možné nastavit během několika minut. Další dva kurzy prozkoumají dvě takové knihovny.
 
-Všechno nejlepší programování!
+Šťastné programování!
 
 ### <a name="further-reading"></a>Další čtení
 
-Další informace o tématech, které jsou popsané v tomto kurzu najdete na následujících odkazech:
+Další informace o tématech popsaných v tomto kurzu najdete v následujících zdrojích informací:
 
-- [Přehled obslužných rutin HTTP a ASP.NET z modulů HTTP](https://support.microsoft.com/kb/307985)
-- [Řádně zpracování neošetřených výjimek – zpracování neošetřených výjimek](http://aspnet.4guysfromrolla.com/articles/091306-1.aspx)
-- [`HttpApplication` Třídy a objekt aplikace ASP.NET](http://www.eggheadcafe.com/articles/20030211.asp)
-- [Obslužné rutiny HTTP a moduly protokolu HTTP v ASP.NET](http://www.15seconds.com/Issue/020417.htm)
-- [Odeslání e-mailu v ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)
-- [Principy `Global.asax` souboru](http://aspalliance.com/1114_Understanding_the_Globalasax_file.all)
-- [Použití modulů HTTP a obslužné rutiny k vytvoření komponentů modulární ASP.NET](https://msdn.microsoft.com/library/aa479332.aspx)
-- [Práce s ASP.NET `Global.asax` souboru](http://articles.techrepublic.com.com/5100-10878_11-5771721.html)
-- [Práce s `HttpApplication` instancí](https://msdn.microsoft.com/library/a0xez8f2.aspx)
+- [ASP.NET moduly HTTP a obslužné rutiny HTTP – přehled](https://support.microsoft.com/kb/307985)
+- [Řádně reagovat na neošetřené výjimky zpracování neošetřených výjimek](http://aspnet.4guysfromrolla.com/articles/091306-1.aspx)
+- [Třída `HttpApplication` a objekt aplikace ASP.NET](http://www.eggheadcafe.com/articles/20030211.asp)
+- [Obslužné rutiny HTTP a moduly HTTP v ASP.NET](http://www.15seconds.com/Issue/020417.htm)
+- [Odesílání e-mailů v ASP.NET](http://aspnet.4guysfromrolla.com/articles/072606-1.aspx)
+- [Princip souboru `Global.asax`](http://aspalliance.com/1114_Understanding_the_Globalasax_file.all)
+- [Použití modulů a obslužných rutin HTTP k vytvoření zapojitelné součásti ASP.NET](https://msdn.microsoft.com/library/aa479332.aspx)
+- [Práce se souborem `Global.asax` ASP.NET](http://articles.techrepublic.com.com/5100-10878_11-5771721.html)
+- [Práce s instancemi `HttpApplication`](https://msdn.microsoft.com/library/a0xez8f2.aspx)
 
 > [!div class="step-by-step"]
 > [Předchozí](displaying-a-custom-error-page-vb.md)
-> [další](logging-error-details-with-asp-net-health-monitoring-vb.md)
+> [Další](logging-error-details-with-asp-net-health-monitoring-vb.md)

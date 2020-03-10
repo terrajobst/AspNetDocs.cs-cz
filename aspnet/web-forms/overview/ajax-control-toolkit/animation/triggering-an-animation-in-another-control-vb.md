@@ -9,11 +9,11 @@ ms.assetid: 25ebaf1f-5a9f-423d-98c7-1d694e93664f
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/triggering-an-animation-in-another-control-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 6a4af2324afab7519170c123b6ea7c57ab3e03fb
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74575034"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78536069"
 ---
 # <a name="triggering-an-animation-in-another-control-vb"></a>Aktivace animace jiného ovládacího prvku (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Obecně se spouští animace pomocí interakce uživatele se stejným ovládacím prvkem. Je však také možné pracovat s jedním ovládacím prvkem a následně animacem jiného ovládacího prvku.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve do stránky zahrňte `ScriptManager`. pak je načtena knihovna ASP.NET AJAX, která umožňuje používat sadu nástrojů Control Toolkit:
 

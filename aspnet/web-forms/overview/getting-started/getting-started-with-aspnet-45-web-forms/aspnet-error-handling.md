@@ -9,11 +9,11 @@ ms.assetid: 423498f7-1a4b-44a1-b342-5f39d0bcf94f
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/aspnet-error-handling
 msc.type: authoredcontent
 ms.openlocfilehash: 9514142ca50b33470a3f4c033e4f8e319a9ee09b
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74636458"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78566680"
 ---
 # <a name="aspnet-error-handling"></a>Zpracování chyb v ASP.NET
 
@@ -25,7 +25,7 @@ od [Erik Reitan](https://github.com/Erikre)
 
 V tomto kurzu upravíte ukázkovou aplikaci Wingtip Toys, která bude zahrnovat zpracování chyb a protokolování chyb. Zpracování chyb umožní aplikaci řádným způsobem zpracovávat chyby a zobrazovat chybové zprávy. Protokolování chyb vám umožní najít a opravit chyby, ke kterým došlo. Tento kurz sestaví na předchozím kurzu "směrování adresy URL" a je součástí série kurzů Wingtip Toys.
 
-## <a name="what-youll-learn"></a>Co se naučíte:
+## <a name="what-youll-learn"></a>Naučíte se:
 
 - Jak přidat globální zpracování chyb do konfigurace aplikace.
 - Postup přidání zpracování chyb na úrovni aplikace, stránky a kódu.
@@ -116,7 +116,7 @@ V ukázkové aplikaci Wingtip Toys se k zobrazení chyb použije jedna stránka.
 1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na název projektu (**Wingtip Toys**) a vyberte **Přidat** -&gt; **Nová položka**.   
    Zobrazí se dialogové okno **Přidat novou položku** .
 2. Na levé straně vyberte skupinu **Visual C#**  -&gt; **Web** Templates. V prostředním seznamu vyberte **webový formulář s hlavní stránkou**a pojmenujte ho **ErrorPage. aspx**.
-3. Klikněte na tlačítko **Přidat**.
+3. Klikněte na **Přidat**.
 4. Vyberte soubor *Web. Master* jako stránku předlohy a pak klikněte na **tlačítko OK**.
 5. Existující značku nahraďte následujícím kódem:   
 
@@ -303,7 +303,7 @@ Zobrazení protokolu knihovny ELMAH je jednoduché, ale nejprve vytvoříte neo�
 
     ![Zpracování chyb ASP.NET – protokol chyb knihovny ELMAH](aspnet-error-handling/_static/image9.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste se dozvěděli o zpracování chyb na úrovni aplikace, na úrovni stránky a na úrovni kódu. Také jste se naučili, jak protokolovat ošetřené a neošetřené chyby pro pozdější kontrolu. Přidali jste nástroj knihovny ELMAH, který poskytuje protokolování výjimek a oznámení do vaší aplikace pomocí NuGet. Dále jste se dozvěděli o významu bezpečných chybových zpráv.
 
@@ -322,7 +322,7 @@ Další informace o nasazení webové aplikace do Microsoft Azure najdete v tém
 [Microsoft Azure – bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/)  
  Publikování webu do Microsoft Azure vám ušetří čas, údržbu a náklady. Je to rychlý proces nasazení webové aplikace do Azure. Pokud potřebujete zachovat a monitorovat svou webovou aplikaci, Azure nabízí celou řadu nástrojů a služeb. Spravujte data, provoz, identitu, zálohování, zasílání zpráv, média a výkon v Azure. A to vše je k dispozici v rámci velmi nákladově efektivního přístupu.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Protokolování podrobností o chybách pomocí  monitorování stavu ASP.NET](../../older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-asp-net-health-monitoring-cs.md)  
 [KNIHOVNY ELMAH](https://code.google.com/p/elmah/)

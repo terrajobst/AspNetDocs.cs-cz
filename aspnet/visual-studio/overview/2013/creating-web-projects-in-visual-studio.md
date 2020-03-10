@@ -9,11 +9,11 @@ ms.assetid: 61941e64-0c0d-4996-9270-cb8ccfd0cabc
 msc.legacyurl: /visual-studio/overview/2013/creating-web-projects-in-visual-studio
 msc.type: authoredcontent
 ms.openlocfilehash: fbb4cd7afa2506879d47bce980bf0164aad40c2c
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519268"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78555221"
 ---
 # <a name="creating-aspnet-web-projects-in-visual-studio-2013"></a>Vytváření webových projektů ASP.NET v sadě Visual Studio 2013
 
@@ -31,7 +31,7 @@ tím, že [Dykstra](https://github.com/tdykstra)
 > Informace o tom, jak vytvořit webové projekty pro Azure Cloud Services nebo Azure Mobile Services, najdete v tématu Začínáme [s azure Cloud Services a ASP.NET](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-get-started/) a [Vytvoření aplikace tabulek výsledků pomocí back-endu .net pro Azure Mobile Services](https://azure.microsoft.com/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/).
 
 <a id="prerequisites"></a>
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek se týká [Visual Studio 2013](https://go.microsoft.com/fwlink/?LinkId=306566) s nainstalovanou [aktualizací Update 3](https://go.microsoft.com/fwlink/?linkid=397827&amp;clcid=0x409) .
 
@@ -48,7 +48,7 @@ Následující kroky ukazují, jak vytvořit webový projekt:
 1. Na **úvodní** stránce nebo v nabídce **soubor** klikněte na **Nový projekt** .
 2. V dialogovém okně **Nový projekt** klikněte v levém podokně na **Web** a **ASP.NET webová aplikace** v prostředním podokně.
 
-    ![Dialogové okno nového projektu](creating-web-projects-in-visual-studio/_static/image1.png)
+    ![Dialogové okno Nový projekt](creating-web-projects-in-visual-studio/_static/image1.png)
 
     V levém podokně můžete vybrat **Cloud** a vytvořit [cloudovou službu Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy), [mobilní službu Azure](https://msdn.microsoft.com/library/windows/apps/dn629482.aspx)nebo [webovou úlohu Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-webjobs). Toto téma se nevztahuje na tyto šablony.
 3. V pravém podokně zaškrtněte políčko **přidat Application Insights do projektu** , pokud chcete pro svou aplikaci sledovat stav a využití. Další informace najdete v tématu [monitorování výkonu ve webových aplikacích](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/).
@@ -56,16 +56,16 @@ Následující kroky ukazují, jak vytvořit webový projekt:
 
     Zobrazí se dialogové okno **Nový projekt ASP.NET** .
 
-    ![Dialogové okno nového projektu](creating-web-projects-in-visual-studio/_static/image2.png)
+    ![Dialogové okno Nový projekt](creating-web-projects-in-visual-studio/_static/image2.png)
 5. Klikněte na šablonu.
 
-    ![Vyberte šablonu](creating-web-projects-in-visual-studio/_static/image3.png)
+    ![Vybrat šablonu](creating-web-projects-in-visual-studio/_static/image3.png)
 6. Pokud chcete přidat podporu pro další architektury, které nejsou součástí šablony, zaškrtněte příslušné políčko. (V zobrazeném příkladu můžete přidat MVC nebo webové rozhraní API do projektu webových formulářů.)
 
     ![Přidat rozhraní](creating-web-projects-in-visual-studio/_static/image4.png)
 7. <a id="testproj"></a>Chcete-li přidat projekt testování částí, klikněte na možnost **Přidat testy jednotek**.
 
-    ![Přidat testy jednotek](creating-web-projects-in-visual-studio/_static/image5.png)
+    ![Přidání testů jednotek](creating-web-projects-in-visual-studio/_static/image5.png)
 8. Pokud chcete jinou metodu ověřování, než jakou šablona ve výchozím nastavení poskytuje, klikněte na **změnit ověřování**.
 
     ![Tlačítko konfigurovat ověřování](creating-web-projects-in-visual-studio/_static/image6.png)
@@ -257,7 +257,7 @@ Použijete-li návrháře webových formulářů v aplikaci Visual Studio, Všim
 
 Když vyberete šablonu, bude automaticky vybráno zaškrtávací políčko pro rozhraní používané šablonou. Pokud například vyberete šablonu **webových formulářů** , je zaškrtnuté políčko **webové formuláře** a nemůžete ho vymazat.
 
-![Vyberte šablonu](creating-web-projects-in-visual-studio/_static/image21.png)
+![Vybrat šablonu](creating-web-projects-in-visual-studio/_static/image21.png)
 
 ![Přidat rozhraní](creating-web-projects-in-visual-studio/_static/image22.png)
 
@@ -317,7 +317,7 @@ ASP.NET Identity je dobrá volba, pokud vytváříte internetový web, který je
 
 Další informace o možnostech jednotlivých uživatelských účtů najdete v následujících zdrojích informací:
 
-- [www.asp.net/identity](../../../identity/index.md). Dokumentace k ASP.NET Identity na webu ASP.NET.
+- [www.ASP.NET/identity](../../../identity/index.md). Dokumentace k ASP.NET Identity na webu ASP.NET.
 - [Vytvořte aplikaci ASP.NET MVC 5 s aplikacemi Facebook a Google OAuth2 a OpenID Signing](../../../mvc/overview/security/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on.md). Také ukazuje, jak přizpůsobit data profilu uživatele.
 - [Webové rozhraní API – externí ověřovací služby](../../../web-api/overview/security/external-authentication-services.md)
 - [Přidání externích přihlášení do aplikace ASP.NET v Visual Studio 2013](https://blogs.msdn.com/b/webdev/archive/2013/06/27/adding-external-logins-to-your-asp-net-application-in-visual-studio-2013.aspx)
@@ -328,7 +328,7 @@ Další informace o možnostech jednotlivých uživatelských účtů najdete v 
 Pokud vyberete **účty organizace**, ukázková aplikace se nakonfiguruje tak, aby používala Windows Identity Foundation (WIF) k ověřování na základě uživatelských účtů ve službě Azure Active Directory (Azure AD, která zahrnuje Office 365) nebo Windows Server Active Directory. Další informace najdete v části [Možnosti ověřování účtu organizace](#orgauthoptions) dále v tomto tématu.
 
 <a id="winauth"></a>
-### <a name="windows-authentication"></a>Ověřování Windows
+### <a name="windows-authentication"></a>Ověřování systému Windows
 
 Pokud vyberete **ověřování systému Windows**, bude ukázková aplikace nakonfigurována tak, aby pro ověřování používala modul IIS ověřování systému Windows. Aplikace zobrazí doménu a ID uživatele účtu služby Active Directory nebo místního počítače, který je přihlášený k systému Windows, ale nezahrnuje registraci uživatele nebo uživatelské rozhraní pro přihlášení. Tato možnost je určená pro intranetové weby.
 
@@ -357,7 +357,7 @@ Pokud si chcete vyzkoušet jednu z možností Azure AD, ale ještě nemáte úč
 
 Tuto možnost vyberte, pokud chcete povolit ověřování u uživatelských účtů, které jsou definované v jednom [tenantovi](https://technet.microsoft.com/library/jj573650.aspx)služby Azure AD. Například lokalita je contoso.com a bude zpřístupněna zaměstnancům společnosti Contoso, kteří jsou v tenantovi contoso.onmicrosoft.com. Nebudete moct nakonfigurovat službu Azure AD, aby uživatelům z jiných tenantů povolil přístup k aplikaci.
 
-#### <a name="domain"></a>Doména
+#### <a name="domain"></a>Domain (Doména)
 
 Zadejte doménu služby Azure AD, ve které chcete nastavit aplikaci, například: `contoso.onmicrosoft.com`. Pokud máte [vlastní doménu](http://www.cloudidentity.com/blog/2013/04/14/adding-a-custom-domain-to-your-windows-azure-ad/), například `contoso.com` místo `contoso.onmicrosoft.com`, můžete sem zadat.
 

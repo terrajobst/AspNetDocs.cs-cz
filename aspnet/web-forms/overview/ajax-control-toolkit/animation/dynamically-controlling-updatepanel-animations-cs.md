@@ -9,11 +9,11 @@ ms.assetid: 5138b8fe-98ff-4e73-a00b-e263fc3ff11d
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/dynamically-controlling-updatepanel-animations-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 183974564764aab9c0d8a4e577995f3c444bf2d3
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74606803"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78536202"
 ---
 # <a name="dynamically-controlling-updatepanel-animations-c"></a>Dynamické řízení animací ovládacím prvkem UpdatePanel (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Pro obsah `UpdatePanel`existuje speciální rozšířený objekt, který spoléhá na rámec animace: `UpdatePanelAnimation`. Může taky spolupracovat s triggery `UpdatePanel`.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Prvním krokem je obvykle zahrnutí `ScriptManager` do stránky, aby byla načtena knihovna ASP.NET AJAX a bylo možné použít ovládací sadu Toolkit:
 

@@ -9,15 +9,15 @@ ms.assetid: 48f7feb3-872f-485d-b96f-e30011ff8c4a
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/whats-new-in-aspnet-mvc-4
 msc.type: authoredcontent
 ms.openlocfilehash: 4235f4fe666cdeb7d0821127a2b349f2ff30cd6e
-ms.sourcegitcommit: 295cf898a4c87e264b0c35c7254b0fa4169f2278
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74057034"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78539436"
 ---
 # <a name="whats-new-in-aspnet-mvc-4"></a>Novinky v ASP.NET MVC 4
 
-Podle [týmu webového Campy](https://twitter.com/webcamps)
+podle [týmu webového Campy](https://twitter.com/webcamps)
 
 [Stáhnout web Campy Training Kit](https://aka.ms/webcamps-training-kit)
 
@@ -45,7 +45,7 @@ V této praktické laboratorní laboratoři se dozvíte, jak:
 <a id="Prerequisites"></a>
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto testovacího prostředí musíte mít následující položky:
 
@@ -57,7 +57,7 @@ K dokončení tohoto testovacího prostředí musíte mít následující polož
 <a id="Setup"></a>
 
 <a id="Setup"></a>
-### <a name="setup"></a>Instalace
+### <a name="setup"></a>Nastavení
 
 V celém dokumentu testovacího prostředí budete vyzváni k vložení bloků kódu. Pro usnadnění práce je většina tohoto kódu poskytována jako fragmenty Visual Studio Code, které můžete použít v rámci sady Visual Studio, abyste se vyhnuli nutnosti je přidat ručně.
 
@@ -203,12 +203,12 @@ ASP.NET MVC 4 usnadňuje vývoj webů pro mobilní a tabletové prohlížeče. T
 
         Šablona projektu mobilní aplikace zahrnuje knihovnu jQuery Mobile Library, což je open source knihovna pro kompatibilitu s mobilním prohlížečem. jQuery Mobile používá progresivní rozšíření pro mobilní prohlížeče, které podporují šablony stylů CSS a JavaScript. Progresivní navýšení umožňuje všem prohlížečům zobrazovat základní obsah webové stránky, ale umožňuje jenom nejvýkonnějším prohlížečům zobrazit bohatou obsah. Soubory jazyka JavaScript a CSS, které jsou součástí stylu jQuery Mobile, umožňují mobilním prohlížečům přizpůsobení obsahu na obrazovce, aniž by bylo nutné provádět změny v kódu stránky.
 
-        ![jQuery-Mobile-Library – zahrnutí-in-the-Template](whats-new-in-aspnet-mvc-4/_static/image12.png)
+        ![jQuery-mobile-library-included-in-the-template](whats-new-in-aspnet-mvc-4/_static/image12.png)
 
         *Knihovna jQuery Mobile obsažená v šabloně*
     - **Kód založený na HTML5**
 
-        ![Mobilní aplikace-šablona-použití-HTML5-označení](whats-new-in-aspnet-mvc-4/_static/image13.png)
+        ![Mobile-application-template-using-HTML5-markup](whats-new-in-aspnet-mvc-4/_static/image13.png)
 
         *Šablona mobilní aplikace pomocí značek HTML5 (login. cshtml a index. cshtml)*
 4. Stisknutím klávesy **F5** spusťte řešení.
@@ -318,7 +318,7 @@ V této úloze vytvoříte objekt typu Photo Service, který načte obsah, kter�
 
     *Testování služby s napodobnou fotografií*
 
-Ve skutečné implementaci byste mohli použít [webové rozhraní API ASP.NET](../../../../web-api/index.md) k implementaci služby Fotogalerie. Webové rozhraní API ASP.NET je rozhraní, které usnadňuje sestavování služeb HTTP, které dosáhnou široké škály klientů, včetně prohlížečů a mobilních zařízení. Webové rozhraní API ASP.NET je ideální platformou pro sestavování aplikací RESTful na .NET Framework.
+Ve skutečné implementaci byste mohli použít [webové rozhraní API ASP.NET](../../../../web-api/index.md) k implementaci služby Fotogalerie. Rozhraní ASP.NET Web API usnadňuje sestavování služeb HTTP, které jsou poskytovány širokému spektru klientů, včetně prohlížečů a mobilních zařízení. Rozhraní ASP.NET Web API představuje ideální platformu pro sestavování aplikací RESTful v rozhraní .NET Framework.
 
 <a id="Task_2_-_Displaying_the_Photo_Gallery"></a>
 #### <a name="task-2---displaying-the-photo-gallery"></a>Úloha 2 – zobrazení galerie fotografií
@@ -397,7 +397,7 @@ Jedna z klíčových aktualizací v ASP.NET MVC 4 je podpora pro vývoj pro mobi
 
     - **Zobrazení/Shared/\_layout. Mobile. cshtml**: je mobilní rozložení na bázi jQuery optimalizované pro menší obrazovku. Když webová stránka obdrží požadavek z mobilního prohlížeče, nahradí původní rozložení (\_layout. cshtml) tímto.
     - Komponenta s přepínačem zobrazení: skládá se z částečného zobrazení **zobrazení/Shared/\_ViewSwitcher. cshtml** a řadiče **ViewSwitcherController.cs** . Tato součást zobrazí odkaz na mobilní prohlížeče, aby uživatelé mohli přepnout na desktopovou verzi stránky.  
-        ![Projekt galerie fotografií s podporou mobilních zařízení](whats-new-in-aspnet-mvc-4/_static/image23.png "Phprojekt Galerie otografií s podporou Mobile ")
+        ![Projekt galerie fotografií s podporou mobilních zařízení](whats-new-in-aspnet-mvc-4/_static/image23.png "Projekt galerie fotografií s podporou mobilních zařízení")
 
         *Projekt galerie fotografií s podporou mobilních zařízení*
 4. Zaregistrujte mobilní sady. Provedete to tak, že otevřete soubor **Global.asax.cs** a přidáte následující řádek.
@@ -516,7 +516,7 @@ V této úloze prozkoumáte ukázkovou implementaci přepínačů zobrazení př
 
     - Metoda **HttpContext. ClearOverriddenBrowser ()** odebere všechny přepsané uživatelské agenta pro aktuální požadavek.
     - Metoda **HttpContext. SetOverriddenBrowser ()** Přepisuje skutečnou hodnotu uživatelského agenta žádosti pomocí zadaného uživatelského agenta.  
-        ![Kontroler ViewSwitcher](whats-new-in-aspnet-mvc-4/_static/image31.png "ViewSwitcher Controller ")  
+        ![Kontroler ViewSwitcher](whats-new-in-aspnet-mvc-4/_static/image31.png "Kontroler ViewSwitcher")  
 *Kontroler ViewSwitcher*
 
         Přepsání prohlížeče je základní funkcí ASP.NET MVC 4, která je k dispozici i v případě, že balíček jQuery. Mobile. MVC nenainstalujete. Tato funkce ale ovlivňuje jenom zobrazení, rozložení a částečné zobrazení a nemá vliv na žádnou z funkcí, které závisí na objektu Request. browser.
@@ -538,7 +538,7 @@ V této úloze aktualizujete rozložení plochy tak, aby zahrnovalo přepínač 
     ![Přepínač zobrazení vykreslený v desktopovém zobrazení](whats-new-in-aspnet-mvc-4/_static/image32.png "Přepínač zobrazení vykreslený v desktopovém zobrazení")
 
     *Přepínač zobrazení vykreslený v desktopovém zobrazení*
-7. Přepněte znovu do mobilního zobrazení a přejděte na stránku **About** (http://localhost [port]/Home/about). Všimněte si, že i v případě, že jste ještě nevytvořili zobrazení About. Mobile. cshtml, zobrazí se stránka o aplikaci pomocí rozložení mobilní (\_layout. Mobile. cshtml).
+7. Přepněte znovu do mobilního zobrazení a přejděte na stránku **About** (http://localhost[port]/Home/about). Všimněte si, že i v případě, že jste ještě nevytvořili zobrazení About. Mobile. cshtml, zobrazí se stránka o aplikaci pomocí rozložení mobilní (\_layout. Mobile. cshtml).
 
     ![O stránce](whats-new-in-aspnet-mvc-4/_static/image33.png "O stránce")
 
@@ -589,7 +589,7 @@ V aplikaci ASP.NET MVC 4 teď máte tři rozložení:
 7. Stisknutím klávesy **F5** spusťte aplikaci a procházejte lokalitou v **emulátoru Windows Phone**.
 8. Otevřete **simulátor pro iPhone** (pokyny k instalaci a konfiguraci simulátoru pro iPhone najdete v [příloze C](#AppendixC) ) a přejděte na web také. Všimněte si, že každý telefon používá konkrétní šablonu.
 
-    ![Použití různých zobrazení – pro každou-mobilní zařízení – Device2](whats-new-in-aspnet-mvc-4/_static/image35.png)
+    ![Using-different-views-for-each-mobile-device2](whats-new-in-aspnet-mvc-4/_static/image35.png)
 
     *Používání různých zobrazení pro každé mobilní zařízení*
 
@@ -1010,7 +1010,7 @@ Pokud vaše aplikace využívá SQL Server databází, budete muset vytvořit SQ
     ![Vytvoření databáze](whats-new-in-aspnet-mvc-4/_static/image78.png "Vytváří se řetězec databáze.")
 
     *Vytvoření databáze*
-7. Připojovací řetězec, který budete používat pro připojení k SQL Database ve Windows Azure, se zobrazí ve výchozím textovém poli připojení. Pak klikněte na **Další**.
+7. Připojovací řetězec, který budete používat pro připojení k SQL Database ve Windows Azure, se zobrazí ve výchozím textovém poli připojení. Pak klikněte na tlačítko **Další**.
 
     ![Připojovací řetězec ukazující na SQL Database](whats-new-in-aspnet-mvc-4/_static/image79.png "Připojovací řetězec ukazující na SQL Database")
 

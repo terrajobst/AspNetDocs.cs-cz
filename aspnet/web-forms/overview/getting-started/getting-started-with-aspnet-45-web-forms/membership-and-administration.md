@@ -9,11 +9,11 @@ ms.assetid: 732a2316-e49f-4f72-becd-0cd72f14457e
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/membership-and-administration
 msc.type: authoredcontent
 ms.openlocfilehash: ab00bc90bfc767d06e747be6dfb973245b5aae88
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74615471"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78546737"
 ---
 # <a name="membership-and-administration"></a>Členství a správa
 
@@ -29,7 +29,7 @@ V tomto kurzu se dozvíte, jak aktualizovat ukázkovou aplikaci Wingtip Toys a p
 
 Tento kurz sestaví v předchozím kurzu s názvem "rezervace a platby pomocí služby PayPal" v řadě kurzů Wingtip Toys.
 
-## <a name="what-youll-learn"></a>Co se naučíte:
+## <a name="what-youll-learn"></a>Naučíte se:
 
 - Jak použít kód k přidání vlastní role a uživatele do aplikace.
 - Jak omezit přístup ke složce a stránce pro správu
@@ -263,11 +263,11 @@ Aplikaci teď můžete spustit, abyste viděli, jak můžete přidat, odstranit 
 13. Klikněte na **Odhlásit** se, aby existoval režim správy.   
     Všimněte si, že horní navigační podokno již nezobrazuje položku nabídky **správce** .
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste přidali vlastní roli a uživatele, který patří do vlastní role, omezili jste přístup ke složce a stránce pro správu a poskytli jsme navigaci pro uživatele, který patří do vlastní role. Použili jste vazbu modelu k naplnění ovládacího prvku **DropDownList** daty. Implementovali jste ovládací prvky pro **nahrání** a ověřování souborů. Také jste se naučili, jak přidávat a odebírat produkty z databáze. V dalším kurzu se dozvíte, jak implementovat směrování ASP.NET.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 [Web. config – autorizační element](https://msdn.microsoft.com/library/8d82143t(v=vs.100).aspx)  
 [ASP.NET Identity](../../../../identity/overview/getting-started/introduction-to-aspnet-identity.md)  

@@ -9,11 +9,11 @@ ms.assetid: a5f0439f-18b2-4c89-96ab-75b02c616f46
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/logging-error-details-with-elmah-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 46b7fc22807c8cb9f47ff035639815d7b6104735
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74622323"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78525709"
 ---
 # <a name="logging-error-details-with-elmah-vb"></a>Protokolování podrobností o chybách pomocí knihovny ELMAH (VB)
 
@@ -226,7 +226,7 @@ Element `<equal>` uvnitř oddílu `<test>` je označován jako kontrolní výraz
 
 Další informace o možnostech filtrování chyb v knihovny ELMAH najdete v [části filtrování chyb](https://code.google.com/p/elmah/wiki/ErrorFiltering) na [wikiwebu knihovny elmah](https://code.google.com/p/elmah/w/list).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 KNIHOVNY ELMAH poskytuje jednoduchý, ale účinný mechanismus pro protokolování chyb ve webové aplikaci v ASP.NET. Podobně jako systém sledování stavu společnosti Microsoft může knihovny ELMAH protokolovat chyby do databáze a odesílat podrobnosti o chybě vývojáři prostřednictvím e-mailu. Na rozdíl od systému monitorování stavu knihovny ELMAH zahrnuje podporu pro širší škálu úložišť dat protokolu chyb, mezi které patří: Microsoft SQL Server, Microsoft Access, Oracle, XML soubory a několik dalších. KNIHOVNY ELMAH navíc nabízí integrovaný mechanizmus pro zobrazení protokolu chyb a podrobnosti o konkrétní chybě z webové stránky `elmah.axd`. Stránka `elmah.axd` může také vykreslovat informace o chybě jako informační kanál RSS nebo jako textový soubor s oddělovači (CSV), který můžete číst pomocí aplikace Microsoft Excel. Můžete také instruovat knihovny ELMAH, aby vyfiltroval chyby z protokolu pomocí deklarativních nebo programových kontrolních výrazů. A knihovny ELMAH lze použít s aplikacemi ASP.NET verze 1. x.
 

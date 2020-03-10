@@ -9,11 +9,11 @@ ms.assetid: 41d1abba-97a5-4a45-9b44-d05624c19777
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/slider/using-the-slider-control-with-auto-postback-vb
 msc.type: authoredcontent
 ms.openlocfilehash: e7a3286bcf7ca844f5dcfa4848c15e0bd4767c0f
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74598560"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78553562"
 ---
 # <a name="using-the-slider-control-with-auto-postback-vb"></a>Použití ovládacího prvku posuvník s automatickým zpětným voláním (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Posuvník v ovládacím prvku AJAX Control Toolkit poskytuje grafický posuvník, který lze ovládat pomocí myši. Po změně hodnoty je možné provést automatické odeslání posuvníku.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Aby se posuvník mohl automaticky předávat po změně, musí být v obou textových polích atribut `AutoPostBack="true"`: textové pole, které se stane samotným jezdcem, a textové pole, které obsahuje pozici posuvníku. Zde je povinná značka pro:
 

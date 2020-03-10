@@ -9,11 +9,11 @@ ms.assetid: 53767e05-c8ab-42e1-a94b-22d906195200
 msc.legacyurl: /mvc/overview/older-versions/working-with-the-dropdownlist-box-and-jquery/using-the-dropdownlist-helper-with-aspnet-mvc
 msc.type: authoredcontent
 ms.openlocfilehash: 6375bb2be158cea18309ffa71c71ac3e67bc91ed
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457866"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78538743"
 ---
 # <a name="using-the-dropdownlist-helper-with-aspnet-mvc"></a>Použití pomocné rutiny DropDownList s ASP.NET MVC
 
@@ -42,7 +42,7 @@ Tady je seznam toho, co se naučíte:
 - Jak použít pomocníka [DropDownList](https://msdn.microsoft.com/library/system.web.mvc.html.selectextensions.dropdownlist.aspx) k výběru dat kategorie.
 - Postup přidání nového kategorie do dialogového okna **jQuery**
 
-### <a name="getting-started"></a>Začínáme
+### <a name="getting-started"></a>začínáme
 
 Začněte stažením počátečního projektu pomocí následujícího odkazu [Stáhnout](https://archive.msdn.microsoft.com/Project/Download/FileDownload.aspx?ProjectName=aspnetmvcsamples&amp;DownloadId=15829). V Průzkumníku Windows klikněte pravým tlačítkem na soubor *DDL\_Starter. zip* a vyberte vlastnosti. V dialogovém okně **vlastnosti\_Starter. zip pro DDL** vyberte odblokovat.
 

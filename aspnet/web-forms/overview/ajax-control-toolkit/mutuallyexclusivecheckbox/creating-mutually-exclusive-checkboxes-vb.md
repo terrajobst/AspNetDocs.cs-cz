@@ -9,11 +9,11 @@ ms.assetid: e9dd1d5a-a1db-4114-981d-6a91acb1d709
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/mutuallyexclusivecheckbox/creating-mutually-exclusive-checkboxes-vb
 msc.type: authoredcontent
 ms.openlocfilehash: f33936dd4d71f6bbf08f02966eefe44c8c152eba
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74606472"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78554010"
 ---
 # <a name="creating-mutually-exclusive-checkboxes-vb"></a>Vytvoření vzájemně se vylučujících zaškrtávacích políček (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Je-li možné vybrat pouze jednu ze sad možností, jsou obvykle použity přepínací tlačítka. Došlo k nevýhodě, i když: Když vyberete jeden přepínač ve skupině, není možné zrušit kontrolu všech přepínačů. Zaškrtávací políčka je možné kdykoli zrušit, ale vzájemně se nevylučují. Tento kurz nabízí nejlepší z obou přístupů: zaškrtávací políčka, která se vzájemně vylučují.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Sada ASP.NET AJAX Control Toolkit obsahuje MutuallyExclusiveCheckBox a Extender. To umožňuje programátorům přiřadit libovolné zaškrtávací políčko k názvu skupiny (`Key` atribut). Všechna zaškrtávací políčka v rámci stejné skupiny se dají vybrat jenom jednou.
 

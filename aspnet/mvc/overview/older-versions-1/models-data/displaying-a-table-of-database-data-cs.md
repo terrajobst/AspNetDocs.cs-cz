@@ -9,11 +9,11 @@ ms.assetid: d6e758b6-6571-484d-a132-34ee6c47747a
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/displaying-a-table-of-database-data-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 3c908d030076fc8400190ef3cf1672632ac1ed6b
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74589428"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78543139"
 ---
 # <a name="displaying-a-table-of-database-data-c"></a>Zobrazení tabulky databázových dat (C#)
 
@@ -33,10 +33,10 @@ Chystáme se zobrazit sadu záznamů z tabulky databáze filmů. Tabulka video s
 
 | **Název sloupce** | **Datový typ** | **Povoluje hodnoty null.** |
 | --- | --- | --- |
-| Id | Hmot | Nepravda |
-| Název | Nvarchar (200) | Nepravda |
-| Adresářů | NVarchar (50) | Nepravda |
-| DateReleased | Datum a čas | Nepravda |
+| ID | Int | False |
+| Název | Nvarchar(200) | False |
+| Ředitel | NVarchar(50) | False |
+| DateReleased | DateTime | False |
 
 Aby bylo možné znázornit tabulku filmů v naší aplikaci ASP.NET MVC, musíme vytvořit třídu modelu. V tomto kurzu používáme Microsoft Entity Framework k vytváření tříd modelů.
 
@@ -53,7 +53,7 @@ Pomocí těchto kroků spusťte Průvodce model EDM (Entity Data Model):
 Po kliknutí na tlačítko Přidat se zobrazí průvodce model EDM (Entity Data Model) (viz obrázek 1). Pomocí těchto kroků dokončete Průvodce:
 
 1. V kroku **zvolit obsah modelu** vyberte možnost **Generovat z databáze** .
-2. V kroku **Vybrat datové připojení** použijte datové připojení *MoviesDB. mdf* a název *MoviesDBEntities* pro nastavení připojení. Klikněte na tlačítko **Další** .
+2. V kroku **Vybrat datové připojení** použijte datové připojení *MoviesDB. mdf* a název *MoviesDBEntities* pro nastavení připojení. Klikněte na tlačítko **Další**.
 3. V kroku **Zvolte databázové objekty** rozbalte uzel tabulky a vyberte tabulku filmy. Zadejte *modely* názvů a klikněte na tlačítko **Dokončit** .
 
 [![vytváření tříd LINQ to SQL](displaying-a-table-of-database-data-cs/_static/image1.jpg)](displaying-a-table-of-database-data-cs/_static/image1.png)
@@ -162,7 +162,7 @@ Změněné zobrazení indexu vykreslí velmi stejnou tabulku HTML záznamů data
 
 Metoda RenderPartial () je odlišná od většiny ostatních pomocných metod, protože nevrací řetězec. Proto je nutné volat metodu RenderPartial () pomocí &lt;% HTML. RenderPartial (); %&gt; místo &lt;% = HTML. RenderPartial (); %&gt;.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Cílem tohoto kurzu bylo vysvětlit, jak můžete zobrazit sadu záznamů databáze v tabulce HTML. Nejdřív jste zjistili, jak vrátit sadu záznamů databáze z akce kontroleru tím, že využijete výhod Entity Framework Microsoftu. Dále jste zjistili, jak používat generování uživatelského rozhraní sady Visual Studio k vygenerování zobrazení, které automaticky zobrazuje kolekci položek. Nakonec jste zjistili, jak zjednodušit zobrazení využitím částečného. Zjistili jste, jak použít částečný jako šablonu, abyste mohli naformátovat každý záznam v databázi.
 

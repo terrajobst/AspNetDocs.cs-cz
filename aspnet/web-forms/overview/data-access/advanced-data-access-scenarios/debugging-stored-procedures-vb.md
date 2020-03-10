@@ -9,11 +9,11 @@ ms.assetid: 9ed8ccb5-5f31-4eb4-976d-cabf4b45ca09
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/debugging-stored-procedures-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 13d213ef4baf493a4f05a82daae8d2dc3b0aa61b
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74604669"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78551273"
 ---
 # <a name="debugging-stored-procedures-vb"></a>Ladění uložených procedur (VB)
 
@@ -151,7 +151,7 @@ Podrobnější vysvětlení tohoto procesu naleznete v části [William R. Vaugh
 > [!NOTE]
 > Pokud na vašem vývojovém počítači běží Windows XP Service Pack 2, budete muset nakonfigurovat bránu firewall pro připojení k Internetu, aby povolovala vzdálené ladění. Článek [Postupy: povolení ladění SQL Server 2005](https://msdn.microsoft.com/library/s0fk6z6e(VS.80).aspx) obsahuje poznámky k tomu, že se jedná o dva kroky: (a) na hostitelském počítači sady Visual Studio, je třeba přidat `Devenv.exe` do seznamu výjimek a otevřít port TCP 135; a (b) na vzdáleném počítači (SQL) musíte otevřít port TCP 135 a přidat `sqlservr.exe` do seznamu výjimek. Pokud vaše zásady domény vyžadují síťovou komunikaci pomocí protokolu IPSec, je nutné otevřít porty UDP 4500 a UDP 500.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Kromě poskytování podpory ladění pro kód aplikace .NET nabízí Visual Studio také řadu možností ladění pro SQL Server 2005. V tomto kurzu jsme se podívali na dvě z těchto možností: přímé ladění databáze a ladění aplikací. Chcete-li přímo ladit objekt databáze T-SQL, vyhledejte objekt pomocí Průzkumník serveru klikněte na něj pravým tlačítkem myši a vyberte možnost Krokovat s vnořením. Tím se spustí ladicí program a zablokuje se na prvním příkazu v databázovém objektu, ve kterém je možné Krokovat s příkazy Object a zobrazovat a upravovat hodnoty parametrů. V kroku 1 jsme použili tento přístup ke krokování s `Products_SelectByCategoryID` uloženou procedurou.
 

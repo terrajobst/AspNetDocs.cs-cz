@@ -9,11 +9,11 @@ ms.assetid: 848e6bcf-4c3f-4d14-974d-e45b9444ab79
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/reorderlist/drag-and-drop-via-reorderlist-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 3f7c5749053d8bf587467fb1939fca05ce2872a4
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74598648"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78553919"
 ---
 # <a name="drag-and-drop-via-reorderlist-vb"></a>Přetažení ovládacím prvkem ReorderList (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek `ReorderList` v sadě nástrojů AJAX Control Toolkit poskytuje seznam, který lze přeuspořádat uživatelem pomocí přetažení. Aktuální pořadí seznamu musí být na serveru trvalé.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Ovládací prvek `ReorderList` podporuje vazby dat z databáze na seznam. Nejlepší z nich také podporuje zápis změn v pořadí elementu seznamu zpátky do úložiště dat.
 

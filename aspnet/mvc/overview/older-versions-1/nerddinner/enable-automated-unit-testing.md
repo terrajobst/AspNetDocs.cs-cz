@@ -1,285 +1,285 @@
 ---
 uid: mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
-title: Povolení automatického testování jednotek | Dokumentace Microsoftu
+title: Povolit automatizované testování částí | Microsoft Docs
 author: microsoft
-description: Krok 12 ukazuje, jak vyvíjet sadu automatizované testy jednotky, která ověřte naše NerdDinner funkce a které nám umožní provedou změny...
+description: Krok 12 ukazuje, jak vyvíjet sadu automatizovaných testů jednotek, které ověřují naše funkce NerdDinner a které nám poskytnou jistotu udělat změny...
 ms.author: riande
 ms.date: 07/27/2010
 ms.assetid: a19ff2ce-3f7e-4358-9a51-a1403da9c63e
 msc.legacyurl: /mvc/overview/older-versions-1/nerddinner/enable-automated-unit-testing
 msc.type: authoredcontent
 ms.openlocfilehash: 09a7aa186605a6cce48ee94028425ded957c00d3
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65117346"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78541676"
 ---
 # <a name="enable-automated-unit-testing"></a>Povolení automatického testování jednotek
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout PDF](http://aspnetmvcbook.s3.amazonaws.com/aspnetmvc-nerdinner_v1.pdf)
 
-> Toto je kroku 12 bezplatného [kurz vývoje aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který procházení procházení po tom, jak sestavit malý, ale bylo možné provést, webové aplikace pomocí ASP.NET MVC 1.
+> Toto je krok 12 bezplatného [kurzu aplikace "NerdDinner"](introducing-the-nerddinner-tutorial.md) , který vás provede procesem vytvoření malé, ale dokončené webové aplikace pomocí ASP.NET MVC 1.
 > 
-> Krok 12 ukazuje, jak vyvíjet sadu automatizované testy jednotky, která ověřit naše funkce NerdDinner a dávají nám provedou změny a vylepšení pro aplikaci v budoucnosti.
+> Krok 12 ukazuje, jak vyvíjet sadu automatizovaných testů jednotek, které ověřují naše funkce NerdDinner a které nám poskytnou jistotu, že v budoucnu bude dělat změny a vylepšení aplikace.
 > 
-> Pokud používáte ASP.NET MVC 3, doporučujeme je provést [získávání začít s MVC 3](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) nebo [MVC Music Store](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) kurzy.
+> Pokud používáte ASP.NET MVC 3, doporučujeme vám postupovat podle [Začínáme s kurzy pro](../../older-versions/getting-started-with-aspnet-mvc3/cs/intro-to-aspnet-mvc-3.md) [hudební úložiště](../../older-versions/mvc-music-store/mvc-music-store-part-1.md) MVC 3 nebo MVC.
 
-## <a name="nerddinner-step-12-unit-testing"></a>NerdDinner krok 12: Testování částí
+## <a name="nerddinner-step-12-unit-testing"></a>NerdDinner krok 12: testování částí
 
-Pojďme vyvíjet sadu automatizované testy jednotky, která ověřit naše funkce NerdDinner a dávají nám provedou změny a vylepšení pro aplikaci v budoucnosti.
+Pojďme vyvíjet sadu automatizovaných testů jednotek, které ověřují naše funkce NerdDinner a které nám poskytnou jistotu, že v budoucnu bude dělat změny a vylepšení aplikace.
 
-### <a name="why-unit-test"></a>Proč pro testování částí?
+### <a name="why-unit-test"></a>Proč testování částí?
 
-Na disku do práce jeden ráno máte i s náhlými pracovat bez velkých příprav dávku inspirace o aplikaci, kterou právě pracujete. Je dobré si uvědomit, že dojde ke změně, které můžete implementovat, které se aplikace výrazně lepší. Může být refaktoring, který vyčistí kód, přidává nové funkce nebo opravuje chybu.
+Na jednotce po jednom ráno máte prudký inspiraciý blesk o aplikaci, na které pracujete. Zjistíte, že se vám dá udělat změna, kterou můžete implementovat. tím se aplikace výrazně zlepší. Může se jednat o refaktoring, který vyčistí kód, přidá novou funkci nebo opraví chybu.
 
-Na otázku, kterou jste confronts až přijedete počítače je – "Jak bezpečné je ho tak, aby toto vylepšení?" Co když provádění změny má vedlejší účinky nebo přeruší něco? Tato změna může být jednoduchý a trvat jenom pár minut a implementaci, ale co když trvá hodiny můžete ručně vyzkoušet všechny scénáře aplikací? Co když zapomenete pro scénář a nefunkční aplikace přejde do produkčního prostředí? Toto vylepšení ve skutečnosti vyplácet všechny je vidět?
+Otázka, na kterou vás přijde, když jste dorazíte na váš počítač, je to, jak bezpečné je toto vylepšení? Co dělat v případě, že změna má vedlejší účinky nebo je něco rušena? Tato změna může být jednoduchá a implementace bude trvat jenom pár minut, ale co když trvá několik hodin k ručnímu otestování všech scénářů aplikací? Co když zapomenete pokrýt scénář a převedená aplikace přejde do produkčního prostředí? Je díky tomuto vylepšení skutečně všechno úsilí?
 
-Automatizované testy jednotky můžete zadat bezpečnostní, která umožňuje průběžně vylepšovat vaše aplikace a vyhnout se bát kód, který právě pracujete. Provádí se s automatizované testy, které rychle ověřte, že funkce vám umožní kódování s jistotou – a umožněte k vylepšování vám nemusí jinak mají popisovač příjemné. Kromě toho pomáhají vytvářet řešení, které jsou snadněji spravovatelné a mají delší životnost – které vede k mnohem větší návratnost investic.
+Automatizované testy jednotek můžou poskytovat bezpečnostní síť, která vám umožní průběžně vylepšovat aplikace a vyhnout se nebojte kódu, na kterém pracujete. Díky automatizovaným testům, které rychle ověřují funkčnost, můžete kódovat s jistotou a pomoct vám v tom, abyste mohli dělat vylepšení, která by mohla být neoprávněná. Také vám pomůžou vytvářet řešení, která jsou udržovatelná a delší životnost – což vede k mnohem vyšší návratnosti investic.
 
-Architektura ASP.NET MVC umožňuje snadné a přirozené do aplikace funkce testování částí. Umožňuje také otestovat řízené vývoj (TDD) pracovního postupu, který umožňuje včasného testování založené na vývoj.
+Rozhraní ASP.NET MVC umožňuje snadnou a přirozenou funkčnost aplikace testování částí. Také umožňuje pracovní postup vývoje řízený testováním (TDD), který umožňuje vývoj na základě testů.
 
-### <a name="nerddinnertests-project"></a>NerdDinner.Tests projektu
+### <a name="nerddinnertests-project"></a>Projekt NerdDinner. Tests
 
-Když naše aplikace NerdDinner jsme vytvořili na začátku tohoto kurzu, se zobrazí výzva se dialogové okno s dotazem, jestli jsme chtěli vytvořit projekt testování částí se vyhýbáte projekt aplikace:
+Když jsme na začátku tohoto kurzu vytvořili naši aplikaci NerdDinner, zobrazila se vám dialogové okno s dotazem, jestli jsme chtěli vytvořit projekt testování částí, abyste mohli přejít k projektu aplikace:
 
 ![](enable-automated-unit-testing/_static/image1.png)
 
-Společnost Microsoft uchovávat "Ano, vytvořit projekt testování částí" vybraný přepínač –, což vedlo "NerdDinner.Tests" projektu se přidávají do našich řešení:
+Zavedli jsme vybraný přepínač Ano, vytvořit projekt testování částí – což vedlo k tomu, že se přidávají projekt "NerdDinner. Tests" do našeho řešení:
 
 ![](enable-automated-unit-testing/_static/image2.png)
 
-NerdDinner.Tests projekt odkazuje na sestavení projektu aplikace NerdDinner a umožňuje nám to snadno přidat automatizovaných testů, který ověřit funkčnost aplikace.
+Projekt NerdDinner. Tests odkazuje na sestavení projektu aplikace NerdDinner a umožňuje nám do něj snadno přidat automatizované testy, které ověřují funkčnost aplikace.
 
-### <a name="creating-unit-tests-for-our-dinner-model-class"></a>Vytváření testů jednotek pro naše třída modelu Dinner
+### <a name="creating-unit-tests-for-our-dinner-model-class"></a>Vytváření testů jednotek pro třídu modelu večeře
 
-Přidejme do našich NerdDinner.Tests projektu, zkontrolujte, Dinner třídy, které jsme vytvořili, když jsme vytvořili naši modelu vrstvy některé testy.
+Pojďme přidat některé testy do našeho projektu NerdDinner. Tests, který ověří třídu večeře, kterou jsme vytvořili při sestavování naší vrstvy modelu.
 
-Začneme tím, že vytvoříte novou složku v rámci naší testovací projekt s názvem "Modely" kde jsme budete umístit testech týkající se modelu. Vytvoříme klikněte pravým tlačítkem myši na složku a zvolte **Add -&gt;nový Test** příkazu nabídky. Tím se otevře dialogové okno "Přidat nový Test".
+Začneme vytvořením nové složky v rámci našeho testovacího projektu s názvem "modely", kde budeme umísťovat naše testy související s modelem. Potom Klikneme pravým tlačítkem na složku a vyberte příkaz **Přidat-&gt;nový test** nabídky. Tím se zobrazí dialogové okno Přidat nový test.
 
-My jsme vybrali k vytvoření testování částí"" a pojmenujte ho "DinnerTest.cs":
+Zvolíme, že se má vytvořit "test jednotky" a pojmenovat ho "DinnerTest.cs":
 
 ![](enable-automated-unit-testing/_static/image3.png)
 
-Když kliknete na tlačítko "ok" Visual Studio přidejte (a otevřete) DinnerTest.cs soubor do projektu:
+Když klikneme na tlačítko OK, Visual Studio přidá (a otevře) soubor DinnerTest.cs do projektu:
 
 ![](enable-automated-unit-testing/_static/image4.png)
 
-Výchozí šablonu testů jednotek sady Visual Studio má spoustu kotle talíře kódu v rámci, které se mi najít trochu komplikované. Pojďme vyčistěte ho tak, aby obsahovala pouze kód uvedený níže:
+Výchozí šablona testu jednotek sady Visual Studio má v ní spoustu kódů kotlového kódu, který se nachází v malém případě. Pojďme ho vyčistit pouze v následujícím kódu:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample1.cs)]
 
-Atribut [TestClass] ve třídě DinnerTest výše ji identifikuje jako třída, která bude obsahovat testy, stejně jako volitelný testovací inicializace a jejich vyřazování z provozu kódu. Přidáním veřejné metody, které mají atributu [TestMethod] na nich jsme můžete definovat testy v rámci něj.
+Atribut [TestClass] u třídy DinnerTest výše ho identifikuje jako třídu, která bude obsahovat testy, a také volitelnou inicializaci testu a kód rozboru. V rámci něj můžeme definovat testy přidáním veřejných metod, které mají pro ně atribut [TestMethod].
 
-V následující tabulce jsou první dva testy, které přidáme, které vykonávají naší třídy Dinner. První test ověří, naše společnost Dinner je neplatný, pokud se vytvoří nová společnost Dinner bez všechny vlastnosti nastavena správně. Druhý test ověří, jestli je naše společnost Dinner platné při večeři má všechny vlastnosti nastavené platnými hodnotami:
+Níže jsou uvedené první ze dvou testů, které přidáme do naší třídy večeře. První test ověří, že je naším večeři neplatný, pokud se vytvoří nová večeři, aniž by byly správně nastavené vlastnosti. Druhý test ověří, že je naše večeře platná, když má večeře nastavené všechny vlastnosti s platnými hodnotami:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample2.cs)]
 
-Můžete si všimnout výše, naše názvy testů jsou velmi explicitní (a částečně podrobné). Protože jsme může skončit vytváření stovek nebo tisíců malé testů, a chceme, aby byl snadno a rychle tak určit záměr a chování každého z nich (zejména při Těšíme se v seznamu chyb v nástroji test runner) to provádíme. Názvy testů by měl být pojmenován po funkčnost, kterou testují. Výše se používá "podstatné jméno\_by měl\_příkaz" vzor pro pojmenování.
+Všimněte si, že naše názvy testů jsou velmi explicitní (a jsou trochu podrobné). Provedeme to proto, že můžeme vytvořit stovky nebo tisíce malých testů a chceme zjednodušit rychlé určení záměru a chování každého z nich (zejména při prohlížení seznamu selhání v nástroji Test Runner). Názvy testů by měly být pojmenovány po testovaných funkcích. Nad\_by měl\_operace použít "substantivum".
 
-Jsme vložili struktury testy pomocí "AAA" testování vzor – což je zkratka pro "Uspořádat, Act, kontrolní výraz":
+Provádíme strukturování testů pomocí vzor testování "AAA" – který představuje "uspořádat, ACT, Assert":
 
-- Uspořádání: Nastavení jednotky testování
-- Akce: Vykonává jednotky v rámci testu a zaznamenat výsledky
-- Vyhodnocení: Ověřte, chování
+- Uspořádat: nastavení testované jednotky
+- ACT: vykonání jednotky v rámci testu a výsledků zachycení
+- Assert: Ověřte chování.
 
-Při psaní testů, které chceme, abyste se vyhnuli nutnosti jednotlivé testy provést příliš mnoho. Místo toho každý test by měl ověřit jenom jeden koncept (což způsobí, že je mnohem snadnější identifikovat příčiny selhání). Dobrým vodítkem je vyzkoušet a mít jenom jeden výraz příkazu pro každý test. Pokud máte více než jeden kontrolní výraz příkazu v testovací metodě, ujistěte se, že se všechny používají k testování stejný koncept. Pokud máte pochybnosti, ujistěte se, jiného testu.
+Při psaní testů chceme zabránit tomu, aby byly jednotlivé testy příliš velké. Místo toho by každý test měl ověřit pouze jeden koncept (což bude mnohem snazší určit příčinu selhání). Dobrým pokynem je vyzkoušet a mít pouze jeden příkaz kontrolního výrazu pro každý test. Pokud máte více než jeden příkaz kontrolního výrazu v testovací metodě, ujistěte se, že jsou všechny použity pro otestování stejného konceptu. V případě pochybností proveďte jiný test.
 
 ### <a name="running-tests"></a>Spouštění testů
 
-Visual Studio 2008 Professional (a vyšší edice) zahrnuje integrované testu, který slouží ke spuštění testování částí v aplikaci Visual Studio projektů v rámci rozhraní IDE. Můžeme vybrat **Test -&gt;Run -&gt;všechny testy v řešení** nabídky příkazu (nebo type Ctrl R, A) ke spuštění všech našich testů jednotek. Také jsme umístěte naše kurzor v rámci konkrétní testovací třídě nebo testovací metody a použít **Test -&gt;Run -&gt;testy v rámci aktuálního kontextu** příkaz nabídky (nebo type Ctrl R, T) spustit podmnožinu testů jednotek.
+Visual Studio 2008 Professional (a novější edice) obsahují vestavěný Test Runner, který lze použít ke spuštění projektů testů jednotek sady Visual Studio v rámci rozhraní IDE. Můžeme vybrat příkaz **test-&gt;spustit-&gt;všechny testy v nabídce řešení** (nebo zadat Ctrl R, A) a spustit všechny naše testy jednotek. Případně můžete umístit kurzor do konkrétní třídy testu nebo testovací metodu a použít **test-&gt;spustit-&gt;testy v aktuálním příkazu místní** nabídky (nebo zadat Ctrl R, t) a spustit podmnožinu jednotek testů.
 
-Pojďme umístění naše kurzoru v rámci třídy DinnerTest a typ "Ctrl R, T" na dva spouštět testy, které jsme definovali. Při provádění to "Výsledky testu" okna se zobrazí v rámci sady Visual Studio a uvidíme výsledky našich testovacích běhů uvedené v rámci něj:
+Pojďme umístit kurzor v rámci třídy DinnerTest a zadat "CTRL R, T" pro spuštění dvou testů, které jsme právě definovali. Když to uděláte, zobrazí se v sadě Visual Studio okno "Výsledky testů" a zobrazí se výsledky našich testovacích běhů uvedených v tomto příkladu:
 
 ![](enable-automated-unit-testing/_static/image5.png)
 
-*Poznámka: Ve výchozím nastavení nezobrazuje v okně Výsledky testu VS sloupec název třídy. To můžete přidat kliknutím pravým tlačítkem v okně Výsledky testu a pomocí příkazu nabídky Přidat nebo odebrat sloupce.*
+*Poznámka: v okně výsledků testů VS se ve výchozím nastavení nezobrazuje sloupec název třídy. To můžete přidat tak, že kliknete pravým tlačítkem myši do okna Výsledky testů a použijete příkaz nabídky Přidat/odebrat sloupce.*
 
-Naše dva testy trvaly jenom zlomek sekundy ke spuštění – a jako vy můžete viz oba předán. Teď můžeme přejít a rozšířit tak, že vytvoříte další testy, které ověřte ověření příslušné pravidlo, jakož i pokrývají dvě metody helper - IsUserHost() a IsUserRegistered() –, který jsme přidali do třídy Dinner. Tyto testy s místem pro třídy Dinner filtrovacího řetězce se mnohem jednodušší a bezpečnější přidat nová obchodní pravidla a ověření k němu v budoucnu. Můžeme přidat naše nové logice pravidla Dinner a během několika sekund ověřte, že ji ještě fungovat některé naše předchozí funkce logic.
+Naše dva testy trvalo pouze zlomek sekundy ke spuštění – a jak vidíte, jak jsou předány. Nyní můžeme přejít a rozšířit tak, že vytvoříte další testy, které ověřují konkrétní pravidla, a pokryjeme dvě pomocné metody – IsUserHost () a IsUserRegistered () – přidané do třídy večeře. Všechny tyto testy, které jsou na místě pro třídu večeře, budou mnohem jednodušší a bezpečnější pro přidání nových obchodních pravidel a jejich platnosti do budoucna. Naši novou logiku pravidla můžeme přidat na večeři a potom během několika sekund ověřit, že se nepřerušila žádná z našich předchozích funkcí logiky.
 
-Všimněte si, jak pomocí testu popisný název usnadňuje rychle pochopit, co je ověření každého testu. Můžu jenom doporučit pomocí **nástroje -&gt;možnosti** příkaz nabídky, otevřete na testovací nástroje -&gt;konfigurační obrazovce pro spuštění testu a kontrola, zda "dvakrát kliknout výsledky testů jednotek neúspěšné nebo počet neprůkazných: Zobrazí zaškrtávací políčko bodu selhání při testu rozhraní". To vám umožní klikněte dvakrát na chybu v okně Výsledky testu a okamžitý přechod na selhání kontrolní výraz.
+Všimněte si, jak použít popisný název testu usnadňuje rychlé pochopení toho, co každý test ověřuje. Doporučuje se použít příkaz nabídky **Možnosti nástrojů-&gt;** , otevřít obrazovku konfigurace testovacích nástrojů –&gt;spuštění testu a zkontrolovat, že dvakrát kliknout na neúspěšný nebo neprůkazný výsledek testu jednotek, zobrazí v políčku test bod selhání. To vám umožní dvakrát kliknout na selhání v okně výsledky testu a okamžitě přejít k chybě kontrolního výrazu.
 
 ### <a name="creating-dinnerscontroller-unit-tests"></a>Vytváření testů jednotek DinnersController
 
-Nyní vytvoříme některé testy jednotek, které ověřují naše DinnersController funkce. Začneme kliknutím pravým tlačítkem na složku "Řadiče" v rámci naší testovacího projektu a klikněte na tlačítko **Add -&gt;nový Test** příkazu nabídky. Vytvoříme "Testování částí" a pojmenujte ho "DinnersControllerTest.cs".
+Teď vytvoříme několik testů jednotek, které ověřují naše funkce DinnersController. Začneme tak, že kliknete pravým tlačítkem na složku Controllers v rámci našeho testovacího projektu a pak zvolíte příkaz **přidat&gt;nový test** nabídky. Vytvoříme "test jednotky" a pojmenujte ho "DinnersControllerTest.cs".
 
-Vytvoříme dvě testovací metody, které ověřují Details() metody akce na DinnersController. První ověří, že zobrazení se vrátí, pokud se požaduje existující Dinner. Druhý se ověří, že "Serveru" zobrazení se vrátí, pokud se požaduje neexistující Dinner:
+Vytvoříme dvě testovací metody, které ověří metodu akce Details () na DinnersController. Nejdřív se ověří, že se vrátí zobrazení, když se požaduje stávající večeře. Druhá se ověří, že se vrátí zobrazení "NotFound", když se požaduje neexistující večeře:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample3.cs)]
 
-Výše uvedený kód se zkompiluje čištění. Když spustíme testy, ale oba selhání:
+Výše uvedený kód se zkompiluje čistě. Když testy spustíme, dojde k jejich selhání:
 
 ![](enable-automated-unit-testing/_static/image6.png)
 
-Když se podíváte na chybové zprávy, uvidíme, že byl důvod testy se nezdařilo, protože naše třída DinnersRepository se nemohl připojit k databázi. Naše aplikace NerdDinner používá připojovací řetězec do místního souboru systému SQL Server Express, která se nachází v části \App\_datový adresář projektu aplikace NerdDinner. Protože naše NerdDinner.Tests projekt zkompiluje a spustí v jiném adresáři poté projekt aplikace, relativní cestu umístění naše připojovací řetězec je nesprávný.
+Pokud se podíváme na chybové zprávy, ukážeme, že důvodem neúspěchu testů bylo, že se naše třída DinnersRepository nemohla připojit k databázi. Naše aplikace NerdDinner používá řetězec připojení k místnímu SQL Server Express souboru, který je umístěn v adresáři \app\_datového adresáře projektu aplikace NerdDinner. Vzhledem k tomu, že náš projekt NerdDinner. Tests kompiluje a běží v jiném adresáři, pak projekt aplikace, umístění relativní cesty našeho řetězce připojení je nesprávné.
 
-Jsme *může* opravit tak, že zkopírujete soubor databáze SQL Express na naše testovací projekt a potom k němu přidejte odpovídajícím testovacím řetězcových připojení v souboru App.config naše testovacího projektu. To byste získali výše uvedenými testy se odblokuje a spuštěný.
+To *můžeme vyřešit* zkopírováním souboru databáze SQL Express do našeho testovacího projektu a potom do souboru App. config našeho testovacího projektu přidat příslušný testovací připojovací řetězec. To by vedlo k tomu, že výše uvedené testy nebudou odblokovány a spuštěny.
 
-Testování částí kódu pomocí skutečná databáze, ale přináší určité problémy. Konkrétně:
+Testování částí kódu pomocí reálné databáze sice ale přináší množství výzev. Konkrétně:
 
-- Může výrazně zpomalit spuštění testů jednotek. Tím déle trvá spuštění testů, tím méně pravděpodobné, že jsou v jejich spuštění často. V ideálním případě byste měli být schopni spustit v sekundách – a bylo možné něco, co uděláte jako přirozeně jako kompilaci projektu testů jednotek.
-- To komplikuje instalačním a úklidovém logiky v rámci testů. Chcete, aby každý Jednotkový test chcete být izolované a nezávisle na ostatních (se žádné vedlejší účinky nebo závislostmi). Při práci na skutečné databázi máte dávejte stavu a resetujte si ho mezi testy.
+- Významně zpomaluje dobu provádění testů jednotek. Čím déle trvá spuštění testů, tím méně pravděpodobně budete provádět často. V ideálním případě budete chtít, aby testy jednotek byly schopny běžet v řádu sekund – a mělo by to být něco, co provedete stejně přirozeně jako při kompilování projektu.
+- V rámci testů ztěžuje logiku nastavení a vyčištění. Požadujete, aby byl každý test jednotky izolovaný a nezávisle na ostatních (bez vedlejších účinků nebo závislostí). Při práci na reálné databázi je nutné mít na vědomí stav a obnovit je mezi testy.
 
-Podívejme se na návrhový vzor, který se nazývá "injektáž závislostí", který vám pomůže tyto problémy obejít a vyhněte se nutnosti skutečná databáze pomocí našich testů.
+Pojďme se podívat na vzor návrhu s názvem "vložení závislostí", který nám může přispět k obejít těchto problémů a vyhnout se nutnosti používat skutečnou databázi s našimi testy.
 
 ### <a name="dependency-injection"></a>Injektáž závislostí
 
-Právě teď DinnersController je úzce "s velkou provázaností" DinnerRepository třídy. "Párování" odkazuje na situaci, kde třída explicitně závisí na jiné třídy fungování:
+Teď DinnersController je úzce "spojená" se třídou DinnerRepository. "Spoj" odkazuje na situaci, kdy třída explicitně spoléhá na jinou třídu, aby fungovala:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample4.cs)]
 
-Protože třída DinnerRepository vyžaduje přístup k databázi, vysoce provázané závislost DinnersController třída nemá na DinnerRepository končí by nám umožnily databáze mohl DinnersController metody akce má být testována.
+Vzhledem k tomu, že třída DinnerRepository vyžaduje přístup k databázi, tak úzce propojená závislost třídy DinnersController na DinnerRepository končí, aby nám vyžadovala testování metod DinnersController akcí.
 
-Tento problém jsme můžete získat pomocí vzoru návrhu volá "injektáž závislostí" – což je přístup, ve kterém se závislosti (stejně jako třídy úložiště, které poskytují přístup k datům) vytvoří už nebude implicitně v rámci třídy, které je používají. Místo toho závislosti můžete explicitně předán do třídy, která je používá pomocí argumentů konstruktoru. Pokud tyto závislosti jsou definovány pomocí rozhraní, máme pak flexibilitu a zajistěte tak předání implementace "falešnou" závislostí pro scénáře testování částí. To umožňuje vytvořit implementace závislosti daného testu, které skutečně nevyžadují přístup k databázi.
+To můžeme obejít tak, že využijete vzor návrhu s názvem "injektáže závislosti" – což je přístup, ke kterému se již implicitně nevytváří závislosti (jako jsou třídy úložiště, které poskytují přístup k datům) ve třídách, které je používají. Místo toho je možné závislosti explicitně předat třídě, která je používá pomocí argumentů konstruktoru. Pokud jsou závislosti definovány pomocí rozhraní, můžeme mít flexibilitu při implementaci "falešného" implementace závislosti pro scénáře testování částí. Díky tomu můžeme vytvořit implementace závislostí specifické pro test, které ve skutečnosti nevyžadují přístup k databázi.
 
-Tento údaj zobrazíte v akci, můžeme implementovat injektáž závislostí s naší DinnersController.
+Pokud se chcete podívat, jak to funguje, můžeme implementovat vkládání závislostí s našimi DinnersController.
 
-#### <a name="extracting-an-idinnerrepository-interface"></a>Extrahování rozhraní IDinnerRepository
+#### <a name="extracting-an-idinnerrepository-interface"></a>Extrakce rozhraní IDinnerRepository
 
-Naše prvním krokem bude vytvoření nového IDinnerRepository rozhraní, který zapouzdřuje kontrakt úložiště, které se načítají a aktualizují večeří vyžadují naše řadiče.
+Náš první krok vytvoří nové rozhraní IDinnerRepository, které zapouzdřuje kontrakty úložiště. naše řadiče potřebují načíst a aktualizovat večeři.
 
-Jsme tento kontrakt rozhraní definovat ručně tak, že pravým tlačítkem na složku \Models a potom kliknete **Add -&gt;nová položka** příkaz nabídky a vytváří se nové rozhraní s názvem IDinnerRepository.cs.
+Tuto kontrakt rozhraní můžeme definovat ručně tak, že kliknete pravým tlačítkem na složku \Models a pak zvolíte příkaz nabídky **Přidat novou položku&gt;** a vytvoříte nové rozhraní s názvem IDinnerRepository.cs.
 
-Také jsme můžete použít automaticky refaktoring nástroje integrovaná do sady Visual Studio Professional (a vyšší edice) k extrahování a vytvoření rozhraní pro nás z naší stávající DinnerRepository třídy. Extrahovat toto rozhraní pomocí VS, jednoduše umístěte kurzor do textového editoru ve třídě DinnerRepository klikněte pravým tlačítkem myši a zvolte **Refaktorujte -&gt;extrahování rozhraní** příkazu nabídky:
+K automatickému extrakci a vytvoření rozhraní pro nás z naší existující třídy DinnerRepository můžeme použít nástroje refaktoringu, které jsou integrované Visual Studio Professional (a novější edice). Chcete-li toto rozhraní extrahovat pomocí VS, jednoduše umístěte kurzor do textového editoru ve třídě DinnerRepository a potom klikněte pravým tlačítkem myši a zvolte příkaz **refaktoring-&gt;Extrahování rozhraní** nabídky:
 
 ![](enable-automated-unit-testing/_static/image7.png)
 
-To spustí dialogové okno "Extrahování rozhraní" a nám výzvu k zadání názvu rozhraní pro vytváření. Bude ve výchozím nastavení IDinnerRepository a automaticky vybrat všechny veřejné metody na stávající třídě DinnerRepository přidat do rozhraní:
+Tím se otevře dialogové okno extrakce rozhraní a požádejte nás o název rozhraní, které se má vytvořit. Ve výchozím nastavení bude IDinnerRepository a automaticky vybírat všechny veřejné metody pro existující třídu DinnerRepository pro přidání do rozhraní:
 
 ![](enable-automated-unit-testing/_static/image8.png)
 
-Když kliknete na tlačítko "ok", Visual Studio přidá nové rozhraní IDinnerRepository do naší aplikace:
+Po kliknutí na tlačítko OK bude Visual Studio do naší aplikace přidávat nové rozhraní IDinnerRepository:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample5.cs)]
 
-A naše existující třídu DinnerRepository aktualizuje tak, že implementuje rozhraní:
+A naše existující třída DinnerRepository se aktualizuje tak, aby implementovala rozhraní:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample6.cs)]
 
-#### <a name="updating-dinnerscontroller-to-support-constructor-injection"></a>Aktualizuje se DinnersController pro podporu vkládání konstruktor
+#### <a name="updating-dinnerscontroller-to-support-constructor-injection"></a>Aktualizace DinnersController na podporu injektáže konstruktoru
 
-Nyní aktualizujeme třídu DinnersController nové rozhraní.
+Teď aktualizujeme třídu DinnersController, aby používala nové rozhraní.
 
-Aktuálně DinnersController je pevně zakódováno, tak, aby jeho "dinnerRepository" pole je vždy DinnerRepository třídy:
+Aktuálně DinnersController je pevně zakódována tak, že jeho pole "dinnerRepository" je vždy třída DinnerRepository:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample7.cs)]
 
-Tak, aby pole "dinnerRepository" typu IDinnerRepository místo DinnerRepository ho Změníme. Potom přidáme dvě veřejné konstruktory DinnersController. Jeden z konstruktorů umožňuje IDinnerRepository mají být předány jako argument. Druhé je výchozí konstruktor, který využívá naše stávající implementaci DinnerRepository:
+Změníme ji tak, aby pole dinnerRepository bylo typu IDinnerRepository namísto DinnerRepository. Pak přidáme dva veřejné konstruktory DinnersController. Jeden z konstruktorů umožňuje předávat IDinnerRepository jako argument. Druhý je výchozí konstruktor, který používá naši stávající implementaci DinnerRepository:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample8.cs)]
 
-Vzhledem k tomu, že technologie ASP.NET MVC ve výchozím nastavení vytvoří třídu kontroleru pomocí výchozí konstruktory, naše DinnersController za běhu bude nadále používat třídu DinnerRepository přístup k datům.
+Vzhledem k tomu, že ASP.NET MVC ve výchozím nastavení vytvoří třídy kontroléru pomocí výchozích konstruktorů, náš DinnersController za běhu bude k provádění přístupu k datům dál používat třídu DinnerRepository.
 
-Naše testy jednotek, ale jsme teď můžete aktualizovat a zajistěte tak předání na "falešnou" dinner implementace úložiště pomocí parametru konstruktoru. Toto úložiště "falešnou" dinner nebude vyžadovat přístup ke skutečné databázi a místo toho použije v paměti ukázková data.
+Nyní můžeme aktualizovat naše testy jednotek, ale k předání "falešné" implementace úložiště večeře pomocí konstruktoru parametru. Toto "falešné" úložiště večeře nebude vyžadovat přístup ke skutečné databázi a místo toho bude používat ukázková data v paměti.
 
 #### <a name="creating-the-fakedinnerrepository-class"></a>Vytvoření třídy FakeDinnerRepository
 
 Pojďme vytvořit třídu FakeDinnerRepository.
 
-Vytvoříme nejprve vytvořit adresář "Fakes" v rámci naší NerdDinner.Tests projektu a potom k němu přidejte novou třídu FakeDinnerRepository (klikněte pravým tlačítkem na složku a zvolte **Add -&gt;novou třídu**):
+Začneme vytvořením "falešného" adresáře v rámci našeho projektu NerdDinner. Tests a následně do něj přidáte novou FakeDinnerRepository třídu (klikněte pravým tlačítkem na složku a vyberte **Přidat-&gt;novou třídu**):
 
 ![](enable-automated-unit-testing/_static/image9.png)
 
-Aktualizujeme kód tak, aby FakeDinnerRepository třída implementuje rozhraní IDinnerRepository. Pak můžeme klepněte na něj pravým tlačítkem myši a zvolte příkaz "Implementovat rozhraní IDinnerRepository" kontextové nabídky:
+Aktualizujeme kód tak, aby třída FakeDinnerRepository implementovala rozhraní IDinnerRepository. Pak na ni můžeme kliknout pravým tlačítkem a zvolit příkaz "implementovat rozhraní IDinnerRepository", který je v místní nabídce:
 
 ![](enable-automated-unit-testing/_static/image10.png)
 
-To způsobí, že Visual Studio automaticky přidat všechny členy rozhraní IDinnerRepository do našich FakeDinnerRepository třídy s výchozí implementace "zástupných procedur":
+To způsobí, že Visual Studio automaticky přidá všechny členy rozhraní IDinnerRepository do naší třídy FakeDinnerRepository s výchozími implementacemi "stub ven":
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample9.cs)]
 
-Společnost Microsoft může aktualizovat také FakeDinnerRepository implementace pro práci z přehledu v paměti&lt;Dinner&gt; kolekce do něho předaný jako argument konstruktoru:
+Pak můžeme aktualizovat implementaci FakeDinnerRepository, aby fungovala v seznamu v paměti&lt;večeři&gt; z kolekce do ní jako argument konstruktoru:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample10.cs)]
 
-Teď máme falešné IDinnerRepository implementace, která nevyžaduje databázi a místo toho můžete pracovat vypnout v paměti seznam objektů Dinner.
+Nyní máme falešnou implementaci IDinnerRepository, která nevyžaduje databázi, a může místo toho pracovat v seznamu objektů večeře v paměti.
 
-#### <a name="using-the-fakedinnerrepository-with-unit-tests"></a>FakeDinnerRepository pomocí testů jednotek
+#### <a name="using-the-fakedinnerrepository-with-unit-tests"></a>Použití FakeDinnerRepository s testováním částí
 
-Vraťme se k DinnersController jednotkové testy, které se dříve nezdařila, protože databáze nebyla dostupná. Abychom mohli aktualizovat testovací metody používat FakeDinnerRepository vyplní ukázkovými daty večeře v paměti do DinnersController pomocí níže uvedeného kódu:
+Pojďme se vrátit k testům DinnersController jednotek, které se dřív nezdařily, protože databáze nebyla k dispozici. Testovací metody můžeme aktualizovat tak, aby používaly FakeDinnerRepository vyplněné pomocí ukázky dat s daty o večeři v paměti pro DinnersController pomocí následujícího kódu:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample11.cs)]
 
-A teď jsme spuštění těchto testů, oba předejte:
+A teď když spustíme tyto testy, oba projdou:
 
 ![](enable-automated-unit-testing/_static/image11.png)
 
-Nejlepší na tom budou trvat jenom zlomek sekundy ke spuštění a nevyžadují žádnou logiku složité instalační/čistící. Můžeme teď testování částí, všechny naše DinnersController akce kód metody (včetně výpis, stránkování, podrobností, vytvářet, aktualizovat a odstraňovat) bez přichystanou pro připojení ke skutečné databázi.
+To nejlepší z nich trvá pouze zlomek sekundy ke spuštění a nevyžadují žádnou složitou logiku nastavení/vyčištění. Nyní můžeme otestovat všechny naše kódy metod DinnersController akce (včetně výpisu, stránkování, podrobností, vytvoření, aktualizace a odstranění), aniž byste museli se připojit ke skutečné databázi.
 
-| **Téma na straně: Rozhraní injektáž závislostí** |
+| **Vedlejší téma: rozhraní pro vkládání závislostí** |
 | --- |
-| Provádí vkládání závislostí ruční (podobně jako jsme výše) funguje správně, ale budou obtížnější spravovat jako Počet závislostí a zvyšuje komponenty v aplikaci. Několik architektur injektáž závislostí existovat pro .NET, která poskytuje ještě větší flexibilita díky správy závislostí. Tyto architektury, také někdy označuje jako "inverzi z" (Inversion) – kontejnery ovládacích prvků, poskytují mechanismy, které umožňují další úroveň podporu konfigurace pro zadávání a předávání objektů za běhu (nejčastěji pomocí konstruktoru injektáž závislostí ). Některé další oblíbené injektáž závislostí OSS / include IOC rozhraní v rozhraní .NET: AutoFac Ninject, Spring.NET, StructureMap a Windsor. ASP.NET MVC poskytuje rozhraní API, který vývojářům umožňuje účastnit rozlišení a vytváření instancí kontrolerů a který umožňuje injektáž závislostí pro rozšíření / rozhraní IoC čistě integraci v rámci tohoto procesu. Pomocí rozhraní DI/IOC by také nám umožňují odebrání naše DinnersController – které by úplně odebrat párování mezi ním a DinnerRepository výchozí konstruktor. Nebudeme používat injektáž závislostí / framework IOC s naší aplikace NerdDinner. Ale to je něco, co jsme zvažte v budoucnosti Pokud zvětšoval NerdDinner základ kódu a možnosti. |
+| Provedení ručního vkládání závislostí (podobně jako v předchozím případě) funguje bez problémů, ale je těžší je udržovat, protože se zvyšuje počet závislostí a komponent v aplikaci. Pro rozhraní .NET existuje několik platforem vkládání závislostí, které vám pomůžou zajistit ještě větší flexibilitu pro správu závislostí. Tyto architektury, někdy označované také jako "inverze ovládacích prvků" (IoC), poskytují mechanismy, které umožňují další úroveň konfigurace pro zadání a předání závislostí objektům v době běhu (nejčastěji pomocí injektáže konstruktoru). ). Mezi nejoblíbenější rozhraní injektáže/IOC závislostí OSS v rozhraní .NET patří: AutoFac, Ninject, Spring.NET, StructureMap a Windsor. ASP.NET MVC zpřístupňuje rozhraní API pro rozšiřitelnost, která vývojářům umožňují zapojit se do řešení a vytváření instancí řadičů a která umožňuje čistě integrovat rozhraní injektáže/IoC pro závislosti v rámci tohoto procesu. Použití rozhraní DI/IOC by nám také umožnilo odebrat výchozí konstruktor z našeho DinnersController – což by zcela odebralo spojení mezi ním a DinnerRepository. V naší aplikaci NerdDinner nebudeme používat rozhraní pro vkládání závislostí/IOC. Ale je to něco, co můžeme v budoucnu zvážit, pokud se NerdDinner základ kódu a možnosti. |
 
-### <a name="creating-edit-action-unit-tests"></a>Vytváření testů jednotek akce úpravy
+### <a name="creating-edit-action-unit-tests"></a>Vytváření testů jednotek akcí úprav
 
-Nyní vytvoříme některé testy jednotek, které ověřují funkce DinnersController pro úpravy. Začneme testovací verze HTTP GET naše akce úpravy:
+Pojďme teď vytvořit několik testů jednotek, které ověřují funkčnost DinnersController. Začneme otestováním verze HTTP-GET naší akce úprav:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample12.cs)]
 
-Test, který ověřuje, že zobrazení se opírá o DinnerFormViewModel objekt je vykreslen zpět, když je požadováno platné dinner vytvoříme:
+Vytvoříme test, který ověří, že zobrazení, které je zajištěné objektem DinnerFormViewModel, se vrátí zpět, když se požaduje platná večeře:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample13.cs)]
 
-Když spustíme testu, ale jsme zjistíte, že se to nezdaří, protože výjimka nulového odkazu je vyvolána, když metoda úprav přistupuje k vlastnosti User.Identity.Name provádět kontrolu Dinner.IsHostedBy().
+Když tento test spustíte, zjistíme, že se to nepovede, protože je vyvolána výjimka odkazu s hodnotou null, pokud metoda Edit přistupuje k vlastnosti User.Identity.Name, která provede kontrolu večeři. IsHostedBy ().
 
-Objekt uživatele na základní třídu Kontroleru zapouzdřuje informace o přihlášeného uživatele a je vyplněn ASP.NET MVC, když vytváří kontroleru za běhu. Protože se testují DinnersController mimo prostředí webového serveru, uživatele objekt není nastavený (tedy odkazem s hodnotou null výjimka).
+Objekt uživatele v základní třídě kontroleru zapouzdřuje podrobnosti o přihlášeném uživateli a při vytváření kontroleru za běhu ho naplní ASP.NET MVC. Vzhledem k tomu, že testujeme DinnersController mimo prostředí webového serveru, objekt uživatele není nastaven (tedy výjimka odkazu s hodnotou null).
 
-### <a name="mocking-the-useridentityname-property"></a>Napodobování vlastnost User.Identity.Name
+### <a name="mocking-the-useridentityname-property"></a>Napodobení vlastnosti User.Identity.Name
 
-Napodobování architektury provést testování usnadnit tím, že nám dynamicky se vytvářejí falešné verze závislé objekty, které podporují testech. Například můžete použít napodobování framework v testovacím akce Upravit dynamicky se vytvářejí objekt uživatele, naše DinnersController můžete použít k vyhledání simulovaný uživatelské jméno. Tím se vyhnete odkaz s hodnotou null z je vyvolána, když jsme naše testu.
+Napodobení rozhraní usnadňuje testování tím, že nám umožní dynamicky vytvářet falešné verze závislých objektů, které podporují naše testy. Například můžeme použít napodobnou architekturu v testu akcí úprav k dynamickému vytvoření objektu uživatele, který může DinnersController použít k vyhledání simulovaného uživatelského jména. Tím se vyhnete vyjímka nulového odkazu, když spustíme náš test.
 
-Existuje mnoho .NET napodobování architektur, které lze použít s ASP.NET MVC (zobrazí se seznam je tady: [ http://www.mockframeworks.com/ ](http://www.mockframeworks.com/)). Testování aplikace NerdDinner použijeme open source napodobování rámec se nazývá "Moq", který si můžete stáhnout zdarma z [ http://www.mockframeworks.com/moq ](http://www.mockframeworks.com/moq).
+Existuje mnoho rozhraní .NET, které lze použít s ASP.NET MVC (můžete zobrazit jejich seznam: [http://www.mockframeworks.com/](http://www.mockframeworks.com/)). Pro testování naší aplikace NerdDinner použijeme Open Source modelující rozhraní s názvem "MOQ", které se dá zdarma stáhnout z [http://www.mockframeworks.com/moq](http://www.mockframeworks.com/moq).
 
-Po stažení, přidáme v našem NerdDinner.Tests projektu odkaz na sestavení Moq.dll:
+Po stažení přidáme odkaz do našeho projektu NerdDinner. Tests do sestavení MOQ. dll:
 
 ![](enable-automated-unit-testing/_static/image12.png)
 
-Potom přidáme Pomocná metoda "CreateDinnersControllerAs(username)" pro naše testovací třídy, který přebírá uživatelské jméno jako parametr a které pak "mocks" User.Identity.Name vlastnost u DinnersController instance:
+Pak přidáte pomocnou metodu "CreateDinnersControllerAs (uživatelské jméno)" do naší třídy testu, která převezme uživatelské jméno jako parametr a pak "navýšení" vlastnosti User.Identity.Name na instanci DinnersController:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample14.cs)]
 
-Moq výše se používá k vytvoření objektu model, který napodobenin objekt parametrem ControllerContext (což je technologie ASP.NET MVC předá do třídy Kontroleru ke zveřejnění objekty modulu runtime jako uživatel, požadavku a odpovědi a relace). Metoda "SetupGet" voláme na model k označení, že vlastnost HttpContext.User.Identity.Name parametrem ControllerContext by měla vrátit řetězec uživatelské jméno, které jsme předaný metodě pomocné rutiny.
+Výše používáme MOQ k vytvoření objektu makety, který předstírá objekt ControllerContext (což je to, co ASP.NET MVC projde do tříd kontroleru a zpřístupňuje běhové objekty, jako je uživatel, požadavek, odpověď a relace). Voláme metodu "SetupGet" na tomto typu, aby označovala, že vlastnost HttpContext.User.Identity.Name v ControllerContext by měla vracet uživatelský řetězec, který předal pomocná metoda.
 
-Společnost Microsoft může napodobení libovolný počet parametrem ControllerContext vlastnosti a metody. Pro ilustraci, to jsme taky přidali SetupGet() volání pro vlastnost Request.IsAuthenticated (což není skutečně potřeba pro testy níže – ale což omezuje ukazují, jak můžete napodobení vlastnosti požadavku). Když jsme se vším hotovi jsme přiřadit instanci cvičné parametrem ControllerContext DinnersController naše Pomocná metoda vrátí.
+Můžeme navýšit libovolný počet ControllerContext vlastností a metod. Pro ilustraci toho jsem také přidali volání SetupGet () pro vlastnost Request. Authentication (která není ve skutečnosti nutná pro následující testy, ale pomáhá ilustrovat, jak můžete popsáním vlastností žádosti). Až se dokončíme, přiřadíme instanci ControllerContextového objektu k DinnersController, že se naše pomocná metoda vrátí.
 
-Můžeme se teď dá zapisovat jednotkové testy používající tuto metodu helper otestovat úpravy scénáře zahrnující různých uživatelů:
+Nyní můžeme napsat testy jednotek, které používají tuto pomocnou metodu k testování scénářů úprav týkajících se různých uživatelů:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample15.cs)]
 
-A teď, když spustíme testy se předají:
+A teď když spustíme testy, které projdou:
 
 ![](enable-automated-unit-testing/_static/image13.png)
 
-### <a name="testing-updatemodel-scenarios"></a>Scénáře testování UpdateModel()
+### <a name="testing-updatemodel-scenarios"></a>Testování scénářů UpdateModel ()
 
-Vytvořili jsme testy, které se týkají verze HTTP GET akce úpravy. Nyní vytvoříme některé testy, které ověřují verze HTTP POST akci Upravit:
+Vytvořili jsme testy, které pokrývají verzi HTTP-GET akce upravit. Teď vytvoříme některé testy, které ověřují verzi HTTP-POST akce upravit:
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample16.cs)]
 
-Zajímavé nové testovací scénář pro nás pro podporu s touto metodou akce je jeho použití UpdateModel() pomocnou metodu v základní třídě Controller. Tato pomocná metoda se používá k vytvoření vazby odeslaného formuláře naše společnost Dinner instanci objektu.
+Zajímavý nový scénář testování, který podporuje podporu pomocí této metody Action, je jeho využití pomocné metody UpdateModel () na základní třídě kontroleru. Tuto pomocnou metodu používáme k vytvoření vazby hodnot formuláře-post k naší instanci objektu večeře.
 
-Níže jsou dva testy, které ukazuje, jak můžeme zadat formuláře, pošle hodnoty UpdateModel() pomocné metody pro použití. Jsme budete k tomu vytváří se a naplňuje objekt FormCollection a pak ji přiřaďte vlastnost "Položka ValueProvider" v řadiči.
+Níže jsou dva testy, které demonstrují, jak můžeme dodat vyslané hodnoty pro pomocnou metodu UpdateModel (), která se má použít. Provedeme to tak, že vytvoříme a naplníme objekt objektucollection a pak ho přiřadíte do vlastnosti "ValueProvider" na řadiči.
 
-První test ověří, že při úspěšném uložení prohlížeč přesměrován na podrobnosti o akci. Druhý test ověří, že když se pošle neplatný vstup akce znovu zobrazí zobrazení pro úpravy znovu s chybovou zprávou.
+První test ověří, zda je v úspěšném uložení prohlížeč přesměrován na akci podrobnosti. Druhý test ověří, zda je při odeslání neplatného vstupu Tato akce znovu znovu zobrazuje zobrazení pro úpravy s chybovou zprávou.
 
 [!code-csharp[Main](enable-automated-unit-testing/samples/sample17.cs)]
 
-### <a name="testing-wrap-up"></a>Testování Wrap-Up
+### <a name="testing-wrap-up"></a>Testování zabalení
 
-Věnovali jsme základní koncepty zapojené do třídy kontroleru testování jednotek. Můžeme použít tyto postupy můžete snadno vytvořit stovky jednoduchých testů, které ověří chování naši aplikaci.
+Pokryli jsme základní koncepty týkající se tříd kontroleru testování částí. Tyto techniky můžeme použít k snadnému vytvoření stovek jednoduchých testů, které ověřují chování naší aplikace.
 
-Protože naše kontroléru a testovacích modelu nevyžadují skutečná databáze, jsou extrémně rychlé a snadné spuštění. Budeme moct spustit stovky automatizované testy během několika sekund a okamžitě získat zpětnou vazbu o tom, zda změny, které jsme udělali se podařilo přerušit něco. To vám pomůže nám poskytnout jistotu potřebnou pro průběžně vylepšovat, refaktorace a upřesňovat naši aplikaci.
+Vzhledem k tomu, že naše testy kontrol řadičů a modelů nevyžadují skutečnou databázi, jsou extrémně rychlé a snadno se spouštějí. V řádu sekund budeme moci spustit stovky automatizovaných testů a okamžitě získat zpětnou vazbu, ať už jsme udělali změnu, kterou jsme podařilo přerušiti. To nám pomůže zajistit nepřetržitou vylepšování naší aplikace, refaktorování a upřesnění naší aplikace.
 
-Jsme probrali testování jako poslední téma v této kapitole – ale ne vzhledem k tomu testování se něco by měl provádět na konci procesu vývoje! Naopak měli byste psát automatizované testy co nejdříve do vašeho vývojového procesu. To uděláte tak umožňuje načíst okamžitou zpětnou vazbu při vývoji, pomáhá vytvoříte promyšlené uvažovat o scénáře použití vaší aplikace a provede vás k návrhu vaší aplikace pomocí čisté vrstvení a párování v úvahu.
+Pokryli jsme testování jako poslední téma v této kapitole – ale ne, protože testování je něco, co byste měli dělat na konci procesu vývoje! V opačném případě byste měli psát automatizované testy co nejdříve v procesu vývoje. Díky tomu můžete při vývoji získat okamžitou zpětnou vazbu, která vám pomůže představit Thoughtfully o scénářích použití vaší aplikace a provede vás návrhem aplikace pomocí čistého vrstvení a přihlašování.
 
-Novější kapitolu v knize se o testu řízeného vývoje (TDD) a jak ji používat s architekturou ASP.NET MVC. TDD je iterativní způsobem kódování, kde první psát testy, které se bude splňovat vaše výsledný kód. S TDD začnete tak, že vytvoříte test, který ověří funkčnost, kterou se chystáte implementace jednotlivých funkcí. Zápis jednotka testu nejprve pomáhá zajistit jasně porozumět funkci a jak by mělo fungovat. Pouze poté, co se zapíše testu (a si ověříte, že rutina selže) se pak implementovat funkci skutečný test ověří. Vzhledem k tomu, že jste již stráveného času přemýšlení o případ použití, z jak funkci má práce, budete mít lepší přehled požadavků a nejlepší způsob pro jejich implementaci. Jakmile budete hotovi s prováděním můžete znovu spustit test – a získat okamžitou zpětnou vazbu na tom, jestli funkce funguje správně. Probereme TDD informace najdete v kapitole 10.
+Pozdější kapitola v knize bude diskutovat o vývoji řízených testováním (TDD) a jeho použití s ASP.NET MVC. TDD je iterativní postup kódování, kde nejprve zapíšete testy, které váš výsledný kód bude vyhovovat. Pomocí TDD zahájíte jednotlivé funkce vytvořením testu, který ověří funkčnost, kterou se chystáte implementovat. Zapsání testu jednotek jako první vám pomůže zajistit, že tato funkce bude jasně srozumitelná a jak má fungovat. Až po zápisu testu (a ověření, že se nezdařil), implementujete vlastní funkce, které test ověří. Vzhledem k tomu, že jste už věnovali čas v tom, jak má funkce fungovat, budete mít lepší znalosti o požadavcích a jejich implementaci. Až budete s implementací hotovi, můžete znovu spustit test – a získat okamžitou zpětnou vazbu k tomu, zda funkce funguje správně. V kapitole 10 se budeme zabývat více TDD.
 
-### <a name="next-step"></a>Dalším krokem
+### <a name="next-step"></a>Další krok
 
-Některé konečné zalamování řádků do komentáře.
+Některé konečné komentáře k zabalení.
 
 > [!div class="step-by-step"]
 > [Předchozí](use-ajax-to-implement-mapping-scenarios.md)
-> [další](nerddinner-wrap-up.md)
+> [Další](nerddinner-wrap-up.md)

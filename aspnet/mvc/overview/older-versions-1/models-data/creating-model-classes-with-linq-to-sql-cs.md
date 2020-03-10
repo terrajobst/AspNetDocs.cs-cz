@@ -9,11 +9,11 @@ ms.assetid: f84b4a16-e8bb-49e8-87a0-1832879a3501
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/creating-model-classes-with-linq-to-sql-cs
 msc.type: authoredcontent
 ms.openlocfilehash: c27d1ffac3846fe4bc13b32c2ae91a63b2493126
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74590246"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78543538"
 ---
 # <a name="creating-model-classes-with-linq-to-sql-c"></a>Vytvoření tříd modelu pomocí LINQ to SQL (C#)
 
@@ -63,9 +63,9 @@ Do tabulky databáze musíme přidat následující sloupce:
 
 | **Název sloupce** | **Datový typ** | **Povoluje hodnoty null.** |
 | --- | --- | --- |
-| Id | Hmot | Nepravda |
-| Název | Nvarchar (200) | Nepravda |
-| Adresářů | nvarchar (50) | Nepravda |
+| ID | Int | False |
+| Název | Nvarchar(200) | False |
+| Ředitel | Nvarchar(50) | False |
 
 Ve sloupci ID musíte udělat dvě speciální věci. Nejprve je třeba označit sloupec ID jako sloupec primárního klíče tak, že vyberete sloupec v Návrháři tabulky a kliknete na ikonu klíče. LINQ to SQL vyžaduje, abyste při vkládání nebo aktualizaci databáze určili sloupce primárního klíče.
 
@@ -173,7 +173,7 @@ Pokud chcete upravit technologii pro přístup k datům, kterou používá aplik
 
 Kromě toho, pokud chcete otestovat třídu `MoviesController`, můžete do `HomeController`předat falešnou třídu úložiště filmů. Třídu `IMovieRepository` lze implementovat pomocí třídy, která nemá ve skutečnosti přístup k databázi, ale obsahuje všechny požadované metody rozhraní `IMovieRepository`. Tímto způsobem můžete jednotku otestovat `MoviesController` třídy bez skutečného přístupu ke skutečné databázi.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Cílem tohoto kurzu je předvést, jak můžete vytvořit třídy modelu MVC s využitím Microsoft LINQ to SQL. Prozkoumali jsme dvě strategie pro zobrazení databázových dat v aplikaci ASP.NET MVC. Nejprve jsme vytvořili třídy LINQ to SQL a použili třídy přímo v rámci akce kontroleru. Použití tříd LINQ to SQL v rámci kontroleru umožňuje rychle a snadno zobrazit databázová data v aplikaci MVC.
 

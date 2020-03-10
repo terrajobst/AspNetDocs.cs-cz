@@ -1,388 +1,388 @@
 ---
 uid: signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
-title: Funkce SignalR technologie ASP.NET pokyny k rozhraní API Center – javascriptový klient | Dokumentace Microsoftu
+title: Průvodce rozhraním API pro centra ASP.NET Signaler – klient JavaScriptu | Microsoft Docs
 author: bradygaster
-description: Tento dokument obsahuje úvod k používání rozhraní API rozbočovače pro funkci SignalR verze 2 v klientů JavaScript, například s prohlížeči a Windows Store (WinJS) applicat...
+description: V tomto dokumentu najdete Úvod k používání rozhraní API centra pro Signal verze 2 v klientech JavaScript, jako jsou prohlížeče a Windows Store (WinJS) applicat...
 ms.author: bradyg
 ms.date: 01/15/2019
 ms.assetid: a9fd4dc0-1b96-4443-82ca-932a5b4a8ea4
 msc.legacyurl: /signalr/overview/guide-to-the-api/hubs-api-guide-javascript-client
 msc.type: authoredcontent
 ms.openlocfilehash: 8befe133c3627dac1f7d011959c68e2054d345da
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65119658"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78536657"
 ---
-# <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>Funkce SignalR technologie ASP.NET pokyny k rozhraní API Center – javascriptový klient
+# <a name="aspnet-signalr-hubs-api-guide---javascript-client"></a>Průvodce rozhraním API pro centra ASP.NET Signaler – klient JavaScriptu
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-> Tento dokument obsahuje úvod k používání rozhraní API rozbočovače pro funkci SignalR verze 2 v klientů JavaScript, například s prohlížeči a aplikace Windows Store (WinJS).
+> V tomto dokumentu najdete Úvod k používání rozhraní API centra pro Signal verze 2 v klientech JavaScript, jako jsou prohlížeče a aplikace Windows Store (WinJS).
 >
-> Rozhraní API pro rozbočovače SignalR umožňuje vytvářet vzdálených volání procedur (RPC) ze serveru pro připojené klienty a z klientů k serveru. V serverovém kódu můžete definovat metody, které mohou být volány klientů a volat metody, které běží na straně klienta. V klientském kódu můžete definovat metody, které lze volat ze serveru a volání metody, které běží na serveru. Funkce SignalR postará za vás zajistí funkčnost systému klient server.
+> Rozhraní API pro centra signalizace vám umožní provádět Vzdálená volání procedur (RPC) ze serveru pro připojené klienty a klienty na server. V kódu serveru můžete definovat metody, které mohou být volány klienty, a volat metody, které jsou spouštěny v klientovi. V kódu klienta definujete metody, které mohou být volány ze serveru, a voláte metody, které jsou spuštěny na serveru. Signalizace postará o všechny instalace klienta na server za vás.
 >
-> Funkce SignalR také nabízí nižší úrovně rozhraní API volá trvalé připojení. Úvod do SignalR, rozbočovačů a trvalá připojení, najdete v článku [Úvod ke knihovně SignalR](../getting-started/introduction-to-signalr.md).
+> Nástroj Signal také nabízí nižší úroveň rozhraní API označované jako trvalá připojení. Úvod do nástroje pro signalizaci, centra a trvalá připojení najdete v tématu [Úvod do nástroje Signal](../getting-started/introduction-to-signalr.md).
 >
-> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru použitým v tomto tématu
+> ## <a name="software-versions-used-in-this-topic"></a>Verze softwaru používané v tomto tématu
 >
 >
 > - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 > - .NET 4.5
-> - Funkce SignalR verze 2
+> - Signal – verze 2
 >
 >
 >
-> ## <a name="previous-versions-of-this-topic"></a>Předchozích verzích tohoto tématu
+> ## <a name="previous-versions-of-this-topic"></a>Předchozí verze tohoto tématu
 >
-> Informace o předchozích verzích systému SignalR naleznete v tématu [starší verze funkce SignalR](../older-versions/index.md).
+> Informace o dřívějších verzích nástroje Signal najdete v části [Signal – starší verze](../older-versions/index.md).
 >
-> ## <a name="questions-and-comments"></a>Otázky a komentáře
+> ## <a name="questions-and-comments"></a>Dotazy a komentáře
 >
-> Napište prosím zpětnou vazbu o tom, jak vám líbilo v tomto kurzu a co můžeme zlepšit v komentářích v dolní části stránky. Pokud máte nějaké otázky, které přímo nesouvisejí, najdete v tomto kurzu, můžete je publikovat [fórum ASP.NET SignalR](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
+> Přečtěte si prosím svůj názor na to, jak se vám tento kurz líbí a co bychom mohli vylepšit v komentářích v dolní části stránky. Pokud máte dotazy, které přímo nesouvisejí s kurzem, můžete je publikovat do [fóra signálu ASP.NET](https://forums.asp.net/1254.aspx/1?ASP+NET+SignalR) nebo [StackOverflow.com](http://stackoverflow.com/).
 
 ## <a name="overview"></a>Přehled
 
 Tento dokument obsahuje následující části:
 
-- [Vygenerovaný proxy server a co to dělá za vás](#genproxy)
+- [Vygenerovaný proxy server a k čemu](#genproxy)
 
-    - [Kdy použít vygenerovaný proxy server](#cantusegenproxy)
+    - [Kdy použít generovaný proxy server](#cantusegenproxy)
 - [Instalace klienta](#clientsetup)
 
-    - [Způsob vytvoření odkazu dynamicky generované proxy](#dynamicproxy)
-    - [Vytváření fyzického souboru pro funkci SignalR generované proxy](#manualproxy)
-- [Postup vytvoření připojení](#establishconnection)
+    - [Postup odkazu na dynamicky generovaný proxy server](#dynamicproxy)
+    - [Jak vytvořit fyzický soubor pro proxy vygenerovaný signálem](#manualproxy)
+- [Jak navázat připojení](#establishconnection)
 
-    - [$. connection.hub je stejný objekt, vytvoří tento $.hubConnection()](#connequivalence)
-    - [Asynchronní provádění tohoto start – metoda](#asyncstart)
-- [Jak vytvořit připojení mezi doménami](#crossdomain)
-- [Postup konfigurace připojení](#configureconnection)
+    - [$. Connection. hub je stejný objekt, který vytváří $. hubConnection ().](#connequivalence)
+    - [Asynchronní provádění metody Start](#asyncstart)
+- [Jak navázat připojení mezi doménami](#crossdomain)
+- [Konfigurace připojení](#configureconnection)
 
     - [Určení parametrů řetězce dotazu](#querystring)
-    - [Jak určit metodu přenosu](#transport)
-- [Získání proxy serveru pro rozbočovač třídy](#getproxy)
-- [Definování metody na straně klienta, která může volat na serveru](#callclient)
-- [Volání metody serveru z klienta](#callserver)
-- [Zpracování událostí doby platnosti](#connectionlifetime)
+    - [Určení způsobu přenosu](#transport)
+- [Jak získat proxy pro třídu centra](#getproxy)
+- [Jak definovat metody v klientovi, které může server volat](#callclient)
+- [Postup volání metod serveru z klienta](#callserver)
+- [Postup zpracování událostí životního cyklu připojení](#connectionlifetime)
 - [Zpracování chyb](#handleerrors)
-- [Jak povolit protokolování na straně klienta](#logging)
+- [Postup povolení protokolování na straně klienta](#logging)
 
-Dokumentace o tom, jak program na serveru nebo klientů .NET, naleznete v následujících zdrojích informací:
+Dokumentaci k programování serveru nebo klientů rozhraní .NET najdete v následujících zdrojích informací:
 
-- [Pokyny k rozhraní API Center SignalR – Server](hubs-api-guide-server.md)
-- [Pokyny k rozhraní API Center SignalR – klient .NET](hubs-api-guide-net-client.md)
+- [Průvodce rozhraním API pro centra signálů – Server](hubs-api-guide-server.md)
+- [Průvodce rozhraním API pro centra signálů – klient .NET](hubs-api-guide-net-client.md)
 
-Součást serveru SignalR 2 je dostupná pouze na rozhraní .NET 4.5 (i když je klient .NET pro funkci SignalR 2 v rozhraní .NET 4.0).
+Součást serveru signalizace 2 je k dispozici pouze v rozhraní .NET 4,5 (i když je klient rozhraní .NET pro signál 2 v rozhraní .NET 4,0).
 
 <a id="genproxy"></a>
 
-## <a name="the-generated-proxy-and-what-it-does-for-you"></a>Vygenerovaný proxy server a co to dělá za vás
+## <a name="the-generated-proxy-and-what-it-does-for-you"></a>Vygenerovaný proxy server a k čemu
 
-Můžete naprogramovat javascriptový klient komunikovat se službou SignalR s nebo bez proxy serveru, který generuje SignalR za vás. Proxy vykonává pro vás je zjednodušení syntaxe kódu slouží k připojení metod zápisu, která volá na server, a volání metod na serveru.
+Můžete programovat klienta JavaScriptu ke komunikaci se službou signalizace s nebo bez proxy serveru, který vygeneroval signál. K čemu je proxy pro vás jednodušší syntaxe kódu, který používáte k připojení, zápisu metod, které server volá, a volání metod na serveru.
 
-Při psaní kódu pro volání metody serveru vygenerovaný proxy server vám umožní použít syntaxi, která vypadá jako by byly provádění lokální funkce: můžete napsat `serverMethod(arg1, arg2)` místo `invoke('serverMethod', arg1, arg2)`. Syntaxe vygenerovaný proxy server také umožňuje okamžité a srozumitelné chybě na straně klienta, pokud napíšete metodu název serveru. A pokud ručně vytvořit soubor, který definuje náhledy, můžete také získat podporu technologie IntelliSense pro psaní kódu, který volá metody serveru.
+Při psaní kódu pro volání metod serveru, vygenerovaný proxy vám umožní použít syntaxi, která vypadá jako při provádění místní funkce: můžete napsat `serverMethod(arg1, arg2)` místo `invoke('serverMethod', arg1, arg2)`. Syntaxe vygenerovaného proxy serveru také umožňuje okamžitou a srozumitelnou chybu na straně klienta, pokud zadáte chybné zadání názvu metody serveru. A pokud ručně vytvoříte soubor, který definuje proxy, můžete také získat podporu technologie IntelliSense pro psaní kódu, který volá metody serveru.
 
-Předpokládejme například, že máte následující třídy rozbočovače na serveru:
+Předpokládejme například, že máte na serveru následující třídu centra:
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample1.cs?highlight=1,3,5)]
 
-Následující příklady kódu ukazují, co vypadá kódu JavaScript jako pro volání `NewContosoChatMessage` metodu na serveru a přijímají volání `addContosoChatMessageToPage` metoda ze serveru.
+Následující příklady kódu ukazují, jaký kód jazyka JavaScript vypadá za vyvolání metody `NewContosoChatMessage` na serveru a přijímání vyvolání `addContosoChatMessageToPage` metody ze serveru.
 
-**Vygenerovaný proxy**
+**S vygenerovaným proxy serverem**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample2.js?highlight=1-2,8)]
 
-**Bez vygenerovaný proxy server**
+**Bez vygenerovaného proxy**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample3.js?highlight=2-3,9)]
 
 <a id="cantusegenproxy"></a>
 
-### <a name="when-to-use-the-generated-proxy"></a>Kdy použít vygenerovaný proxy server
+### <a name="when-to-use-the-generated-proxy"></a>Kdy použít generovaný proxy server
 
-Pokud chcete registrovat více obslužných rutin události pro metody, která volá na server, nemůžete použít vygenerovaný proxy server. V opačném případě můžete použít vygenerovaný proxy server nebo není založen na předvolbu kódování. Pokud se rozhodnete nepoužít, není nutné odkazovat na adresu URL "Center/signalr" v `script` elementu v kódu klienta.
+Pokud chcete registrovat více obslužných rutin událostí pro metodu klienta, kterou server volá, nemůžete použít vygenerovaný proxy server. V opačném případě můžete zvolit používání vygenerovaného proxy serveru nebo ne na základě předvolby kódování. Pokud se rozhodnete, že ji nepoužíváte, nemusíte odkazovat na adresu URL "signaler/Hubs" v prvku `script` ve vašem klientském kódu.
 
 <a id="clientsetup"></a>
 
 ## <a name="client-setup"></a>Instalace klienta
 
-Klient JavaScriptu vyžaduje odkazy na knihovny jQuery a soubor JavaScript základní funkce SignalR. 1.6.4 nebo hlavní novější verze, jako je například 1.7.2, 1.8.2 nebo 1.9.1 musí být verze jQuery. Pokud se rozhodnete použít vygenerovaný proxy server, potřebujete také odkaz k proxy serveru SignalR vygeneruje soubor jazyka JavaScript. Následující příklad ukazuje, jak může odkazy vypadat na stránku HTML, který používá vygenerovaný proxy server.
+JavaScriptový klient vyžaduje odkazy na jQuery a základní soubor JavaScriptu pro signál. Verze jQuery musí být 1.6.4 nebo hlavní novější verze, jako je například 1.7.2, 1.8.2 nebo 1.9.1. Pokud se rozhodnete použít vygenerovaný proxy server, budete také potřebovat odkaz na soubor JavaScriptu proxy vygenerovaný signálem. Následující příklad ukazuje, jak odkazy mohou vypadat jako na stránce HTML, která používá vygenerovaný proxy server.
 
 [!code-html[Main](hubs-api-guide-javascript-client/samples/sample4.html)]
 
-Tyto odkazy musí být zahrnuty v tomto pořadí: jQuery nejprve naposledy SignalR jádra po tomto a proxy servery SignalR.
+Tyto odkazy musí být zahrnuté v tomto pořadí: jQuery First, Signal Core po tomto případě a proxy signalizace jako poslední.
 
 <a id="dynamicproxy"></a>
 
-### <a name="how-to-reference-the-dynamically-generated-proxy"></a>Způsob vytvoření odkazu dynamicky generované proxy
+### <a name="how-to-reference-the-dynamically-generated-proxy"></a>Postup odkazu na dynamicky generovaný proxy server
 
-V předchozím příkladu je odkaz na proxy serveru SignalR vygeneruje dynamicky generovaném kódu jazyka JavaScript, není k fyzickému souboru. Funkce SignalR vytvoří kód jazyka JavaScript pro proxy server v reálném čase a slouží ke klientovi jako odpověď na adresu "/ signalr/centra". Pokud jste zadali jiné základní adresu URL pro připojení SignalR na serveru ve vaší `MapSignalR` metoda, adresu URL k souboru dynamicky generované proxy je vaše vlastní adresu URL s "/ hubs" připojí k němu.
+V předchozím příkladu odkazuje odkaz na proxy server vygenerovaný signálem k dynamickému generování kódu JavaScriptu, nikoli fyzického souboru. Návěstí vytvoří kód JavaScriptu pro proxy a zachová ho klientovi v reakci na adresu URL "/SignalR/Hubs". Pokud jste zadali jinou základní adresu URL pro připojení k signalizaci na serveru v metodě `MapSignalR`, adresa URL dynamicky generovaného souboru proxy je vaše vlastní adresa URL s připojeným "/Hubs".
 
 > [!NOTE]
-> Pro klienty systému Windows 8 (Windows Store) jazyka JavaScript použijte soubor fyzické proxy místo dynamicky vygenerovaný. Další informace najdete v tématu [vytváření fyzického souboru pro funkci SignalR generované proxy](#manualproxy) dále v tomto tématu.
+> Pro klienty se systémem Windows 8 (Windows Store) v jazyce JavaScript použijte místo dynamicky generovaného souboru fyzický proxy soubor. Další informace najdete v části [Postup vytvoření fyzického souboru pro proxy vygenerovaný signálem](#manualproxy) dále v tomto tématu.
 
-V ASP.NET MVC 4 a 5 zobrazení Razor pomocí tilda k odkazování na kořenový adresář aplikace v odkazu na soubor vašeho proxy serveru:
+V zobrazení ASP.NET MVC 4 nebo 5 Razor použijte vlnovku pro odkaz na kořen aplikace v referenčním souboru proxy:
 
 [!code-html[Main](hubs-api-guide-javascript-client/samples/sample5.html)]
 
-Další informace o použití aplikace SignalR v MVC 5 v tématu [Začínáme s knihovnou SignalR a MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md).
+Další informace o použití signalizace v MVC 5 naleznete v tématu [Začínáme with signaler a MVC 5](../getting-started/tutorial-getting-started-with-signalr-and-mvc.md).
 
-V zobrazení syntaxe Razor rozhraní ASP.NET MVC 3, použijte `Url.Content` pro odkaz na soubor vašeho proxy serveru:
+V zobrazení ASP.NET MVC 3 Razor použijte `Url.Content` pro referenci proxy souboru:
 
 [!code-cshtml[Main](hubs-api-guide-javascript-client/samples/sample6.cshtml)]
 
-V aplikaci webových formulářů ASP.NET pomocí `ResolveClientUrl` pro vaše proxy odkaz na soubor nebo ho zaregistrovat pomocí prvku ScriptManager pomocí cesty relativní kořenové aplikace (začíná tildou):
+V aplikaci webových formulářů ASP.NET použijte `ResolveClientUrl` pro odkaz na soubor proxy a zaregistrujte ho prostřednictvím ovládacího prvku ScriptManager pomocí relativní cesty ke kořenu aplikace (počínaje vlnovkou tildy):
 
 [!code-aspx[Main](hubs-api-guide-javascript-client/samples/sample7.aspx)]
 
-Obecně platí použijte stejnou metodu pro zadávání adresy URL "/ signalr/centra", který používáte pro soubory CSS a JavaScript. Pokud zadáte adresu URL bez použití vlnovkou, v některých scénářích aplikace bude fungovat správně při testování v sadě Visual Studio pomocí služby IIS Express, ale selže s chyby 404 při nasazování do úplnou službu IIS. Další informace najdete v tématu **řešení odkazy na prostředky na kořenové úrovni** v [webové servery v sadě Visual Studio pro webové projekty ASP.NET](https://msdn.microsoft.com/library/58wxa9w5.aspx) na webu MSDN.
+Jako obecné pravidlo použijte stejnou metodu pro zadání adresy URL "/SignalR/Hubs", kterou používáte pro soubory CSS nebo JavaScript. Pokud zadáte adresu URL bez použití tildy, v některých případech bude vaše aplikace správně fungovat při testování v aplikaci Visual Studio pomocí IIS Express, ale při nasazení na plnou službu IIS dojde k chybě 404. Další informace naleznete v tématu **řešení odkazů na prostředky kořenové úrovně** ve [webových serverech v aplikaci Visual Studio pro webové projekty ASP.NET](https://msdn.microsoft.com/library/58wxa9w5.aspx) na webu MSDN.
 
-Při spuštění webový projekt v sadě Visual Studio 2017 v režimu ladění, a pokud používáte Internet Explorer jako prohlížeč, zobrazí se soubor proxy v **Průzkumníka řešení** pod **skripty**.
+Při spuštění webového projektu v aplikaci Visual Studio 2017 v režimu ladění a pokud jako prohlížeč používáte Internet Explorer, můžete zobrazit soubor proxy v **Průzkumník řešení** v části **skripty**.
 
-Pokud chcete zobrazit obsah souboru, klikněte dvakrát na **rozbočovače**. Pokud nepoužíváte Visual Studio 2012 nebo 2013 a aplikace Internet Explorer, nebo pokud nejste v režimu ladění, můžete také získat obsah souboru tak, že přejdete na adresu "/ signalR/centra". Například, pokud vaše lokalita běží v `http://localhost:56699`, přejděte na stránku `http://localhost:56699/SignalR/hubs` v prohlížeči.
+Pokud chcete zobrazit obsah souboru, poklikejte na **rozbočovače**. Pokud nepoužíváte sadu Visual Studio 2012 nebo 2013 a Internet Explorer nebo pokud nejste v režimu ladění, můžete také získat obsah souboru tak, že přejdete na adresu URL/signalR/hubs. Například pokud vaše lokalita běží na `http://localhost:56699`, v prohlížeči se podívejte na `http://localhost:56699/SignalR/hubs`.
 
 <a id="manualproxy"></a>
 
-### <a name="how-to-create-a-physical-file-for-the-signalr-generated-proxy"></a>Vytváření fyzického souboru pro funkci SignalR generované proxy
+### <a name="how-to-create-a-physical-file-for-the-signalr-generated-proxy"></a>Jak vytvořit fyzický soubor pro proxy vygenerovaný signálem
 
-Jako alternativu k dynamicky generované proxy můžete vytvořit fyzický soubor, který má kód proxy serveru a jako reference. Můžete to udělat pro kontrolu nad ukládání do mezipaměti nebo sdružování chování nebo aby technologie IntelliSense při psaní kódu volání metody serveru.
+Jako alternativu k dynamicky vygenerovanému proxy serveru můžete vytvořit fyzický soubor, který má kód proxy a odkazovat na tento soubor. To může být vhodné pro kontrolu nad ukládáním do mezipaměti nebo sdružování nebo pro získání IntelliSense při kódování volání do metod serveru.
 
-Vytvoření souboru proxy serveru, proveďte následující kroky:
+Chcete-li vytvořit soubor proxy, proveďte následující kroky:
 
-1. Nainstalujte [Microsoft.AspNet.SignalR.Utils](https://nuget.org/packages/Microsoft.AspNet.SignalR.Utils/) balíček NuGet.
-2. Otevřete příkazový řádek a přejděte *nástroje* složku obsahující soubor SignalR.exe. Nástroje pro složku je v následujícím umístění:
+1. Nainstalujte balíček NuGet [Microsoft. ASPNET. signaler. util](https://nuget.org/packages/Microsoft.AspNet.SignalR.Utils/) .
+2. Otevřete příkazový řádek a přejděte do složky *nástroje* , která obsahuje soubor Signal. exe. Složka nástroje je v následujícím umístění:
 
     `[your solution folder]\packages\Microsoft.AspNet.SignalR.Utils.2.1.0\tools`
 3. Zadejte následující příkaz:
 
     `signalr ghp /path:[path to the .dll that contains your Hub class]`
 
-    Cesta k vaší *.dll* je obvykle *bin* ve složce projektu.
+    Cesta k souboru *. dll* je obvykle složka *bin* ve složce projektu.
 
-    Tento příkaz vytvoří soubor s názvem *server.js* ve stejné složce jako *signalr.exe*.
-4. Vložit *server.js* souborů v příslušné složce ve vašem projektu, přejmenujte ho podle potřeby pro vaši aplikaci a přidejte odkaz na jeho místo odkazu "Center/signalr".
+    Tento příkaz vytvoří soubor s názvem *Server. js* ve stejné složce jako *Signal. exe*.
+4. Vložte soubor *Server. js* do příslušné složky v projektu, přejmenujte jej podle potřeby pro vaši aplikaci a přidejte odkaz na něj místo odkazu "signál/rozbočovačé".
 
 <a id="establishconnection"></a>
 
-## <a name="how-to-establish-a-connection"></a>Postup vytvoření připojení
+## <a name="how-to-establish-a-connection"></a>Jak navázat připojení
 
-Aby mohla navázat připojení, budete muset vytvořit objekt připojení, proxy server a zaregistrujte obslužné rutiny událostí pro metody, které lze volat ze serveru. Po nastavení serveru proxy a událost obslužné rutiny připojení voláním `start` metody.
+Než budete moct navázat připojení, musíte vytvořit objekt připojení, vytvořit proxy server a zaregistrovat obslužné rutiny událostí pro metody, které je možné volat ze serveru. Když jsou nastaveny obslužné rutiny proxy a událostí, navažte připojení voláním metody `start`.
 
-Pokud používáte vygenerovaný proxy server, není nutné vytvořit objekt připojení ve svém vlastním kódu, protože vygenerovaném kódu proxy to udělá za vás.
+Pokud používáte generovaný proxy server, nemusíte vytvářet objekt připojení ve vlastním kódu, protože vygenerovaný kód proxy to udělá za vás.
 
 <a id="nogenconnection"></a>
 
-**Naváže připojení (vygenerovaný proxy server)**
+**Navázat připojení (s vygenerovaným proxy serverem)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample8.js?highlight=5)]
 
-**Navázání připojení (bez vygenerovaný proxy server)**
+**Navázat připojení (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample9.js?highlight=1,6)]
 
-Vzorový kód používá výchozí "/ signalr" adresa URL k připojení do služby SignalR. Informace o tom, jak určit různé základní adresu URL najdete v tématu [ASP.NET pokyny k rozhraní API Center SignalR - Server - /signalr URL](hubs-api-guide-server.md#signalrurl).
+Vzorový kód pro připojení ke službě signalizace používá výchozí adresu URL "/SignalR". Informace o tom, jak zadat jinou základní adresu URL, najdete v tématu [Průvodce rozhraním API pro centra ASP.NET Signal-Server-adresa URL/SignalR](hubs-api-guide-server.md#signalrurl).
 
-Ve výchozím umístění centra je aktuální server; Pokud se připojujete k jinému serveru, zadejte adresu URL před voláním `start` způsob, jak je znázorněno v následujícím příkladu:
+Ve výchozím nastavení je umístění centra aktuálním serverem; Pokud se připojujete k jinému serveru, zadejte adresu URL před voláním metody `start`, jak je znázorněno v následujícím příkladu:
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample10.js)]
 
 > [!NOTE]
-> Obvykle registraci obslužné rutiny událostí před voláním `start` metoda k navázání připojení. Pokud chcete zaregistrovat několik obslužných rutin událostí po navázání připojení, můžete to udělat, ale je nutné zaregistrovat alespoň jeden z vašich handler(s) událostí před voláním `start` metody. Jedním z důvodů je, že v aplikaci může být mnoho rozbočovače, ale není vhodné pro aktivaci `OnConnected` událost pro každý rozbočovač, chcete-li pouze pomocí jedné z nich. Po vytvoření připojení je existenci metody na proxy server rozbočovače pro co říká SignalR k aktivaci `OnConnected` událostí. Pokud nezaregistrujete všechny obslužné rutiny událostí před voláním `start` metody, bude možné volat metody v rozbočovači, ale centra `OnConnected` nebude volána metoda a žádné metody klienta, který bude vyvolán ze serveru.
+> Normálně zaregistrujete obslužné rutiny události před voláním metody `start` pro navázání připojení. Pokud chcete registrovat některé obslužné rutiny události po navázání připojení, můžete to provést, ale před voláním metody `start` je nutné zaregistrovat alespoň jednu obslužnou rutinu události. Jedním z důvodů je, že v aplikaci může být mnoho Center, ale pokud se k jednomu z nich budete chtít používat jenom jednu z nich, nebudete chtít aktivovat `OnConnected` událost na každém centru. Když je připojení navázáno, přítomnost metody klienta v proxy serveru rozbočovače je tím, co oznamuje signalizaci, aby aktivoval událost `OnConnected`. Pokud nezaregistrujete žádné obslužné rutiny událostí před voláním metody `start`, budete moci vyvolat metody v centru, ale metoda `OnConnected` centra nebude volána a žádné metody klienta nebudou vyvolány ze serveru.
 
 <a id="connequivalence"></a>
 
-### <a name="connectionhub-is-the-same-object-that-hubconnection-creates"></a>$. connection.hub je stejný objekt, vytvoří tento $.hubConnection()
+### <a name="connectionhub-is-the-same-object-that-hubconnection-creates"></a>$. Connection. hub je stejný objekt, který vytváří $. hubConnection ().
 
-Jak je vidět z příkladů, když použijete vygenerovaný proxy server, `$.connection.hub` odkazuje na objekt připojení. Toto je stejný objekt, který můžete získat voláním `$.hubConnection()` když nepoužíváte vygenerovaný proxy server. Vygenerovaný proxy kód vytvoří spojení za vás spuštěním následujícího příkazu:
+Jak vidíte v příkladech, při použití generovaného proxy serveru `$.connection.hub` odkazuje na objekt připojení. Jedná se o stejný objekt, který získáte voláním `$.hubConnection()`, když nepoužíváte generovaný proxy server. Generovaný kód proxy vytvoří připojení za vás spuštěním následujícího příkazu:
 
-![Vytvoření připojení v souboru vygenerovaný proxy server](hubs-api-guide-javascript-client/_static/image3.png)
+![Vytvoření připojení ve vygenerovaném souboru proxy](hubs-api-guide-javascript-client/_static/image3.png)
 
-Pokud používáte vygenerovaný proxy server, můžete provést cokoli, co se `$.connection.hub` , když nepoužíváte vygenerovaný proxy server, co lze použít s objektem připojení.
+Pokud používáte vygenerovaný proxy server, můžete s `$.connection.hub` provádět cokoli, co můžete dělat s objektem připojení, když nepoužíváte vygenerovaný proxy server.
 
 <a id="asyncstart"></a>
 
-### <a name="asynchronous-execution-of-the-start-method"></a>Asynchronní provádění tohoto start – metoda
+### <a name="asynchronous-execution-of-the-start-method"></a>Asynchronní provádění metody Start
 
-`start` Metoda provedena asynchronně. Vrátí [jQuery odloženo objekt](http://api.jquery.com/category/deferred-object/), což znamená, že můžete přidat funkce zpětného volání voláním metod `pipe`, `done`, a `fail`. Pokud máte kód, který chcete spustit po připojení se naváže, jako je například volání metody serveru, vložte tento kód ve funkci zpětného volání nebo jeho volání z funkce zpětného volání. `.done` Metoda zpětného volání se spustí po vytvoření připojení a po žádný kód, který máte vaše `OnConnected` metoda obslužné rutiny události na server dokončí provádění.
+Metoda `start` se spouští asynchronně. Vrací [odložený objekt jQuery](http://api.jquery.com/category/deferred-object/), což znamená, že můžete přidat funkce zpětného volání voláním metod, jako jsou `pipe`, `done`a `fail`. Pokud máte kód, který chcete spustit po navázání spojení, jako je například volání metody serveru, vložte tento kód do funkce zpětného volání nebo jej zavolejte z funkce zpětného volání. Metoda zpětného volání `.done` se spustí po navázání připojení a po jakémkoli kódu, který máte v metodě obslužné rutiny události `OnConnected` na serveru, se dokončí provádění.
 
-Když vložíte příkaz "Teď připojení" z předchozího příkladu jako další řádek kódu po `start` volání metody (ne v `.done` zpětného volání), `console.log` řádek se spustí předtím, než se naváže připojení, jak je znázorněno v následujícím Příklad:
+Pokud vložíte příkaz "nyní připojeno" z předchozího příkladu jako další řádek kódu po volání metody `start` (ne ve zpětném volání `.done`), bude řádek `console.log` spuštěn před navázáním připojení, jak je znázorněno v následujícím příkladu:
 
-![Ukázka nesprávného způsobu psaní kódu, která se spustí po vytvoření připojení](hubs-api-guide-javascript-client/_static/image5.png)
+![Špatný způsob, jak napsat kód, který se spustí po navázání připojení](hubs-api-guide-javascript-client/_static/image5.png)
 
 <a id="crossdomain"></a>
 
-## <a name="how-to-establish-a-cross-domain-connection"></a>Jak vytvořit připojení mezi doménami
+## <a name="how-to-establish-a-cross-domain-connection"></a>Jak navázat připojení mezi doménami
 
-Obvykle Pokud prohlížeč načte stránku z `http://contoso.com`, připojení SignalR je ve stejné doméně, v `http://contoso.com/signalr`. Pokud stránku z `http://contoso.com` vytvoří připojení k `http://fabrikam.com/signalr`, to znamená připojení mezi doménami. Z bezpečnostních důvodů jsou ve výchozím nastavení zakázané připojení mezi doménami.
+V případě, že prohlížeč načítá stránku z `http://contoso.com`, připojení k signalizaci je ve stejné doméně, v `http://contoso.com/signalr`. Pokud stránka z `http://contoso.com` vytvoří připojení k `http://fabrikam.com/signalr`, což je připojení mezi doménami. Z bezpečnostních důvodů jsou připojení mezi doménami ve výchozím nastavení zakázaná.
 
-V knihovně SignalR 1.x různé požadavky na doménu se řídí jediného příznaku EnableCrossDomain. Tento příznak řídí požadavky na JSONP a CORS. Pro větší flexibilitu a podporu všech CORS je odebraná ze součásti serveru pro funkci SignalR (JavaScript stále používají klienti CORS obvykle Pokud se zjistí, jestli prohlížeč podporuje), a nové middlewaru OWIN, který byl zpřístupněn pro podporu těchto scénářů.
+V návěsti 1. x byly požadavky křížové domény řízené jediným příznakem EnableCrossDomain. Tento příznak ovládá požadavky JSONP i CORS. Pro větší flexibilitu byla ze serverové součásti signalizace odebrána veškerá podpora CORS (klienti JavaScriptu pořád používají CORS normálně, pokud se zjistí, že ji prohlížeč podporuje) a byl k dispozici nový middleware OWIN pro podporu těchto scénářů.
 
-Pokud na straně klienta (pro podporu požadavků mezi doménami ve starších prohlížečích) je vyžadováno JSONP, ji budou muset být explicitně povoluje nastavením `EnableJSONP` na `HubConfiguration` objektu `true`, jak je znázorněno níže. JSONP je standardně zakázaná, protože je to méně bezpečné než CORS.
+Pokud je v klientovi vyžadováno JSONP (pro podporu požadavků mezi doménami ve starších prohlížečích), bude nutné ho explicitně povolit nastavením `EnableJSONP` u objektu `HubConfiguration` na `true`, jak je znázorněno níže. Služba JSONP je ve výchozím nastavení zakázána, protože je méně bezpečná než CORS.
 
-**Přidání Microsoft.Owin.Cors do projektu:** Pokud chcete nainstalovat tuto knihovnu, spusťte následující příkaz v konzole Správce balíčků:
+**Do projektu se přidává Microsoft. Owin. Cors:** Tuto knihovnu nainstalujete spuštěním následujícího příkazu v konzole správce balíčků:
 
 `Install-Package Microsoft.Owin.Cors`
 
-Tento příkaz přidá 2.1.0 verzi balíčku do projektu.
+Tento příkaz přidá do projektu verzi 2.1.0 balíčku.
 
 ### <a name="calling-usecors"></a>Volání UseCors
 
- Následující fragment kódu ukazuje, jak implementovat mezi doménami připojení v SignalR 2.
+ Následující fragment kódu ukazuje, jak implementovat připojení mezi doménami ve službě Signaler 2.
 
-**Implementace žádosti napříč doménami v SignalR 2**
+**Implementace žádostí mezi doménami v nástroji Signaler 2**
 
-Následující kód ukazuje, jak povolit CORS a JSONP v projektu funkcí SignalR 2. Tento vzorový kód používá `Map` a `RunSignalR` místo `MapSignalR`, takže middlewarem CORS běží pouze pro funkci SignalR žádosti, které vyžadují podporu CORS (a nikoli pro veškerý provoz na cestě zadané v `MapSignalR`.) Mapu můžete použít také pro veškerý middleware, který je potřeba spustit pro konkrétní předponu adresy URL, a nikoli pro celou aplikaci.
+Následující kód ukazuje, jak v projektu Signal 2 povolit CORS nebo JSONP. Tato ukázka kódu používá `Map` a `RunSignalR` namísto `MapSignalR`, aby middleware CORS běžela pouze pro žádosti signálů, které vyžadují podporu CORS (nikoli pro všechny přenosy v cestě zadané v `MapSignalR`.) Mapu je také možné použít pro jakýkoli jiný middleware, který je třeba spustit pro konkrétní předponu adresy URL, nikoli pro celou aplikaci.
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample11.cs)]
 
 > [!NOTE]
 >
-> - Nenastavujte `jQuery.support.cors` na hodnotu true v kódu.
+> - Ve vašem kódu nenastavujte `jQuery.support.cors` na hodnotu true.
 >
->     ![JQuery.support.cors nemají nastavený na hodnotu true](hubs-api-guide-javascript-client/_static/image7.png)
+>     ![Nenastavujte jQuery. support. Cors na hodnotu true](hubs-api-guide-javascript-client/_static/image7.png)
 >
->     Funkce SignalR zpracovává použití CORS. Nastavení `jQuery.support.cors` na hodnotu true zakáže JSONP, protože kvůli němu SignalR předpokládat, že prohlížeč podporuje CORS.
-> - Když se připojujete k adrese URL místního hostitele, Internet Explorer 10 nebude považují za připojení mezi doménami, tak, že aplikace bude fungovat místně pomocí aplikace Internet Explorer 10 i v případě, že jste ještě nepovolili mezi doménami připojení na serveru.
-> - Informace o použití připojení mezi doménami se aplikace Internet Explorer 9, najdete v tématu [toto vlákno na StackOverflow](http://stackoverflow.com/questions/13573397/siganlr-ie9-cross-domain-request-dont-work).
-> - Informace o použití připojení mezi doménami s prohlížečem Chrome naleznete v tématu [toto vlákno na StackOverflow](http://stackoverflow.com/questions/15467373/signalr-1-0-1-cross-domain-request-cors-with-chrome).
-> - Vzorový kód používá výchozí "/ signalr" adresa URL k připojení do služby SignalR. Informace o tom, jak určit různé základní adresu URL najdete v tématu [ASP.NET pokyny k rozhraní API Center SignalR - Server - /signalr URL](hubs-api-guide-server.md#signalrurl).
+>     Návěstí zpracovává použití CORS. Nastavením `jQuery.support.cors` na hodnotu true zakážete JSONP, protože to způsobuje, že signál bude předpokládat, že prohlížeč podporuje CORS.
+> - Pokud se připojujete k adrese URL místního hostitele, Internet Explorer 10 ji nepovažuje za připojení mezi doménami, takže aplikace bude fungovat místně s IE 10, a to i v případě, že jste na serveru nepovolili připojení mezi doménami.
+> - Informace o použití připojení mezi doménami s Internet Explorerem 9 najdete v [tomto vlákně StackOverflow](http://stackoverflow.com/questions/13573397/siganlr-ie9-cross-domain-request-dont-work).
+> - Informace o použití připojení mezi doménami s Chrome najdete v [tomto vlákně StackOverflow](http://stackoverflow.com/questions/15467373/signalr-1-0-1-cross-domain-request-cors-with-chrome).
+> - Vzorový kód pro připojení ke službě signalizace používá výchozí adresu URL "/SignalR". Informace o tom, jak zadat jinou základní adresu URL, najdete v tématu [Průvodce rozhraním API pro centra ASP.NET Signal-Server-adresa URL/SignalR](hubs-api-guide-server.md#signalrurl).
 
 <a id="configureconnection"></a>
 
-## <a name="how-to-configure-the-connection"></a>Postup konfigurace připojení
+## <a name="how-to-configure-the-connection"></a>Konfigurace připojení
 
-Než vytvoříte připojení, můžete určit parametry řetězce dotazu nebo zadat metodu přenosu.
+Před navázáním připojení můžete zadat parametry řetězce dotazu nebo zadat metodu přenosu.
 
 <a id="querystring"></a>
 
 ### <a name="how-to-specify-query-string-parameters"></a>Určení parametrů řetězce dotazu
 
-Pokud chcete odesílat data do serveru, když se klient připojí, můžete přidat parametry řetězce dotazu do objekt připojení. Následující příklady ukazují, jak nastavit parametr řetězce dotazu v klientském kódu.
+Pokud chcete při připojení klienta odesílat data na server, můžete do objektu připojení přidat parametry řetězce dotazu. Následující příklady ukazují, jak nastavit parametr řetězce dotazu v kódu klienta.
 
-**Nastavte hodnotu řetězce dotazu před voláním metody spuštění (s vygenerovaný proxy server)**
+**Před voláním metody Start (s vygenerovaným proxy serverem) nastavte hodnotu řetězce dotazu.**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample12.js?highlight=1)]
 
-**Nastavte hodnotu řetězce dotazu před voláním metody start (bez vygenerovaný proxy server)**
+**Před voláním metody Start (bez vygenerovaného proxy serveru) nastavte hodnotu řetězce dotazu.**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample13.js?highlight=2)]
 
-Následující příklad znázorňuje způsob čtení parametru řetězce dotazu v serverovém kódu.
+Následující příklad ukazuje, jak číst parametr řetězce dotazu v kódu serveru.
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample14.cs?highlight=5)]
 
 <a id="transport"></a>
 
-### <a name="how-to-specify-the-transport-method"></a>Jak určit metodu přenosu
+### <a name="how-to-specify-the-transport-method"></a>Určení způsobu přenosu
 
-Jako součást procesu připojování klienta SignalR obvykle vyjedná se serverem a určit nejlepší přenos, který je podporovaný server i klient. Pokud již víte, jaké přenosu, kterou chcete použít, můžete tento proces vyjednávání obejít tak, že určíte metodu přenosu při volání `start` metody.
+V rámci procesu připojování klient signalizace obvykle vyjednává se serverem, aby bylo možné určit nejlepší přenos, který je podporovaný oběma servery i klientem. Pokud již víte, který přenos chcete použít, můžete tento proces vyjednávání obejít zadáním metody přenosu při volání metody `start`.
 
-**Klientský kód, který určuje metodu přenosu (s vygenerovaný proxy server)**
+**Kód klienta, který určuje způsob přenosu (s vygenerovaným proxy serverem)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample15.js?highlight=1)]
 
-**Klientský kód, který určuje metodu přenosu (bez vygenerovaný proxy server)**
+**Kód klienta, který určuje způsob přenosu (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample16.js?highlight=2)]
 
-Jako alternativu můžete zadat několik metod přenosu v pořadí, ve kterém chcete SignalR chcete vyzkoušet:
+Jako alternativu můžete zadat více metod přenosu v pořadí, ve kterém chcete, aby je Signal mohl vyzkoušet:
 
-**Klientský kód, který určuje schéma záložního vlastní přenosu (s vygenerovaný proxy server)**
+**Kód klienta, který určuje vlastní záložní schéma přenosu (s vygenerovaným proxy serverem)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample17.js?highlight=1)]
 
-**Klientský kód, který určuje záložní schématu vlastní přenosu (bez vygenerovaný proxy server)**
+**Kód klienta, který určuje vlastní záložní schéma přenosu (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample18.js?highlight=2)]
 
-Pro zadání metodu přenosu můžete použít následující hodnoty:
+K určení metody přenosu můžete použít následující hodnoty:
 
-- "webSockets"
+- WebSockets
 - "foreverFrame"
 - "serverSentEvents"
 - "longPolling"
 
-Následující příklady ukazují, jak zjistit, jakou metodu přenosu používá připojení.
+Následující příklady ukazují, jak zjistit, která metoda přenosu je používána připojením.
 
-**Klientský kód, který se zobrazí přenos metodu používanou pro připojení (s vygenerovaný proxy server)**
+**Kód klienta, který zobrazuje přenosovou metodu používanou připojením (s vygenerovaným proxy serverem)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample19.js?highlight=2)]
 
-**Klientský kód, který se zobrazí přenos metodu používanou pro připojení (bez vygenerovaný proxy server)**
+**Kód klienta, který zobrazuje přenosovou metodu používanou připojením (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample20.js?highlight=3)]
 
-Informace o tom, jak zkontrolovat metodu přenosu v serverovém kódu najdete v tématu [ASP.NET pokyny k rozhraní API Center SignalR - Server - jak získat informace o klientovi z kontextové vlastnosti](hubs-api-guide-server.md#contextproperty). Další informace o přenosy a náhrad najdete v tématu [Úvod ke knihovně SignalR – přenosy a náhrad](../getting-started/introduction-to-signalr.md#transports).
+Informace o tom, jak zjistit způsob přenosu v serverovém kódu, najdete v tématu [Průvodce rozhraním API centra ASP.NET Signal-Server – jak z kontextové vlastnosti získat informace o klientovi](hubs-api-guide-server.md#contextproperty). Další informace o přenosech a náhradních přenosech najdete v tématu [Úvod k signalizaci a záložním přenosům](../getting-started/introduction-to-signalr.md#transports).
 
 <a id="getproxy"></a>
 
-## <a name="how-to-get-a-proxy-for-a-hub-class"></a>Získání proxy serveru pro rozbočovač třídy
+## <a name="how-to-get-a-proxy-for-a-hub-class"></a>Jak získat proxy pro třídu centra
 
-Každý objekt připojení, který vytvoříte zapouzdřuje informace o připojení ke službě SignalR, která obsahuje jednu nebo více tříd rozbočovače. Ke komunikaci s třídou rozbočovače, použijte objekt proxy které sami vytvoříte (Pokud nepoužíváte vygenerovaný proxy server) nebo který je generován za vás.
+Každý objekt připojení, který vytvoříte, zapouzdřuje informace o připojení ke službě signalizace, která obsahuje jednu nebo více tříd centra. Aby bylo možné komunikovat s třídou centra, použijte proxy objekt, který můžete vytvořit sami (Pokud nepoužíváte generovaný proxy server), nebo který je vygenerován za vás.
 
-Název proxy serveru na straně klienta je verze ve formátu camelCase názvu třídy rozbočovače. Funkce SignalR tato změna automaticky provede tak, aby kód jazyka JavaScript může odpovídat konvence jazyka JavaScript.
+Na straně klienta je názvem proxy verze ve stylu CamelCase-použita s názvem třídy centra. Signaler tuto změnu provede automaticky, aby kód JavaScriptu mohl vyhovovat konvencím JavaScriptu.
 
-**Třída rozbočovače na serveru**
+**Třída centra na serveru**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample21.cs?highlight=1)]
 
-**Získání odkazu na proxy serveru generovaného klienta pro rozbočovač**
+**Získat odkaz na vygenerovaný klientský proxy server pro centrum**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample22.js?highlight=1)]
 
-**Vytvořit proxy klienta pro rozbočovač třídu (bez vygenerovaný proxy server)**
+**Vytvoření klientského proxy serveru pro třídu centra (bez vygenerovaného proxy serveru)**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample23.cs?highlight=1)]
 
-Pokud uspořádání vaší třídy centra s `HubName` atribut, použít přesný název bez Změna velikosti písmen.
+Pokud třídu centra seřadíte pomocí atributu `HubName`, použijte přesný název bez změny velikosti písmen.
 
-**Třída rozbočovače na serveru s atributem HubName**
+**Třída centra na serveru s atributem HubName**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample24.cs?highlight=1)]
 
-**Získání odkazu na proxy serveru generovaného klienta pro rozbočovač**
+**Získat odkaz na vygenerovaný klientský proxy server pro centrum**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample25.js?highlight=1)]
 
-**Vytvořit proxy klienta pro rozbočovač třídu (bez vygenerovaný proxy server)**
+**Vytvoření klientského proxy serveru pro třídu centra (bez vygenerovaného proxy serveru)**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample26.cs?highlight=1)]
 
 <a id="callclient"></a>
 
-## <a name="how-to-define-methods-on-the-client-that-the-server-can-call"></a>Definování metody na straně klienta, která může volat na serveru
+## <a name="how-to-define-methods-on-the-client-that-the-server-can-call"></a>Jak definovat metody v klientovi, které může server volat
 
-Chcete-li definovat metodu, která serveru můžete volat z rozbočovač, přidejte obslužnou rutinu události pro proxy server rozbočovače pomocí `client` vlastnost vygenerovaný proxy server nebo volání `on` metody, pokud nepoužíváte vygenerovaný proxy server. Parametry lze komplexních objektů.
+Chcete-li definovat metodu, kterou může server volat z centra, přidejte obslužnou rutinu události do proxy serveru centra pomocí vlastnosti `client` generovaného proxy serveru nebo volejte metodu `on`, pokud nepoužíváte generovaný proxy server. Parametry mohou být složité objekty.
 
-Přidat obslužnou rutinu události před voláním `start` metoda k navázání připojení. (Pokud chcete přidat obslužné rutiny událostí po volání `start` metodu, přečtěte si poznámku v [jak k navázání připojení](#establishconnection) dříve v tomto dokumentu a pomocí syntaxe pro definování metody bez použití vygenerovaný proxy server.)
+Přidejte obslužnou rutinu události před voláním metody `start` k navázání připojení. (Pokud chcete přidat obslužné rutiny událostí po volání metody `start`, přečtěte si poznámku v tématu [jak navázat připojení](#establishconnection) dříve v tomto dokumentu a použít syntaxi zobrazenou pro definování metody bez použití vygenerovaného proxy serveru.)
 
-Shoda názvu metody je velká a malá písmena. Například `Clients.All.addContosoChatMessageToPage` na serveru spustí `AddContosoChatMessageToPage`, `addContosoChatMessageToPage`, nebo `addcontosochatmessagetopage` na straně klienta.
+Porovnávání názvů metod nerozlišuje velká a malá písmena. Například `Clients.All.addContosoChatMessageToPage` na serveru spustí `AddContosoChatMessageToPage`, `addContosoChatMessageToPage`nebo `addcontosochatmessagetopage` na klientovi.
 
-**Definujte metodu na klientovi (s vygenerovaný proxy server)**
+**Definovat metodu na klientovi (s vygenerovaným proxy serverem)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample27.js?highlight=2)]
 
-**Alternativní způsob, jak definovat metodu na klientovi (s vygenerovaný proxy server)**
+**Alternativní způsob definování metody v klientovi (s vygenerovaným proxy serverem)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample28.js?highlight=1-2)]
 
-**Definujte metodu na klientovi (bez vygenerovaný proxy server, nebo při přidávání po volání metody start)**
+**Definovat metodu na klientovi (bez vygenerovaného proxy serveru nebo při přidání po volání metody Start)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample29.js?highlight=3)]
 
-**Kód serveru, který volá metodu klienta**
+**Serverový kód, který volá metodu klienta**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample30.cs?highlight=5)]
 
-Následující příklady zahrnují komplexního objektu jako parametr metody.
+Následující příklady zahrnují komplexní objekt jako parametr metody.
 
-**Definujte metodu na klienta, který používá komplexního objektu (s vygenerovaný proxy server)**
+**Metoda define pro klienta, který přebírá složitý objekt (s vygenerovaným proxy serverem)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample31.js?highlight=2-3)]
 
-**Definujte metodu na klienta, který používá komplexního objektu (bez vygenerovaný proxy server)**
+**Definovat metodu u klienta, který přebírá složitý objekt (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample32.js?highlight=3-4)]
 
@@ -390,138 +390,138 @@ Následující příklady zahrnují komplexního objektu jako parametr metody.
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample33.cs?highlight=1)]
 
-**Kód serveru, který volá metodu klienta s použitím komplexní objekt**
+**Serverový kód, který volá metodu klienta pomocí složitého objektu**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample34.cs?highlight=3)]
 
 <a id="callserver"></a>
 
-## <a name="how-to-call-server-methods-from-the-client"></a>Volání metody serveru z klienta
+## <a name="how-to-call-server-methods-from-the-client"></a>Postup volání metod serveru z klienta
 
-Chcete-li volat metodu serveru z klienta, použijte `server` vlastnost vygenerovaný proxy server nebo `invoke` metodu na proxy server rozbočovače, pokud nepoužíváte vygenerovaný proxy server. Návratová hodnota nebo parametrů může být složité objekty.
+Chcete-li volat metodu serveru z klienta, použijte vlastnost `server` vygenerovaného proxy serveru nebo metody `invoke` na serveru proxy centra, pokud nepoužíváte generovaný proxy server. Návratová hodnota nebo parametry mohou být složité objekty.
 
-Předat ve stylu camelCase verzi název metody rozbočovače. Funkce SignalR tato změna automaticky provede tak, aby kód jazyka JavaScript může odpovídat konvence jazyka JavaScript.
+Předejte ve stylu CamelCase verzi názvu metody v centru. Signaler tuto změnu provede automaticky, aby kód JavaScriptu mohl vyhovovat konvencím JavaScriptu.
 
-Následující příklady ukazují, jak volat metodu serveru, který nemá návratovou hodnotu a volání metody serveru, který nemá návratovou hodnotu.
+Následující příklady ukazují, jak zavolat metodu serveru, která nemá návratovou hodnotu a jak zavolat metodu serveru, která má návratovou hodnotu.
 
-**Metoda serveru se žádný atribut HubMethodName**
+**Metoda serveru bez atributu HubMethodName**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample35.cs?highlight=3)]
 
-**Kód serveru, který definuje komplexní objekt předaný v parametru**
+**Serverový kód, který definuje složitý objekt předaný do parametru**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample36.cs)]
 
-**Klientský kód, který vyvolá metodu serveru (se vygenerovaný proxy server)**
+**Kód klienta, který vyvolá metodu serveru (u generovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample37.js?highlight=1)]
 
-**Klientský kód, který vyvolá metodu serveru (bez vygenerovaný proxy server)**
+**Kód klienta, který vyvolá metodu serveru (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample38.js?highlight=1)]
 
-Pokud upravena pomocí metody rozbočovače `HubMethodName` atribut, použijte tento název bez Změna velikosti písmen.
+Pokud jste upravili metodu centra s atributem `HubMethodName`, použijte tento název bez změny velikosti písmen.
 
 **Metoda serveru** s atributem HubMethodName
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample39.cs?highlight=3)]
 
-**Klientský kód, který vyvolá metodu serveru (se vygenerovaný proxy server)**
+**Kód klienta, který vyvolá metodu serveru (u generovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample40.js?highlight=1)]
 
-**Klientský kód, který vyvolá metodu serveru (bez vygenerovaný proxy server)**
+**Kód klienta, který vyvolá metodu serveru (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample41.js?highlight=1)]
 
-Předchozí příklady ukazují, jak volat metodu serveru, která nemá žádnou návratovou hodnotu. Následující příklady znázorňují způsob volání metody serveru, který má návratovou hodnotu.
+Předchozí příklady ukazují, jak zavolat metodu serveru, která nemá žádnou návratovou hodnotu. Následující příklady ukazují, jak zavolat metodu serveru, která má návratovou hodnotu.
 
-**Serverový kód pro metodu, která nemá návratovou hodnotu**
+**Serverový kód pro metodu, která má návratovou hodnotu**
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample42.cs?highlight=3)]
 
-**Třída akcie pro** návratová hodnota
+**Skladová Třída použitá pro** návratovou hodnotu
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample43.cs?highlight=1)]
 
-**Klientský kód, který vyvolá metodu serveru (se vygenerovaný proxy server)**
+**Kód klienta, který vyvolá metodu serveru (u generovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample44.js?highlight=2,4-5)]
 
-**Klientský kód, který vyvolá metodu serveru (bez vygenerovaný proxy server)**
+**Kód klienta, který vyvolá metodu serveru (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample45.js?highlight=2,4-5)]
 
 <a id="connectionlifetime"></a>
 
-## <a name="how-to-handle-connection-lifetime-events"></a>Zpracování událostí doby platnosti
+## <a name="how-to-handle-connection-lifetime-events"></a>Postup zpracování událostí životního cyklu připojení
 
-Funkce SignalR poskytuje následující připojení události doby života, které dokáže zpracovat:
+Signál poskytuje následující události doby života připojení, které můžete zpracovat:
 
-- `starting`: Vyvoláno před odesláním žádná data přes dané připojení.
-- `received`: Vyvoláno, když je veškerá data přijatá v připojení. Poskytuje přijatá data.
-- `connectionSlow`: Vyvoláno, když klient zjistí pomalý nebo často vyřazení připojení.
-- `reconnecting`: Vyvolá se při přenosu začne znovu obnovovat.
-- `reconnected`: Vyvolá se při přenosu má připojen.
-- `stateChanged`: Vyvolá se při změně stavu připojení. Poskytuje starý stav a nový stav (připojování, připojeno, znovu připojíte nebo odpojeno).
-- `disconnected`: Vyvolá se při připojení se odpojil.
+- `starting`: je aktivována před odesláním dat prostřednictvím připojení.
+- `received`: Vyvolá se, když jsou v připojení přijata nějaká data. Poskytuje přijatá data.
+- `connectionSlow`: Vyvolá se, když klient zjistí pomalé nebo často vyřazování připojení.
+- `reconnecting`: Vyvolá se, když se zahájí opětovné připojení podkladového přenosu.
+- `reconnected`: Vyvolá se, když se znovu připojí příslušný přenos.
+- `stateChanged`: Vyvolá se při změně stavu připojení. Poskytuje starý stav a nový stav (připojení, připojení, opětovné připojení nebo odpojení).
+- `disconnected`: Vyvolá se, když se připojení odpojilo.
 
-Například, pokud chcete zobrazit upozornění, pokud existují problémy s připojením, které může způsobit znatelné zpoždění při, zpracovat `connectionSlow` událostí.
+Například pokud chcete zobrazovat upozornění, pokud dojde k problémům s připojením, které by mohly způsobit znatelné zpoždění, zpracujte událost `connectionSlow`.
 
-**Zpracování události connectionSlow (s vygenerovaný proxy server)**
+**Zpracování události connectionSlow (u generovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample46.js?highlight=1)]
 
-**Zpracování události connectionSlow (bez vygenerovaný proxy server)**
+**Zpracování události connectionSlow (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample47.js?highlight=2)]
 
-Další informace najdete v tématu [principy a zpracování událostí doby platnosti v knihovně SignalR](handling-connection-lifetime-events.md).
+Další informace najdete v tématu [porozumění a zpracování událostí životního cyklu připojení v nástroji Signal](handling-connection-lifetime-events.md).
 
 <a id="handleerrors"></a>
 
 ## <a name="how-to-handle-errors"></a>Zpracování chyb
 
-Poskytuje klientovi SignalR JavaScript `error` události, které můžete přidat obslužnou rutinu. Také vám pomůže metodu selhání přidejte obslužnou rutinu chyby, které jsou výsledkem volání metody serveru.
+Klient služby Signal JavaScript poskytuje `error` událost, pro kterou můžete přidat obslužnou rutinu pro. Můžete také použít metodu selhání k přidání obslužné rutiny pro chyby, které jsou výsledkem vyvolání metody serveru.
 
-Pokud není explicitně povolit podrobné chybové zprávy na serveru, obsahuje objekt výjimky, která vrací SignalR po chybě minimální informace o této chybě. Například, pokud je volání `newContosoChatMessage` selže, chybová zpráva v objektu chyba obsahuje "`There was an error invoking Hub method 'contosoChatHub.newContosoChatMessage'.`" podrobné chybové zprávy pro klienty v produkčním prostředí se nedoporučuje z bezpečnostních důvodů, ale pokud chcete povolit podrobné chybové zprávy pro odesílání na serveru pro účely odstraňování potíží, použijte následující kód.
+Pokud explicitně nepovolíte podrobné chybové zprávy na serveru, objekt výjimky, který Signal vrátí po chybě, obsahuje minimální informace o chybě. Například pokud se volání `newContosoChatMessage` nepovede, chybová zpráva v objektu Error obsahuje "`There was an error invoking Hub method 'contosoChatHub.newContosoChatMessage'.`" odesílání podrobných chybových zpráv klientům v produkčním prostředí se z bezpečnostních důvodů nedoporučuje, ale pokud chcete povolit podrobné chybové zprávy pro účely řešení potíží, použijte následující kód na serveru.
 
 [!code-csharp[Main](hubs-api-guide-javascript-client/samples/sample48.cs?highlight=2)]
 
-Následující příklad ukazuje, jak přidat obslužnou rutinu pro událost chyby.
+Následující příklad ukazuje, jak přidat obslužnou rutinu pro událost Error.
 
-**Přidat obslužnou rutinu chyby (s vygenerovaný proxy server)**
+**Přidání obslužné rutiny chyb (s vygenerovaným proxy serverem)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample49.js?highlight=1)]
 
-**Přidat obslužnou rutinu chyby (bez vygenerovaný proxy server)**
+**Přidání obslužné rutiny chyb (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample50.js?highlight=2)]
 
-Následující příklad ukazuje, jak zpracovat chybu z volání metody.
+Následující příklad ukazuje, jak zpracovat chybu z vyvolání metody.
 
-**Zpracování chyb z volání metody (s vygenerovaný proxy server)**
+**Zpracování chyby z vyvolání metody (u generovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample51.js?highlight=2)]
 
-**Zpracování chyb z volání metody (bez vygenerovaný proxy server)**
+**Zpracování chyby od vyvolání metody (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample52.js?highlight=2)]
 
-Pokud selže volání metody, `error` událost se vyvolá také, takže svůj kód v `error` metoda obslužné rutiny a `.fail` by provedení metody zpětného volání.
+Pokud se volání metody nezdařilo, je vyvolána také událost `error`, takže váš kód v obslužné rutině metody `error` a ve zpětném volání metody `.fail` by se spustil.
 
 <a id="logging"></a>
 
-## <a name="how-to-enable-client-side-logging"></a>Jak povolit protokolování na straně klienta
+## <a name="how-to-enable-client-side-logging"></a>Postup povolení protokolování na straně klienta
 
-Chcete-li povolit protokolování na straně klienta na připojení, nastavte `logging` vlastnost u objektu připojení před voláním `start` metoda k navázání připojení.
+Chcete-li povolit protokolování na straně klienta pro připojení, nastavte vlastnost `logging` objektu Connection před voláním metody `start` k navázání připojení.
 
-**Povolit protokolování (pomocí vygenerovaný proxy server)**
+**Povolit protokolování (u generovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample53.js?highlight=1)]
 
-**Povolení protokolování (bez vygenerovaný proxy server)**
+**Povolit protokolování (bez vygenerovaného proxy serveru)**
 
 [!code-javascript[Main](hubs-api-guide-javascript-client/samples/sample54.js?highlight=2)]
 
-Pokud chcete zobrazit protokoly, otevřete vývojářské nástroje v prohlížeči a přejděte na kartu konzoly. Kurz, který zobrazuje podrobné pokyny a obrazovky snímky, které ukazují, jak to provést, najdete v tématu [serverové vysílání s knihovnou ASP.NET Signalr – povolit protokolování](../getting-started/tutorial-server-broadcast-with-signalr.md#enable-logging).
+Protokoly zobrazíte tak, že otevřete vývojářské nástroje v prohlížeči a přejdete na kartu konzola. Kurz, který obsahuje podrobné pokyny a snímky obrazovky, které ukazují, jak to udělat, najdete v tématu [vysílání serveru pomocí nástroje ASP.NET Signal – povolení protokolování](../getting-started/tutorial-server-broadcast-with-signalr.md#enable-logging).

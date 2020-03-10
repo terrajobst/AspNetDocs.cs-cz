@@ -1,6 +1,6 @@
 ---
 uid: mvc/videos/mvc-2/index
-title: ASP.NET MVC 2 | Dokumentace Microsoftu
+title: ASP.NET MVC 2 | Microsoft Docs
 author: rick-anderson
 description: ASP.NET MVC 2
 ms.author: riande
@@ -9,11 +9,11 @@ ms.assetid: 68968b8a-4f60-449e-8639-978fc40aed70
 msc.legacyurl: /mvc/videos/mvc-2
 msc.type: chapter
 ms.openlocfilehash: d2ddf52b01b8a1ae0e6c3b8db104d16775d144e6
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65120178"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78537371"
 ---
 # <a name="aspnet-mvc-2"></a>ASP.NET MVC 2
 
@@ -38,7 +38,7 @@ ms.locfileid: "65120178"
     - [ASP.NET MVC: 10minutové technické video pro vývojáře](how-do-i/aspnet-mvc-how-10-minute-technical-video-for-developers.md)
     - [Vrácení dat ve formátu JSON na volání AJAX ve webové aplikaci ASP.NET MVC](how-do-i/how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application.md)
     - [Práce s daty v částečných zobrazeních ASP.NET MVC](how-do-i/how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)
-    - [Implementace modelů zobrazení kvůli správě dat v zobrazeních ASP.NET MVC](how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
+    - [Implementace modelů zobrazení pro správu dat pro zobrazení ASP.NET MVC](how-do-i/how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
     - [Vytvoření vlastní pomocné rutiny HTML pro aplikaci MVC](how-do-i/how-do-i-create-a-custom-html-helper-for-an-mvc-application.md)
     - [Práce s vazači modelu v aplikaci MVC](how-do-i/how-do-i-work-with-model-binders-in-an-mvc-application.md)
     - [Použití atributů HttpVerbs v aplikaci MVC](how-do-i/how-do-i-use-httpverbs-attributes-in-an-mvc-application.md)
@@ -52,8 +52,8 @@ ms.locfileid: "65120178"
     - [Jak se nejlépe naučit ASP.NET MVC](how-do-i/how-to-best-learn-asp-net-mvc.md)
 - [ASP.NET MVC pro nás ostatní](aspnet-mvc-for-the-rest-of-us/index.md)
 
-    - [ASP.NET MVC pro nás ostatní: Část 1](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-1.md)
-    - [ASP.NET MVC pro nás ostatní: Část 2](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-2.md)
+    - [ASP.NET MVC pro nás ostatní: 1. část](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-1.md)
+    - [ASP.NET MVC pro nás ostatní: 2. část](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-2.md)
     - [ASP.NET MVC pro nás ostatní: 3. část](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-3.md)
     - [ASP.NET MVC pro nás ostatní: 4. část](aspnet-mvc-for-the-rest-of-us/aspnet-mvc-for-the-rest-of-us-part-4.md)
 - [Aplikace Music Store](music-store/index.md)

@@ -1,236 +1,236 @@
 ---
 uid: mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-cs
-title: 'Iterace #7 – přidání funkcí Ajax (C#) | Dokumentace Microsoftu'
+title: 'Iterace #7 – přidání funkcí AJAXC#() | Microsoft Docs'
 author: microsoft
-description: V sedmé iteraci můžeme zlepšit rychlost reakce a výkon naší aplikace tak, že přidáte podporu pro Ajax.
+description: V sedmé iteraci vylepšit rychlost reakce a výkon naší aplikace přidáním podpory pro AJAX.
 ms.author: riande
 ms.date: 02/20/2009
 ms.assetid: f1b0809e-8909-444e-b6bb-a5cd1dea3f72
 msc.legacyurl: /mvc/overview/older-versions-1/contact-manager/iteration-7-add-ajax-functionality-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 7c8eb3d3688674dd2c220b4bd1b5982f2610d0eb
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65123842"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78544175"
 ---
-# <a name="iteration-7--add-ajax-functionality-c"></a>Iterace #7 – přidání funkcí Ajax (C#)
+# <a name="iteration-7--add-ajax-functionality-c"></a>Iterace #7 – přidání funkcí AJAXC#()
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
 [Stáhnout kód](iteration-7-add-ajax-functionality-cs/_static/contactmanager_7_cs1.zip)
 
-> V sedmé iteraci můžeme zlepšit rychlost reakce a výkon naší aplikace tak, že přidáte podporu pro Ajax.
+> V sedmé iteraci vylepšit rychlost reakce a výkon naší aplikace přidáním podpory pro AJAX.
 
-## <a name="building-a-contact-management-aspnet-mvc-application-c"></a>Vytvoření aplikace ASP.NET MVC pro správu kontaktů (C#)
+## <a name="building-a-contact-management-aspnet-mvc-application-c"></a>Sestavování aplikace pro správu kontaktů ASP.NETC#MVC ()
 
-V této sérii kurzů jsme integrovali celou aplikaci kontakt správy od začátku na dokončení. Obraťte se na správce aplikace umožňuje ukládat kontaktní údaje - jména, telefonní čísla a e-mailové adresy – seznam lidí.
+V této sérii kurzů sestavíme celou aplikaci pro správu kontaktů od začátku do konce. Aplikace Správce kontaktů umožňuje ukládat kontaktní údaje – jména, telefonní čísla a e-mailové adresy – seznam lidí.
 
-Vytváříme aplikaci přes více iterací. S každou iterací zvyšujeme postupně aplikace. Cílem tohoto přístupu s více iterace je vám pomohl pochopit důvod pro každou změnu.
+Aplikaci sestavíme přes několik iterací. U každé iterace doporučujeme aplikaci postupně vylepšit. Cílem tohoto vícenásobného přístupu k iteraci je umožnit pochopení příčiny každé změny.
 
-- Iterace #1 – Vytvoření aplikace. V první iteraci vytvoříme Správce kontaktů v Nejjednodušším způsobem, jak je to možné. Přidáváme podporu pro základní databázových operací: Vytvoření, čtení, aktualizace a odstranění (CRUD).
+- Iterace #1 – Vytvoření aplikace V první iteraci vytvoříme nejjednodušším způsobem správce kontaktů. Přidáváme podporu základních databázových operací: vytváření, čtení, aktualizace a odstraňování (CRUD).
 
-- Ujistěte se, iterace #2 – vylepšení vzhledu aplikace. V této iterace můžeme zlepšit vzhled aplikace tak, že změna výchozích hlavní stránka zobrazení ASP.NET MVC a stylů CSS.
+- Iterace #2 – nastaví vzhled aplikace jako příjemné. V této iteraci Vylepšete vzhled aplikace úpravou výchozí stránky předlohy zobrazení ASP.NET MVC a šablony kaskádových stylů.
 
-- Iterace #3 – Přidání ověřovacího formuláře. Ve třetí iterace přidáme ověření základní formulář. Můžeme zabránit neoprávněným osobám v odeslání formuláře bez dokončení vyžadovaná pole formuláře. Také ověření e-mailových adres a telefonních čísel.
+- Iterace #3 – Přidání ověření formuláře. Třetí iterace přidá základní ověřování formuláře. Uživatelům bráníme v odesílání formuláře bez nutnosti vyplnit požadovaná pole formuláře. Ověřujeme taky e-mailové adresy a telefonní čísla.
 
-- Iterace #4 – vytvoření volně spárované aplikace. V této iterace čtvrtý můžeme využít několik způsobů návrhu v softwaru k bylo snazší spravovat a upravovat aplikace Správce kontaktů. Například Refaktorovat jsme naši aplikaci pomocí vzoru úložiště a vzor vkládání závislostí.
+- Iterace #4 – zajistěte, aby byla aplikace volně spojená. V této čtvrté iteraci využijeme několik vzorů návrhu softwaru, které usnadňují údržbu a úpravy aplikace Správce kontaktů. Například refaktorujte naši aplikaci, aby používala vzor úložiště a vzor vkládání závislostí.
 
-- Iterace #5 – vytvoření testů jednotek. V páté iteraci jsme snadněji naší aplikace spravovat a upravovat tak, že přidáte testy jednotek. Jsme napodobení našich tříd datových modelů a vytváření testů jednotek pro naše řadiče a logiku ověřování.
+- Iterace #5 – vytvoření testů jednotek. V páté iteraci aplikace usnadňuje údržbu a úpravy přidáním jednotkových testů. Pro naše řadiče a logiku ověřování jsme nastavili třídy datového modelu a testy jednotek.
 
-- Iterace #6 – použití vývoje řízeného testováním. V této iterace šestého přidáme nové funkce do naší aplikace tak, že nejprve zápis testů jednotek a psaní kódu pro testování částí. V této iterace můžeme přidat skupiny kontaktů.
+- Iterace #6 – použití vývoje řízeného testem. V této šesté iteraci přidáme do naší aplikace nové funkce, a to tak, že nejprve zapíšeme testy jednotek a napíšeme kód na testy jednotek. V této iteraci přidáváme skupiny kontaktů.
 
-- Iterace #7 – přidání funkcí Ajax. V sedmé iteraci můžeme zlepšit rychlost reakce a výkon naší aplikace tak, že přidáte podporu pro Ajax.
+- Iterace #7 – přidání funkce AJAX V sedmé iteraci vylepšit rychlost reakce a výkon naší aplikace přidáním podpory pro AJAX.
 
-## <a name="this-iteration"></a>Tuto iteraci
+## <a name="this-iteration"></a>Tato iterace
 
-V této iterace aplikace Správce kontaktů Refaktorovat jsme naše aplikace pro použití jazyka Ajax. S využitím jazyka Ajax, uděláme naši aplikaci odezvu. Můžeme se vykreslování celou stránku, když potřebujeme aktualizovat jenom určité oblasti na stránce.
+V této iteraci aplikace Správce kontaktů refaktorujte naši aplikaci, aby používala AJAX. Díky využití AJAX je naše aplikace rychlejší reagovat. Pokud musíme na stránce aktualizovat jenom určitou oblast, můžeme se vyhnout vykreslování celé stránky.
 
-Jsme budete Refaktorovat náš Index zobrazení tak, že jsme nejsou potřeba t znovu zobrazit celé stránky pokaždé, když uživatel vybere nová skupina kontaktů. Místo toho když uživatel klepne skupinu kontaktů, jsme budete jenom aktualizace seznamu kontaktů a zbytek nechte stránky samostatně.
+Naše zobrazení indexu budeme Refaktorovat, aby při každém výběru nové skupiny kontaktů nemuseli znovu zobrazovat celou stránku. Místo toho, když někdo klikne na skupinu kontaktů, jednoduše aktualizujeme seznam kontaktů a ponecháme zbytek stránky beze změny.
 
-Pokud změníme způsob, jak naše odstranit propojení funguje. Místo samostatných potvrzovací stránku, zobrazíme potvrzovací dialogové okno jazyka JavaScript. Pokud potvrdíte, že chcete odstranit kontakt, operace HTTP DELETE se provádí na serveru z databáze odstranit záznam kontaktu.
+Změníme také způsob, jakým funguje odkaz pro odstranění. Místo zobrazení samostatné potvrzovací stránky zobrazíme dialogové okno pro potvrzení JavaScriptu. Pokud potvrdíte, že chcete odstranit kontakt, je provedena operace odstranění protokolu HTTP na serveru pro odstranění záznamu kontaktu z databáze.
 
-Kromě toho jsme bude využívat jQuery přidání efekty animace do našich zobrazení indexu. Pokud nový seznam kontaktů je právě načtený ze serveru nám budete zobrazovat animace.
+Kromě toho budeme využívat funkci jQuery k přidání animačních efektů do našeho zobrazení indexu. Animace se zobrazí, když se nový seznam kontaktů načítá ze serveru.
 
-Nakonec provedeme výhod podpory technologie ASP.NET AJAX framework pro správu historii prohlížeče. Historie bodů vytvoříme pokaždé, když budeme provádět volání Ajax k aktualizaci seznamu kontaktů. Tímto způsobem prohlížeče dopředné a zpětné tlačítka budou fungovat.
+Nakonec využijeme podporu rozhraní ASP.NET AJAX pro správu historie prohlížeče. Body historie se vytvoří vždy, když provedeme volání AJAX a aktualizujeme seznam kontaktů. Tímto způsobem budou fungovat tlačítka v prohlížeči zpět a dopředu.
 
-## <a name="why-use-ajax"></a>Proč používat Ajax?
+## <a name="why-use-ajax"></a>Proč používat AJAX?
 
-Pomocí rozhraní Ajax přináší řadu výhod. Nejprve přidání funkcí Ajax do aplikace výsledkem lepší výkon. V případě běžné webové aplikace celé stránky musí být účtovány zpět na server každém uživatel provede akci. Pokaždé, když provedete nějakou akci, zámky prohlížeče a uživatele musíte počkat, dokud celé stránky je načtena a zobrazí znovu.
+Použití jazyka AJAX má mnoho výhod. Nejprve přidání funkce AJAX do aplikace má za následek lepší uživatelské prostředí. V normální webové aplikaci musí být celá stránka odeslána zpět na server každý a pokaždé, když uživatel provede akci. Vždy, když provedete akci, prohlížeč se zamkne a uživatel musí počkat, až se načte celá stránka a znovu se zobrazí.
 
-To může být nepřijatelné dít v případě aplikace klasické pracovní plochy. Ale tradičně jsme žil s této nepříjemné zkušenosti v případě webové aplikace protože jsme, že můžeme udělat všechny lepší nevěděla. Domníváme se, že byly omezení webových aplikací, když ve skutečnosti byla pouze omezení naše imaginations.
+To je nepřijatelné prostředí v případě desktopové aplikace. V případě webové aplikace se ale tradičně nejedná o špatné uživatelské prostředí, protože jsme nevěděli, že bychom mohli dělat lepší možnosti. Mysleli jsme, že se jednalo o omezení webových aplikací v případě, že se jednalo o omezení naší imaginationsy.
 
-V aplikaci Ajax zadávat t potřeba zpřístupnit činnost koncového uživatele pro zastavení pouze k aktualizaci stránky. Místo toho můžete provádět Asynchronní požadavek na pozadí, aktualizujte stránku. Platnost t zadávat uživateli Počkejte, dokud se aktualizuje části stránky.
+V aplikaci AJAX nemusíte mít k činnost koncového uživatele, aby bylo možné aktualizovat stránku. Místo toho můžete na pozadí provést asynchronní požadavek na aktualizaci stránky. Nenutí uživatele počkat, dokud se část stránky aktualizuje.
 
-S využitím jazyka Ajax, můžete také můžete zvýšit výkon vaší aplikace. Zvažte, jak funguje aplikace Správce kontaktů teď bez funkce Ajax. Když kliknete na skupinu kontaktů, musí zobrazí celé zobrazení Index znovu. V seznamu kontaktů a seznamu kontaktů skupin musí načíst ze serveru databáze. Všechna tato data musí být předán sítí z webového serveru webového prohlížeče.
+Díky využití technologie AJAX můžete také zvýšit výkon aplikace. Zvažte, jak aplikace Správce kontaktů funguje hned teď bez funkce AJAX. Po kliknutí na skupinu kontaktů je nutné znovu zobrazit celé zobrazení indexu. Seznam kontaktů a seznamu skupin kontaktů musí být načten z databázového serveru. Všechna tato data musí být předána napříč vodiči z webového serveru do webového prohlížeče.
 
-Poté, co můžeme přidat funkcí Ajax do naší aplikace, ale můžeme se po kliknutí kontaktujte skupinu opětovné zobrazení celou stránku. Musíme už vzít kontaktní skupiny z databáze. Můžeme také nejsou potřeba t push celý Index zobrazení sítí. S využitím jazyka Ajax, jsme snížili množství práce, které musíte provést naše databázový server a jsme snížení objemu síťových přenosů vyžadovaným ze strany naši aplikaci.
+Po přidání funkce AJAX do naší aplikace se však můžeme vyhnout zobrazení celé stránky, když uživatel klikne na skupinu kontaktů. Už nemusíte přesáhnout skupiny kontaktů z databáze. Nepotřebujeme také nasdílet celé zobrazení indexu po celém vedení. Díky využití technologie AJAX snižujeme množství práce, které náš databázový server musí provést, a snižujeme množství síťových přenosů vyžadovaných aplikací.
 
-## <a name="don-t-be-afraid-of-ajax"></a>Don t se obávat o Ajax
+## <a name="don-t-be-afraid-of-ajax"></a>Nebojte AJAX
 
-Někteří vývojáři vyhnout, pomocí rozhraní Ajax, protože se starat o starších prohlížečích. Chtějí se ujistěte se, že své webové aplikace budou i nadále fungovat, když přistupuje z prohlížeče, který nepodporuje jazyk JavaScript. Protože Ajax závisí na jazyce JavaScript, vyhněte se někteří vývojáři pomocí rozhraní Ajax.
+Někteří vývojáři vyhnuli používání AJAX, protože se obávat i v prohlížečích nižší úrovně. Chtějí zajistit, aby jejich webové aplikace i nadále fungovaly, když k nim přistupoval prohlížeč, který nepodporuje JavaScript. Vzhledem k tomu, že AJAX závisí na JavaScriptu, někteří vývojáři nepoužívají AJAX.
 
-Ale pokud jste pečlivě o tom, jak implementovat Ajax pak můžete vytvářet aplikace, které využívají službu vyšší úrovně a starších prohlížečích. Kontaktujte správce aplikace bude fungovat s prohlížečích, které podporují jazyka JavaScript a prohlížeče, které ji nesplňují.
+Nicméně pokud máte pozor, jak implementovat AJAX, můžete vytvářet aplikace, které fungují v prohlížečích pro nejvyšší úroveň i na nižší úrovni. Naše aplikace Správce kontaktů bude fungovat s prohlížeči, které podporují JavaScript a prohlížeče, které ne.
 
-Pokud používáte Správce kontaktů aplikace s prohlížečem, který podporuje JavaScript bude mít lepší výkon. Například po kliknutí na skupinu kontaktů, budou aktualizovány pouze oblast stránky, který zobrazuje kontakty.
+Pokud používáte aplikaci Správce kontaktů s prohlížečem, který podporuje JavaScript, budete mít lepší uživatelské prostředí. Když například kliknete na skupinu kontaktů, bude aktualizována pouze oblast stránky, která zobrazuje kontakty.
 
-Používáte, na druhé straně, kontaktujte správce aplikace s prohlížečem, který nepodporuje jazyk JavaScript (nebo, který má zakázaný JavaScript) bude mít méně žádoucí činnost koncového uživatele. Například když kliknete na skupinu kontaktů, celého zobrazení indexu musí být účtovány zpět do prohlížeče mohla zobrazit odpovídající seznamu kontaktů.
+Pokud na druhé straně používáte aplikaci Správce kontaktů s prohlížečem, který nepodporuje JavaScript (nebo který má JavaScript zakázaný), budete mít trochu méně žádoucí uživatelské prostředí. Když například kliknete na skupinu kontaktů, je nutné publikovat celé zobrazení indexu zpět do prohlížeče, aby se zobrazil seznam kontaktů.
 
-## <a name="adding-the-required-javascript-files"></a>Přidávání souborů požadovaných jazyka JavaScript
+## <a name="adding-the-required-javascript-files"></a>Přidávání požadovaných souborů JavaScriptu
 
-Potřebujeme budete používat tři soubory jazyka JavaScript pro přidání funkcí Ajax do naší aplikace. Všechny tři tyto soubory jsou zahrnuty ve složce Scripts nové aplikace ASP.NET MVC.
+K přidání funkcí AJAX do naší aplikace bude nutné použít tři soubory JavaScriptu. Všechny tři tyto soubory jsou zahrnuté ve složce Scripts v nové aplikaci ASP.NET MVC.
 
-Pokud plánujete použití jazyka Ajax na více stránkách v aplikaci je vhodné zahrnout požadované soubory jazyka JavaScript do vaší aplikace s zobrazení stránky předlohy. Tímto způsobem soubory jazyka JavaScript se zahrnou všechny stránky v aplikaci automaticky.
+Pokud máte v úmyslu používat AJAX na více stránkách aplikace, je vhodné zahrnout požadované soubory JavaScriptu do stránky předlohy zobrazení aplikace. Soubory JavaScriptu tak budou automaticky zahrnuty do všech stránek aplikace.
 
-Přidejte následující JavaScript zahrnuje uvnitř &lt;head&gt; značky hlavní stránku zobrazení:
+Do značky &lt;Head&gt; na stránce zobrazení předlohy přidejte následující JavaScript:
 
 [!code-html[Main](iteration-7-add-ajax-functionality-cs/samples/sample1.html)]
 
-## <a name="refactoring-the-index-view-to-use-ajax"></a>Refaktoring zobrazení indexu pro použití jazyka Ajax
+## <a name="refactoring-the-index-view-to-use-ajax"></a>Refaktoring pro zobrazení indexu pro použití jazyka AJAX
 
-Umožní začít úpravou náš Index zobrazení tak, že kliknete na skupinu kontaktů aktualizuje pouze oblasti zobrazení, která zobrazuje kontakty s. Červeným rámečkem na obrázku 1 obsahuje oblast, která chcete aktualizovat.
+Nechte začít úpravou našeho zobrazení indexu tak, aby se kliknutím na skupinu kontaktů aktualizace zobrazovala pouze v oblasti zobrazení, která zobrazuje kontakty. Červené pole na obrázku 1 obsahuje oblast, kterou chceme aktualizovat.
 
-[![Aktualizuje se jenom kontakty](iteration-7-add-ajax-functionality-cs/_static/image1.jpg)](iteration-7-add-ajax-functionality-cs/_static/image1.png)
+[![aktualizace jenom kontaktů](iteration-7-add-ajax-functionality-cs/_static/image1.jpg)](iteration-7-add-ajax-functionality-cs/_static/image1.png)
 
-**Obrázek 01**: Aktualizují se kontakty pouze ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-cs/_static/image2.png))
+**Obrázek 01**: aktualizace pouze kontaktů ([kliknutím zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-cs/_static/image2.png))
 
-Prvním krokem je oddělit část zobrazení, které chcete aktualizovat asynchronně do samostatných částečné (uživatelský ovládací prvek zobrazení). Část zobrazení indexu, které zobrazí tabulku kontaktů byl přesunut do částečné v informacích 1.
+Prvním krokem je oddělení části zobrazení, kterou chceme asynchronně aktualizovat, na samostatnou částečnou (zobrazení uživatelského ovládacího prvku). Část zobrazení index, která zobrazuje tabulku kontaktů, byla přesunuta do části v seznamu 1.
 
-**Výpis 1 - Views\Contact\ContactList.ascx**
+**Výpis 1 – Views\Contact\ContactList.ascx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample2.aspx)]
 
-Všimněte si, že částečné v informacích 1 má jiný model, než zobrazení indexu. *Inherits* atribut &lt;% @ Page %&gt; direktiva Určuje, že části dědí z ViewUserControl&lt;skupiny&gt; třídy.
+Všimněte si, že částečná v seznamu 1 má jiný model než zobrazení indexu. Atribut *Inherits* ve &lt;direktivě% @ Page%&gt; určuje, že částečné dědění ze skupiny ViewUserControl&lt;&gt; třídy.
 
-Aktualizované zobrazení indexu je obsažen v informacích 2.
+Aktualizované zobrazení indexu je obsaženo v seznamu 2.
 
-**Listing 2 - Views\Contact\Index.aspx**
+**Výpis 2 – Views\Contact\Index.aspx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample3.aspx)]
 
-Existují dvě věci, které byste si měli všimnout o aktualizaci zobrazení na výpis 2. Napřed si všimněte, že veškerý obsah přesunut do částečnou nahradí volání Html.RenderPartial(). Metoda Html.RenderPartial() se volá při prvním vyžádání zobrazení indexu zobrazíte Počáteční sada kontaktů.
+Existují dvě věci, které byste si měli všimnout o aktualizovaném zobrazení v seznamu 2. Nejprve si všimněte, že veškerý obsah přesunutý na částečný je nahrazen voláním HTML. RenderPartial (). Metoda HTML. RenderPartial () je volána, když je nejprve požadováno zobrazení indexu, aby se zobrazila počáteční sada kontaktů.
 
-Za druhé Všimněte si, že Html.ActionLink() slouží k zobrazení skupiny kontaktů se nahradil údajem Ajax.ActionLink(). Ajax.ActionLink() je volána s následujícími parametry:
+Za druhé si všimněte, že kód HTML. ActionLink (), který se používá k zobrazení skupin kontaktů, byl nahrazen výrazem AJAX. ActionLink (). Technologie AJAX. ActionLink () je volána s následujícími parametry:
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample4.aspx)]
 
-První parametr představuje text, který se zobrazí jako odkaz, druhý parametr představuje hodnoty trasy a třetí parametr představuje možnosti Ajax. V tomto případě používáme možnost UpdateTargetId Ajax tak, aby odkazoval na HTML &lt;div&gt; značku, kterou chcete aktualizovat, až se dokončí požadavek Ajax. Chceme, aby se aktualizovat &lt;div&gt; značky pomocí nového seznamu kontaktů.
+První parametr představuje text, který má být zobrazen pro odkaz, druhý parametr představuje hodnoty trasy a třetí parametr představuje možnosti AJAX. V tomto případě používáme možnost UpdateTargetId AJAX, která odkazuje na značku&gt; HTML &lt;div, kterou chceme aktualizovat po dokončení požadavku AJAX. Chceme aktualizovat značku&gt; &lt;div novým seznamem kontaktů.
 
-Aktualizovaná metoda Index() kontakt kontroleru je obsažen v informacích 3.
+Aktualizovaná metoda index () kontroleru kontaktů je obsažena v seznamu 3.
 
-**Výpis 3 - Controllers\ContactController.cs (metoda indexu)**
+**Výpis 3-Controllers\ContactController.cs (metoda index)**
 
 [!code-csharp[Main](iteration-7-add-ajax-functionality-cs/samples/sample5.cs)]
 
-Aktualizované Index() akce podmíněně vrátí jednu ze dvou kroků. Pokud je požadavek Ajax vyvolat Index() akce kontroleru vrátí částečné. V opačném případě vrátí akce Index() celého zobrazení.
+Podmínka aktualizovaného indexu () podmíněně vrátí jednu ze dvou věcí. Pokud je akce index () vyvolána požadavkem jazyka AJAX, kontroler vrátí částečný. V opačném případě akce index () vrátí celé zobrazení.
 
-Všimněte si, že akce Index() nemusí vrátit tolik dat, když uživatel vyvolá požadavek Ajax. V rámci normálního požadavek akce indexu vrátí seznam všech skupin kontaktů a vybrané skupiny kontaktů. Index() akce v souvislosti s požadavek Ajax se vrátí pouze vybrané skupiny. AJAX znamená méně práce na vašem databázovém serveru.
+Všimněte si, že akce index () nepotřebuje při vyvolání požadavku AJAX vracet tolik dat. V kontextu normálního požadavku vrátí akce index seznam všech skupin kontaktů a vybrané skupiny kontaktů. V kontextu požadavku AJAX vrátí akce index () pouze vybranou skupinu. AJAX znamená na databázovém serveru méně práce.
 
-Naše upravené zobrazení indexu funguje v případě prohlížeče vyšší úrovně a nižší úrovně. Pokud kliknete na skupinu kontaktů a váš prohlížeč podporuje JavaScript, je aktualizován pouze oblasti zobrazení, která obsahuje seznam kontaktů. Pokud na druhé straně váš prohlížeč nepodporuje jazyk JavaScript, se aktualizuje celého zobrazení.
+Naše změněné zobrazení indexu funguje v případě prohlížečů pro nejvyšší úroveň i pro klienty nižší úrovně. Pokud kliknete na skupinu kontaktů a váš prohlížeč podporuje jazyk JavaScript, bude aktualizována pouze oblast zobrazení, která obsahuje seznam kontaktů. Pokud na druhé straně váš prohlížeč nepodporuje JavaScript, pak se aktualizuje celé zobrazení.
 
-Naše aktualizované zobrazení indexu má jeden problém. Po kliknutí na skupinu kontaktů, není zvýrazní vybrané skupiny. Protože mimo oblast, která se aktualizuje během požadavek Ajax se zobrazí seznam skupin, získejte není zvýrazněný ke správné skupině. Tento problém opravíme v další části.
+Naše aktualizované zobrazení indexu obsahuje jeden problém. Po kliknutí na skupinu kontaktů není zvýrazněna vybraná skupina. Vzhledem k tomu, že seznam skupin je zobrazen mimo oblast, která je aktualizována během požadavku AJAX, není zvýrazněna pravá skupina. Tento problém vyřešíme v další části.
 
-## <a name="adding-jquery-animation-effects"></a>Přidání efekty animace jQuery
+## <a name="adding-jquery-animation-effects"></a>Přidávání efektů animace jQuery
 
-Za normálních okolností po kliknutí na odkaz na webové stránce, slouží indikátor průběhu prohlížeče k detekci, zda v prohlížeči se aktivně načítají aktualizovaný obsah. Při provádění požadavek Ajax, na druhé straně indikátor průběhu prohlížeč není uveden žádný průběh. Díky tomu uživatelé nervové. Jak poznáte, jestli má zmrazené prohlížeče?
+Když kliknete na odkaz na webové stránce, normálně můžete pomocí indikátoru průběhu prohlížeče zjistit, jestli prohlížeč aktivně načítá aktualizovaný obsah. Při provádění požadavku AJAX na druhé straně indikátor průběhu prohlížeče nezobrazuje žádný průběh. To může uživatelům proměnit nerv. Jak poznáte, jestli je prohlížeč zmrazený?
 
-Existuje několik způsobů, které můžete určit na uživatele, že práce se provádí při provádění požadavek Ajax. Jedním z přístupů je zobrazíte jednoduché animace. Například je lze zesvětlit oblast při zahájí požadavek Ajax a fade v oblasti po dokončení žádosti.
+Existuje několik způsobů, jak můžete určit, že při provádění požadavku AJAX je prováděna práce. Jedním z přístupů je zobrazení jednoduché animace. Můžete například rozmizet oblast při zahájení a zmizení požadavku AJAX v oblasti po dokončení žádosti.
 
-Pomocí knihovny jQuery, který je součástí rozhraní Microsoft ASP.NET MVC, chcete-li vytvořit efekty animace. Výpis 4 je součástí aktualizované zobrazení indexu.
+K vytvoření efektů animace použijeme knihovnu jQuery, která je součástí Microsoft ASP.NET rozhraní MVC. Aktualizované zobrazení indexu je obsaženo v seznamu 4.
 
-**Listing 4 - Views\Contact\Index.aspx**
+**Výpis 4 – Views\Contact\Index.aspx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample6.aspx)]
 
-Všimněte si, že aktualizovaná zobrazení indexu obsahuje tři nové funkce jazyka JavaScript. První dvě funkce pomocí jQuery zesvětlit a fade v seznamu kontaktů, po kliknutí na nová skupina kontaktů. Třetí funkce zobrazí chybová zpráva při výsledky požadavku Ajax k chybě (například vypršel časový limit sítě).
+Všimněte si, že aktualizované zobrazení indexu obsahuje tři nové funkce JavaScriptu. První dvě funkce používají jQuery ke zmizení a zmizení v seznamu kontaktů po kliknutí na novou skupinu kontaktů. Třetí funkce zobrazí chybovou zprávu, když požadavek AJAX způsobí chybu (například časový limit sítě).
 
-První funkce také postará zvýraznění vybranou skupinu. Třída = vybraný atribut se přidá na nadřazený element (LI element) elementu kliknutí. Znovu jQuery umožňuje snadno vybrat správný prvek a přidat třídu šablony stylů CSS.
+První funkce také postará o zvýraznění vybrané skupiny. Atribut class = Selected je přidán do nadřazeného elementu (element LI), na který se odkazuje element. Příkaz jQuery usnadňuje výběr správného prvku a přidání třídy CSS.
 
-Tyto skripty jsou svázány se propojení skupiny pomocí parametru Ajax.ActionLink() AjaxOptions. Aktualizované volání metody Ajax.ActionLink() vypadá takto:
+Tyto skripty jsou svázány s odkazy skupin s použitím parametru AJAX. ActionLink () AjaxOptions. Aktualizované volání metody AJAX. ActionLink () vypadá takto:
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample7.aspx)]
 
-## <a name="adding-browser-history-support"></a>Přidání podpory prohlížeče historie
+## <a name="adding-browser-history-support"></a>Přidání podpory pro historii prohlížeče
 
-Za normálních okolností po kliknutí na odkaz aktualizovat stránku, se aktualizuje historii prohlížeče. Tímto způsobem je můžete kliknout na prohlížeči tlačítko Zpět a vrátit v čase do předchozího stavu stránky. Například pokud klikněte na skupinu kontaktní přátel a potom klikněte na skupinu kontaktní Business, můžete kliknutím na prohlížeči tlačítko Zpět chcete vrátit do stavu stránky při nebyla vybrána skupina kontaktní přátel.
+Když kliknete na odkaz pro aktualizaci stránky, aktualizuje se historie vašeho prohlížeče. Tímto způsobem můžete kliknutím na tlačítko zpět v prohlížeči přejít zpátky v čase do předchozího stavu stránky. Pokud například kliknete na skupinu kontaktů přátelé a pak na skupinu obchodních kontaktů, můžete kliknout na tlačítko zpět v prohlížeči a přejít zpět na stav stránky při výběru skupiny kontaktů přátelé.
 
-Bohužel provádí požadavek Ajax prohlížeče historie automaticky neaktualizuje. Pokud kliknete na skupinu kontaktů a načíst seznam odpovídajících kontakty s požadavek Ajax, není aktualizován historii prohlížeče. Přejděte zpátky na skupinu kontaktů po výběru nové skupiny kontaktů nelze použít prohlížeči tlačítko Zpět.
+Provádění požadavku AJAX bohužel neaktualizuje historii prohlížeče automaticky. Pokud kliknete na skupinu kontaktů a seznam porovnávacích kontaktů se načte s požadavkem AJAX, nebude se aktualizovat historie prohlížeče. Po výběru nové skupiny kontaktů nelze přejít zpět na skupinu kontaktů pomocí tlačítka zpět v prohlížeči.
 
-Pokud chcete tlačítko, aby je uživatelé mohli použít prohlížeč zpět po provedení odesílání požadavků Ajax musíte provést trochu více práce. Budete muset využít výhod funkce správy prohlížeče historie integrováno v rozhraní ASP.NET AJAX Framework.
+Pokud chcete, aby uživatelé mohli používat tlačítko zpět v prohlížeči po provedení požadavků AJAX, musíte provést trochu více práce. Je potřeba využít výhod funkce správy historie prohlížeče postavených v rozhraní ASP.NET AJAX.
 
-Prohlížeč historie jazyka ASP.NET AJAX, je třeba provést tři věci:
+ASP.NET v prohlížeči AJAX v historii, je třeba provést tři věci:
 
-1. Povolte prohlížeč historie tak, že nastavíte vlastnost enableBrowserHistory na hodnotu true.
-2. Uložte historii body při změně stavu zobrazení pomocí volání metody addHistoryPoint().
-3. Rekonstrukce stav zobrazení, když je vyvolána událost navigace.
+1. Povolte historii prohlížeče nastavením vlastnosti enableBrowserHistory na hodnotu true.
+2. Uloží body historie při změně stavu zobrazení voláním metody addHistoryPoint ().
+3. Rekonstruovat stav zobrazení při vyvolání události navigate.
 
-Aktualizované zobrazení indexu je obsažen v informacích 5.
+Aktualizované zobrazení indexu je obsaženo v seznamu 5.
 
-**Listing 5 - Views\Contact\Index.aspx**
+**Výpis 5 – Views\Contact\Index.aspx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample8.aspx)]
 
-V výpis 5 je historii prohlížeče povolili ve funkci pageInit(). Funkce pageInit() slouží také k nastavení obslužnou rutinu události pro událost navigace. Pokaždé, když prohlížeč-vpřed nebo tlačítko zpět způsobí, že se stav na stránce změnit, je vyvolána událost navigace.
+V výpisu 5 je ve funkci pageInit () povolena historie prohlížeče. Funkce pageInit () se používá také k nastavení obslužné rutiny události navigate. Událost Navigate je vyvolána vždy, když tlačítko vpřed nebo zpět v prohlížeči způsobí změnu stavu stránky.
 
-BeginContactList() metoda je volána, když kliknete na skupinu kontaktů. Tato metoda vytvoří nový bod historie zavoláním metody addHistoryPoint(). Id skupiny kontaktů kliknutí se přidá do historie.
+Metoda beginContactList () je volána, když kliknete na skupinu kontaktů. Tato metoda vytvoří nový bod historie voláním metody addHistoryPoint (). Do historie se přidá ID kliknutí na skupinu kontaktů.
 
-Id skupiny je načten z "expando" atribut propojení kontaktní skupiny. Odkaz je vykreslen pomocí následujícího volání Ajax.ActionLink().
+ID skupiny se načte z atributu expand na odkaz skupiny kontaktů. Odkaz je vykreslen s následujícím voláním jazyka AJAX. ActionLink ().
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample9.aspx)]
 
-Poslední parametr předaný Ajax.ActionLink() přidá "expando" atribut s názvem skupiny na propojení (malá písmena pro kompatibilitu XHTML).
+Poslední parametr předaný metodě AJAX. ActionLink () přidá atribut Expanded na odkaz (malý počet pro kompatibilitu s NORMou XHTML).
 
-Když uživatel dosáhne prohlížeče zpět nebo tlačítko Předat dál, je vyvolána událost navigace a navigate() metoda je volána. Tato metoda aktualizuje kontakty na této stránce tak, aby odpovídaly stavu stránky, která odpovídá bod historie prohlížeče předaný metodě Navigovat zobrazena.
+Když uživatel narazí na tlačítko zpět nebo vpřed v prohlížeči, událost Navigate se vyvolá a zavolá se metoda Navigate (). Tato metoda aktualizuje kontakty zobrazené na stránce tak, aby odpovídaly stavu stránky, který odpovídá bodu historie prohlížeče předanému metodě Navigate.
 
-## <a name="performing-ajax-deletes"></a>Odstraní provádění Ajax
+## <a name="performing-ajax-deletes"></a>Provádění odstraňování AJAX
 
-V současné době Chcete-li odstranit kontakt, budete muset kliknout na odkaz pro odstranění a poté klikněte na tlačítko Odstranit zobrazí na stránce potvrzení odstranění (viz obrázek 2). Vypadá to, že jako velké množství žádostí stránky něco jednoduchého jako odstraňuje se záznam v databázi.
+Pokud chcete odstranit kontakt v současné době, musíte kliknout na odkaz odstranit a pak kliknout na tlačítko Odstranit zobrazené na stránce pro potvrzení odstranění (viz obrázek 2). Zdá se, že hodně požadavků na stránky pro něco jednoduchého, jako je odstranění záznamu databáze.
 
-[![Na stránce potvrzení odstranění](iteration-7-add-ajax-functionality-cs/_static/image2.jpg)](iteration-7-add-ajax-functionality-cs/_static/image3.png)
+[![stránce pro potvrzení odstranění](iteration-7-add-ajax-functionality-cs/_static/image2.jpg)](iteration-7-add-ajax-functionality-cs/_static/image3.png)
 
-**Obrázek 02**: Na stránce potvrzení odstranění ([kliknutím ji zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-cs/_static/image4.png))
+**Obrázek 02**: Stránka pro potvrzení odstranění ([kliknutím zobrazíte obrázek v plné velikosti](iteration-7-add-ajax-functionality-cs/_static/image4.png))
 
-Je lákavé přejděte na stránku potvrzení odstranění a odstranit a kontaktovat přímo ze zobrazení pro Index. Neměli byste tento pokušení a vzhledem k tomu, že si tento postup se otevře aplikace bezpečnostní díry. Obecně platí don t chcete provést operaci HTTP GET při vyvolání akce, která změní stav vaší webové aplikace. Při provádění odstranění, chcete provádět metody POST protokolu HTTP, nebo ještě lépe, operace HTTP DELETE.
+Nachází na to, že se stránka pro potvrzení odstranění přeskočit a odstraní kontakt přímo ze zobrazení indexu. Měli byste se tomuto pokušení vyhnout, protože tento přístup otevře vaši aplikaci pro bezpečnostní otvory. Obecně platí, že nebudete chtít provést operaci HTTP GET při vyvolání akce, která mění stav webové aplikace. Při odstraňování je potřeba provést HTTP POST nebo ještě lepší, ale i operaci odstranění protokolu HTTP.
 
-Odkaz pro odstranění je součástí částečné ContactList. Najít aktualizovanou verzi částečné ContactList je obsažen v informacích 6.
+Odkaz Delete je obsažený v ContactList částečně. Aktualizovaná verze ContactList částečně je obsažena v seznamu 6.
 
-**Výpis 6 - Views\Contact\ContactList.ascx**
+**Výpis 6 – Views\Contact\ContactList.ascx**
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample10.aspx)]
 
-Odstranit odkaz je vykreslen pomocí následujícího volání metody Ajax.ImageActionLink():
+Odkaz Delete je vykreslen s následujícím voláním metody AJAX. ImageActionLink ():
 
 [!code-aspx[Main](iteration-7-add-ajax-functionality-cs/samples/sample11.aspx)]
 
 > [!NOTE] 
 > 
-> Ajax.ImageActionLink() není standardní součástí rozhraní ASP.NET MVC. Ajax.ImageActionLink() je vlastní pomocné metody zahrnutý v projektu správce kontaktů.
+> AJAX. ImageActionLink () není standardní součástí architektury ASP.NET MVC. AJAX. ImageActionLink () je vlastní pomocná metoda, která je součástí projektu správce kontaktů.
 
-Parametr AjaxOptions má dvě vlastnosti. Nejprve potvrdit vlastnost slouží k zobrazení potvrzovací dialogové okno automaticky otevírané okno jazyka JavaScript. Za druhé Vlastnost HttpMethod slouží k provádění operací HTTP DELETE.
+Parametr AjaxOptions má dvě vlastnosti. Nejprve se vlastnost potvrdit používá k zobrazení dialogového okna pro potvrzení JavaScriptu. Za druhé se k provedení operace odstranění protokolu HTTP používá vlastnost HttpMethod.
 
-Výpis 7 obsahuje novou AjaxDelete() akci, která byla přidána k řadiči kontaktu.
+Výpis 7 obsahuje novou akci AjaxDelete (), která byla přidána do kontroleru kontaktů.
 
-**Výpis 7 - Controllers\ContactController.cs (AjaxDelete)**
+**Výpis 7 – Controllers\ContactController.cs (AjaxDelete)**
 
 [!code-csharp[Main](iteration-7-add-ajax-functionality-cs/samples/sample12.cs)]
 
-Akce AjaxDelete() je opatřen atributem AcceptVerbs. Tento atribut brání akce s výjimkou vyvolání jakékoli operace HTTP než operace HTTP DELETE. Zejména nejde vyvolat tuto akci s HTTP GET.
+Akce AjaxDelete () je upravena pomocí atributu AcceptVerbs. Tento atribut brání vyvolání akce s výjimkou jakékoli jiné operace HTTP, než je operace HTTP DELETE. Konkrétně nemůžete tuto akci vyvolat pomocí protokolu HTTP GET.
 
-Po odstranění záznamu v databázi, je třeba zobrazit aktualizovaný seznam kontaktů, který neobsahuje odstraněný záznam. Metoda AjaxDelete() vrátí částečné ContactList aktualizovaný seznam kontaktů.
+Po odstranění záznamu databáze je třeba zobrazit aktualizovaný seznam kontaktů, které neobsahují odstraněný záznam. Metoda AjaxDelete () vrátí částečný ContactList a aktualizovaný seznam kontaktů.
 
 ## <a name="summary"></a>Souhrn
 
-V této iterace jsme přidali funkcí Ajax do naší aplikace Správce kontaktů. Jsme použili Ajax zlepšit rychlost reakce a výkon naší aplikace.
+V této iteraci jsme do naší aplikace Správce kontaktů přidali funkce AJAX. Pomocí AJAX jsme vylepšili rychlost odezvy a výkon naší aplikace.
 
-Nejprve jsme rozdělili zobrazení indexu tak, aby kliknutí kontaktujte skupinu neaktualizuje celého zobrazení. Místo toho kliknutí kontaktujte skupinu aktualizace pouze v seznamu kontaktů.
+Nejdříve jsme převedli zobrazení indexu tak, aby se kliknutím na skupinu kontaktů neaktualizovalo celé zobrazení. Místo toho se kliknutím na skupinu kontaktů aktualizuje jenom seznam kontaktů.
 
-Dále jsme použili efekty animace jQuery zesvětlit a fade v seznamu kontaktů. Přidání animace do aplikace Ajax je možné poskytnout uživatelům aplikace ekvivalentem indikátor průběhu prohlížeče.
+V dalším kroku jsme pro zmizení a zmizení v seznamu kontaktů používali efekty animace jQuery. Přidání animace do aplikace AJAX lze použít k tomu, aby uživatelům aplikace poskytovala ekvivalent indikátoru průběhu prohlížeče.
 
-Přidali jsme také podpora prohlížeče historie do naší aplikace Ajax. Povolili jsme uživatelům klikněte na prohlížeč zpět a vpřed tlačítka pro změnu stavu zobrazení indexu.
+Přidali jsme také podporu historie prohlížeče do naší aplikace AJAX. Povolili jsme uživatelům kliknout na tlačítka zpět a přeposlání v prohlížeči, abyste změnili stav zobrazení indexu.
 
-Nakonec jsme vytvořili odkaz pro odstranění, který podporuje operace HTTP DELETE. Provedením Ajax odstraní povolíme uživatelům odstranit záznamy v databázi bez nutnosti uživateli požadavek na potvrzovací stránku další odstranit.
+Nakonec jsme vytvořili odkaz Delete, který podporuje operace odstranění protokolu HTTP. Při provádění odstraňování v AJAX umožňují uživatelům odstraňovat záznamy databáze, aniž by museli vyžadovat, aby si uživatel vyžádal další stránku pro potvrzení odstranění.
 
 > [!div class="step-by-step"]
 > [Předchozí](iteration-6-use-test-driven-development-cs.md)
-> [další](iteration-1-create-the-application-vb.md)
+> [Další](iteration-1-create-the-application-vb.md)

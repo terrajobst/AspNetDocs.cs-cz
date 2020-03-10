@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/sql-2005/building-and-customizing-reports-in-business-intelligence-development-studio
-title: Vytváření a přizpůsobení sestav v Business Intelligence Development Studio | Dokumentace Microsoftu
+title: Sestavování a přizpůsobení sestav v Business Intelligence Development Studio | Microsoft Docs
 author: microsoft
-description: Vytváření v předchozí lekci začneme zabývat drobnostmi vytváření sestav ze začátku a úprava sestav, které byly vytvořeny pomocí průvodci a návrháři. Jsme...
+description: Při sestavování v předchozí lekci jsme podrobněi vytváření sestav od začátku a úpravou sestav vytvořených pomocí průvodců a návrhářů. Jsme...
 ms.author: riande
 ms.date: 10/22/2006
 ms.assetid: f38a1055-d387-49c2-aa1b-693688417c15
 msc.legacyurl: /web-forms/videos/sql-2005/building-and-customizing-reports-in-business-intelligence-development-studio
 msc.type: video
 ms.openlocfilehash: b1e08dd5ad2c6543570a43c58997ab15353d7f26
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59380351"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78545071"
 ---
 # <a name="building-and-customizing-reports-in-business-intelligence-development-studio"></a>Vytváření a přizpůsobení sestav v Business Intelligence Development Studiu
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-Vytváření v předchozí lekci začneme zabývat drobnostmi vytváření sestav ze začátku a úprava sestav, které byly vytvořeny pomocí průvodci a návrháři. Také vám ukážeme postup vložení sestavy do svých aplikací technologie ASP.NET webové formuláře.
+Při sestavování v předchozí lekci jsme podrobněi vytváření sestav od začátku a úpravou sestav vytvořených pomocí průvodců a návrhářů. Ukážeme vám také, jak vložit sestavy do aplikací ASP.NET webového formuláře.
 
-[&#9654;Podívejte se na video (44 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/building-and-customizing-reports-in-business-intelligence-development-studio)
+[&#9654;Přehrát video (44 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/building-and-customizing-reports-in-business-intelligence-development-studio)
 
 > [!div class="step-by-step"]
 > [Předchozí](getting-started-with-reporting-services.md)
-> [další](creating-and-using-stored-procedures.md)
+> [Další](creating-and-using-stored-procedures.md)

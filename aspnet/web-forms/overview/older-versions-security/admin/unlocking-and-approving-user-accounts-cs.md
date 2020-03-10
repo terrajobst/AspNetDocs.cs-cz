@@ -9,11 +9,11 @@ ms.assetid: 5346aab1-9974-489f-a065-ae3883b8a350
 msc.legacyurl: /web-forms/overview/older-versions-security/admin/unlocking-and-approving-user-accounts-cs
 msc.type: authoredcontent
 ms.openlocfilehash: c19f7dfac0ddd12c2b4f3388a71a8ca0f71cbb18
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74580214"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78545519"
 ---
 # <a name="unlocking-and-approving-user-accounts-c"></a>Odemykání a schvalování uživatelských účtů (C#)
 
@@ -174,7 +174,7 @@ Obrázek 7 ukazuje stránku `Verification.aspx`, když se navštíví přes proh
 
 **Obrázek 7**: účet nového uživatele je teď schválený ([kliknutím zobrazíte obrázek v plné velikosti](unlocking-and-approving-user-accounts-cs/_static/image21.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Všechny uživatelské účty členů mají dva stavy, které určují, jestli se uživatel může přihlásit k webu: `IsLockedOut` a `IsApproved`. Obě tyto vlastnosti musí být `true`, aby se uživatel mohl přihlásit.
 

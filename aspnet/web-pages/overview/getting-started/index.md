@@ -1,23 +1,23 @@
 ---
 uid: web-pages/overview/getting-started/index
-title: Začínáme s webovými stránkami ASP.NET | Dokumentace Microsoftu
+title: Začínáme s webovými stránkami ASP.NET | Microsoft Docs
 author: rick-anderson
-description: Další informace o ASP.NET webové stránky ASP.NET Web Pages a syntaxe Razor poskytují rychlý, přístupný a jednoduchý způsob kombinování serverového kódu s HTML t...
+description: Přečtěte si o webových stránkách ASP.NET Web Pages ASP.NET a New syntaxe Razor poskytují rychlý a snadný způsob, jak kombinovat serverový kód s HTML t...
 ms.author: riande
 ms.date: 05/18/2012
 ms.assetid: 99253c4e-a125-4c21-85e7-a6dd74d93892
 msc.legacyurl: /web-pages/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 50a249d0e64cff2a8c4f16f38f530b6d52f755de
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65133177"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640922"
 ---
 # <a name="getting-started-with-aspnet-web-pages"></a>Začínáme s webovými stránkami ASP.NET
 
-> Jaké webové stránky a služba WebMatrix jsou, a jak nainstalovat vše, co, Začínáme a nasaďte servery.
+> Jaké webové stránky a WebMatrix jsou, a také jak nainstalovat vše, začít a nasazovat lokality.
 
 - [Programování webových stránek ASP.NET v sadě Visual Studio](program-asp-net-web-pages-in-visual-studio.md)
 - [Úvod do programování webu ASP.NET pomocí syntaxe Razor](introducing-razor-syntax-c.md)

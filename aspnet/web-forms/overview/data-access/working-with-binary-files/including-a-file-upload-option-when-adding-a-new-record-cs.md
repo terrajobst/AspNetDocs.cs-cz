@@ -9,11 +9,11 @@ ms.assetid: 362ade25-3965-4fb2-88d2-835c4786244f
 msc.legacyurl: /web-forms/overview/data-access/working-with-binary-files/including-a-file-upload-option-when-adding-a-new-record-cs
 msc.type: authoredcontent
 ms.openlocfilehash: f1287e180151b3034a7b90ef4b3f1fbe68354a09
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74577169"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78588282"
 ---
 # <a name="including-a-file-upload-option-when-adding-a-new-record-c"></a>Zahrnutí možnosti nahrání souboru při přidání nového záznamu (C#)
 
@@ -224,7 +224,7 @@ Jak bylo popsáno dříve v kurzu [zpracování knihoven BLL a na úrovni dal v 
 
 [!code-csharp[Main](including-a-file-upload-option-when-adding-a-new-record-cs/samples/sample13.cs)]
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 K dispozici je řada kroků, které je třeba provést, aby bylo možné poskytovat webové rozhraní pro přidávání záznamů, které zahrnují binární data. Pokud jsou binární data ukládána přímo do databáze, je pravděpodobné, že budete muset aktualizovat architekturu a přidat konkrétní metody, které budou zpracovávat případy, kdy jsou vložena binární data. Po aktualizaci architektury je dalším krokem vytvoření rozhraní pro vložení, které lze provést pomocí ovládacího prvku DetailsView, který je přizpůsobený tak, aby zahrnoval ovládací prvek nahrání souboru pro každé binární datové pole. Nahraná data je pak možné uložit do systému souborů webového serveru s nebo přiřadit k parametru zdroje dat v obslužné rutině ovládacího prvku DetailsView s `ItemInserting`.
 

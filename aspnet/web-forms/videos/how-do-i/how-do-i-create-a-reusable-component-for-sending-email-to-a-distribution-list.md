@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list
-title: '[Postup:] Vytvoření opakovaně použitelné komponenty pro odesílání e-mailu distribučního seznamu | Dokumentace Microsoftu'
+title: '[Postupy:] Vytvoření opakovaně použitelné součásti pro odesílání e-mailů do distribučního seznamu | Microsoft Docs'
 author: rick-anderson
-description: V toto video pixelů na Chris ukazuje, jak vytvořit komponentu, která lze použít na více webových stránek a webových serverů, která odesílá e-maily do seznamu příjemců. Firs...
+description: V tomto videu Chris pixelů na ukazuje, jak vytvořit komponentu, která se dá použít na několika webových stránkách a webech, které odesílají e-maily do seznamu příjemců. Firs...
 ms.author: riande
 ms.date: 12/04/2008
 ms.assetid: 13dd3a26-c210-432e-91fe-355c979060b3
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list
 msc.type: video
 ms.openlocfilehash: 6a117d0bf029245c4929e903e0c0494f6ba2b072
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59400396"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78523462"
 ---
-# <a name="how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list"></a>[Postup:] Vytvoření opakovaně použitelné komponenty pro odesílání e-mailu lidem v distribučním seznamu
+# <a name="how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list"></a>[Postupy:] Vytvoření opakovaně použitelné součásti pro odesílání e-mailů do distribučního seznamu
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V toto video pixelů na Chris ukazuje, jak vytvořit komponentu, která lze použít na více webových stránek a webových serverů, která odesílá e-maily do seznamu příjemců. Nejprve se nakonfigurují na webu technologie ASP.NET k odeslání e-mailům prostřednictvím &lt;mailSettings&gt; v souboru web.config. Načítá seznam příjemců, kterým se ze zdroje dat (databáze, XML atd.) a odesílá e-mailovou zprávu do každého z příjemců pomocí tříd System.Net.Mail se pak vytvoří třídu a několik metod. Jako součást tohoto procesu výjimka zpracování je zahrnuté. Kromě toho se vytvoří uživatelské rozhraní umožňující uživateli zadat položky jako je například adresa odesílatele, na základě práv subjektů, přidejte přílohu atd.
+V tomto videu Chris pixelů na ukazuje, jak vytvořit komponentu, která se dá použít na několika webových stránkách a webech, které odesílají e-maily do seznamu příjemců. Nejprve bude web ASP.NET nakonfigurován pro odesílání e-mailů pomocí&gt; &lt;v souboru Web. config. Pak se vytvoří třída a několik metod, které přečtou seznam příjemců ze zdroje dat (DB, XML atd.) a pošle každému příjemci e-mailovou zprávu s použitím tříd System .NET. mail. V rámci tohoto procesu je zahrnuto zpracování výjimek. Kromě toho je vytvořeno uživatelské rozhraní, které uživateli umožní zadat položky, jako je například adresa z adresy, předmět, přidání přílohy atd.
 
-[&#9654;Podívejte se na video (35 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list)
+[&#9654;Přehrát video (35 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-create-a-reusable-component-for-sending-email-to-a-distribution-list)

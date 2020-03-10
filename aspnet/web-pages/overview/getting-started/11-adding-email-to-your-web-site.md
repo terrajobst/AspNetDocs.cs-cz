@@ -1,137 +1,137 @@
 ---
 uid: web-pages/overview/getting-started/11-adding-email-to-your-web-site
-title: Odesílání e-mailu z webového rozhraní ASP.NET stránek webu (Razor) | Dokumentace Microsoftu
+title: Odesílání e-mailů z webu ASP.NET Web Pages (Razor) | Microsoft Docs
 author: Rick-Anderson
-description: Tato kapitola vysvětluje postup odesílání automatizovaných e-mailovou zprávu na webové stránce.
+description: Tato kapitola vysvětluje, jak odeslat automatizovanou e-mailovou zprávu z webu.
 ms.author: riande
 ms.date: 02/20/2014
 ms.assetid: fc49bcb9-f1a9-4048-8c3f-b60951853200
 msc.legacyurl: /web-pages/overview/getting-started/11-adding-email-to-your-web-site
 msc.type: authoredcontent
 ms.openlocfilehash: 23e9717329525fb5a0ed505c9dc94505d4f9dbbe
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65130551"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78634713"
 ---
-# <a name="sending-email-from-an-aspnet-web-pages-razor-site"></a>Odesílání e-mailů z webu rozhraní ASP.NET Web Pages (Razor)
+# <a name="sending-email-from-an-aspnet-web-pages-razor-site"></a>Odesílání e-mailů z webu ASP.NET Web Pages (Razor)
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> Tento článek vysvětluje, jak odeslat e-mailovou zprávu na webové stránce při použití webových stránek ASP.NET (Razor).
+> Tento článek vysvětluje, jak odeslat e-mailovou zprávu z webu při použití webových stránek ASP.NET (Razor).
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Postup odesílání e-mailovou zprávu ze svého webu.
-> - Jak připojit soubor e-mailové zprávě.
+> - Jak odeslat e-mailovou zprávu z webu
+> - Jak připojit soubor k e-mailové zprávě
 > 
-> Toto je funkce technologie ASP.NET zavedené v následujícím článku:
+> Toto je funkce ASP.NET představená v článku:
 > 
-> - `WebMail` Pomocné rutiny.
+> - Pomocná rutina `WebMail`
 >   
 > 
-> ## <a name="software-versions-used-in-the-tutorial"></a>V tomto kurzu použili verze softwaru
+> ## <a name="software-versions-used-in-the-tutorial"></a>Verze softwaru použité v tomto kurzu
 > 
 > 
 > - Webové stránky ASP.NET (Razor) 3
 >   
 > 
-> V tomto kurzu se také pracuje s ASP.NET Web Pages 2.
+> Tento kurz funguje také s ASP.NET webovými stránkami 2.
 
 <a id="Sending_Email_Messages"></a>
-## <a name="sending-email-messages-from-your-website"></a>Odesílání e-mailové zprávy z webu
+## <a name="sending-email-messages-from-your-website"></a>Posílání e-mailových zpráv z webu
 
-Existuje spousta důvodů, proč potřebujete odesílat e-maily z vašeho webu. Může odesílat zprávy potvrzení pro uživatele, nebo můžete odeslat oznámení sami sebe (například, který je zaregistrován nového uživatele.) `WebMail` Pomocné rutiny usnadňuje odeslání e-mailu.
+K dispozici jsou nejrůznější důvody, proč možná budete potřebovat poslat e-mailovou adresu z webu. Můžete odesílat uživatelům potvrzovací zprávy nebo vám můžou poslat oznámení sami (například to, že se zaregistroval nový uživatel). Pomocná rutina `WebMail` vám usnadňuje odesílání e-mailů.
 
-Použít `WebMail` pomocné rutiny, je nutné mít přístup k serveru SMTP. (SMTP jsou zahrnovaného *Simple Mail Transfer Protocol*.) SMTP server je e-mailový server, který pouze předává zprávy na server příjemce &#8212; je straně odchozích e-mailu. Pokud používáte pro svůj web prostřednictvím poskytovatele hostitelských služeb, pravděpodobně nastavené můžete pomocí e-mailu a jejich se dozvíte, co je název vašeho serveru SMTP. Pokud pracujete v podnikové síti, správce nebo oddělení IT může obvykle poskytují informace o serveru SMTP, který vám pomůže. Pokud pracujete v domácnostech, dokonce je možné otestovat pomocí poskytovatele běžné e-mailu, který lze zjistit název serveru SMTP. Obvykle potřebujete:
+Chcete-li použít pomocníka `WebMail`, musíte mít přístup k serveru SMTP. (SMTP představuje *protokol Simple Mail Transfer*.) Server SMTP je e-mailový server, který přesměruje zprávy na server &#8212; příjemce, že se jedná o odchozí stranu e-mailu. Pokud pro svůj web použijete poskytovatele hostingu, nastavili jste se na něj e-mail a můžou vám sdělit, co váš název serveru SMTP. Pokud pracujete v podnikové síti, může vám správce nebo oddělení IT obvykle poskytnout informace o serveru SMTP, který můžete použít. Pokud pracujete doma, možná budete moct testovat pomocí svého běžného poskytovatele e-mailu, který vám může sdělit název serveru SMTP. Obvykle potřebujete:
 
 - Název serveru SMTP.
-- Číslo portu. Toto je téměř vždy 25. Však může vyžadovat svého poskytovatele internetových služeb, abyste použili port 587. Pokud používáte e-mailu vrstvu secure Sockets Layer (SSL), můžete potřebovat jiný port. Zeptejte se svého poskytovatele e-mailu.
-- Přihlašovací údaje (uživatelské jméno a heslo).
+- Číslo portu. To je téměř vždy 25. Poskytovatel internetových služeb ale může vyžadovat, abyste používali port 587. Pokud k e-mailu používáte protokol SSL (Secure Sockets Layer), budete možná potřebovat jiný port. Obraťte se na poskytovatele e-mailu.
+- Přihlašovací údaje (uživatelské jméno, heslo).
 
-V tomto postupu vytvoříte dvě stránky. První stránka má formulář, který umožňuje uživatelům zadat popis, jako kdyby byly vyplněním formuláře technické podpory. První stránka odešle její informace na druhé stránce. Na druhé stránce kód extrahuje informace o uživateli a odešle e-mailovou zprávu. Také zobrazí se zpráva s potvrzením, že byla přijata hlášení o problému.
+V tomto postupu vytvoříte dvě stránky. První stránka obsahuje formulář, který umožňuje uživatelům zadat popis, jako by byl vyplněný formulářem technické podpory. První stránka odesílá informace do druhé stránky. Na druhé stránce kód extrahuje informace o uživateli a pošle e-mailovou zprávu. Také se zobrazí zpráva potvrzující, že byla přijata zpráva o problému.
 
-![[image]](11-adding-email-to-your-web-site/_static/image1.jpg)
+![obrazu](11-adding-email-to-your-web-site/_static/image1.jpg)
 
 > [!NOTE]
-> Pro zjednodušení tento příklad kódu inicializuje `WebMail` pomocné rutiny přímo na stránku, kde používáte. Pro skutečné weby, je však lepší představu vložit soubor globální inicializační kód tímto způsobem tak, aby je inicializovat `WebMail` pomocné rutiny pro všechny soubory ve vašem webu. Další informace najdete v tématu [přizpůsobení chování v celém webu pro webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906#Setting_Values_For_Helpers).
+> Aby byl tento příklad jednoduchý, kód inicializuje `WebMail` pomocný pomocník na stránce, kde ho používáte. Pro reálné weby je však vhodnější umístit inicializační kód jako v globálním souboru, aby bylo možné inicializovat pomoc `WebMail` pro všechny soubory na webu. Další informace najdete v tématu [přizpůsobení chování na úrovni webu pro webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906#Setting_Values_For_Helpers).
 
-1. Vytvoření nového webu.
-2. Přidejte novou stránku s názvem *EmailRequest.cshtml* a přidejte následující kód: 
+1. Vytvoří nový web.
+2. Přidejte novou stránku s názvem *EmailRequest. cshtml* a přidejte následující kód: 
 
     [!code-html[Main](11-adding-email-to-your-web-site/samples/sample1.html)]
 
-    Všimněte si, `action` atribut prvku formuláře je nastavená na *ProcessRequest.cshtml*. To znamená, že se odešle formulář na tuto stránku místo zpět na aktuální stránce.
-3. Přidejte novou stránku s názvem *ProcessRequest.cshtml* na web a přidejte následující kód a značky:   
+    Všimněte si, že atribut `action` prvku Form byl nastaven na hodnotu *ProcessRequest. cshtml*. To znamená, že formulář bude odeslán do této stránky místo zpět na aktuální stránku.
+3. Přidejte do webu novou stránku s názvem *ProcessRequest. cshtml* a přidejte následující kód a značku:   
 
     [!code-cshtml[Main](11-adding-email-to-your-web-site/samples/sample2.cshtml)]
 
-    V kódu získáte hodnoty polí formuláře, které byly odeslány na stránku. Poté je zapotřebí zavolat `WebMail` pomocné rutiny `Send` metodu pro vytvoření a odeslání e-mailové zprávy. Hodnoty pro použití jsou v tomto případě tvořené text, který zřetězí s hodnotami, které byly odeslány z formuláře.
+    V kódu získáte hodnoty polí formuláře, které byly odeslány na stránku. Pak zavoláte metodu `Send` pomocné rutiny `WebMail` k vytvoření a odeslání e-mailové zprávy. V tomto případě jsou hodnoty, které se mají použít, tvořeny textem, který je zřetězený s hodnotami, které byly odeslány z formuláře.
 
-    Kód pro tuto stránku se nachází uvnitř `try/catch` bloku. Pokud pro některou z důvodu pokus o odeslání e-mailu nefunguje (například, nejsou správné nastavení) kódu v `catch` bloku běží a nastaví `errorMessage` proměnné pro chyby, ke které došlo k chybě. (Další informace o `try/catch` bloků nebo `<text>` značku, přečtěte si téma [Úvod do ASP.NET Web Pages programování pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=251587#ID_HandlingErrors).)
+    Kód této stránky je uvnitř `try/catch`ho bloku. Pokud z nějakého důvodu pokus o odeslání e-mailu nefunguje (například nastavení nejsou pravá), kód v `catch`ovém bloku se spustí a nastaví proměnnou `errorMessage` na chybu, ke které došlo. (Další informace o `try/catch` blocích nebo značce `<text>` naleznete v tématu [Úvod do programování webových stránek ASP.NET pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=251587#ID_HandlingErrors).)
 
-    V těle stránky Pokud `errorMessage` proměnné je prázdný (výchozí), uživateli se zobrazí zpráva, že byl odeslán e-mailové zprávy. Pokud `errorMessage` proměnná je nastavená na hodnotu true, který uživatel vidí a zpráva, že došlo k potížím, odeslání zprávy.
+    Pokud je proměnná `errorMessage` v těle stránky prázdná (výchozí nastavení), uživateli se zobrazí zpráva, že e-mailová zpráva byla odeslána. Pokud je proměnná `errorMessage` nastavená na hodnotu true, uživateli se zobrazí zpráva, že při odesílání zprávy došlo k potížím.
 
-    Všimněte si, že v části stránky, která zobrazí chybovou zprávu, je další test: `if(debuggingFlag)`. To je proměnná, která můžete nastavit na hodnotu true, pokud máte potíže, pošle se e-mail. Když `debuggingFlag` má hodnotu true, a pokud je nějaký problém, pošle se e-mail, další chybová zpráva se zobrazí, který zobrazuje cokoli, co ASP.NET ohlásil při pokusu o odeslání e-mailové zprávy. Veletrh upozornění, když: chybové zprávy, které hlásí technologie ASP.NET, pokud ho nelze odeslat e-mailovou zprávu, může být obecný. Například pokud technologie ASP.NET nemůže připojit k serveru SMTP (například, protože jste udělali chybu v názvu serveru), chyba `Failure sending mail`.
+    Všimněte si, že v části stránky, která zobrazuje chybovou zprávu, existuje další test: `if(debuggingFlag)`. Toto je proměnná, kterou můžete nastavit na hodnotu true, pokud máte potíže při odesílání e-mailů. Pokud má `debuggingFlag` hodnotu true a pokud dojde k potížím při posílání e-mailu, zobrazí se další chybová zpráva s informacemi o tom, že ASP.NET při pokusu o odeslání e-mailové zprávy nahlásila jakákoli. Poctivé upozornění: chybové zprávy, které ASP.NET zprávy, když nelze odeslat e-mailovou zprávu, mohou být obecné. Pokud například ASP.NET nemůže kontaktovat server SMTP (například proto, že jste v názvu serveru provedli chybu), zobrazí se chyba `Failure sending mail`.
 
     > [!NOTE] 
     > 
-    > **Důležité** když se zobrazí chybová zpráva z objektu výjimky (`ex` v kódu), proveďte *není* pravidelně předat prostřednictvím této zprávy pro uživatele. Objekty výjimky často zahrnují informace, které uživatelé neměli vidět a, která můžou být ohrožení zabezpečení. To je důvod, proč tento kód obsahuje proměnnou `debuggingFlag` jako přepínač, který se používá k zobrazení chybové zprávy a proč proměnná ve výchozím nastavení je nastavena na hodnotu false. Měli byste nastavit tuto proměnnou na hodnotu true (a tedy zobrazí chybová zpráva) *pouze* Pokud máte potíže s odesláním e-mailu a je třeba ladit. Po opravě potíží nastavit `debuggingFlag` zpět na hodnotu false.
+    > **Důležité** informace Když obdržíte chybovou zprávu z objektu výjimky (`ex` v kódu), neprovádějte *rutině tuto zprávu* uživatelům. Objekty výjimek často obsahují informace, které by uživatelé neměli vidět a které mohou být dokonce ohrožením zabezpečení. Proto tento kód zahrnuje proměnnou `debuggingFlag`, která se používá jako přepínač k zobrazení chybové zprávy a proč je proměnná ve výchozím nastavení nastavena na hodnotu false. Tuto proměnnou byste měli nastavit na hodnotu true (a proto zobrazit chybovou zprávu) *pouze* v případě, že máte problém s odesíláním e-mailů a potřebujete ladit. Po dokončení řešení potíží nastavte `debuggingFlag` zpět na false.
 
-    Upravte následující související nastavení v kódu e-mailu:
+    Upravte následující nastavení související s e-maily v kódu:
 
-   - Nastavte `your-SMTP-host` na název serveru SMTP, který máte přístup.
-   - Nastavte `your-user-name-here` na uživatelské jméno pro účet serveru SMTP.
-   - Nastavte `your-account-password` heslo pro účet serveru SMTP.
-   - Nastavte `your-email-address-here` vlastní e-mailovou adresu. Toto je e-mailovou adresu, které se zpráva poslala. (Některé poskytovateli e-mailu není vám umožní zadat jiný `From` adresy a používat vaše uživatelské jméno jako `From` adresu.)
+   - Nastavte `your-SMTP-host` na název serveru SMTP, ke kterému máte přístup.
+   - Nastavte `your-user-name-here` na uživatelské jméno pro svůj účet serveru SMTP.
+   - Nastavte `your-account-password` na heslo pro svůj účet serveru SMTP.
+   - Nastavte `your-email-address-here` na vlastní e-mailovou adresu. Toto je e-mailová adresa, ze které se zpráva odesílá. (Někteří poskytovatelé e-mailu neumožňují zadat jinou adresu `From` a vaše uživatelské jméno bude používat jako `From`ová adresa.)
 
      > [!TIP] 
      > 
      > <a id="configuring_email_settings"></a>
      > ### <a name="configuring-email-settings"></a>Konfigurace nastavení e-mailu
      > 
-     > Může být někdy obtížné Ujistěte se, že máte správné nastavení pro server SMTP, číslo portu a tak dále. Tady je několik tipů:
+     > V některých případech se může jednat o výzvu, abyste se ujistili, že máte správná nastavení pro server SMTP, číslo portu atd. Tady je několik tipů:
      > 
-     > - Název serveru SMTP je často něco jako `smtp.provider.com` nebo `smtp.provider.net`. Nicméně pokud publikování webu k poskytovateli hostingu, název serveru SMTP v tomto okamžiku může být `localhost`. Je to proto, že po publikování a vaše lokalita běží na serveru zprostředkovatele, e-mailový server může být místní z hlediska vaší aplikace. Tato změna názvů serverů může znamenat, že budete muset změnit název serveru SMTP jako součást procesu publikování.
-     > - Číslo portu je obvykle 25. Ale někteří poskytovatelé vyžadovat použití port 587 nebo některé další porty.
-     > - Ujistěte se, že používáte správné přihlašovací údaje. Pokud k poskytovateli hostingu, které jste publikovali vašeho webu, použijte přihlašovací údaje, které zprostředkovatel má výslovně uvedeno, jsou určené pro e-mailu. To může být liší od přihlašovacích údajů, které můžete použít k publikování.
-     > - Někdy není nutné přihlašovací údaje vůbec. Pokud chcete odeslat e-mailu pomocí svého osobního poskytovatele internetových služeb, může být vašeho poskytovatele e-mailu už znáte svoje přihlašovací údaje. Po publikování, možná budete muset použít jiná pověření než při testování v místním počítači.
-     > - Pokud vašeho poskytovatele e-mailu používá šifrování, je nutné nastavit `WebMail.EnableSsl` k `true`.
-4. Spustit *EmailRequest.cshtml* stránku v prohlížeči. (Ujistěte se, že je vybrána na stránce v **soubory** pracovního prostoru před jeho spuštěním.)
-5. Zadejte název a popis problému a klikněte **odeslat** tlačítko. Budete přesměrováni na *ProcessRequest.cshtml* stránky, který potvrdí vaši zprávu a které vám pošle e-mailovou zprávu. 
+     > - Název serveru SMTP je často podobný jako `smtp.provider.com` nebo `smtp.provider.net`. Pokud ale publikujete lokalitu pro poskytovatele hostingu, může být název serveru SMTP v tomto okamžiku `localhost`. Důvodem je to, že po publikování a spuštění webu na serveru zprostředkovatele může být e-mailový server místní z perspektivy vaší aplikace. Tato změna v názvech serverů může znamenat, že je třeba změnit název serveru SMTP v rámci procesu publikování.
+     > - Číslo portu je obvykle 25. Někteří poskytovatelé ale vyžadují, abyste používali port 587 nebo jiný port.
+     > - Ujistěte se, že používáte správné přihlašovací údaje. Pokud jste web publikovali pro poskytovatele hostingu, použijte přihlašovací údaje, které poskytovatel konkrétně označil, k e-mailu. Ty se můžou lišit od přihlašovacích údajů, které používáte k publikování.
+     > - Někdy nepotřebujete vůbec přihlašovací údaje. Pokud posíláte e-mail pomocí osobního poskytovatele internetových služeb, váš poskytovatel e-mailu už může znát vaše přihlašovací údaje. Po publikování může být nutné použít jiné přihlašovací údaje než při testování na místním počítači.
+     > - Pokud poskytovatel e-mailu používá šifrování, musíte nastavit `WebMail.EnableSsl` na `true`.
+4. Spusťte stránku *EmailRequest. cshtml* v prohlížeči. (Před spuštěním se ujistěte, že je stránka vybraná v pracovním prostoru **soubory** .)
+5. Zadejte své jméno a popis problému a pak klikněte na tlačítko **Odeslat** . Budete přesměrováni na stránku *ProcessRequest. cshtml* , která potvrdí vaši zprávu a pošle vám e-mailovou zprávu. 
 
-    ![[image]](11-adding-email-to-your-web-site/_static/image2.jpg)
+    ![obrazu](11-adding-email-to-your-web-site/_static/image2.jpg)
 
 <a id="Sending_a_File"></a>
-## <a name="sending-a-file-using-email"></a>Odeslání e-mailem
+## <a name="sending-a-file-using-email"></a>Odeslání souboru pomocí e-mailu
 
-Můžete také odeslat soubory, které jsou připojené k e-mailové zprávy. V tomto postupu vytvořte textový soubor a dvě stránky HTML. Použijete textový soubor jako přílohu e-mailu.
+Můžete také odesílat soubory, které jsou připojeny k e-mailovým zprávám. V tomto postupu vytvoříte textový soubor a dvě stránky HTML. Textový soubor použijete jako přílohu e-mailu.
 
-1. Na webu, přidejte nový textový soubor a pojmenujte ho *MyFile.txt*.
+1. Na webu přidejte nový textový soubor a pojmenujte ho *MyFile. txt*.
 2. Zkopírujte následující text a vložte ho do souboru: 
 
     `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`
-3. Vytvoření stránky s názvem *SendFile.cshtml* a přidejte následující kód: 
+3. Vytvořte stránku s názvem *SendFile. cshtml* a přidejte následující kód: 
 
     [!code-html[Main](11-adding-email-to-your-web-site/samples/sample3.html)]
-4. Vytvoření stránky s názvem *ProcessFile.cshtml* a přidejte následující kód: 
+4. Vytvořte stránku s názvem *ProcessFile. cshtml* a přidejte následující kód: 
 
     [!code-cshtml[Main](11-adding-email-to-your-web-site/samples/sample4.cshtml)]
-5. Upravte následující související nastavení v kódu z příkladu e-mailu:
+5. V kódu upravte následující nastavení související s e-maily v tomto příkladu:
 
-    - Nastavte `your-SMTP-host` na název serveru SMTP, ke kterým máte přístup.
-    - Nastavte `your-user-name-here` na uživatelské jméno pro účet serveru SMTP.
-    - Nastavte `your-email-address-here` vlastní e-mailovou adresu. Toto je e-mailovou adresu, které se zpráva poslala.
-    - Nastavte `your-account-password` heslo pro účet serveru SMTP.
-    - Nastavte `target-email-address-here` vlastní e-mailovou adresu. (Jako předtím by normálně posíláte e-mail někomu jinému, ale pro účely testování, můžete ho odeslat na vás.)
-6. Spustit *SendFile.cshtml* stránku v prohlížeči.
-7. Zadejte své jméno, řádek předmětu a název textového souboru, připojit (*MyFile.txt*).
-8. Klikněte na tlačítko `Submit` tlačítko. Jako dříve, budete přesměrováni na *ProcessFile.cshtml* stránky, který potvrdí vaši zprávu a které vám pošle e-mailovou zprávu s připojený soubor.
+    - Nastavte `your-SMTP-host` na název serveru SMTP, ke kterému máte přístup.
+    - Nastavte `your-user-name-here` na uživatelské jméno pro svůj účet serveru SMTP.
+    - Nastavte `your-email-address-here` na vlastní e-mailovou adresu. Toto je e-mailová adresa, ze které se zpráva odesílá.
+    - Nastavte `your-account-password` na heslo pro svůj účet serveru SMTP.
+    - Nastavte `target-email-address-here` na vlastní e-mailovou adresu. (Stejně jako dřív jste normálně poslali e-mail někomu jinému, ale pro testování ho můžete poslat sami.)
+6. Spusťte stránku *SendFile. cshtml* v prohlížeči.
+7. Zadejte své jméno, řádek předmětu a název textového souboru, který chcete připojit (*MyFile. txt*).
+8. Klikněte na tlačítko `Submit`. Stejně jako dřív budete přesměrováni na stránku *ProcessFile. cshtml* , která potvrdí vaši zprávu a pošle vám e-mailovou zprávu s připojeným souborem.
 
 <a id="Additional_Resources"></a>
 ## <a name="additional-resources"></a>Další prostředky
 
 - [Webové stránky ASP.NET (Razor) – průvodce řešením potíží](https://go.microsoft.com/fwlink/?LinkId=253001)
-- [Simple Mail Transfer Protocol](https://msdn.microsoft.com/library/aa480435.aspx)
-- [Přizpůsobení chování v celém webu pro webové stránky ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906)
+- [Protokol SMTP (Simple Mail Transfer Protocol)](https://msdn.microsoft.com/library/aa480435.aspx)
+- [Přizpůsobení chování na úrovni webu pro webové stránky v ASP.NET](https://go.microsoft.com/fwlink/?LinkId=202906)

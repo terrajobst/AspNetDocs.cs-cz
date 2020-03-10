@@ -7,11 +7,11 @@ ms.author: riande
 ms.date: 10/29/2018
 msc.type: content
 ms.openlocfilehash: 5299d9ab057c3096773955a7461e77a80673ebfe
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74586755"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78584509"
 ---
 # <a name="configuration-builders-for-aspnet"></a>Tvůrci konfigurace pro ASP.NET
 
@@ -103,7 +103,7 @@ Předchozí kód nastaví hodnoty vlastností na:
 
 Například pomocí předchozího souboru *Web. config* , klíčů/hodnot v předchozí imagi editoru prostředí a předchozího kódu jsou nastaveny následující hodnoty:
 
-|  Key              | Hodnota |
+|  Klíč              | Hodnota |
 | ----------------- | ------------ |
 |     AppSetting_ServiceID           | AppSetting_ServiceID z proměnných ENV|
 |    AppSetting_default            | AppSetting_default hodnota z ENV |
@@ -136,11 +136,11 @@ Předchozí kód nastaví hodnoty vlastností na:
 
 Například pomocí předchozího souboru *Web. config* , klíčů/hodnot v předchozí imagi editoru prostředí a předchozího kódu jsou nastaveny následující hodnoty:
 
-|  Key              | Hodnota |
+|  Klíč              | Hodnota |
 | ----------------- | ------------ |
 |     Idslužby           | AppSetting_ServiceID z proměnných ENV|
-|    výchozí            | AppSetting_default hodnota z ENV |
-|    výchozí         | ConnStr_default Val ze ENV|
+|    default            | AppSetting_default hodnota z ENV |
+|    default         | ConnStr_default Val ze ENV|
 
 ### <a name="tokenpattern"></a>tokenPattern
 
@@ -277,7 +277,7 @@ Podrobnosti atributu:
 
 * `jsonFile` – povinné. Určuje soubor JSON, ze kterého se má číst. `~` znak lze použít na začátku pro odkaz na kořen aplikace.
 * `optional` – logická hodnota, výchozí hodnota je `true`. Zabraňuje vyvolání výjimek, pokud nelze najít soubor JSON.
-* `jsonMode` - `[Flat|Sectional]`. výchozím nastavením je `Flat`. Je-li `jsonMode` `Flat`, je soubor JSON jedním zdrojem nestrukturovaných klíč/hodnota. `EnvironmentConfigBuilder` a `AzureKeyVaultConfigBuilder` jsou také jedním nestrukturovaným zdrojem klíčů a hodnot. Když je `SimpleJsonConfigBuilder` nakonfigurovaný v režimu `Sectional`:
+* `jsonMode` - `[Flat|Sectional]`. `Flat` je výchozí možnost. Je-li `jsonMode` `Flat`, je soubor JSON jedním zdrojem nestrukturovaných klíč/hodnota. `EnvironmentConfigBuilder` a `AzureKeyVaultConfigBuilder` jsou také jedním nestrukturovaným zdrojem klíčů a hodnot. Když je `SimpleJsonConfigBuilder` nakonfigurovaný v režimu `Sectional`:
 
   * Soubor JSON je koncepčně rozdělený přímo na nejvyšší úrovni do více slovníků.
   * Každý ze slovníků je použit pouze pro konfigurační oddíl, který odpovídá názvu vlastnosti nejvyšší úrovně, který je k nim připojen. Příklad:
@@ -306,7 +306,7 @@ Pokud konfigurační tvůrci nevyhovují vašim potřebám, můžete napsat vlas
 
 `KeyValueConfigBuilder` základní třída poskytuje mnoho práce a konzistentní chování napříč sestavami konfigurace klíčů a hodnot.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Úložiště GitHubu pro sestavovatele konfigurace](https://github.com/aspnet/MicrosoftConfigurationBuilders)
 * [Ověřování služba-služba pro Azure Key Vault pomocí .NET](/azure/key-vault/service-to-service-authentication#connection-string-support)

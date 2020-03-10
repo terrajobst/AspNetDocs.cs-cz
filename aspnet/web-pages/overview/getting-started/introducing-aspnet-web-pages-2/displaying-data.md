@@ -1,336 +1,336 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
-title: Představení rozhraní ASP.NET Web Pages – zobrazení dat | Dokumentace Microsoftu
+title: Představení ASP.NET webových stránek – zobrazení dat | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se dozvíte, jak vytvořit databázi v nástroji WebMatrix a způsob zobrazení dat z databáze na stránce při použití webových stránek ASP.NET (Razor). Předpokládá y...
+description: V tomto kurzu se dozvíte, jak vytvořit databázi v WebMatrixu a jak zobrazit databázová data na stránce, když používáte webové stránky ASP.NET (Razor). Předpokládá y...
 ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: b3a006a0-3ea2-4d45-b833-e20e3a3c0a1a
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/displaying-data
 msc.type: authoredcontent
 ms.openlocfilehash: 9e665ca8dd064c23a8b8bd3593014969d0c3da48
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65128521"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78525219"
 ---
-# <a name="introducing-aspnet-web-pages---displaying-data"></a>Úvod do webových stránek ASP.NET – zobrazení dat
+# <a name="introducing-aspnet-web-pages---displaying-data"></a>Představení ASP.NET webových stránek – zobrazení dat
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> V tomto kurzu se dozvíte, jak vytvořit databázi v nástroji WebMatrix a způsob zobrazení dat z databáze na stránce při použití webových stránek ASP.NET (Razor). Předpokládá, že jste dokončili řady prostřednictvím [Úvod do programování webových stránek ASP.NET](../introducing-razor-syntax-c.md).
+> V tomto kurzu se dozvíte, jak vytvořit databázi v WebMatrixu a jak zobrazit databázová data na stránce, když používáte webové stránky ASP.NET (Razor). Předpokládá, že jste dokončili řadu prostřednictvím [úvodu do programování webových stránek ASP.NET](../introducing-razor-syntax-c.md).
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Jak vytvořit databázi a databázových tabulek pomocí nástroje WebMatrix.
-> - Jak přidat data do databáze pomocí nástroje WebMatrix.
+> - Jak pomocí nástrojů WebMatrix vytvořit databázi a tabulky databáze.
+> - Jak pomocí nástrojů WebMatrix přidat data do databáze.
 > - Jak zobrazit data z databáze na stránce.
-> - Jak spouštět SQL příkazy v rozhraní ASP.NET Web Pages.
-> - Jak přizpůsobit `WebGrid` pomocná Změna zobrazených dat a přidání stránkování a řazení.
+> - Spuštění příkazů SQL na webových stránkách ASP.NET
+> - Postup přizpůsobení pomocníka `WebGrid` pro změnu zobrazení dat a přidání stránkování a řazení
 >   
 > 
 > Popsané funkce a technologie:
 > 
-> - Databázové nástroje WebMatrix.
-> - `WebGrid` pomocné rutiny.
+> - Nástroje databáze WebMatrix
+> - Pomocná `WebGrid`
 
-## <a name="what-youll-build"></a>Co budete vytvářet
+## <a name="what-youll-build"></a>Co sestavíte
 
-V předchozím kurzu jste se seznámili s pro webové stránky ASP.NET (*.cshtml* soubory), základní informace o syntaxi Razor a pomocné rutiny. V tomto kurzu budete začít vytvářet skutečné webové aplikace, které budete používat pro zbývající části této série. Aplikace je jednoduché filmové aplikace, která umožňuje zobrazit, přidat, změnit nebo odstranit informace o filmech.
+V předchozím kurzu jste se zavedli k ASP.NETí webových stránek (soubory *. cshtml* ) k základům syntaxe Razor a pomocníkům. V tomto kurzu začnete vytvářet vlastní webovou aplikaci, kterou použijete pro zbytek řady. Aplikace je jednoduchá aplikace pro video, která umožňuje zobrazovat, přidávat, měnit a odstraňovat informace o filmech.
 
-Až budete hotovi s tímto kurzem, budete moci zobrazit výpis film, který vypadá jako na této stránce:
+Až budete s tímto kurzem hotovi, budete moct zobrazit seznam filmů, který vypadá jako tato stránka:
 
-![WebGrid zobrazení, která obsahuje parametry nastavena na názvy tříd šablon stylů CSS](displaying-data/_static/image1.png)
+![Zobrazení webgridu obsahující parametry nastavené na názvy tříd šablon stylů CSS](displaying-data/_static/image1.png)
 
-Ale pokud chcete začít, je nutné vytvořit databázi.
+Chcete-li však začít, je nutné vytvořit databázi.
 
-## <a name="a-very-brief-introduction-to-databases"></a>Velmi stručný úvod do databáze
+## <a name="a-very-brief-introduction-to-databases"></a>Velmi stručný úvod k databázím
 
-V tomto kurzu budou poskytovat jenom briefest Úvod do databáze. Pokud máte zkušenosti s databáze, můžete přeskočit Tento krátký oddíl.
+Tento kurz vám poskytne jenom nejstručnější Úvod k databázím. Pokud máte zkušenosti s databází, můžete tuto krátkou část přeskočit.
 
-Databáze obsahuje jednu nebo více tabulek, které obsahují informace &mdash; například tabulky pro zákazníky, objednávky a dodavatele, nebo pro studenty, učitelé, třídy a třídy. Databázové tabulky strukturálně, je jako tabulku. Představte typické adresáře. Pro každou položku v adresáři (to znamená, že pro každou osobu) mají různé druhy informace, jako je jméno, příjmení, adresu, e-mailovou adresu a telefonní číslo.
+Databáze obsahuje jednu nebo více tabulek, které obsahují informace &mdash; například tabulky pro zákazníky, objednávky a dodavatele nebo pro studenty, učitele, třídy a třídy. Struktura databáze je jako tabulka. Představte si typický adresář. Pro každou položku v adresáři (tj. pro jednotlivé osoby) máte několik informací, jako je křestní jméno, příjmení, adresa, e-mailová adresa a telefonní číslo.
 
-![Ukázkové tabulky databáze jako jednoduchý mřížky](displaying-data/_static/image2.png)
+![Ukázková databázová tabulka jako jednoduchá mřížka](displaying-data/_static/image2.png)
 
-(Řádky jsou někdy označovány jako *záznamy*, a sloupce jsou někdy označovány jako *pole*.)
+(Řádky jsou někdy označovány jako *záznamy*a sloupce jsou někdy označovány jako *pole*.)
 
-Pro většinu tabulky databáze v tabulce musí mít sloupec, který obsahuje jedinečná hodnota, například zákaznické číslo, číslo účtu a tak dále. Tato hodnota se označuje jako v tabulce *primární klíč*, a můžete ji použít k identifikaci každý řádek v tabulce. V tomto příkladu je ID sloupce primární klíč pro adresář je znázorněno v předchozím příkladu.
+U většiny tabulek databáze musí mít tabulka sloupec, který obsahuje jedinečnou hodnotu, třeba číslo zákazníka, číslo účtu atd. Tato hodnota se označuje jako *primární klíč*tabulky a používá se k identifikaci každého řádku v tabulce. V tomto příkladu je sloupec ID primárním klíčem pro adresář uvedený v předchozím příkladu.
 
-Velká část práce, kterou provedete v webových aplikací se skládá z čtení informací z databáze a jeho zobrazení na stránce. Kromě toho často budete shromažďovat informace od uživatelů a přidejte ho do databáze, nebo upravíte záznamy, které jsou již v databázi. (Probereme všechny tyto operace v této sérii kurzů.)
+Většina práce v rámci webových aplikací se skládá z informací o čtení z databáze a jejich zobrazení na stránce. Také často shromáždíte informace od uživatelů a přidáte je do databáze nebo upravíte záznamy, které jsou již v databázi. (Všechny tyto operace pokryjeme v průběhu této sady kurzů.)
 
-Pracovní databáze může být enormously složité a můžou vyžadovat, aby specializované znalosti. Pro tuto sérii kurzů, musíte pochopit pouze základní koncepty, které budou všechny vysvětlena průběžně.
+Práce v databázi může být mimořádně složitá a může vyžadovat specializované znalosti. V této sadě kurzů je ale potřeba pochopit jenom základní koncepty, které budou vysvětlené.
 
 ## <a name="creating-a-database"></a>Vytvoření databáze
 
-Služba WebMatrix obsahuje nástroje, které umožňují snadno vytvořit databázi a vytvoření tabulky v databázi. (Struktura databáze se označuje jako databáze *schématu*.) Pro tuto sérii kurzů, vytvoříte databázi, která obsahuje pouze jednu tabulku v něm &mdash; videa.
+WebMatrix obsahuje nástroje, které usnadňují vytváření databází a vytváření tabulek v databázi. (Struktura databáze je označována jako *schéma*databáze.) Pro tuto sadu kurzů vytvoříte databázi, která má v ní jenom jednu tabulku &mdash; filmy.
 
-Otevřete nástroj WebMatrix, pokud jste tak již neučinili a otevřete web WebPagesMovies, kterou jste vytvořili v předchozím kurzu.
+Otevřete WebMatrix, pokud jste to ještě neudělali, a otevřete web WebPagesMovies, který jste vytvořili v předchozím kurzu.
 
-V levém podokně klikněte **databáze** pracovního prostoru.
+V levém podokně klikněte na pracovní prostor **databáze** .
 
-![Karta WebMatrix databáze pracovního prostoru](displaying-data/_static/image3.png)
+![Karta pracovní prostor databáze WebMatrix](displaying-data/_static/image3.png)
 
-Pásu karet se změní a objeví úloh souvisejících s databází. Na pásu karet klikněte na tlačítko **novou databázi**.
+Pás karet se změní na Zobrazit úlohy týkající se databáze. Na pásu karet klikněte na možnost **Nová databáze**.
 
-!['Nové databáze' tlačítko na pásu karet nástroje WebMatrix](displaying-data/_static/image4.png)
+![Tlačítko Nová databáze na pásu karet WebMatrixu](displaying-data/_static/image4.png)
 
-Služba WebMatrix vytvoří databázi SQL Server CE ( *SDF* soubor), který má stejný název jako lokalitu pro &mdash; *WebPagesMovies.sdf*. (Není to zde, ale můžete přejmenovat soubor na cokoli, co vám vyhovuje, za předpokladu, má *SDF* rozšíření.)
+WebMatrix vytvoří databázi SQL Server CE (soubor *. sdf* ), která má stejný název jako web &mdash; *WebPagesMovies. sdf*. (Tady to neuděláte, ale tento soubor můžete přejmenovat na cokoli, co byste chtěli, pokud má příponu *. sdf* .)
 
 ## <a name="creating-a-table"></a>Vytvoření tabulky
 
-Na pásu karet klikněte na tlačítko **nová tabulka**. Služba WebMatrix otevře na nové kartě návrháře tabulky. (Pokud není k dispozici možnost nové tabulky, ujistěte se, že se nová databáze je vybraný ve stromovém zobrazení na levé straně.)
+Na pásu karet klikněte na možnost **Nová tabulka**. WebMatrix otevře Návrháře tabulky na nové kartě. (Pokud možnost Nová tabulka není dostupná, ujistěte se, že je ve stromovém zobrazení vlevo vybraná nová databáze.)
 
-!['Nové tabulky' tlačítko na pásu karet nástroje WebMatrix](displaying-data/_static/image5.png)
+![Tlačítko Nová tabulka na pásu karet WebMatrixu](displaying-data/_static/image5.png)
 
-Do textového pole v horní části stránky (kde vodoznak říká "Zadejte název tabulky") zadejte "Filmy".
+Do textového pole v horní části (kde vodoznak říká "zadat název tabulky") zadejte "filmy".
 
-![Zadání názvu tabulky v Návrháři databáze pro službu WebMatrix](displaying-data/_static/image6.png)
+![Zadání názvu tabulky v Návrháři databáze WebMatrix](displaying-data/_static/image6.png)
 
-V podokně pod název tabulky je tady můžete definovat jednotlivých sloupců. Pro *filmy* tabulky v tomto kurzu vytvoříte pouze několik sloupců: *ID*, *Title*, *žánr*, a *rok*.
+V podokně pod názvem tabulky je místo, kde můžete definovat jednotlivé sloupce. V tabulce *filmy* v tomto kurzu vytvoříte pouze několik sloupců: *ID*, *název*, *Žánr*a *rok*.
 
-V **název** zadejte "ID". Zadáním hodnoty tady aktivuje všechny ovládací prvky pro nový sloupec.
+Do pole **název** zadejte "ID". Zadáním hodnoty aktivujete všechny ovládací prvky nového sloupce.
 
-Záložku **datový typ** seznam a zvolte **int**. Tato hodnota určuje, že sloupec ID bude obsahovat data o celé číslo (číslo).
+Na seznam **datový typ** a vyberte **int**. Tato hodnota určuje, že sloupec ID bude obsahovat data typu Integer (number).
 
 > [!NOTE]
-> Nebude voláme ho žádné najdete tady (mnohem), ale můžete použít standardní klávesnice gesta Windows pro navigaci v této mřížce. Například můžete vytvořit kartu mezi poli, stačí začít psát, abyste mohli vybrat položku v seznamu a tak dále.
+> Tady ji nebudeme volat (mnoho), ale k navigaci v této mřížce můžete použít standardní gesta klávesnice Windows. Například můžete zadat tabulátor mezi poli, stačí začít psát, aby bylo možné vybrat položku v seznamu, a tak dále.
 
-Karta minulé **výchozí hodnota** pole (to znamená, že necháte prázdné). Záložku **je primární klíč** zaškrtněte políčko a vyberte ji. Tato možnost informuje databázi, která *ID* sloupec bude obsahovat data, která identifikuje jednotlivé řádky. (To znamená, že každý řádek bude mít jedinečnou hodnotu ve sloupci ID, který vám pomůže najít tento řádek.)
+Karta s výchozím polem s **výchozí hodnotou** (tj. ponechte prázdné) Na kartu **je primární klíč** a vyberte ji. Tato možnost oznamuje databázi, že sloupec *ID* bude obsahovat data, která identifikují jednotlivé řádky. (To znamená, že každý řádek bude mít jedinečnou hodnotu ve sloupci ID, který můžete použít k vyhledání tohoto řádku.)
 
-Zvolte **je identita** možnost. Tato možnost informuje databázi, má automaticky generovat další pořadové číslo pro každý nový řádek. ( **Je identita** možnost funguje pouze v případě, že jste vybrali **je primární klíč** možnost.)
+Vyberte možnost **je identita** . Tato možnost oznamuje databázi, že by měla automaticky generovat další sekvenční číslo pro každý nový řádek. (Možnost **is identity** funguje pouze v případě, že jste vybrali také možnost **je primární klíč** .)
 
-Klikněte na další řádek mřížky nebo stisknutím klávesy Tab dvakrát na dokončení aktuální řádek. Buď gesta uloží aktuální řádek a spustí další příkaz. Všimněte si, že **výchozí hodnota** sloupce teď uvádí, že **Null**. (Null je výchozí hodnota pro výchozí hodnotu, takže na speak.)
+Kliknutím na řádek další mřížky nebo dvojím stisknutím klávesy TAB dokončete aktuální řádek. Buď gesto uloží aktuální řádek a spustí další. Všimněte si, že sloupec **Výchozí hodnota** nyní říká **hodnotu null**. (Výchozí hodnota je null, takže se má mluvit.)
 
-Až dokončíte definování nového **ID** sloupec, Návrhář bude vypadat jako na tomto obrázku:
+Po dokončení definování sloupce nový **identifikátor** bude Návrhář vypadat jako na následujícím obrázku:
 
-![Služba WebMatrix návrháře databáze po definování ID sloupce pro tabulku filmy](displaying-data/_static/image7.png)
+![Návrhář databáze WebMatrix po definování sloupce ID pro tabulku filmů](displaying-data/_static/image7.png)
 
-Chcete-li vytvořit další sloupce, klikněte do pole ve **název** sloupce. Zadejte "Title" pro sloupec a pak vyberte **nvarchar** pro **datový typ** hodnotu. Část "var" **nvarchar** říká databáze, že data pro tento sloupec bude řetězec, jehož velikost může lišit od záznamu. (Předpona "n" představuje "national", což znamená, že pole může obsahovat znak data pro jakékoli abecedy nebo systému zápisu – to znamená, že pole obsahuje data ve formátu Unicode.)
+Chcete-li vytvořit další sloupec, klikněte do pole ve sloupci **název** . Zadejte "title" pro sloupec a pak pro hodnotu **datového typu** vyberte **nvarchar** . Část "var" v rámci **nvarchar** oznamuje databázi, že data pro tento sloupec budou řetězcem, jehož velikost se může lišit od záznamu k záznamu. (Předpona "n" představuje "National", což znamená, že pole může obsahovat znaková data pro libovolný abecední nebo systém zápisu – to znamená, že pole obsahuje data v kódování Unicode.)
 
-Pokud zvolíte **nvarchar**, zobrazí se jiné pole, ve kterém můžete zadat maximální počet znaků pro pole. Zadejte hodnotu 50, za předpokladu, že žádný název filmu, budete pracovat v tomto kurzu bude delší než 50 znaků.
+Když zvolíte **nvarchar**, zobrazí se další okno, kde můžete zadat maximální délku pole. Zadejte 50, na předpokladu, že žádný název videa, se kterým budete v tomto kurzu pracovat, bude delší než 50 znaků.
 
-Přeskočit **výchozí hodnota** a zrušte **Allow Nulls** možnost. Nechcete databáze, kterou chcete povolit všechny filmy se zapisují do databáze, které nemají název.
+Přeskočte **výchozí hodnotu** a zrušte zaškrtnutí možnosti **Povolení hodnot null** . Nechcete, aby databáze povolovala zadávání filmů do databáze, která nemá název.
 
-Když jste hotovi a přechod na další řádek, Návrhář bude vypadat jako na tomto obrázku:
+Až skončíte a přejdete na další řádek, Návrhář bude vypadat jako na následujícím obrázku:
 
-![Služba WebMatrix návrháře databáze po definování název sloupce pro tabulku filmy](displaying-data/_static/image8.png)
+![Návrhář databáze WebMatrix po definování sloupce nadpisu pro tabulku filmů](displaying-data/_static/image8.png)
 
-Opakováním těchto kroků můžete vytvořit sloupec s názvem "Žánr", s výjimkou délky, nastavte ho na právě 30.
+Zopakováním těchto kroků vytvoříte sloupec s názvem "Žánr", s výjimkou délky, nastavíte ho pouze na 30.
 
-Vytvořit jiný sloupec s názvem "Rok." Datový typ, zvolte **nchar** (ne **nvarchar**) a nastavit délku 4. Za rok budete používat 4 číslice jako "1995" nebo "2010", takže nevyžadují proměnlivé velikosti sloupce.
+Vytvořte další sloupec s názvem "Year". Pro datový typ vyberte možnost **nchar** (ne **nvarchar**) a nastavte délku na 4. V roce budete používat čtyřmístné číslo, například "1995" nebo "2010", takže nebudete potřebovat sloupec s proměnlivou velikostí.
 
-Zde je, jak vypadá dokončení návrhu:
+Tento návrh vypadá takto:
 
-![Služba WebMatrix návrháře databáze po všechna pole jsou definována pro tabulku filmy](displaying-data/_static/image9.png)
+![Návrhář databáze WebMatrix po definování všech polí pro tabulku filmů](displaying-data/_static/image9.png)
 
-Stisknutím klávesy Ctrl + S nebo kliknutím **Uložit** tlačítko na panelu nástrojů Rychlý přístup. Když zavřete kartu zavřete návrháře databáze.
+Stiskněte klávesy CTRL + S nebo klikněte na tlačítko **Uložit** na panelu nástrojů Rychlý přístup. Zavřete okno návrháře databáze zavřením karty.
 
-## <a name="adding-some-example-data"></a>Přidání některých ukázková Data
+## <a name="adding-some-example-data"></a>Přidání ukázkových dat
 
-Dále v této sérii kurzů vytvoříte stránky, kde můžete zadat nové filmy ve formuláři. Prozatím se však můžete přidat některé ukázková data, která pak můžete zobrazit na stránce.
+Později v této sérii kurzů vytvoříte stránku, kde můžete do formuláře zadat nové filmy. Teď ale můžete přidat některá ukázková data, která pak můžete zobrazit na stránce.
 
-V **databáze** pracovního prostoru v nástroji WebMatrix, Všimněte si, že je strom, který ukazuje *SDF* souborů, které jste vytvořili dříve. Otevřete uzel nové *SDF* souboru a pak otevřete **tabulky** uzlu.
+V pracovním prostoru **databáze** ve WebMatrixu si všimněte, že je k dispozici strom, který vám ukáže soubor *. sdf* , který jste vytvořili dříve. Otevřete uzel nového souboru *. sdf* a pak otevřete uzel **tabulky** .
 
-![Služba WebMatrix databáze pracovního prostoru s stromu otevřít na filmy tabulku](displaying-data/_static/image10.png)
+![Pracovní prostor databáze WebMatrix se stromovou strukturou otevřenou v tabulce filmů](displaying-data/_static/image10.png)
 
-Klikněte pravým tlačítkem myši **filmy** uzlu a pak zvolte možnost **Data**. Služba WebMatrix se otevře do mřížky, kde můžete zadat data pro *filmy* tabulky:
+Klikněte pravým tlačítkem myši na uzel **filmy** a pak zvolte **data**. WebMatrix otevře mřížku, kde můžete zadat data pro tabulku *filmů* :
 
-![Databáze položky mřížky ve službě WebMatrix (prázdné)](displaying-data/_static/image11.png)
+![Mřížka položky databáze ve WebMatrixu (prázdná)](displaying-data/_static/image11.png)
 
-Klikněte na tlačítko **název** sloupci a zadejte "Při Harry splněny Sally". Přesunout **žánr** sloupce (můžete použít klávesu Tab) a zadejte "Milostné komedie". Přesunout **rok** sloupci a zadejte "1989":
+Klikněte na sloupec **název** a zadejte "when Harry Met Sally". Přejděte do sloupce **Žánr** (můžete použít klávesu TAB) a zadat "Romantic komedie". Přejděte do sloupce **year (rok** ) a zadejte "1989":
 
-![Položky mřížky databáze v nástroji WebMatrix s jedním záznamem](displaying-data/_static/image12.png)
+![Mřížka záznamů databáze ve WebMatrixu s jedním záznamem](displaying-data/_static/image12.png)
 
-Stisknutím klávesy Enter a službě WebMatrix uloží nový film. Všimněte si, **ID** bylo vyplněno sloupce.
+Stiskněte klávesu ENTER a WebMatrix uloží nový film. Všimněte si, že sloupec **ID** byl vyplněn.
 
-![Položky mřížky databáze v nástroji WebMatrix s jedním záznamem a automaticky generovaný kód](displaying-data/_static/image13.png)
+![Mřížka záznamů databáze ve WebMatrixu s jedním záznamem a automaticky generovaným ID](displaying-data/_static/image13.png)
 
-Zadejte jiný film (například "pryč s the větru", "Drama", "1939"). Sloupec ID vyplněno znovu:
+Zadejte jiný film (například "zmizelo s převinutím", "drama", "1939"). Sloupec ID je vyplněn znovu:
 
-![Položky mřížky databáze v nástroji WebMatrix se dva záznamy a automaticky generované ID](displaying-data/_static/image14.png)
+![Mřížka záznamů databáze ve WebMatrixu se dvěma záznamy a automaticky generovanými identifikátory](displaying-data/_static/image14.png)
 
-Zadejte třetí movie (například "Ghostbusters", "Komedie"). Jako experiment, nechat **rok** sloupce prázdné a potom stiskněte klávesu Enter. Protože jste zrušení výběru **Allow Nulls** možnost, ukazuje chybu, databáze:
+Zadejte třetí film (například "Ghostbusters", "komedie"). Jako experiment ponechte sloupec **year** prázdný a potom stiskněte klávesu ENTER. Vzhledem k tomu, že jste nevybrali možnost **povolující hodnoty null** , v databázi se zobrazí chyba:
 
-![Pokud požadovaný sloupec hodnota je prázdné, zobrazí se chyba 'neplatná data.](displaying-data/_static/image15.png)
+![V případě, že je hodnota požadovaného sloupce ponechána prázdná, se zobrazí chyba neplatná data.](displaying-data/_static/image15.png)
 
-Klikněte na tlačítko **OK** přejděte zpět a opravte položka (pole year pro "Ghostbusters" je 1984) a stiskněte klávesu Enter.
+Kliknutím na **OK** se vraťte a opravte položku (rok "Ghostbusters" je 1984) a pak stiskněte ENTER.
 
-Vyplňte několik filmy, dokud nebudete mít 8 nebo tak. (Zadání 8 usnadňuje práci s stránkování později. Ale pokud se jedná o příliš mnoho, zadejte jenom některé zatím.) Skutečná data nezáleží.
+Vyplňte několik filmů, dokud nebudete mít 8 nebo ne. (Zadání 8 usnadňuje práci s stránkováním později. Pokud je ale příliš mnoho, zadejte nyní pouze pár.) Skutečná data nezáleží.
 
-![Položky mřížky databáze v nástroji WebMatrix se buď záznamy](displaying-data/_static/image16.png)
+![Mřížka záznamů databáze ve WebMatrixu s oběma záznamy](displaying-data/_static/image16.png)
 
-Pokud jste zadali všechny filmy bez chyb, jsou hodnoty ID sekvenční. Pokud jste se pokusili uložit záznam neúplné film, nemusí být čísla ID sekvenční. Pokud ano, který je v pořádku. Tato čísla nemají žádné nepsaný význam a jediné, co je důležité je, že jsou jedinečné *filmy* tabulky.
+Pokud jste zadali všechny filmy bez chyb, jsou hodnoty ID sekvenční. Pokud jste se pokusili uložit nekompletní záznam filmu, čísla ID nemusí být sekvenční. Pokud ano, je to v pořádku. Tato čísla nemají žádný podstatný význam a jediný aspekt, který je důležitý, je to, že jsou v tabulce *filmů* jedinečné.
 
 Zavřete kartu, která obsahuje návrháře databáze.
 
-Teď můžete zapnout pro zobrazení těchto dat na webové stránce.
+Nyní můžete tato data zobrazit na webové stránce.
 
-## <a name="displaying-data-in-a-page-by-using-the-webgrid-helper"></a>Zobrazení dat na stránce s využitím pomocné rutiny WebGrid
+## <a name="displaying-data-in-a-page-by-using-the-webgrid-helper"></a>Zobrazení dat na stránce pomocí pomocníka WebGrid
 
-K zobrazení dat na stránce, se chystáte použít `WebGrid` pomocné rutiny. Tato pomocná vytvoří zobrazení v mřížce nebo tabulce (řádků a sloupců). Jak uvidíte, bude možné upravit mřížku formátování a další funkce.
+Chcete-li zobrazit data na stránce, budete používat pomocníka `WebGrid`. Tento Pomocník vytvoří zobrazení v mřížce nebo tabulce (řádky a sloupce). Jak vidíte, budete moct upravit mřížku s využitím formátování a dalších funkcí.
 
-Ke spuštění mřížky, budete muset napsat pár řádků kódu. Těchto několik řádků bude sloužit jako druh vzor pro téměř všechny přístup k datům, které provedete v tomto kurzu.
+Chcete-li spustit mřížku, budete muset napsat pár řádků kódu. Tyto pár řádků budou sloužit jako druh vzoru pro téměř všechna přístup k datům, která v tomto kurzu provedete.
 
 > [!NOTE]
-> Ve skutečnosti máte celou řadu možností pro zobrazení dat na stránce. `WebGrid` pomocné rutiny je jen jednou. Rozhodli jsme se pro účely tohoto kurzu vzhledem k tomu, že je nejjednodušší způsob, jak zobrazit data, a proto je poměrně flexibilní. V následující kurz uvidíte, jak používat další "Ruční" způsob, jak pracovat s daty na stránce, která uděluje více přímou kontrolu nad způsob zobrazení dat.
+> Ve skutečnosti máte spoustu možností, jak zobrazit data na stránce. pomocná rutina `WebGrid` je jenom jedna. Pro tento kurz jsme si ho zvolili, protože je nejjednodušší způsob, jak zobrazit data a protože je rozumně flexibilní. V dalším kurzu se dozvíte, jak použít další "ruční" způsob práce s daty na stránce, což vám umožní lépe nastavit kontrolu nad tím, jak se mají data zobrazovat.
 
-V levém podokně v nástroji WebMatrix, klikněte na tlačítko **soubory** pracovního prostoru.
+V levém podokně WebMatrix klikněte na pracovní prostor **soubory** .
 
-Je nový vytvořená databáze zobrazí v *aplikace\_Data* složky. Pokud složka ještě neexistuje, služba WebMatrix vytvoření nové databáze. (Složka může mít existoval Pokud jste dříve nainstalovali pomocné rutiny.)
+Nová databáze, kterou jste vytvořili, je ve složce *App\_data* . Pokud složka již neexistuje, vytvoří ji WebMatrix pro novou databázi. (Složka může existovat, pokud jste dříve nainstalovali pomocníky.)
 
-Ve stromovém zobrazení vyberte kořenový Web. Musíte vybrat kořenový web; v opačném případě může do aplikace přidá nový soubor\_složku Data.
+Ve stromovém zobrazení vyberte kořen webu. Musíte vybrat kořen webu. v opačném případě může být nový soubor přidán do složky aplikace\_data.
 
-Na pásu karet klikněte na tlačítko **nový**. V **vyberte typ souboru** zvolte **CSHTML**.
+Na pásu karet klikněte na **Nový**. V poli **zvolit typ souboru** vyberte možnost **cshtml**.
 
-V **název** pole, zadejte název nové stránky "Movies.cshtml":
+Do pole **název** zadejte novou stránku filmy. cshtml:
 
-!["Vyberte typ souboru" dialogové okno stránkou "videa.](displaying-data/_static/image17.png)
+![Dialogové okno zvolit typ souboru zobrazující stránku filmy](displaying-data/_static/image17.png)
 
-Klikněte na tlačítko **OK** tlačítko. Služba WebMatrix otevře nový soubor s některé kostru prvky v ní. Nejprve napíšete kód získá data z databáze. Potom přidáte kód na stránku ve skutečnosti zobrazit data.
+Klikněte na tlačítko **OK**. WebMatrix otevře nový soubor s některými kostrami prvku. Nejdřív napíšete nějaký kód, který získá data z databáze. Pak přidáte značku na stránku, kde můžete data ve skutečnosti zobrazit.
 
-### <a name="writing-the-data-query-code"></a>Psaní kódu dotazování dat
+### <a name="writing-the-data-query-code"></a>Zápis kódu dotazu na data
 
-V horní části stránky mezi `@{` a `}` znaky, zadejte následující kód. (Ujistěte se, že zadáte tento kód mezi otevírací a uzavírací závorky.)
+V horní části stránky mezi znaky `@{` a `}` zadejte následující kód. (Nezapomeňte zadat tento kód mezi levou a pravou závorkou.)
 
 [!code-csharp[Main](displaying-data/samples/sample1.cs)]
 
-První řádek se otevře databáze, kterou jste vytvořili dříve, což je vždy první krok před provedením něco s databází. Dáte `Database.Open` metoda název databáze, kterou chcete otevřít. Všimněte si, že nechcete zahrnout *SDF* v názvu. `Open` Metoda předpokládá, že hledá *SDF* souboru (to znamená, *WebPagesMovies.sdf*) a že *SDF* soubor *aplikace\_ Data* složky. (Dříve jsme už uvedli, který *aplikace\_Data* vyhrazené složky; Tento scénář je jeden z míst, kde technologie ASP.NET je předpoklady o tímto názvem.)
+První řádek otevře databázi, kterou jste vytvořili dříve, což je vždy první krok před tím, než bude pracovat s databází. Určíte, `Database.Open` se má název metody pro otevření databáze otevřít. Všimněte si, že do názvu nezahrnete *. sdf* . Metoda `Open` předpokládá, že hledá soubor *. sdf* (to znamená *WebPagesMovies. sdf*) a že soubor *. sdf* je ve složce *App\_data* . (Dříve jsme si poznamenali, že je složka *aplikace\_data* rezervovaná. Tento scénář je jedno z míst, kde ASP.NET provede předpoklady tohoto názvu.)
 
-Při otevření databáze na ni odkaz přejde do proměnné s názvem `db`. (Která by mohla mít název nic.) `db` Proměnná je, jak budete mít nakonec interakce s databází.
+Po otevření databáze je odkaz na ni vložen do proměnné s názvem `db`. (Může se jmenovat cokoli.) `db` proměnná se dozvíte, jak budete pracovat s databází.
 
-Druhý řádek ve skutečnosti načte data databáze s použitím `Query` metody. Všimněte si, jak funguje takto: `db` proměnná obsahuje odkaz na databázi otevřený a je zapotřebí vyvolat `Query` metoda pomocí `db` proměnné (`db.Query`).
+Druhý řádek ve skutečnosti načte data databáze pomocí metody `Query`. Všimněte si, jak tento kód funguje: proměnná `db` má odkaz na otevřenou databázi a vyvolat metodu `Query` pomocí proměnné `db` (`db.Query`).
 
-Je samotný dotaz SQL `Select` příkazu. (Trochu související informace o SQL, viz vysvětlení později.) V příkazu `Movies` identifikuje tabulku pro dotaz. `*` Znaků určuje, že dotaz by měl vrátit všechny sloupce z tabulky. (Může být také seznam sloupců jednotlivě, oddělené čárkami.)
+Samotný dotaz je příkaz SQL `Select`. (Pro malé pozadí o SQL se podívejte na vysvětlení později.) V příkazu `Movies` identifikuje tabulku pro dotaz. Znak `*` určuje, že dotaz by měl vracet všechny sloupce z tabulky. (Můžete také vypsat sloupce jednotlivě a oddělit je čárkami.)
 
-Výsledky dotazu, pokud existuje, jsou vráceny a k dispozici v `selectedData` proměnné. Může mít znovu, název proměnné, cokoli.
+Výsledky dotazu, jsou-li nějaké, jsou vráceny a zpřístupněny v proměnné `selectedData`. Proměnnou lze znovu pojmenovat cokoli.
 
-Nakonec třetí řádek říká technologie ASP.NET, že chcete použít instanci `WebGrid` pomocné rutiny. Vytvoříte (*vytvořit instanci*) pomocný objekt s použitím `new` – klíčové slovo a předat ji přes výsledky dotazu `selectedData` proměnné. Nové `WebGrid` jsou k dispozici v objektu, spolu s výsledky dotazu databáze `grid` proměnné. Bude nutné tento výsledek v tuto chvíli ve skutečnosti zobrazit data na stránce.
+Nakonec třetí řádek oznamuje ASP.NET, že chcete použít instanci pomocné rutiny `WebGrid`. Vytvoříte (vytvořte*instanci*) objektu pomocníka pomocí klíčového slova `new` a předejte ho do výsledků dotazu prostřednictvím proměnné `selectedData`. Nový objekt `WebGrid` společně s výsledky databázového dotazu jsou zpřístupněny v proměnné `grid`. Budete ho potřebovat k tomu, aby se data na stránce skutečně zobrazila.
 
-V této fázi databázi otevřít, zobrazila data mají být, a jste připravili `WebGrid` pomocné rutiny s daty. Dále je vytvoření značky na stránce.
+V této fázi se databáze otevřela, obdrželi jste požadovaná data a Vy jste připravili `WebGrid` pomocná s těmito daty. Dále je možné vytvořit značku na stránce.
 
 > [!TIP] 
 > 
-> **Structured Query Language (SQL)**
+> **Jazyk SQL (Structured Query Language) (SQL)**
 > 
-> SQL je jazyk, který se používá v Většina relačních databází pro správu dat v databázi. Obsahuje příkazy, které umožňují načtení dat a aktualizovat je a, které umožňují vytvářet, upravovat a spravovat data v tabulkách databáze. SQL se liší od programovací jazyk (jako je C#). Pomocí jazyka SQL dáte databáze, co má a je databáze úlohu zjistit, jak získat data nebo provést úlohu. Tady jsou příklady některých příkazů SQL a jejich význam:
+> SQL je jazyk, který se používá ve většině relačních databází pro správu dat v databázi. Obsahuje příkazy, které umožňují načíst data a aktualizovat je a umožňují vytvářet, upravovat a spravovat data v databázových tabulkách. SQL se liší od programovacího jazyka (například C#). V jazyce SQL říkáte databázi, kterou chcete, a její úlohu, abyste zjistili, jak získat data nebo provést úlohu. Tady jsou příklady některých příkazů SQL a jejich možnosti:
 > 
 > `Select * From Movies`
 > 
 > `SELECT ID, Name, Price FROM Product WHERE Price > 10.00 ORDER BY Name`
 > 
-> První `Select` příkaz načte všechny sloupce (určená `*`) z *filmy* tabulky.
+> První příkaz `Select` získá všechny sloupce (určené `*`) z tabulky *filmů* .
 > 
-> Druhá `Select` příkaz načte ID, název a cena sloupce ze záznamů ve *produktu* tabulku, jejíž hodnota sloupce cena je více než 10. Příkaz vrátí výsledky v abecedním pořadí podle hodnot ve sloupci Název. Pokud cenu kritériím neodpovídají žádné záznamy, příkaz vrátí prázdnou sadou.
+> Druhý příkaz `Select` načte sloupce ID, název a ceny ze záznamů v tabulce *produktů* , jejichž hodnota sloupce Price je vyšší než 10. Příkaz vrátí výsledky v abecedním pořadí na základě hodnot sloupce název. Pokud kritéria ceny neodpovídají žádné záznamy, vrátí příkaz prázdnou sadu.
 > 
 > `INSERT INTO Product (Name, Description, Price) VALUES ('Croissant', 'A flaky delight', 1.99)`
 > 
-> Tento příkaz vloží nový záznam do *produktu* tabulku nastavení sloupec název "Croissant", ve sloupci Popis na "Nespolehlivé naprostou spokojenost A" a cena na 1,99.
+> Tento příkaz vloží nový záznam do tabulky *Product* , nastaví sloupec název na "croissant", sloupec s popisem na "" rozsvítit "a cenu na 1,99.
 > 
-> Všimněte si, že když zadáváte nečíselná hodnota, hodnota se udává v jednoduchých uvozovkách (ne dvojitých uvozovek, stejně jako v jazyce C#). Můžete použít tyto uvozovky kolem hodnot textu nebo datum, ale nikoli celého čísla.
+> Všimněte si, že když zadáváte nečíselnou hodnotu, hodnota je uzavřena v jednoduchých uvozovkách (ne v uvozovkách, jako v C#). Tyto uvozovky se používají kolem hodnot text nebo Date, ale ne kolem čísel.
 > 
 > `DELETE FROM Product WHERE ExpirationDate < '01/01/2008'`
 > 
-> Tento příkaz odstraní záznamy *produktu* tabulky, jehož sloupec Datum vypršení platnosti je starší než 1. ledna 2008. (Příkaz předpokládá, že *produktu* tabulka obsahuje sloupce, samozřejmě.) Datum je ve formátu MM/DD/RRRR tady zadáte, ale by měly být zadány ve formátu, který se používá pro vaše národní prostředí.
+> Tento příkaz odstraní záznamy v tabulce *produktů* , jejichž sloupec Datum vypršení platnosti je starší než 1. ledna 2008. (Příkaz předpokládá, že tabulka *produktu* má takový sloupec kurzu.) Datum je zadáno ve formátu MM/DD/RRRR, ale mělo by být zadáno ve formátu používaném pro vaše národní prostředí.
 > 
-> `Insert` a `Delete` příkazy nevracejte sad výsledků dotazu. Místo toho vrátí číslo, které se říká, kolik záznamů byly ovlivněny příkazu.
+> Příkazy `Insert` a `Delete` nevrací sady výsledků dotazu. Místo toho vrátí číslo, které oznamuje, kolik záznamů bylo ovlivněno příkazem.
 > 
-> Pro některé z těchto operací (např. vkládání a odstranění záznamů) proces, který žádá o operaci musí mít příslušná oprávnění v databázi. To je důvod, proč pro produkční databáze je často nutné zadat uživatelské jméno a heslo při připojování k databázi.
+> Pro některé z těchto operací (jako je vkládání a odstraňování záznamů) musí mít proces, který vyžaduje operaci, příslušná oprávnění v databázi. To je důvod, proč pro produkční databáze, které často potřebujete k zadání uživatelského jména a hesla při připojování k databázi.
 > 
-> Existují desítek příkazů SQL, ale všechny se řídí vzorem stejně jako příkazy, kterou tady vidíte. Příkazy SQL můžete použít k vytvoření databázových tabulek, počet záznamů v tabulce, výpočtu ceny a provádět mnoho dalších operacích.
+> Existují spousty příkazů SQL, ale všechny mají stejný vzor jako příkazy, které tady vidíte. Pomocí příkazů SQL můžete vytvořit tabulky databáze, spočítat počet záznamů v tabulce, vypočítat ceny a provádět spoustu dalších operací.
 
-### <a name="adding-markup-to-display-the-data"></a>Přidání značek k zobrazení dat
+### <a name="adding-markup-to-display-the-data"></a>Přidání značek pro zobrazení dat
 
-Uvnitř `<head>` elementu, obsah sady `<title>` element na "Filmy":
+Uvnitř prvku `<head>` nastavte obsah elementu `<title>` na "filmy":
 
 [!code-html[Main](displaying-data/samples/sample2.html?highlight=3)]
 
-Uvnitř `<body>` element na stránce, přidejte následující:
+Do prvku `<body>` stránky přidejte následující:
 
 [!code-html[Main](displaying-data/samples/sample3.html)]
 
-Je to. `grid` Proměnné je hodnota jste vytvořili při vytváření `WebGrid` objekt v kódu výše.
+A to je vše. Proměnná `grid` je hodnota, kterou jste vytvořili při vytváření objektu `WebGrid` v kódu dříve.
 
-Služba WebMatrix stromové zobrazení, klikněte pravým tlačítkem na stránku a vyberte **spustit v prohlížeči**. Zobrazí se stránka podobná této:
+Ve stromovém zobrazení WebMatrix klikněte pravým tlačítkem na stránku a vyberte **Spustit v prohlížeči**. Uvidíte něco jako na této stránce:
 
-![Výchozí WebGrid pomocné rutiny výstup z tabulky filmy](displaying-data/_static/image18.png)
+![Výchozí výstup pomocníka WebGrid z tabulky filmů](displaying-data/_static/image18.png)
 
-Kliknutím na odkaz záhlaví sloupců řadit podle sloupce. Schopnost seřadit klepnutím na záhlaví je funkce, která je integrovaná **WebGrid** pomocné rutiny.
+Kliknutím na odkaz na záhlaví sloupce seřadíte podle sloupce. Možnost řadit kliknutím na záhlaví je funkce, která je integrovaná do pomocné rutiny **WebGrid** .
 
-`GetHtml` Způsob, jak její název napovídá, generuje kód, který se zobrazí data. Ve výchozím nastavení `GetHtml` metoda generuje HTML `<table>` element. (Pokud chcete, můžete ověřit vykreslování zobrazením zdroje stránky v prohlížeči.)
+Metoda `GetHtml`, jak je navržena názvem, vygeneruje kód, který zobrazí data. Ve výchozím nastavení metoda `GetHtml` generuje element `<table>` HTML. (Pokud chcete, můžete vykreslování ověřit tak, že prohlížíte zdroj stránky v prohlížeči.)
 
 ## <a name="modifying-the-look-of-the-grid"></a>Změna vzhledu mřížky
 
-Použití `WebGrid` pomocné rutiny, jako je právě předvedl je jednoduché, ale výsledné zobrazení je jednoduché. `WebGrid` Pomocné rutiny má celou řadu možností, které umožňují řídit, jak se data zobrazí. Existuje příliš mnoho chcete data prozkoumat v tomto kurzu, ale tato část vám poskytne vám představu o některé z těchto možností. V dalších kurzech v tomto seriálu se budeme několik dalších možností.
+Použití pomocníka `WebGrid`, jako jste právě pracovali, je jednoduché, ale výsledný displej je obyčejný. Pomocná rutina `WebGrid` má nejrůznější možnosti, které vám umožní určit, jak se data zobrazují. V tomto kurzu se dá prozkoumat příliš mnoho, ale v této části získáte představu o některých z těchto možností. V dalších kurzech v této sérii bude zahrnuto několik dalších možností.
 
-### <a name="specifying-individual-columns-to-display"></a>Určení jednotlivé sloupce zobrazení
+### <a name="specifying-individual-columns-to-display"></a>Určení jednotlivých sloupců k zobrazení
 
-Pokud chcete začít, můžete určit, že chcete zobrazit jenom určité sloupce. Ve výchozím nastavení, jak už víte, mřížky se zobrazí všechny čtyři sloupce *filmy* tabulky.
+Chcete-li začít, můžete určit, že chcete zobrazit pouze některé sloupce. Ve výchozím nastavení mřížka zobrazuje všechny čtyři sloupce z tabulky *filmů* .
 
-V *Movies.cshtml* souboru, nahradí `@grid.GetHtml()` kód, který jste právě přidali následujícím kódem:
+V souboru *Movies. cshtml* nahraďte kód `@grid.GetHtml()`, který jste právě přidali, následující:
 
 [!code-css[Main](displaying-data/samples/sample4.css)]
 
-Zjistit pomocné rutiny, které sloupce se zobrazí, můžete zahrnout `columns` parametr pro `GetHtml` a předáte v kolekci sloupců. V kolekci zadejte jednotlivé sloupce, které chcete zahrnout. Zadejte jednotlivé sloupce pro zobrazení zahrnutím `grid.Column` objektu a předejte název sloupce dat, který chcete. (Tyto sloupce musí být součástí výsledků dotazu SQL – `WebGrid` pomocné rutiny nemůže zobrazit sloupce, které nebyly vrácených dotazem.)
+Chcete-li říct, které sloupce se mají zobrazit, přidejte do metody `GetHtml` parametr `columns` a předejte kolekci sloupců. V kolekci určíte jednotlivé sloupce, které chcete zahrnout. Určete jednotlivý sloupec, který se má zobrazit, zahrnutím objektu `grid.Column` a předáním názvu sloupce dat, který chcete. (Tyto sloupce musí být zahrnuté do výsledků dotazu SQL – Pomocník pro `WebGrid` nemůže zobrazit sloupce, které dotaz nevrátil.)
 
-Spusťte *Movies.cshtml* stránku v prohlížeči znovu a tentokrát získat zobrazení jako na následující (Všimněte si, že je zobrazen žádný sloupec ID):
+Znovu spusťte stránku *filmy. cshtml* v prohlížeči a tentokrát získáte zobrazení podobné následujícímu (Všimněte si, že se nezobrazuje žádný sloupec ID):
 
 ![Zobrazení WebGrid zobrazující pouze vybrané sloupce](displaying-data/_static/image19.png)
 
 ### <a name="changing-the-look-of-the-grid"></a>Změna vzhledu mřížky
 
-Existuje mnoho další možnosti pro zobrazení sloupce, z nichž některé budeme se zabývat v dalších kurzech v této sadě. Prozatím se v této části vás seznámí s možnosti, ve kterém můžete styl mřížky jako celek.
+Existuje několik možností, jak zobrazit sloupce, některé z nich se budou prozkoumat v pozdějších kurzech v této sadě. V této části se teď seznámíte s možnostmi, jak můžete mřížku stylovat jako celek.
 
-Uvnitř `<head>` části stránky těsně před uzavírací `</head>` značky, přidejte následující `<style>` element:
+V části `<head>` stránky těsně před uzavírací `</head>` značku přidejte následující prvek `<style>`:
 
 [!code-css[Main](displaying-data/samples/sample5.css)]
 
-Tento kód šablony stylů CSS definuje třídy s názvem `grid`, `head`, a tak dále. Můžete také umístit tyto definice stylů v samostatném *.css* souboru a odkaz na stránku. (Ve skutečnosti, můžete to udělat později v této sérii kurzů.) Ale aby to bylo snadné pro účely tohoto kurzu, jsou na stejné stránce, která zobrazuje data.
+Tento kód CSS definuje třídy s názvem `grid`, `head`a tak dále. Tyto definice stylu můžete také vložit do samostatného souboru *. CSS* a propojit je se stránkou. (Ve skutečnosti to uděláte později v této sadě kurzů.) Pro usnadnění tohoto kurzu ale budete mít stejnou stránku, která zobrazuje data.
 
-Teď si můžete nechat `WebGrid` pomocné rutiny k použití těchto tříd style. Pomocná rutina má několik vlastností (například `tableStyle`) pro právě tento účel – k nim přiřadíte název třídy stylu CSS, a tento název třídy je vykreslen jako součást kód, který je vykreslen metodou pomocné rutiny.
+Nyní můžete získat pomoc `WebGrid` pomocníka pro použití těchto tříd stylu. Pomocník má několik vlastností (například `tableStyle`) pouze pro tento účel – přiřadíte mu název třídy stylu CSS a tento název třídy je vykreslen jako součást značky, která je vykreslena pomocí pomocné rutiny.
 
-Změnit `grid.GetHtml` kód tak, že teď vypadá nějak takto:
+Změňte kód `grid.GetHtml` tak, aby vypadal teď jako tento kód:
 
 [!code-css[Main](displaying-data/samples/sample6.css)]
 
-Co je nového v tomto poli je, že jste přidali `tableStyle`, `headerStyle`, a `alternatingRowStyle` parametrů `GetHtml` metody. Tyto parametry jsou nastavené na názvy, které jste přidali před chvílí styly CSS.
+Co je nového tady je, že jste do `GetHtml` metody přidali parametry `tableStyle`, `headerStyle`a `alternatingRowStyle`. Tyto parametry byly nastaveny na názvy stylů CSS, které jste přidali před okamžikem.
 
-Spuštění stránky a tentokrát se zobrazí v mřížce, která vypadá mnohem méně prostý než před:
+Spusťte stránku a tentokrát vidíte mřížku, která vypadá mnohem méně Velká než předtím:
 
-![WebGrid zobrazení, která obsahuje parametry nastavena na názvy tříd šablon stylů CSS](displaying-data/_static/image20.png)
+![Zobrazení webgridu obsahující parametry nastavené na názvy tříd šablon stylů CSS](displaying-data/_static/image20.png)
 
-Abyste zjistili, co `GetHtml` metodou, vygenerované, můžete se podívat na zdroji stránku v prohlížeči. Nebude přejdeme do podrobností tady ale důležité je, že tak, že zadáte parametry jako `tableStyle`, způsobil mřížky mají vygenerovat značky HTML vypadat asi takto:
+Chcete-li zjistit, jaká `GetHtml` metoda vygenerovala, můžete se podívat na zdroj stránky v prohlížeči. Tady nebudeme detailně fungovat, ale důležitým bodem je to, že zadáním parametrů jako `tableStyle`jste způsobili, že mřížka generuje značky HTML jako následující:
 
 `<table class="grid">`
 
-`<table>` Měl značky `class` do ní přidat atribut, který odkazuje na jeden z pravidel šablon stylů CSS, které jste přidali dříve. Tento kód vám zobrazuje základní vzor &mdash; různé parametry pro `GetHtml` metoda umožňují vám odkaz šablon stylů CSS třídy, poté vygeneruje metodu spolu s značky. Co dělat s třídami šablony stylů CSS je na vás.
+K značce `<table>` se přidal atribut `class`, který odkazuje na jedno z pravidel CSS, která jste přidali dříve. Tento kód vám ukáže základní vzor &mdash; různých parametrů pro metodu `GetHtml` umožňují odkazování na třídy CSS, které Metoda generuje společně s označením. To, co s třídami CSS pracujete, je až vám.
 
-## <a name="adding-paging"></a>Přidání stránkování
+## <a name="adding-paging"></a>Přidávání stránkování
 
-Jako poslední úlohy pro účely tohoto kurzu přidáte stránkování mřížky. V tuto chvíli bez obav zobrazíte všechny filmů najednou. Ale pokud jste přidali stovky filmy, zobrazení stránky byste získali dlouho.
+Jako poslední úkol tohoto kurzu přidáte do mřížky stránkování. Momentálně není k dispozici žádný problém k zobrazení všech filmů najednou. Pokud jste ale přidali stovky filmů, bude zobrazení stránky dlouhé.
 
-V kódu stránky, změňte řádek, který vytvoří `WebGrid` objektu v následujícím kódu:
+V kódu stránky změňte řádek, který vytvoří objekt `WebGrid`, na následující kód:
 
 [!code-csharp[Main](displaying-data/samples/sample7.cs)]
 
-Jediný rozdíl oproti před je, že jste přidali `rowsPerPage` parametr, který je nastaven na 3.
+Jediným rozdílem od před je, že jste přidali parametr `rowsPerPage`, který je nastavený na 3.
 
-Spuštění stránky. V mřížce zobrazené na čas prodloužený navigační odkazy, které umožní procházet videa ve vaší databázi 3 řádky:
+Spusťte stránku. Mřížka zobrazuje 3 řádky najednou a navigační odkazy, které vám umožní stránkovat videa ve vaší databázi:
 
-![Zobrazení WebGrid pomocí stránkování](displaying-data/_static/image21.png)
+![Zobrazení webgridu s stránkováním](displaying-data/_static/image21.png)
 
-## <a name="coming-up-next"></a>Chystá se další
+## <a name="coming-up-next"></a>Připravujeme další
 
-V dalším kurzu se dozvíte, jak používat kód Razor a C# k získání vstupu uživatele ve formuláři. Přidáte vyhledávacího pole na stránce videa, abyste našli filmy podle názvu nebo rozšířením podle tematických.
+V dalším kurzu se dozvíte, jak pomocí Razor a C# kódu získat vstup uživatele ve formuláři. Přidáte vyhledávací pole na stránku filmy, abyste mohli hledat filmy podle názvu nebo žánru.
 
-## <a name="complete-listing-for-movies-page"></a>Úplný seznam pro stránku filmy
+## <a name="complete-listing-for-movies-page"></a>Úplný výpis pro stránku filmů
 
 [!code-cshtml[Main](displaying-data/samples/sample8.cshtml)]
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Úvod k programování v prostředí ASP.NET pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
+- [Seznámení s ASP.NET webovým programováním pomocí syntaxe Razor](https://go.microsoft.com/fwlink/?LinkID=202890)
 
 > [!div class="step-by-step"]
 > [Předchozí](intro-to-web-pages-programming.md)
-> [další](form-basics.md)
+> [Další](form-basics.md)

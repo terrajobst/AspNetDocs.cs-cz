@@ -1,177 +1,177 @@
 ---
 uid: web-forms/overview/moving-to-aspnet-20/master-pages
-title: Stránky předlohy | Dokumentace Microsoftu
+title: Stránky předlohy | Microsoft Docs
 author: microsoft
-description: Jednou z klíčových komponent, které mají úspěšné webu je konzistentní vzhled a chování. V technologii ASP.NET 1.x, vývojáři použít uživatelské ovládací prvky k replikaci běžné elem. stránky...
+description: Jedna z klíčových součástí úspěšného webu je konzistentní vzhled a chování. V ASP.NET 1. x vývojáři používali uživatelské ovládací prvky pro replikaci běžné stránky elem...
 ms.author: riande
 ms.date: 02/20/2005
 ms.assetid: 9c0cce4d-efd9-4c14-b0e8-a1a140abb3f4
 msc.legacyurl: /web-forms/overview/moving-to-aspnet-20/master-pages
 msc.type: authoredcontent
 ms.openlocfilehash: 36f2caf7c2c9bcafd22c8f6681c1d6b19fe5078a
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131062"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78567331"
 ---
 # <a name="master-pages"></a>Stránky předlohy
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> Jednou z klíčových komponent, které mají úspěšné webu je konzistentní vzhled a chování. V technologii ASP.NET 1.x, vývojáři použít uživatelské ovládací prvky k replikaci společné prvky stránky do webové aplikace. Jistě, který je možná řešení, pomocí uživatelské ovládací prvky mají určité nevýhody. Například změna pozice ovládacího prvku uživatel vyžaduje změnu více stránek na webu. Uživatelské ovládací prvky se nevykreslují také v návrhovém zobrazení po vloženého na stránce.
+> Jedna z klíčových součástí úspěšného webu je konzistentní vzhled a chování. V ASP.NET 1. x vývojáři používali uživatelské ovládací prvky pro replikaci běžných prvků stránky napříč webovou aplikací. I když je to určitě funkční, používá uživatelské ovládací prvky nějaké nevýhody. Například změna pozice uživatelského ovládacího prvku vyžaduje změnu na více stránkách v rámci lokality. Uživatelské ovládací prvky nejsou vykreslovány v zobrazení Návrh po vložení na stránku.
 
-Jednou z klíčových komponent, které mají úspěšné webu je konzistentní vzhled a chování. V technologii ASP.NET 1.x, vývojáři použít uživatelské ovládací prvky k replikaci společné prvky stránky do webové aplikace. Jistě, který je možná řešení, pomocí uživatelské ovládací prvky mají určité nevýhody. Například změna pozice ovládacího prvku uživatel vyžaduje změnu více stránek na webu. Uživatelské ovládací prvky se nevykreslují také v návrhovém zobrazení po vloženého na stránce.
+Jedna z klíčových součástí úspěšného webu je konzistentní vzhled a chování. V ASP.NET 1. x vývojáři používali uživatelské ovládací prvky pro replikaci běžných prvků stránky napříč webovou aplikací. I když je to určitě funkční, používá uživatelské ovládací prvky nějaké nevýhody. Například změna pozice uživatelského ovládacího prvku vyžaduje změnu na více stránkách v rámci lokality. Uživatelské ovládací prvky nejsou vykreslovány v zobrazení Návrh po vložení na stránku.
 
-Technologie ASP.NET 2.0 přináší hlavní stránky, které umožňují udržování konzistentní vzhled a chování a při brzy zobrazí, hlavní stránky představují výrazným vylepšením přes metody uživatelského ovládacího prvku.
+ASP.NET 2,0 zavádí stránky předlohy jako způsob zachování konzistentního vzhledu a chování, jak budete brzy vidět, stránky předlohy představují významné vylepšení nad metodou uživatelského ovládacího prvku.
 
-## <a name="why-master-pages"></a>Stránky předlohy proč?
+## <a name="why-master-pages"></a>Proč stránky předlohy?
 
-Asi vás zajímá proč byly potřeba stránky předlohy v technologii ASP.NET 2.0. Po všech webu vývojáři už používají uživatelské ovládací prvky v technologii ASP.NET 1.x sdílet oblasti obsahu mezi stránkami. Existuje ve skutečnosti několik důvodů, proč jsou méně než optimální řešení pro vytvoření rozložení platného pro běžné uživatelské ovládací prvky.
+Možná vás zajímá, proč byly stránky předlohy potřeba v ASP.NET 2,0. Po všech webech již vývojáři webů používají uživatelské ovládací prvky v ASP.NET 1. x ke sdílení oblastí obsahu mezi stránkami. Existuje několik důvodů, proč jsou uživatelské ovládací prvky řešením pro vytváření společného rozložení méně než optimální.
 
-Uživatelské ovládací prvky nejsou ve skutečnosti definovat rozložení stránky. Místo toho že definují rozložení a funkce pro části stránky. Rozdíl mezi těmito dvěma je důležité, protože to ztěžuje možnosti správy řešení řízení uživatele mnohem obtížnější. Například pokud chcete změnit umístění uživatelský ovládací prvek na stránce, musíte upravit Skutečná stránka, na kterém se zobrazí uživatelského ovládacího prvku. Pokud máte pouze několik stránek, ale u velkých webů, bude rychle připomínající správy lokality přesně nastavit thats!
+Uživatelské ovládací prvky ve skutečnosti nedefinují rozložení stránky. Místo toho definují rozložení a funkčnost pro část stránky. Rozdíl mezi těmito dvěma je důležitý, protože usnadňuje správu řešení uživatelského ovládacího prvku mnohem obtížnější. Například pokud chcete změnit pozici uživatelského ovládacího prvku na stránce, musíte upravit aktuální stránku, na které se uživatelský ovládací prvek zobrazuje. To je dobré, pokud máte jenom pár stránek, ale ve velkých lokalitách se rychle stávají Nightmare správy webů!
 
-Jiné nevýhodou uživatelské ovládací prvky pro definování obecné rozložení je integrován v architektuře ASP.NET sám. Pokud žádný veřejný člen uživatelský ovládací prvek se změní, vyžaduje, abyste znovu kompilovat všechny stránky, které používají uživatelského ovládacího prvku. Pak ASP.NET se pak přistupuje stránky při prvním opakovanou kompilaci JIT. To, znovu vytvoří – a škálovatelnou architekturu a problém Správa lokality pro větší weby.
+Další nevýhodou použití uživatelských ovládacích prvků pro definování společného rozložení je kořenová architektura ASP.NET sama o sobě. Pokud je některý veřejný člen uživatelského ovládacího prvku změněn, je nutné znovu kompilovat všechny stránky, které používají uživatelský ovládací prvek. ASP.NET pak znovu vytvoří JIT stránky při prvním použití. Jednou z nich vznikne neškálovatelná architektura a problém správy lokality pro větší weby.
 
-Oba tyto problémy (a mnoho dalších) se přehledně řešit stránky předlohy v technologii ASP.NET 2.0.
+Oba tyto problémy (a mnoho dalších) jsou řešeny stránkami předlohy v ASP.NET 2,0.
 
 ## <a name="how-master-pages-work"></a>Jak fungují stránky předlohy
 
-Je obdobou do šablony pro jiné stránky na stránku předlohy. Prvky stránky, které by se měla sdílet mezi další stránky (tj. nabídky, ohraničení atd.) jsou přidány k hlavní stránce. Při přidání nové stránky do lokality, můžete je přiřadit se stránkou předlohy. Na stránce, který je spojen se stránkou předlohy se nazývá **stránku obsahu**. Ve výchozím nastavení převezme obsahu stránky vzhledu ze stránky předlohy. Při vytváření stránky předlohy, ale můžete definovat části stránky, která stránku obsahu můžete nahradit vlastní obsah. Tyto části jsou definovány pomocí nového ovládacího prvku zavedené v ASP.NET 2.0. **ContentPlaceHolder** ovládacího prvku.
+Stránka předlohy je podobná šabloně pro jiné stránky. Prvky stránky, které by měly být sdíleny mezi ostatními stránkami (tj. nabídky, ohraničení atd.), jsou přidány do stránky předlohy. Když jsou do webu přidány nové stránky, můžete je přidružit k hlavní stránce. Stránka, která je přidružena k hlavní stránce, se nazývá **stránka obsahu**. Ve výchozím nastavení se stránka obsahu převezme na základě vzhledu stránky předlohy. Při vytváření stránky předlohy ale můžete definovat části stránky, které může stránka obsahu nahradit vlastním obsahem. Tyto části jsou definované pomocí nového ovládacího prvku zavedeného v ASP.NET 2,0; ovládací prvek **ContentPlaceHolder**
 
-Hlavní stránka může obsahovat libovolný počet ovládacích prvků ContentPlaceHolder (nebo vůbec žádné.) Na stránce obsahu, zobrazí se obsah z ovládacích prvků ContentPlaceHolder uvnitř **obsah** ovládací prvky, jiné nový ovládací prvek v technologii ASP.NET 2.0. Ve výchozím nastavení jsou prázdné stránky obsahu, který ovládací prvky obsahu, tak, že poskytnete vlastní obsah. Pokud chcete použít obsah z hlavní stránky uvnitř ovládacích prvků obsahu, můžete udělat tak, jak uvidíte později v tomto modulu. Ovládací prvek obsahu se mapuje na ovládací prvek ContentPlaceHolder prostřednictvím atribut ContentPlaceHolderID ovládacího prvku obsahu. Ovládací prvek obsahu níže mapy kódu na ovládací prvek ContentPlaceHolder volá mainBody na hlavní stránce.
+Stránka předlohy může obsahovat libovolný počet ovládacích prvků ContentPlaceHolder (nebo žádný vůbec). Na stránce obsah se zobrazí obsah z ovládacích prvků ContentPlaceHolder v ovládacích prvcích **obsahu** , další nový ovládací prvek v ASP.NET 2,0. Ve výchozím nastavení jsou ovládací prvky obsahu stránky obsahu prázdné, takže můžete poskytovat vlastní obsah. Pokud chcete použít obsah ze stránky předlohy v rámci ovládacích prvků obsahu, můžete tak učinit, protože se později zobrazí v tomto modulu. Ovládací prvek obsahu je namapován na ovládací prvek ContentPlaceHolder prostřednictvím atributu ContentPlaceHolderID ovládacího prvku Content. Následující kód mapuje ovládací prvek obsahu na ovládací prvek ContentPlaceHolder s názvem mainBody na stránce předlohy.
 
 [!code-aspx[Main](master-pages/samples/sample1.aspx)]
 
 > [!NOTE]
-> Často se poslechněte si lidé popisují hlavní stránky jako základní třída pro jiné stránky. Thats ve skutečnosti není pravda. Vztah mezi hlavní stránky a stránky obsahu není jedním dědičnosti.
+> Často uslyšíte, že uživatelé popisují stránky předlohy jako základní třídu pro jiné stránky. Které ve skutečnosti nejsou pravdivé. Vztah mezi stránkami předloh a stránkami obsahu není jedním z dědičnosti.
 
-**Obrázek 1** ukazuje na stránku předlohy a související stránky obsahu, jak se objeví v sadě Visual Studio 2005. Zobrazí se ovládací prvek ContentPlaceHolder na stránce předlohy a odpovídající ovládací prvek na stránce obsahu obsahu. Všimněte si, že obsah stránky předlohy, která je mimo ContentPlaceHolder je zobrazena šedě na stránce obsahu, ale. Pouze obsah uvnitř ContentPlaceHolder může být nahrazen stránky obsahu. Veškerý obsah, který přichází z hlavní stránka je neměnný.
+**Obrázek 1** ukazuje stránku předlohy a přidruženou stránku obsahu, jak se zobrazují v aplikaci Visual Studio 2005. Ovládací prvek ContentPlaceHolder lze zobrazit na stránce předlohy a odpovídající ovládací prvek obsahu na stránce obsah. Všimněte si, že obsah stránek předlohy, který je mimo prvek ContentPlaceHolder, je viditelný, ale šedý na stránce obsahu. Stránka obsahu může supplanted jenom obsah uvnitř ovládacího prvku ContentPlaceHolder. Veškerý další obsah, který pochází ze stránky předlohy, je neměnný.
 
-![Stránky předlohy a stránky jeho přidružené obsahu](master-pages/_static/image1.jpg)
+![Stránka předlohy a její přidružená stránka obsahu](master-pages/_static/image1.jpg)
 
-**Obrázek 1**: Stránky předlohy a stránky jeho přidružené obsahu
+**Obrázek 1**: Stránka předlohy a její přidružená stránka obsahu
 
 ## <a name="creating-a-master-page"></a>Vytvoření stránky předlohy
 
-Pokud chcete vytvořit novou stránku předlohy:
+Vytvoření nové stránky předlohy:
 
-1. Otevřít Visual Studio 2005 a vytvořit nový web.
-2. Klikněte na soubor, nový, souboru.
-3. Zvolte soubor předlohové z tohoto dialogového okna Přidat novou položku, jak je znázorněno v **obrázek 2**.
-4. Klikněte na tlačítko Přidat.
+1. Otevřete Visual Studio 2005 a vytvořte nový web.
+2. Klikněte na soubor, nový, soubor.
+3. V dialogovém okně Přidat novou položku vyberte hlavní soubor, jak je znázorněno na **obrázku 2**.
+4. Klikněte na Přidat.
 
-![Vytváří se nová stránka předlohy](master-pages/_static/image2.jpg)
+![Vytvoření nové stránky předlohy](master-pages/_static/image2.jpg)
 
-**Obrázek 2**: Vytváří se nová stránka předlohy
+**Obrázek 2**: vytvoření nové stránky předlohy
 
-Všimněte si, že přípona souboru pro hlavní stránku *.master*. Toto je jeden ze způsobů, jak se liší od běžné stránky na stránku předlohy. Hlavní rozdíl je, že náhrada @Page direktiv, obsahuje stránky předlohy @Master – direktiva. Přepněte do zobrazení zdroje pro hlavní stránky, které jste právě vytvořili a projděte si kód.
+Všimněte si, že Přípona souboru hlavní stránky je *. Master*. Jedná se o jeden ze způsobů, které se hlavní stránka od obyčejné stránky liší. Druhým hlavním rozdílem je to, že místo direktivy @Page obsahuje stránka předloha direktivu @Master. Přepněte do zobrazení zdroje pro stránku předlohy, kterou jste právě vytvořili, a Prohlédněte si kód.
 
-Novou stránku předlohy, bude mít jeden ovládací prvek ContentPlaceHolder ve výchozím nastavení. Ve většině případů je vhodnější pro nejprve vytvořit společné prvky stránky a pak vkládání ovládacích prvků ContentPlaceHolder kde je žádoucí vlastní obsah. V takových případech budou vývojáři chtějí ovládací prvek ContentPlaceHolder výchozí odstranit a vložit nové, jako je vytvořena na stránce. Ovládací prvky ContentPlaceHolder nejsou umožňující změnu velikosti navzdory tomu, že se zobrazují úchyty pro změnu velikosti. Velikosti ovládacího prvku ContentPlaceHolder automaticky na základě obsahu, který obsahuje s jednou výjimkou; Pokud například buňky tabulky ovládací prvek ContentPlaceHolder v blokovém elementu, bude velikost podle velikosti prvku.
+Ve výchozím nastavení bude mít nová stránka předlohy jeden ovládací prvek ContentPlaceHolder. Ve většině případů je vhodnější vytvořit nejprve běžné prvky stránky a pak vkládat ovládací prvky ContentPlaceHolder, kde je požadován vlastní obsah. V těchto případech budou vývojáři chtít odstranit výchozí ovládací prvek ContentPlaceHolder a vkládat nové při vývoji stránky. Ovládací prvky ContentPlaceHolder nelze měnit bez ohledu na to, že se zobrazí úchyty pro změnu velikosti. Ovládací prvky ContentPlaceHolder velikost jsou automaticky založeny na obsahu, který obsahuje jedinou výjimku; Umístíte-li ovládací prvek ContentPlaceHolder do bloku elementu, jako je například buňka tabulky, bude velikost podle velikosti elementu.
 
-## <a name="lab-1-working-with-master-pages"></a>Praktické cvičení 1 práce pomocí stránek předlohy
+## <a name="lab-1-working-with-master-pages"></a>Testovací prostředí 1 pracuje se stránkami předlohy
 
-V tomto testovacím prostředí vytvoříte novou stránku předlohy a definovat tři prvky ContentPlaceHolder. Pak vytvoříte novou stránku obsahu a nahraďte obsah z nejméně jeden z ovládacích prvků ContentPlaceHolder.
+V tomto testovacím prostředí vytvoříte novou stránku předlohy a definujete tři ovládací prvky ContentPlaceHolder. Pak vytvoříte novou stránku obsahu a nahradíte obsah alespoň jedním ovládacím prvkům ContentPlaceHolder.
 
-1. Vytvoření hlavní stránky a vložit ovládací prvky ContentPlaceHolder. 
+1. Vytvořte hlavní stránku a vložte ovládací prvky ContentPlaceHolder. 
 
     1. Vytvořte novou stránku předlohy, jak je popsáno výše.
-    2. Odstraňte ovládací prvek ContentPlaceHolder výchozí.
-    3. Vyberte ovládací prvek ContentPlaceHolder kliknutím na vystínovanou horního ohraničení ovládacího prvku a odstraňte ji stisknutím klávesy DELETE na klávesnici.
-    4. Vložit novou tabulku s využitím *záhlaví a na straně* šablony, jak je znázorněno na obrázku 3. Změňte šířku a výšku na 90 % tak, aby celá tabulka je zobrazen v návrháři.
+    2. Odstraní výchozí ovládací prvek ContentPlaceHolder.
+    3. Vyberte ovládací prvek ContentPlaceHolder tím, že kliknete na horní ohraničení ovládacího prvku a pak ho odstraníte stisknutím klávesy DEL na klávesnici.
+    4. Vložte novou tabulku pomocí šablony *záhlaví a strany* , jak je znázorněno na obrázku 3. Změňte šířku a výšku na 90%, aby byla celá tabulka viditelná v návrháři.
 
 ![](master-pages/_static/image3.jpg)
 
 **Obrázek 3**
 
-1. Umístěte kurzor do jednotlivých buněk v tabulce a nastavit *valign* vlastnost *horní*.
-2. Z panelu nástrojů vložte ovládací prvek ContentPlaceHolder v horní buňka v tabulce (buňku záhlaví.)
-3. Když vložíte tento ovládací prvek ContentPlaceHolder, si všimnete, výška řádku bude trvat skoro celou stránku, jak je znázorněno na obrázku 4. Nemusíte mít obavy o, který v tomto okamžiku.
+1. Umístěte kurzor do každé buňky tabulky a nastavte vlastnost *VAlign* na *Top*.
+2. V sadě nástrojů vložte ovládací prvek ContentPlaceHolder do horní buňky tabulky (buňka záhlaví).
+3. Když vložíte tento ovládací prvek ContentPlaceHolder, Všimněte si, že výška řádku bude trvat téměř celou stránku, jak je znázorněno na obrázku 4. V tomto okamžiku se na to netýkají.
 
-![Prázdné místo je do jedné buňky jako ContentPlaceHolder](master-pages/_static/image1.gif)
+![Prázdné místo je ve stejné buňce jako ContentPlaceHolder](master-pages/_static/image1.gif)
 
-**Obrázek 4**: Prázdné místo je do jedné buňky jako ContentPlaceHolder
+**Obrázek 4**: prázdné místo je ve stejné buňce jako prvek ContentPlaceHolder
 
-1. Umístěte ovládací prvek ContentPlaceHolder dvě buňky. Jakmile se další ovládací prvky ContentPlaceHolder jste vložili, velikost buněk tabulky by měla být dle očekávání. Na stránce by měla vypadat stránka zobrazená v **obrázek 5**.
+1. Umístěte ovládací prvek ContentPlaceHolder do ostatních dvou buněk. Po vložení dalších ovládacích prvků ContentPlaceHolder by měla být velikost buněk tabulky tak, jak byste očekávali. Stránka by teď měla vypadat jako stránka zobrazená na **obrázku 5**.
 
-![Hlavní u všech ovládacích prvků ContentPlaceHolder. Všimněte si, co by měl být je výška buňky pro buňku záhlaví nyní](master-pages/_static/image2.gif)
+![Hlavní seznam se všemi ovládacími prvky ContentPlaceHolder. Všimněte si, že výška buňky pro buňku záhlaví je teď.](master-pages/_static/image2.gif)
 
-**Obrázek 5**: Hlavní u všech ovládacích prvků ContentPlaceHolder. Všimněte si, co by měl být je výška buňky pro buňku záhlaví nyní
+**Obrázek 5**: hlavní seznam se všemi ovládacími prvky ContentPlaceHolder. Všimněte si, že výška buňky pro buňku záhlaví je teď.
 
-1. Do každé tři ovládací prvky ContentPlaceHolder zadejte nějaký text podle vašeho výběru.
-2. Uložte jako exercise1.master stránky předlohy.
-3. Vytvořit nový webový formulář a přidružte jej k hlavní stránce exercise1.master.
-4. Vyberte soubor, nový, souboru v sadě Visual Studio 2005.
-5. Vyberte **webový formulář** v dialogovém okně Přidat novou položku.
-6. Ujistěte se, že je zaškrtnuté políčko vyberte stránku předlohy, jak je znázorněno na obrázku 6.
+1. Zadejte nějaký text podle vlastního výběru do každého ze tří ovládacích prvků ContentPlaceHolder.
+2. Uložte stránku předlohy jako Exercise1. Master.
+3. Vytvořte nový webový formulář a přidružte jej k hlavní stránce Exercise1. Master.
+4. V aplikaci Visual Studio 2005 vyberte soubor, nový, soubor.
+5. V dialogovém okně Přidat novou položku vyberte **webový formulář** .
+6. Ujistěte se, že je zaškrtnuto políčko vybrat hlavní stránku, jak je znázorněno na obrázku 6.
 
 ![Přidání nové stránky obsahu](master-pages/_static/image3.gif)
 
 **Obrázek 6**: Přidání nové stránky obsahu
 
-1. Klikněte na tlačítko Přidat.
-2. Vyberte exercise1.master vyberte v dialogovém okně stránky předlohy jak je znázorněno na obrázku 7.
-3. Klikněte na tlačítko OK pro přidání nové stránky obsahu.
+1. Klikněte na Přidat.
+2. V dialogovém okně vybrat hlavní stránku vyberte Exercise1. Master, jak je znázorněno na obrázku 7.
+3. Kliknutím na tlačítko OK přidejte novou stránku obsahu.
 
-Nová stránka obsahu se zobrazí v sadě Visual Studio s jeden ovládací prvek obsahu pro každý ovládací prvek ContentPlaceHolder na stránce předlohy. Ve výchozím nastavení ovládací prvky obsahu jsou prázdné, kde můžete přidat vlastní obsah. Pokud chcete pro něho používat obsah z ovládacího prvku ContentPlaceHolder na stránce předlohy, jednoduše klikněte na symbol inteligentní značky (malé černé šipky v pravém horním rohu ovládacího prvku) a zvolte *výchozí obsah předlohy* z inteligentních značek, jak je znázorněno v **obrázek 8**. Pokud tak učiníte, položka nabídky se změní na *vytvořit vlastní obsah*. Kliknutím na od tohoto okamžiku odebere obsah z hlavní stránky umožňují definovat vlastní obsah pro konkrétní ovládací prvek obsahu.
+Stránka nový obsah se zobrazí v aplikaci Visual Studio s jedním ovládacím prvkem obsahu pro každý ovládací prvek ContentPlaceHolder na stránce předlohy. Ve výchozím nastavení jsou ovládací prvky obsahu prázdné, takže můžete přidat vlastní obsah. Pokud byste chtěli, aby používali obsah z ovládacího prvku ContentPlaceHolder na stránce předlohy, stačí kliknout na symbol inteligentní značky (malá černá šipka v pravém horním rohu ovládacího prvku) a zvolit možnost *výchozí pro hlavní obsah* z inteligentní značky, jak je znázorněno na **obrázku 8**. Když to uděláte, položka nabídky se změní a *vytvoří vlastní obsah*. Kliknutím na něj v tomto okamžiku odeberete obsah ze stránky předlohy, který vám umožní definovat vlastní obsah pro konkrétní ovládací prvek obsahu.
 
-![Nastavení ovládacího prvku obsahu na výchozí obsah stránky předlohy](master-pages/_static/image4.gif)
+![Nastavení ovládacího prvku obsahu jako výchozího obsahu stránek předlohy](master-pages/_static/image4.gif)
 
-**Obrázek 7**: Nastavení ovládacího prvku obsahu na výchozí obsah stránky předlohy
+**Obrázek 7**: nastavení ovládacího prvku obsahu jako výchozího jako obsahu stránek předlohy
 
-## <a name="connecting-master-page-and-content-pages"></a>Propojení stránky předlohy a obsahu stránek
+## <a name="connecting-master-page-and-content-pages"></a>Připojení stránky předlohy a stránek obsahu
 
-Přidružení mezi stránky předlohy a stránky obsahu lze nakonfigurovat v jedné ze čtyř různých způsobů:
+Přidružení mezi stránkou předlohy a stránkou obsahu lze nakonfigurovat jedním ze čtyř různých způsobů:
 
-- <strong>MasterPageFile</strong> atribut @Page – direktiva
-- Nastavení **Page.MasterPageFile** vlastností v kódu.
-- **&lt;Stránky&gt;** element v konfiguračním souboru aplikace (web.config v kořenové složce aplikace)
-- **&lt;Stránky&gt;** element v podsložkách konfigurační soubor (soubor web.config v podsložce)
+- Atribut <strong>MasterPageFile</strong> direktivy @Page
+- Nastavení vlastnosti **Page. MasterPageFile** v kódu
+- **&lt;stránky&gt;** elementu v konfiguračním souboru aplikace (Web. config v kořenové složce aplikace)
+- **&lt;stránky&gt;** elementu v konfiguračním souboru podsložek (Web. config v podsložce)
 
-## <a name="masterpagefile-attribute"></a>Atribut MasterPageFile
+## <a name="masterpagefile-attribute"></a>MasterPageFile – atribut
 
-Atribut MasterPageFile usnadňuje použití stránky předlohy na konkrétní stránce technologie ASP.NET. Je také metoda používá k aplikování stránky předlohy při vrácení se změnami **vybrat hlavní stránku** zaškrtávací políčko, jako jste to udělali v cvičení 1.
+Atribut MasterPageFile usnadňuje použití stránky předlohy na konkrétní ASP.NET stránku. Je to také metoda, která se používá k použití stránky předlohy při zaškrtnutí políčka **Vybrat hlavní stránku** jako v cvičení 1.
 
-## <a name="setting-pagemasterpagefile-in-code"></a>Nastavení Page.MasterPageFile v kódu
+## <a name="setting-pagemasterpagefile-in-code"></a>Nastavení stránky. MasterPageFile v kódu
 
-Tím, že nastavíte vlastnost MasterPageFile v kódu, můžete použít konkrétní stránky předlohy k vašemu obsahu v době běhu. To je užitečné v případech, kdy budete muset použít konkrétní hlavní stránku na základě role uživatele nebo jiných kritérií. V metodě PreInit musí nastavit vlastnost MasterPageFile. Po provedení metody PreInit je nastavena, bude vyvolána výjimka InvalidOperationException. Na stránce, na kterém je nastavena tato vlastnost musí mít také obsahu ovládacího prvku jako ovládací prvek nejvyšší úrovně pro stránku. HttpException jinak bude vyvolána, pokud je nastavena vlastnost MasterPageFile.
+Nastavením vlastnosti MasterPageFile v kódu můžete pro svůj obsah použít určitou stránku předlohy za běhu. To je užitečné v případech, kdy možná budete muset použít určitou hlavní stránku na základě role uživatelů nebo jiných kritérií. Vlastnost MasterPageFile musí být nastavena v metodě předinit. Pokud je nastavena po předinicializaci metody, bude vyvolána událost InvalidOperationException. Stránka, na které je nastavena tato vlastnost, musí mít také ovládací prvek obsahu jako ovládací prvek nejvyšší úrovně stránky. V opačném případě bude při nastavení vlastnosti MasterPageFile vyvolána výjimka HttpException –.
 
-## <a name="using-the-ltpagesgt-element"></a>Použití &lt;stránky&gt; – Element
+## <a name="using-the-ltpagesgt-element"></a>Použití &lt;stránek&gt; elementu
 
-Nastavením atributu masterPageFile v můžete nakonfigurovat na stránku předlohy pro stránky &lt;stránky&gt; element v souboru web.config. Při použití této metody, mějte na paměti, že toto nastavení lze přepsat soubory web.config nižší ve struktuře aplikace. Všechny atributy MasterPageFile nastavit @Page – direktiva se toto nastavení také přepsat. Použití &lt;stránky&gt; element umožňuje snadno vytvořit *hlavní* stránku předlohy, která se dá přepsat v případě potřeby v konkrétní složky nebo soubory.
+Stránku předlohy pro stránky můžete nakonfigurovat nastavením atributu masterPageFile na stránkách &lt;&gt; elementu souboru Web. config. Při použití této metody mějte na paměti, že soubory Web. config nižší ve struktuře aplikace mohou toto nastavení přepsat. Toto nastavení se přepíše u všech atributů MasterPageFile nastavených v direktivě @Page. Použití &lt;stránky&gt; elementu usnadňuje vytvoření *Hlavní* hlavní stránky, která může být v případě potřeby přepsána v určitých složkách nebo souborech.
 
-## <a name="properties-in-master-pages"></a>Vlastnosti stránek předloh
+## <a name="properties-in-master-pages"></a>Vlastnosti na stránkách předlohy
 
-Hlavní stránce můžete zveřejnit vlastnosti pouhou tyto vlastnosti veřejné v rámci stránky předlohy. Například následující kód definuje vlastnost s názvem SomeProperty:
+Stránka předlohy může vystavovat vlastnosti pouhým nastavením těchto vlastností jako veřejných v rámci stránky předlohy. Například následující kód definuje vlastnost s názvem SomeProperty:
 
 [!code-csharp[Main](master-pages/samples/sample2.cs)]
 
-Pro přístup k vlastnosti SomeProperty ze stránky obsahu, budete muset použít hlavní vlastnosti takto:
+Chcete-li získat přístup k vlastnosti SomeProperty ze stránky obsahu, bude nutné použít vlastnost Master, například:
 
 [!code-csharp[Main](master-pages/samples/sample3.cs)]
 
-## <a name="nesting-master-pages"></a>Stránky předlohy vnoření
+## <a name="nesting-master-pages"></a>Vnořování stránek předlohy
 
-Hlavní stránky jsou ideální řešení pro zajištění běžné vzhled a chování napříč velké webové aplikace. To však není nic neobvyklého, když mají některé části sdílenou složku velké lokality společné rozhraní, zatímco jiné části sdílet jiné rozhraní. Chcete-li vyřešit tuto potřebu, jsou více stránek předloh ideální řešení. Ale že stále nezabývá skutečnost, že velké aplikace může mít některé součásti (jako je například nabídka, například), které jsou sdíleny mezi všechny stránky a další součásti, které jsou sdíleny pouze některé části webu. Pro daný typ situace vyplnit vložené hlavní stránky krásně potřeba. Jak už víte, normální stránky předlohy se skládá z stránky předlohy a stránky obsahu. V situaci, vnořené stránce předlohy existují dvě hlavní stránky; hlavní nadřazené a podřízené master. Podřízená stránka předlohy je také stránku obsahu a jeho hlavní je nadřazená stránka předlohy.
+Stránky předlohy představují dokonalé řešení, které zajišťuje běžný vzhled a chování napříč velkou webovou aplikací. Nejedná se ale o společné rozhraní, aby některé části velké lokality sdílely společné rozhraní, zatímco jiné části sdílejí jiné rozhraní. Aby bylo možné tuto potřebu vyřešit, je k většímu řešení více stránek předlohy. To však stále neřeší skutečnost, že velké aplikace mohou mít určité komponenty (například nabídku), které jsou sdíleny mezi všemi stránkami a dalšími komponentami, které jsou sdíleny pouze mezi některými oddíly webu. V takovém případě vnořené stránky předlohy doplňují nutnost v textu. Jak jste viděli, normální stránka předlohy se skládá ze stránky předlohy a obsahu stránky. V situaci vnořené stránky předlohy jsou k dispozici dvě stránky předlohy. nadřazený hlavní server a podřízená hlavní položka. Podřízená stránka předlohy je také stránkou obsahu a její hlavní stránkou je nadřazená hlavní stránka.
 
-Zde je kód pro typické hlavní stránky:
+Zde je kód typické stránky předlohy:
 
 [!code-aspx[Main](master-pages/samples/sample4.aspx)]
 
-V rámci vnořené hlavní scénáře to může být hlavní nadřazené. Jiné stránky předlohy by tato stránka slouží jako jeho hlavní stránky a tento kód bude vypadat takto:
+Ve vnořeném hlavním scénáři by to byl nadřazený hlavní server. Jiná stránka předlohy by tuto stránku používala jako svou hlavní stránku a tento kód by vypadal takto:
 
 [!code-aspx[Main](master-pages/samples/sample5.aspx)]
 
-Všimněte si, že v tomto scénáři, hlavní podřízené je také pro hlavní uzel nadřazené stránky obsahu. Všechny podřízené hlavního obsahu se zobrazí uvnitř obsahu ovládacího prvku, který získá z nadřazeného objektu prvek ContentPlaceHolder jeho obsah.
+Všimněte si, že v tomto scénáři je podřízená předloha také stránkou obsahu nadřazeného hlavního serveru. Veškerý obsah podřízeného hlavního serveru se zobrazí uvnitř ovládacího prvku obsahu, který získá obsah z ovládacího prvku ContentPlaceHolder.
 
 > [!NOTE]
-> Podpora návrháře není k dispozici pro vložené hlavní stránky. Při vývoji pomocí vnořené hlavní servery, je potřeba použít zobrazení zdroje.
+> Podpora návrháře není pro vnořené stránky předlohy k dispozici. Při vývoji pomocí vnořených hlavních serverů bude nutné použít zobrazení zdroje.
 
-Toto video ukazuje návod k používání vložené hlavní stránky.
+Toto video ukazuje návod pro použití vnořených stránek předlohy.
 
 ![](master-pages/_static/image1.png)
 
-[Otevřít Video na celou obrazovku](master-pages/_static/nested1.wmv)
+[Otevření videa na celé obrazovce](master-pages/_static/nested1.wmv)
 
 ![Výběr stránky předlohy](master-pages/_static/image4.jpg)
 

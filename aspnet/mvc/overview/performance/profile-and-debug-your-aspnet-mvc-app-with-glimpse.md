@@ -9,11 +9,11 @@ ms.assetid: c205805f-efdd-4fa7-9616-f26eab180611
 msc.legacyurl: /mvc/overview/performance/profile-and-debug-your-aspnet-mvc-app-with-glimpse
 msc.type: authoredcontent
 ms.openlocfilehash: d3689147a3bc3aa1f4180c377d2483a94bdd95a9
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457658"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78538533"
 ---
 # <a name="profile-and-debug-your-aspnet-mvc-app-with-glimpse"></a>Profil aplikace ASP.NET MVC a její ladění pomocí balíčku Glimpse
 
@@ -119,7 +119,7 @@ Odstraňte komentáře ze souboru *GlimpseSecurityPolicy.cs* a změňte volání
 Informace o přidávání rolí najdete v kurzu [nasazení webové aplikace ASP.NET MVC 5 pomocí členství, protokolu OAuth a SQL Database do kurzu Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/) .
 
 <a id="addRes"></a>
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 - [Nasazení zabezpečené aplikace ASP.NET MVC 5 s členstvím, protokolem OAuth a SQL Database do Azure](https://azure.microsoft.com/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)
 - [Konfigurace nakoukněte](http://getglimpse.com/Docs/Configuration) – Stránka s dokumentem týkající se konfigurace karet, zásad modulu runtime, protokolování a dalších.

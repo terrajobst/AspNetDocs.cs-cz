@@ -1,220 +1,220 @@
 ---
 uid: whitepapers/aspnet-and-iis6
-title: Spuštění ASP.NET 1.1 se službou IIS 6.0 | Dokumentace Microsoftu
+title: Spuštění ASP.NET 1,1 se službou IIS 6,0 | Microsoft Docs
 author: rick-anderson
-description: Sice systému Windows Server 2003, zahrnuje službu IIS 6.0 a ASP.NET 1.1, jsou ve výchozím nastavení zakázané tyto komponenty. Tento dokument White Paper popisuje, jak povolit služby IIS 6.0...
+description: Systém Windows Server 2003 zahrnuje službu IIS 6,0 i ASP.NET 1,1. tyto komponenty jsou ve výchozím nastavení zakázány. Tento dokument white paper popisuje, jak povolit IIS 6,0...
 ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: 5a5537bf-2aaa-49e7-839f-9e6522b829d8
 msc.legacyurl: /whitepapers/aspnet-and-iis6
 msc.type: content
 ms.openlocfilehash: 2e7812f34481afe9a71927c0d9ba2a9abc9632e4
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65106795"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78523308"
 ---
 # <a name="running-aspnet-11-with-iis-60"></a>Spuštění ASP.NET 1.1 se službou IIS 6.0
 
-> Sice systému Windows Server 2003, zahrnuje službu IIS 6.0 a ASP.NET 1.1, jsou ve výchozím nastavení zakázané tyto komponenty. Tento dokument White Paper popisuje postup při povolování služby IIS 6.0 a ASP.NET 1.1 a doporučuje několik nastavení konfigurace, abyste získali optimální výkon služby IIS a ASP.NET.
+> Systém Windows Server 2003 zahrnuje službu IIS 6,0 i ASP.NET 1,1. tyto komponenty jsou ve výchozím nastavení zakázány. Tento dokument white paper popisuje, jak povolit IIS 6,0 a ASP.NET 1,1 a doporučuje několik nastavení konfigurace, aby se dosáhlo optimálního výkonu služeb IIS a ASP.NET.
 > 
-> Platí pro technologii ASP.NET 1.1 a IIS 6.0.
+> Platí pro ASP.NET 1,1 a IIS 6,0.
 
-ASP.NET 1.1 se dodává se systémem Windows Server 2003, který taky obsahuje nejnovější verzi nástroje Internet Information Server (IIS) verze 6.0. Služba IIS 6.0 a ASP.NET 1.1 jsou navržené tak bez problémů integrovat a ASP.NET výchozí nastavení pro nový model procesu pracovního procesu služby IIS 6.0.
+ASP.NET 1,1 dodává se systémem Windows Server 2003, který obsahuje také nejnovější verzi serveru Internet Information Server (IIS) 6,0. Služba IIS 6,0 a ASP.NET 1,1 jsou navržené tak, aby se hladce integrují a ASP.NET teď ve výchozím nastavení nový model pracovních procesů služby IIS 6,0.
 
-## <a name="aspnet-11-is-not-installed-by-default"></a>Ve výchozím nastavení není nainstalována technologie ASP.NET 1.1
+## <a name="aspnet-11-is-not-installed-by-default"></a>ASP.NET 1,1 není ve výchozím nastavení nainstalovaná.
 
-Na rozdíl od předchozích verzí operačních systémů od Microsoftu server Internet Information Server (IIS) není povolená ve výchozím nastavení; ani je ASP.NET 1.1. Existují dvě možnosti pro povolení služby IIS:
+Na rozdíl od předchozích verzí operačních systémů serveru společnosti Microsoft není služba Internet Information Server (IIS) standardně povolena. ani ASP.NET 1,1. Existují dvě možnosti, jak povolit službu IIS:
 
-### <a name="enabling-iis-option-1---configure-your-server-wizard"></a>Povolení služby IIS, možnost #1 - Průvodce konfigurací serveru
+### <a name="enabling-iis-option-1---configure-your-server-wizard"></a>Povolení služby IIS, možnosti #1 – Průvodce konfigurací serveru
 
-Windows Server 2003 se dodává novou "Průvodce konfigurací serveru" vám pomohou správně nakonfigurovat váš server do požadovaného režimu.
+Windows Server 2003 dodává nový průvodce konfigurací serveru, který vám umožní správně nakonfigurovat server v požadovaném režimu.
 
-Spustí se Průvodce – Poznámka: ke spuštění průvodce, musíte být přihlášeni jako správce – přejít na: Spuštění | Programy | Nástroje pro správu a vyberte možnost "Konfigurace serveru".
+Chcete-li spustit Průvodce – Poznámka: Chcete-li spustit průvodce, je nutné, abyste byli přihlášeni jako správce – přejít na: Start | Programy | Nástroje pro správu a vyberte Konfigurovat Server.
 
-Po výběru byste měli vidět "Průvodce konfigurací serveru" úvodní obrazovce:
+Po výběru byste měli vidět úvodní obrazovku průvodce konfigurací serveru:
 
 ![](aspnet-and-iis6/_static/image1.jpg)
 
-Klikněte na tlačítko ' Další &gt;":
+Klikněte na další &gt;:
 
 ![](aspnet-and-iis6/_static/image2.jpg)
 
-Klikněte na tlačítko ' Další &gt;.
+Klikněte na další &gt;.
 
 ![](aspnet-and-iis6/_static/image3.jpg)
 
-Na této obrazovce je potřeba vybrat "možnosti konfigurace aplikačního serveru (IIS, ASP.NET).
+Na této obrazovce budete muset jako možnosti konfigurace vybrat aplikační server (IIS, ASP.NET).
 
-Klikněte na tlačítko ' Další &gt;".
+Klikněte na tlačítko Další &gt;.
 
 ![](aspnet-and-iis6/_static/image4.jpg)
 
-Po výběru konfigurace serveru jako aplikační Server, se zobrazí tato obrazovka s výzvou, jaké další možnosti, které se má nainstalovat. Ve výchozím nastavení je vybrána ani jedna možnost. Umožňuje automaticky technologie ASP.NET, je nutné vybrat "Povolit ASP. NET ".
+Po výběru konfigurace serveru jako aplikačního serveru se zobrazí tato obrazovka s výzvou k tomu, jaké další možnosti by se měly nainstalovat. Ve výchozím nastavení není vybraná žádná možnost. Pokud chcete ASP.NET povolit automaticky, musíte vybrat Povolit ASP. NET.
 
-Klikněte na tlačítko ' Další &gt;".
+Klikněte na tlačítko Další &gt;.
 
 ![](aspnet-and-iis6/_static/image5.jpg)
 
-Tato obrazovka zobrazí, jaké možnosti jsou k instalaci.
+Tato obrazovka zobrazuje, jaké možnosti se mají nainstalovat.
 
-Klikněte na tlačítko ' Další &gt;".
+Klikněte na tlačítko Další &gt;.
 
 ![](aspnet-and-iis6/_static/image6.jpg)
 
-Během instalace možností, které jste vybrali, se zobrazí tato obrazovka. Je normální jiné dialogové okno, které zobrazí pole, protože probíhá instalace služeb. Kromě toho můžete být vyzváni k zadání umístění instalačního disku CD Windows serveru 2003.
+Tato obrazovka se zobrazí při instalaci možností, které jste vybrali. V normálním případě se zobrazí další dialogová okna, která se instalují jako služby. Může se zobrazit také výzva k zadání umístění instalačního disku CD systému Windows 2003 Server.
 
-Klikněte na tlačítko ' Další &gt;' po dokončení.
+Po dokončení klikněte na tlačítko ' další &gt;'.
 
 ![](aspnet-and-iis6/_static/image7.jpg)
 
-Klikněte na tlačítko 'Dokončit' - Windows Server 2003 je nyní nakonfigurováno pro podporu služby IIS 6.0 a ASP.NET 1.1.
+Klikněte na Dokončit – Windows Server 2003 je teď nakonfigurovaný tak, aby podporoval IIS 6,0 a ASP.NET 1,1.
 
 ### <a name="enabling-iis-option-2---manually-configuring-iis-and-aspnet"></a>Povolení služby IIS, možnost #2 – Ruční konfigurace služby IIS a ASP.NET
 
-Pokud nechcete použít 'Server Průvodce konfigurací' Volitelně můžete nainstalovat IIS 6.0 a ASP.NET 1.1 pomocí 'Přidat nebo odebrat programy' v Ovládacích panelech.
+Pokud nechcete používat Průvodce konfigurací serveru, můžete volitelně nainstalovat IIS 6,0 a ASP.NET 1,1 pomocí příkazu Přidat nebo odebrat programy v Ovládacích panelech.
 
-Nejprve otevřete ovládací Panel:
+Nejprve otevřete ovládací panely:
 
 ![](aspnet-and-iis6/_static/image8.jpg)
 
-Pak klikněte na ' Přidat nebo odebrat Windows součásti' tím se otevře Průvodce součásti Windows:
+Potom klikněte na tlačítko Přidat nebo odebrat součásti systému Windows. otevře se Průvodce součástmi systému Windows:
 
 ![](aspnet-and-iis6/_static/image9.jpg)
 
-Zvýrazněte a "Aplikační Server" a potom klikněte na "Podrobnosti?" Tlačítko:
+Zvýrazněte a zkontrolujte aplikační server a pak klikněte na podrobnosti. tlačítko
 
 ![](aspnet-and-iis6/_static/image10.jpg)
 
-Instalace technologie ASP.NET, zkontrolujte ' ASP. NET ".
+Pokud chcete nainstalovat ASP.NET, podívejte se na ASP. NET.
 
-Klikněte na tlačítko "OK" se vraťte do Průvodce komponentami Windows. Klikněte na tlačítko ' Další &gt;"z Průvodce komponentami Windows k zahájení instalace:
+Kliknutím na tlačítko OK se vraťte do Průvodce součástmi systému Windows. Spusťte instalaci kliknutím na tlačítko Další &gt;v Průvodci součástmi systému Windows:
 
 ![](aspnet-and-iis6/_static/image11.jpg)
 
-Je normální jiné dialogové okno, které zobrazí pole, protože probíhá instalace služeb. Kromě toho můžete být vyzváni k zadání umístění instalačního disku CD Windows serveru 2003.
+V normálním případě se zobrazí další dialogová okna, která se instalují jako služby. Může se zobrazit také výzva k zadání umístění instalačního disku CD systému Windows 2003 Server.
 
-Po dokončení instalace se zobrazí poslední obrazovce Průvodce komponentami Windows:
+Po dokončení instalace se zobrazí poslední obrazovka Průvodce součástmi systému Windows:
 
 ![](aspnet-and-iis6/_static/image12.jpg)
 
-Služba IIS 6.0 a ASP.NET 1.1 jsou teď nakonfigurované a dostupné.
+Služba IIS 6,0 a ASP.NET 1,1 jsou teď nakonfigurované a dostupné.
 
-## <a name="recommended-settings"></a>Doporučená nastavení
+## <a name="recommended-settings"></a>Doporučené nastavení
 
-Při spuštění ASP.NET 1.1 se službou IIS 6.0, existuje několik nastavení konfigurace, které se doporučuje, abyste získali optimální výkon z technologie ASP.NET:
+Při spuštění ASP.NET 1,1 se službou IIS 6,0 je k dispozici několik nastavení konfigurace, která jsou doporučena k dosažení optimálního výkonu z ASP.NET:
 
-- Konfigurace omezení paměti pracovního procesu
-- Konfigurace pracovní proces recykluje
+- Konfigurace omezení paměti pracovních procesů
+- Konfigurace recyklace pracovních procesů
 
-### <a name="configuring-worker-process-memory-limits"></a>Konfigurace omezení paměti pracovního procesu
+### <a name="configuring-worker-process-memory-limits"></a>Konfigurace omezení paměti pracovních procesů
 
-Ve výchozím nastavení služby IIS 6.0 omezený objem paměti, které může IIS používat nenastaví. ASP. NET vaší mezipaměti funkce závisí na omezení paměti, proto do mezipaměti proaktivně odebrat nepoužité položky z paměti.
+Ve výchozím nastavení služba IIS 6,0 nenastavuje omezení velikosti paměti, kterou může služba IIS používat. Formátu. Funkce mezipaměti netto spoléhá na omezení paměti, takže mezipaměť může proaktivně odebrat nepoužívané položky z paměti.
 
-Doporučuje se, že nakonfigurujete funkce služby IIS 6.0 recyklace paměti. Ke konfiguraci této otevřete Správce Internetové informační služby (spuštění | Programy | Nástroje pro správu | Internetová informační služba). Jakmile otevřené, rozbalte složku "Fondy aplikací":
+Doporučuje se nakonfigurovat funkci Recyklace paměti služby IIS 6,0. Konfigurace tohoto programu Open Internetová informační služba Manager (Start | Programy | Nástroje pro správu | Internetová informační služba). Po otevření rozbalte složku fondy aplikací:
 
 Pro každý fond aplikací:
 
 ![](aspnet-and-iis6/_static/image13.jpg)
 
-1. Klikněte pravým tlačítkem na fond aplikací, například "DefaultAppPool" a vyberte 'vlastnosti':
+1. Klikněte pravým tlačítkem na fond aplikací, třeba DefaultAppPool, a vyberte vlastnosti:
 
 ![](aspnet-and-iis6/_static/image14.jpg)
 
-2. Dál povolte recyklace paměti po kliknutí na buď "maximální využité paměti (v megabajtech):". Hodnota by neměla být delší než množství fyzické paměti (ne virtual) na serveru, je dobré aproximace 60 % fyzické paměti, například pro server s 512 MB fyzické paměti, vyberte 310. Doporučuje se také, že maximální nepřekročí 800MB při použití adresní prostor 2GB. Pokud se adresní prostor paměť serveru je 3GB, maximální limit paměti pro pracovní proces může být až 1 800MB:
+2. Potom kliknutím na možnost maximální velikost využité paměti (v megabajtech) Povolte recyklaci paměti:. Hodnota by neměla být větší než velikost fyzické (ne virtuální) paměti na serveru, dobrý odhad je 60% fyzické paměti, tj. pro server s 512 MB fyzické paměti vyberte 310. Doporučuje se také, aby při použití 2 GB adresního prostoru nepřekročila maximální počet 800MB. Pokud je adresní prostor paměti serveru povolenou, maximální limit paměti pro pracovní proces může být vysoký jako 1, 800MB:
 
 ![](aspnet-and-iis6/_static/image15.jpg)
 
-Klikněte na tlačítko 'Použít' a 'OK' ukončíte dialogové okno Vlastnosti. Tento postup opakujte pro všechny fondy aplikací k dispozici.
+Kliknutím na Apply (použít) a kliknutím na OK zavřete dialogové okno Vlastnosti. Tento postup opakujte pro všechny dostupné fondy aplikací.
 
-### <a name="configuring-worker-recycling"></a>Konfigurace recyklování pracovního procesu
+### <a name="configuring-worker-recycling"></a>Konfigurace recyklace pracovních procesů
 
-Ve výchozím nastavení služby IIS 6.0 konfigurován recyklaci jeho pracovní proces každých 29 hodin. Toto je o něco agresivní pro aplikace používající technologii ASP.NET a je doporučeno, recyklace automatické pracovních procesů je zakázané.
+Ve výchozím nastavení je služba IIS 6,0 nakonfigurovaná k recyklaci pracovního procesu každých 29 hodin. Toto je trochu agresivní aplikace běžící na ASP.NET a doporučuje se, aby se automatické recyklace pracovních procesů zakázala.
 
-Chcete-li zakázat recyklace automatického pracovního procesu, nejprve otevřete Správce Internetové informační služby (spuštění | Programy | Nástroje pro správu | Internetová informační služba). Jakmile otevřené, rozbalte složku "Fondy aplikací":
+Chcete-li zakázat automatickou recyklaci pracovních procesů, otevřete nejprve správce Internetová informační služba (Start | Programy | Nástroje pro správu | Internetová informační služba). Po otevření rozbalte složku fondy aplikací:
 
 ![](aspnet-and-iis6/_static/image16.jpg)
 
 Pro každý fond aplikací:
 
-1. Klikněte pravým tlačítkem na fond aplikací, například "DefaultAppPool" a vyberte 'vlastnosti':
+1. Klikněte pravým tlačítkem na fond aplikací, třeba DefaultAppPool, a vyberte vlastnosti:
 
 ![](aspnet-and-iis6/_static/image17.jpg)
 
-2. Zrušte zaškrtnutí políčka ' recyklovat pracovní proces (v minutách): ":
+2. Zrušit kontrolu pracovního procesu recyklace (v minutách): ':
 
 ![](aspnet-and-iis6/_static/image18.jpg)
 
-Klikněte na tlačítko 'Použít' a 'OK' ukončíte dialogové okno Vlastnosti. Tento postup opakujte pro všechny fondy aplikací k dispozici.
+Kliknutím na Apply (použít) a kliknutím na OK zavřete dialogové okno Vlastnosti. Tento postup opakujte pro všechny dostupné fondy aplikací.
 
-## <a name="granting-write-access-to-the-file-system"></a>Udělení oprávnění k zápisu do systému souborů
+## <a name="granting-write-access-to-the-file-system"></a>Udělení přístupu pro zápis do systému souborů
 
-Pokud vaše aplikace vyžaduje oprávnění k zápisu do systému souborů a používáte je potřeba upravit řízení přístupu seznamu (ACL) na složku nebo soubor udělit technologii ASP.NET přístup do systému souborů NTFS.
+Pokud vaše aplikace vyžaduje oprávnění k zápisu do systému souborů a používáte systém souborů NTFS, budete muset upravit seznam Access Control (ACL) pro složku nebo soubor a udělit tak přístup k ASP.NET.
 
-Například udělit ASP.NET oprávnění k zápisu do c:\inetpub\wwwroot nejprve otevřete Průzkumníka a přejděte do adresáře:
+Pokud například chcete udělit přístup pro zápis ASP.NET do složky c:\Inetpub\Wwwroot, otevřete Průzkumníka a přejděte do adresáře:
 
 ![](aspnet-and-iis6/_static/image19.jpg)
 
-Pak klikněte pravým tlačítkem na adresář, např "wwwroot" a vyberte možnost Vlastnosti. Po otevření dialogového okna Vlastnosti vyberte kartu "Zabezpečení":
+Potom klikněte pravým tlačítkem na adresář, třeba na "wwwroot" a vyberte vlastnosti. Po otevření dialogového okna Vlastnosti vyberte kartu zabezpečení:
 
 ![](aspnet-and-iis6/_static/image20.jpg)
 
-Adresář c:\inetpub\wwwroot\ je zvláštní v dané speciální skupinu služby IIS 6.0 "IIS\_WPG' je již oprávnění ke čtení &amp; oprávnění spouštět, zobrazovat obsah složky a číst. Ale pokud chcete udělit oprávnění k zápisu, potřebujete klikněte na zaškrtávací políčko Povolit pro zápis:
+Adresář c:\InetPub\Wwwroot\ je speciální adresář v tom, že speciální skupina služby IIS 6,0, kterou služba IIS\_WPG, už má udělenou možnost číst &amp; spouštění, zobrazovat obsah složky a číst. Pokud ale chcete udělit oprávnění k zápisu, musíte kliknout na zaškrtávací políčko Povolit pro zápis:
 
 ![](aspnet-and-iis6/_static/image21.jpg)
 
-Služba IIS 6.0 teď má oprávnění k zápisu pro tuto složku. Udělení oprávnění k zápisu v jiných složkách, postupujte podle těchto kroků – mějte na paměti, budete muset přidat IIS\_WPG skupina, pokud ještě neexistuje.
+Služba IIS 6,0 má teď oprávnění k zápisu do této složky. Pokud chcete udělit oprávnění k zápisu na jiné složky, postupujte podle těchto kroků – Poznámka: Pokud ještě neexistuje, možná budete muset přidat skupinu IIS\_WPG.
 
 > [!CAUTION]
-> Udělení oprávnění zapisovat do služby IIS\_WPG vám umožní libovolné aplikaci ASP.NET k zápisu do tohoto adresáře.
+> Udělení oprávnění k zápisu do služby IIS\_WPG umožní zapisovat do tohoto adresáře všechny aplikace v ASP.NET.
 
-## <a name="supporting-integrated-authentication-with-sql-server"></a>Podpora integrované ověřování s využitím SQL serveru
+## <a name="supporting-integrated-authentication-with-sql-server"></a>Podpora integrovaného ověřování pomocí SQL Server
 
-Integrované ověřování umožňuje serveru SQL Server využívat ověřování systému Windows NT pro ověření serveru SQL Server při účty přihlášení. To umožňuje uživateli obejít standardní proces přihlášení serveru SQL Server. S tímto přístupem sítě uživatel může přistupovat k databázi serveru SQL Server bez poskytnutí samostatné přihlašovací identifikátor nebo heslo, protože systém SQL Server získá uživatele a informace o hesle z procesu zabezpečení sítě systému Windows NT.
+Integrované ověřování umožňuje SQL Server využívat ověřování systému Windows NT k ověření účtů přihlášení SQL Server. Uživatel tak může obejít standardní SQL Server procesu přihlášení. Pomocí tohoto přístupu může uživatel sítě získat přístup k databázi SQL Server bez zadání samostatného přihlašovacího ID nebo hesla, protože SQL Server získá informace o uživateli a heslech z procesu zabezpečení sítě systému Windows NT.
 
-Výběr integrované ověřování pro aplikace ASP.NET je dobrou volbou, protože žádné přihlašovací údaje se nikdy neuloží do připojovacího řetězce pro vaši aplikaci. Připojovací řetězec použitý pro připojení k SQL místo toho bude vypadat takto:
+Volba integrovaného ověřování pro aplikace ASP.NET je dobrá volba, protože v připojovacím řetězci nejsou někdy uloženy žádné přihlašovací údaje pro vaši aplikaci. Místo toho se připojovací řetězec použitý k připojení k SQL bude podobat následujícímu:
 
 `"server=localhost; database=Northwind;Trusted_Connection=true"`
 
-Tento připojovací řetězec říká systému SQL Server pomocí přihlašovacích údajů Windows aplikace pokusu o přístup k systému SQL Server. V případě ASP.NET/IIS 6, to může být účet ve službě IIS\_WPG skupiny.
+Tento připojovací řetězec oznamuje SQL Server, aby používal přihlašovací údaje Windows pro aplikaci, která se pokouší získat přístup k SQL Server. V případě ASP.NET/IIS 6 by to byl účet ve skupině služby IIS\_WPG.
 
-Pokud chcete povolit integrované ověřování mezi SQL serverem a technologie ASP.NET, budete muset nejprve zkontrolujte, že systém SQL Server je nakonfigurován pro integrované ověřování nebo smíšený režim ověřování – obraťte se na správce databáze ke zjištění. Pokud je SQL Server v jednom z těchto dvou režimů, můžete použít integrované ověřování.
+Pokud chcete povolit integrované ověřování mezi SQL Server a ASP.NET, musíte nejdřív zkontrolovat, jestli je SQL Server nakonfigurované pro integrované ověřování nebo ověřování ve smíšeném režimu – Pokud ho chcete zjistit, kontaktujte správce databáze. Pokud je SQL Server v jednom z těchto dvou režimů, můžete použít integrované ověřování.
 
-Otevřete správce systému SQL Server Enterprise (Start | Programy | Microsoft SQL Server | Správce rozlehlé sítě), vyberte příslušný server a rozbalte složku zabezpečení:
+Otevřete správce SQL Server Enterprise (Start | Programy | Microsoft SQL Server | Enterprise Manager) vyberte příslušný server a rozbalte složku zabezpečení:
 
 ![](aspnet-and-iis6/_static/image22.jpg)
 
-Pokud se BUILTINT\IIS\_WPG "skupina není uvedena, klikněte pravým tlačítkem na přihlášení a výběr nového přihlašovacího jména:
+Pokud není uvedená skupina BUILTINT\IIS\_WPG, klikněte pravým tlačítkem na přihlašovací údaje a vyberte New Login:
 
 ![](aspnet-and-iis6/_static/image23.jpg)
 
-V "název:" textového pole zadejte "[název serveru/domény] \IIS\_WPG" nebo kliknutím na tlačítko se třemi tečkami otevřete nástroj pro výběr uživatele nebo skupiny systému Windows NT:
+Do textového pole název: zadejte [Server/název domény] \IIS\_WPG nebo klikněte na tlačítko se třemi tečkami a otevřete výběr uživatele nebo skupiny Windows NT:
 
 ![](aspnet-and-iis6/_static/image24.jpg)
 
-Vyberte aktuálního počítače IIS\_WPG skupiny a klikněte na tlačítko "Přidat" a OK zavřete Nástroj pro výběr.
+Vyberte skupinu IIS\_aktuální počítač a kliknutím na tlačítko Přidat a OK zavřete výběr.
 
-Pak musíte také nastavit výchozí databáze a oprávnění pro přístup k databázi. Nastavit výchozí databázi vyberte z rozevíracího seznamu, například Northwind níže je vybrána:
+Pak je nutné nastavit také výchozí databázi a oprávnění pro přístup k databázi. Výchozí databázi nastavíte tak, že vyberete možnost z rozevíracího seznamu, např.:
 
 ![](aspnet-and-iis6/_static/image25.jpg)
 
-Pak klikněte na kartě přístup k databázi:
+Potom klikněte na kartu přístup k databázi:
 
 ![](aspnet-and-iis6/_static/image26.jpg)
 
-Klikněte na zaškrtávací políčko Povolit pro každou databázi, kterou chcete povolit přístup k. Budete také muset vyberte databázové role, kontrola db\_vlastníka zajistí vaše přihlašovací údaje má všechna potřebná oprávnění ke správě a použít vybraná databáze.
+Pro každou databázi, ke které chcete povolit přístup, klikněte na zaškrtávací políčko Povolit. Budete také muset vybrat databázové role, zkontrolovat\_DB, že vaše přihlášení bude mít všechna potřebná oprávnění ke správě a používání vybrané databáze.
 
-Klikněte na tlačítko OK zavřete dialogové okno vlastností. Vaše aplikace ASP.NET je nyní nakonfigurováno pro podporu integrované ověřování systému SQL Server.
+Kliknutím na tlačítko OK zavřete dialogové okno Vlastnosti. Vaše aplikace ASP.NET je teď nakonfigurovaná tak, aby podporovala integrované ověřování SQL Server.
 
-## <a name="dont-run-aspnet-10-in-iis-60-native-mode"></a>Nelze spustit ASP.NET 1.0 v nativním režimu služby IIS 6.0
+## <a name="dont-run-aspnet-10-in-iis-60-native-mode"></a>Nespouštějte ASP.NET 1,0 v nativním režimu IIS 6,0
 
-ASP.NET 1.0 ve službě IIS 6.0 je podporována pouze v režimu kompatibility služby IIS 5.
+ASP.NET 1,0 ve službě IIS 6,0 je podporováno pouze v režimu kompatibility služby IIS 5.
 
-Ke konfiguraci ASP.NET 1.0 ke spuštění v režimu kompatibility služby IIS 5.0, otevřete Správce internetové služby a klikněte pravým tlačítkem myši klikněte na tlačítko weby a vyberte vlastnosti:
+Pokud chcete nakonfigurovat ASP.NET 1,0 v režimu kompatibility IIS 5,0, otevřete Správce služeb internetu a klikněte pravým tlačítkem na weby a vyberte vlastnosti:
 
 ![](aspnet-and-iis6/_static/image27.jpg)
 
-Přepněte na kartu služby a zkontrolujte? Spustit webovou službu v režimu izolace 5.0 IIS?
+Chcete přejít na kartu služby a ověřit? Spustit webovou službu v izolovaném režimu služby IIS 5,0?:
 
 ![](aspnet-and-iis6/_static/image28.jpg)

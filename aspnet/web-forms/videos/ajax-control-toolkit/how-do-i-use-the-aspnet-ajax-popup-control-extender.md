@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-popup-control-extender
-title: '[Postup:] Extender ovládacího prvku ASP.NET AJAX – místní nabídka použít? | Dokumenty Microsoft'
+title: '[Postupy:] Chcete použít rozšířené ovládací prvky pro místní ovládací prvek ASP.NET AJAX? | Dokumenty Microsoft'
 author: JoeStagner
-description: Toto video ukazuje použití – extender ovládacího prvku Popup se dodává s ASP.NET AJAX Control Toolkit. Zjistěte, jak rozšířit ovládací prvek textového pole tak, aby...
+description: Toto video ukazuje použití zařízení s rozšířeným ovládacím prvkem, které je dodáváno s ASP.NET AJAX Control Toolkit. Naučte se, jak ovládací prvek TextBox rozšíříte tak, aby...
 ms.author: riande
 ms.date: 01/26/2007
 ms.assetid: ecd34391-958f-410c-849d-cfaa2dd414dd
 msc.legacyurl: /web-forms/videos/ajax-control-toolkit/how-do-i-use-the-aspnet-ajax-popup-control-extender
 msc.type: video
 ms.openlocfilehash: be086315943d9d680faa2a8bc784c2b995425903
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59398387"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78641713"
 ---
-# <a name="how-do-i-use-the-aspnet-ajax-popup-control-extender"></a>[Postup:] Extender ovládacího prvku ASP.NET AJAX – místní nabídka použít?
+# <a name="how-do-i-use-the-aspnet-ajax-popup-control-extender"></a>[Postupy:] Chcete použít rozšířené ovládací prvky pro místní ovládací prvek ASP.NET AJAX?
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-Toto video ukazuje použití – extender ovládacího prvku Popup se dodává s ASP.NET AJAX Control Toolkit. Zjistěte, jak rozšířit ovládací prvek textového pole tak, aby, když přijme zaměření, dialogové okno automaticky otevírané okno se zobrazí seznam možností.
+Toto video ukazuje použití zařízení s rozšířeným ovládacím prvkem, které je dodáváno s ASP.NET AJAX Control Toolkit. Naučte se, jak roztáhnout ovládací prvek TextBox tak, aby při obdržení fokusu se zobrazil místní dialog se seznamem možností.
 
-[&#9654;Podívejte se na video (8 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-popup-control-extender)
+[&#9654;Sledovat video (8 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-use-the-aspnet-ajax-popup-control-extender)
 
 > [!div class="step-by-step"]
 > [Předchozí](how-do-i-use-the-aspnet-ajax-textboxwatermark-control-extender.md)
-> [další](how-do-i-use-the-aspnet-ajax-modalpopup-extender-control.md)
+> [Další](how-do-i-use-the-aspnet-ajax-modalpopup-extender-control.md)

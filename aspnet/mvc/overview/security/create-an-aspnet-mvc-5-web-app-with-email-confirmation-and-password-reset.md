@@ -9,11 +9,11 @@ ms.assetid: d4911cb3-1afb-4805-b860-10818c4b1280
 msc.legacyurl: /mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
 msc.type: authoredcontent
 ms.openlocfilehash: 6169c972ad0f4ee2079d3638c54a5accc4b8b3de
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519346"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78538344"
 ---
 # <a name="create-a-secure-aspnet-mvc-5-web-app-with-log-in-email-confirmation-and-password-reset-c"></a>Vytvoření zabezpečené webové aplikace ASP.NET MVC 5 s přihlášením, potvrzením e-mailu a resetováním hesla (C#)
 
@@ -184,7 +184,7 @@ Pokud neobdržíte e-mail s odkazem:
 Pokud chcete otestovat odkaz pro ověření bez e-mailu, Stáhněte si [hotovou ukázku](https://code.msdn.microsoft.com/MVC-5-with-2FA-email-8f26d952). Na stránce se zobrazí potvrzovací odkaz a potvrzovací kódy.
 
 <a id="addRes"></a>
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 - [Odkazy na ASP.NET Identity doporučené prostředky](../../../identity/overview/getting-started/aspnet-identity-recommended-resources.md)
 - [Potvrzení účtu a obnovení hesla pomocí ASP.NET identity](../../../identity/overview/features-api/account-confirmation-and-password-recovery-with-aspnet-identity.md) Přechází na další podrobnosti o obnovení hesla a potvrzení účtu.

@@ -9,11 +9,11 @@ ms.date: 08/10/2019
 msc.legacyurl: ''
 msc.type: content
 ms.openlocfilehash: aa4f627bca99f0a7ffbbb53ea45ebdcf0850fd89
-ms.sourcegitcommit: 88fc80e3f65aebdf61ec9414810ddbc31c543f04
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76519359"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78537343"
 ---
 # <a name="aspnet-overview"></a>Přehled ASP.NET
 
@@ -33,7 +33,7 @@ Každé rozhraní cílí na jiný styl vývoje. Ten, který zvolíte, závisí n
 
 Níže je uveden přehled každé z architektur a několik nápadů, jak mezi nimi vybírat. Pokud dáváte přednost předvedení videa, přečtěte si téma [vytváření webů pomocí ASP.NET](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/Making-Websites-with-ASPNET) a [co jsou webové nástroje?](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/what-is-web-tools)
 
-|   | Pokud máte zkušenosti s | Styl vývoje | Zkušenosti |
+|   | Pokud máte zkušenosti s | Styl vývoje | Posudk |
 |-----------|----------------------|-----------------------------------------------------|----------------|
 | Webové formuláře | Formuláře Win, WPF, .NET | Rychlý vývoj s využitím bohatých knihoven ovládacích prvků, které zapouzdřují značky HTML | Střední úroveň, pokročilá RAD |
 | MVC       | Ruby na železnici, .NET  | Úplná kontrola značek HTML, kódu a značek oddělených a snadné zápisu testů. Nejlepší volba pro mobilní a jednostránkové aplikace (SPA). | Střední úroveň, rozšířené |
@@ -47,7 +47,7 @@ Pomocí webových formulářů ASP.NET můžete vytvářet dynamické weby pomoc
 
 ### <a name="mvc"></a>MVC
 
-ASP.NET MVC poskytuje výkonný, na vzorech založený způsob tvorby dynamických webů, který dovoluje zřetelně oddělit jednotlivé oblasti a dává vám plnou kontrolu nad značkami, což usnadňuje vývoj a zvyšuje jeho flexibilitu. ASP.NET MVC zahrnuje řadu funkcí, které umožňují rychlý vývoj s použitím TDD pro vytváření sofistikovaných aplikací využívajících nejnovější webové standardy.
+ASP.NET MVC poskytuje výkonný a vzorový způsob vytváření dynamických webů, který umožňuje čistě rozdělit se o obavy a poskytuje plnou kontrolu nad značkou pro užívejte a agilní vývoj. ASP.NET MVC zahrnuje řadu funkcí, které umožňují rychlý vývoj s použitím TDD pro vytváření sofistikovaných aplikací využívajících nejnovější webové standardy.
 
 [Další informace o MVC](mvc/index.md)
 
@@ -93,7 +93,7 @@ ASP.NET aplikace (SPA) pomáhá sestavovat aplikace, které zahrnují významné
 
 [Další informace o vývoji jednostránkové aplikace](single-page-application/index.md)
 
-## <a name="webhooks"></a>WebHooky
+## <a name="webhooks"></a>Webhooky
 
 Webhooky je zjednodušený vzor HTTP, který poskytuje jednoduchý model Pub/sub pro zapojení do společné webové rozhraní API a služeb SaaS. Když dojde k události ve službě, pošle se oznámení ve formě požadavku HTTP POST registrovaným předplatitelům. Požadavek POST obsahuje informace o události, která umožňuje příjemci reagovat odpovídajícím způsobem.
 

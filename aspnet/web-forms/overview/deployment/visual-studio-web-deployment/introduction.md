@@ -9,11 +9,11 @@ ms.assetid: 24ad086d-865e-433c-9ac9-05f1a553da16
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/introduction
 msc.type: authoredcontent
 ms.openlocfilehash: 96dd31d949633e001fc595621bedbf74e98000fc
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74640240"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78642217"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-introduction"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: Úvod
 
@@ -23,7 +23,7 @@ tím, že [Dykstra](https://github.com/tdykstra)
 
 > V této sérii kurzů se dozvíte, jak nasadit (publikovat) webovou aplikaci v ASP.NET pro Azure App Service Web Apps nebo poskytovatele hostování třetí strany pomocí sady Visual Studio 2012 se sadou Azure SDK pro .NET. Většina postupů je obdobná pro Visual Studio 2013.
 > 
-> Vyvíjíte webovou aplikaci, aby ji uživatelé mohli zpřístupnit prostřednictvím Internetu. Nicméně kurzy pro webové programování se obvykle zastaví, jakmile se zobrazí, jak na vývojovém počítači něco pracovat. Tato série kurzů začíná, kde ostatní odejdou: právě jste vytvořili webovou aplikaci, otestovali ji a je připravená k použití. Co dál? V těchto kurzech se dozvíte, jak nejdřív nasadit službu IIS na místním vývojovém počítači pro účely testování a potom do Azure nebo poskytovatele hostování třetí strany pro přípravu a výrobu. Ukázková aplikace, kterou nasadíte, je projekt webové aplikace, který používá Entity Framework, SQL Server a systém členství v ASP.NET. Ukázková aplikace používá webové formuláře ASP.NET, ale uvedené postupy platí také pro ASP.NET MVC a webové rozhraní API.
+> Vyvíjíte webovou aplikaci, aby ji uživatelé mohli zpřístupnit prostřednictvím Internetu. Nicméně kurzy pro webové programování se obvykle zastaví, jakmile se zobrazí, jak na vývojovém počítači něco pracovat. Tato série kurzů začíná, kde ostatní odejdou: právě jste vytvořili webovou aplikaci, otestovali ji a je připravená k použití. Co dále? V těchto kurzech se dozvíte, jak nejdřív nasadit službu IIS na místním vývojovém počítači pro účely testování a potom do Azure nebo poskytovatele hostování třetí strany pro přípravu a výrobu. Ukázková aplikace, kterou nasadíte, je projekt webové aplikace, který používá Entity Framework, SQL Server a systém členství v ASP.NET. Ukázková aplikace používá webové formuláře ASP.NET, ale uvedené postupy platí také pro ASP.NET MVC a webové rozhraní API.
 > 
 > V těchto kurzech se předpokládá, jak pracovat s ASP.NET v aplikaci Visual Studio. Pokud to neuděláte, dobrým místem, kde začít, je [Základní kurz pro webové formuláře v ASP.NET](../../older-versions-getting-started/tailspin-spyworks/tailspin-spyworks-part-1.md) nebo [základní kurz pro ASP.NET MVC](../../../../mvc/overview/older-versions/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4.md).
 > 
@@ -110,7 +110,7 @@ Komentáře k kurzům jsou úvodní a při aktualizaci tohoto kurzu se budou br�
 
 <a id="prerequisites"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz byl napsán pro následující produkty:
 
@@ -193,7 +193,7 @@ Následující funkce aplikace mají vliv na jejich nasazení nebo na to, co mus
 - Aplikace zahrnuje některá nastavení, která je nutné změnit v nasazeném souboru *Web. config* v závislosti na cílovém prostředí (test, fázování nebo produkční), a dalších nastaveních, která je nutné změnit v závislosti na konfiguraci sestavení (ladění nebo vydání).
 - Řešení sady Visual Studio zahrnuje projekt knihovny tříd. Je třeba nasadit pouze sestavení, které tento projekt vygeneruje, ne samotný projekt.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tomto prvním kurzu v řadě jste stáhli vzorový projekt sady Visual Studio a zkontrolovali funkce lokality, které mají vliv na nasazení aplikace. V následujících kurzech se připravíte na nasazení tím, že nastavíte některé z těchto akcí, které se mají automaticky zpracovat. Ostatní uživatelé se postarou o ruční provedení.
 

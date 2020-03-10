@@ -1,23 +1,23 @@
 ---
 uid: mvc/overview/getting-started/index
-title: ASP.NET MVC Začínáme | Dokumentace Microsoftu
+title: ASP.NET MVC Začínáme | Microsoft Docs
 author: rick-anderson
-description: Další informace o ASP.NET MVC ASP.NET MVC poskytuje výkonný, na základě vzorů způsob tvorby dynamických webů, která umožňuje jasně oddělit oblasti připomínky a že g...
+description: Přečtěte si o ASP.NET MVC ASP.NET MVC poskytuje výkonný a vzorový způsob vytváření dynamických webů, který umožňuje vyčistit oddělení obav a to g...
 ms.author: riande
 ms.date: 08/31/2011
 ms.assetid: d916dbe0-1895-491b-8bb6-93f4594ce757
 msc.legacyurl: /mvc/overview/getting-started
 msc.type: chapter
 ms.openlocfilehash: 8e25c3a01634df6c3d9c81df8ab1738cc079d341
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65121123"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78583011"
 ---
-# <a name="aspnet-mvc-getting-started"></a>Začínáme se službou ASP.NET MVC
+# <a name="aspnet-mvc-getting-started"></a>ASP.NET MVC Začínáme
 
-> Následující pokyny vysvětluje co ASP.NET MVC a ukazuje, jak začít pracovat.
+> Následující pokyny popisují, co je ASP.NET MVC, a ukazuje, jak začít.
 
 - [Začínáme s ASP.NET MVC 5](introduction/index.md)
 
@@ -27,7 +27,7 @@ ms.locfileid: "65121123"
     - [Přidání modelu](introduction/adding-a-model.md)
     - [Vytvoření připojovacího řetězce a práce s databází SQL Serveru LocalDB](introduction/creating-a-connection-string.md)
     - [Přístup k datům modelu z kontroleru](introduction/accessing-your-models-data-from-a-controller.md)
-    - [Zkoumání metod Edit a úprava zobrazení](introduction/examining-the-edit-methods-and-edit-view.md)
+    - [Zkoumání metod Edit a zobrazení pro úpravy](introduction/examining-the-edit-methods-and-edit-view.md)
     - [Přidání vyhledávací funkce](introduction/adding-search.md)
     - [Přidání nového pole](introduction/adding-a-new-field.md)
     - [Přidání ověřování](introduction/adding-validation.md)

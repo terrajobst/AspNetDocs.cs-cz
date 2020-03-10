@@ -1,28 +1,28 @@
 ---
 uid: web-forms/videos/aspnet-dynamic-data/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c
-title: Implementace vlastního ověření pole imperativní logikou ve VB nebo C# | Dokumentace Microsoftu
+title: Postup implementace vlastního ověřování pole s imperativní logikou v jazyce VB C# nebo | Microsoft Docs
 author: JoeStagner
-description: V tomto videu jsme stavět na ověření deklarativní pole, která jsme implementovali v našich předchozí Dynamická Data Video a přidat vlastní programovou logiku k naší val...
+description: V tomto videu budeme sestavovat ověřování deklarativních polí, které jsme implementovali v našem předchozím dynamickém datovém videu a přidali jsme vlastní programovací logiku do naší Val...
 ms.author: riande
 ms.date: 12/11/2008
 ms.assetid: 22fb5270-7685-4f3a-919b-c23e180efe49
 msc.legacyurl: /web-forms/videos/aspnet-dynamic-data/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c
 msc.type: video
 ms.openlocfilehash: 32bf9ca36cb4e731d1daeccbc579109f1dcda1b1
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59384731"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78636897"
 ---
-# <a name="how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c"></a>Implementace vlastního ověření pole imperativní logikou ve VB nebo C\#
+# <a name="how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c"></a>Implementace vlastního ověřování pole s imperativní logikou v jazyce VB nebo C\#
 
-podle [Joe Stagner](https://github.com/JoeStagner)
+[Jana Stagner](https://github.com/JoeStagner)
 
-V tomto videu jsme stavět na ověření deklarativní pole, která jsme implementovali v našich předchozí Dynamická Data Video a přidat vlastní programovou logiku k naší ověření.
+V tomto videu budeme sestavovat ověřování deklarativních polí, které jsme implementovali v našem předchozím dynamickém datovém videu, a přidat vlastní programovací logiku k ověření.
 
-[&#9654;Podívejte se na video (9 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c)
+[&#9654;Sledovat video (9 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-to-implement-custom-field-validation-with-imperative-logic-in-vb-or-c)
 
 > [!div class="step-by-step"]
 > [Předchozí](how-to-use-attribute-validation-in-aspnet-dynamic-data-applications.md)
-> [další](how-to-remove-columns-from-your-dynamicdata-data-grids.md)
+> [Další](how-to-remove-columns-from-your-dynamicdata-data-grids.md)

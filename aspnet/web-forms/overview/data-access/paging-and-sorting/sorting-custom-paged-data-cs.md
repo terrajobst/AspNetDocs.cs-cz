@@ -9,11 +9,11 @@ ms.assetid: 778baa4e-4af8-4665-947e-7a01d1a4dff2
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/sorting-custom-paged-data-cs
 msc.type: authoredcontent
 ms.openlocfilehash: e55ed9b92814753e95bdfdf26c2f051df6f2630d
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74642407"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78589780"
 ---
 # <a name="sorting-custom-paged-data-c"></a>Řazení dat s vlastním stránkováním (C#)
 
@@ -144,7 +144,7 @@ K této výjimce dojde, protože `SortExpression` prvku GridView `SupplierName` 
 
 **Obrázek 10**: výsledky se teď dají seřadit podle dodavatele ([kliknutím zobrazíte obrázek v plné velikosti).](sorting-custom-paged-data-cs/_static/image16.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Implementace vlastního stránkování, kterou jsme prozkoumali v předchozím kurzu, vyžaduje, aby bylo v době návrhu zadáno pořadí, podle kterého byly výsledky seřazeny. V krátké době to znamenalo, že implementace vlastního stránkování, kterou jsme implementovali, se ve stejnou chvíli nepovedla, ale nabízí možnosti řazení. V tomto kurzu toto omezení overcame rozšířením úložné procedury z prvního na zahrnutí vstupního parametru `@sortExpression`, podle kterého by bylo možné seřadit výsledky.
 

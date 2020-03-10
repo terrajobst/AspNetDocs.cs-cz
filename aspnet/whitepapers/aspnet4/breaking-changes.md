@@ -1,500 +1,500 @@
 ---
 uid: whitepapers/aspnet4/breaking-changes
-title: ASP.NET 4 – nejnovější změny | Dokumentace Microsoftu
+title: ASP.NET 4 průlomové změny | Microsoft Docs
 author: rick-anderson
-description: Tento dokument popisuje změny, které se provedly pro verzi rozhraní .NET Framework 4. Tato verze může potenciálně ovlivnit aplikace, které byly vytvořeny pomocí...
+description: Tento dokument popisuje změny, které byly provedeny pro verzi .NET Framework verze 4, která může potenciálně ovlivnit aplikace, které byly vytvořeny pomocí...
 ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: d601c540-f86b-4feb-890c-20c806b3da6c
 msc.legacyurl: /whitepapers/aspnet4/breaking-changes
 msc.type: content
 ms.openlocfilehash: 8ccad3b40a723c92a3164de082e1f94577141008
-ms.sourcegitcommit: dd0dc556a3d99a31d8fdbc763e9a2e53f3441b70
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2019
-ms.locfileid: "67411201"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78546247"
 ---
 # <a name="aspnet-4-breaking-changes"></a>ASP.NET 4 – nejnovější změny
 
-> Tento dokument popisuje změny, které se provedly pro verzi rozhraní .NET Framework 4. Tato verze může potenciálně ovlivnit aplikace, které byly vytvořeny pomocí dřívějších verzích, včetně verzí technologie ASP.NET 4 Beta 1 a beta verze 2.
+> Tento dokument popisuje změny, které byly provedeny pro verzi .NET Framework verze 4, které mohou mít potenciálně vliv na aplikace vytvořené pomocí dřívějších verzí, včetně verzí ASP.NET 4 beta 1 a beta 2.
 > 
-> [Stáhněte si tento dokument White Paper](https://download.microsoft.com/download/7/1/A/71A105A9-89D6-4201-9CC5-AD6A3B7E2F22/ASP_NET_4_Breaking_Changes.pdf)
+> [Stáhnout tento dokument White Paper](https://download.microsoft.com/download/7/1/A/71A105A9-89D6-4201-9CC5-AD6A3B7E2F22/ASP_NET_4_Breaking_Changes.pdf)
 
 <a id="0.1__Toc256768952"></a><a id="0.1__Toc256770056"></a>
 
 ## <a name="contents"></a>Obsah
 
-[ControlRenderingCompatibilityVersion nastavení v souboru Web.config](#0.1__Toc256770141 "_Toc256770141")  
-[ClientIDMode Changes](#0.1__Toc256770142 "_Toc256770142")  
-[HtmlEncode a nyní UrlEncode kódování jednoduchých uvozovek](#0.1__Toc256770143 "_Toc256770143")  
-[Stránka technologie ASP.NET (.aspx) Analyzátor je Stricter](#0.1__Toc256770144 "_Toc256770144")  
-[Browser Definition Files Updated](#0.1__Toc256770145 "_Toc256770145")  
-[System.Web.Mobile.dll odebrán ze souboru konfigurace kořenového webu](#0.1__Toc256770146 "_Toc256770146")  
-[Ověření požadavku ASP.NET](#0.1__Toc256770147 "_Toc256770147")  
-[Výchozí algoritmus hash je nyní HMACSHA256](#0.1__Toc256770148 "_Toc256770148")  
-[Chyby konfigurace související s novou konfiguraci technologie ASP.NET 4 kořenové](#0.1__Toc256770149 "_Toc256770149")  
-[Aplikace ASP.NET 4 podřízené nezdaří spustit v technologii ASP.NET 2.0 nebo technologie ASP.NET aplikací verze 3.5](#0.1__Toc256770150 "_Toc256770150")  
-[ASP.NET 4 weby se nemůže spustit na počítačích, kde je nainstalován SharePoint](#0.1__Toc256770151 "_Toc256770151")  
-[Vlastnost HttpRequest.FilePath již obsahuje hodnoty PathInfo](#0.1__Toc256770152 "_Toc256770152")  
-[ASP.NET 2.0 může aplikace generovat HttpException chyby, které odkazují na soubor eurl.axd](#0.1__Toc256770153 "_Toc256770153")  
-[Obslužné rutiny událostí může není není vyvolána ve výchozí dokument v IIS 7 nebo IIS 7.5 integrovaném režimu](#0.1__Toc256770154 "_Toc256770154")  
-[Změny v kódu ASP.NET Access Security (CAS) implementace](#0.1__Toc256770155 "_Toc256770155")  
-[Byly přesunuty MembershipUser a další typy v Namespace System.Web.Security](#0.1__Toc256770156 "_Toc256770156")  
-[Výstup ukládání do mezipaměti změny se liší \* hlavičky protokolu HTTP](#0.1__Toc256770157 "_Toc256770157")  
-[Typy System.Web.Security pro Passportu jsou zastaralé](#0.1__Toc256770158 "_Toc256770158")  
-[Vlastnost MenuItem.PopOutImageUrl selže, aby se vykreslil obraz v technologii ASP.NET 4](#0.1__Toc256770159 "_Toc256770159")  
-[Menu.StaticPopOutImageUrl a navrátit služby po Menu.DynamicPopOutImageUrl k vykreslování obrázků, když cesty obsahovat obrácená lomítka](#0.1__Toc256770160 "_Toc256770160")  
-[Disclaimer](#0.1__Toc256770161 "_Toc256770161")
+[Nastavení ControlRenderingCompatibilityVersion v souboru Web. config](#0.1__Toc256770141 "_Toc256770141")  
+[ClientIDMode změny](#0.1__Toc256770142 "_Toc256770142")  
+[HtmlEncode a UrlEncode teď zakódují jednoduché uvozovky.](#0.1__Toc256770143 "_Toc256770143")  
+[ASP.NET stránka (. aspx) je přísnější](#0.1__Toc256770144 "_Toc256770144")  
+[Aktualizované soubory definice prohlížeče](#0.1__Toc256770145 "_Toc256770145")  
+[Soubor System. Web. Mobile. dll byl odebrán z kořenového konfiguračního souboru webu](#0.1__Toc256770146 "_Toc256770146")  
+[Ověření žádosti ASP.NET](#0.1__Toc256770147 "_Toc256770147")  
+[Výchozí algoritmus hash je teď HMACSHA256](#0.1__Toc256770148 "_Toc256770148")  
+[Chyby konfigurace související s novou kořenovou konfigurací ASP.NET 4](#0.1__Toc256770149 "_Toc256770149")  
+[ASP.NET 4 podřízené aplikace se nespustí, když jsou v aplikacích ASP.NET 2,0 nebo ASP.NET 3,5.](#0.1__Toc256770150 "_Toc256770150")  
+[Weby ASP.NET 4 se nedaří spustit na počítačích, na kterých je nainstalována služba SharePoint.](#0.1__Toc256770151 "_Toc256770151")  
+[Vlastnost HttpRequest. FilePath už neobsahuje PathInfo hodnoty.](#0.1__Toc256770152 "_Toc256770152")  
+[Aplikace ASP.NET 2,0 můžou generovat chyby HttpException –, které odkazují na eurl. axd.](#0.1__Toc256770153 "_Toc256770153")  
+[Obslužné rutiny událostí nemusí být vyvolány ve výchozím dokumentu v integrovaném režimu služby IIS 7 nebo IIS 7,5.](#0.1__Toc256770154 "_Toc256770154")  
+[Změny implementace ASP.NET Code Access Security (CAS)](#0.1__Toc256770155 "_Toc256770155")  
+[MembershipUser a další typy v oboru názvů System. Web. Security byly přesunuty.](#0.1__Toc256770156 "_Toc256770156")  
+[Změny v ukládání výstupu do mezipaměti se liší \* hlavičce protokolu HTTP](#0.1__Toc256770157 "_Toc256770157")  
+[Typy System. Web. Security pro Passport jsou zastaralé.](#0.1__Toc256770158 "_Toc256770158")  
+[Vlastnost MenuItem. PopOutImageUrl nemůže vykreslit image v ASP.NET 4.](#0.1__Toc256770159 "_Toc256770159")  
+[Nabídka. StaticPopOutImageUrl a menu. DynamicPopOutImageUrl se nepodaří vykreslit obrázky, když cesty obsahují zpětná lomítka.](#0.1__Toc256770160 "_Toc256770160")  
+[Právní omezení](#0.1__Toc256770161 "_Toc256770161")
 
 <a id="0.1__ControlRenderingCompatibilityVersio"></a><a id="0.1__Toc245724853"></a><a id="0.1__Toc255587630"></a><a id="0.1__Toc256770141"></a>
 
-## <a name="controlrenderingcompatibilityversion-setting-in-the-webconfig-file"></a>ControlRenderingCompatibilityVersion nastavení v souboru Web.config
+## <a name="controlrenderingcompatibilityversion-setting-in-the-webconfig-file"></a>Nastavení ControlRenderingCompatibilityVersion v souboru Web. config
 
-Ovládací prvky ASP.NET byly upraveny v rozhraní .NET Framework verze 4 k vám umožní zadat, jak přesněji vykreslují značek. V předchozích verzích rozhraní .NET Framework, protože některé ovládací prvky ho kód, který jste měli žádný způsob, jak zakázat. Ve výchozím nastavení technologii ASP.NET 4 tohoto typu značky již vygenerována.
+Ovládací prvky ASP.NET byly upraveny ve verzi .NET Framework 4, aby bylo možné zadat přesnější způsob, jak vykreslovat značky. V předchozích verzích .NET Framework některé ovládací prvky vygenerovaly značky, které jste nemuseli zakázat. Ve výchozím nastavení se ASP.NET 4 tento typ značky již negeneruje.
 
-Pokud používáte Visual Studio 2010 k upgradu vaší aplikace v ASP.NET 2.0 nebo technologie ASP.NET 3.5, nástroj automaticky přidá nastavení, které `Web.config` soubor, který uchovává starší vykreslování. Nicméně pokud upgradujete aplikaci tak, že změníte fond aplikací ve službě IIS cílit na rozhraní .NET Framework 4, ASP.NET používá nový režim vykreslování ve výchozím nastavení. Pokud chcete zakázat nový režim vykreslování, přidejte následující nastavení v `Web.config` souboru:
+Pokud používáte Visual Studio 2010 k upgradu aplikace z ASP.NET 2,0 nebo ASP.NET 3,5, nástroj automaticky přidá nastavení do souboru `Web.config`, který zachovává starší vykreslování. Pokud však provedete upgrade aplikace tím, že změníte fond aplikací ve službě IIS tak, aby byl cílen na .NET Framework 4, ASP.NET ve výchozím nastavení použije nový režim vykreslování. Chcete-li zakázat nový režim vykreslování, přidejte do souboru `Web.config` následující nastavení:
 
 [!code-xml[Main](breaking-changes/samples/sample1.xml)]
 
-Hlavní vykreslování změny, které přináší nové chování jsou následující:
+Hlavní vykreslování změny, které přináší nové chování, jsou následující:
 
-- **Image** a **ImageButton** už vykreslení ovládacích prvků `border="0"` atribut.
-- **BaseValidator** třídy a ověřování ovládacích prvků, které jsou odvozeny z něj už vykreslit červený text ve výchozím nastavení.
-- **HtmlForm** ovládacího prvku nezobrazuje **název** atribut.
-- **Tabulky** ovládací prvek již vykreslení `border="0"` atribut.
-- Ovládací prvky, které nejsou určeny pro uživatelský vstup (například **popisek** ovládací prvek) už zobrazovat `disabled="disabled"` atribut, pokud jejich **povoleno** je nastavena na **false**(nebo pokud toto nastavení dědí z ovládacího prvku kontejneru).
+- Ovládací prvky **Image** a **obrázkové** již nevykreslují atribut `border="0"`.
+- Třída **BaseValidator** a ověřovací ovládací prvky, které jsou z něho odvozené, již ve výchozím nastavení nevykresluje červený text.
+- Ovládací prvek **HtmlForm** nevykresluje atribut **Name** .
+- Ovládací prvek **tabulka** již nevykresluje atribut `border="0"`.
+- Ovládací prvky, které nejsou navrženy pro vstup uživatele (například ovládací prvek **popisek** ) již nevykreslují atribut `disabled="disabled"`, pokud je vlastnost **Enabled** nastavena na **hodnotu false** (nebo pokud dědí toto nastavení z ovládacího prvku kontejneru).
 
 <a id="0.1__Toc245724854"></a><a id="0.1__Toc255587631"></a><a id="0.1__Toc256770142"></a>
 
 ## <a name="clientidmode-changes"></a>ClientIDMode změny
 
-**ClientIDMode** nastavení v technologii ASP.NET 4 umožňuje určit, jak technologie ASP.NET generuje **id** atributů elementů HTML. V předchozích verzích technologie ASP.NET, je ekvivalentní výchozí chování **AutoID** nastavení **ClientIDMode**. Ve výchozím nastavení je teď ale **Predictable**.
+Nastavení **ClientIDMode** v ASP.NET 4 umožňuje určit, jak ASP.NET generuje atribut **ID** pro prvky jazyka HTML. V předchozích verzích ASP.NET byl výchozí chování ekvivalentní s nastavením **AutoID** **ClientIDMode**. Výchozí nastavení je však nyní **předvídatelné**.
 
-Pokud používáte Visual Studio 2010 k upgradu vaší aplikace v ASP.NET 2.0 nebo technologie ASP.NET 3.5, nástroj automaticky přidá nastavení, které `Web.config` soubor, který uchovává chování starších verzích rozhraní .NET Framework. Ale pokud upgradujete aplikaci tak, že změníte fond aplikací ve službě IIS cílit na rozhraní .NET Framework 4, ASP.NET používá nový režim ve výchozím nastavení. Chcete-li zakázat režim nové ID klienta, přidejte následující nastavení v `Web.config` souboru:
+Použijete-li sadu Visual Studio 2010 k upgradu aplikace z ASP.NET 2,0 nebo ASP.NET 3,5, nástroj automaticky přidá do souboru `Web.config` nastavení, které zachovává chování předchozích verzí .NET Framework. Pokud však provedete upgrade aplikace tím, že změníte fond aplikací ve službě IIS tak, aby byl cílen na .NET Framework 4, ASP.NET ve výchozím nastavení použije nový režim. Chcete-li zakázat nový režim ID klienta, přidejte do souboru `Web.config` následující nastavení:
 
 [!code-xml[Main](breaking-changes/samples/sample2.xml)]
 
 <a id="0.1__Toc245724855"></a><a id="0.1__Toc255587632"></a><a id="0.1__Toc256770143"></a>
 
-## <a name="htmlencode-and-urlencode-now-encode-single-quotation-marks"></a>HtmlEncode a nyní UrlEncode kódovat jednoduché uvozovky
+## <a name="htmlencode-and-urlencode-now-encode-single-quotation-marks"></a>HtmlEncode a UrlEncode teď zakódují jednoduché uvozovky.
 
-V technologii ASP.NET 4 **HtmlEncode** a **UrlEncode** metody **HttpUtility** a **HttpServerUtility** třídy byla aktualizována, aby kódování znak jednoduché uvozovky (') následujícím způsobem:
+V ASP.NET 4 byly aktualizovány metody **HtmlEncode** a **UrlEncode** tříd **HttpUtility** a **HttpServerUtility** , aby se zakódovat znak jednoduché uvozovky (') následujícím způsobem:
 
-- **HtmlEncode** metoda kóduje výskyty jednoduché uvozovky jako.
-- **UrlEncode** metoda kóduje jako % 27 instance jednoduché uvozovky.
+- Metoda **HtmlEncode** kóduje instance jednoduché uvozovky jako.
+- Metoda **UrlEncode** kóduje instance jednoduché uvozovky jako %27.
 
 <a id="0.1__Toc255587633"></a><a id="0.1__Toc256770144"></a><a id="0.1__Toc245724856"></a>
 
-## <a name="aspnet-page-aspx-parser-is-stricter"></a>Stránka technologie ASP.NET (.aspx) Analyzátor je Stricter
+## <a name="aspnet-page-aspx-parser-is-stricter"></a>ASP.NET stránka (. aspx) je přísnější
 
-Analyzátor stránky pro stránky ASP.NET (`.aspx` soubory) a uživatelských ovládacích prvků (`.ascx` souborů) je přísnější v technologii ASP.NET 4 a odmítne další výskyty neplatný kód. Například následující dva fragmenty kódu by úspěšně analyzovat ve starších verzích technologie ASP.NET, ale bude nyní vyvolat chyby analyzátoru v technologii ASP.NET 4.
+Analyzátor stránky pro ASP.NET stránky (soubory`.aspx`) a uživatelské ovládací prvky (soubory`.ascx`) jsou v ASP.NET 4 přísnější a zamítnou více instancí neplatných značek. Například následující dva fragmenty by úspěšně analyzovaly v dřívějších verzích ASP.NET, ale nyní budou generovat chyby analyzátoru v ASP.NET 4.
 
 [!code-aspx[Main](breaking-changes/samples/sample3.aspx)]
 
-Všimněte si, že neplatné středníky na konci **HiddenField** značky.
+Všimněte si, že na konci značky **HiddenField** je neplatný středník.
 
 [!code-aspx[Main](breaking-changes/samples/sample4.aspx)]
 
-Všimněte si, uzavřené **styl** atribut, který se spustí do **CssClass** atribut.
+Všimněte si neuzavřeného atributu **style** , který se spouští do atributu **CssClass** .
 
 <a id="0.1__Toc255587634"></a><a id="0.1__Toc256770145"></a>
 
-## <a name="browser-definition-files-updated"></a>Soubory definice prohlížeče aktualizovat
+## <a name="browser-definition-files-updated"></a>Aktualizované soubory definice prohlížeče
 
-Soubory definice prohlížeče se aktualizovaly informace o nových a aktualizovaných prohlížečích a zařízeních. Starší prohlížeče a zařízení, jako jsou Netscape Navigator byly odebrány a novějších prohlížečů a zařízení, jako jsou Google Chrome a Apple iPhone se přidaly.
+Soubory definic prohlížeče byly aktualizovány tak, aby obsahovaly informace o nových a aktualizovaných prohlížečích a zařízeních. Odebraly se starší prohlížeče a zařízení, jako je například Netscape Navigator, a přidaly se novější prohlížeče a zařízení, jako je Google Chrome a Apple iPhone.
 
-Pokud vaše aplikace obsahuje definice vlastních prohlížečů, které dědí z jednoho z definicí prohlížeče, které byly odebrány, zobrazí se chyba. Například pokud `App_Browsers` složka obsahuje definici prohlížeče, která dědí z definice IE2 prohlížeče, zobrazí se následující chybová zpráva konfigurace:
+Pokud vaše aplikace obsahuje vlastní definice prohlížečů, které dědí z jedné z odebraných definic prohlížeče, zobrazí se chyba. Pokud například složka `App_Browsers` obsahuje definici prohlížeče, která dědí z definice prohlížeče IE2, zobrazí se následující chybová zpráva konfigurace:
 
-- Nebyl nalezen element prohlížeče nebo brány s ID "IE2".
+- Nebyl nalezen element prohlížeče nebo brány s ID ' IE2 '.
 
 > [!NOTE]
-> **HttpBrowserCapabilities** objektu (který je zveřejněný na stránce **Request.Browser** vlastnost) je řízenou soubory definice prohlížeče. Proto informace vrácené přístupem k vlastnosti tohoto objektu v technologii ASP.NET 4, může být jiný než informace vrácené v dřívější verzi technologie ASP.NET.
+> Objekt **HttpBrowserCapabilities** (který je vystavený vlastností **Request. browser** stránky) je řízen soubory definic prohlížeče. Proto se informace vrácené přístupem k vlastnosti tohoto objektu v ASP.NET 4 mohou lišit od informací vrácených v dřívější verzi ASP.NET.
 
-Můžete se vrátit k původní definice soubory prohlížeče tak, že zkopírujete soubory definice prohlížeče z následující složky:
+Původní soubory definice prohlížeče se můžete vrátit tak, že zkopírujete soubory definice prohlížeče z následující složky:
 
 [!code-console[Main](breaking-changes/samples/sample5.cmd)]
 
-Zkopírujte soubory do odpovídajícího `\CONFIG\Browsers` složku pro technologii ASP.NET 4. Po zkopírování souborů, spuštění Aspnet\_regbrowsers.exe nástroj příkazového řádku.
+Zkopírujte soubory do odpovídající složky `\CONFIG\Browsers` ASP.NET 4. Po zkopírování souborů spusťte nástroj příkazového řádku ASPNET\_regbrowsers. exe.
 
 <a id="0.1__Toc255587635"></a><a id="0.1__Toc256770146"></a>
 
-## <a name="systemwebmobiledll-removed-from-root-web-configuration-file"></a>System.Web.Mobile.dll odebrán ze souboru konfigurace kořenového webu
+## <a name="systemwebmobiledll-removed-from-root-web-configuration-file"></a>Soubor System. Web. Mobile. dll byl odebrán z kořenového konfiguračního souboru webu
 
-V předchozích verzích technologie ASP.NET, odkaz na sestavení System.Web.Mobile.dll byla zahrnuta v kořenovém adresáři `Web.config` soubor **sestavení** části. Za účelem zlepšení výkonu byl odebrán odkaz na toto sestavení.
+V předchozích verzích nástroje ASP.NET byl odkaz na sestavení System. Web. Mobile. dll zahrnut do kořenového `Web.config` souboru v části **sestavení** v části. Aby bylo možné zvýšit výkon, byl odebrán odkaz na toto sestavení.
 
-Sestavení System.Web.Mobile.dll je zahrnuta v technologii ASP.NET 4, ale je zastaralé. Pokud chcete používat typy ze sestavení System.Web.Mobile.dll, přidejte odkaz na toto sestavení buď do kořenového adresáře `Web.config` souboru nebo k aplikaci `Web.config` souboru. Například pokud chcete použít některou z (nepoužívané) mobilní ovládací prvky ASP.NET, musíte přidat odkaz na sestavení System.Web.Mobile.dll `Web.config` souboru.
+Sestavení System. Web. Mobile. dll je součástí ASP.NET 4, ale je zastaralé. Chcete-li použít typy ze sestavení System. Web. Mobile. dll, přidejte odkaz na toto sestavení buď do kořenového `Web.config` souboru, nebo do souboru `Web.config` aplikace. Například pokud chcete použít některý z (nepoužívané) ASP.NET mobilní ovládací prvky, musíte do souboru `Web.config` přidat odkaz na sestavení System. Web. Mobile. dll.
 
 <a id="0.1__Toc245724857"></a><a id="0.1__Toc255587636"></a><a id="0.1__Toc256770147"></a>
 
-## <a name="aspnet-request-validation"></a>Ověření požadavku ASP.NET
+## <a name="aspnet-request-validation"></a>Ověření žádosti ASP.NET
 
-Žádosti o ověření funkce v technologii ASP.NET poskytuje určitou úroveň výchozí ochranu před útoky skriptování napříč weby (XSS). V předchozích verzích technologie ASP.NET se ve výchozím nastavení povoleno ověření žádosti. Ale použijí jenom u stránky ASP.NET (`.aspx` soubory a jejich třídy) a pouze pokud byly provádění těchto stránek.
+Funkce ověření žádosti v ASP.NET poskytuje určitou úroveň výchozí ochrany proti útokům prostřednictvím skriptování mezi weby (XSS). V předchozích verzích ASP.NET byl standardně povolen ověřovací požadavek. Nicméně se aplikuje jenom na stránky ASP.NET (`.aspx` soubory a jejich soubory třídy) a jenom v případě, že byly tyto stránky spuštěné.
 
-V technologii ASP.NET 4, ve výchozím nastavení, žádost o ověření je povolena pro všechny požadavky, protože je povolená před **BeginRequest** fáze požadavek HTTP. V důsledku toho žádost o ověření platí pro požadavky pro všechny prostředky technologie ASP.NET, nikoli pouze požadavky na stránku .aspx. Patří sem požadavky, jako je například volání webové služby a vlastní obslužné rutiny HTTP. Žádost o ověření je aktivní také v případě vlastních modulů HTTP čtete obsah požadavku HTTP.
+V ASP.NET 4 je ve výchozím nastavení povolená žádost o ověření pro všechny požadavky, protože je povolená před fází **beginRequest** požadavku HTTP. V důsledku toho se ověření žádosti vztahuje na požadavky pro všechny ASP.NET prostředky, nikoli jenom na žádosti stránky ASPX. To zahrnuje požadavky, jako jsou volání webové služby a vlastní obslužné rutiny HTTP. Ověření žádosti je také aktivní, když vlastní moduly HTTP čtou obsah požadavku HTTP.
 
-V důsledku toho žádost o ověření může nyní dojít k chybám pro požadavky, které dříve není vyvolávat chyby. Chcete-li vrátit k chování funkcí technologie ASP.NET 2.0 žádost o ověření, přidejte následující nastavení v `Web.config` souboru:
+V důsledku toho se teď můžou vyskytnout chyby ověřování u požadavků, u kterých se dřív neaktivovaly chyby. Chcete-li se vrátit k chování funkce ověření žádosti ASP.NET 2,0, přidejte do souboru `Web.config` následující nastavení:
 
 [!code-xml[Main](breaking-changes/samples/sample6.xml)]
 
-Doporučujeme však, že analýza všech chyb ověření požadavku k určení, zda existující obslužné rutiny, moduly nebo jiný vlastní kód přistupuje k potenciálně nebezpečné vstupy HTTP, které mohou být XSS útoku vektory.
+Nicméně doporučujeme analyzovat všechny chyby ověření žádosti, abyste zjistili, zda existující obslužné rutiny, moduly nebo jiné vlastní kódy mají přístup potenciálně nebezpečné vstupy HTTP, které by mohly být vektory útoku XSS.
 
 <a id="0.1__Toc245724858"></a><a id="0.1__Toc255587637"></a><a id="0.1__Toc256770148"></a>
 
-## <a name="default-hashing-algorithm-is-now-hmacsha256"></a>Výchozí algoritmus hash je nyní HMACSHA256
+## <a name="default-hashing-algorithm-is-now-hmacsha256"></a>Výchozí algoritmus hash je teď HMACSHA256
 
-Technologie ASP.NET používá k zabezpečení dat, jako jsou soubory cookie pro ověřování formulářů a stavu zobrazení šifrování a algoritmy hash. Ve výchozím nastavení technologii ASP.NET 4 teď používá HMACSHA256 algoritmus hash operací na soubory cookie a stav zobrazení. Starší verze technologie ASP.NET použita starší HMACSHA1 algoritmus.
+ASP.NET používá šifrovací algoritmy i algoritmy hash k zabezpečení dat, jako jsou soubory cookie ověřování pomocí formulářů a stav zobrazení. Ve výchozím nastavení teď ASP.NET 4 používá algoritmus HMACSHA256 pro operace hash na souborech cookie a stavu zobrazení. Starší verze ASP.NET používaly starší algoritmus HMACSHA1.
 
-Vaše aplikace může ovlivnit, pokud spustíte 2.0/ASP.NET smíšené technologie ASP.NET 4 prostředí místo, kde data, jako jsou soubory cookie pro ověřování formuláře musí pracovat across.NET verze rozhraní Framework. Pro konfiguraci aplikace ASP.NET 4 Web používat starší HMACSHA1 algoritmus, přidejte následující nastavení v `Web.config` souboru:
+Vaše aplikace můžou být ovlivněné, pokud spustíte smíšené prostředí ASP.NET 2.0/ASP. NET 4, kde data, jako jsou soubory cookie ověřování formulářů, musí fungovat ve verzích across.NET Framework. Pokud chcete webovou aplikaci ASP.NET 4 nakonfigurovat tak, aby používala starší algoritmus HMACSHA1, přidejte do souboru `Web.config` následující nastavení:
 
 [!code-xml[Main](breaking-changes/samples/sample7.xml)]
 
 <a id="0.1__Toc245724859"></a><a id="0.1__Toc255587638"></a><a id="0.1__Toc256770149"></a>
 
-## <a name="configuration-errors-related-to-new-aspnet-4-root-configuration"></a>Chyby konfigurace související s novou technologií ASP.NET 4 Konfigurace kořenového adresáře
+## <a name="configuration-errors-related-to-new-aspnet-4-root-configuration"></a>Chyby konfigurace související s novou kořenovou konfigurací ASP.NET 4
 
-Konfigurační soubory root ( `machine.config` souboru a kořenové `Web.config` souboru) pro rozhraní .NET Framework 4 (a tedy ASP.NET 4) byly aktualizovány zahrnout většinu informací konfigurace často používaný text, který v technologii ASP.NET 3.5 byl nalezen v aplikace `Web.config` soubory. Z důvodu složitosti spravovaných systémech konfigurace služby IIS 7 a IIS 7.5 spouštění aplikací technologie ASP.NET 3.5 v technologii ASP.NET 4 a v rámci služby IIS 7 a IIS 7.5 může způsobit technologie ASP.NET nebo IIS chyby konfigurace.
+Konfigurační soubory root (`machine.config` soubor a kořenový `Web.config` soubor) pro .NET Framework 4 (a tedy ASP.NET 4) byly aktualizovány tak, aby obsahovaly většinu často se konfiguračních informací, které v ASP.NET 3,5 byly nalezeny v `Web.config` souborech aplikace. Vzhledem ke složitosti spravovaných systémů konfigurace služby IIS 7 a IIS 7,5, které spouštějí aplikace ASP.NET 3,5 v ASP.NET 4 a v části IIS 7 a služba IIS 7,5 můžou způsobit chyby konfigurace ASP.NET nebo IIS.
 
-Doporučujeme, abyste upgrade aplikací technologie ASP.NET 3.5 na ASP.NET 4 pomocí nástroje pro upgrade projektu v sadě Visual Studio 2010, pokud je to možné. Visual Studio 2010 automaticky upraví aplikace technologie ASP.NET 3.5 `Web.config` souboru tak, aby obsahovala odpovídající nastavení pro technologii ASP.NET 4.
+Doporučujeme, abyste upgradovali aplikace ASP.NET 3,5 na ASP.NET 4 pomocí nástrojů pro upgrade projektu v aplikaci Visual Studio 2010, pokud je to praktické. Visual Studio 2010 automaticky upraví soubor `Web.config` aplikace ASP.NET 3,5 tak, aby obsahoval příslušná nastavení pro ASP.NET 4.
 
-Je však podporovaný scénář pro spuštění pomocí rozhraní .NET Framework 4 bez opětovnou kompilaci aplikací technologie ASP.NET 3.5. V takovém případě budete muset ručně upravit aplikace `Web.config` souborů před spuštěním aplikace v rozhraní .NET Framework 4 a IIS 7 nebo IIS 7.5.
+Je však podporován scénář ke spouštění aplikací ASP.NET 3,5 pomocí .NET Framework 4 bez nutnosti rekompilace. V takovém případě může být nutné ručně upravit soubor `Web.config` aplikace před spuštěním aplikace v .NET Framework 4 a v části IIS 7 nebo IIS 7,5.
 
-Změny, které možná budete muset vytvořit pro různé kombinace softwaru naleznete v následujících dvou částech.
+Následující dvě části popisují změny, které mohou být nutné pro různé kombinace softwaru.
 
-**Windows Vista SP1 nebo Windows Server 2008 SP1, kde jsou instalovány opravu hotfix KB958854 ani SP2.** V této konfiguraci systému konfigurace služby IIS 7 nesprávně sloučí konfigurace spravované aplikace porovnáním na úrovni aplikace `Web.config` souboru na technologii ASP.NET 2.0 `machine.config` soubory. Z důvodu toho úrovni aplikace `Web.config` soubory z rozhraní .NET Framework 3.5 nebo novější musí mít **system.web.extensions** definice oddílu konfigurace (elementu) aby způsobit selhání ověřování IIS 7.
+**Windows Vista SP1 nebo Windows Server 2008 SP1, kde nejsou nainstalované žádné opravy hotfix KB958854 ani SP2.** V této konfiguraci systém konfigurace služby IIS 7 nesprávně sloučí spravovanou konfiguraci aplikace tím, že porovná soubor `Web.config` 2,0 na úrovni aplikace s `machine.config`mi soubory. Z tohoto důvodu musí mít soubory `Web.config` na úrovni aplikace z .NET Framework 3,5 nebo novější definici konfiguračního oddílu **System. Web. Extensions** (element), aby nedošlo k selhání ověření služby IIS 7.
 
-Ale ručně změnit úroveň aplikace `Web.config` souboru položky, které nejsou přesně shodné původní definice často používaný text konfigurace části, které byly představeny s nástrojem Visual Studio 2008 způsobí chyby konfigurace technologie ASP.NET. (Výchozí položky konfigurace, které jsou generovány nástrojem Visual Studio 2008 fungovat správně.) Běžný problém je, že ručně upravit `Web.config` vynechte soubory **allowDefinition** a **requirePermission** konfigurační atributy, které se nacházejí v různých konfiguračního oddílu definice. To způsobí neshodu mezi zkrácený konfigurační oddíl v úrovni aplikace `Web.config` soubory a dokončení definice v technologii ASP.NET 4 `machine.config` souboru. V důsledku toho systém konfigurace technologie ASP.NET 4 za běhu, vyvolá chybu konfigurace.
+Ručně upravily `Web.config` položky souboru na úrovni aplikace, které se přesně neshodují s původními definicemi často používaného konfiguračního oddílu, které byly představeny se sadou Visual Studio 2008, způsobí chyby konfigurace ASP.NET. (Výchozí položky konfigurace, které jsou generovány v aplikaci Visual Studio 2008 fungují správně.) Běžným problémem je, že ručně upravené `Web.config` soubory ponechají konfigurační atributy **AllowDefinition** a **RequirePermission** , které se nacházejí v různých definicích konfiguračního oddílu. Tím dojde k neshodě mezi zkráceným oddílem konfigurace v souborech `Web.config` na úrovni aplikace a úplnou definicí v souboru `machine.config` ASP.NET 4. Výsledkem je, že v době spuštění vyvolá konfigurační systém ASP.NET 4 chybu konfigurace.
 
-**Windows Vista SP2, Windows Server 2008 SP2, Windows 7, Windows Server 2008 R2 a také na Windows Vista SP1 a Windows Server 2008 SP1, kde je nainstalována oprava hotfix KB958854.**
+**Windows Vista SP2, Windows Server 2008 SP2, Windows 7, Windows Server 2008 R2 a taky Windows Vista SP1 a Windows Server 2008 SP1, kde je nainstalovaná oprava hotfix KB958854**
 
-V tomto scénáři, systém nativní konfigurace služby IIS 7 a IIS 7.5 vrátí chyby v konfiguraci, protože provádí porovnání textu na **typ** atribut, který je definován pro obslužné rutiny spravovaného konfiguračního oddílu. Protože všechny `Web.config` soubory, které jsou generovány pomocí sady Visual Studio 2008 a Visual Studio 2008 SP1 mají "3,5" v řetězci typ pro **system.web.extensions** (a související) obslužné rutiny konfiguračního oddílu a protože technologie ASP.NET 4 `machine.config` soubor má "4.0" **typ** atribut pro stejném obslužné rutiny konfiguračního oddílu, aplikace, které jsou generovány v sadě Visual Studio 2008 nebo Visual Studio 2008 SP1, vždy neúspěšné ověření konfigurace ve službě IIS 7 a IIS 7.5.
+V tomto scénáři systém nativní konfigurace služby IIS 7 a IIS 7,5 vrátí chybu konfigurace, protože provádí porovnání textu u atributu **typu** , který je definován pro obslužnou rutinu spravovaného konfiguračního oddílu. Vzhledem k tomu, že všechny soubory `Web.config` generované v rámci sady Visual Studio 2008 a Visual Studio 2008 SP1 mají v řetězci typu pro systém hodnotu "3,5". obslužné rutiny konfiguračního oddílu **Web. Extensions** (a související) a protože soubor ASP.NET 4 `machine.config` má v atributu **Type** pro stejné obslužné rutiny konfiguračního oddílu "4,0", aplikace, které jsou generovány v rámci sady Visual Studio 2008 nebo Visual Studio 2008 SP1 vždy selžou ověření konfigurace v iis 7 a IIS 7,5.
 
 <a id="0.1__Toc251910248"></a>
 
 ### <a name="resolving-these-issues"></a>Řešení těchto problémů
 
-Alternativní řešení pro první scénář je aktualizovat na úrovni aplikace `Web.config` zahrnutím často používaný text konfigurace ze souboru `Web.config` soubor, který se vygeneroval automaticky pomocí sady Visual Studio 2008.
+Alternativním řešením pro první scénář je aktualizovat soubor `Web.config` na úrovni aplikace zahrnutím často používaného konfiguračního textu ze souboru `Web.config`, který byl vygenerován automaticky pomocí sady Visual Studio 2008.
 
-Alternativní řešení pro první scénář je k instalaci aktualizací Service Pack 2 pro Vista nebo Windows Server 2008 ve vašem počítači nebo k instalaci oprav hotfix KB958854 ([https://support.microsoft.com/kb/958854](https://support.microsoft.com/kb/958854)) Chcete-li vyřešit chování nesprávné konfiguraci a slučování Systému konfigurace služby IIS. Však po provedení některé z těchto akcí, aplikace bude pravděpodobně dojde k chyby v konfiguraci z důvodu popsané pro druhý scénář.
+Alternativním řešením pro první scénář je instalace aktualizace Service Pack 2 pro Vista nebo Windows Server 2008 do vašeho počítače nebo instalace opravy hotfix KB958854 ([https://support.microsoft.com/kb/958854](https://support.microsoft.com/kb/958854)), která opravuje nesprávné chování při sloučení konfiguračního systému služby IIS. Po provedení některé z těchto akcí však aplikace pravděpodobně dojde k chybě konfigurace z důvodu problému popsaného pro druhý scénář.
 
-Alternativním řešením pro druhý scénář je odstranit nebo okomentovat všechny **system.web.extensions** definice konfigurace oddíl a oddíl konfigurace skupiny definic z úrovni aplikace `Web.config` souboru. V horní části na úrovni aplikace jsou obvykle tyto definice `Web.config` souboru a lze je identifikovat podle **configSections** element a jeho podřízené položky.
+Alternativním řešením pro druhý scénář je odstranit nebo komentovat všechny definice konfiguračního oddílu **System. Web. Extensions** a definice skupin oddílů konfigurace z `Web.config` souboru na úrovni aplikace. Tyto definice jsou obvykle na začátku souboru `Web.config` na úrovni aplikace a lze je identifikovat pomocí elementu **configSections** a jeho podřízených elementů.
 
-Pro oba scénáře, doporučujeme vám také ručně odstranit **system.codedom** oddíl, i když tento krok není povinný.
+V obou scénářích se doporučuje také ručně odstranit oddíl **System. CodeDom** , přestože to není vyžadováno.
 
 <a id="0.1__Toc252995490"></a><a id="0.1__Toc255587639"></a><a id="0.1__Toc256770150"></a><a id="0.1__Toc245724860"></a>
 
-## <a name="aspnet-4-child-applications-fail-to-start-when-under-aspnet-20-or-aspnet-35-applications"></a>Aplikace ASP.NET 4 podřízené nezdaří spustit v technologii ASP.NET 2.0 nebo technologie ASP.NET aplikací verze 3.5
+## <a name="aspnet-4-child-applications-fail-to-start-when-under-aspnet-20-or-aspnet-35-applications"></a>ASP.NET 4 podřízené aplikace se nespustí, když jsou v aplikacích ASP.NET 2,0 nebo ASP.NET 3,5.
 
-ASP.NET 4 aplikací, které jsou nakonfigurovány jako podřízené prvky aplikace, které běží starší verze technologie ASP.NET se nemusí podařit spustit kvůli chybám při konfiguraci nebo kompilaci. Následující příklad ukazuje strukturu adresářů pro ovlivněné aplikaci.
+ASP.NET 4 aplikace, které jsou nakonfigurované jako podřízené položky aplikací, které používají starší verze ASP.NET, se nemusí podařit spustit kvůli chybám konfigurace nebo kompilace. Následující příklad ukazuje adresářovou strukturu pro ovlivněnou aplikaci.
 
-`/parentwebapp` (nakonfigurován pro použití technologie ASP.NET 2.0 nebo technologie ASP.NET 3.5)  
-`/childwebapp` (nakonfigurován pro použití technologie ASP.NET 4)
+`/parentwebapp` (nakonfigurováno pro použití ASP.NET 2,0 nebo ASP.NET 3,5)  
+`/childwebapp` (nakonfigurováno pro použití ASP.NET 4)
 
-Aplikace `childwebapp` složky se nepodaří spustit ve službě IIS 7 nebo IIS 7.5 a bude sestava chyby v konfiguraci. Text chyby bude obsahovat zpráva podobná následující:
+Aplikace ve složce `childwebapp` se nepodaří spustit ve službě IIS 7 nebo IIS 7,5 a ohlásí chybu konfigurace. Text chyby bude obsahovat zprávu podobnou následující:
 
 - `The requested page cannot be accessed because the related configuration data for the page is invalid.`
 
 - `The configuration section 'configSections' cannot be read because it is missing a section declaration.`
 
-Ve službě IIS 6, aplikace v `childwebapp` složky také nebude možné spustit, ale ten nahlásí chybu jiný. Text chyby může stát například následující:
+V případě služby IIS 6 se aplikace ve složce `childwebapp` také nespustí, ale ohlásí jinou chybu. Text chyby může například nastavovat následující:
 
 - `The value for the 'compilerVersion' attribute in the provider options must be 'v4.0' or later if you are compiling for version 4.0 or later of the .NET Framework. To compile this Web application for version 3.5 or earlier of the .NET Framework, remove the 'targetFramework' attribute from the element of the Web.config file`
 
-Tyto scénáře způsobeny tím, že informace o konfiguraci z nadřazené aplikaci `parentwebapp` složka je součástí hierarchie konfigurační informace, které určuje konečný sloučené konfiguraci nastavení, které jsou používány podřízeného webu v aplikaci `childwebapp` složky. V závislosti na tom, zda aplikace technologie ASP.NET 4 běží na IIS 7 (nebo IIS 7.5) nebo na IIS 6 systému konfigurace služby IIS nebo systému kompilace ASP.NET 4, vrátí se chyba.
+K těmto scénářům dochází, protože informace o konfiguraci z nadřazené aplikace ve složce `parentwebapp` jsou součástí hierarchie informací o konfiguraci, které určují poslední Sloučená nastavení konfigurace používaná podřízenou webovou aplikací ve složce `childwebapp`. V závislosti na tom, jestli je webová aplikace ASP.NET 4 spuštěná ve službě IIS 7 (nebo IIS 7,5) nebo ve službě IIS 6, vrátí buď konfigurační systém služby IIS, nebo kompilační systém ASP.NET 4 chybu.
 
-Kroky, které je třeba dodržovat tento problém můžete vyřešit a získat podřízené aplikace ASP.NET 4 závisí na aplikaci technologie ASP.NET 4, jestli běží na IIS 6 nebo na IIS 7 (nebo IIS 7.5).
+Kroky, které je nutné provést při řešení tohoto problému a získání podřízené aplikace ASP.NET 4, závisí na tom, zda je aplikace ASP.NET 4 spuštěna ve službě IIS 6 nebo ve službě IIS 7 (nebo IIS 7,5).
 
-### <a name="step-1-iis-7-or-iis-75-only"></a>Krok 1 (IIS 7 nebo IIS 7.5 jenom)
+### <a name="step-1-iis-7-or-iis-75-only"></a>Krok 1 (jenom IIS 7 nebo IIS 7,5)
 
-Tento krok je nutný pouze v operačních systémů, na kterých běží služby IIS 7 a 7.5 služby IIS, která zahrnuje Windows Vista, Windows Server 2008, Windows 7 a Windows Server 2008 R2.
+Tento krok je nutný jenom v operačních systémech, na kterých běží IIS 7 nebo IIS 7,5, mezi které patří Windows Vista, Windows Server 2008, Windows 7 a Windows Server 2008 R2.
 
-Přesunout **configSections** definice v `Web.config` souboru nadřazená aplikace (aplikace, na kterém běží technologie ASP.NET 2.0 nebo technologie ASP.NET 3.5) do kořenové `Web.config` souboru pro rozhraní.NET Framework 2.0. Prohledá systém nativní konfigurace služby IIS 7 a IIS 7.5 **configSections** element při sloučení hierarchie konfigurační soubory. Přechod **configSections** definice z nadřazeného webovou aplikaci `Web.config` souboru do kořenového adresáře `Web.config` soubor efektivně skryje element z sloučení procesu konfigurace, ke které dochází pro dítě ASP.NET 4 aplikace.
+Přesuňte definici **configSections** do souboru `Web.config` nadřazené aplikace (aplikace, která spouští ASP.NET 2,0 nebo ASP.NET 3,5) do kořenového souboru `Web.config` pro the.NET Framework 2,0. Systém nativní konfigurace služby IIS 7 a IIS 7,5 kontroluje prvek **configSections** při sloučení hierarchie konfiguračních souborů. Přesunutí definice **configSections** z `Web.config` souboru nadřazené webové aplikace do kořenového `Web.config` souboru efektivně skrývá prvek z procesu sloučení konfigurace, ke kterému dochází pro podřízenou aplikaci ASP.NET 4.
 
-V 32bitové verzi operačního systému nebo pro fondy aplikací 32-bit, kořenové `Web.config` soubor pro technologii ASP.NET 2.0 a technologii ASP.NET 3.5 se obvykle nachází v následující složce:
+V 32ovém operačním systému nebo u 32 fondů aplikací se v kořenovém `Web.config` souboru pro ASP.NET 2,0 a ASP.NET 3,5 obvykle nachází v následující složce:
 
 `C:\Windows\Microsoft.NET\Framework\v2.0.50727\CONFIG`
 
-64bitová verze operačního systému nebo pro fondy aplikací 64-bit, kořenové `Web.config` soubor pro technologii ASP.NET 2.0 a technologii ASP.NET 3.5 se obvykle nachází v následující složce:
+V 64ovém operačním systému nebo u 64 fondů aplikací se v kořenovém `Web.config` souboru pro ASP.NET 2,0 a ASP.NET 3,5 obvykle nachází v následující složce:
 
 `C:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG`
 
-32bitová verze a 64bitová verze webové aplikace při spuštění v 64bitovém počítači, je nutné přesunout **configSections** elementu až do kořenového `Web.config` soubory pro 32bitové a 64bitové systémy.
+Pokud na počítači s podporou 64 běží jak 32, tak i 64 webové aplikace, je potřeba přesunout element **configSections** do kořenových `Web.config` souborů pro systémy s 32 a 64.
 
-Při vložení **configSections** element v kořenovém adresáři `Web.config` soubor, vložte části ihned po **konfigurace** elementu. Následující příklad ukazuje, jaké horní část kořenové `Web.config` soubor by měl vypadat po dokončení přesunutí prvků.
+Při vložení prvku **configSections** do kořenového `Web.config` souboru, vložte oddíl hned za element **Konfigurace** . Následující příklad ukazuje, co by horní část kořenového souboru `Web.config` měla vypadat po dokončení přesunutí prvků.
 
 > [!NOTE]
-> V následujícím příkladu jsou zabalené řádky pro lepší čitelnost.
+> V následujícím příkladu byly řádky zabaleny pro čitelnost.
 
 [!code-xml[Main](breaking-changes/samples/sample8.xml)]
 
 ### <a name="step-2-all-versions-of-iis"></a>Krok 2 (všechny verze služby IIS)
 
-Tento krok je nutný podřízené webové aplikace ASP.NET 4 určuje, zda běží na IIS 6 nebo IIS 7 (nebo IIS 7.5).
+Tento krok je povinný, pokud je podřízená webová aplikace ASP.NET 4 spuštěná ve službě IIS 6 nebo ve službě IIS 7 (nebo IIS 7,5).
 
-V `Web.config` přidat soubor nadřazené webové aplikace, na kterém běží 2 technologie ASP.NET nebo ASP.NET 3.5 **umístění** značky, které explicitně určuje (pro systémy konfiguraci IIS a ASP.NET), který pouze položky konfigurace platí pro nadřazené webové aplikace. Následující příklad ukazuje syntaxi **umístění** prvek, který chcete přidat:
+V souboru `Web.config` nadřazené webové aplikace, která používá ASP.NET 2 nebo ASP.NET 3,5, přidejte značku **umístění** , která explicitně určuje (pro konfigurační systémy služby IIS i ASP.NET), že položky konfigurace platí pouze pro nadřazenou webovou aplikaci. Následující příklad ukazuje syntaxi elementu **Location** , který se má přidat:
 
 [!code-xml[Main](breaking-changes/samples/sample9.xml)]
 
-Následující příklad ukazuje způsob, jakým **umístění** značka se používá k zabalení všechny konfigurační oddíly funkce začínající **appSettings** části a konče **system.webServer**oddílu.
+Následující příklad ukazuje, jak se značka **Location** používá k zabalení všech konfiguračních oddílů začínajících oddílem **appSettings** a konče v oddílu **System. webServer** .
 
 [!code-xml[Main](breaking-changes/samples/sample10.xml)]
 
-Po dokončení kroků 1 a 2 podřízené ASP.NET 4 – webové aplikace se spustí bez chyb.
+Po dokončení kroků 1 a 2 se podřízené webové aplikace ASP.NET 4 spustí bez chyb.
 
 <a id="0.1__Toc252995491"></a><a id="0.1__Toc255587640"></a><a id="0.1__Toc256770151"></a>
 
-## <a name="aspnet-4-web-sites-fail-to-start-on-computers-where-sharepoint-is-installed"></a>ASP.NET 4 weby se nemůže spustit na počítačích, kde je nainstalován SharePoint
+## <a name="aspnet-4-web-sites-fail-to-start-on-computers-where-sharepoint-is-installed"></a>Weby ASP.NET 4 se nedaří spustit na počítačích, na kterých je nainstalována služba SharePoint.
 
-Máte webové servery, které používají službu SharePoint `Web.config` soubor, který je nasazen do kořenové webu služby SharePoint (například `c:\inetpub\wwwroot\web.config` pro výchozí web). V tomto `Web.config` souboru SharePoint nastaví vlastní částečným vztahem důvěryhodnosti úroveň s názvem WSS\_minimální.
+Webové servery, na kterých je spuštěný SharePoint, mají `Web.config` soubor, který je nasazený v kořenovém adresáři webu SharePoint (například `c:\inetpub\wwwroot\web.config` pro výchozí web). V tomto souboru `Web.config` SharePoint nastaví vlastní úroveň částečného vztahu důvěryhodnosti s názvem WSS\_Minimal.
 
-Pokud se pokusíte spustit webu technologie ASP.NET 4, který je nasazen jako podřízený objekt tohoto typu web služby SharePoint, zobrazí se následující chyba:
+Pokud se pokusíte spustit web ASP.NET 4, který je nasazen jako podřízený tento typ webu služby SharePoint, zobrazí se následující chyba:
 
 `Could not find permission set named 'ASP.NET'.`
 
-K této chybě dochází, protože infrastruktury security (CAS) technologie ASP.NET 4 kód přístupu hledá sadu oprávnění s názvem ASP.NET. Ale částečné důvěryhodnosti konfigurační soubor, který je odkazován WSS\_minimální neobsahuje žádné sady oprávnění s tímto názvem.
+K této chybě dochází, protože infrastruktura ASP.NET 4 Code Access Security (CAS) hledá sadu oprávnění s názvem ASP.NET. Nicméně konfigurační soubor částečné důvěryhodnosti, na který odkazuje WSS\_minimální, neobsahuje žádné sady oprávnění s tímto názvem.
 
-Aktuálně není verzi Sharepointu, který je kompatibilní s technologií ASP.NET. V důsledku toho by se neměly pokoušet spuštění webu technologie ASP.NET 4 jako podřízené lokality pod Sharepointovými webovými servery.
+V současné době není k dispozici verze SharePointu, která je kompatibilní s ASP.NET. V důsledku toho byste se neměli pokoušet spustit web ASP.NET 4 jako podřízenou lokalitu pod weby služby SharePoint.
 
 <a id="0.1__Toc255587641"></a><a id="0.1__Toc256770152"></a>
 
-## <a name="the-httprequestfilepath-property-no-longer-includes-pathinfo-values"></a>Vlastnost HttpRequest.FilePath již obsahuje PathInfo hodnoty
+## <a name="the-httprequestfilepath-property-no-longer-includes-pathinfo-values"></a>Vlastnost HttpRequest. FilePath už neobsahuje PathInfo hodnoty.
 
-Předchozí verze technologie ASP.NET, které jsou zahrnuté **PathInfo** hodnotu v hodnota vrácená z různých souvisejícím s umístěním vlastnosti souboru, včetně **HttpRequest.FilePath**,  **HttpRequest.AppRelativeCurrentExecutionFilePath**, a **HttpRequest.CurrentExecutionFilePath**. ASP.NET 4 už obsahuje **PathInfo** hodnotu ve vrácené hodnoty z těchto vlastností. Místo toho **PathInfo** informace jsou k dispozici v **HttpRequest.PathInfo**. Představte si například následující fragment adresy URL:
+Předchozí verze ASP.NET zahrnovaly hodnotu **PathInfo** v hodnotě vrácené z různých vlastností souvisejících s cestou k souboru, včetně **HttpRequest. FilePath**, **HttpRequest. AppRelativeCurrentExecutionFilePath**a **HttpRequest. CurrentExecutionFilePath**. ASP.NET 4 již nezahrnuje hodnotu **PathInfo** v vrácených hodnotách z těchto vlastností. Místo toho jsou informace **PathInfo** k dispozici v **HttpRequest. PathInfo**. Představte si například následující fragment adresy URL:
 
 `/testapp/Action.mvc/SomeAction`
 
-V předchozích verzích technologie ASP.NET **HttpRequest** vlastnosti mít následující hodnoty:
+V dřívějších verzích ASP.NET mají vlastnosti **HttpRequest** následující hodnoty:
 
-**HttpRequest.FilePath**: `/testapp/Action.mvc/SomeAction`
+**HttpRequest. FilePath**: `/testapp/Action.mvc/SomeAction`
 
-**HttpRequest.PathInfo**: (empty)
+**HttpRequest. PathInfo**: (prázdné)
 
-V technologii ASP.NET 4 **HttpRequest** vlastnosti místo toho mít následující hodnoty:
+Ve ASP.NET 4 vlastnosti **HttpRequest** jsou místo toho tyto hodnoty:
 
-**HttpRequest.FilePath**: `/testapp/Action.mvc`
+**HttpRequest. FilePath**: `/testapp/Action.mvc`
 
-**HttpRequest.PathInfo**: `SomeAction`
+**HttpRequest. PathInfo**: `SomeAction`
 
 <a id="0.1__Toc252995493"></a><a id="0.1__Toc255587642"></a><a id="0.1__Toc256770153"></a><a id="0.1__Toc245724861"></a>
 
-## <a name="aspnet-20-applications-might-generate-httpexception-errors-that-reference-eurlaxd"></a>ASP.NET 2.0 může aplikace generovat HttpException chyby, které odkazují na soubor eurl.axd
+## <a name="aspnet-20-applications-might-generate-httpexception-errors-that-reference-eurlaxd"></a>Aplikace ASP.NET 2,0 můžou generovat chyby HttpException –, které odkazují na eurl. axd.
 
-Po povolení ASP.NET 4 na IIS 6, aplikace ASP.NET 2.0, které běží na IIS 6 (v systému Windows Server 2003 nebo Windows Server 2003 R2) může způsobit chyby jako je následující:
+Po povolení ASP.NET 4 ve službě IIS 6 mohou aplikace ASP.NET 2,0, které běží na službě IIS 6 (v systému Windows Server 2003 nebo Windows Server 2003 R2), způsobit chyby, jako například následující:
 
 `System.Web.HttpException: Path '/[yourApplicationRoot]/eurl.axd/[Value]' was not found.`
 
-K této chybě dochází, protože když ASP.NET zjistí, že na web konfigurován pro použití technologie ASP.NET 4, nativní součást ASP.NET 4 předá adresu URL bez přípony spravované část ASP.NET k dalšímu zpracování. Nicméně pokud virtuálním adresářům, které jsou pod webu technologie ASP.NET 4 jsou nakonfigurovány pro použití technologie ASP.NET 2.0, zpracování URL bez přípony ve výsledcích tento způsob upravené adresy URL, která obsahuje řetězec "soubor eurl.axd". Tuto adresu URL změny se pak posílají do aplikace ASP.NET 2.0. ASP.NET 2.0 nemůže rozpoznat formát "soubor eurl.axd". Proto se pokusí vyhledat soubor s názvem ASP.NET 2.0 `eurl.axd` a spustit ho. Protože neexistuje žádný takový soubor, požadavek selže s **HttpException** výjimky.
+K této chybě dochází, protože když ASP.NET zjistí, že je web nakonfigurovaný tak, aby používal ASP.NET 4, nativní komponenta ASP.NET 4 předá rozšiřující URL spravované části ASP.NET pro další zpracování. Pokud jsou ale virtuální adresáře, které jsou pod webem ASP.NET 4, nakonfigurované tak, aby používaly ASP.NET 2,0, zpracování adresy URL bez přípony tímto způsobem vede k upravené adrese URL, která obsahuje řetězec "eurl. axd". Tato upravená adresa URL se pak pošle do aplikace ASP.NET 2,0. ASP.NET 2,0 nemůže rozpoznat formát "eurl. axd". Proto se ASP.NET 2,0 pokusí najít soubor s názvem `eurl.axd` a spustit ho. Vzhledem k tomu, že žádný takový soubor neexistuje, požadavek se nezdařil s výjimkou **HttpException –** .
 
-Můžete alternativně vyřešit tento problém pomocí jedné z následujících možností.
+Tento problém můžete obejít pomocí jedné z následujících možností.
 
-### <a name="option-1"></a>Možnost 1
+### <a name="option-1"></a>možnost 1
 
-Pokud ASP.NET 4 není potřeba, abyste mohli spustit na webovém serveru, přemapování lokality tak, aby místo toho použijte technologii ASP.NET 2.0.
+Pokud se ASP.NET 4 nevyžaduje k tomu, aby mohl web běžet, přemapujte lokalitu na místo toho použití ASP.NET 2,0.
 
 ### <a name="option-2"></a>Možnost 2
 
-Pokud ASP.NET 4 je potřeba ke spuštění webové stránky, přesuňte všechny virtuální adresáře technologie ASP.NET 2.0 podřízený jiný web, který je namapovaný na technologii ASP.NET 2.0.
+Pokud je pro spuštění webu vyžadován ASP.NET 4, přesuňte všechny podřízené virtuální adresáře ASP.NET 2,0 na jiný web, který je namapován na ASP.NET 2,0.
 
 ### <a name="option-3"></a>Možnost 3
 
-Pokud není praktické přemapovat na webu technologie ASP.NET 2.0 nebo chcete změnit umístění virtuální adresář, explicitně zakážete zpracování v technologii ASP.NET 4 URL bez přípony. Pomocí následujícího postupu:
+Pokud není praktické přemapování webu na ASP.NET 2,0 nebo změnu umístění virtuálního adresáře, explicitně zakažte zpracování adresy URL bez přípony v ASP.NET 4. Použijte následující postup:
 
 1. V registru Windows otevřete následující uzel:
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ASP.NET\4.0.30319.0`
 
-1. Vytvořte nový **DWORD** hodnotu s názvem **EnableExtensionlessUrls**.
-2. Nastavte **EnableExtensionlessUrls** na hodnotu 0. Zakáže bez přípony chování adresy URL.
-3. Hodnota registru uložte a zavřete editor registru.
-4. Spustit **iisreset** nástroj příkazového řádku, což způsobí, že služba IIS ke čtení novou hodnotu registru.
+1. Vytvořte novou hodnotu **DWORD** s názvem **EnableExtensionlessUrls**.
+2. Nastavte **EnableExtensionlessUrls** na hodnotu 0. Tím se zakáže chování adresy URL s příponou.
+3. Uložte hodnotu registru a zavřete Editor registru.
+4. Spusťte nástroj příkazového řádku **iisreset** , který způsobí, že služba IIS přečte novou hodnotu registru.
 
 > [!NOTE]
-> Nastavení **EnableExtensionlessUrls** 1 povolí bez přípony chování adresy URL. Toto je výchozí nastavení, pokud není zadána žádná hodnota.
+> Nastavení **EnableExtensionlessUrls** na hodnotu 1 povolí chování nerozšiřujících adres URL. Toto je výchozí nastavení, pokud není zadána žádná hodnota.
 
 <a id="0.1__Toc252995494"></a><a id="0.1__Toc255587643"></a><a id="0.1__Toc256770154"></a><a id="0.1__Toc245724862"></a>
 
-## <a name="event-handlers-might-not-be-not-raised-in-a-default-document-in-iis-7-or-iis-75-integrated-mode"></a>Obslužné rutiny událostí může není není vyvolána ve výchozí dokument v IIS 7 nebo IIS 7.5 integrovaném režimu
+## <a name="event-handlers-might-not-be-not-raised-in-a-default-document-in-iis-7-or-iis-75-integrated-mode"></a>Obslužné rutiny událostí nemusí být vyvolány ve výchozím dokumentu v integrovaném režimu služby IIS 7 nebo IIS 7,5.
 
-ASP.NET 4 obsahuje změny, které se mění způsob, jakým **akce** atributu HTML **formuláře** prvek je vykreslovaný při bez přípony adresa URL přeloží na výchozí dokument. Příkladem adresy URL bez přípony, překládá na výchozí dokument může být [ http://contoso.com/ ](http://contoso.com/)výsledkem požadavek na [ http://contoso.com/Default.aspx ](http://contoso.com/Default.aspx).
+ASP.NET 4 zahrnuje úpravy, které mění způsob, jakým se překládá atribut **Action** elementu HTML **Form** , když se přeloží adresa URL bez přípony na výchozí dokument. Příkladem adresy URL bez přípony, která se překládá na výchozí dokument, by byla [http://contoso.com/](http://contoso.com/)a výsledkem je žádost o [http://contoso.com/Default.aspx](http://contoso.com/Default.aspx).
 
-ASP.NET 4 nyní vykreslí HTML **formuláře** elementu **akce** hodnotu atributu jako prázdný řetězec, když se požadavek na adresu URL bez přípony, který má výchozí dokument k němu mapována. Například v dřívějších verzích technologie ASP.NET, požadavek na [ http://contoso.com ](http://contoso.com) výsledkem by byla žádost o `Default.aspx`. V tomto dokumentu, otevírání **formuláře** by být vykreslen jako v následujícím příkladu:
+ASP.NET 4 teď vykresluje hodnotu atributu **Action** elementu **formuláře** HTML jako prázdný řetězec, když se požadavek provede na rozšiřující adresu URL, na kterou je namapovaný výchozí dokument. Například v dřívějších verzích ASP.NET by požadavek na [http://contoso.com](http://contoso.com) způsobil požadavek na `Default.aspx`. V tomto dokumentu bude počáteční značka **formuláře** vykreslena jako v následujícím příkladu:
 
 `<form action="Default.aspx" />`
 
-V technologii ASP.NET 4, požadavek na [ http://contoso.com ](http://contoso.com) výsledkem také požadavek na `Default.aspx`. Ale ASP.NET nyní vykreslí otevírání HTML **formuláře** značky jako v následujícím příkladu:
+V ASP.NET 4 se žádost o [http://contoso.com](http://contoso.com) také vede k žádosti o `Default.aspx`. ASP.NET nyní ale vykresluje značku **formuláře** HTML pro otevření jako v následujícím příkladu:
 
 `<form action="" />`
 
-Tento rozdíl v tom, jak **akce** atribut je vykreslen může způsobit drobné změny ve zpracování odeslaného formuláře služby IIS a ASP.NET. Když **akce** atributu je prázdný řetězec, IIS **DefaultDocumentModule** objektu bude vytvořit podřízenou žádost pro `Default.aspx`. Ve většině případů, je tento podřízený požadavek transparentní kód aplikace a `Default.aspx` stránka běží normálně.
+Tento rozdíl ve způsobu vykreslování atributu **Action** může způsobit drobné změny ve způsobu, jakým je příspěvek formuláře ZPRACOVÁVÁN službou IIS a ASP.NET. Když je atribut **Action** prázdným řetězcem, vytvoří objekt IIS **DefaultDocumentModule** podřízenou žádost o `Default.aspx`. V rámci většiny podmínek je tato podřízená žádost transparentní pro kód aplikace a stránka `Default.aspx` pracuje normálně.
 
-Však může způsobit potenciální interakce mezi spravovaným kódem a IIS 7 nebo IIS 7.5 integrovaného režimu spravované stránky .aspx přestane fungovat správně při podřízeného požadavku. Pokud nastanou následující podmínky, podřízený požadavek `Default.aspx` dokumentu bude mít za následek chybu nebo neočekávané chování:
+Potenciální interakce mezi spravovaným kódem a integrovaným režimem služby IIS 7 nebo IIS 7,5 může ale způsobit, že spravované stránky. aspx v rámci podřízeného požadavku přestanou fungovat správně. Pokud dojde k následujícím podmínkám, podřízené žádosti na `Default.aspx` dokument způsobí chybu nebo neočekávané chování:
 
-1. Stránky .aspx je odesláno prohlížeči s **formuláře** elementu **akce** atribut nastaven na "".
-2. Odeslání formuláře zpět do technologie ASP.NET.
-3. Spravovaný modul HTTP načte některá část obsahu entity. Například modul čte **Request.Form** nebo **Request.Params**. To způsobí, že obsah entity požadavku POST k načtení do spravované paměti. V důsledku toho obsahu entity už nejsou k dispozici pro všechny moduly nativní kód, na kterých běží v IIS 7 nebo IIS 7.5 integrovaného režimu.
-4. IIS **DefaultDocumentModule** objekt nakonec spustí a vytvoří podřízený požadavek `Default.aspx` dokumentu. Protože obsah entity je již přečtena zasažené spravovaného kódu, neexistuje však žádný k dispozici k odeslání podřízeného požadavku obsah entity.
-5. Při spuštění kanálu HTTP pro podřízeného požadavku, obslužné rutiny pro `.aspx` soubory spustí ve fázi spuštění obslužné rutiny.
-6. Protože neexistuje žádný obsah entity, neexistují žádné proměnné formuláře a bez zobrazení stavu, a proto nejsou dostupné pro obslužnou rutinu stránky ASPX určit, jaká událost (pokud existuje) by měla být aktivovaná žádné informace. V důsledku toho žádné obslužné rutiny události postback stránky ASPX ovlivněné spustit.
+1. Do prohlížeče se pošle stránka. aspx s atributem **Akce** prvku **formuláře** nastaveným na hodnotu.
+2. Formulář je odeslán zpět do ASP.NET.
+3. Spravovaný modul HTTP čte část těla entity. Například modul čte **požadavek. Form** nebo **Request. Paras**. To způsobí, že tělo entity požadavku POST bude načteno do spravované paměti. V důsledku toho již není tělo entity k dispozici pro žádné moduly nativního kódu, které jsou spuštěny v integrovaném režimu služby IIS 7 nebo IIS 7,5.
+4. Objekt služby IIS **DefaultDocumentModule** nakonec spustí a vytvoří podřízený požadavek na dokument `Default.aspx`. Vzhledem k tomu, že tělo entity již bylo přečteno částí spravovaného kódu, není k dispozici žádný obsah entity k odeslání podřízené žádosti.
+5. Když je kanál HTTP spuštěn pro podřízený požadavek, obslužná rutina pro `.aspx` soubory se spustí během fáze spuštění rutiny.
+6. Vzhledem k tomu, že není k dispozici žádné tělo entity, neexistují žádné proměnné formuláře a žádný stav zobrazení, a proto nejsou k dispozici žádné informace pro obslužnou rutinu stránky. aspx, aby bylo možné určit, jakou událost (pokud existuje) by měla být vyvolána. V důsledku toho žádná z obslužných rutin události postback pro stránku ovlivnila. aspx nebude spuštěna.
 
-Tento problém můžete vyřešit následujícími způsoby:
+Toto chování můžete obejít následujícími způsoby:
 
-- Modul HTTP, který přistupuje k obsahu entity požadavku během požadavků dokumentu výchozí identifikovat a zjistit, zda může být nakonfigurován pro spouštění jenom pro spravované požadavky. V integrovaném režimu služby IIS 7 a IIS 7.5, může být označený z modulů HTTP spustit pouze pro spravované požadavky tak, že přidáte následující atribut modulu **oddílu system.webServer/modules** položky:
+- Identifikujte modul HTTP, který v rámci požadavků na dokumenty přistupuje k hlavnímu textu entity žádosti, a určete, jestli se dá nakonfigurovat tak, aby se spouštěl jenom pro spravované požadavky. V integrovaném režimu pro IIS 7 i IIS 7,5 se moduly HTTP dají označit tak, aby se spouštěly jenom pro spravované požadavky, a to tak, že do položky **System. webServer/** modules daného modulu přidáte následující atribut:
 
 - `precondition="managedHandler"`
 
-- Toto nastavení zakáže modul pro požadavky, že služba IIS 7 a IIS 7.5 určit jako nebude spravovat požadavky. Pro výchozí dokument požadavky je první žádost o adresu URL bez přípony. Proto služby IIS neběží žádné spravované moduly, které jsou označeny s podmínkou pro spravovanou obslužnou rutinu během zpracování požadavku. počáteční. V důsledku toho spravované moduly nebudou neúmyslně číst obsah entity a proto obsah entity je stále k dispozici a předává podřízeného požadavku a výchozí dokument.
+- Toto nastavení zakáže modul pro požadavky, které služba IIS 7 a IIS 7,5 určí jako nespravované požadavky. U výchozích požadavků dokumentu je prvním požadavkem adresa URL bez přípony. Proto služba IIS nespustí žádné spravované moduly, které jsou označeny podmínkou spravované obslužné rutiny během procesu prvotního zpracování žádosti. V důsledku toho spravované moduly neúmyslně přečtou tělo entity, takže obsah entity je stále k dispozici a je předán spolu s podřízeným požadavkem a výchozím dokumentem.
 
-- Pokud problematické modulů HTTP se ke spuštění pro všechny požadavky (u statických souborů pro adresy URL bez přípony, které odkazují na **DefaultDocumentModule** objekt pro požadavky na spravované, atd.), explicitně modifikovat stránky ASPX ovlivněné podle nastavení **akce** vlastnost na stránce **System.Web.UI.HtmlControls.HtmlForm** ovládacího prvku na neprázdný řetězec. Například, pokud je výchozí dokument `Default.aspx`, upravte kód na stránce explicitně nastavit **HtmlForm** ovládacího prvku **akce** vlastnost "Default.aspx".
+- Pokud se problematické moduly HTTP musí spustit pro všechny požadavky (u statických souborů, u nerozšiřujících adres URL, které se překládají na objekt **DefaultDocumentModule** , pro spravované žádosti atd.), upravte ovlivněné stránky ASPX explicitním nastavením vlastnosti **Action** objektu **System. Web. UI. HtmlControls. HtmlForm** stránky na neprázdný řetězec. Například pokud je výchozí dokument `Default.aspx`, upravte kód stránky tak, aby explicitně nastavil vlastnost **Action** ovládacího prvku **HtmlForm** na Default. aspx.
 
 <a id="0.1__Toc255587644"></a><a id="0.1__Toc256770155"></a>
 
-## <a name="changes-to-the-aspnet-code-access-security-cas-implementation"></a>Změny pro implementaci kódu ASP.NET Access Security (CAS)
+## <a name="changes-to-the-aspnet-code-access-security-cas-implementation"></a>Změny implementace ASP.NET Code Access Security (CAS)
 
-ASP.NET 2.0, a při rozšíření i pro použití funkcí technologie ASP.NET, které byly přidány v 3.5, .NET Framework 1.1 a 2.0 kód access security (CAS) modelu. Implementace certifikační Autority v technologii ASP.NET 4 však byla podstatně overhauled. V důsledku toho částečným vztahem důvěryhodnosti aplikace technologie ASP.NET, které spoléhají na důvěryhodný kód spuštěný v globální mezipaměti sestavení (GAC) může selhat s různými bezpečnostním výjimkám. Částečným vztahem důvěryhodnosti aplikace, které spoléhají na rozsáhlé změny do počítače certifikační Autority zásad může také selhat s výjimkami zabezpečení.
+ASP.NET 2,0 a rozšířením funkce ASP.NET, které byly přidány v 3,5, použijte model CAS (.NET Framework 1,1 a 2,0 Code Access Security). Implementace certifikačních autorit v ASP.NET 4 se ale podstatně převedla. V důsledku toho mohou ASP.NET aplikace s částečným vztahem důvěryhodnosti, které spoléhají na důvěryhodný kód spuštěný v globální mezipaměti sestavení (GAC), selhat s různými výjimkami zabezpečení. Aplikace s částečným vztahem důvěryhodnosti, které spoléhají na rozsáhlé změny v zásadách CAS počítače, můžou selhat i při výjimkách zabezpečení.
 
-Můžete se vrátit částečným vztahem důvěryhodnosti aplikace ASP.NET 4 pro chování ASP.NET 1.1 a 2.0 s použitím nového **legacyCasModel** atribut **vztahu důvěryhodnosti** prvek konfigurace, jak je znázorněno v následujícím příkladu :
+Můžete vrátit částečně důvěryhodné aplikace ASP.NET 4 k chování ASP.NET 1,1 a 2,0 pomocí nového atributu **LegacyCasModel** v elementu konfigurace **vztahu důvěryhodnosti** , jak je znázorněno v následujícím příkladu:
 
 `<trust level= "Medium" legacyCasModel="true" />`
 
-Po obnovení do starší verze CAS modelu jsou povoleny následující chování staré certifikační Autority:
+Když se vrátíte na starší verzi modelu CAS, jsou povolené následující staré chování CAS:
 
-- Zásady počítače certifikační Autority je omezení dodržena.
-- Několik sad oprávnění v jediné doméně aplikace jsou povoleny.
-- Kontrolní výrazy explicitní oprávnění nejsou požadována pro sestavení v mezipaměti GAC, které jsou vyvolány pouze technologie ASP.NET nebo jiný kód rozhraní .NET Framework je na zásobníku.
+- Je dodržena zásada CAS počítače.
+- V jedné doméně aplikace je povoleno více různých sad oprávnění.
+- Explicitní kontrolní výrazy oprávnění nejsou požadovány pro sestavení v globální mezipaměti sestavení (GAC), která jsou vyvolána, pokud je v zásobníku pouze ASP.NET nebo jiný kód .NET Framework.
 
-Jeden scénář nelze vrátit zpět v rozhraní .NET Framework 4: mimo Web částečným vztahem důvěryhodnosti aplikace můžou zavolat už určitých rozhraní API v System.Web.dll a System.Web.Extensions.dll. V předchozích verzích rozhraní .NET Framework bylo možné mimo Web částečným vztahem důvěryhodnosti aplikací se explicitně udělí oprávnění **AspNetHostingPermission** oprávnění. Tyto aplikace pak může použít **System.Web.HttpUtility**, napíše **System.Web.ClientServices.\***  obory názvů a typy související s členství, role a profily. Volání těchto typů z aplikace s částečnou důvěryhodností mimo Web je již nejsou podporovány v rozhraní .NET Framework 4.
+Jeden scénář nelze vrátit v .NET Framework 4: aplikace s částečným vztahem důvěryhodnosti nemůžou již volat určitá rozhraní API v System. Web. dll a System. Web. Extensions. dll. V předchozích verzích .NET Framework bylo možné, že newebové aplikace s částečným vztahem důvěryhodnosti mají explicitně udělená oprávnění **AspNetHostingPermission** . Tyto aplikace mohou potom použít **System. Web. HttpUtility**, typy v oborech názvů **System. Web. ClientServices.\*** a typy související s členstvím, rolemi a profily. Volání těchto typů z newebových aplikací s částečnou důvěryhodností již není podporováno v .NET Framework 4.
 
 > [!NOTE]
-> **HtmlEncode** a **HtmlDecode** funkce **System.Web.HttpUtility** třídy se přesunul do nového rozhraní .NET Framework 4  **System.Net.WebUtility** třídy. Pokud jste pouze funkcí technologie ASP.NET, který se používal, upravit kód aplikace k používání nového **WebUtility** namísto třídy.
+> Funkce **HtmlEncode** a **HtmlDecode** třídy **System. Web. HttpUtility** byla přesunuta do nové třídy .NET Framework 4 **System .NET. WebUtility** . Pokud se jednalo o jedinou funkci ASP.NET, která byla použita, upravte kód aplikace tak, aby místo toho používal novou třídu **WebUtility** .
 
-Tady je shrnutí změn pro výchozí implementace certifikačních Autorit v technologii ASP.NET 4:
+Níže je uveden přehled vysoké úrovně změn výchozí implementace CAS v ASP.NET 4:
 
-- Domény aplikace technologie ASP.NET jsou nyní homogenní aplikační domény. V doméně aplikace jsou k dispozici pouze sady udělení částečným vztahem důvěryhodnosti a úplného vztahu důvěryhodnosti.
-- Sady udělení částečným vztahem důvěryhodnosti ASP.NET jsou nezávislá na libovolné úrovni rozlehlé sítě, počítače nebo uživatele zásad CAS.
-- Sestavení technologie ASP.NET, která poskytuje 3.5 a 3.5 SP1 se převedly tak použít model transparentnosti rozhraní .NET Framework 4.
-- Použití technologie ASP.NET **AspNetHostingPermission** podstatně snížit atribut. Největším množstvím instancí tohoto atributu se odstranily z veřejných rozhraní API technologie ASP.NET.
-- Dynamicky kompilovaných sestavení, které jsou vytvořeny pomocí poskytovatelé sestavení ASP.NET byly aktualizovány explicitně označit sestavení jako průhledná.
-- Všechna sestavení ASP.NET jsou nyní označeny tak, že je atribut APTCA zachované pouze webové hostitelské prostředí. Hostitelská prostředí částečně důvěryhodných mimo Web jako ClickOnce nebude možné provést volání do sestavení ASP.NET.
+- Domény aplikace ASP.NET jsou nyní homogenní aplikační domény. V doméně aplikace jsou k dispozici pouze sady udělení s částečnou důvěryhodností a plnou důvěryhodností.
+- ASP.NET sady udělení částečně důvěryhodného vztahu důvěryhodnosti jsou nezávislé na zásadách CAS na úrovni organizace, na úrovni počítače nebo na úrovni uživatele.
+- ASP.NET sestavení, která byla dodávána v 3,5 a 3,5 SP1, byla převedena tak, aby používala model transparentnosti .NET Framework 4.
+- Použití atributu ASP.NET **AspNetHostingPermission** se podstatně snížilo. Většina instancí tohoto atributu se odebrala z veřejných rozhraní ASP.NET API.
+- Dynamicky kompilovaná sestavení vytvořená poskytovateli sestavení ASP.NET byla aktualizována tak, aby explicitně označila sestavení jako transparentní.
+- Všechna sestavení ASP.NET jsou nyní označena takovým způsobem, že atribut APTCA je dodržen pouze v prostředích pro hostování webů. Částečně důvěryhodná newebová hostující prostředí, jako je ClickOnce, nebude možné volat do sestavení ASP.NET.
 
-Další informace o modelu zabezpečení přístupu kódu novou technologii ASP.NET 4 najdete v tématu [pomocí zabezpečení přístupu kódu v aplikacích ASP.NET](https://msdn.microsoft.com/library/dd984947%28VS.100%29.aspx) na webové stránce MSDN.
+Další informace o novém modelu zabezpečení přístupu kódu ASP.NET 4 najdete v tématu [použití zabezpečení přístupu kódu v aplikacích ASP.NET](https://msdn.microsoft.com/library/dd984947%28VS.100%29.aspx) na webu MSDN.
 
 <a id="0.1__Toc256770156"></a><a id="0.1__Toc245724863"></a><a id="0.1__Toc252995496"></a><a id="0.1__Toc255587645"></a><a id="0.1__Toc245724864"></a>
 
-## <a name="membershipuser-and-other-types-in-the-systemwebsecurity-namespace-have-been-moved"></a>Byly přesunuty MembershipUser a další typy v System.Web.Security Namespace
+## <a name="membershipuser-and-other-types-in-the-systemwebsecurity-namespace-have-been-moved"></a>MembershipUser a další typy v oboru názvů System. Web. Security byly přesunuty.
 
-Některé typy, které se používají v členství technologie ASP.NET se přesunuly z `System.Web.dll` do nového sestavení System.Web.ApplicationServices.dll. Aby bylo možné vyřešit závislosti architektury vrstvení mezi typy v klientovi a SKU rozšířené rozhraní .NET Framework se přesunuly typy.
+Některé typy používané ve členství ASP.NET byly přesunuty z `System.Web.dll` do nového sestavení System. Web. ApplicationServices. dll. Typy byly přesunuty za účelem vyřešení závislostí architektonického vrstvení mezi typy v klientovi a v rozšířených .NET Framework SKU.
 
-Webové projekty nemají problémy v důsledku přesunutí těchto typů, protože System.Web.ApplicationServices.dll byl přidán do seznamu odkazovaných sestavení, který se používá ve výchozím nastavení systém kompilace technologie ASP.NET. Pokud provádíte upgrade projektu webové stránky, která byla vytvořena pomocí starší verze technologie ASP.NET na ASP.NET 4 tak, že otevřete v sadě Visual Studio 2010, se projekt zkompiluje bez chyb.
+Projekty webů nemají v důsledku přesunutí těchto typů problémy, protože System. Web. ApplicationServices. dll byl přidán do seznamu odkazovaných sestavení, která jsou používána ve výchozím nastavení systémem kompilace ASP.NET. Pokud upgradujete projekt webu, který byl vytvořen pomocí dřívější verze ASP.NET na ASP.NET 4 otevřením v aplikaci Visual Studio 2010, projekt se zkompiluje bez chyb.
 
-Podobně pokud upgradujete projekt webové aplikace, který byl vytvořen v dřívější verzi technologie ASP.NET na ASP.NET 4 tak, že otevřete v sadě Visual Studio 2010, proces upgradu přidá odkaz na System.Web.ApplicationServices.dll do projektu. Proto upgrade webové projekty aplikací také zkompiluje bez chyb.
+Podobně pokud upgradujete projekt webové aplikace, který byl vytvořen v dřívější verzi ASP.NET na ASP.NET 4 tím, že ho otevřete v aplikaci Visual Studio 2010, proces upgradu přidá do projektu odkaz na System. Web. ApplicationServices. dll. Proto budou aktualizované projekty webové aplikace také zkompilovány bez chyb.
 
-Kompilované (binární) soubory, které byly vytvořeny pomocí starší verze technologie ASP.NET se také spustí bez chyb na technologii ASP.NET 4, přestože typy členství se přesunuly na jiné sestavení. Informace o posloupnosti typů je přidaný do verze technologie ASP.NET 4 `System.Web.dll` odkazy za běhu pro tyto typy, které automaticky směruje do nového umístění pro typy.
+Zkompilované (binární) soubory, které byly vytvořeny pomocí dřívějších verzí ASP.NET, budou také spuštěny bez chyb na ASP.NET 4, i když byly typy členství přesunuty do jiného sestavení. Informace o přesměrování typu byly přidány do verze ASP.NET 4 `System.Web.dll`, která automaticky směruje odkazy za běhu pro tyto typy do nového umístění pro typy.
 
-Knihovny tříd, které používají typy konkrétní členství a upgradu ze starší verze technologie ASP.NET se však nezdaří kompilace při použití v projektu aplikace ASP.NET 4. Projekt knihovny tříd může například selhat ke kompilaci a ohlaste chybu, například následující:
+Knihovny tříd, které používají konkrétní typy členství a které byly upgradovány z dřívějších verzí ASP.NET, však nebudou zkompilovány při použití v projektu ASP.NET 4. Například projekt knihovny tříd může selhat při kompilaci a nahlásit chybu, například následující:
 
 - `The type 'System.Web.Security.MembershipUser' is defined in an assembly that is not referenced. You must add a reference to assembly 'System.Web.ApplicationServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'.`
 
 - `The type name 'MembershipUser' could not be found. This type has been forwarded to assembly 'System.Web.ApplicationServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35'. Consider adding a reference to that assembly.`
 
-Tento problém můžete vyřešit přidáním odkazu v projektu knihovny tříd System.Web.ApplicationServices.dll.
+Tento problém můžete obejít tak, že do projektu knihovny tříd přidáte odkaz na System. Web. ApplicationServices. dll.
 
-Následující seznam obsahuje *System.Web.Security* typy, které byly přesunuty z `System.Web.dll` soubor System.Web.ApplicationServices.dll:
+V následujícím seznamu jsou uvedeny typy *System. Web. Security* , které byly přesunuty z `System.Web.dll` do System. Web. ApplicationServices. dll:
 
-- *System.Web.Security.MembershipCreateStatus*
-- *System.Web.Security.Membership.CreateUserException*
-- *System.Web.Security.MembershipPasswordException*
-- *System.Web.Security.MembershipPasswordFormat*
-- *System.Web.Security.MembershipProvider*
-- *System.Web.Security.MembershipProviderCollection*
-- *System.Web.Security.MembershipUser*
-- *System.Web.Security.MembershipUserCollection*
-- *System.Web.Security.MembershipValidatePasswordEventHandler*
-- *System.Web.Security.ValidatePasswordEventArgs*
-- *System.Web.Security.RoleProvider*
-- <a id="0.1_a"></a>*System.Web.Configuration.MembershipPasswordCompatibilityMode*
+- *System. Web. Security. MembershipCreateStatus*
+- *System. Web. Security. Membership. CreateUserException*
+- *System. Web. Security. MembershipPasswordException –*
+- *System. Web. Security. MembershipPasswordFormat*
+- *System. Web. Security. MembershipProvider*
+- *System. Web. Security. MembershipProviderCollection*
+- *System. Web. Security. MembershipUser*
+- *System. Web. Security. MembershipUserCollection*
+- *System. Web. Security. MembershipValidatePasswordEventHandler*
+- *System. Web. Security. ValidatePasswordEventArgs*
+- *System. Web. Security. poskytovatel RoleProvider*
+- <a id="0.1_a"></a>*System. Web. Configuration. MembershipPasswordCompatibilityMode*
 
 <a id="0.1__Toc256770157"></a>
 
-## <a name="output-caching-changes-to-vary--http-header"></a>Výstup ukládání do mezipaměti změny se liší \* hlavičky protokolu HTTP
+## <a name="output-caching-changes-to-vary--http-header"></a>Změny v ukládání výstupu do mezipaměti se liší \* hlavičce protokolu HTTP
 
-V technologii ASP.NET 1.0 chybu způsobila stránky v mezipaměti, zadané `Location="ServerAndClient"` jako nastavení výstupní mezipaměti a vygenerovat `Vary:*` hlavičku protokolu HTTP v odpovědi. To mělo vliv na sděluje prohlížeči klientů pro ukládání do mezipaměti nikdy stránce místně.
+V ASP.NET 1,0 vyvolala chyba stránky v mezipaměti zadané `Location="ServerAndClient"` jako výstup – nastavení mezipaměti, které vygeneruje `Vary:*` hlavičku HTTP v odpovědi. To mělo vliv na to, že klientské prohlížeče nebudou stránku ukládat místně do mezipaměti.
 
-V technologii ASP.NET 1.1 **System.Web.HttpCachePolicy.SetOmitVaryStar** byla přidána metoda, která lze volat pro potlačení `Vary:*` záhlaví. Tato metoda byla vybrána, protože změna emitovaný hlavičku protokolu HTTP byla považována za potenciálně rozbíjející změny v době. Ale vývojáři mají bylo matoucí chování v technologii ASP.NET a zpráv o chybách naznačují, že vývojáři si nejsou vědomi existující **SetOmitVaryStar** chování.
+V ASP.NET 1,1 byla přidána metoda **System. Web. HttpCachePolicy. SetOmitVaryStar** , která může být volána pro potlačení hlavičky `Vary:*`. Tato metoda byla vybrána, protože změna vygenerované hlavičky HTTP byla považována za potenciálně zásadní změnu v čase. Vývojáři však zaznamenali chování v ASP.NET a zprávy o chybách naznačují, že vývojáři nemají informace o existujícím chování **SetOmitVaryStar** .
 
-V technologii ASP.NET 4 Společnost se rozhodla vyřešit problém nevyřeší. `Vary:*` Hlavičky protokolu HTTP je již vygenerován z odpovědí, které určují následující direktivy:
+V ASP.NET 4 bylo učiněno rozhodnutí k vyřešení problému root. Hlavička protokolu HTTP `Vary:*` již není generována z odpovědí, které určují následující direktivu:
 
 `<%@OutputCache Location="ServerAndClient" %>`
 
-V důsledku toho **SetOmitVaryStar** už je nepotřebujete k potlačení `Vary:*` záhlaví.
+V důsledku toho už **SetOmitVaryStar** není potřeba, aby bylo možné potlačit hlavičku `Vary:*`.
 
-V aplikacích, které určují `Location="ServerAndClient"` v **@ OutputCache** direktiv na stránku, uvidíte teď chování odvozené od názvu **umístění** hodnotu atributu – to je, budou stránky ukládat do mezipaměti v prohlížeči bez nutnosti volání **SetOmitVaryStar** metody.
+V aplikacích, které určují `Location="ServerAndClient"` v direktivě **@ OutputCache** na stránce, se nyní zobrazí chování odvozené od názvu hodnoty atributu **Location** – to znamená, že stránky budou v prohlížeči ukládat do mezipaměti, aniž by bylo nutné volat metodu **SetOmitVaryStar** .
 
-Pokud stránky v aplikaci musíte vygenerovat `Vary:*`, zavolejte **AppendHeader** metody, jako v následujícím příkladu:
+Pokud stránky v aplikaci musí vygenerovat `Vary:*`, zavolejte metodu **AppendHeader** , jak je uvedeno v následujícím příkladu:
 
 `HttpResponse.AppendHeader("Vary","*");`
 
-Alternativně můžete změnit hodnotu ukládání výstupu do mezipaměti **umístění** atribut "Server".
+Případně můžete změnit hodnotu atributu **umístění** výstupního ukládání do mezipaměti na "Server".
 
 <a id="0.1__Toc255587646"></a><a id="0.1__Toc256770158"></a>
 
-## <a name="systemwebsecurity-types-for-passport-are-obsolete"></a>Typy System.Web.Security pro Passportu jsou zastaralé
+## <a name="systemwebsecurity-types-for-passport-are-obsolete"></a>Typy System. Web. Security pro Passport jsou zastaralé.
 
-Podpora služby Passport, integrované do ASP.NET 2.0 je už zastaralá a nepodporované několika let z důvodu změn v účtu služby Passport (nyní LiveID). V důsledku toho pět typů související se Passport v **System.Web.Security** jsou nyní označeny **ObsoleteAttribute** atribut.
+Podpora služby Passport integrovaná do ASP.NET 2,0 byla zastaralá a během několika let Nepodporovaná kvůli změnám ve službě Passport (teď LiveID). Výsledkem je, že pět typů souvisejících se službou Passport v **System. Web. Security** je nyní označeno atributem **ObsoleteAttribute** .
 
 <a id="0.1__The_MenuItem.PopOutImageUrl_Propert"></a><a id="0.1__Toc256770159"></a>
 
-## <a name="the-menuitempopoutimageurl-property-fails-to-render-an-image-in-aspnet-4"></a>Vlastnost MenuItem.PopOutImageUrl selže, aby se vykreslil obraz v technologii ASP.NET 4
+## <a name="the-menuitempopoutimageurl-property-fails-to-render-an-image-in-aspnet-4"></a>Vlastnost MenuItem. PopOutImageUrl nemůže vykreslit image v ASP.NET 4.
 
-V technologii ASP.NET 3.5 *MenuItem.PopOutImageUrl* vlastnost umožňuje zadat adresu URL pro bitovou kopii, která se zobrazí v položce nabídky k označení, že položka nabídky obsahuje podnabídku dynamické. Následující příklad ukazuje, jak tuto vlastnost zadat v kódu v technologii ASP.NET 3.5.
+V ASP.NET 3,5 vlastnost *MenuItem. PopOutImageUrl* umožňuje zadat adresu URL obrázku, který se zobrazí v položce nabídky, aby označoval, že položka nabídky má dynamickou podnabídku. Následující příklad ukazuje, jak zadat tuto vlastnost v označení v ASP.NET 3,5.
 
 [!code-aspx[Main](breaking-changes/samples/sample11.aspx)]
 
-V důsledku změny návrhu v technologii ASP.NET 4, je vykreslen žádný výstup pro *PopOutImageUrl* Pokud je nastavena pro *MenuItem* třídy. Místo toho musíte zadat adresu URL obrázku přímo v *nabídky* ovládat buď pomocí *StaticPopOutImageUrl* vlastnost nebo *DynamicPopOutImageUrl* vlastnost. Při práci s statickou nabídku *Menu.StaticPopOutImageUrl* vlastnost určuje adresu URL obrázku, který se zobrazí indikaci, že statickou položkou nabídky obsahuje podnabídku, jak je znázorněno v následujícím příkladu:
+V důsledku změny návrhu v ASP.NET 4 se nevykresluje žádný výstup pro *PopOutImageUrl* , pokud je vlastnost nastavena pro třídu *MenuItem* . Místo toho je nutné zadat adresu URL obrázku přímo v ovládacím prvku *nabídky* buď pomocí vlastnosti *StaticPopOutImageUrl* nebo vlastnosti *DynamicPopOutImageUrl* . Když pracujete se statickou nabídkou, vlastnost *menu. StaticPopOutImageUrl* Určuje adresu URL obrázku, který se zobrazí, aby označoval, že položka statické nabídky má podnabídku, jak je znázorněno v následujícím příkladu:
 
 [!code-aspx[Main](breaking-changes/samples/sample12.aspx)]
 
-Pokud pracujete s dynamickou nabídku, můžete použít *Menu.DynamicPopOutImageUrl* vlastnosti a určit adresu URL pro bitovou kopii, která označuje, že má dynamické položky nabídky podnabídky. Následující příklad je podobný předchozímu, ale ukazuje, jak nastavit *DynamicPopOutImageUrl* vlastnost pro dynamickou nabídku.
+Pokud pracujete s dynamickou nabídkou, použijte vlastnost *menu. DynamicPopOutImageUrl* k určení adresy URL pro obrázek, který označuje, že dynamická položka nabídky obsahuje podnabídku. Následující příklad je podobný předchozímu, ale ukazuje, jak nastavit vlastnost *DynamicPopOutImageUrl* pro dynamickou nabídku.
 
 [!code-aspx[Main](breaking-changes/samples/sample13.aspx)]
 
-Pokud *Menu.DynamicPopOutImageUrl* není nastavena vlastnost a *Menu.DynamicEnableDefaultPopOutImage* je nastavena na *false*, zobrazí se žádné image. Podobně pokud *StaticPopOutImageUrl* není nastavena vlastnost a *StaticEnableDefaultPopOutImage* je nastavena na *false*, zobrazen žádný obrázek.
+Pokud vlastnost *menu. DynamicPopOutImageUrl* není nastavená a vlastnost *menu. DynamicEnableDefaultPopOutImage* je nastavená na *false*, nezobrazí se žádný obrázek. Podobně pokud vlastnost *StaticPopOutImageUrl* není nastavená a vlastnost *StaticEnableDefaultPopOutImage* je nastavená na *false*, nezobrazí se žádný obrázek.
 
-Když nastavíte cesty pro tyto vlastnosti, použijte lomítkem (/) namísto zpětné lomítko (\). Další informace najdete v tématu [Menu.StaticPopOutImageUrl a Menu.DynamicPopOutImageUrl se nepodařilo vykreslit obrázky při cesty obsahovat obrácená lomítka](#0.1__Menu.StaticPopOutImageUrl_and_Menu. "_Menu.StaticPopOutImageUrl_and_Menu.") jinde v tomto dokumentu.
+Při nastavování cest pro tyto vlastnosti použijte lomítko (/) místo zpětného lomítka (\). Další informace najdete v tématu [nabídka. StaticPopOutImageUrl a nabídka. DynamicPopOutImageUrl se nepodaří vykreslit obrázky, když cesty obsahují zpětná lomítka](#0.1__Menu.StaticPopOutImageUrl_and_Menu. "_Menu. StaticPopOutImageUrl_and_Menu.") jinde v tomto dokumentu.
 
 <a id="0.1__Menu.StaticPopOutImageUrl_and_Menu."></a><a id="0.1__Toc256770160"></a>
 
-## <a name="menustaticpopoutimageurl-and-menudynamicpopoutimageurl-fail-to-render-images-when-paths-contain-backslashes"></a>Menu.StaticPopOutImageUrl a navrátit služby po Menu.DynamicPopOutImageUrl k vykreslování obrázků, když cesty obsahovat obrácená lomítka
+## <a name="menustaticpopoutimageurl-and-menudynamicpopoutimageurl-fail-to-render-images-when-paths-contain-backslashes"></a>Nabídka. StaticPopOutImageUrl a menu. DynamicPopOutImageUrl se nepodaří vykreslit obrázky, když cesty obsahují zpětná lomítka.
 
-V technologii ASP.NET 4, obrázků, které zadáte pomocí *Menu.StaticPopOutImageUrl* a *Menu.DynamicPopOutImageUrl* vlastnosti se nezobrazí, pokud cesta obsahuje backlashes (\). Jedná se o změnu z předchozích verzí technologie ASP.NET.
+V ASP.NET 4 se obrázky, které zadáte, pomocí *nabídky. StaticPopOutImageUrl* a *menu. DynamicPopOutImageUrl* nebudou vykreslovat, pokud cesta obsahuje nepoužité body (\). Jedná se o změnu z dřívějších verzí ASP.NET.
 
-Následující příklad *nabídky* zobrazí značky *StaticPopOutImageUrl* nastavenou pomocí cesty, které obsahuje zpětné lomítko. V technologii ASP.NET 4 nebude vykreslovat obrázek určený ve vlastnosti.
+Následující příklad značky ovládacího prvku *nabídky* ukazuje vlastnost *StaticPopOutImageUrl* nastavenou pomocí cesty, která obsahuje zpětné lomítko. V ASP.NET 4 se obrázek zadaný ve vlastnosti nevykresluje.
 
 [!code-aspx[Main](breaking-changes/samples/sample14.aspx)]
 
-Chcete-li tento problém vyřešit, změňte hodnoty cest, které jsou určené v *StaticPopOutImageUrl* a *DynamicPopOutImageUrl* vlastnosti, které chcete používat lomítka (/). Následující příklad ukazuje tuto změnu:
+Chcete-li tento problém vyřešit, změňte hodnoty cest, které jsou zadány ve vlastnostech *StaticPopOutImageUrl* a *DynamicPopOutImageUrl* , a použijte lomítka (/). Tato změna se zobrazuje v následujícím příkladu:
 
 [!code-aspx[Main](breaking-changes/samples/sample15.aspx)]
 
-Všimněte si, že aplikace, které se migrovaly z předchozích verzí technologie ASP.NET na ASP.NET 4 může také být ovlivněno, protože *MenuItem.PopOutImageUrl* změně vlastnosti. Další informace najdete v tématu [vlastnost MenuItem.PopOutImageUrl selže aby se vykreslil obraz v technologii ASP.NET 4](#0.1__The_MenuItem.PopOutImageUrl_Propert "_The_MenuItem.PopOutImageUrl_Propert") jinde v tomto dokumentu.
+Počítejte s tím, že aplikace, které byly migrovány z dřívějších verzí ASP.NET na ASP.NET 4, mohou být ovlivněny také, protože došlo ke změně vlastnosti *MenuItem. PopOutImageUrl* . Další informace naleznete v tématu [vlastnost MenuItem. PopOutImageUrl neumožňuje vykreslit obrázek v ASP.NET 4](#0.1__The_MenuItem.PopOutImageUrl_Propert "_The_MenuItem. PopOutImageUrl_Propert") jinde v tomto dokumentu.
 
 <a id="0.1__Toc224729061"></a><a id="0.1__Toc255587647"></a><a id="0.1__Toc256770161"></a>
 
 ## <a name="disclaimer"></a>Právní omezení
 
-Toto je předběžná dokumentu a může podstatně změnit před finální komerční verzi softwaru, které jsou popsány zde.
+Toto je předběžný dokument a může být podstatně měněn před konečným komerčním vydáním softwaru popsaného v tomto dokumentu.
 
-Informace obsažené v tomto dokumentu představují aktuální pohled společnosti Microsoft Corporation na tyto problémy k datu publikování. Protože Microsoft reagovat na měnící se podmínky na trhu, neměly by být vykládány jako závazek Microsoftu a společnost Microsoft nemůže zaručit přesnost jakýchkoli informací, které jsou prezentovány po provedení datu publikování.
+Informace obsažené v tomto dokumentu představují aktuální pohled společnosti Microsoft Corporation na problémy, které jsou popsány k datu publikování. Vzhledem k tomu, že Microsoft musí reagovat na měnící se podmínky na trhu, neměl by být interpretován jako závazek společnosti Microsoft a společnost Microsoft nemůže zaručit přesnost všech informací, které jsou uvedeny po datu publikování.
 
-Tento dokument White Paper se pouze k informačním účelům. MICROSOFT NEPOSKYTUJE ŽÁDNÉ ZÁRUKY, VÝSLOVNÝCH, ODVOZENÝCH NEBO ZÁKONNÝCH, INFORMACE V TOMTO DOKUMENTU.
+Tento dokument White Paper slouží pouze k informativním účelům. SPOLEČNOST MICROSOFT NEPOSKYTUJE ŽÁDNÉ ZÁRUKY, AŤ UŽ VÝSLOVNĚ UVEDENÉ, PŘEDPOKLÁDANÉ NEBO STATUTÁRNÍ, JAKO INFORMACE V TOMTO DOKUMENTU.
 
-V souladu s příslušnými zákony o autorských právech je zodpovědný uživatel. Bez omezení autorská práva, žádná část tohoto dokumentu může být reprodukovat, uložené v zavedené rozšiřován nebo jakýmkoli způsobem (electronic, mechanickým, mechanicky, záznam nebo jinak) nebo pro libovolný účel, bez výslovného písemného povolení společnosti Microsoft Corporation.
+Dodržování všech platných zákonů o autorských právech je zodpovědností uživatele. Bez omezení práv v rámci autorského práva nesmí být žádná část tohoto dokumentu reprodukována, ukládána do systému pro načítání nebo převedena v jakémkoli tvaru nebo jakýmkoli prostředkem (elektronickými, mechanicky, fotokopírováním, záznamem nebo jiným) nebo pro jakékoli účely. bez výslovného písemného svolení společnosti Microsoft Corporation.
 
-Společnost Microsoft může vlastnit patenty, patentové přihlášky, ochranné známky, autorská práva nebo další práva na duševní vlastnictví přihlášky v tomto dokumentu. Výslovně uvedeno v písemné licenční smlouvě se společností Microsoft, poskytnutím tohoto dokumentu vám není udělena licence k těmto patentům, ochranné známky, autorská práva nebo jinému duševnímu vlastnictví.
+Společnost Microsoft může mít patenty, patentové aplikace, ochranné známky, autorská práva nebo jiná práva duševního vlastnictví, která zahrnují předmět v tomto dokumentu. S výjimkou výslovně uvedených v písemné licenční smlouvě od společnosti Microsoft vám poskytnutí tohoto dokumentu neposkytuje žádnou licenci na tyto patenty, ochranné známky, autorská práva ani jiné duševní vlastnictví.
 
-Pokud není uvedeno jinak, společnosti, organizace, produkty, názvy domén, e-mailové adresy, loga, osoby, místa a události použité v ukázkách jsou smyšlené. proto žádné jejich spojení se žádné skutečnou společností, organizací, produktu, název domény, e-mailu adresy, loga, osoby, místa nebo událostí je určena ji vyvozovat.
+Pokud není uvedeno jinak, jsou ukázkové společnosti, organizace, produkty, názvy domén, e-mailové adresy, loga, osoby, místa a události uvedené v ukázkách smyšlené a bez jakýchkoli souvislostí se skutečnou společností, organizací, produktem, názvem domény, e-mailem. adresa, logo, osoba, místo nebo událost jsou zamýšlené nebo by se měly odvodit.
 
 © 2010 Microsoft Corporation. Všechna práva vyhrazena.
 
-Microsoft a Windows jsou registrované ochranné známky nebo ochranné známky společnosti Microsoft Corporation ve Spojených státech amerických a dalších zemích.
+Microsoft a Windows jsou buď registrované ochranné známky, nebo ochranné známky společnosti Microsoft Corporation v USA a dalších zemích.
 
-Názvy skutečných společností a produktů mohou být ochrannými známkami příslušných vlastníků.
+Názvy skutečných společností a produktů uvedených v tomto dokumentu můžou být ochranné známky jejich příslušných vlastníků.

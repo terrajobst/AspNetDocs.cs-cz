@@ -9,11 +9,11 @@ ms.assetid: f6e2a12a-2b5e-48fd-8db3-1e94a500c19a
 msc.legacyurl: /web-forms/overview/data-access/editing-inserting-and-deleting-data/adding-client-side-confirmation-when-deleting-cs
 msc.type: authoredcontent
 ms.openlocfilehash: e7d53bc65fdbbfa9ce9bfa5fbdbfa0dea598eebe
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74623505"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78593273"
 ---
 # <a name="adding-client-side-confirmation-when-deleting-c"></a>Přidání potvrzení odstranění na straně klienta (C#)
 
@@ -125,7 +125,7 @@ Alternativním řešením je převést prvky GridView a DetailsView s CommandFie
 
 Kde *controlID* je hodnota vlastnosti `ID` tlačítko s tlačítkem. I když tento model stále vyžaduje pevně zakódovaný typ pro přetypování, odstraňuje nutnost indexování, což umožňuje změnit rozložení, aniž by to vedlo k chybě za běhu.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Funkce `confirm(string)` JavaScriptu je běžně používaná technika pro řízení pracovního postupu odeslání formuláře. Po spuštění funkce zobrazí modální dialogové okno na straně klienta, které obsahuje dvě tlačítka, OK a Storno. Pokud uživatel klikne na tlačítko OK, funkce `confirm(string)` vrátí `true`; Kliknutím na zrušit vrátíte `false`. Tato funkce, která je spojená s chováním prohlížeče s pro zrušení odeslání formuláře, pokud obslužná rutina události během procesu odeslání vrací `false`, lze použít k zobrazení potvrzovacího objektu MessageBox při odstraňování záznamu.
 

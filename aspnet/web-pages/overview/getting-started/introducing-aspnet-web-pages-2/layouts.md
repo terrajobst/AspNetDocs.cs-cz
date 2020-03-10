@@ -1,189 +1,189 @@
 ---
 uid: web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts
-title: Představení rozhraní ASP.NET Web Pages – vytvoření konzistentního rozložení | Dokumentace Microsoftu
+title: Představení webových stránek ASP.NET – vytvoření konzistentního rozložení | Microsoft Docs
 author: Rick-Anderson
-description: V tomto kurzu se dozvíte, jak k vytvoření konzistentního vzhledu stránky na webu, který používá rozhraní ASP.NET Web Pages použít rozložení. Předpokládá, že jste dokončili...
+description: V tomto kurzu se dozvíte, jak pomocí rozložení vytvořit konzistentní vzhled stránek na webu, který používá webové stránky ASP.NET. Předpokládá se, že jste dokončili...
 ms.author: riande
 ms.date: 05/28/2015
 ms.assetid: c85ec591-f8d7-4882-b763-de6ab9f3df7a
 msc.legacyurl: /web-pages/overview/getting-started/introducing-aspnet-web-pages-2/layouts
 msc.type: authoredcontent
 ms.openlocfilehash: 678eb7089e95e3d221d6b2d82034a62aefa75757
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65131840"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78526689"
 ---
-# <a name="introducing-aspnet-web-pages---creating-a-consistent-layout"></a>Úvod do webových stránek ASP.NET – vytvoření konzistentního rozložení
+# <a name="introducing-aspnet-web-pages---creating-a-consistent-layout"></a>Představení webových stránek ASP.NET – vytvoření konzistentního rozložení
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> V tomto kurzu se dozvíte, jak používat *rozložení* k vytvoření konzistentního vzhledu stránky na webu, který používá rozhraní ASP.NET Web Pages. Předpokládá, že jste dokončili řady prostřednictvím [odstranění databázových dat ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=251584).
+> V tomto kurzu se dozvíte, jak pomocí *rozložení* vytvořit konzistentní vzhled stránek na webu, který používá webové stránky ASP.NET. Předpokládá, že jste dokončili řadu [odstraněním dat databáze na webových stránkách ASP.NET](https://go.microsoft.com/fwlink/?LinkId=251584).
 > 
-> Co se dozvíte:
+> Naučíte se:
 > 
-> - Rozložení stránky je.
-> - Jak kombinovat rozložení stránek s dynamickým obsahem.
-> - Jak předávat hodnoty na stránku rozložení.
+> - Stránka rozložení.
+> - Jak kombinovat stránky rozložení s dynamickým obsahem.
+> - Jak předat hodnoty na stránku rozložení.
 
-## <a name="about-layouts"></a>Informace o rozložení
+## <a name="about-layouts"></a>O rozloženích
 
-Na stránkách jsme dosud vytvořili všechny byly dokončení samostatné stránky. Všechny patřit do stejné lokality, ale nemají žádné společné prvky nebo standardní vzhled.
+Všechny stránky, které jste doposud vytvořili, mají kompletní, samostatné stránky. Všechny patří do stejné lokality, ale nemají žádné společné prvky ani standardní vzhled.
 
-Většina serverů mají konzistentní vzhled a rozložení. Například, pokud přejdete [http://www.microsoft.com/web/gallery/install.aspx?appid=IISExpress](https://www.microsoft.com/web/) lokality a vyhledejte, uvidíte, že na všech stránkách dodržovat celkové rozložení a vizuální motiv:
+Většina lokalit má konzistentní vzhled a rozložení. Například pokud přejdete na web [Microsoft.com/web](https://www.microsoft.com/web/) a vyhledáte, uvidíte, že stránky všechny odpovídají celkovému rozložení a vizuálnímu motivu:
 
-![Stránka webu http://www.microsoft.com/web/gallery/install.aspx?appid=IISExpress znázorňující rozložení záhlaví, navigační oblast, oblast obsahu a zápatí](layouts/_static/image1.png)
+![Stránka Microsoft.com/web webu zobrazující rozložení záhlaví, navigační oblasti, oblasti obsahu a zápatí](layouts/_static/image1.png)
 
-*Neefektivní* způsob, jak vytvořit toto rozložení by k definování záhlaví, v navigačním panelu a v zápatí samostatně na jednotlivých stránkách. Jste byste být duplikování stejné značky pokaždé, když. Pokud chcete něco změnit (například aktualizovat zápatí), je třeba změnit každou stránku samostatně.
+*Neefektivní* způsob, jak vytvořit toto rozložení, by bylo definovat záhlaví, navigační panel a zápatí samostatně na každé stránce. Pokaždé, když budete chtít stejný kód duplikovat. Pokud jste chtěli něco změnit (například aktualizovat zápatí), budete muset každou stránku změnit samostatně.
 
-Tady *rozložení stránky* se dělí na. ASP.NET Web Pages, můžete definovat rozložení stránky, která poskytuje celkový kontejneru pro stránky na webu. Rozložení stránky může obsahovat například záhlaví, navigační oblasti a zápatí. Stránka rozložení obsahuje zástupný symbol, kde se vloží hlavní obsah.
+To je místo, kde jsou *stránky rozložení* součástí. Na webových stránkách ASP.NET můžete definovat stránku rozložení, která poskytuje celkový kontejner pro stránky na webu. Stránka rozložení může například obsahovat záhlaví, navigační oblast a zápatí. Stránka rozložení obsahuje zástupný symbol, kde se přechází hlavní obsah.
 
-Potom můžete definovat jednotlivé stránky obsahu, které obsahují kód a kód pouze pro danou stránku. Stránky obsahu nemusí být kompletní HTML stránky. ještě nemají mít `<body>` elementu. Mají také řádku kódu, který určuje jaké rozložení stránky, které chcete zobrazit obsah v ASP.NET. Tady je obrázek, který zhruba ukazuje, jak tento vztah funguje:
+Pak můžete definovat jednotlivé stránky obsahu, které obsahují značky a kód pouze pro tuto stránku. Stránky obsahu nemusí být kompletní stránky HTML. nemusejí mít ani `<body>` element. Mají také řádek kódu, který oznamuje ASP.NET, na které stránce rozložení chcete zobrazit obsah. Tady je obrázek, který ukazuje, jak tento vztah funguje:
 
-![Koncepční diagram zobrazující dvě obsahu stránky a rozložení stránky, do kterého se vešly](layouts/_static/image2.png)
+![Koncepční diagram, který zobrazuje dvě stránky obsahu a stránku rozložení, na které se vejdou](layouts/_static/image2.png)
 
-Tato interakce je snadno pochopitelný při pozorování v akci. V tomto kurzu změníte filmy stránky rozložení.
+Tato interakce je snadno srozumitelná, když ji vidíte v akci. V tomto kurzu změníte stránky filmů na použití rozložení.
 
-## <a name="adding-a-layout-page"></a>Přidání rozložení stránky
+## <a name="adding-a-layout-page"></a>Přidání stránky rozložení
 
-Začnete tím, že vytvoříte stránku rozložení, který definuje rozložení stránky s záhlaví, zápatí nebo oblast pro hlavní obsah. V lokalitě WebPagesMovies přidat CSHTML stránku s názvem  *\_Layout.cshtml*.
+Začnete vytvořením stránky rozložení, která definuje typické rozložení stránky pomocí záhlaví, zápatí a oblasti pro hlavní obsah. Na webu WebPagesMovies přidejte stránku CSHTML s názvem *\_layout. cshtml*.
 
-Počáteční podtržítko ( `_` ) znak je důležité. Pokud na stránce název začíná podtržítkem, nebude ASP.NET přímo odeslat tuto stránku v prohlížeči. Tato konvence umožňuje definovat stránky, které jsou požadovány pro váš web, ale, že uživatelé by neměla mít možnost požádat o přímo.
+Úvodní znak podtržítka (`_`) je významný. Pokud název stránky začíná podtržítkem, ASP.NET nebude přímo odesílat tuto stránku do prohlížeče. Tato konvence vám umožní definovat stránky, které jsou pro vaši lokalitu nutné, ale uživatelé by nemuseli žádat o přímý přístup.
 
-Nahraďte obsah na stránce s následujícími možnostmi:
+Obsah stránky nahraďte následujícím:
 
 [!code-html[Main](layouts/samples/sample1.html)]
 
-Jak je vidět, tento kód je právě ve formátu HTML, který používá `<div>` můžete definovat tři oddíly v stránce plus jeden více `<div>` – element pro uložení tři oddíly. Zápatí obsahuje hodně kódu Razor: `@DateTime.Now.Year`, který bude vykreslení na tomto místě na stránce do aktuálního roku.
+Jak vidíte, tento kód je pouze HTML, který používá `<div>` prvky pro definování tří částí na stránce a další `<div>` elementu pro uložení tří částí. Zápatí obsahuje bitovou kopii kódu Razor: `@DateTime.Now.Year`, který vykreslí aktuální rok v tomto umístění stránky.
 
-Všimněte si, že je odkaz s názvem šablony stylů *Movies.css*. Šablona stylů je, kde budou podrobnosti fyzické rozložení elementů určené. Který vytvoříte za chvíli.
+Všimněte si, že existuje odkaz na šablonu stylů s názvem *video. CSS*. Šablona stylů je místo, kde budou definovány podrobnosti fyzického rozložení prvků. Vytvoříte to za chvíli.
 
-Pouze neobvyklé funkce v tomto  *\_Layout.cshtml* stránka je `@Render.Body()` řádku. To je zástupný symbol, kde je obsah přejde při toto rozložení je sloučen s jinou stránku.
+Jedinou neobvyklou funkcí na této stránce *\_layout. cshtml* je `@Render.Body()` čára. To je zástupný symbol, kde bude obsah přecházet, když je toto rozložení sloučeno s jinou stránkou.
 
-## <a name="adding-a-css-file"></a>Přidává se soubor CSS
+## <a name="adding-a-css-file"></a>Přidání souboru. CSS
 
-Preferovaný způsob, jak definovat skutečné uspořádání prvků (to znamená, vzhled) na stránce je použití pravidla šablony kaskádových stylů (CSS). Proto vytvoříte *.css* soubor, který obsahuje pravidla pro nové rozložení.
+Upřednostňovaným způsobem, jak definovat skutečné uspořádání (to znamená, vzhled) prvků na stránce, je použití pravidel kaskádových šablon stylů (CSS). Proto vytvoříte soubor *. CSS* , který obsahuje pravidla pro nové rozložení.
 
-V nástroji WebMatrix vyberte kořenového webu. Pak v **soubory** kartu na pásu karet klikněte na šipku v části **nový** tlačítko a pak klikněte na tlačítko **novou složku**.
+V části WebMatrix vyberte kořen webu. Pak na kartě **soubory** na pásu karet klikněte na šipku pod tlačítkem **Nový** a pak klikněte na **Nová složka**.
 
-![Možnost "Nová složka" v rámci New na pásu karet.](layouts/_static/image3.png)
+![Možnost Nová složka v části nový na pásu karet.](layouts/_static/image3.png)
 
-Název nové složky *styly*.
+Pojmenujte nové *styly*složek.
 
-![Pojmenování nové složky "styly.](layouts/_static/image4.png)
+![Pojmenování nové složky ' Styles '](layouts/_static/image4.png)
 
-Uvnitř nové *styly* složce vytvořte soubor s názvem *Movies.css*.
+Uvnitř nové složky *stylů* vytvořte soubor s názvem *filmovés. CSS*.
 
-![Vytvoření nového souboru Movies.css](layouts/_static/image5.png)
+![Vytváření nového souboru filmů. CSS](layouts/_static/image5.png)
 
-Nahraďte obsah nového *.css* souboru následujícím kódem:
+Nahraďte obsah nového souboru *. CSS* následujícím způsobem:
 
 [!code-css[Main](layouts/samples/sample2.css)]
 
-Říkáme nebude téměř těchto pravidel šablon stylů CSS, s výjimkou Poznámka: dvě věci. Jeden je, že kromě nastavení písma a velikosti, pravidla použít absolutní pozici k navázání umístění záhlaví, zápatí a oblast hlavního obsahu. Pokud začínáte umístění v jazyce CSS, si můžete přečíst [umístění šablon stylů CSS](http://www.w3schools.com/css/css_positioning.asp) kurz v lokalitě W3Schools.
+V těchto pravidlech šablon stylů CSS nebudeme počítat s výjimkou dvou věcí. Jedním z nich je, že kromě nastavení písem a velikostí používají pravidla absolutní umístění k určení umístění záhlaví, zápatí a oblasti hlavního obsahu. Pokud se chystáte umístění v šablonách stylů CSS, můžete si přečíst kurz pro [umístění šablon stylů CSS](http://www.w3schools.com/css/css_positioning.asp) na webu w3schools.
 
-Druhou věcí si je, že v dolní části, jsme jste zkopírovali pravidel stylu, které byly původně definována jednotlivě v *Movies.cshtml* souboru. Tato pravidla byly použity v [Úvod do zobrazení dat podle pomocí rozhraní ASP.NET Web Pages](https://go.microsoft.com/fwlink/?LinkId=251580) kurzu provádět `WebGrid` pomocné rutiny vykreslení kódu, který rozděluje přidán do tabulky. (Pokud se chystáte používat *.css* souboru pro definice stylů, můžete také ukládat pravidel stylu, které pro celý web v něm.)
+Druhá Poznámka je, že v dolní části jsme zkopírovali pravidla stylů, která byla původně definována v souboru *Movies. cshtml* . Tato pravidla se použila v [úvodu k zobrazení dat pomocí ASP.NET na webové stránky](https://go.microsoft.com/fwlink/?LinkId=251580) , aby pomocné rutiny `WebGrid` vykreslily značky, které přidaly do tabulky pruhy. (Pokud budete používat soubor *. CSS* pro definice stylu, můžete také zadat pravidla stylu pro celou lokalitu v tomto umístění.)
 
-## <a name="updating-the-movies-file-to-use-the-layout"></a>Aktualizuje se soubor videa rozložení
+## <a name="updating-the-movies-file-to-use-the-layout"></a>Aktualizace souboru filmů pro použití rozložení
 
-Nyní můžete aktualizovat existující soubory v tak, aby používal nové rozložení. Otevřít *Movies.cshtml* souboru. V horní části stránky přidejte jako první řádek kódu, následující:
+Nyní můžete aktualizovat existující soubory na webu, aby používaly nové rozložení. Otevřete soubor *Movies. cshtml* . V horní části, jako první řádek kódu, přidejte následující:
 
 [!code-csharp[Main](layouts/samples/sample3.cs)]
 
-Na stránce nyní začíná tímto způsobem:
+Stránka teď začíná tímto způsobem:
 
 [!code-cshtml[Main](layouts/samples/sample4.cshtml?highlight=2)]
 
-Tento jeden řádek kódu říká technologie ASP.NET, že *filmy* spuštění stránky, by měly být sloučeny s  *\_Layout.cshtml* souboru.
+Tento jeden řádek kódu oznamuje ASP.NET, že když se stránka *videa* spustí, měla by se sloučit se souborem *\_layout. cshtml* .
 
-Protože *Movies.cshtml* souboru teď používá rozložení stránky, můžete odebrat značku ze *Movies.cshtml* stránka, která už se postaral o podle  *\_Layout.cshtml*souboru. Vysypat `<!DOCTYPE>`, `<html>`, a `<body>` počátečních a koncových značek. Vysypat celý `<head>` elementu a jeho obsah, včetně pravidel stylu mřížky, protože Teď máte tato pravidla *.css* souboru. Ať jste na něj, změňte existující `<h1>` elementu `<h2>` element; můžete mít `<h1>` elementu na stránce rozložení již. Změnit `<h2>` text na "Seznamu filmy".
+Vzhledem k tomu, že soubor *Movies. cshtml* nyní používá stránku rozložení, můžete odebrat značku ze stránky *filmy. cshtml* , která je pořízena souborem *\_layout. cshtml* . `<!DOCTYPE>`, `<html>`a `<body>` otevírání a zavírání značek. Odbrat celý `<head>` prvek a jeho obsah, který obsahuje pravidla stylu pro mřížku, protože tato pravidla teď máte v souboru *. CSS* . I když jste na něm, změňte existující `<h1>` element na `<h2>` element; na stránce rozložení již existuje prvek `<h1>`. Změňte `<h2>` text na "vypsat filmy".
 
-Za normálních okolností nemusí provádět tyto druhy změny na stránce obsahu. Při spuštění webu navýšení kapacity s stránku rozložení, vytváření obsahu stránky bez těchto prvků na začátku. V takovém případě však při převádění na samostatné stránce, který se používá rozložení, takže je hodně vyčištění.
+Obvykle byste nemuseli tyto změny na stránce obsahu provádět. Když zahájíte stránku s rozložením, vytvoříte stránky obsahu bez všech těchto prvků, které mají začít. V takovém případě však převádíte samostatnou stránku na jednu, která používá rozložení, takže existuje bit vyčištění.
 
-Jakmile budete hotovi, *Movies.cshtml* stránka bude vypadat nějak takto:
+Až budete hotovi, stránka *filmy. cshtml* bude vypadat následovně:
 
 [!code-cshtml[Main](layouts/samples/sample5.cshtml)]
 
 ### <a name="testing-the-layout"></a>Testování rozložení
 
-Nyní uvidíte, jak vypadá rozložení. V nástroji WebMatrix, klikněte pravým tlačítkem myši *Movies.cshtml* stránku a vybrat **spustit v prohlížeči**. Prohlížeč zobrazí stránky, vypadá jako na této stránce:
+Nyní vidíte, jak vypadá rozložení. Ve WebMatrixu klikněte pravým tlačítkem na stránku *filmy. cshtml* a vyberte **Spustit v prohlížeči**. Když prohlížeč stránku zobrazí, vypadá to jako tato stránka:
 
-![Stránka filmy vykreslen pomocí rozložení](layouts/_static/image6.png)
+![Stránka filmy vykreslená pomocí rozložení](layouts/_static/image6.png)
 
-ASP.NET se sloučil obsah stránky Movies.cshtml do  *\_Layout.cshtml* stránky, kde vpravo `RenderBody` je metoda. A samozřejmě  *\_Layout.cshtml* stránce odkazy *.css* souboru, která definuje vzhled stránky.
+ASP.NET sloučil obsah stránky video. cshtml na stránku *\_layout. cshtml* , kde je `RenderBody` metoda. A samozřejmě stránku *\_layout. cshtml* odkazuje na soubor *. CSS* , který definuje vzhled stránky.
 
-## <a name="updating-the-addmovie-page-to-use-the-layout"></a>Aktualizuje se AddMovie stránku rozložení
+## <a name="updating-the-addmovie-page-to-use-the-layout"></a>Aktualizace stránky AddMovie pro použití rozložení
 
-Skutečná výhoda rozložení je, že můžete použít je pro všechny stránky ve vaší lokalitě. Otevřít *AddMovie.cshtml* stránky.
+Výhodou pro výhody rozvržení je, že je můžete použít pro všechny stránky na webu. Otevřete stránku *AddMovie. cshtml* .
 
-Může být nezapomeňte, že *AddMovie.cshtml* stránky původně některá pravidla šablon stylů CSS v něm k definování vzhledu chybových zpráv ověření. Vzhledem k tomu, že máte *.css* soubor pro váš webový server, můžete přesunout tyto pravidla, která *.css* souboru. Odeberte je ze *AddMovie.cshtml* soubor a přidat je do dolní části *Movies.css* souboru. Při přesunutí následující pravidla:
+Můžete si uvědomit, že na stránce *AddMovie. cshtml* byla původně některá pravidla šablon stylů CSS, aby bylo možné definovat vzhled chybových zpráv ověřování. Vzhledem k tomu, že máte soubor *. CSS* pro váš web nyní, můžete tato pravidla přesunout do souboru *. CSS* . Odeberte je ze souboru *AddMovie. cshtml* a přidejte je do dolní části souboru *Movies. CSS* . Přesouváte následující pravidla:
 
 [!code-css[Main](layouts/samples/sample6.css)]
 
-Provést stejnou řadu změn v *AddMovie.cshtml* , jaké jste použili *Movies.cshtml* – přidání `Layout="~/_Layout.cshtml;` a odebrat značka jazyka HTML, který je teď nadbytečné. Změnit `<h1>` elementu `<h2>`. Až budete hotovi, stránka bude vypadat jako v tomto příkladu:
+Nyní proveďte stejné řazení změn v *AddMovie. cshtml* , které jste provedli pro *filmy. cshtml* – přidejte `Layout="~/_Layout.cshtml;` a odeberte kód HTML, který je nyní cizí. Změňte `<h1>` element na `<h2>`. Až budete hotovi, stránka bude vypadat jako v tomto příkladu:
 
 [!code-cshtml[Main](layouts/samples/sample7.cshtml)]
 
-Spuštění stránky. Teď vypadá jako na tomto obrázku:
+Spusťte stránku. Nyní vypadá jako na tomto obrázku:
 
-!["Přidat video" stránku vykreslen pomocí rozložení](layouts/_static/image7.png)
+![Stránka Přidat filmy vykreslená pomocí rozložení](layouts/_static/image7.png)
 
-Chcete provést změny podobné změny stránky na webu – *EditMovie.cshtml* a *DeleteMovie.cshtml*. Ale předtím, než se pustíte, můžete provádět jiná změna rozložení, které je o něco víc.
+Chcete provést podobné změny na stránkách v lokalitě – *EditMovie. cshtml* a *DeleteMovie. cshtml*. Než však provedete, můžete provést další změnu rozložení, které je trochu flexibilnější.
 
-## <a name="passing-title-information-to-the-layout-page"></a>Informace o předávání titulech ke stránce rozložení
+## <a name="passing-title-information-to-the-layout-page"></a>Předávání informací o názvu na stránku rozložení
 
-*\_Layout.cshtml* má stránka, kterou jste vytvořili `<title>` element, který je nastavena na "Můj web video". Většina prohlížečů zobrazit obsah tohoto prvku jako text na kartě:
+Stránka *\_layout. cshtml* , kterou jste vytvořili, má `<title>` element, který je nastaven na "moji filmový web". Většina prohlížečů zobrazuje obsah tohoto prvku jako text na kartě:
 
-![Na stránce &lt;název&gt; element zobrazí na kartě prohlížeče](layouts/_static/image8.png)
+![Element &lt;title&gt; stránky zobrazený na kartě prohlížeče](layouts/_static/image8.png)
 
-Tyto informace název je obecná. Předpokládejme, že chcete text nadpisu na konkrétnější na aktuální stránku. (Text nadpisu se používá také vyhledávači jak zjistit, co vaše stránka o.) Můžete předat informace z obsahu stránky jako *Movies.cshtml* nebo *AddMovie.cshtml* rozložení stránky a pak pomocí těchto informací k přizpůsobení stránky rozložení vykreslí.
+Tyto informace o názvu jsou obecné. Řekněme, že chcete, aby byl text nadpisu pro aktuální stránku konkrétnější. (Text nadpisu se používá také vyhledávacími weby k určení toho, co stránka se chystá.) Můžete předat informace ze stránky obsahu, jako je například *filmy. cshtml* nebo *AddMovie. cshtml* , na stránku rozložení a pak tyto informace použít k přizpůsobení toho, co stránka rozložení vykreslí.
 
-Otevřít *Movies.cshtml* stránku znovu nezobrazovat. V kódu v horní části přidejte následující řádek:
+Otevřete znovu stránku *filmy. cshtml* . V kódu nahoře přidejte následující řádek:
 
 [!code-csharp[Main](layouts/samples/sample8.cs)]
 
-`Page` Objekt je k dispozici na všech *.cshtml* stránky a je pro tento účel, a to ke sdílení informací mezi stránky a rozložení.
+Objekt `Page` je k dispozici na všech stránkách *. cshtml* a je pro tento účel, totiž pro sdílení informací mezi stránkou a jejím rozložením.
 
-Otevřít  *\_Layout.cshtml* stránky. Změnit `<title>` element tak, že bude vypadat jako tento kód:
+Otevřete stránku *\_layout. cshtml* . Změňte element `<title>` tak, aby vypadal jako tento kód:
 
 [!code-html[Main](layouts/samples/sample9.html)]
 
-Tento kód vykreslí, bez ohledu `Page.Title` vlastnost přímo na tomto místě na stránce.
+Tento kód vykresluje bez ohledu na to, zda je vlastnost `Page.Title` v daném umístění stránky.
 
-Spustit *Movies.cshtml* stránky. Tentokrát kartu prohlížeče ukazuje předané jako hodnotu `Page.Title`:
+Spusťte stránku *filmy. cshtml* . Tentokrát karta prohlížeč zobrazuje, co jste předali jako hodnotu `Page.Title`:
 
-![Na kartě prohlížeče, který je zobrazen titulek vytvářet dynamicky](layouts/_static/image9.png)
+![Karta prohlížeče zobrazující nadpis, který se vytvořil dynamicky](layouts/_static/image9.png)
 
-Pokud chcete, zobrazte zdroj stránky v prohlížeči. Vidíte, že `<title>` prvek je vykreslovaný jako `<title>List Movies</title>`.
+Pokud chcete, zobrazte zdroj stránky v prohlížeči. Můžete vidět, že `<title>` element je vykreslen jako `<title>List Movies</title>`.
 
 > [!TIP] 
 > 
-> **Objekt stránky**
+> **Objekt Page**
 > 
-> Užitečné funkce `Page` je, že se jedná o dynamický objekt, `Title` vlastnost není pevný nebo vyhrazený název. Můžete použít *jakékoli* název hodnotu `Page` objektu. Například, kterou může stejně snadno, jste předali název pomocí vlastnosti s názvem `Page.CurrentName` nebo `Page.MyPage`. Jediným omezením je, že název obsahuje postupy běžných pravidel pro vlastnosti, které může mít název. (Například název nesmí obsahovat mezery.)
+> Užitečnou funkcí `Page` je, že se jedná o dynamický objekt – vlastnost `Title` není pevným ani rezervovaným názvem. Pro hodnotu objektu `Page` můžete použít *libovolný* název. Například můžete snadno předat název pomocí vlastnosti s názvem `Page.CurrentName` nebo `Page.MyPage`. Jediným omezením je, že název musí dodržovat běžná pravidla pro to, které vlastnosti mohou být pojmenovány. (Například název nesmí obsahovat mezeru.)
 > 
-> Můžete předat libovolný počet hodnot s použitím `Page` objektu. Pokud chcete předat informace o filmu ke stránce rozložení, mohli předat hodnoty pomocí něco jako `Page.MovieTitle` a `Page.Genre` a `Page.MovieYear`. (Nebo jiné názvy, které je určena k ukládání informací.) Jediným požadavkem – což je pravděpodobně zřejmé – je, že budete muset použít stejné názvy v obsahu stránky a rozložení stránky.
+> Můžete předat libovolný počet hodnot pomocí objektu `Page`. Pokud jste chtěli předat informace o videu na stránku rozložení, mohli byste předat hodnoty pomocí typu `Page.MovieTitle` a `Page.Genre` a `Page.MovieYear`. (Nebo jiné názvy, které jste vymysleli k ukládání informací.) Jediným požadavkem, který je pravděpodobně zřejmý – je, že je nutné použít stejné názvy na stránce obsahu a na stránce rozložení.
 > 
-> Informace o předávání pomocí `Page` objektu se neomezuje na pouze text se zobrazí na stránce rozložení. Můžete předat hodnotu na stránku rozložení a pak použít hodnotu rozhodnout, jestli se mají zobrazovat oddíl na stránce kódu ve stránce rozložení co *.css* soubor použít a tak dále. Předáním hodnoty `Page` objektu jsou stejně jako jakékoli jiné hodnoty, které použijete v kódu. Stačí je, že hodnoty pocházejí z obsahu stránky a jsou předány na stránku rozložení.
+> Informace, které předáte pomocí objektu `Page`, nejsou omezeny pouze na text, který se má zobrazit na stránce rozložení. Můžete předat hodnotu stránce rozložení a potom kód na stránce rozložení může použít hodnotu k rozhodnutí, zda se má zobrazit sekce stránky, co soubor *. CSS* , který má být použit, a tak dále. Hodnoty, které předáte do objektu `Page`, jsou stejně jako jakékoli jiné hodnoty, které používáte v kódu. Je pouze to, že hodnoty pocházejí ze stránky obsahu a jsou předány na stránku rozložení.
 
-Otevřít *AddMovie.cshtml* stránce a přidá řádek do horní části kódu, který obsahuje název *AddMovie.cshtml* stránky:
+Otevřete stránku *AddMovie. cshtml* a přidejte řádek na začátek kódu, který poskytuje název stránky *AddMovie. cshtml* :
 
 [!code-csharp[Main](layouts/samples/sample10.cs)]
 
-Spustit *AddMovie.cshtml* stránky. Zobrazí se nový název:
+Spusťte stránku *AddMovie. cshtml* . Tady vidíte nový název:
 
-![Na kartě prohlížeče, který je zobrazen titulek "přidat filmy vytvářet dynamicky](layouts/_static/image10.png)
+![Karta prohlížeče zobrazující, že se název přidat filmy vytvořil dynamicky](layouts/_static/image10.png)
 
-## <a name="updating-the-remaining-pages-to-use-the-layout"></a>Aktualizuje se zbývající stránky rozložení
+## <a name="updating-the-remaining-pages-to-use-the-layout"></a>Aktualizace zbývajících stránek na používání rozložení
 
-Teď můžete dokončit zbývající stránky na webu tak, aby používaly nové rozložení. Otevřít *EditMovie.cshtml* a *DeleteMovie.cshtml* následně a provést stejné změny v každém.
+Nyní můžete zbývající stránky na webu dokončit tak, aby používaly nové rozložení. Otevřete *EditMovie. cshtml* a *DeleteMovie. cshtml* a udělejte v nich stejné změny.
 
-Přidáte řádek kódu, který odkazuje na stránku rozložení:
+Přidejte řádek kódu, který odkazuje na stránku rozložení:
 
 [!code-csharp[Main](layouts/samples/sample11.cs)]
 
-Přidejte řádek nastavit nadpis stránky:
+Přidejte řádek pro nastavení názvu stránky:
 
 [!code-csharp[Main](layouts/samples/sample12.cs)]
 
@@ -191,47 +191,47 @@ nebo:
 
 [!code-csharp[Main](layouts/samples/sample13.cs)]
 
-Odeberte všechny nadbytečné kód HTML – v podstatě, ponechte pouze bity, které jsou uvnitř `<body>` – element (plus bloku kódu v horní části).
+Odebrat všechny nadbytečné značky HTML – v podstatě ponechte pouze bity, které jsou uvnitř elementu `<body>` (plus blok kódu v horní části).
 
-Změnit `<h1>` elementu do `<h2>` elementu.
+Změňte `<h1>` element tak, aby byl `<h2>` element.
 
-Pokud jste provedli tyto změny, otestujte a ujistěte se, že se správně zobrazuje a zda je správný název.
+Jakmile provedete tyto změny, otestujte je a ujistěte se, že se zobrazují správně a že je název správný.
 
-## <a name="parting-thoughts-about-layout-pages"></a>Závěrečný myšlenky o rozložení stránky
+## <a name="parting-thoughts-about-layout-pages"></a>Rozmístění nápadů na stránky rozložení
 
-V tomto kurzu jste vytvořili  *\_Layout.cshtml* stránce a použít `RenderBody` metoda sloučit obsah z jiné stránky. To je základní vzor pro použití rozložení na webových stránkách.
+V tomto kurzu jste vytvořili stránku *\_layout. cshtml* a pomocí metody `RenderBody` sloučíte obsah z jiné stránky. To je základní model pro použití rozložení na webových stránkách.
 
-Rozložení stránky mají další funkce, které jsme neměli abychom ji tady pokryli. Například je možné vnořovat rozložení stránek – jednu stránku rozložení může odkazovat na zase jiný. Vnořené rozložení může být užitečné, pokud pracujete s dílčí části objektů lokality, které vyžadují různá rozložení. Můžete také použít další metody (například `RenderSection`) k nastavení s názvem části na stránce rozložení.
+Stránky rozložení mají další funkce, které tady nepokrýváme. Můžete například vnořovat stránky rozložení – jedna stránka rozložení může odkazovat na další. Vnořená rozložení můžou být užitečná, když pracujete s podčástmi lokality, která vyžaduje různá rozložení. Můžete také použít další metody (například `RenderSection`), chcete-li nastavit pojmenované oddíly na stránce rozložení.
 
-Kombinace stránkami rozložení a *.css* soubory jsou výkonné. Jak uvidíte v dalším sérii, ve službě WebMatrix můžete vytvořit web založený na *šablony*, kterým získáte web, který obsahuje předem připravených funkce v ní. Šablony velice rozložení stránky a šablony stylů CSS vytvářet weby, které vypadají skvěle a, které mají funkce, jako jsou nabídky. Zde je snímek domovské stránce webu na základě šablony, zobrazuje funkce, které používají rozložení stránky a šablony stylů CSS:
+Kombinace stránek rozložení a souborů *. CSS* je výkonné. Jak vidíte v další sérii kurzů, můžete v WebMatrixu vytvořit web na základě *šablony*, která vám poskytne web s předem sestavenými funkcemi. Šablony usnadňují použití stránek rozložení a šablon stylů CSS k vytváření webů, které vypadají skvěle a mají funkce jako nabídky. Tady je snímek obrazovky domovské stránky z webu založeného na šabloně, který zobrazuje funkce, které používají stránky rozložení a šablony stylů CSS:
 
-![Rozložení vytvořené šablony webu služby WebMatrix zobrazující záhlaví, navigační oblast, oblasti obsahu, volitelný oddíl a odkazy přihlášení](layouts/_static/image11.png)
+![Rozložení vytvořené šablonou webu WebMatrix zobrazující záhlaví, navigační oblast, oblast obsahu, volitelný oddíl a přihlašovací odkazy](layouts/_static/image11.png)
 
-## <a name="complete-listing-for-movie-page-updated-to-use-a-layout-page"></a>Úplný seznam pro stránku Movie (aktualizované na používání stránku rozložení)
+## <a name="complete-listing-for-movie-page-updated-to-use-a-layout-page"></a>Úplný výpis stránky videa (aktualizovaný pro použití stránky rozložení)
 
 [!code-cshtml[Main](layouts/samples/sample14.cshtml)]
 
-## <a name="complete-page-listing-for-add-movie-page-updated-for-layout"></a>Dokončení stránku se seznamem pro přidání stránky Movie (aktualizováno pro rozložení)
+## <a name="complete-page-listing-for-add-movie-page-updated-for-layout"></a>Dokončení výpisu stránky pro stránku přidat film (Aktualizováno pro rozložení)
 
 [!code-cshtml[Main](layouts/samples/sample15.cshtml)]
 
-## <a name="complete-page-listing-for-delete-movie-page-updated-for-layout"></a>Úplný výpis stránky pro stránku odstranit Movie (aktualizováno pro rozložení)
+## <a name="complete-page-listing-for-delete-movie-page-updated-for-layout"></a>Dokončení výpisu stránky pro stránku odstranit film (Aktualizováno pro rozložení)
 
 [!code-cshtml[Main](layouts/samples/sample16.cshtml)]
 
-## <a name="complete-page-listing-for-edit-movie-page-updated-for-layout"></a>Úplný výpis stránky pro stránku video upravit (aktualizováno pro rozložení)
+## <a name="complete-page-listing-for-edit-movie-page-updated-for-layout"></a>Úplný výpis stránky pro stránku Upravit film (Aktualizováno pro rozložení)
 
 [!code-cshtml[Main](layouts/samples/sample17.cshtml)]
 
-## <a name="coming-up-next"></a>Chystá se další
+## <a name="coming-up-next"></a>Připravujeme další
 
-V dalším kurzu se dozvíte, jak publikovat svůj web na Internetu, všichni můžou zobrazit.
+V dalším kurzu se dozvíte, jak publikovat web na Internet tak, aby ho všichni mohli vidět.
 
 ## <a name="additional-resources"></a>Další prostředky
 
-- [Vytvoření konzistentního vypadat](https://go.microsoft.com/fwlink/?LinkID=202891) – článek, který obsahuje některé další podrobné informace o práci s rozložením. Také popisuje, jak předat hodnotu stránku rozložení, který zobrazí nebo skryje část obsahu.
-- [Vnořené rozložení stránky s jádrem Razor](http://www.mikesdotnetting.com/Article/164/Nested-Layout-Pages-with-Razor) – Mike Brind blogy příklad toho, jak lze vnořit rozložení stránky. (Včetně stažení stránky.)
+- [Vytvoření konzistentního vzhledu](https://go.microsoft.com/fwlink/?LinkID=202891) – článek, který poskytuje další podrobnosti o práci s rozloženími. Popisuje také, jak předat hodnotu stránce rozložení, která zobrazuje nebo skrývá část obsahu.
+- [Vnořené stránky rozložení se syntaxí Razor](http://www.mikesdotnetting.com/Article/164/Nested-Layout-Pages-with-Razor) – Jan slané Blogy příklad, jak vnořit stránky rozložení. (Zahrnuje stažení stránek.)
 
 > [!div class="step-by-step"]
 > [Předchozí](deleting-data.md)
-> [další](publishing.md)
+> [Další](publishing.md)

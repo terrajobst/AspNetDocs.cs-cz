@@ -9,11 +9,11 @@ ms.assetid: 5894dc13-5d45-4dad-8096-136499120f1d
 msc.legacyurl: /mvc/overview/performance/bundling-and-minification
 msc.type: authoredcontent
 ms.openlocfilehash: 61bfe5dbac04b57e1461183b66ead2f01fe0734c
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457762"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78538596"
 ---
 # <a name="bundling-and-minification"></a>Sdružování a minifikace
 
@@ -191,7 +191,7 @@ Na následujícím obrázku je vidět karta **ukládání do mezipaměti** v pod
 
 ![Obrázek ukládání do mezipaměti Fiddler](bundling-and-minification/_static/image8.png)
 
-Požadavek   
+Žádost   
 `http://localhost/MvcBM_time/bundles/AllMyScripts?v=r0sLDicvP58AIXN_mc3QdyVvVj5euZNzdsa2N1PKvb81`  
  je pro sadu prostředků **AllMyScripts** a obsahuje dvojici řetězců dotazu **v = R0sLDicvP58AIXN\\\_mc3QdyVvVj5euZNzdsa2N1PKvb81**. Řetězec dotazu **v** má token hodnoty, který je jedinečný identifikátor používaný pro ukládání do mezipaměti. Pokud se svazek nemění, aplikace ASP.NET požádá o sadu prostředků **AllMyScripts** pomocí tohoto tokenu. Pokud se kterýkoli soubor ve svazku změní, rozhraní optimalizace ASP.NET vygeneruje nový token, který zaručuje, že požadavky prohlížeče na tento svazek získají nejnovější sadu.
 
@@ -230,7 +230,7 @@ Obor názvů `System.Web.Optimization` je implementován v *knihovně System. We
 
 *Používám Twitter k vytváření rychlých příspěvků a sdílení odkazů. Moje obslužná rutina Twitteru je*: [@RickAndMSFT](http://twitter.com/RickAndMSFT)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - Video:[sdružování a optimalizace](https://channel9.msdn.com/Events/aspConf/aspConf/Bundling-and-Optimizing) podle [Howard Dierking](https://twitter.com/#!/howard_dierking)
 - [Přidání webové optimalizace do webu webových stránek](https://blogs.msdn.com/b/rickandy/archive/2012/08/15/adding-web-optimization-to-a-web-pages-site.aspx).
@@ -239,7 +239,7 @@ Obor názvů `System.Web.Optimization` je implementován v *knihovně System. We
 - [Použití sítě CDN a vyprší za účelem vylepšení výkonu](https://blogs.msdn.com/b/rickandy/archive/2011/05/21/using-cdns-to-improve-web-site-performance.aspx) webu Rick Anderson [@RickAndMSFT](https://twitter.com/#!/RickAndMSFT)
 - [Minimalizovat čas RTT (doba odezvy)](https://developers.google.com/speed/docs/best-practices/rtt)
 
-## <a name="contributors"></a>Spoluautoři
+## <a name="contributors"></a>Přispěvatelé
 
 - Hao Kung
 - [Howard Dierking](https://twitter.com/#!/howard_dierking)

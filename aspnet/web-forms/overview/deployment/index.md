@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/deployment/index
-title: Nasazení | Dokumentace Microsoftu
+title: Nasazení | Microsoft Docs
 author: rick-anderson
-description: Postup nasazení projekty webových formulářů ASP.NET na serveru.
+description: Jak nasadit projekty webových formulářů ASP.NET na server.
 ms.author: riande
 ms.date: 08/18/2011
 ms.assetid: 05e4c88f-5101-4277-a323-b6774d98f69e
 msc.legacyurl: /web-forms/overview/deployment
 msc.type: chapter
 ms.openlocfilehash: 1483abc212b5f122ad3e2b88474c42b208bb748e
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65134295"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640607"
 ---
 # <a name="deployment"></a>Nasazení
 
-> Postup nasazení projekty webových formulářů ASP.NET na serveru.
+> Jak nasadit projekty webových formulářů ASP.NET na server.
 
 - [Nasazení webu ASP.NET se sadou Visual Studio](visual-studio-web-deployment/index.md)
 
@@ -32,12 +32,12 @@ ms.locfileid: "65134295"
     - [Nasazení aktualizace databáze](visual-studio-web-deployment/deploying-a-database-update.md)
     - [Nasazení příkazového řádku](visual-studio-web-deployment/command-line-deployment.md)
     - [Nasazení dalších souborů](visual-studio-web-deployment/deploying-extra-files.md)
-    - [Odstraňování potíží](visual-studio-web-deployment/troubleshooting.md)
+    - [Řešení potíží](visual-studio-web-deployment/troubleshooting.md)
 - [ASP.NET 4 – úvod do nasazení v podniku](deploying-web-applications-in-enterprise-scenarios/index.md)
 
     - [Scénáře nasazení webových aplikací v podniku pomocí sady Visual Studio 2010](deploying-web-applications-in-enterprise-scenarios/deploying-web-applications-in-enterprise-scenarios.md)
-    - [Nasazení podnikového webu: Přehled scénářů](deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
-    - [Správa životního cyklu aplikací: Od vývoje k ostrému provozu](deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production.md)
+    - [Nasazení podnikového webu: Přehledný scénář](deploying-web-applications-in-enterprise-scenarios/enterprise-web-deployment-scenario-overview.md)
+    - [Správa životního cyklu aplikace: Od vývoje k ostrému provozu](deploying-web-applications-in-enterprise-scenarios/application-lifecycle-management-from-development-to-production.md)
 - [ASP.NET 4 – nasazení v podniku (1. část)](web-deployment-in-the-enterprise/index.md)
 
     - [Nasazení webu v podniku](web-deployment-in-the-enterprise/web-deployment-in-the-enterprise.md)

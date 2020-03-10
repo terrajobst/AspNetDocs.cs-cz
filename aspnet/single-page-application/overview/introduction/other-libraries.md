@@ -9,60 +9,60 @@ ms.assetid: a8367c6d-ef94-4dff-a010-5eff9e6eea96
 msc.legacyurl: /single-page-application/overview/introduction/other-libraries
 msc.type: authoredcontent
 ms.openlocfilehash: 64a4ad1fb411f7291a5cba634afdf4d2fdb16d55
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116072"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78578545"
 ---
 # <a name="know-a-library-other-than-knockout"></a>Znáte jiné knihovny než Knockout?
 
-podle [Autor: Mads Kristensen](https://github.com/madskristensen)
+od [Madse Kristensena](https://github.com/madskristensen)
 
-[Jedné stránky aplikace (SPA) šablony](knockoutjs-template.md) je skvělý způsob, jak začít psát jednostránkové aplikace. Šablona používá [KnockoutJS](http://knockoutjs.com/) svázat data aplikací na elementy modelu DOM.
+[Šablona jednostránkové aplikace (Spa)](knockoutjs-template.md) představuje skvělý způsob, jak začít psát jednostránkové aplikace. Šablona používá [KnockoutJS](http://knockoutjs.com/) k vázání dat aplikace k ELEMENTŮM modelu DOM.
 
-Ale Knockout není pouze knihovny jazyka JavaScript pro vytváření plně funkčního klienta s aplikací. Další knihovny řešit podobné problémy různými způsoby. Jedna knihovna dát přednost před jiným, abyste provedli jsme několik komunitou vytvořených šablon k dispozici ke stažení. Každá z těchto šablon používá různou kombinaci klientské knihovny pro JavaScript.
+Ale pro vytváření bohatých klientských aplikací není vykrojení jedinou knihovnou JavaScriptu. Jiné knihovny řeší podobné výzvy různými způsoby. Je možné, že jednu knihovnu upřednostňujete v jiném, takže jsme k dispozici několik šablon vytvořených komunitou ke stažení. Každá z těchto šablon používá jinou kombinaci klientských knihoven JavaScript.
 
-K instalaci šablonu vytvořenou komunitou, navštíví některý z šablony stránky uvedených níže a klikněte na tlačítko Stáhnout. Šablony jsou k dispozici jako soubory VSIX.
+Chcete-li nainstalovat šablonu vytvořenou komunitou, navštivte jednu z níže uvedených stránek šablony a klikněte na tlačítko Stáhnout. Šablony jsou k dispozici jako soubory VSIX.
 
 ## <a name="backbonejs"></a>BackboneJS
 
-[Šablona SPA Backbone.js](../templates/backbonejs-template.md). Tato šablona obsahuje počáteční skeleton pro vývoj [Backbone.js](http://backbonejs.org/) aplikace v ASP.NET MVC. Ihned poskytuje funkce základní uživatel přihlášení, včetně resetování hesla registrace, přihlášení, uživatele a potvrzení uživatele s základní e-mailové šablony.
+[Šablona hesla pro páteřní šablonu. js](../templates/backbonejs-template.md) Tato šablona poskytuje počáteční kostru pro vývoj aplikace v [páteřním formátu. js](http://backbonejs.org/) v ASP.NET MVC. Mimo pole poskytuje základní funkce pro přihlášení uživatelů, včetně registrace uživatelů, přihlášení, resetování hesla a potvrzení uživatele se základními e-mailovými šablonami.
 
 ## <a name="breezejs"></a>BreezeJS
 
-[BreezeJS](http://www.breezejs.com/?utm_source=ms-spa) je open source knihovna pro správu velké množství dat na klientovi JavaScript. Rychlé zpracovává dotazování, ukládání do mezipaměti, sledování změn, ověřování a další. Dvě šablony funkce Breeze:
+[BreezeJS](http://www.breezejs.com/?utm_source=ms-spa) je open source knihovna pro správu bohatých dat v klientovi JavaScript. Breeze zpracovává dotazování, ukládání do mezipaměti, sledování změn, ověřování a další. Dvě šablony funkce Breeze:
 
-- [Breeze/Knockout](../templates/breezeknockout-template.md) šablony rozšiřuje šabloně Knockout SPA znázorňující, jak snadno můžete vytvořit jednostránkové aplikace s podrobným pro KnockoutJS a správy dat pro datovou vazbu.
-- [Breeze/Angular](../templates/breezeangular-template.md) šablony také rozšiřuje šablon Knockout SPA s podrobným, ale používat [AngularJS](http://angularjs.org) knihovny pro správu obrazovky, vkládání závislostí a datové vazby.
+- Šablona [Breeze/vykrojení](../templates/breezeknockout-template.md) rozšiřuje šablonu pro vyseknutí hesla, která ukazuje, jak snadno můžete vytvořit jednostránkovou aplikaci s Breeze pro správu dat a KnockoutJS pro vytváření datových vazeb.
+- Šablona [Breeze/úhlová](../templates/breezeangular-template.md) také rozšiřuje šablonu zabezpečeného hesla pomocí Breeze, ale pomocí knihovny [AngularJS](http://angularjs.org) pro datové vazby, vkládání závislostí a správu obrazovky.
 
-Kromě toho [šablona Hot Towel SPA](../templates/hottowel-template.md) používá BreezeJS.
+Kromě toho [Šablona Hot navrhování RUČNÍKŮ Spa](../templates/hottowel-template.md) používá BreezeJS.
 
 ## <a name="emberjs"></a>EmberJS
 
-[Šablona EmberJS SPA](../templates/emberjs-template.md). Tato šablona používá [členskými](http://emberjs.com/), výkonné knihovny MVC JavaScript, která řeší širokou škálu výzev pro vytváření aplikací vzhled plně funkčního klienta.
+[Šablona zabezpečeného hesla EmberJS](../templates/emberjs-template.md) Tato šablona používá [života](http://emberjs.com/), výkonné knihovny JavaScript MVC, která řeší širokou škálu výzev pro vytváření bohatých klientských aplikací.
 
-Šablona členskými SPA je opětovná implementace Knockout SPA šablony, pomocí EmberJS a Handlebars šablon.
+Šablona života SPA je znovu implementovaná šablona pro vyseknutí hesla pomocí EmberJS a handlebars šablonování.
 
-## <a name="hot-towel"></a>Hot Towel
+## <a name="hot-towel"></a>Horká navrhování ručníků
 
-[Horké šablonu ručníků SPA](../templates/hottowel-template.md). Tato šablona přináší několik knihoven jazyka JavaScript, včetně Breeze, Knockout, RequireJS a architekturu Twitter Bootstrap.
+[Hot navrhování RUČNÍKŮ Spa – šablona](../templates/hottowel-template.md). Tato šablona přináší několik knihoven JavaScriptu, včetně Breeze, vyseknutí, RequireJS a spuštění Twitteru.
 
-Šablona Hot Towel ve srovnání s pomocí šablon, které tady najdete, poskytuje kompletní aplikaci, ze kterého můžete vytvářet vlastní. Existují další koncepty zajímat, ale jakmile je pochopit, tato šablona může být co jste hledali. Pokud chcete vytvořit SPA ale nemůže rozhodnutí, kde začít, použijte Hot Towel a během několika sekund bude nutné aplikace SPA a všechny nástroje musíte dále to rozvíjet.
+V porovnání s dalšími šablonami, které jsou zde uvedeny, poskytuje Hot navrhování ručníků šablonu úplnější aplikaci, ze které můžete sestavit vlastní. Existuje více konceptů, o kterých byste měli vědět, ale jakmile je poznáte, může tato šablona přesně odpovídat tomu, co hledáte. Pokud chcete sestavit SPA, ale nemůžete se rozhodnout, kde začít, používejte horké navrhování ručníků a v sekundách budete mít zabezpečené a všechny nástroje, které pro něj budete potřebovat k sestavování.
 
-## <a name="feature-table"></a>Funkce tabulky
+## <a name="feature-table"></a>Tabulka funkcí
 
-Tady jsou funkcí poskytovaných službou každou šablonu jednostránková aplikace:
+Tady jsou funkce poskytované každou šablonou SPA:
 
-|                        | ASP.NET SPA | Páteřní | Breeze/Angular | Breeze/KO |  Členskými   | Hot Towel |
+|                        | ASP.NET SPA | Páteřní | Breeze/úhlové | Breeze/KO |  Ember   | Horká navrhování ručníků |
 |------------------------|-------------|----------|----------------|-----------|----------|-----------|
 |      Ukázka ToDo       |  &#10003;   |          |    &#10003;    | &#10003;  | &#10003; |           |
 |     Úplné šablony      |             | &#10003; |                |           |          | &#10003;  |
 | Navigace a historie |             | &#10003; |    &#10003;    |           | &#10003; | &#10003;  |
 |        Knihovny       |             |          |                |           |          |           |
-|        Angular         |             |          |    &#10003;    |           |          |           |
+|        Úhlová         |             |          |    &#10003;    |           |          |           |
 |    &#8195;Páteřní     |             | &#10003; |                |           |          |           |
-|         Rychlé         |             |          |    &#10003;    | &#10003;  |          | &#10003;  |
-|        Durandal        |             |          |                |           |          | &#10003;  |
-|         Členskými          |             |          |                |           | &#10003; |           |
-|        Knockout        |  &#10003;   |          |                | &#10003;  |          | &#10003;  |
+|         Breeze         |             |          |    &#10003;    | &#10003;  |          | &#10003;  |
+|        durandal        |             |          |                |           |          | &#10003;  |
+|         Ember          |             |          |                |           | &#10003; |           |
+|        Tomuto        |  &#10003;   |          |                | &#10003;  |          | &#10003;  |

@@ -1,23 +1,23 @@
 ---
 uid: web-forms/videos/iis/index
-title: Obecné tipy pro IIS | Dokumentace Microsoftu
+title: Obecné tipy služby IIS | Microsoft Docs
 author: rick-anderson
-description: Postup konfigurace služby IIS pro práci s aplikací ASP.NET.
+description: Jak nakonfigurovat službu IIS tak, aby fungovala s aplikacemi ASP.NET.
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 0078ceb6-3447-4ce4-90c2-d0e013ebc000
 msc.legacyurl: /web-forms/videos/iis
 msc.type: chapter
 ms.openlocfilehash: 30a6f4f944ba070d02aa8677085b9c7a07f5c162
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65114498"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78639858"
 ---
 # <a name="general-iis-tips"></a>Obecné tipy pro IIS
 
-> Postup konfigurace služby IIS pro práci s aplikací ASP.NET.
+> Jak nakonfigurovat službu IIS tak, aby fungovala s aplikacemi ASP.NET.
 
 - [Vývoj a nasazení při sdíleném hostování](developing-and-deploying-in-a-shared-hosting.md)
 - [Práce s delegovaným správcem služby IIS7](working-with-iis7-deligated-admin.md)

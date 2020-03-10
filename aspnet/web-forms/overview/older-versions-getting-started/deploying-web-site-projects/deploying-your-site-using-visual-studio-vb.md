@@ -9,11 +9,11 @@ ms.assetid: 977105f3-7987-4e50-8be7-afb53b4ca28a
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/deploying-your-site-using-visual-studio-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 6c71e36a8a434947882cc767cd2f903ff6e8d422
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74582593"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78587211"
 ---
 # <a name="deploying-your-site-using-visual-studio-vb"></a>Nasazení webu pomocí sady Visual Studio (VB)
 
@@ -117,7 +117,7 @@ Možnost publikovat je méně odlišit nástroj než Nástroj pro kopírování 
 
 Nejedná se o některé soubory, jejichž obsah se mezi produkčním a vývojovým prostředím liší. Klíčovým příkladem je konfigurační soubor aplikace `Web.config`. Protože možnost publikování po zkopírování nekopíruje soubory webových aplikací, přepíše vlastní konfigurační soubory produkčního prostředí verzí ve vývojovém prostředí. Následující kurz podrobněji prozkoumá toto téma a nabízí tipy pro nasazení webové aplikace, pokud takové rozdíly existují.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Nasazení webu zahrnuje kopírování potřebných souborů z vývojového prostředí do provozního prostředí. Předchozí kurz ukázal, jak přenášet soubory pomocí klienta FTP, jako je FileZilly. V tomto kurzu byly prověřeny dva nástroje pro nasazení v aplikaci Visual Studio: Nástroj pro kopírování webu a možnost publikovat. Nástroj pro kopírování webu je podobný klientovi FTP v tom, že má dvoufázové rozhraní se seznamem souborů v místním počítači a v zadaném vzdáleném počítači, který usnadňuje nahrávání nebo stahování souborů mezi dvěma počítači. Možnost publikovat je ještě tupý nástroj, který explicitně zkompiluje projekt a následně nasadí celou aplikaci do zadaného cíle.
 

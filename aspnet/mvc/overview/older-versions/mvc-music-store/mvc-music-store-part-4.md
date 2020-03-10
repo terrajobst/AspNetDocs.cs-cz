@@ -1,71 +1,71 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-4
-title: 'Část 4: Modely a přístup k datům | Dokumentace Microsoftu'
+title: '4\. část: modely a přístup k datům | Microsoft Docs'
 author: jongalloway
-description: V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 4. část se věnuje modely a přístup k datům.
+description: V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace úložiště ASP.NET MVC pro hudební úložiště. Část 4 pokrývá modely a přístup k datům.
 ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: ab55ca81-ab9b-44a0-8700-dc6da2599335
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-4
 msc.type: authoredcontent
 ms.openlocfilehash: 402be340f1ea3344675e7b859cea8c5130cfc8ee
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65129648"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78559673"
 ---
-# <a name="part-4-models-and-data-access"></a>Část 4: Modely a přístup k datům
+# <a name="part-4-models-and-data-access"></a>4\. část: Modely a přístup k datům
 
-podle [Jon Galloway](https://github.com/jongalloway)
+o [Jan Galloway](https://github.com/jongalloway)
 
-> MVC Music Store jde o kurz, který se seznámíte, podrobné postupy pro vývoj pro web pomocí ASP.NET MVC a sady Visual Studio.  
+> Hudební úložiště MVC je výuková aplikace, která zavádí a vysvětluje krok za krokem, jak používat ASP.NET MVC a Visual Studio pro vývoj webů.  
 >   
-> Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.
+> Úložiště hudby MVC je zjednodušená ukázka implementace úložiště, která prodává hudební alba online a implementuje základní funkce pro správu webů, přihlašování uživatelů a nákupních košíků.
 > 
-> V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 4. část se věnuje modely a přístup k datům.
+> V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace úložiště ASP.NET MVC pro hudební úložiště. Část 4 pokrývá modely a přístup k datům.
 
-Zatím jsme jste právě byla předávání "fiktivní data" z našich řadičů naše zobrazení šablony. Nyní jsme připraveni připojení skutečná databáze. V tomto kurzu probereme jak používat SQL Server Compact Edition (často označované jako SQL CE) jako naše databázového stroje. SQL CE je databáze založená na bezplatné, embedded, souborech, který nevyžaduje, aby všechny instalace nebo konfigurace, která je to velmi vhodné pro místní vývoj.
+Zatím jsme právě předali "" fiktivní data "z našich řadičů do našich šablon zobrazení. Teď jsme připraveni připojit skutečnou databázi. V tomto kurzu pokryjeme, jak používat edici SQL Server Compact (často označovanou jako SQL CE) jako náš databázový stroj. SQL CE je bezplatná, vložená databáze založená na souborech, která nevyžaduje žádnou instalaci nebo konfiguraci, což usnadňuje místní vývoj.
 
-## <a name="database-access-with-entity-framework-code-first"></a>Přístup k databázi pomocí Entity Framework Code-First
+## <a name="database-access-with-entity-framework-code-first"></a>Přístup k databázi pomocí Entity Frameworkho kódu – první
 
-Použijeme podporu Entity Framework (EF), která je zahrnutá v projektech ASP.NET MVC 3 pro dotazování a aktualizaci databáze. EF je objekt flexibilní relační mapování dat (ORM určené) vývojářům umožňuje dotazování a aktualizace dat uložených v databázi způsobem objektově orientované rozhraní API.
+K dotazování a aktualizaci databáze budeme používat podporu Entity Framework (EF), která je obsažená v projektech ASP.NET MVC 3. EF je flexibilní rozhraní API pro mapování relačních objektů (ORM), které umožňuje vývojářům dotazovat a aktualizovat data uložená v databázi v objektově orientovaném způsobem.
 
-Rozhraní Entity Framework verze 4 podporuje vývoj paradigma volá založeno na kódu. Založeno na kódu můžete vytvořit objekt modelu napsáním jednoduché třídy (označované také jako POCO z objektů CLR "prostý staré") a můžete dokonce vytvořit databázi v reálném čase z vaší třídy.
+Entity Framework verze 4 podporuje vývojové paradigma s názvem Code-First. Code – First umožňuje vytvořit objekt modelu zápisem jednoduchých tříd (označovaných také jako POCO z objektů CLR "v prostém formátu") a může dokonce vytvořit databázi průběžně z vašich tříd.
 
-### <a name="changes-to-our-model-classes"></a>Změny v našich tříd modelu
+### <a name="changes-to-our-model-classes"></a>Změny v našich třídách modelu
 
-Budeme v tomto kurzu využití funkce vytvoření databáze v Entity Framework. Než to, ale vytvoříme několik menší změny do našich tříd modelu přidat pár věcí, které budeme dále používat.
+Využijeme funkci vytváření databáze v Entity Framework v tomto kurzu. Předtím, než to provedeme, provedeme několik menších změn našich tříd modelů, které se dají přidat do některých věcí, které použijeme později.
 
-#### <a name="adding-the-artist-model-classes"></a>Přidání třídy modelu interpret
+#### <a name="adding-the-artist-model-classes"></a>Přidání tříd interpretů
 
-Naše alb bude spojená s umělci, tak přidáme jednoduchý model tříd k popisu umělce. Přidejte novou třídu do složky modelů s názvem Artist.cs pomocí kódu níže.
+Naše alba budou přidružena k umělcům, takže přidáme jednoduchou třídu modelu pro popis interpreta. Do složky modely s názvem Artist.cs přidejte novou třídu pomocí kódu uvedeného níže.
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample1.cs)]
 
-#### <a name="updating-our-model-classes"></a>Aktualizace našich tříd modelu
+#### <a name="updating-our-model-classes"></a>Aktualizují se třídy modelů
 
-Aktualizace třídy alb, jak je znázorněno níže.
+Aktualizujte třídu alba, jak je znázorněno níže.
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample2.cs)]
 
-Do třídy rozšířením podle tematických dále, proveďte následující aktualizace.
+Dále proveďte následující aktualizace třídy žánru.
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample3.cs)]
 
-### <a name="adding-the-appdata-folder"></a>Přidání aplikace\_složka dat
+### <a name="adding-the-app_data-folder"></a>Přidání složky s\_dat aplikace
 
-Přidáme aplikace\_adresář dat pro náš projekt k uložení naše soubory databáze serveru SQL Server Express. Aplikace\_dat je speciální adresář v technologii ASP.NET, která už má správné zabezpečení přístupová oprávnění pro přístup k databázi. V nabídce Projekt vyberte Přidat složku ASP.NET a pak aplikaci\_Data.
+Do našeho projektu přidáme aplikaci\_datový adresář, abychom mohli uchovávat soubory databáze SQL Server Express. Data\_aplikace jsou speciální adresář v ASP.NET, který už má správná oprávnění zabezpečení přístupu pro přístup k databázi. V nabídce projekt vyberte Přidat složku ASP.NET a pak aplikace\_data.
 
 ![](mvc-music-store-part-4/_static/image1.png)
 
-### <a name="creating-a-connection-string-in-the-webconfig-file"></a>Vytvoření připojovacího řetězce v souboru web.config
+### <a name="creating-a-connection-string-in-the-webconfig-file"></a>Vytvoření připojovacího řetězce v souboru Web. config
 
-Konfigurační soubor webu přidáme několik řádků, tak, aby rozhraní Entity Framework ví, jak se připojit k databázi. Poklikejte na soubor Web.config umístěný v kořenovém adresáři projektu.
+Do konfiguračního souboru webu přidáme pár řádků, aby Entity Framework vědět, jak se připojit k naší databázi. Dvakrát klikněte na soubor Web. config umístěný v kořenovém adresáři projektu.
 
 ![](mvc-music-store-part-4/_static/image2.png)
 
-Přejděte k dolnímu okraji tento soubor a přidat &lt;connectionStrings&gt; části přímo nad poslední řádek, jak je znázorněno níže.
+Posuňte se k dolnímu okraji tohoto souboru a přidejte &lt;connectionStrings&gt; sekci přímo nad poslední řádek, jak je znázorněno níže.
 
 [!code-xml[Main](mvc-music-store-part-4/samples/sample4.xml)]
 
@@ -75,82 +75,82 @@ Klikněte pravým tlačítkem na složku modely a přidejte novou třídu s náz
 
 ![](mvc-music-store-part-4/_static/image3.png)
 
-Tato třída bude představují kontext databáze Entity Framework, bude zpracování našich vytvořit, číst, aktualizovat a operací odstranění pro USA. Kód pro tuto třídu je uveden níže.
+Tato třída bude představovat kontext databáze Entity Framework a bude zpracovávat naše operace vytvoření, čtení, aktualizace a odstranění pro nás. Kód pro tuto třídu je uveden níže.
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample5.cs)]
 
-To je vše – neexistuje žádná další konfigurace, speciální rozhraní, atd. Rozšířením základní třídy DbContext naše MusicStoreEntities třída je schopný zvládnout naše databázové operace pro nás. Teď, když máme, připojili, přidáme několik dalších vlastností do našich tříd modelu využívat některé další informace v databázi.
+To je to – neexistuje žádná další konfigurace, speciální rozhraní atd. Rozšířením základní třídy DbContext je naše třída MusicStoreEntities schopna zpracovat naše databázové operace pro nás. Teď, když jsme se připojili, můžeme přidat několik dalších vlastností do našich tříd modelů a využít tak některé z dalších informací v naší databázi.
 
-### <a name="adding-our-store-catalog-data"></a>Přidání naše ukládání katalogu dat
+### <a name="adding-our-store-catalog-data"></a>Přidávají se naše data katalogu Storu.
 
-My podnikneme využívat funkce v Entity Framework, která přidá "seed" data na nově vytvořenou databázi. To se vyplní předem náš katalog úložiště se seznamem žánry, umělců nebo alb. Stahování MvcMusicStore Assets.zip – který součástí našich souborů návrhu lokality použitou dříve v tomto kurzu – má soubor třídy s těmito daty počáteční hodnoty, umístěný ve složce s názvem kódu.
+Budeme využívat funkci Entity Framework, která přidá "počáteční" data do nově vytvořené databáze. Tím se předem naplní náš katalog Storu seznamem žánrů, umělců a alb. Stažení MvcMusicStore-Assets. zip – které zahrnovalo naše soubory návrhu webu použité dříve v tomto kurzu – obsahuje soubor třídy s těmito počátečními daty, který je umístěný ve složce s názvem Code.
 
-V rámci kód / složku modely, vyhledejte soubor SampleData.cs a umístěte ho do složky modely v našem projektu, jak je znázorněno níže.
+Ve složce Code/modely vyhledejte soubor SampleData.cs a umístěte jej do složky modely v našem projektu, jak je znázorněno níže.
 
 ![](mvc-music-store-part-4/_static/image4.png)
 
-Teď potřebujeme přidat jeden řádek kódu na rozhraní Entity Framework říct SampleData třídy. Poklikejte na soubor Global.asax v kořenovém adresáři projektu otevřete ho a přidejte následující řádek do horní části aplikace\_začátek metody.
+Nyní musíme přidat jeden řádek kódu, který sděluje Entity Framework o této třídě SampleData. Dvojím kliknutím na soubor Global. asax v kořenovém adresáři projektu jej otevřete a přidejte následující řádek do horní části aplikace\_spustit metodu.
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample6.cs)]
 
-V tuto chvíli jsme dokončili práce potřebné ke konfiguraci Entity Framework pro náš projekt.
+V tomto okamžiku dokončili jsme práci nutnou ke konfiguraci Entity Framework pro náš projekt.
 
 ## <a name="querying-the-database"></a>Dotazy do databáze
 
-Teď můžeme aktualizovat naše StoreController tak, aby místo použití "fiktivní data" místo toho zavolá naši databázi a všechny jeho informace o dotazování. Začneme deklarací pole na **StoreController** pro uložení instance třídy MusicStoreEntities s názvem storeDB:
+Teď aktualizujeme naše StoreController tak, aby místo použití "fiktivních dat" místo toho volaly do naší databáze dotaz na všechny informace. Zahájíme deklarováním pole v **StoreController** k uložení instance třídy MusicStoreEntities s názvem storeDB:
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample7.cs)]
 
-### <a name="updating-the-store-index-to-query-the-database"></a>Aktualizuje se Index Store dáte dotaz na databázi
+### <a name="updating-the-store-index-to-query-the-database"></a>Aktualizace indexu úložiště pro dotazování databáze
 
-Třída MusicStoreEntities se spravuje pomocí Entity Framework a zpřístupňuje vlastnost kolekce pro každou tabulku v databázi. Umožňuje aktualizovat naše StoreController Index akci k načtení všech žánry v databázi. Tento postup již jsme provedli podle pevného kódování data řetězce. Teď můžeme místo jednoduše použít na kontext Entity Framework Generes kolekce:
+Třída MusicStoreEntities je udržována Entity Framework a zpřístupňuje vlastnost kolekce pro každou tabulku v naší databázi. Pojďme aktualizovat naši akci indexu StoreController a načíst všechny žánry v naší databázi. Dříve jsme to provedli pomocí pevného kódování řetězcových dat. Místo toho můžeme pouze Entity Framework použít Generesou kontextovou kolekci:
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample8.cs)]
 
-Je nutné dojde k naší zobrazit šablonu, protože jsme se stále vrací stejné StoreIndexViewModel jsme vrátil před - jsme už jenom vrací živá data z naší databáze nyní žádné změny.
+Od naší šablony zobrazení se nemusí provádět žádné změny, protože pořád vracíme stejné StoreIndexViewModel, jako jsme vrátili data z naší databáze hned teď!
 
-Když jsme spusťte projekt znovu, přejděte na adresu URL "/ Store" jsme zobrazí seznam všech žánry v naší databázi:
+Když znovu spustíte projekt a navštívíte adresu URL "/Store", zobrazí se teď seznam všech žánrů v naší databázi:
 
 ![](mvc-music-store-part-4/_static/image1.jpg)
 
-### <a name="updating-store-browse-and-details-to-use-live-data"></a>Aktualizuje se Store Procházet a podrobnosti o použití živých dat
+### <a name="updating-store-browse-and-details-to-use-live-data"></a>Aktualizace procházení a podrobností Storu pro použití živých dat
 
-S/Store/procházet? žánr =*[některé žánr]* metodě akce, Prohledáváme pro rozšířením podle tematických podle názvu. Pouze Očekáváme, že jeden výsledek, protože jsme neustále by neměl mít dvě položky se stejným názvem žánr a používat. Metoda Single() rozšíření v LINQ dotazu pro příslušný objekt žánr takto (nevkládejte to zatím):
+Pomocí metody Action/Store/Browse? Žánr = *[subžánr]* hledáme Žánr podle názvu. Očekáváme jenom jeden výsledek, protože by nikdy neměl mít dvě položky pro stejný název žánru, a proto můžeme použít. Rozšíření Single () v LINQ pro dotaz na příslušný objekt žánru (ještě nepište):
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample9.cs)]
 
-Jedinou metodu používá výraz Lambda jako parametr, který určuje, že má jeden objekt žánr tak, aby jeho název odpovídá hodnotě, kterou jsme definovali. V případě výše se načítají jeden objekt žánr s názvem hodnotu, která odpovídá roz.
+Jediná metoda přijímá výraz lambda jako parametr, který určuje, že chceme, aby měl jeden objekt žánru tak, aby jeho název odpovídal hodnotě, kterou jsme definovali. V výše uvedeném případě načítáme jeden objekt žánru s hodnotou názvu, která odpovídá discích.
 
-Provedeme výhod funkce služby Entity Framework, která umožňuje určit další související entity, které chceme, aby načíst i když je načten objekt žánr. Tato funkce je volána tvarování výsledek dotazu a umožňuje nám to snížit počet, kolikrát budeme potřebovat pro přístup k databázi chcete načíst všechny informace, které potřebujeme. Chceme předběžného načítání alb pro žánr se nám načíst, abychom budete aktualizovat dotaz mají zahrnout z Genres.Include("Albums") k označení, že má být také související alb. To je mnohem efektivnější, protože ho se načtou naše žánr a alb data v žádosti o izolované databáze.
+Využijeme funkci Entity Framework, která nám umožní označit další související entity, které chceme načíst, i když se objekt žánru načte. Tato funkce se nazývá tvarování výsledků dotazů a umožňuje snížit počet pokusů, které potřebujeme pro přístup k databázi, aby se načetly všechny informace, které potřebujeme. Chceme předběžně načíst alba pro žánry, které načteme, abychom aktualizovali náš dotaz tak, aby se zahrnul ze žánrů. zahrňte ("alba"), abyste označili, že máme také související alba. To je efektivnější, protože načte data žánru i alba v jediné žádosti databáze.
 
-S vysvětlením eliminuje zde je, jak vypadá naše aktualizované akce kontroleru Procházet:
+Tady je vysvětlení, jak vypadá naše aktualizovaná akce kontroleru procházení:
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample10.cs)]
 
-Aktualizujeme můžete nyní procházet zobrazení tak, aby alb, které jsou k dispozici v každý žánr Store. Otevřete zobrazit šablonu (ve /Views/Store/Browse.cshtml) a přidejte seznam s odrážkami alb, jak je znázorněno níže.
+Teď můžeme aktualizovat zobrazení pro procházení Storu, aby se zobrazila alba, která jsou k dispozici v jednotlivých žánrech. Otevřete šablonu zobrazení (najdete v/Views/Store/Browse.cshtml) a přidejte seznam alb s odrážkami, jak je znázorněno níže.
 
 [!code-cshtml[Main](mvc-music-store-part-4/samples/sample11.cshtml)]
 
-Spuštění aplikace a přejdete do/Store/procházet? žánr = Jazz odhalí naše výsledky jsou teď právě načtený z databáze, zobrazení všech alb v našich vybrané žánr.
+Po spuštění naší aplikace a přechodu na/Store/Browse? Žánr = Jazz vidíte, že se výsledky z databáze teď shromažďují a zobrazují se všechna alba v našem vybraném žánru.
 
 ![](mvc-music-store-part-4/_static/image2.jpg)
 
-Uděláme stejnou změnit na naší/Store/podrobnosti / [id] adresy URL a naše fiktivní data nahraďte databázového dotazu, který načte alba, jejíž ID odpovídá hodnota parametru.
+Provedeme stejnou změnu na naši adresu URL/Store/Details/[ID] a nahradíme naše fiktivní data databázovým dotazem, který načte album, jehož ID odpovídá hodnotě parametru.
 
 [!code-csharp[Main](mvc-music-store-part-4/samples/sample12.cs)]
 
-Spuštění aplikace a přejdete do /Store/Details/1 ukazuje, že naše výsledky se nyní se berou z databáze.
+Spuštění naší aplikace a procházení na/Store/Details/1 ukazuje, že se z databáze teď shromažďují výsledky.
 
 ![](mvc-music-store-part-4/_static/image5.png)
 
-Teď, když naší stránce s podrobnostmi o Store je nastaven pro zobrazení alba podle ID alba, můžeme aktualizovat **Procházet** zobrazit odkaz na zobrazení podrobností. Použijeme Html.ActionLink, přesně tak, jak jsme to udělali pro propojení z indexu Store procházet Store na konci předchozí části. Úplný zdrojový Procházet zobrazení se zobrazí pod.
+Teď, když je naše stránka s podrobnostmi o Storu nastavená tak, aby zobrazovala album podle ID alba, pojďme aktualizovat zobrazení pro **procházení** a propojit zobrazení podrobností. Použijeme HTML. ActionLink, přesně tak, jak jsme přešli na odkaz z indexu úložiště k uložení na konci předchozí části. Níže se zobrazí úplný zdroj zobrazení pro procházení.
 
 [!code-cshtml[Main](mvc-music-store-part-4/samples/sample13.cshtml)]
 
-Nyní jsme schopni z naši stránku Store přejít na stránku Genre, který vypíše dostupná alb, a kliknutím na alba jsme můžete zobrazit podrobnosti o této alba.
+Teď jsme schopni přejít ze stránky pro Store na stránku žánru, která obsahuje seznam dostupných alb a kliknutím na album si můžete zobrazit podrobnosti o tomto albu.
 
 ![](mvc-music-store-part-4/_static/image6.png)
 
 > [!div class="step-by-step"]
 > [Předchozí](mvc-music-store-part-3.md)
-> [další](mvc-music-store-part-5.md)
+> [Další](mvc-music-store-part-5.md)

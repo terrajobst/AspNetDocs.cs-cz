@@ -9,11 +9,11 @@ ms.assetid: 07ec7d37-023f-43ea-b471-60b08ce338f7
 msc.legacyurl: /web-api/overview/testing-and-debugging/troubleshooting-http-405-errors-after-publishing-web-api-applications
 msc.type: authoredcontent
 ms.openlocfilehash: 1b47f1ade3619cfd010260352f6a96985ab3598b
-ms.sourcegitcommit: 84b1681d4e6253e30468c8df8a09fe03beea9309
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73445705"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78555018"
 ---
 # <a name="troubleshoot-web-api2-apps-that-work-in-visual-studio-and-fail-on-a-production-iis-server"></a>Řešení potíží s webovými API2 aplikacemi, které fungují v aplikaci Visual Studio a selžou na provozním serveru služby IIS
 
@@ -29,17 +29,17 @@ Webové aplikace API obvykle používají několik příkazů HTTP: GET, POST, P
 
 ## <a name="what-causes-http-405-errors"></a>Co způsobuje chyby HTTP 405
 
-Prvním krokem ke studiu potíží s chybami HTTP 405 je pochopení toho, co znamená chyba HTTP 405. Hlavním řídícím dokumentem pro HTTP je [RFC 2616](http://www.ietf.org/rfc/rfc2616.txt), který definuje stavový kód HTTP 405 jako ***metoda není povolená***a dále popisuje tento stavový kód jako situaci, kdy &quot;metoda určená na řádku požadavku není povolená pro prostředek identifikovaný identifikátorem požadavku-URI.&quot; jinými slovy není pro konkrétní adresu URL, kterou klient HTTP požaduje, povolený příkaz HTTP.
+Prvním krokem ke studiu potíží s chybami HTTP 405 je pochopení toho, co znamená chyba HTTP 405. Hlavním řídícím dokumentem pro HTTP je [RFC 2616](http://www.ietf.org/rfc/rfc2616.txt), který definuje stavový kód HTTP 405 jako ***metoda není povolený***, a další popis tohoto stavového kódu jako situaci, kdy &quot;metoda zadaná na řádku požadavku není povolená pro prostředek identifikovaný identifikátorem Request-URI.&quot; jinými slovy není pro konkrétní adresu URL, kterou klient HTTP požaduje, povolený příkaz HTTP.
 
 V rámci krátké recenze je tady několik nejpoužívanějších metod HTTP, které jsou definované v dokumentu RFC 2616, RFC 4918 a RFC 5789:
 
 | HTTP – metoda | Popis |
 | --- | --- |
-| **Čtěte** | Tato metoda se používá k načtení dat z identifikátoru URI a pravděpodobně nejčastěji používané metody HTTP. |
+| **GET** | Tato metoda se používá k načtení dat z identifikátoru URI a pravděpodobně nejčastěji používané metody HTTP. |
 | **ZÁHLAVÍ** | Tato metoda je podobně jako metoda GET, s tím rozdílem, že ve skutečnosti nenačítá data z identifikátoru URI žádosti – jednoduše načte stav HTTP. |
-| **SPUŠTĚNÍ** | Tato metoda se obvykle používá k posílání nových dat do identifikátoru URI. PŘÍSPĚVEK se často používá k odeslání dat formuláře. |
-| **PŘEVÉST** | Tato metoda se obvykle používá k posílání nezpracovaných dat do identifikátoru URI. PUT se často používá k odesílání dat JSON nebo XML do aplikací webového rozhraní API. |
-| **DSTRANIT** | Tato metoda slouží k odebrání dat z identifikátoru URI. |
+| **POST** | Tato metoda se obvykle používá k posílání nových dat do identifikátoru URI. PŘÍSPĚVEK se často používá k odeslání dat formuláře. |
+| **PUT** | Tato metoda se obvykle používá k posílání nezpracovaných dat do identifikátoru URI. PUT se často používá k odesílání dat JSON nebo XML do aplikací webového rozhraní API. |
+| **DELETE** | Tato metoda slouží k odebrání dat z identifikátoru URI. |
 | **NASTAVENÍ** | Tato metoda se obvykle používá k načtení seznamu metod HTTP, které jsou podporovány pro identifikátor URI. |
 | **KOPÍROVAT PŘESUN** | Tyto dvě metody se používají s protokolem WebDAV a jejich účelem je vysvětlivek. |
 | **MKCOL** | Tato metoda se používá s protokolem WebDAV a používá se k vytvoření kolekce (například adresáře) na zadaném identifikátoru URI. |
@@ -69,7 +69,7 @@ V tomto příkladu klient HTTP odeslal platnou žádost JSON k adrese URL aplika
 
 ## <a name="resolve-http-405-errors"></a>Vyřešit chyby HTTP 405
 
-Existuje několik důvodů, proč nemusí být povolen konkrétní příkaz HTTP, ale existuje jeden primární scénář, který je přední příčinou této chyby ve službě IIS: více obslužných rutin je definováno pro stejnou operaci/metodu a jedna z obslužných rutin blokuje očekávanou obslužnou rutinu z požadavek se zpracovává. Pomocí vysvětlení služba IIS zpracovává obslužné rutiny od prvního až po poslední na základě záznamů obslužné rutiny Order v souborech *ApplicationHost. config* a *Web. config* , kde se k obsluze použije první vyhovující kombinace cest, příkazů, prostředků atd. požadavek.
+Existuje několik důvodů, proč nemusí být povolen konkrétní příkaz HTTP, ale existuje jeden primární scénář, který je přední příčinou této chyby ve službě IIS: více obslužných rutin je definováno pro stejnou operaci/metodu a jedna z obslužných rutin blokuje očekávanou obslužnou rutinu od zpracování požadavku. Pomocí vysvětlení, služba IIS zpracovává obslužné rutiny od prvního až po poslední na základě záznamů obslužné rutiny Order v souborech *ApplicationHost. config* a *Web. config* , kde se pro zpracování žádosti použije první vyhovující kombinace cest, příkazů, prostředků atd.
 
 Následující příklad je výpis ze souboru *ApplicationHost. config* pro server IIS, který vrátil chybu HTTP 405 při použití metody Put k odesílání dat do aplikace webového rozhraní API. V tomto výňatku je definováno několik obslužných rutin HTTP a každá obslužná rutina má jinou sadu metod HTTP, pro které je nakonfigurována – poslední položka v seznamu je obslužná rutina statického obsahu, což je výchozí obslužná rutina, která se používá po ostatních obslužných rutinách chanc e pro zkontrolování žádosti:
 

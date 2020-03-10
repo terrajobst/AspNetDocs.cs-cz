@@ -9,11 +9,11 @@ ms.assetid: a5a4a9ba-d18d-489a-a6b0-a3c26d6b0274
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
 ms.openlocfilehash: a7cc890038e5bb4eb61c7c3b808154c196ab2423
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74605670"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78533647"
 ---
 # <a name="creating-new-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>Vytvoření nových uložených procedur prvků TableAdapter typových sad dat (VB)
 
@@ -300,7 +300,7 @@ Bez ohledu na to, zda vylepšíte prvek GridView nebo not, otestujte základní 
 
 **Obrázek 24**: produkty si můžete zobrazit, upravit a odstranit z prvku GridView ([kliknutím zobrazíte obrázek v plné velikosti](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-vb/_static/image58.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Objekty TableAdapter ve typované datové sadě má přístup k datům z databáze pomocí ad-hoc příkazů SQL nebo prostřednictvím uložených procedur. Při práci s uloženými postupy lze použít buď existující uložené procedury, nebo Průvodce TableAdapter vytvořit nové uložené procedury na základě dotazu `SELECT`. V tomto kurzu jsme se seznámili s tím, jak se pro nás automaticky vytvoří uložené procedury.
 

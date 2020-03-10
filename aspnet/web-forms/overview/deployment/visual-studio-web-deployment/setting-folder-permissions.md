@@ -9,11 +9,11 @@ ms.assetid: 9715a121-fa55-4f1b-a5d2-fb3f6cd8be8f
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/setting-folder-permissions
 msc.type: authoredcontent
 ms.openlocfilehash: 410525bb2e3f6e5a0be6d7d6b33fb3a40509041a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74614942"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78576060"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-setting-folder-permissions"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: nastavení oprávnění složky
 
@@ -63,7 +63,7 @@ Otestujte tak, že znovu zavedete chybu, a to tak, že vyžádáte špatnou adre
 
 ![Stránka protokolu chyb knihovny ELMAH](setting-folder-permissions/_static/image4.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Nyní jste dokončili všechny úlohy, které jsou potřebné k zajištění správného fungování společnosti Contoso ve službě IIS na místním počítači. V dalším kurzu zpřístupníte web veřejně k dispozici tím, že ho nasadíte do Azure.
 

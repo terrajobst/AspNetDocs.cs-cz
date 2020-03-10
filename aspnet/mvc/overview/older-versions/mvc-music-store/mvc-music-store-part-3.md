@@ -1,262 +1,262 @@
 ---
 uid: mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3
-title: 'Část 3: Zobrazení a modely ViewModels | Dokumentace Microsoftu'
+title: '3\. část: zobrazení a ViewModels | Microsoft Docs'
 author: jongalloway
-description: V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 3. část popisuje zobrazení a modely ViewModel.
+description: V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace úložiště ASP.NET MVC pro hudební úložiště. Část 3 pokrývá zobrazení a ViewModels.
 ms.author: riande
 ms.date: 04/21/2011
 ms.assetid: 94297aa0-1f2d-4d72-bbcb-63f64653e0c0
 msc.legacyurl: /mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-3
 msc.type: authoredcontent
 ms.openlocfilehash: 3fcfc816cde22c697a78bab2c9ea7ace1bf68501
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65129680"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78559806"
 ---
-# <a name="part-3-views-and-viewmodels"></a>Část 3: Zobrazení a modely ViewModel
+# <a name="part-3-views-and-viewmodels"></a>3\. část: Zobrazení a modely ViewModel
 
-podle [Jon Galloway](https://github.com/jongalloway)
+o [Jan Galloway](https://github.com/jongalloway)
 
-> MVC Music Store jde o kurz, který se seznámíte, podrobné postupy pro vývoj pro web pomocí ASP.NET MVC a sady Visual Studio.  
+> Hudební úložiště MVC je výuková aplikace, která zavádí a vysvětluje krok za krokem, jak používat ASP.NET MVC a Visual Studio pro vývoj webů.  
 >   
-> Music Store MVC je jednoduché ukázku implementace úložiště prodává hudebních alb online, který implementuje správu základního webu, přihlášení uživatele a nákupního košíku funkce.  
+> Úložiště hudby MVC je zjednodušená ukázka implementace úložiště, která prodává hudební alba online a implementuje základní funkce pro správu webů, přihlašování uživatelů a nákupních košíků.  
 >   
-> V této sérii kurzů podrobně popisuje všechny kroky k vytvoření ukázkové aplikace ASP.NET MVC Music Store. 3. část popisuje zobrazení a modely ViewModel.
+> V této sérii kurzů se podrobně povedou všechny kroky, které se provedly při vytváření ukázkové aplikace úložiště ASP.NET MVC pro hudební úložiště. Část 3 pokrývá zobrazení a ViewModels.
 
-Zatím jsme jste právě byla vracení řetězců z akce kontroleru. To je dobrý způsob, jak získat představu o fungování řadiče, ale není jak byste k sestavení aplikace skutečný webu. Budeme má lepší způsob, jak generují kód HTML zpět do prohlížečů navštěvující náš web – jeden kde soubory šablony můžete použít k více snadno přizpůsobit obsah HTML odeslání zpět. To je přesně co dělat zobrazení.
+Zatím jsme právě vraceli řetězce z akcí kontroleru. To je dobrý způsob, jak získat představu o tom, jak ovladače fungují, ale není to, jak byste chtěli sestavit skutečnou webovou aplikaci. Budeme chtít lepší způsob, jak vygenerovat kód HTML zpátky do prohlížečů, které navštíví náš web – One, kde můžeme použít soubory šablon k jednoduššímu přizpůsobení odeslání obsahu HTML. To je přesně to, co dělají zobrazení.
 
-## <a name="adding-a-view-template"></a>Přidání zobrazení šablony
+## <a name="adding-a-view-template"></a>Přidání šablony zobrazení
 
-Použít šablonu zobrazení, jsme budete změnit metodu HomeController Index vrátit třídu ActionResult a jej vrátit View(), jako je následující:
+Chcete-li použít šablonu zobrazení, změníme metodu indexu HomeController tak, aby vracela ActionResult a vrátila zobrazení (), jako je například:
 
 [!code-csharp[Main](mvc-music-store-part-3/samples/sample1.cs)]
 
-Výše uvedené změny označuje, že místo vrátil řetězec, chceme místo toho použít k získání výsledku zpět "Zobrazit".
+Výše uvedená změna znamená, že místo vrácení řetězce je třeba použít zobrazení k vygenerování výsledku zpět.
 
-Teď přidáme vhodnou šablonu zobrazení na našem projektu. Provedete to tak jsme budete umístit textový kurzor v rámci metody akce indexu, pak klikněte pravým tlačítkem a vyberte "Přidat zobrazení". Tím se otevře dialogové okno Přidat zobrazení:
+Nyní do našeho projektu přidáme příslušnou šablonu zobrazení. K tomu umístíme textový kurzor v rámci metody akce indexu, potom klikněte pravým tlačítkem a vyberte Přidat zobrazení. Tím zobrazíte dialogové okno Přidat zobrazení:
 
-![](mvc-music-store-part-3/_static/image1.jpg)![](mvc-music-store-part-3/_static/image1.png)
+![](mvc-music-store-part-3/_static/image1.jpg) ![](mvc-music-store-part-3/_static/image1.png)
 
-Toto dialogové okno "Přidat zobrazení" umožňuje nám to rychle a snadno generovat soubory šablon zobrazení. Ve výchozím nastavení "Přidat zobrazení" dialogové okno předem vyplní název zobrazení šablony vytvořit tak, aby odpovídalo metodě akce, která bude používat. Protože jsme použili v rámci metody akce Index() naše HomeController místní nabídce "Přidat zobrazení", "Přidat zobrazení" dialog výše má "Index" jako název zobrazení předem vyplní ve výchozím nastavení. Není třeba změnit možnosti v tomto dialogovém okně, proto klikněte na tlačítko Přidat.
+Dialog Přidat zobrazení umožňuje rychle a snadno generovat soubory šablon zobrazení. Dialog Přidat zobrazení se ve výchozím nastavení předem vyplní názvem šablony zobrazení, která se má vytvořit, aby odpovídala metodě akce, která ji bude používat. Vzhledem k tomu, že jsme použili kontextovou nabídku přidat zobrazení v rámci metody akce index () našeho HomeController, zobrazí se v dialogovém okně Přidat zobrazení "index", protože ve výchozím nastavení se předběžně vyplní název zobrazení. Nepotřebujeme změnit žádnou z možností v tomto dialogu, takže klikněte na tlačítko Přidat.
 
-Když kliknete na tlačítko Přidat, vytvoří Visual Web Developer nové Index.cshtml zobrazit šablonu pro nás v adresáři \Views\Home složku vytvoříte, pokud ještě neexistuje.
+Po kliknutí na tlačítko Přidat vytvoří Visual Web Developer novou index. cshtml šablona zobrazení pro nás v adresáři \Views\Home a vytvoří složku, pokud ještě neexistuje.
 
 ![](mvc-music-store-part-3/_static/image2.png)
 
-Název a složku umístění souboru "Index.cshtml" je důležité a dodržuje zásady vytváření názvů výchozí rozhraní ASP.NET MVC. Název adresáře, \Views\Home, odpovídá kontroler – který se nazývá HomeController. Název šablony zobrazení, Index, odpovídá metodu akce kontroleru, který se zobrazuje zobrazení.
+Název a umístění složky souboru index. cshtml jsou důležité a následují výchozí zásady vytváření názvů pro ASP.NET MVC. Název adresáře \Views\Home odpovídá kontroleru, který má název HomeController. Název šablony zobrazení, index, odpovídá metodě akce kontroleru, které zobrazení zobrazí.
 
-ASP.NET MVC umožňuje vyhnout se tak nutnosti explicitně zadat název nebo umístění šablony zobrazení, pokud použijeme tyto zásady vytváření názvů pro vrátit zobrazení. Zobrazí ve výchozím nastavení se pak \Views\Home\Index.cshtml zobrazit šablonu při psaní kódu jako níže v rámci naší HomeController:
+ASP.NET MVC nám umožňuje vyhnout se nutnosti explicitně zadat název nebo umístění šablony zobrazení, když používáme toto zásady vytváření názvů k vrácení zobrazení. Ve výchozím nastavení bude při psaní kódu, jako je například v rámci našeho HomeController, vykreslena šablona zobrazení \Views\Home\Index.cshtml:
 
 [!code-csharp[Main](mvc-music-store-part-3/samples/sample2.cs)]
 
-Visual Web Developer a otevře šablonu zobrazení "Index.cshtml" poté, co jsme kliknutí na tlačítko "Přidat" v dialogovém okně "Přidat zobrazení". Obsah Index.cshtml jsou uvedeny níže.
+Visual Web Developer vytvořil a otevřel šablonu zobrazení index. cshtml po kliknutí na tlačítko Přidat v dialogovém okně Přidat zobrazení. Obsah indexu. cshtml je uveden níže.
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample3.cshtml)]
 
-Toto zobrazení je pomocí syntaxe Razor, což je stručnější než webových formulářů zobrazovací modul používá v webové formuláře ASP.NET a předchozích verzích rozhraní ASP.NET MVC. Webové formuláře zobrazovací modul je stále k dispozici v architektuře ASP.NET MVC 3, ale celá řada vývojářů považuje zobrazovací modul Razor velice dobře zapadá vývoj pro ASP.NET MVC.
+Toto zobrazení používá syntaxe Razor, což je stručnější než modul zobrazení webových formulářů používaný ve webových formulářích ASP.NET a předchozích verzích ASP.NET MVC. Modul zobrazení webových formulářů je stále k dispozici v ASP.NET MVC 3, ale mnoho vývojářů zjistí, že zobrazovací modul Razor přesně odpovídá vývoji ASP.NET MVC.
 
-První tři řádky nastavit nadpis stránky pomocí ViewBag.Title. Vytvoříme podívat na fungování tohoto podrobněji brzy, ale nejprve můžeme aktualizace textu v nadpisu textu a zobrazení stránky. Aktualizace &lt;h2&gt; značky říct "Toto je Home Page", jak je znázorněno níže.
+První tři řádky nastaví nadpis stránky pomocí ViewBag. title. Podíváme se, jak tento postup ještě brzy funguje, ale nejdřív aktualizujte text záhlaví textu a zobrazí se stránka. Aktualizujte &lt;H2&gt; tag, který říká "Toto je Domovská stránka", jak je znázorněno níže.
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample4.cshtml)]
 
-Spuštění aplikace ukazuje, že náš nový text zobrazený na domovské stránce.
+Spuštění aplikace ukazuje, že náš nový text je viditelný na domovské stránce.
 
 ![](mvc-music-store-part-3/_static/image3.png)
 
-## <a name="using-a-layout-for-common-site-elements"></a>Použití rozložení společné prvky webu
+## <a name="using-a-layout-for-common-site-elements"></a>Použití rozložení pro běžné prvky webu
 
-Většina webů mají obsah, který je sdílen mezi mnoho stránek: navigace zápatí, loga, odkazy na šablony stylů, atd. Zobrazovací modul Razor umožňuje jednoduše spravovat pomocí stránku s názvem \_Layout.cshtml automaticky vytvořené pro nás ve složce/zobrazení/Shared.
+Většina webů má obsah, který je sdílen mezi mnoha stránkami: navigace, zápatí, obrázky s logem, odkazy na šablony stylů atd. Modul zobrazení Razor usnadňuje správu pomocí stránky s názvem \_layout. cshtml, která se pro nás vytvořila automaticky ve složce/Views/Shared.
 
 ![](mvc-music-store-part-3/_static/image4.png)
 
-Dvakrát klikněte na tuto složku k zobrazení obsahu, které jsou uvedeny níže.
+Dvojím kliknutím na tuto složku zobrazíte obsah, který vidíte níže.
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample5.cshtml)]
 
-Obsah z našich jednotlivá zobrazení se zobrazí podle @RenderBodypříkazu () a společný obsah, který chceme nacházet mimo, který lze přidat do \_Layout.cshtml značek. Chceme vám naše MVC Music Store mít společné hlavičky s odkazy na naše oblast domovské stránky a Store na všech stránkách v lokalitě, tak, které přidáme do šablony přímo nad tím @RenderBody– příkaz ().
+Obsah z našich individuálních zobrazení se zobrazí příkazem @RenderBody() a veškerý společný obsah, který chceme zobrazit mimo rozhraní, lze přidat do \_layout. cshtml Markup. Chceme, aby vaše hudební úložiště MVC mělo společné záhlaví s odkazy na naši domovskou stránku a oblast úložiště na všech stránkách v lokalitě, takže přidáme tuto šablonu přímo nad tento příkaz @RenderBody().
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample6.cshtml)]
 
-## <a name="updating-the-stylesheet"></a>Aktualizuje se šablona stylů
+## <a name="updating-the-stylesheet"></a>Aktualizace šablony stylů
 
-Šablonu prázdného projektu obsahuje velmi zjednodušený soubor šablon stylů CSS, který obsahuje pouze styly slouží k zobrazení ověřovacích zpráv. Naše návrháře poskytuje některé další šablony stylů CSS a bitové kopie k definování vzhledu a chování našich webu, tak těch v teď přidáme.
+Prázdná šablona projektu obsahuje velmi zjednodušený soubor CSS, který obsahuje pouze styly používané k zobrazení ověřovacích zpráv. Náš Návrhář nabízí několik dalších šablon stylů CSS a obrázků, které definují vzhled a chování pro náš web, takže je teď přidáme.
 
-Aktualizovaný soubor CSS a image jsou součástí obsahu adresáře MvcMusicStore Assets.zip, která je k dispozici v [MVC. Music Store](https://github.com/evilDave/MVC-Music-Store). Budete výběru obou z nich v Průzkumníku Windows a umístit je do složky obsahu naše řešení v aplikaci Visual Web Developer, jak je znázorněno níže:
+Aktualizovaný soubor a obrázky CSS jsou obsaženy v adresáři obsahu souboru MvcMusicStore-Assets. zip, který je k dispozici na stránce [MVC – hudba-Store](https://github.com/evilDave/MVC-Music-Store). Oba z nich vybereme v Průzkumníkovi Windows a vyřadíte je do složky obsahu našeho řešení ve Visual Web Developer, jak je znázorněno níže:
 
 ![](mvc-music-store-part-3/_static/image5.png)
 
-Budete vyzváni k potvrzení, pokud chcete přepsat existující soubor Site.css. Klikněte na tlačítko Ano.
+Zobrazí se výzva k potvrzení, jestli chcete přepsat existující soubor Web. CSS. Klikněte na tlačítkoAno.
 
 ![](mvc-music-store-part-3/_static/image6.png)
 
-Obsah složky vaší aplikace se teď budou zobrazovat následujícím způsobem:
+Složka obsah vaší aplikace se teď zobrazí takto:
 
 ![](mvc-music-store-part-3/_static/image7.png)
 
-Teď naklonujeme aplikaci spustit a prohlédnout naše změny na domovské stránce.
+Nyní spusťte aplikaci a sledujte, jak se naše změny hledají na domovské stránce.
 
 ![](mvc-music-store-part-3/_static/image8.png)
 
-- Pojďme se podívat na co se změnilo: Metody akce HomeController Index najít a zobrazit šablony \Views\Home\Index.cshtmlView i v případě, že náš kód volat "návratový View()", protože naše zobrazit šablonu a potom standardní zásady vytváření názvů.
-- Na domovské stránce se zobrazuje jednoduché zobrazení uvítací zprávy, která je definována v rámci šablony \Views\Home\Index.cshtml zobrazení.
-- Domovská stránka používá naše \_Layout.cshtml šablony, a proto se uvítací zpráva je obsažena v rozložení standardní webu ve formátu HTML.
+- Pojďme se podívat na to, co se změnilo: metoda akce indexu HomeController se našla a zobrazila se šablona \Views\Home\Index.cshtmlView, i když náš kód se nazývá "návratové zobrazení ()", protože naše šablona zobrazení následovala standardní konvence vytváření názvů.
+- Na domovské stránce se zobrazuje jednoduchá uvítací zpráva, která je definována v rámci šablony zobrazení \Views\Home\Index.cshtml.
+- Domovská stránka používá naši šablonu \_layout. cshtml, takže úvodní zpráva je obsažena v rozložení HTML webu Standard.
 
-## <a name="using-a-model-to-pass-information-to-our-view"></a>Použití modelu k předávání informací do našich zobrazení
+## <a name="using-a-model-to-pass-information-to-our-view"></a>Předání informací do našeho zobrazení pomocí modelu
 
-Zobrazit šablonu, která se zobrazí pouze pevně zakódované HTML není vytvořím velmi zajímavé webovou stránku. K vytvoření dynamické webové stránky, bude místo toho chcete předávání informací do našich zobrazit šablony z našich akce kontroleru.
+Šablona zobrazení, která jenom zobrazuje pevně zakódované HTML, nebude vytvářet velice zajímavé webové stránky. Abychom mohli vytvořit dynamický web, místo toho budeme chtít předat informace z našich akcí kontroleru do našich šablon zobrazení.
 
-V modelu Model-View-Controller termín Model odkazuje na objekty, které představují data v aplikaci. Často objekty modelu odpovídají tabulek v databázi, ale nemusí to tak být.
+Ve vzoru kontroleru zobrazení modelu se pojem model vztahuje na objekty, které představují data v aplikaci. Objekty modelu se často shodují s tabulkami v databázi, ale nemusí být.
 
-Metody akce kontroleru, které vracejí třídu ActionResult, můžete předat objekt modelu do zobrazení. To umožňuje Kontroleru čistě zabalili všechny informace potřebné k vygenerování odpovědí a potom předal tyto informace zobrazit šablonu pro generování odpovídající odpověď ve formátu HTML. Toto je nejjednodušší k seznámení s tím, že zobrazíte v akci, takže můžeme začít.
+Metody akcí kontroleru, které vracejí ActionResult, mohou předat objekt modelu do zobrazení. Díky tomu může kontroler vyčistit všechny informace potřebné k vygenerování odpovědi a pak tyto informace předat do šablony zobrazení, která se použije k vygenerování příslušné odpovědi HTML. To je nejjednodušší pochopit tím, že se zobrazí v akci, takže se můžeme začít.
 
-Nejprve vytvoříme některé třídy modelu k reprezentaci žánry a alb v našem úložišti. Začněme vytvořením žánr třídy. Klikněte pravým tlačítkem na složku "Modely" v rámci projektu, zvolte možnost "Přidat třídu" a název souboru "Genre.cs".
+Nejprve vytvoříme některé třídy modelu, které reprezentují žánry a alba v rámci našeho obchodu. Pojďme začít vytvořením třídy žánru. Klikněte pravým tlačítkem na složku modely v rámci projektu, vyberte možnost "Přidat třídu" a pojmenujte soubor "Genre.cs".
 
 ![](mvc-music-store-part-3/_static/image2.jpg)
 
 ![](mvc-music-store-part-3/_static/image9.png)
 
-Pak přidejte řetězec veřejnou vlastnost Name do třídy, který byl vytvořen:
+Pak přidejte vlastnost názvu veřejné řetězce do třídy, která byla vytvořena:
 
 [!code-csharp[Main](mvc-music-store-part-3/samples/sample7.cs)]
 
-*Poznámka: V případě, že přemýšlíte, {get; nastavit;} provádí zápis využívání C#uživatele automaticky implementované vlastnosti funkce. Tento produkt nám nabízí výhody vlastnost bez nutnosti nám chcete-li deklarovat pole zálohování.*
+*Poznámka: v případě, že se zajímá, znamená C#to, že zápis {get; set;} používá automaticky implementované funkce vlastností. Díky tomu máme výhody vlastnosti bez nutnosti deklarovat pole pro zálohování.*
 
-Potom postupujte podle stejného postupu vytvořte třídu alba (s názvem Album.cs), který má název a vlastnosti žánr:
+Potom postupujte podle stejných kroků a vytvořte třídu alba (s názvem Album.cs), která má název a vlastnost Žánr:
 
 [!code-csharp[Main](mvc-music-store-part-3/samples/sample8.cs)]
 
-Teď můžeme upravit StoreController použití zobrazení, které budou zobrazovat dynamické informace z našeho modelu. Pokud - pro demonstrační účely teď - jsme naše alb podle ID požadavku, zobrazíme tyto informace jako v zobrazení níže.
+Nyní můžeme upravit StoreController pro použití zobrazení, která zobrazují dynamické informace z našeho modelu. If – pro demonstrační účely: máme moje alba na základě ID žádosti. Tyto informace můžeme zobrazit jako v následujícím zobrazení.
 
 ![](mvc-music-store-part-3/_static/image10.png)
 
-Začneme tak, že změníte akce Store Details tak, aby zobrazovala informace pro jeden album. Přidejte "pomocí" příkaz do horní části **StoreControllers** třídy, aby obsahoval obor názvů MvcMusicStore.Models, takže jsme nemusíte zadávat MvcMusicStore.Models.Album pokaždé, když chceme použít třídu alba. Část "použití" této třídy by teď měl vypadat jako dole.
+Začneme tak, že změníte akci úložiště Details, aby se zobrazily informace o jednom albu. Přidejte do horní části třídy **StoreControllers** příkaz "using", který bude zahrnovat obor názvů MvcMusicStore. Models, takže nemusíme psát MvcMusicStore. Models. album pokaždé, když chceme použít třídu alba. Oddíl "using" této třídy by se teď měl zobrazit jako níže.
 
 [!code-csharp[Main](mvc-music-store-part-3/samples/sample9.cs)]
 
-V dalším kroku aktualizujeme akce kontroleru podrobnosti tak, aby vracel třídu ActionResult, spíše než řetězce, jako jsme to udělali s metodou HomeController Index.
+V dalším kroku aktualizujeme akci kontroleru podrobností tak, aby vracela ActionResult místo řetězce, stejně jako u metody indexu HomeController.
 
 [!code-csharp[Main](mvc-music-store-part-3/samples/sample10.cs)]
 
-Nyní jsme můžete upravit logiku pro objekt alba vrátit do zobrazení. Později v tomto kurzu jsme se se načítání dat z databáze – ale právě teď budeme používat "fiktivní data" abyste mohli začít.
+Nyní můžeme upravit logiku, aby vracela objekt alba do zobrazení. Později v tomto kurzu načteme data z databáze, ale hned teď k zahájení práce použijeme "fiktivní data".
 
 [!code-csharp[Main](mvc-music-store-part-3/samples/sample11.cs)]
 
-*Poznámka: Pokud nejste obeznámeni s C#, mohou předpokládat, že pomocí var znamená, že je naše proměnná alba s pozdní vazbou. Který není správný – kompilátor jazyka C# používá odvození typu na základě toho, co jsme se přiřadí proměnné k určení, že je tento alba typu alba a kompilaci alba místní proměnné jako typ alba jsme získali kompilace kontrolu a sady Visual Studio code – editor podpora.*
+*Poznámka: Pokud si nejste obeznámeni C#s, můžete předpokládat, že použití var znamená, že je naše proměnná alba pozdní vazbá. To není správné – C# kompilátor používá odvození typu na základě toho, co přiřadíme proměnné k určení toho, že album je typu album a kompilování lokální proměnné alba jako typ alba, takže získáme kontrolu v době kompilace a podporu editoru kódu Visual Studio.*
 
-Pojďme teď vytvořit zobrazit šablonu, která používá naše alba generovat odpověď jazyka HTML. Než to potřebujeme k sestavení projektu tak, aby se dialogové okno Přidat zobrazení ví o náš nově vytvořené třídy alba. Můžete sestavte projekt výběrem Debug⇨Build MvcMusicStore položky nabídky (pro větší užitečnost můžete klávesovou zkratku Ctrl-Shift-B a sestavte projekt).
+Teď vytvoříme šablonu zobrazení, která pomocí našeho alba vygeneruje odpověď HTML. Než budeme udělat, musíme sestavit projekt, aby dialog Přidat zobrazení věděl o naší nově vytvořené třídě alba. Projekt můžete sestavit tak, že vyberete položku nabídky Ladit ⇨ Build MvcMusicStore (pro další kredity, můžete k sestavení projektu použít zástupce CTRL + SHIFT-B).
 
 ![](mvc-music-store-part-3/_static/image11.png)
 
-Teď, když jsme vytvořili naši podpůrných tříd, jsme připraveni k sestavení upravíme šablonu zobrazení. Klikněte pravým tlačítkem v rámci metody podrobnosti a v místní nabídce vyberte "Přidat zobrazení...".
+Teď, když jsme si nastavili naše podpůrné třídy, jsme připraveni sestavit naši šablonu zobrazení. Klikněte pravým tlačítkem v rámci metody Details a vyberte Přidat zobrazení... z místní nabídky.
 
 ![](mvc-music-store-part-3/_static/image12.png)
 
-Budeme vytvořte novou šablonu zobrazení jako jsme to udělali dříve s HomeController. Protože jsme vytváření z StoreController je ve výchozím nastavení se vygeneruje soubor \Views\Store\Index.cshtml.
+Vytvoříme novou šablonu zobrazení, jako jsme předtím pracovali s HomeController. Protože ho vytváříme z StoreController, ve výchozím nastavení se vygeneruje v souboru \Views\Store\Index.cshtml.
 
-Na rozdíl od dříve, budeme zaškrtněte políčko "Vytvořit silného typu" zobrazení. Pak budeme vyberte naše "Album" třídu v rámci rozevírací downlist "Data třída zobrazení". To způsobí, že dialog "Přidat zobrazení" pro vytvoření zobrazit šablonu, která očekává, alba objektu se předají do něj chcete použít.
+Na rozdíl od dřív, vrátíme zaškrtávací políčko vytvořit zobrazení se silným typem. Potom v rámci příkazu "View data-Class" downlist vybereme naši třídu "album". Tím se zobrazí dialogové okno Přidat zobrazení, ve kterém můžete vytvořit šablonu zobrazení, která očekává, že se objekt alba předává k použití.
 
 ![](mvc-music-store-part-3/_static/image13.png)
 
-Když kliknete na tlačítko "Přidat" náš \Views\Store\Details.cshtml zobrazit šablonu se vytvoří, obsahující následující kód.
+Po kliknutí na tlačítko Přidat se vytvoří šablona zobrazení \Views\Store\Details.cshtml, která obsahuje následující kód.
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample12.cshtml)]
 
-Všimněte si, že první řádek, který označuje, že toto zobrazení je silně typováno do našich alba třídy. Zobrazovací modul Razor plně chápe, že ho byl předán objekt alb, abychom mohli snadno přistupovat k vlastnosti modelu a dokonce i využívat technologie IntelliSense v editoru Visual Web Developer.
+Všimněte si prvního řádku, který označuje, že toto zobrazení je silně typované pro naši třídu alba. Modul zobrazení Razor chápe, že byl předán objekt alba, takže můžeme snadno získat přístup k vlastnostem modelu a dokonce i využít výhod technologie IntelliSense v editoru aplikace Visual Web Developer.
 
-Aktualizace &lt;h2&gt; označit tak, aby zobrazila alba název vlastnosti tak, že upravíte tento řádek se zobrazí takto.
+Aktualizujte &lt;H2&gt; tag, aby se zobrazila vlastnost title alba úpravou této čáry, která se zobrazí takto.
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample13.cshtml)]
 
-Všimněte si, že technologie IntelliSense se aktivuje, když zadáte období po @Model – klíčové slovo ukazující vlastnosti a metody, které podporuje alba třídy.
+Všimněte si, že technologie IntelliSense je aktivována při zadání tečky po klíčovém slově @Model a zobrazení vlastností a metod, které třída alba podporuje.
 
-Pojďme teď znovu spustit našem projektu a přejděte na adresu URL Store/podrobnosti/5. Uvidíme podrobnosti Album jako níže.
+Pojďme teď náš projekt znovu spustit a přejít na adresu URL/Store/Details/5. Zobrazí se podrobnosti o albu, jak je znázorněno níže.
 
 ![](mvc-music-store-part-3/_static/image14.png)
 
-Teď uděláme podobné aktualizace pro Store vyhledejte metodu akce. Aktualizovat tuto metodu tak, aby vracel třídu ActionResult a upravit logiku metody tak, aby ho vytvoří nový objekt žánr a vrátí ji do zobrazení.
+Teď povedeme k podobným aktualizacím pro metodu akce procházení pro Store. Aktualizujte metodu tak, aby vrátila ActionResult, a upravte logiku metody tak, aby vytvořila nový objekt žánru a vrátil ho do zobrazení.
 
 [!code-csharp[Main](mvc-music-store-part-3/samples/sample14.cs)]
 
-Klikněte pravým tlačítkem v metodě Procházet a vyberte v místní nabídce "Přidat zobrazení..." Přidat zobrazení silného typu přidejte do třídy rozšířením podle tematických silného typu.
+Klikněte pravým tlačítkem myši do metody Browse a vyberte Přidat zobrazení... v kontextové nabídce přidejte zobrazení, které je silného typu, a přidejte silný typ ke třídě Žánr.
 
 ![](mvc-music-store-part-3/_static/image15.png)
 
-Aktualizace &lt;h2&gt; element v zobrazení kódu (v /Views/Store/Browse.cshtml) k zobrazení informací žánr.
+Aktualizujte &lt;H2&gt; elementu v kódu zobrazení (v/Views/Store/Browse.cshtml), aby se zobrazily informace o žánru.
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample15.cshtml)]
 
-Nyní Pojďme naši projekt spusťte znovu a přejděte do/Store/Procházet? Rozšířením podle tematických = Disco adresy URL. Uvidíme procházet stránky zobrazují jako níže.
+Teď náš projekt znovu spusťte a přejděte k/Store/Browse? Žánr = adresa URL disdisce. Zobrazí se stránka pro procházení, jak je uvedeno níže.
 
 ![](mvc-music-store-part-3/_static/image16.png)
 
-Nakonec vytvoříme o něco složitější aktualizace **Store Index** metody akce a zobrazení seznamu všech žánry v našem úložišti. Můžeme to udělat pomocí seznamu žánry jako náš objekt modelu, nikoli jen jeden žánr.
+Nakonec provedeme trochu složitější aktualizace metody a zobrazení akce **indexu úložiště** , abyste zobrazili seznam všech žánrů v našem obchodě. Provedeme to pomocí seznamu žánrů jako našeho objektu modelu, nikoli jenom jediného žánru.
 
 [!code-csharp[Main](mvc-music-store-part-3/samples/sample16.cs)]
 
-Klikněte pravým tlačítkem na metodu akce Store Index a vyberte Přidat zobrazení, vyberte žánr jako třída modelu a klepněte na tlačítko Přidat.
+Klikněte pravým tlačítkem myši na metodu akce indexu úložiště a vyberte možnost přidat zobrazení jako dříve, jako třídu modelu vyberte Žánr a stiskněte tlačítko Přidat.
 
 ![](mvc-music-store-part-3/_static/image17.png)
 
-Nejprve Změníme @model deklarace můžete určit, že zobrazení se očekává několik žánr objekty místo jen jeden. Změňte první řádek /Store/Index.cshtml takto:
+Nejdříve změníme deklaraci @model tak, aby označovala, že zobrazení očekává několik objektů žánrů, nikoli jenom jeden. Změňte první řádek/Store/Index.cshtml ke čtení následujícím způsobem:
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample17.cshtml)]
 
-Znamená to, který bude pracovat objekt modelu, který může obsahovat několik objektů žánr zobrazovací modul Razor. Používáme použití rozhraní IEnumerable&lt;žánr&gt; namísto seznamu&lt;žánr&gt; protože obecnější, abychom mohli změnit později náš model typ na libovolný typ objektu, který podporuje rozhraní IEnumerable.
+To oznamuje modulu zobrazení Razor, že bude fungovat s objektem modelu, který může obsahovat několik žánrů objektů. Používáme&lt;žánru IEnumerable&gt; spíše než seznam&lt;Žánr&gt;, protože je obecnější, což nám umožňuje změnit typ modelu později na libovolný typ objektu, který podporuje rozhraní IEnumerable.
 
-Dále jsme vám projít žánr objekty v modelu, jak je znázorněno v následujícím kódu dokončené zobrazení.
+V dalším kroku procházíme objekty žánru v modelu, jak je uvedeno v následujícím kódu zobrazení dokončeno.
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample18.cshtml)]
 
-Všimněte si, že máme plnou podporu technologie IntelliSense jsme zadávání tento kód tak, že když zadáme "@Model." vidíme všechny metody a vlastnosti nepodporuje použití typu žánr rozhraní IEnumerable.
+Všimněte si, že máme plnou podporu technologie IntelliSense, když tento kód zadáte, takže když zadáte "@Model." Uvidíme všechny metody a vlastnosti podporované rozhraním IEnumerable typu Žánr.
 
 ![](mvc-music-store-part-3/_static/image18.png)
 
-V rámci naší smyčky "foreach" Visual Web Developer ví, že každá položka je typu Genre, takže uvidíme technologie IntelliSense pro každý žánr typ.
+V rámci naší smyčky "foreach" si Visual Web Developer ví, že každá položka je typu Žánr, takže jsme viděli IntelliSense pro každý typ žánru.
 
 ![](mvc-music-store-part-3/_static/image19.png)
 
-V dalším kroku funkci generování uživatelského rozhraní prozkoumat žánr objekt a určit, že každý bude mít název vlastnosti, takže prochází a zapíše je. Generuje také upravit, podrobnosti a odstranit odkazy na jednotlivé položky. Provedeme výhod, které později v našich Správce úložiště, ale prozatím jsme chtěli místo toho máte jednoduchý seznam.
+Dále funkce generování uživatelského rozhraní zkontrolovala objekt žánru a určila, že každá z nich bude mít vlastnost Name, takže projde a zapíše je. Také generuje odkazy pro úpravy, podrobnosti a odstranění na každou jednotlivou položku. Budeme s tím využívat i v našich manažerech Storu, ale teď rádi máme místo toho jednoduchý seznam.
 
-Po spuštění aplikace a přejděte do/Store, vidíme, že se zobrazí počet a seznam žánrů.
+Když aplikaci spustíme a přejdeme na/Store, uvidíme, že se zobrazuje počet i seznam žánrů.
 
 ![](mvc-music-store-part-3/_static/image20.png)
 
-## <a name="adding-links-between-pages"></a>Přidání propojení mezi stránkami
+## <a name="adding-links-between-pages"></a>Přidávání odkazů mezi stránkami
 
-Naší adresy URL/Store, který obsahuje seznam aktuálně žánry Vypíše názvy žánr jednoduše jako prostý text. Umožňuje změnit tak, aby místo prostého textu máme místo toho odkaz názvy žánr na příslušnou adresu URL Store/procházet tak, že kliknete na Hudba žánr jako "ROZ" přejdete na/Store/procházet? žánr = Roz adresy URL. Může aktualizujeme naše \Views\Store\Index.cshtml zobrazit šablonu pro výstup těchto odkazů pomocí kódu jako níže **(nezadávejte to – teď ještě chvíli Zůstaneme ke zlepšení v něm)**:
+Naše adresa URL/Store, ve které jsou uvedené žánry, jsou v současné době uvedeny názvy žánrů jednoduše jako prostý text. Pojďme to změnit, takže místo prostého textu máme názvy žánrů odkaz na příslušnou adresu URL/Store/Browse, takže když kliknete na hudební žánr, jako je "disco", přejdete na adresu URL/Store/Browse? Žánr = disco. Naši šablonu zobrazení \Views\Store\Index.cshtml bychom mohli aktualizovat tak, aby vyhledala tyto odkazy pomocí následujícího **kódu:**
 
 [!code-html[Main](mvc-music-store-part-3/samples/sample19.html)]
 
-To funguje, ale může způsobit potíže při později, protože závisí na pevně zakódované řetězce. Například jsme chtěli přejmenovat Kontroleru, jsme by nemusíte hledat našeho kódu hledají odkazy, které se musí aktualizovat.
+To funguje, ale může vést k problémům později, protože spoléhá na pevně zakódované řetězec. Například pokud jsme chtěli řadič přejmenovat, musíme vyhledat odkazy, které je potřeba aktualizovat.
 
-Alternativním přístupem, které používáme můžete je využít metody pomocné rutiny HTML. ASP.NET MVC zahrnuje metody pomocné rutiny HTML, které jsou k dispozici z našeho kódu šablony zobrazení provádět řadu běžných úloh stejně jako to. Pomocná metoda Html.ActionLink() je zvlášť užitečné a usnadňuje sestavení HTML &lt;&gt; odkazy a se postará o obtěžující podrobnosti jako zajistit cesty adresy URL jsou správně kódování URL.
+Alternativním přístupem, který můžeme použít, je využít pomocnou metodu HTML. ASP.NET MVC obsahuje pomocné metody HTML, které jsou k dispozici z našeho kódu šablony zobrazení k provádění celé řady běžných úloh stejně jako to. Pomocná metoda HTML. ActionLink () je obzvláště užitečná a usnadňuje tak vytváření &lt;HTML a&gt; odkazů a postará se o obtěžující podrobnosti, jako je například zajištění správné kódování adres URL cest.
 
-Html.ActionLink() má několik různých přetížení, aby umožňoval zadání co nejvíce informací, jako je třeba pro odkazy. V nejjednodušším případě budete zadáte text odkazu a metoda akce se má přejít při kliknutí na hypertextový odkaz na straně klienta. Můžete například odkaz na "/ Store /" Index() metodu na stránce s podrobnostmi Store se text odkazu "Přejít na the Store Index" pomocí následujícího volání:
+HTML. ActionLink () má několik různých přetížení, které umožňují zadat co nejvíce informací, kolik potřebujete pro vaše odkazy. V nejjednodušším případě zadáte pouze text odkazu a metodu Action, na kterou přejdete, když na klienta kliknete na hypertextový odkaz. Například můžeme na stránce s podrobnostmi úložiště propojit metodu "/Store/" index () s textem odkazu a přejít do indexu úložiště pomocí následujícího volání:
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample20.cshtml)]
 
-*Poznámka: V takovém případě neměli potřebujeme zadat název kontroleru, protože jsme právě při připojování ke jinou akci v rámci stejné kontroleru, který je vykreslování aktuálního zobrazení.*
+*Poznámka: v tomto případě jsme nemuseli zadat název kontroleru, protože jsme právě provedli odkaz na jinou akci v rámci stejného kontroleru, který vykresluje aktuální zobrazení.*
 
-Naše odkazy na stránky procházet muset předat parametr, takže použijeme jiné přetížení metody Html.ActionLink, který přijímá tři parametry:
+Naše odkazy na stránku pro procházení budou muset předat parametr, takže použijeme další přetížení metody HTML. ActionLink, která přijímá tři parametry:
 
-- 1. Text odkazu, který se zobrazí název žánru
+- 1. Text odkazu, ve kterém se zobrazí název žánru
 - 2. Název akce kontroleru (Procházet)
-- 3. Hodnoty parametru trasy, zadáte název (žánr) a hodnota (žánr name)
+- 3. Hodnoty parametrů směrování, zadání názvu (žánr) a hodnoty (název žánru)
 
-Uvedení, že všechno dohromady, tady je budeme jak psát tyto odkazy na zobrazení indexu Store:
+Pokud to všechno dohromady, napíšeme tyto odkazy na zobrazení indexu úložiště:
 
 [!code-cshtml[Main](mvc-music-store-part-3/samples/sample21.cshtml)]
 
-Nyní když jsme naše projekt spusťte znovu a přístup k adrese URL /Store/ uvidíme seznam žánrů. Každý žánr je hypertextového odkazu – při klepnutí na potrvá nám na naše/Store/procházet? žánr =*[žánr]* adresy URL.
+Když teď znovu spustíte náš projekt a získáte přístup k adrese URL/Store/, zobrazí se seznam žánrů. Každý Žánr je hypertextový odkaz – když se na něj klikne, pošle nám na náš/Store/Browse? Žánr = *[Žánr]* adresa URL.
 
 ![](mvc-music-store-part-3/_static/image3.jpg)
 
-Kód HTML pro daný seznam žánr vypadá takto:
+HTML pro seznam žánru vypadá takto:
 
 [!code-html[Main](mvc-music-store-part-3/samples/sample22.html)]
 
 > [!div class="step-by-step"]
 > [Předchozí](mvc-music-store-part-2.md)
-> [další](mvc-music-store-part-4.md)
+> [Další](mvc-music-store-part-4.md)

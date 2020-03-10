@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/data-access/advanced-data-access-scenarios/index
-title: Pokročilé scénáře přístupu dat | Dokumentace Microsoftu
+title: Pokročilé scénáře přístupu k datům | Microsoft Docs
 author: rick-anderson
-description: Tyto kurzy zahrnují způsobu práce s uloženými procedurami a počítaných sloupcích, jak pomocí spojení tabulek databáze a zašifrování dat informace o připojení...
+description: Tyto kurzy obsahují informace o tom, jak pracovat s uloženými procedurami a počítanými sloupci, jak používat spojení s databázovými tabulkami a jak šifrovat informace o datových připojeních...
 ms.author: riande
 ms.date: 10/05/2011
 ms.assetid: 00d198ed-fddc-4fd3-a86e-3f29c5f707cc
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios
 msc.type: chapter
 ms.openlocfilehash: 25041560b9e8ff0a8c944572dad344e655100b0d
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65108537"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78533052"
 ---
 # <a name="advanced-data-access-scenarios"></a>Pokročilé scénáře přístupu k datům
 
-> Tyto kurzy zahrnují způsobu práce s uloženými procedurami a počítaných sloupcích, jak pomocí spojení tabulek databáze a zašifrování informace o připojení.
+> Tyto kurzy obsahují informace o tom, jak pracovat s uloženými procedurami a počítanými sloupci, jak používat spojení s databázovými tabulkami a jak šifrovat informace o datových připojeních.
 
 - [Vytvoření nových uložených procedur prvků TableAdapter typových datových sad (C#)](creating-new-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)
 - [Použití stávajících uložených procedur komponentami TableAdapter typových datových sad (C#)](using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-cs.md)

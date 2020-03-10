@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-implement-health-monitoring-for-an-aspnet-application
-title: '[Postup:]  Implementace monitorování stavu aplikace ASP.NET? | Dokumenty Microsoft'
+title: '[Postupy:]  Implementovat monitorování stavu pro aplikaci ASP.NET? | Dokumenty Microsoft'
 author: rick-anderson
-description: V toto video pixelů na Chris ukáže jak implementovat stav monitorování a získat podrobné informace za běhu aplikace technologie ASP.NET. Zjistěte, výkonný a...
+description: V tomto videu Chris pixelů na se dozvíte, jak implementovat monitorování stavu, aby se získaly podrobné informace o běhu pro aplikaci ASP.NET. Seznamte se s výkonnými a...
 ms.author: riande
 ms.date: 11/05/2007
 ms.assetid: b3abd282-840a-42e3-ac27-cddbb22c5e33
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-implement-health-monitoring-for-an-aspnet-application
 msc.type: video
 ms.openlocfilehash: 18b84615d60deac2f06122d3d2b9689dc8efb09a
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59402853"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78567716"
 ---
-# <a name="how-do-i--implement-health-monitoring-for-an-aspnet-application"></a>[Postup:]  Implementace monitorování stavu aplikace ASP.NET?
+# <a name="how-do-i--implement-health-monitoring-for-an-aspnet-application"></a>[Postupy:]  Implementovat monitorování stavu pro aplikaci ASP.NET?
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V toto video pixelů na Chris ukáže jak implementovat stav monitorování a získat podrobné informace za běhu aplikace technologie ASP.NET. Další možnosti konfigurace výkonnější a flexibilnější pro monitorování, včetně stavu událostí, neboli webové události, zprostředkovatele pro ukládání dat, pravidla pro mapování události na zprostředkovatele, monitorování stavu profily pro běžně používaná nastavení a buffermode pro optimalizaci stav monitorování pro zajištění nejlepšího výkonu. Pak najdete v ukázkové webové aplikaci v akci s monitorováním stavu povolená zápisu události do protokolu událostí Windows.
+V tomto videu Chris pixelů na se dozvíte, jak implementovat monitorování stavu, aby se získaly podrobné informace o běhu pro aplikaci ASP.NET. Seznamte se s výkonnými a flexibilními možnostmi konfigurace pro monitorování stavu, včetně událostí monitorování stavu, neboli webových událostí, poskytovatelů pro ukládání dat, pravidel pro mapování událostí na zprostředkovatele, profilů pro běžně používaná nastavení a bufferModes pro optimalizaci. sledování stavu pro zajištění nejlepšího výkonu. Pak se podívejte na ukázkovou webovou aplikaci v akci s povoleným zápisem událostí do protokolu událostí systému Windows.
 
-[&#9654;Podívejte se na video (21 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-health-monitoring-for-an-aspnet-application)
+[&#9654;Sledovat video (21 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-implement-health-monitoring-for-an-aspnet-application)

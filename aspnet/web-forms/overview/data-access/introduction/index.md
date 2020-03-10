@@ -1,23 +1,23 @@
 ---
 uid: web-forms/overview/data-access/introduction/index
-title: Úvod | Dokumentace Microsoftu
+title: Úvod | Microsoft Docs
 author: rick-anderson
-description: Této úvodní sérii kurzů vysvětluje, jak vytvořit Data přístup Layer (DAL), vrstvy obchodní logiky (BLL) a konzistentního vzhledu napříč vaší lokality.
+description: Tato úvodní sada kurzů vysvětluje, jak vytvořit vrstvu pro přístup k datům (DAL), vrstvu obchodní logiky (knihoven BLL) a konzistentní vzhled napříč webem.
 ms.author: riande
 ms.date: 11/11/2011
 ms.assetid: 74f3a86b-81fa-4d64-820a-304613f72caa
 msc.legacyurl: /web-forms/overview/data-access/introduction
 msc.type: chapter
 ms.openlocfilehash: a62b473993804312021725642a102c1eeff20f74
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65132200"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78530910"
 ---
 # <a name="introduction"></a>Úvod
 
-> Této úvodní sérii kurzů vysvětluje, jak vytvořit Data přístup Layer (DAL), vrstvy obchodní logiky (BLL) a konzistentního vzhledu napříč vaší lokality.
+> Tato úvodní sada kurzů vysvětluje, jak vytvořit vrstvu pro přístup k datům (DAL), vrstvu obchodní logiky (knihoven BLL) a konzistentní vzhled napříč webem.
 
 - [Vytvoření vrstvy přístupu k datům (C#)](creating-a-data-access-layer-cs.md)
 - [Vytvoření vrstvy obchodní logiky (C#)](creating-a-business-logic-layer-cs.md)

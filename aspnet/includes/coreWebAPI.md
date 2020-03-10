@@ -9,6 +9,6 @@ Zvažte použití [ASP.NET Core webového rozhraní API](/aspnet/core/web-api). 
 * Systém konfigurace založený na prostředích, který je připravený pro Cloud.
 * Vestavěná vkládání závislostí.
 * Odlehčený, vysoce výkonný, modulární kanál požadavků HTTP.
-* Možnost hostování v [Kestrel](/aspnet/core/fundamentals/servers/kestrel), [IIS] (odkazy XREF: Host-and-Deploy/IIS/index, [http. sys](xref:fundamentals/servers/httpsys), [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache)a [Docker](xref:host-and-deploy/docker/index).
+* Možnost hostovat na [Kestrel](/aspnet/core/fundamentals/servers/kestrel), [IIS](xref:host-and-deploy/iis/index), [http. sys](xref:fundamentals/servers/httpsys), [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache)a [Docker](xref:host-and-deploy/docker/index).
 * Souběžná Správa verzí.
 * Nabízí nástroje, které usnadňují vývoj moderních webů.

@@ -9,11 +9,11 @@ ms.assetid: a3cef801-a54b-4ebd-93c3-55764e2e14b1
 msc.legacyurl: /visual-studio/overview/2012/windows-azure-authentication
 msc.type: authoredcontent
 ms.openlocfilehash: ce98effe18dd739504fb0d5453bae8a46c3ba102
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457476"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78557860"
 ---
 # <a name="windows-azure-authentication"></a>Ověřování Windows Azure
 
@@ -155,7 +155,7 @@ Tato chyba se může zobrazit v případě, že jste se dříve úspěšně při
 
 K tomu může dojít, pokud jste už přihlášení pomocí nějakého jiného ID Microsoftu k jedné ze služeb Azure. Použijte soukromé okno prohlížeče, jako je například InPrivate v IE nebo anonymním, nebo zrušte zaškrtnutí všech souborů cookie.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další prostředky
 
 - [Microsoft ASP.NET Tools for Windows Azure Active Directory – Visual Studio 2012](https://blogs.msdn.com/b/vbertocci/archive/2013/02/18/microsoft-asp-net-tools-for-windows-azure-active-directory-visual-studio-2012.aspx) – Vittorio Bertocci
 - [Funkce Windows Azure: identita](https://docs.microsoft.com/azure/active-directory/)

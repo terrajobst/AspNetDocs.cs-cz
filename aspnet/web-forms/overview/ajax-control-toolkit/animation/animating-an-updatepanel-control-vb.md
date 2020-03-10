@@ -9,11 +9,11 @@ ms.assetid: 4c306a2c-92b6-4904-b70b-365b847334fe
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/animation/animating-an-updatepanel-control-vb
 msc.type: authoredcontent
 ms.openlocfilehash: d66dda923940a328c0757049c9d8bfa3b2d2b9fc
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74607086"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78536335"
 ---
 # <a name="animating-an-updatepanel-control-vb"></a>Animace ovládacího prvku UpdatePanel (VB)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek animace v ovládacím prvku ASP.NET AJAX Control Toolkit není pouze ovládací prvek, ale celá rozhraní pro přidání animací do ovládacího prvku. Pro obsah `UpdatePanel`existuje speciální rozšířený objekt, který spoléhá na rámec animace: `UpdatePanelAnimation`. V tomto kurzu se dozvíte, jak nastavit takovou animaci pro `UpdatePanel`.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Prvním krokem je obvykle zahrnutí `ScriptManager` do stránky, aby byla načtena knihovna ASP.NET AJAX a bylo možné použít ovládací sadu Toolkit:
 

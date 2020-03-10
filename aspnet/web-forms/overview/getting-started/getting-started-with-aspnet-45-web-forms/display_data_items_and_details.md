@@ -1,177 +1,177 @@
 ---
 uid: web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/display_data_items_and_details
-title: Zobrazení datových položek a podrobností | Dokumentace Microsoftu
+title: Zobrazit datové položky a podrobnosti | Microsoft Docs
 author: Erikre
-description: V této sérii kurzů se seznámíte se základy vytváření aplikace webových formulářů ASP.NET s ASP.NET 4.7 a Microsoft Visual Studio 2017
+description: V této sérii kurzů se seznámíte se základy vytváření aplikací webových formulářů ASP.NET pomocí ASP.NET 4,7 a Microsoft Visual Studio 2017
 ms.author: riande
 ms.date: 1/04/2019
 ms.assetid: 64a491a8-0ed6-4c2f-9c1c-412962eb6006
 msc.legacyurl: /web-forms/overview/getting-started/getting-started-with-aspnet-45-web-forms/display_data_items_and_details
 msc.type: authoredcontent
 ms.openlocfilehash: 130c9ffd29df612dac5bb954830a2eb9b738aaf0
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65109624"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78641111"
 ---
-# <a name="display-data-items-and-details"></a>Zobrazení datových položek a podrobnosti
+# <a name="display-data-items-and-details"></a>Zobrazení datových položek a podrobností
 
-by [Erik Reitan](https://github.com/Erikre)
+od [Erik Reitan](https://github.com/Erikre)
 
-> V této sérii kurzů se naučíte se základy vytváření aplikace webových formulářů ASP.NET s ASP.NET 4.7 a Microsoft Visual Studio 2017.
+> V této sérii kurzů se naučíte, jak vytvářet aplikace webových formulářů v ASP.NET pomocí ASP.NET 4,7 a Microsoft Visual Studio 2017.
 
-V tomto kurzu se dozvíte, jak zobrazit datové položky a podrobnosti položky dat s webovými formuláři ASP.NET a Entity Framework Code First. V tomto kurzu navazuje na předchozí kurz o "Uživatelské rozhraní a navigace" jako část série kurzů Store Wingtip hračka. Po dokončení tohoto kurzu, zobrazí se vám produkty na *ProductsList.aspx* stránky a podrobnosti produktu na *ProductDetails.aspx* stránky.
+V tomto kurzu se dozvíte, jak zobrazit položky dat a podrobnosti o datových položkách pomocí webových formulářů ASP.NET a Entity Framework Code First. Tento kurz sestaví na předchozím kurzu "uživatelské rozhraní a navigace" jako součást série kurzů Wingtip Toys. Po dokončení tohoto kurzu uvidíte produkty na stránce *ProductsList. aspx* a v podrobnostech o produktu na stránce *ProductDetails. aspx* .
 
-## <a name="youll-learn-how-to"></a>Se dozvíte, jak:
+## <a name="youll-learn-how-to"></a>Dozvíte se, jak provést tyto akce:
 
-- Přidejte ovládací prvek dat pro zobrazení produktů z databáze
-- Připojení ovládacího prvku na vybraná data
-- Přidejte ovládací prvek dat zobrazíte podrobnosti o produktu z databáze
-- Načíst hodnotu z řetězce dotazu a tuto hodnotu použít k omezení dat načtených z databáze
+- Přidání ovládacího prvku data pro zobrazení produktů z databáze
+- Propojit ovládací prvek dat s vybranými daty
+- Přidání ovládacího prvku data pro zobrazení podrobností o produktu z databáze
+- Načte hodnotu z řetězce dotazu a pomocí této hodnoty omezí data načítaná z databáze.
 
-### <a name="features-introduced-in-this-tutorial"></a>Vlastnosti představené v tomto kurzu:
+### <a name="features-introduced-in-this-tutorial"></a>Funkce, které jsou představené v tomto kurzu:
 
 - Vazby modelu
-- Zprostředkovatele hodnot
+- Zprostředkovatelé hodnot
 
-## <a name="add-a-data-control"></a>Přidejte ovládací prvek dat
+## <a name="add-a-data-control"></a>Přidání ovládacího prvku data
 
-Vazba dat k ovládacímu prvku serveru, můžete použít několik různých možností. Nejběžnější patří:
+K vytvoření vazby dat na serverový ovládací prvek můžete použít několik různých možností. Mezi nejběžnější patří:
 
 * Přidání ovládacího prvku zdroje dat
 * Ruční přidání kódu
-* Pomocí vazby modelu
+* Použití vazby modelu
 
-### <a name="use-a-data-source-control-to-bind-data"></a>Vytvoření vazby dat pomocí ovládacího prvku zdroje dat
+### <a name="use-a-data-source-control-to-bind-data"></a>Použití ovládacího prvku zdroje dat pro svázání dat
 
-Přidání ovládacího prvku zdroje dat umožňuje propojit ovládací prvek zdroje dat k ovládacímu prvku, který se zobrazí data. S tímto přístupem můžete deklarativně, místo prostřednictvím kódu programu, připojení ke zdrojům dat serverové ovládací prvky.
+Přidání ovládacího prvku zdroje dat umožňuje propojit ovládací prvek zdroje dat s ovládacím prvkem, který zobrazuje data. Pomocí tohoto přístupu můžete deklarativně namísto programově propojit serverové ovládací prvky se zdroji dat.
 
-### <a name="code-by-hand-to-bind-data"></a>Kód ručně pro vytvoření vazby dat
+### <a name="code-by-hand-to-bind-data"></a>Kódování dat pomocí ručního vytvoření vazby dat
 
-Kódování ručně zahrnuje:
+Kódování podle rukou zahrnuje:
 
 1. Čtení hodnoty
-2. Kontrola, zda je null
-3. Převod na příslušný typ.
-4. Kontrola úspěchu převodu
-5. Pomocí hodnoty v dotazu 
+2. Kontroluje se, jestli je null.
+3. Převod na odpovídající typ
+4. Kontrola úspěšnosti převodu
+5. Použití hodnoty v dotazu 
 
-Tento přístup umožňuje mít plnou kontrolu nad logiky přístupu k datům.
+Tento přístup vám umožní mít plnou kontrolu nad logikou přístupu k datům.
 
-### <a name="use-model-binding-to-bind-data"></a>Svázat data pomocí vazby modelu
+### <a name="use-model-binding-to-bind-data"></a>Použití vazby modelu pro svázání dat
 
-Vazby modelu vám umožňuje vytvořit vazbu výsledky s mnohem menším množstvím kódu a poskytuje možnosti opakovaně používat funkce v rámci aplikace. To zjednodušuje práci s logiky zaměřený na kód – přístup k datům při stálém poskytování bohatých a datové vazby framework.
+Vazba modelu umožňuje vytvořit vazbu výsledků s mnohem menším kódem a poskytuje možnost opakovaného použití funkcí v celé aplikaci. Zjednodušuje práci s logikou přístupu k datům, a přitom stále poskytuje bohatou datovou vazbu na datovou strukturu.
 
 ## <a name="display-products"></a>Zobrazit produkty
 
-V tomto kurzu použijete k vytvoření vazby dat vazby modelu. Chcete-li nakonfigurovat ovládací prvek data pomocí vazby modelu vyberte data, nastavte ovládacího prvku `SelectMethod` vlastnost s názvem metody v kódu stránky. Ovládací prvek dat volá metodu v příslušnou dobu v životním cyklu stránky a automaticky sváže s vrácenými daty. Není nutné explicitně volat `DataBind` metody.
+V tomto kurzu použijete vazbu modelu pro svázání dat. Chcete-li nakonfigurovat ovládací prvek data na použití vazby modelu pro výběr dat, nastavte vlastnost `SelectMethod` ovládacího prvku na název metody v kódu stránky. Ovládací prvek data volá metodu v příslušnou dobu životního cyklu stránky a automaticky vytvoří vazby vrácených dat. Není nutné explicitně volat metodu `DataBind`.
 
-1. V **Průzkumníka řešení**, otevřete *ProductList.aspx*.
-2. Nahraďte stávající kód tento kód:   
+1. V **Průzkumník řešení**otevřete *ProductList. aspx*.
+2. Nahraďte existující kód tímto kódem:   
 
     [!code-aspx-csharp[Main](display_data_items_and_details/samples/sample1.aspx)]
 
-Tento kód používá **ListView** ovládací prvek s názvem `productList` pro zobrazení produktů.
+Tento kód používá ovládací prvek **ListView** s názvem `productList` k zobrazení produktů.
 
 [!code-aspx-csharp[Main](display_data_items_and_details/samples/sample2.aspx)]
 
-Styly a šablony, můžete definovat jak **ListView** ovládací prvek zobrazí data. Je vhodné pro data v libovolné opakující se struktura. I když to **ListView** příklad jednoduše zobrazí dat z databáze, můžete navíc bez kódu, umožňují uživatelům pro úpravy, vložení a odstranění dat a řadit a stránkovat data.
+Pomocí šablon a stylů definujete způsob, jakým ovládací prvek **ListView** zobrazuje data. Je vhodný pro data v jakékoli opakující se struktuře. I když tento příklad **ListView** jednoduše zobrazuje data databáze, můžete také bez kódu povolit uživatelům upravovat, vkládat a odstraňovat data a řadit a stránkovat data.
 
-Nastavením `ItemType` vlastnost **ListView** řídit vazbový výraz `Item` je k dispozici a ovládací prvek stane silného typu. Jak je uvedeno v předchozím kurzu, můžete vybrat Podrobnosti objektu položky s podporou technologie IntelliSense, jako je například určení `ProductName`:
+Nastavením vlastnosti `ItemType` v ovládacím prvku **ListView** je k dispozici výraz datové vazby `Item` a ovládací prvek se zapíše do silného typu. Jak je uvedeno v předchozím kurzu, můžete vybrat Podrobnosti objektu položky pomocí technologie IntelliSense, například zadání `ProductName`:
 
-![Zobrazení dat položek a podrobnosti o – technologie IntelliSense](display_data_items_and_details/_static/image1.png)
+![Zobrazení datových položek a podrobností – IntelliSense](display_data_items_and_details/_static/image1.png)
 
-Také používáte vazby modelu k určení `SelectMethod` hodnotu. Tato hodnota (`GetProducts`) odpovídá metodu přidejte do kódu vzadu pro zobrazení produktů v dalším kroku.
+K určení `SelectMethod` hodnoty používáte také vazbu modelu. Tato hodnota (`GetProducts`) odpovídá metodě, kterou přidáte do kódu za účelem zobrazení produktů v dalším kroku.
 
-### <a name="add-code-to-display-products"></a>Přidejte kód pro zobrazení produktů
+### <a name="add-code-to-display-products"></a>Přidat kód pro zobrazení produktů
 
-V tomto kroku přidáte kód k vyplnění **ListView** ovládacího prvku pomocí produktu data z databáze. Kód podporuje zobrazení všech produktů a jednotlivé kategorie produktů.
+V tomto kroku přidáte kód k naplnění ovládacího prvku **ListView** daty produktu z databáze. Kód podporuje zobrazování všech produktů a jednotlivých kategorií produktů.
 
-1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na *ProductList.aspx* a pak vyberte **zobrazit kód**.
-2. Nahraďte existující kód ve třídě *ProductList.aspx.cs* soubor s tímto:   
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na *ProductList. aspx* a pak vyberte **Zobrazit kód**.
+2. Nahraďte existující kód v souboru *ProductList.aspx.cs* tímto způsobem:   
 
     [!code-csharp[Main](display_data_items_and_details/samples/sample3.cs)]
 
-Tento kód ukazuje `GetProducts` metoda, která **ListView** ovládacího prvku `ItemType` odkazuje na vlastnost v *ProductList.aspx* stránky. Omezit rozsah výsledků do kategorie konkrétní databáze, nastaví kód `categoryId` hodnotu z hodnotu řetězce dotazu, který je předán *ProductList.aspx* stránce, pokud *ProductList.aspx* stránka je Přejde. `QueryStringAttribute` Třídy v `System.Web.ModelBinding` obor názvů slouží k načtení hodnoty proměnné řetězce dotazu `id`. Toto dá pokyn vazby modelu pro pokus o vytvoření vazby hodnotu z řetězce dotazu do `categoryId` parametr v době běhu.
+Tento kód ukazuje metodu `GetProducts`, kterou ovládací prvek **ListView** `ItemType` vlastností na stránce *ProductList. aspx* . Chcete-li omezit výsledky na určitou kategorii databáze, kód nastaví `categoryId` hodnotu z hodnoty řetězce dotazu předané na stránku *ProductList. aspx* , když je stránka *ProductList. aspx* přesměrována na. Třída `QueryStringAttribute` v oboru názvů `System.Web.ModelBinding` slouží k načtení hodnoty proměnné řetězce dotazu `id`. Tím se dá pokyn k vytvoření vazby modelu k pokusu o vazbu hodnoty z řetězce dotazu k parametru `categoryId` v době běhu.
 
-Když platnou kategorii je předán jako řetězec dotazu na stránce výsledky dotazu jsou omezené na tyto produkty v databázi, které odpovídají `categoryId` hodnotu. Například pokud *ProductsList.aspx* Toto je adresa URL stránky:
+Pokud je do stránky předána platná kategorie jako řetězec dotazu, výsledky dotazu jsou omezeny na tyto produkty v databázi, které odpovídají hodnotě `categoryId`. Pokud je například adresa URL stránky *ProductsList. aspx* následující:
 
 [!code-console[Main](display_data_items_and_details/samples/sample4.cmd)]
 
-Na stránce se zobrazí pouze produkty, kde `categoryId` rovná `1`.
+Na stránce se zobrazí pouze produkty, u kterých se `categoryId` rovná `1`.
 
-Všechny produkty se zobrazí, pokud žádný řetězec dotazu je zahrnuta, když *ProductList.aspx* stránka se nazývá.
+Pokud je zavolána stránka *ProductList. aspx* , jsou zobrazeny všechny produkty, pokud není zadán řetězec dotazu.
 
-Zdroje hodnoty pro tyto metody jsou označovány jako *hodnota poskytovatelů* (například *QueryString*), a parametr atributy, které označují které zprostředkovatele hodnot pro použití se označují jako *hodnoty atributů poskytovatele* (například `id`). Technologie ASP.NET obsahuje zprostředkovatele hodnot a odpovídající atributy pro všemi typické zdroji uživatelský vstup v aplikaci webových formulářů, jako je například řetězec dotazu, soubory cookie, hodnot formuláře, ovládací prvky, zobrazit stav, stav relace a vlastnosti profilu. Můžete taky psát vlastní hodnotu poskytovatelů.
+Zdroje hodnot těchto metod jsou označovány jako *Zprostředkovatelé hodnot* (například *QueryString*) a atributy parametrů, které určují, který zprostředkovatel hodnot použít se označuje jako *atributy zprostředkovatele hodnoty* (například `id`). ASP.NET zahrnuje zprostředkovatele hodnot a odpovídající atributy pro všechny typické zdroje vstupu uživatele v aplikaci webových formulářů, jako je řetězec dotazu, soubory cookie, hodnoty formulářů, ovládací prvky, stav zobrazení, stav relace a vlastnosti profilu. Můžete také napsat vlastní zprostředkovatele hodnot.
 
 ### <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci nyní chcete-li zobrazit všechny produkty nebo kategorie produktů.
+Spusťte aplikaci nyní, chcete-li zobrazit všechny produkty nebo produkty kategorie.
 
-1. Stisknutím klávesy **F5** během činnosti v sadě Visual Studio ke spuštění aplikace.  
-   V prohlížeči se otevře a zobrazí *Default.aspx* stránky.
+1. Spusťte aplikaci stisknutím klávesy **F5** v aplikaci Visual Studio.  
+   Prohlížeč otevře a zobrazí stránku *Default. aspx* .
 
-2. Vyberte **auta** z navigační nabídky kategorie produktu.  
-   *ProductList.aspx* stránce zobrazí pouze **auta** kategorie produktů. Později v tomto kurzu zobrazíte podrobnosti o produktu.  
+2. V navigační nabídce kategorie produktů vyberte **automobily** .  
+   Zobrazí se stránka *ProductList. aspx* zobrazující pouze produkty kategorie **automobilů** . Později v tomto kurzu zobrazíte podrobnosti o produktu.  
 
-    ![Zobrazení dat položek a podrobnosti - automobilů](display_data_items_and_details/_static/image2.png)
+    ![Zobrazení datových položek a podrobností – automobily](display_data_items_and_details/_static/image2.png)
 
-3. Vyberte **produkty** z navigační nabídce v horní části.  
-   Znovu *ProductList.aspx* se zobrazí stránka, ale tentokrát zobrazuje úplný seznam produktů.   
+3. V navigační nabídce v horní části vyberte **produkty** .  
+   Znovu se zobrazí stránka *ProductList. aspx* , tentokrát ale zobrazí celý seznam produktů.   
 
-    ![Zobrazení dat položek a podrobnosti - produkty](display_data_items_and_details/_static/image3.png)
+    ![Zobrazení datových položek a podrobností – produkty](display_data_items_and_details/_static/image3.png)
 
 4. Zavřete prohlížeč a vraťte se do sady Visual Studio.
 
-### <a name="add-a-data-control-to-display-product-details"></a>Přidejte ovládací prvek dat zobrazíte podrobnosti o produktu
+### <a name="add-a-data-control-to-display-product-details"></a>Přidání ovládacího prvku data pro zobrazení podrobností o produktu
 
-V dalším kroku upravíte značky *ProductDetails.aspx* stránky, které jste přidali v předchozím kurzu zobrazíte informace o konkrétních produktech.
+V dalším kroku upravíte značky na stránce *ProductDetails. aspx* , kterou jste přidali v předchozím kurzu, abyste zobrazili konkrétní informace o produktu.
 
-1. V **Průzkumníka řešení**, otevřete *ProductDetails.aspx*.
+1. V **Průzkumník řešení**otevřete *ProductDetails. aspx*.
 
-2. Nahraďte stávající kód tento kód:
+2. Nahraďte existující kód tímto kódem:
 
     [!code-aspx-csharp[Main](display_data_items_and_details/samples/sample5.aspx)] 
 
-    Tento kód používá **FormView** ovládací prvek pro zobrazení Podrobnosti o konkrétního produktu. Tento kód použije metody jako metody slouží k zobrazení dat v *ProductList.aspx* stránky. **FormView** ovládacího prvku se používá k zobrazení jeden záznam v čase ze zdroje dat. Při použití **FormView** ovládacího prvku, je vytvořit šablony můžete zobrazit a upravit hodnoty vázané na data. Tyto šablony obsahují ovládací prvky, výrazy, vazby a formátování, které definují vzhled formuláře a funkce.
+    Tento kód používá ovládací prvek **FormView** k zobrazení konkrétních podrobností o produktu. Tento kód používá metody, jako jsou metody použité k zobrazení dat na stránce *ProductList. aspx* . Ovládací prvek **FormView** slouží k zobrazení jednoho záznamu v čase ze zdroje dat. Při použití ovládacího prvku **FormView** vytvoříte šablony pro zobrazení a úpravy hodnot vázaných na data. Tyto šablony obsahují ovládací prvky, výrazy vazby a formátování, které definují vzhled a funkce formuláře.
 
-Předchozí kód s připojením k databázi se vyžaduje další kód.
+Připojení předchozí značky k databázi vyžaduje další kód.
 
-1. V **Průzkumníka řešení**, klikněte pravým tlačítkem na *ProductDetails.aspx* a potom klikněte na tlačítko **zobrazit kód**.  
-   *ProductDetails.aspx.cs* soubor se zobrazí.
+1. V **Průzkumník řešení**klikněte pravým tlačítkem na *ProductDetails. aspx* a pak klikněte na **Zobrazit kód**.  
+   Zobrazí se soubor *ProductDetails.aspx.cs* .
 
-2. Nahraďte stávající kód s tímto kódem:   
+2. Nahraďte existující kód tímto kódem:   
 
     [!code-csharp[Main](display_data_items_and_details/samples/sample6.cs)]
 
-Tento kód kontroluje "`productID`" hodnotu řetězce dotazu. Pokud není nalezena hodnota platný řetězec dotazu, zobrazí se odpovídající produkt. Pokud řetězec dotazu nebyl nalezen nebo její hodnota není platná, zobrazí se žádné produkty.
+Tento kód kontroluje hodnotu řetězce dotazu "`productID`". Pokud se najde platná hodnota řetězce dotazu, zobrazí se shodný produkt. Pokud se řetězec dotazu nenajde nebo jeho hodnota není platná, nezobrazí se žádný produkt.
 
 ### <a name="run-the-application"></a>Spuštění aplikace
 
-Nyní můžete spustit aplikaci, abyste viděli zobrazí jednotlivé produkty podle ID produktu.
+Nyní můžete spustit aplikaci, abyste viděli jednotlivé produkty zobrazené na základě ID produktu.
 
-1. Stisknutím klávesy **F5** během činnosti v sadě Visual Studio ke spuštění aplikace.  
-   V prohlížeči se otevře a zobrazí *Default.aspx* stránky.
+1. Spusťte aplikaci stisknutím klávesy **F5** v aplikaci Visual Studio.  
+   Prohlížeč otevře a zobrazí stránku *Default. aspx* .
 
-2. Vyberte **lodě** navigační nabídce kategorie.  
-   *ProductList.aspx* zobrazí se stránka.
+2. V nabídce navigace v kategorii vyberte **lodě** .  
+   Zobrazí se stránka *ProductList. aspx* .
 
-3. Vyberte **papíru loď** ze seznamu produktů.
-   *ProductDetails.aspx* zobrazí se stránka.
+3. Vyberte **papírový člun** ze seznamu produktů.
+   Zobrazí se stránka *ProductDetails. aspx* .
 
-    ![Zobrazení dat položek a podrobnosti - produkty](display_data_items_and_details/_static/image4.png)
+    ![Zobrazení datových položek a podrobností – produkty](display_data_items_and_details/_static/image4.png)
     
 4. Zavřete prohlížeč.
 
 ## <a name="additional-resources"></a>Další zdroje
 
-[Načtení a zobrazení dat ovládacím prvkem vazby modelu a webové formuláře](../../presenting-and-managing-data/model-binding/retrieving-data.md)
+[Načítání a zobrazování dat s vazbami modelů a webovými formuláři](../../presenting-and-managing-data/model-binding/retrieving-data.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přidali značek a kódu zobrazit produkty a podrobnosti o produktu. Jste se dozvěděli o ovládací prvky dat silného typu, vazby modelu a zprostředkovatele hodnot. V dalším kurzu přidáte do nákupního košíku ukázkové aplikace Wingtip Toys. 
+V tomto kurzu jste přidali značky a kód pro zobrazení produktů a podrobností o produktu. Seznámili jste se s datovými ovládacími prvky silného typu, vazbou modelů a poskytovateli hodnot. V dalším kurzu přidáte nákupní košík do ukázkové aplikace Wingtip Toys. 
 
 > [!div class="step-by-step"]
 > [Předchozí](ui_and_navigation.md)
-> [další](shopping-cart.md)
+> [Další](shopping-cart.md)

@@ -9,11 +9,11 @@ ms.assetid: 262843d6-43a2-4f1c-82d9-0b90ae6df0cf
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/odata-v3/creating-an-odata-endpoint
 msc.type: authoredcontent
 ms.openlocfilehash: e68a454398f109dfd089be9c9a44d3fe662acc2f
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600422"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78556411"
 ---
 # <a name="creating-an-odata-v3-endpoint-with-web-api-2"></a>Vytvoření koncového bodu OData V3 pomocí webového rozhraní API 2
 
@@ -187,7 +187,7 @@ Pomocí Fiddler na kartě **skladatele** zadejte následující identifikátor U
 
 ![](creating-an-odata-endpoint/_static/image13.png)
 
-Klikněte na tlačítko **Spustit** . Fiddler odešle do vaší aplikace požadavek HTTP GET. V seznamu webové relace by se měla zobrazit odpověď. Pokud vše funguje, bude stavový kód 200.
+Klikněte na tlačítko **Provést**. Fiddler odešle do vaší aplikace požadavek HTTP GET. V seznamu webové relace by se měla zobrazit odpověď. Pokud vše funguje, bude stavový kód 200.
 
 ![](creating-an-odata-endpoint/_static/image14.png)
 
@@ -223,7 +223,7 @@ Chcete-li získat sadu entit Products, odešlete požadavek GET na `http://local
 
 [!code-console[Main](creating-an-odata-endpoint/samples/sample11.cmd)]
 
-### <a name="entity"></a>Entity
+### <a name="entity"></a>Entita
 
 Pokud chcete získat jednotlivý produkt, pošlete požadavek GET na `http://localhost:port/odata/Products(1)`, kde "1" je ID produktu.
 

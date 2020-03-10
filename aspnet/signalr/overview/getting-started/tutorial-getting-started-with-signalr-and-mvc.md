@@ -10,17 +10,17 @@ msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-s
 msc.type: authoredcontent
 ms.topic: tutorial
 ms.openlocfilehash: 5671e4f0123ca2b0cb5314336cf4411467feac70
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600474"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78537042"
 ---
 # <a name="tutorial-real-time-chat-with-signalr-2-and-mvc-5"></a>Kurz: chat v reálném čase s nástrojem Signal 2 a MVC 5
 
 V tomto kurzu se dozvíte, jak pomocí ASP.NET signalizace 2 vytvořit aplikaci chatu v reálném čase. Přidáte signalizaci do aplikace MVC 5 a vytvoříte zobrazení chatu pro odesílání a zobrazování zpráv.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavení projektu
@@ -29,9 +29,9 @@ V tomto kurzu:
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
+* Sada [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) se sadou funkcí **Vývoj pro ASP.NET a web**.
 
 ## <a name="set-up-the-project"></a>Nastavení projektu
 
@@ -176,11 +176,11 @@ Tento kód otevře připojení k centru.
 
 Kód spustí připojení a poté předá funkci pro zpracování události Click v tlačítku **Odeslat** na stránce konverzace.
 
-## <a name="get-the-code"></a>Získat kód
+## <a name="get-the-code"></a>Získání kódu
 
 [Stáhnout dokončený projekt](https://code.msdn.microsoft.com/Getting-Started-with-c366b2f3)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Další informace o signalizaci naleznete v následujících zdrojích informací:
 
@@ -192,7 +192,7 @@ Další informace o signalizaci naleznete v následujících zdrojích informac�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavení projektu

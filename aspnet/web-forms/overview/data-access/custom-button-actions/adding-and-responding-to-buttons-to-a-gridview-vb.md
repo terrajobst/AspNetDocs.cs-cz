@@ -9,11 +9,11 @@ ms.assetid: 06c6bbd2-4bdc-435b-87a3-df2c868f4baa
 msc.legacyurl: /web-forms/overview/data-access/custom-button-actions/adding-and-responding-to-buttons-to-a-gridview-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 8727d8faead02340d223c75845bf29f63d1a0834
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74601353"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78549474"
 ---
 # <a name="adding-and-responding-to-buttons-to-a-gridview-vb"></a>Přidání tlačítek do ovládacího prvku GridView a reakce na ně (VB)
 
@@ -247,7 +247,7 @@ Obrázek 20 zobrazuje stránku při prohlížení produktů poskytovaných Homes
 > Prvky GridView (a DetailsView) mohou mít také tlačítka, LinkButtons nebo ImageButtons přidané do jejich TemplateFields. Stejně jako u vlastnost BoundField, tato tlačítka při kliknutí způsobí vyvolání zpětného volání, vyvolávání události GridView s `RowCommand`. Při přidávání tlačítek ve třídě TemplateField se ale tlačítko s `CommandArgument` není automaticky nastaveno na index řádku, protože se používá ButtonFields. Pokud potřebujete určit index řádku tlačítka, které bylo kliknuto v rámci obslužné rutiny události `RowCommand`, je nutné ručně nastavit vlastnost Button `CommandArgument` v jeho deklarativní syntaxi v rámci třídy TemplateField pomocí kódu, jako je:  
 > `<asp:Button runat="server" ... CommandArgument='<%# CType(Container, GridViewRow).RowIndex %>' />`.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Všechny ovládací prvky GridView, DetailsView a FormView mohou zahrnovat tlačítka, LinkButtons nebo ImageButtons. Taková tlačítka, když je kliknuto, způsobují zpětné odeslání a vyvolávají událost `ItemCommand` v ovládacích prvcích FormView a DetailsView `RowCommand` a v prvku GridView. Tato webová ovládací prvky obsahují integrovanou funkci pro zpracování běžných akcí souvisejících s příkazy, jako je například odstraňování nebo úpravy záznamů. Můžete ale také použít tlačítka, která při kliknutí reagují na vlastní vlastní kód.
 

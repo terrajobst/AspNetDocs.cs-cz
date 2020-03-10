@@ -9,11 +9,11 @@ ms.assetid: 022801d8-a327-4d0c-8780-6094c9cee00d
 msc.legacyurl: /web-forms/overview/data-access/introduction/master-pages-and-site-navigation-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 4a2b5ba8c1781f1194f951a44661a8f7dd095f41
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74578886"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78530518"
 ---
 # <a name="master-pages-and-site-navigation-vb"></a>Stránky předlohy a navigace na webu (VB)
 
@@ -51,7 +51,7 @@ Chcete-li vytvořit hlavní stránku, klikněte pravým tlačítkem myši na ná
 
 Na stránce předlohy definujte rozložení stránky na úrovni webu. Můžete použít zobrazení Návrh a přidat libovolné rozložení nebo webové ovládací prvky, které potřebujete, nebo můžete ručně přidat značky v zobrazení zdroje. Na stránce předlohy používáme [kaskádové šablony stylů](http://www.w3schools.com/css/default.asp) pro umísťování a styly s nastaveními CSS definovanými v externím souboru `Style.css`. I když nemůžete říct od značky níže, jsou definována pravidla šablony stylů CSS tak, aby byl obsah navigace `<div>`zcela umístěný tak, aby se zobrazil vlevo a měla pevnou šířku 200 pixelů.
 
-Lokalita. Master
+Site.master
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample1.aspx)]
 
@@ -79,13 +79,13 @@ Po kliknutí na tlačítko OK se zobrazí výzva k výběru stránky předlohy, 
 
 Po výběru stránky předlohy budou nové stránky ASP.NET obsahovat následující značky:
 
-Default. aspx
+Default.aspx
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample2.aspx)]
 
 V direktivě `@Page` existuje odkaz na použitý soubor hlavní stránky (`MasterPageFile="~/Site.master"`) a značka stránky ASP.NET obsahuje ovládací prvek obsahu pro každé ovládací prvky ContentPlaceHolder definované na stránce předlohy s `ContentPlaceHolderID` ovládacího prvku mapování obsahu ovládacího prvku na konkrétní prvek ContentPlaceHolder. Ovládací prvek Content (obsah) je místo, kam umístíte značku, kterou chcete zobrazit v odpovídajícím prvku ContentPlaceHolder. Nastavte atribut `Title` direktivy `@Page` na hodnotu domů a přidejte k ovládacímu prvku obsahu nějaký uvítací obsah:
 
-Default. aspx
+Default.aspx
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample3.aspx)]
 
@@ -129,7 +129,7 @@ Soubor mapy webu je soubor XML. Všimněte si, že Visual Studio poskytuje Intel
 
 Definujte mapu webu pro napodobení struktury systému souborů. To znamená, že přidáte `<siteMapNode>` element pro každou ze tří složek a podřízené `<siteMapNode>` prvky pro každou ASP.NET stránku v těchto složkách, například:
 
-Web. sitemap
+Web.sitemap
 
 [!code-xml[Main](master-pages-and-site-navigation-vb/samples/sample4.xml)]
 
@@ -219,11 +219,11 @@ Pojďme znovu zobrazit neuspořádaný seznam s opakováním, ale tentokrát zob
 
 **Obrázek 13**: Přidání nového webového uživatelského ovládacího prvku do složky `UserControls` ([kliknutím zobrazíte obrázek v plné velikosti](master-pages-and-site-navigation-vb/_static/image31.png))
 
-SectionLevelTutorialListing. ascx
+SectionLevelTutorialListing.ascx
 
 [!code-aspx[Main](master-pages-and-site-navigation-vb/samples/sample12.aspx)]
 
-SectionLevelTutorialListing. ascx. vb
+SectionLevelTutorialListing.ascx.vb
 
 [!code-vb[Main](master-pages-and-site-navigation-vb/samples/sample13.vb)]
 
@@ -239,7 +239,7 @@ Po vytvoření tohoto opakovače otevřete `Default.aspx` stránky v každé slo
 
 **Obrázek 15**: uvádíme základní kurzy vytváření sestav ([kliknutím zobrazíte obrázek v plné velikosti).](master-pages-and-site-navigation-vb/_static/image37.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Po definování mapy webu a dokončení stránky předlohy teď máme konzistentní rozložení stránky a navigační schéma pro naše kurzy související s daty. Bez ohledu na to, kolik stránek do naší lokality přidáváme, aktualizujeme rozložení stránky nebo informace navigace na webu je rychlý a jednoduchý proces, protože tyto informace jsou centralizované. Konkrétně jsou informace o rozložení stránky definovány na stránce předlohy `Site.master` a mapě webu v `Web.sitemap`. Nemuseli jsme psát *žádný* kód pro dosažení tohoto rozložení stránky a navigační mechanismus pro celou lokalitu a zachováváme kompletní podporu návrháře WYSIWYG v aplikaci Visual Studio.
 

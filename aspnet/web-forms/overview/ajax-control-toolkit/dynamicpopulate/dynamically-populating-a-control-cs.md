@@ -9,11 +9,11 @@ ms.assetid: e1fec43e-1daf-49d2-b0c7-7f1b930455cc
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/dynamicpopulate/dynamically-populating-a-control-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 24f88e44e0f878127314774d4e8846f80133413e
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74599298"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78535803"
 ---
 # <a name="dynamically-populating-a-control-c"></a>Dynamické naplnění ovládacího prvku (C#)
 
@@ -27,7 +27,7 @@ od [Christian Wenz](https://github.com/wenz)
 
 Ovládací prvek `DynamicPopulate` v ASP.NET AJAX Control Toolkit volá webovou službu (nebo metodu stránky) a vyplní výslednou hodnotu do cílového ovládacího prvku na stránce bez obnovení stránky. V tomto kurzu se dozvíte, jak tuto sadu nastavit.
 
-## <a name="steps"></a>Uvedené
+## <a name="steps"></a>Kroky
 
 Nejprve potřebujete webovou službu ASP.NET, která implementuje metodu volanou `DynamicPopulate`. Třída webové služby vyžaduje atribut `ScriptService`, který je definován v rámci `Microsoft.Web.Script.Services`; v opačném případě ASP.NET AJAX nemůže vytvořit proxy server JavaScriptu na straně klienta pro webovou službu, která je zase požadována `DynamicPopulate`.
 

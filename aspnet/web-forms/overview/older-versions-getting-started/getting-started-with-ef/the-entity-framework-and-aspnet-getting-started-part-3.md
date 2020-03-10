@@ -1,31 +1,31 @@
 ---
 uid: web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-3
-title: Začínáme s Entity Framework 4.0 Database First a technologie ASP.NET 4 webových formulářů – část 3 | Dokumentace Microsoftu
+title: Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 3 | Microsoft Docs
 author: tdykstra
-description: Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Frameworku. Ukázková aplikace je...
+description: Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework vytvořit aplikace webových formulářů ASP.NET. Ukázková aplikace je...
 ms.author: riande
 ms.date: 12/03/2010
 ms.assetid: ccdc3f8c-2568-40a7-8f8b-3c23d2e05388
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/getting-started-with-ef/the-entity-framework-and-aspnet-getting-started-part-3
 msc.type: authoredcontent
 ms.openlocfilehash: 88debb11a9157dce9ff000b1cb459b876dbceaf3
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65116663"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78643246"
 ---
-# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-3"></a>Začínáme s Entity Framework 4.0 Database First a 4 webových formulářů ASP.NET – část 3
+# <a name="getting-started-with-entity-framework-40-database-first-and-aspnet-4-web-forms---part-3"></a>Začínáme s Entity Framework 4,0 Database First a webovými formuláři ASP.NET 4 – část 3
 
-podle [Petr Dykstra](https://github.com/tdykstra)
+tím, že [Dykstra](https://github.com/tdykstra)
 
-> Contoso University ukázkovou webovou aplikaci ukazuje, jak vytvořit aplikace webových formulářů ASP.NET pomocí Entity Framework 4.0 a Visual Studio 2010. Informace o této sérii kurzů, naleznete v tématu [z prvního kurzu této série](the-entity-framework-and-aspnet-getting-started-part-1.md)
+> Ukázková webová aplikace společnosti Contoso University ukazuje, jak pomocí Entity Framework 4,0 a sady Visual Studio 2010 vytvářet aplikace webových formulářů ASP.NET. Informace o řadě kurzů najdete v [prvním kurzu v řadě](the-entity-framework-and-aspnet-getting-started-part-1.md) .
 
 ## <a name="filtering-ordering-and-grouping-data"></a>Filtrování, řazení a seskupování dat
 
-V předchozím kurzu jste použili `EntityDataSource` ovládacího prvku můžete zobrazit a upravit data. V tomto kurzu budete filtrování, řazení a seskupení dat. Když to uděláte to tak, že nastavíte vlastnosti `EntityDataSource` ovládací prvek, se liší od jiné ovládací prvky zdroje dat syntaxe. Jak uvidíte, ale můžete použít `QueryExtender` ovládací prvek pro minimalizaci tyto rozdíly.
+V předchozím kurzu jste použili ovládací prvek `EntityDataSource` k zobrazení a úpravě dat. V tomto kurzu budete filtrovat, řadit a seskupovat data. Pokud to provedete nastavením vlastností ovládacího prvku `EntityDataSource`, syntaxe se liší od jiných ovládacích prvků zdroje dat. Jak vidíte, můžete však použít ovládací prvek `QueryExtender` k minimalizaci těchto rozdílů.
 
-Změníte *Students.aspx* stránky k filtrování pro studenty, seřadit podle názvu a vyhledat název. Budete také změnit *Courses.aspx* stránka pro zobrazení kurzů pro vybranou oddělení a vyhledejte kurzy podle názvu. Nakonec přidejte studenty statistiky *About.aspx* stránky.
+Stránku *students. aspx* změníte pro filtrování studentů, řazení podle názvu a hledání názvu. Můžete také změnit stránku *kurzy. aspx* a zobrazit si kurzy pro vybrané oddělení a vyhledat kurzy podle jména. Nakonec přidáte do stránky *About. aspx* statistiku studenta.
 
 [![Image02](the-entity-framework-and-aspnet-getting-started-part-3/_static/image2.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image1.png)
 
@@ -35,151 +35,151 @@ Změníte *Students.aspx* stránky k filtrování pro studenty, seřadit podle n
 
 [![Image14](the-entity-framework-and-aspnet-getting-started-part-3/_static/image8.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image7.png)
 
-## <a name="using-the-entitydatasource-where-property-to-filter-data"></a>Používat EntityDataSource "Kde" vlastnost k filtrování dat
+## <a name="using-the-entitydatasource-where-property-to-filter-data"></a>Použití vlastnosti EntityDataSource "Where" k filtrování dat
 
-Otevřít *Students.aspx* stránku, kterou jste vytvořili v předchozím kurzu. Podle současné konfigurace `GridView` ovládací prvek na stránce zobrazí všechny názvy z `People` sady entit. Ale chcete zobrazit pouze studenti, které můžete vyhledat tak, že vyberete `Person` entity, které mají data registrace jinou hodnotu než null.
+Otevřete stránku *students. aspx* , kterou jste vytvořili v předchozím kurzu. V případě, že je aktuálně nakonfigurován, ovládací prvek `GridView` na stránce zobrazí všechny názvy ze `People` sady entit. Chcete-li však zobrazit pouze studenty, které lze najít, vyberte `Person` entity, které mají data registrace, která nejsou null.
 
-Přepnout na **návrhu** zobrazit a vybrat `EntityDataSource` ovládacího prvku. V **vlastnosti** okno, nastaveno `Where` vlastnost `it.EnrollmentDate is not null`.
+Přepněte do zobrazení **Návrh** a vyberte ovládací prvek `EntityDataSource`. V okně **vlastnosti** nastavte vlastnost `Where` na hodnotu `it.EnrollmentDate is not null`.
 
 [![Image01](the-entity-framework-and-aspnet-getting-started-part-3/_static/image10.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image9.png)
 
-Můžete použít v syntaxi `Where` vlastnost `EntityDataSource` Entity SQL je ovládací prvek. Entity SQL se podobá jazyku Transact-SQL, ale je tento příklad upravený pro použití s entitami, ne databázové objekty. Ve výrazu `it.EnrollmentDate is not null`, slovo `it` představuje odkaz na entitu vrácených dotazem. Proto `it.EnrollmentDate` odkazuje `EnrollmentDate` vlastnost `Person` entity, který `EntityDataSource` ovládací prvek vrátí.
+Syntaxe, kterou použijete ve vlastnosti `Where` ovládacího prvku `EntityDataSource` je Entity SQL. Entity SQL se podobá jazyku Transact-SQL, ale je přizpůsobená pro použití s entitami spíše než databázovými objekty. Ve výrazu `it.EnrollmentDate is not null`slovo `it` představuje odkaz na entitu vrácenou dotazem. Proto `it.EnrollmentDate` odkazuje na vlastnost `EnrollmentDate` entity `Person`, kterou vrátí ovládací prvek `EntityDataSource`.
 
-Spuštění stránky. V seznamu students nyní obsahuje pouze studenti. (Nejsou zjištěné žádné řádky, ve kterém se zobrazí není žádné datum registrace.)
+Spusťte stránku. Seznam studentů teď obsahuje jenom studenty. (Nejsou zobrazeny žádné řádky, pokud není k dispozici žádné datum registrace.)
 
 [![Image02](the-entity-framework-and-aspnet-getting-started-part-3/_static/image12.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image11.png)
 
-## <a name="using-the-entitydatasource-orderby-property-to-order-data"></a>Vlastnost "OrderBy" EntityDataSource pořadí dat
+## <a name="using-the-entitydatasource-orderby-property-to-order-data"></a>Použití vlastnosti OrderBy EntityDataSource k objednání dat
 
-Chcete také tento seznam podle názvu se při prvním zobrazení. S *Students.aspx* stránky stále otevřen v **návrhu** zobrazení a `EntityDataSource` ovládací prvek vybrán, v **vlastnosti** okno sady  **Řadit podle** vlastnost `it.LastName`.
+Také chcete, aby byl tento seznam v pořadí podle názvu, když se poprvé zobrazuje. Když je stránka *studenty. aspx* stále otevřená v zobrazení **Návrh** a stále je vybraný ovládací prvek `EntityDataSource`, v okně **vlastnosti** nastavte vlastnost **OrderBy** na hodnotu `it.LastName`.
 
 [![Image05](the-entity-framework-and-aspnet-getting-started-part-3/_static/image14.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image13.png)
 
-Spuštění stránky. Seznam studentů je nyní v pořadí podle jména.
+Spusťte stránku. Seznam studentů je teď v pořadí podle příjmení.
 
 [![Image04](the-entity-framework-and-aspnet-getting-started-part-3/_static/image16.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image15.png)
 
-## <a name="using-a-control-parameter-to-set-the-where-property"></a>Pomocí parametru ovládací prvek nastavit vlastnost "Kde"
+## <a name="using-a-control-parameter-to-set-the-where-property"></a>Použití parametru ovládacího prvku pro nastavení vlastnosti Where
 
-Jak se ostatní ovládací prvky zdroje dat, můžete předat hodnoty parametrů pro `Where` vlastnost. Na *Courses.aspx* stránce, kterou jste vytvořili v části 2 tohoto kurzu, tato metoda slouží k zobrazení kurzů, které jsou spojeny s oddělení, které uživatel vybere z rozevíracího seznamu.
+Stejně jako ostatní ovládací prvky zdroje dat můžete hodnoty parametrů předat vlastnosti `Where`. Na stránce tutorial *. aspx* , kterou jste vytvořili v části 2 tohoto kurzu, můžete použít tuto metodu k zobrazení kurzů přidružených k oddělení, které uživatel vybere v rozevíracím seznamu.
 
-Otevřít *Courses.aspx* a přepněte se na **návrhu** zobrazení. Přidejte druhý `EntityDataSource` ovládací prvek na stránce a pojmenujte ho `CoursesEntityDataSource`. Propojte jej s `SchoolEntities` model a vyberte `Courses` jako **EntitySetName** hodnotu.
+Otevřete *kurzy. aspx* a přepněte se do zobrazení **Návrh** . Přidejte na stránku druhý ovládací prvek `EntityDataSource` a pojmenujte ho `CoursesEntityDataSource`. Připojte ho k `SchoolEntities`mu modelu a jako hodnotu **EntitySetName** vyberte `Courses`.
 
-V **vlastnosti** okna, klikněte na tlačítko se třemi tečkami v **kde** vlastnosti. (Ujistěte se, že `CoursesEntityDataSource` před použitím je stále vybrán ovládací prvek **vlastnosti** okna.)
+V okně **vlastnosti** klikněte na tlačítko se třemi tečkami v poli vlastnost **WHERE** . (Před použitím okna **vlastností** se ujistěte, že je ještě vybraný ovládací prvek `CoursesEntityDataSource`.)
 
 [![Image06](the-entity-framework-and-aspnet-getting-started-part-3/_static/image18.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image17.png)
 
-**Editor výrazů** se zobrazí dialogové okno. V tomto dialogovém okně vyberte **Where automaticky generovat výraz podle zadaných parametrů**a potom klikněte na tlačítko **přidat parametr**. Název parametru `DepartmentID`vyberte **ovládací prvek** jako **zdroji parametru** hodnotu a vyberte **DepartmentsDropDownList** jako **ControlID**  hodnotu.
+Zobrazí se dialogové okno **Editor výrazů** . V tomto dialogovém okně vyberte **automaticky generovat výraz WHERE na základě zadaných parametrů**a pak klikněte na **Přidat parametr**. Pojmenujte parametr `DepartmentID`, jako **zdrojovou hodnotu parametru** vyberte **Control** a jako hodnotu **ControlID** vyberte **DepartmentsDropDownList** .
 
 [![Image07](the-entity-framework-and-aspnet-getting-started-part-3/_static/image20.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image19.png)
 
-Klikněte na tlačítko **zobrazit upřesňující vlastnosti**a **vlastnosti** okno **Editor výrazů** dialogovém okně Změnit `Type` vlastnost `Int32`.
+Klikněte na **Zobrazit upřesňující vlastnosti**a v okně **vlastnosti** dialogového okna **Editor výrazů** změňte vlastnost `Type` na `Int32`.
 
 [![Image15](the-entity-framework-and-aspnet-getting-started-part-3/_static/image22.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image21.png)
 
 Až to budete mít, klikněte na **OK**.
 
-Pod rozevíracím seznamu, přidejte `GridView` na stránku ovládací prvky a pojmenovat ho `CoursesGridView`. Propojte jej s `CoursesEntityDataSource` zdroje dat ovládacího prvku, klikněte na tlačítko **aktualizovat schéma**, klikněte na tlačítko **upravit sloupce**a odeberte `DepartmentID` sloupce. `GridView` Značky ovládacího prvku se podobá následujícímu příkladu.
+Pod rozevíracím seznamem přidejte do stránky ovládací prvek `GridView` a pojmenujte ho `CoursesGridView`. Připojte jej k ovládacímu prvku `CoursesEntityDataSource` zdroj dat, klikněte na tlačítko **Aktualizovat schéma**, klikněte na možnost **Upravit sloupce**a odeberte sloupec `DepartmentID`. Kód ovládacího prvku `GridView` se podobá následujícímu příkladu.
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-3/samples/sample1.aspx)]
 
-Když uživatel změní oddělení vybrané v rozevíracím seznamu, budete chtít seznam související kurzy, které automaticky změnit. Aby to chcete udělat, vyberte rozevíracím seznamu a v **vlastnosti** okno sady `AutoPostBack` vlastnost `True`.
+Pokud uživatel změní vybrané oddělení v rozevíracím seznamu, chcete, aby se seznam přidružených kurzů automaticky změnil. Chcete-li k tomu dojít, vyberte rozevírací seznam a v okně **vlastnosti** nastavte vlastnost `AutoPostBack` na hodnotu `True`.
 
 [![Image08](the-entity-framework-and-aspnet-getting-started-part-3/_static/image24.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image23.png)
 
-Teď, když budete hotovi, pomocí návrháře, přepněte na **zdroj** zobrazení a nahraďte `ConnectionString` a `DefaultContainer` název vlastnosti `CoursesEntityDataSource` ovládacím prvkem `ContextTypeName="ContosoUniversity.DAL.SchoolEntities"` atribut. Jakmile budete hotovi, značky pro ovládací prvek bude vypadat jako v následujícím příkladu.
+Nyní, když jste dokončili používání návrháře, přepněte do zobrazení **zdroje** a nahraďte vlastnosti `ConnectionString` a `DefaultContainer` název ovládacího prvku `CoursesEntityDataSource` atributem `ContextTypeName="ContosoUniversity.DAL.SchoolEntities"`. Až budete hotovi, značky pro ovládací prvek budou vypadat jako v následujícím příkladu.
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-3/samples/sample2.aspx)]
 
-Spuštění stránky a pomocí rozevíracího seznamu vyberte různá oddělení. Jsou zobrazeny pouze kurzů, které nabízí vybraného oddělení v `GridView` ovládacího prvku.
+Spusťte stránku a pomocí rozevíracího seznamu vyberte různá oddělení. V ovládacím prvku `GridView` se zobrazí jenom kurzy, které nabízí vybrané oddělení.
 
 [![Image09](the-entity-framework-and-aspnet-getting-started-part-3/_static/image26.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image25.png)
 
-## <a name="using-the-entitydatasource-groupby-property-to-group-data"></a>Vlastnost "GroupBy" EntityDataSource k seskupení dat
+## <a name="using-the-entitydatasource-groupby-property-to-group-data"></a>Použití vlastnosti GroupBy ovládacího prvku GroupBy k seskupení dat
 
-Předpokládejme, že Contoso University chce statistikami student text na stránce o. Konkrétně chce zobrazit rozpis počtu studentů podle data, kdy je zaregistrovat.
+Předpokládejme, že společnost Contoso University chce na svou stránku umístit nějaké statistiky těla studenta. Konkrétně chce zobrazit rozpis počtu studentů podle data, která zapsala.
 
-Otevřít *About.aspx*a v **zdroj** zobrazení, nahraďte existující obsah `BodyContent` řízení s "Statistiky Student text" mezi `h2` značky:
+Otevřete *About. aspx*a v zobrazení **zdroj** nahraďte stávající obsah ovládacího prvku `BodyContent` textem "Statistika textu studenta" mezi značkami `h2`:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-3/samples/sample3.aspx)]
 
-Za záhlaví, přidejte `EntityDataSource` řídit a pojmenujte ho `StudentStatisticsEntityDataSource`. Propojte jej s `SchoolEntities`, vyberte `People` entity nastavit a dál necháte **vyberte** pole v Průvodci beze změny. Nastavte následující vlastnosti **vlastnosti** okno:
+Po záhlaví přidejte ovládací prvek `EntityDataSource` a pojmenujte ho `StudentStatisticsEntityDataSource`. Připojte ho k `SchoolEntities`, vyberte sadu entit `People` a nechejte pole pro **Výběr** v průvodci beze změny. V okně **vlastnosti** nastavte následující vlastnosti:
 
-- Chcete-li filtrovat pouze studenti, nastavte `Where` vlastnost `it.EnrollmentDate is not null`.
-- Seskupení výsledků podle data registrace, nastavte `GroupBy` vlastnost `it.EnrollmentDate`.
-- Chcete-li vybrat datum registrace a počet studentů, nastavte `Select` vlastnost `it.EnrollmentDate, Count(it.EnrollmentDate) AS NumberOfStudents`.
-- Řazení výsledků podle data registrace, nastavte `OrderBy` vlastnost `it.EnrollmentDate`.
+- Chcete-li filtrovat pouze studenty, nastavte vlastnost `Where` na hodnotu `it.EnrollmentDate is not null`.
+- Chcete-li seskupit výsledky podle data registrace, nastavte vlastnost `GroupBy` na hodnotu `it.EnrollmentDate`.
+- Chcete-li vybrat datum registrace a počet studentů, nastavte vlastnost `Select` na hodnotu `it.EnrollmentDate, Count(it.EnrollmentDate) AS NumberOfStudents`.
+- Chcete-li seřadit výsledky podle data registrace, nastavte vlastnost `OrderBy` na hodnotu `it.EnrollmentDate`.
 
-V **zdroj** zobrazení, nahraďte `ConnectionString` a `DefaultContainer` název vlastnosti `ContextTypeName` vlastnost. `EntityDataSource` Značky ovládacího prvku teď vypadá podobně jako v následujícím příkladu.
+V zobrazení **zdroj** nahraďte vlastnosti `ConnectionString` a `DefaultContainer` název vlastností `ContextTypeName`. Označení ovládacího prvku `EntityDataSource` nyní vypadá podobně jako v následujícím příkladu.
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-3/samples/sample4.aspx)]
 
-Syntaxe `Select`, `GroupBy`, a `Where` vlastnosti se podobá jazyku Transact-SQL s výjimkou `it` klíčové slovo, které určuje aktuální entitu.
+Syntaxe vlastností `Select`, `GroupBy`a `Where` se podobá jazyku Transact-SQL s výjimkou klíčového slova `it`, které určuje aktuální entitu.
 
-Přidejte následující kód k vytvoření `GridView` ovládací prvek pro zobrazení údajů.
+Přidejte následující kód pro vytvoření `GridView` ovládacího prvku pro zobrazení dat.
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-3/samples/sample5.aspx)]
 
-Spustíte stránku, aby zobrazil seznam zobrazující počet studentů podle data registrace.
+Spuštěním stránky zobrazíte seznam obsahující počet studentů podle data registrace.
 
 [![Image10](the-entity-framework-and-aspnet-getting-started-part-3/_static/image28.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image27.png)
 
-## <a name="using-the-queryextender-control-for-filtering-and-ordering"></a>Použití ovládacího prvku QueryExtender pro filtrování a řazení
+## <a name="using-the-queryextender-control-for-filtering-and-ordering"></a>Použití ovládacího prvku třídou QueryExtender pro filtrování a řazení
 
-`QueryExtender` Řízení poskytuje způsob, jak určit filtrování a řazení v kódu. Syntaxe je nezávislé na použití systému správy databáze (DBMS). Také je obecně nezávisle na Entity Framework, s tím rozdílem, že je jedinečné pro Entity Framework syntaxi, kterou můžete použít pro navigační vlastnosti.
+Ovládací prvek `QueryExtender` poskytuje způsob, jak zadat filtrování a řazení v kódu. Syntaxe je nezávislá na systému správy databáze (DBMS), který používáte. Je také všeobecně nezávislá na Entity Framework, s výjimkou, že syntaxe, kterou používáte pro navigační vlastnosti, je pro Entity Framework jedinečná.
 
-V této části kurzu budete používat `QueryExtender` ovládacího prvku na filtrovat a řadit data a jedno z polí klauzule order by budou navigační vlastnost.
+V této části kurzu použijete ovládací prvek `QueryExtender` k filtrování a objednání dat a jedno z polí ORDER by bude navigační vlastnost.
 
-(Pokud byste radši chtěli použít kód místo značek k rozšíření dotazy, které jsou automaticky generovány `EntityDataSource` ovládacího prvku, můžete to udělat zpracování `QueryCreated` událostí. Toto je způsob, jakým `QueryExtender` ovládací prvek rozšiřuje `EntityDataSource` také řídit dotazů.)
+(Pokud dáváte přednost použití kódu místo označení pro rozšiřování dotazů, které jsou automaticky generovány ovládacím prvkem `EntityDataSource`, můžete to provést zpracováním události `QueryCreated`. To je způsob, jakým ovládací prvek `QueryExtender` rozšiřuje dotazy na `EntityDataSource`.)
 
-Otevřít *Courses.aspx* stránce a pod kód, který jste přidali dříve, vložte následující kód k vytvoření nadpisu, textovým polem pro zadání vyhledávacích řetězců, tlačítko hledání a `EntityDataSource` ovládací prvek, který je vázán `Courses` sady entit.
+Otevřete stránku *kurzy. aspx* a pod značkou, kterou jste přidali dříve, vložte následující kód, který vytvoří nadpis, textové pole pro zadání vyhledávacích řetězců, tlačítko vyhledávání a `EntityDataSource` ovládacího prvku, který je svázán se sadou entit `Courses`.
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-3/samples/sample6.aspx)]
 
-Všimněte si, `EntityDataSource` ovládacího prvku `Include` je nastavena na `Department`. V databázi `Course` tabulka neobsahuje název oddělení; obsahuje `DepartmentID` sloupec cizího klíče. Pokud se dotazuje databáze přímo, a získat tak název oddělení spolu s daty pro kurz, potřebujete připojit `Course` a `Department` tabulky. Nastavením `Include` vlastnost `Department`, určíte, že rozhraní Entity Framework by měl pracovat získání související `Department` entity, když se načte `Course` entity. `Department` Entity se pak ukládá v `Department` vlastnost navigace `Course` entity. (Ve výchozím nastavení, `SchoolEntities` třídu, která byla vygenerována návrháře modelů dat načte související data, když je to potřeba, a je vázaný ovládací prvek zdroje dat pro tuto třídu, takže nastavení `Include` vlastnost není nutné. Však nastavení zlepší výkon, stránky, protože jinak s Entity Framework žádným samostatná volání databáze k načtení dat `Course` entity a související `Department` entity.)
+Všimněte si, že vlastnost `Include` ovládacího prvku `EntityDataSource` je nastavena na hodnotu `Department`. V databázi `Course` tabulka neobsahuje název oddělení; obsahuje `DepartmentID` sloupec cizího klíče. Pokud jste se dotazovat na databázi přímo, abyste získali název oddělení spolu s daty kurzu, museli byste se připojit k tabulkám `Course` a `Department`. Nastavením vlastnosti `Include` na `Department`zadáte, že by Entity Framework měla dělat možnost získat související `Department` entitu, když získá `Course` entitu. Entita `Department` se pak uloží do navigační vlastnosti `Department` entity `Course`. (Ve výchozím nastavení třída `SchoolEntities`, která byla generována návrhářem datového modelu, načte související data, když je potřeba, a Vy jste na tuto třídu nastavili řízení zdrojů dat, takže není nutné nastavit vlastnost `Include`. Nicméně nastavení zvyšuje výkon stránky, protože v opačném případě by Entity Framework provedla samostatná volání databáze k načtení dat pro `Course` entit a pro související entity `Department`.)
 
-Po `EntityDataSource` ovládacího prvku, které jste právě vytvořili, vložte následující kód k vytvoření `QueryExtender` ovládací prvek, který je vázán na, který `EntityDataSource` ovládacího prvku.
+Po právě vytvořeném ovládacím prvku `EntityDataSource` vložte následující kód, který vytvoří `QueryExtender` ovládací prvek vázaný na tento ovládací prvek `EntityDataSource`.
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-3/samples/sample7.aspx)]
 
-`SearchExpression` Element určuje, že chcete k vybraným kurzům, jejichž názvy odpovídají hodnotě zadané v textovém poli. Pouze podle počtu znaků jsou zadány v textovém poli se bude porovnávat, protože `SearchType` vlastnost určuje `StartsWith`.
+Element `SearchExpression` určuje, že chcete vybrat kurzy, jejichž názvy odpovídají hodnotě zadané v textovém poli. Porovná se pouze tolik znaků, kolik je zadáno v textovém poli, protože vlastnost `SearchType` určuje `StartsWith`.
 
-`OrderByExpression` Element určuje, že se sadu výsledků dotazu seřazené podle názvu kurzu v rámci název oddělení. Všimněte si, jak je zadán název oddělení: `Department.Name`. Protože přidružení mezi `Course` entity a `Department` entita je 1: 1, `Department` obsahuje navigační vlastnost `Department` entity. (Pokud to vztah jeden mnoho, vlastnost by obsahovat kolekce.) Pokud chcete získat název oddělení, je nutné zadat `Name` vlastnost `Department` entity.
+Element `OrderByExpression` určuje, že sada výsledků bude seřazena podle názvu kurzu v rámci názvu oddělení. Všimněte si, jak je zadáno jméno oddělení: `Department.Name`. Vzhledem k tomu, že přidružení mezi `Course` entitou a entitou `Department` je 1:1, vlastnost `Department` navigace obsahuje entitu `Department`. (Pokud se jednalo o relaci 1: n, vlastnost by obsahovala kolekci.) Chcete-li získat název oddělení, je nutné zadat vlastnost `Name` entity `Department`.
 
-Nakonec přidejte `GridView` ovládací prvek zobrazil seznam kurzů:
+Nakonec přidejte ovládací prvek `GridView` pro zobrazení seznamu kurzů:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-3/samples/sample8.aspx)]
 
-První sloupec je šablona pole, která zobrazuje název oddělení. Určuje výraz datové vazby `Department.Name`, stejně jako jste viděli v `QueryExtender` ovládacího prvku.
+První sloupec je pole šablony, které zobrazuje název oddělení. Výraz datové vazby Určuje `Department.Name`stejným způsobem, jako jste viděli v ovládacím prvku `QueryExtender`.
 
-Spuštění stránky. Počáteční zobrazení zobrazuje seznam všech kurzů v pořadí podle oddělení a poté podle názvu kurzu.
+Spusťte stránku. Počáteční zobrazení zobrazuje seznam všech kurzů v pořadí podle jednotlivých oddělení a potom podle názvu kurzu.
 
 [![Image11](the-entity-framework-and-aspnet-getting-started-part-3/_static/image30.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image29.png)
 
-Zadejte "m" a klikněte na tlačítko **hledání** chcete zobrazit všechny kurzy, jejichž názvy začínají řetězcem "m" (hledání není případ citlivé).
+Zadejte "m" a kliknutím na **Hledat** zobrazte všechny kurzy, jejichž názvy začínají znakem "m" (hledání nerozlišuje malá a velká písmena).
 
 [![Image12](the-entity-framework-and-aspnet-getting-started-part-3/_static/image32.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image31.png)
 
-## <a name="using-the-like-operator-to-filter-data"></a>Pomocí operátoru "Jako" k filtrování dat
+## <a name="using-the-like-operator-to-filter-data"></a>Použití operátoru "Like" k filtrování dat
 
-Můžete dosáhnout účinku podobně jako `QueryExtender` ovládacího prvku `StartsWith`, `Contains`, a `EndsWith` vyhledejte typy pomocí `Like` operátor `EntityDataSource` ovládacího prvku `Where` vlastnost. V této části kurzu uvidíte, jak používat `Like` operátor vyhledání student podle názvu.
+Můžete dosáhnout efektu podobného ovládacímu prvku `QueryExtender` `StartsWith`, `Contains`a `EndsWith` typy hledání pomocí operátoru `Like` ve vlastnosti `EntityDataSource` ovládacího prvku `Where`. V této části kurzu se dozvíte, jak pomocí operátoru `Like` Hledat studenta podle jména.
 
-Otevřít *Students.aspx* v **zdroj** zobrazení. Po `GridView` řídit, přidejte následující kód:
+Otevřete *studenty. aspx* v zobrazení **zdroje** . Po ovládacím prvku `GridView` přidejte následující kód:
 
 [!code-aspx[Main](the-entity-framework-and-aspnet-getting-started-part-3/samples/sample9.aspx)]
 
-Tento kód se podobá co jste viděli dříve s výjimkou `Where` hodnotu vlastnosti. Druhá část `Where` výraz definuje hledání dílčího řetězce (`LIKE %FirstMidName% or LIKE %LastName%`), která vyhledá první a poslední názvy pro všechno, co je zadaný v textovém poli.
+Tento kód se podobá tomu, co jste viděli dříve, s výjimkou hodnoty vlastnosti `Where`. Druhá část výrazu `Where` definuje dílčí řetězcové vyhledávání (`LIKE %FirstMidName% or LIKE %LastName%`), které v textovém poli vyhledá první i poslední název.
 
-Spuštění stránky. Zpočátku uvidíte všechny studenty protože výchozí hodnota `StudentName` je parametr "%".
+Spusťte stránku. Zpočátku vidíte všechny studenty, protože výchozí hodnota pro parametr `StudentName` je "%".
 
 [![Image13](the-entity-framework-and-aspnet-getting-started-part-3/_static/image34.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image33.png)
 
-Do textového pole zadejte písmeno "g" a klikněte na tlačítko **hledání**. Zobrazí seznam studentům, kteří mají "g" buď v prvním nebo posledním název.
+Do textového pole zadejte písmeno "g" a klikněte na tlačítko **Hledat**. Zobrazí se seznam studentů, které mají v prvním nebo posledním jménu "g".
 
 [![Image14](the-entity-framework-and-aspnet-getting-started-part-3/_static/image36.png)](the-entity-framework-and-aspnet-getting-started-part-3/_static/image35.png)
 
-Právě jste zobrazí, aktualizovat, filtrovat, uspořádané a seskupení dat z jednotlivých tabulek. V dalším kurzu vám začít pracovat se souvisejícími daty (hlavní podrobnosti scénáře).
+Teď jste zobrazili, aktualizovali, vyfiltrováni, objednali a seskupili data z jednotlivých tabulek. V dalším kurzu začnete pracovat se souvisejícími daty (scénáře hlavních podrobností).
 
 > [!div class="step-by-step"]
 > [Předchozí](the-entity-framework-and-aspnet-getting-started-part-2.md)
-> [další](the-entity-framework-and-aspnet-getting-started-part-4.md)
+> [Další](the-entity-framework-and-aspnet-getting-started-part-4.md)

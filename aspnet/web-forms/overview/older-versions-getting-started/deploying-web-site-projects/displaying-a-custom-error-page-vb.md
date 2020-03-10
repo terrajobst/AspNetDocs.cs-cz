@@ -9,11 +9,11 @@ ms.assetid: 14873c5d-81a9-455b-bd71-30fb555583e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 33367d5e3c4b5c8fa039ee20704054ba508e717a
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74615028"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78643400"
 ---
 # <a name="displaying-a-custom-error-page-vb"></a>Zobrazení vlastní chybové stránky (VB)
 
@@ -144,7 +144,7 @@ Vzhledem k tomu, že se stránka `404.aspx` dosáhne pouze v případě, že už
 > [!NOTE]
 > Vlastní chybová stránka se zobrazí pouze v případě, že je proveden požadavek na prostředek zpracovávaný modulem ASP.NET. Jak jsme probrali v [základních rozdílech mezi službou IIS a vývojovým serverem ASP.NET](core-differences-between-iis-and-the-asp-net-development-server-vb.md) , může webový server zpracovávat určité požadavky samostatně. Webový server služby IIS ve výchozím nastavení zpracovává požadavky na statický obsah, jako jsou obrázky a soubory HTML bez vyvolání modulu ASP.NET. V důsledku toho, pokud si uživatel požádá o neexistující soubor bitové kopie, vrátí zpět výchozí 404 chybovou zprávu služby IIS, a ne ASP. Chybná stránka konfigurace sítě
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Pokud dojde k neošetřené výjimce v aplikaci ASP.NET, zobrazí se na uživateli jedna ze tří chybových stránek: informace o výjimce žlutá obrazovka smrti; Chyba za běhu žlutá obrazovka smrti; nebo vlastní chybovou stránku. Tato chybová stránka se zobrazí v závislosti na konfiguraci `<customErrors>` aplikace a na tom, jestli se uživatel místně nebo vzdáleně navštíví. Výchozím chováním je zobrazit podrobnosti o výjimce YSOD místním návštěvníkům a běhové chybě YSOD pro vzdálené návštěvníky.
 

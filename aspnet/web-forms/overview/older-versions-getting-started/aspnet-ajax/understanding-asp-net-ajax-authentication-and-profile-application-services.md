@@ -9,11 +9,11 @@ ms.assetid: 6ab4efb6-aab6-45ac-ad2c-bdec5848ef9e
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-asp-net-ajax-authentication-and-profile-application-services
 msc.type: authoredcontent
 ms.openlocfilehash: cab9acb1ffd75cca87f6c575a6abdd000235828e
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74635680"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78640530"
 ---
 # <a name="understanding-aspnet-ajax-authentication-and-profile-application-services"></a>Principy služeb ověřování a používání profilu technologie ASP.NET AJAX
 
@@ -59,9 +59,9 @@ Metoda Login () zahájí požadavek na ověření přihlašovacích údajů uži
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
-| Jmen | Požadováno. Uživatelské jméno, které se má ověřit |
+| userName | Povinná hodnota. Uživatelské jméno, které se má ověřit |
 | heslo | Volitelné (výchozí hodnota je null). Heslo uživatele. |
 | Trvalé | Volitelné (výchozí hodnota je false). Určuje, zda má být soubor cookie ověřování uživatele uchován v rámci relací. Pokud je hodnota false, uživatel se odhlásí při zavření prohlížeče nebo vypršení platnosti relace. |
 | redirectUrl | Volitelné (výchozí hodnota je null). Adresa URL pro přesměrování prohlížeče po úspěšném ověření. Pokud má tento parametr hodnotu null nebo prázdný řetězec, nedojde k žádnému přesměrování. |
@@ -84,7 +84,7 @@ Metoda logout () odstraní soubor cookie s přihlašovacími údaji a odhlásí 
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
 | redirectUrl | Volitelné (výchozí hodnota je null). Adresa URL pro přesměrování prohlížeče po úspěšném ověření. Pokud má tento parametr hodnotu null nebo prázdný řetězec, nedojde k žádnému přesměrování. |
 | logoutCompletedCallback | Volitelné (výchozí hodnota je null). Funkce, která má být volána po úspěšném dokončení odhlášení. Je-li tento parametr zadán, přepíše vlastnost defaultLogoutCompleted. |
@@ -109,9 +109,9 @@ Odkaz na funkci určený touto vlastností by měl mít následující signaturu
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
-| chyba | Určuje informace o chybě. |
+| error | Určuje informace o chybě. |
 | userContext | Určuje informace o kontextu uživatele zadané při volání funkce přihlášení nebo odhlášení. |
 | MethodName | Název volající metody. |
 
@@ -125,7 +125,7 @@ Odkaz na funkci určený touto vlastností by měl mít následující signaturu
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
 | validCredentials | Určuje, jestli uživatel zadal platné přihlašovací údaje. `true`, pokud se uživatel úspěšně přihlásil. jinak `false`. |
 | userContext | Určuje informace o kontextu uživatele zadané při volání funkce Login. |
@@ -141,9 +141,9 @@ Odkaz na funkci určený touto vlastností by měl mít následující signaturu
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
-| vyústit | Tento parametr bude vždy `null`; je vyhrazený pro budoucí použití. |
+| výsledek | Tento parametr bude vždy `null`; je vyhrazený pro budoucí použití. |
 | userContext | Určuje informace o kontextu uživatele zadané při volání funkce Login. |
 | MethodName | Název volající metody. |
 
@@ -205,7 +205,7 @@ Načte vybraný seznam nebo všechny vlastnosti ze serveru.
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
 | propertyNames | Volitelné (výchozí hodnota je null). Vlastnosti, které mají být načteny ze serveru. |
 | loadCompletedCallback | Volitelné (výchozí hodnota je null). Funkce, která se má volat po dokončení načítání |
@@ -222,7 +222,7 @@ Metoda Save () uloží zadaný seznam vlastností (nebo všechny vlastnosti) do 
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
 | propertyNames | Volitelné (výchozí hodnota je null). Vlastnosti, které mají být uloženy na server. |
 | saveCompletedCallback | Volitelné (výchozí hodnota je null). Funkce, která se má volat po dokončení ukládání. |
@@ -243,7 +243,7 @@ Odkaz na funkci určený touto vlastností by měl mít následující signaturu
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
 | Chyba | Určuje informace o chybě. |
 | userContext | Určuje informace o kontextu uživatele zadané při volání funkce Load nebo Save. |
@@ -259,7 +259,7 @@ Odkaz na funkci určený touto vlastností by měl mít následující signaturu
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
 | numPropsSaved | Určuje počet uložených vlastností. |
 | userContext | Určuje informace o kontextu uživatele zadané při volání funkce Load nebo Save. |
@@ -275,7 +275,7 @@ Odkaz na funkci určený touto vlastností by měl mít následující signaturu
 
 *Ukazatelů*
 
-| **Název parametru** | **Smyslu** |
+| **Název parametru** | **Význam** |
 | --- | --- |
 | numPropsLoaded | Určuje počet načtených vlastností. |
 | userContext | Určuje informace o kontextu uživatele zadané při volání funkce Load nebo Save. |
@@ -331,7 +331,7 @@ Chcete-li nastavit cestu programově ve skriptu, využijte vlastnost `path` tř�
 
 [!code-aspx[Main](understanding-asp-net-ajax-authentication-and-profile-application-services/samples/sample16.aspx)]
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 ASP.NET Services – konkrétně profilování, členství a ověřovací služby – jsou snadno zpřístupněny JavaScriptu v klientském prohlížeči. To umožňuje vývojářům integrovat kód na straně klienta s mechanismem ověřování bez problémů, aniž by v závislosti na ovládacích prvcích, jako je například UpdatePanel, procházeli těžkou zdvihání. Data profilu je možné chránit i z klienta, a to díky využití nastavení konfigurace webu. ve výchozím nastavení nejsou k dispozici žádná data a vývojáři musí souhlasit s vlastnostmi profilu.
 

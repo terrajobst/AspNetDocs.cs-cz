@@ -1,2 +1,2 @@
 > [!WARNING]
-> Tato dokumentace není nejnovější verze funkce SignalR. Podívejte se na [funkce SignalR technologie ASP.NET Core](/aspnet/core/signalr/introduction).
+> Tato dokumentace není pro nejnovější verzi nástroje Signal. Podívejte se na [ASP.NET Core Signal](/aspnet/core/signalr/introduction).

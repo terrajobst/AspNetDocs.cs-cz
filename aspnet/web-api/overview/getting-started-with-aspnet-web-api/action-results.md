@@ -10,11 +10,11 @@ ms.assetid: 2fc4797c-38ef-4cc7-926c-ca431c4739e8
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/action-results
 msc.type: authoredcontent
 ms.openlocfilehash: f00ac0db453053e53d6d6942dd1557b409f4167b
-ms.sourcegitcommit: 4b324a11131e38f920126066b94ff478aa9927f8
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985836"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78557055"
 ---
 # <a name="action-results-in-web-api-2"></a>Výsledky akcí ve webovém rozhraní API 2
 
@@ -42,7 +42,7 @@ Zbývající část tohoto tématu popisuje jednotlivé možnosti podrobněji.
 
 ## <a name="void"></a>void
 
-Pokud je `void`návratový typ, webové rozhraní API jednoduše vrátí prázdnou odpověď HTTP se stavovým kódem 204 (žádný obsah).
+Pokud je návratový typ `void`, webové rozhraní API jednoduše vrátí prázdnou odpověď HTTP se stavovým kódem 204 (žádný obsah).
 
 Příklad kontroleru:
 
@@ -60,7 +60,7 @@ Tato možnost vám poskytne velkou kontrolu nad zprávou odpovědi. Například 
 
 [!code-csharp[Main](action-results/samples/sample3.cs)]
 
-Základě
+Odpověď:
 
 [!code-console[Main](action-results/samples/sample4.cmd?highlight=2)]
 
@@ -92,7 +92,7 @@ Příklad akce kontroleru:
 
 [!code-csharp[Main](action-results/samples/sample8.cs)]
 
-Základě
+Odpověď:
 
 [!code-console[Main](action-results/samples/sample9.cmd)]
 
@@ -112,7 +112,7 @@ Nevýhodou tohoto přístupu je, že nemůžete přímo vracet kód chyby, např
 
 Webové rozhraní API používá k výběru formátovacího modulu hlavičku Accept v žádosti. Další informace najdete v tématu [vyjednávání obsahu](../formats-and-model-binding/content-negotiation.md).
 
-Příklad žádosti
+Příklad požadavku
 
 [!code-console[Main](action-results/samples/sample12.cmd)]
 

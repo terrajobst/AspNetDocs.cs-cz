@@ -9,11 +9,11 @@ ms.assetid: d3f062af-88cf-426d-af44-e41f32c41672
 msc.legacyurl: /web-forms/overview/data-access/custom-formatting/using-the-formview-s-templates-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 013c6878aad1a2277b0a334c096ff16ed84a95f1
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74625701"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78531204"
 ---
 # <a name="using-the-formviews-templates-c"></a>Použití šablon FormView (C#)
 
@@ -88,7 +88,7 @@ Po dokončení `ItemTemplate` se informace o produktu zobrazí v mnohem více ka
 
 **Obrázek 4**: výstup kapalinové třídy ([kliknutím zobrazíte obrázek v plné velikosti](using-the-formview-s-templates-cs/_static/image12.png))
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 I když ovládací prvky GridView a DetailsView mohou mít svůj výstup přizpůsobený pomocí vlastností TemplateFields, obě budou jejich data prezentovat ve formátu boxy jako Grid. V případech, kdy je třeba jeden záznam zobrazit pomocí méně tuhého rozložení, je třída FormView ideální volbou. Podobně jako ovládací prvek FormView vykreslí jeden záznam z jeho `DataSource`, ale na rozdíl od ovládacího prvku DetailsView se skládá pouze ze šablon a nepodporuje pole.
 

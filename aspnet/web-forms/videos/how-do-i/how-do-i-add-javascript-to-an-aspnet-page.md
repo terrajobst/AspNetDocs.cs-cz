@@ -1,24 +1,24 @@
 ---
 uid: web-forms/videos/how-do-i/how-do-i-add-javascript-to-an-aspnet-page
-title: '[Postup:] Přidání JavaScriptu na stránku ASP.NET | Dokumentace Microsoftu'
+title: '[Postupy:] Přidání JavaScriptu na stránku ASP.NET | Microsoft Docs'
 author: rick-anderson
-description: V tomto videu se pixelů na Chris ukazují, jak zahrnout JavaScript na stránku ASP.NET pro použití na straně klienta poskytnout bohatší a jsou robustnější uživatelské prostředí...
+description: V tomto videu Chris pixelů na se dozvíte, jak zahrnout JavaScript na stránku ASP.NET pro použití na stránce klienta, aby bylo zajištěno rozsáhlejší a robustnější uživatelské prostředí...
 ms.author: riande
 ms.date: 03/13/2008
 ms.assetid: 55439d0f-e555-4537-97f3-0a7bc0a4bf5b
 msc.legacyurl: /web-forms/videos/how-do-i/how-do-i-add-javascript-to-an-aspnet-page
 msc.type: video
 ms.openlocfilehash: 23f1544e500424cbd3437deab15e9b9c1c68b21e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59405336"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78636792"
 ---
-# <a name="how-do-i-add-javascript-to-an-aspnet-page"></a>[Postup:] Přidání JavaScriptu na stránku ASP.NET
+# <a name="how-do-i-add-javascript-to-an-aspnet-page"></a>[Postupy:] Přidání JavaScriptu na stránku ASP.NET
 
-podle [Chris pixelů na](https://twitter.com/chrispels)
+autor – [Chris pixelů na](https://twitter.com/chrispels)
 
-V tomto videu se pixelů na Chris ukazují, jak zahrnout JavaScript na stránku ASP.NET pro použití na straně klienta poskytnout bohatší a jsou robustnější uživatelské prostředí. Nejprve zjistit, jak zahrnout JavaScriptu přímo v rámci stránky technologie ASP.NET a odkazu na skript z v rámci prvků HTML stránky. V dalším kroku naleznete v části abstraktní JavaScript na externí soubor jazyka JavaScript, která nabízí výhodu v podobě ukládat se do mezipaměti v prohlížeči a může využívat více stránek. A konečně zjistěte, jak přidat na stránku dynamicky za běhu, který nabízí výhodu v podobě, včetně skriptů pro konkrétní situaci nebo pokud není znám informace, jako je ID ovládacího prvku do modulu runtime jazyka JavaScript. Jako součást skriptu dynamické vzorku naleznete v části přidat JavaScript, který může automaticky spustí při načtení stránky a také událost click pro ovládací prvky tlačítka (Button, odkazem (LinkButton) a ImageButton).
+V tomto videu Chris pixelů na se dozvíte, jak zahrnout JavaScript na stránku ASP.NET pro použití na stránce klienta, aby bylo zajištěno rozsáhlejší a robustnější uživatelské prostředí. Nejprve si přečtěte téma zahrnutí JavaScriptu přímo na stránku ASP.NET a odkazování skriptu z prvků stránky HTML. Dále si přečtěte informace o tom, jak vyabstrakcit JavaScript v externím souboru JavaScriptu, který nabízí možnost ukládání do mezipaměti prohlížečem a dá se použít na více stránkách. Nakonec se dozvíte, jak dynamicky přidat JavaScript na stránku za běhu, což má výhodu zahrnutí skriptu pro konkrétní situaci nebo kdy informace, jako je ID ovládacího prvku, nejsou známy do doby běhu. Jako součást ukázky dynamického skriptu vidíte, jak přidat JavaScript, který lze automaticky spustit, když se stránka načítá a také událost Click pro ovládací prvky tlačítka (Button, LinkButton a obrázkové).
 
-[&#9654;Podívejte se na video (24 minuty)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-add-javascript-to-an-aspnet-page)
+[&#9654;Sledovat video (24 minut)](https://channel9.msdn.com/Blogs/ASP-NET-Site-Videos/how-do-i-add-javascript-to-an-aspnet-page)

@@ -9,11 +9,11 @@ ms.assetid: 54d9df99-1161-4899-b4e8-2679c85915e7
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/aspnet-ajax/understanding-partial-page-updates-with-asp-net-ajax
 msc.type: authoredcontent
 ms.openlocfilehash: 4b87cb8f58dbd7f27b16bcb0d488ff361770d4fe
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74622990"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78545967"
 ---
 # <a name="understanding-partial-page-updates-with-aspnet-ajax"></a>Principy částečných aktualizací stránek technologií ASP.NET AJAX
 
@@ -103,44 +103,44 @@ Visual Studio 2008 se nedodává s předem definovanou šablonou pro web s podpo
 
 Vlastnosti s povolenou značkou:
 
-| **Název vlastnosti** | **Textový** | **Popis** |
+| **Název vlastnosti** | **Typ** | **Popis** |
 | --- | --- | --- |
-| AllowCustomErrors – přesměrování | Logick | Určuje, jestli se má použít oddíl vlastní chyby souboru Web. config ke zpracování chyb. |
-| AsyncPostBackError – zpráva | String | Získá nebo nastaví chybovou zprávu odeslanou klientovi, pokud je vyvolána chyba. |
-| AsyncPostBack – časový limit | Int32 | Získá nebo nastaví výchozí dobu, po kterou by měl klient čekat na dokončení asynchronního požadavku. |
-| EnableScript – globalizace | Logick | Získá nebo nastaví, zda je povoleno globalizace skriptů. |
-| EnableScript – lokalizace | Logick | Získává nebo nastavuje, jestli je povolená lokalizace skriptů. |
-| ScriptLoadTimeout | Int32 | Určuje počet sekund povolených pro načtení skriptů do klienta. |
+| AllowCustomErrors-Redirect | Bool | Určuje, jestli se má použít oddíl vlastní chyby souboru Web. config ke zpracování chyb. |
+| AsyncPostBackError – zpráva | Řetězec | Získá nebo nastaví chybovou zprávu odeslanou klientovi, pokud je vyvolána chyba. |
+| AsyncPostBack-Timeout | Datový typ Int32 | Získá nebo nastaví výchozí dobu, po kterou by měl klient čekat na dokončení asynchronního požadavku. |
+| EnableScript – globalizace | Bool | Získá nebo nastaví, zda je povoleno globalizace skriptů. |
+| EnableScript-Localization | Bool | Získává nebo nastavuje, jestli je povolená lokalizace skriptů. |
+| ScriptLoadTimeout | Datový typ Int32 | Určuje počet sekund povolených pro načtení skriptů do klienta. |
 | ScriptMode | Enum (auto, Debug, Release, dědění) | Získá nebo nastaví, jestli se mají vykreslovat verze pro vydání skriptů. |
-| scriptPath | String | Získá nebo nastaví kořenovou cestu k umístění souborů skriptu, které se mají odeslat klientovi. |
+| ScriptPath | Řetězec | Získá nebo nastaví kořenovou cestu k umístění souborů skriptu, které se mají odeslat klientovi. |
 
 Vlastnosti pouze kódu:
 
-| **Název vlastnosti** | **Textový** | **Popis** |
+| **Název vlastnosti** | **Typ** | **Popis** |
 | --- | --- | --- |
-| AuthenticationService | AuthenticationService – nadřízený | Získá podrobnosti o proxy ověřovací službě ASP.NET, která se pošle klientovi. |
-| IsDebuggingEnabled | Logick | Získá, zda je povoleno ladění skriptů a kódu. |
-| IsInAsyncPostback | Logick | Získá, zda je stránka aktuálně v asynchronním požadavku POST. |
-| Objektem ProfileService | Správce ProfileService | Načte podrobnosti o proxy službě profilace ASP.NET, která se pošle klientovi. |
-| Skripty | Kolekce&lt;odkaz na skript&gt; | Získá kolekci odkazů skriptu, které budou odeslány klientovi. |
+| AuthenticationService | AuthenticationService-Manager | Získá podrobnosti o proxy ověřovací službě ASP.NET, která se pošle klientovi. |
+| IsDebuggingEnabled | Bool | Získá, zda je povoleno ladění skriptů a kódu. |
+| IsInAsyncPostback | Bool | Získá, zda je stránka aktuálně v asynchronním požadavku POST. |
+| Objektem ProfileService | ProfileService-Manager | Načte podrobnosti o proxy službě profilace ASP.NET, která se pošle klientovi. |
+| Scripts | Kolekce&lt;odkaz na skript&gt; | Získá kolekci odkazů skriptu, které budou odeslány klientovi. |
 | Služby | Služba&lt;kolekce – referenční informace&gt; | Získá kolekci odkazů proxy webových služeb, které budou odeslány klientovi. |
-| SupportsPartialRendering | Logick | Získá, zda aktuální klient podporuje částečné vykreslování. Pokud tato vlastnost vrátí **hodnotu false**, pak všechny požadavky na stránky budou standardním zpětným voláním. |
+| SupportsPartialRendering | Bool | Získá, zda aktuální klient podporuje částečné vykreslování. Pokud tato vlastnost vrátí **hodnotu false**, pak všechny požadavky na stránky budou standardním zpětným voláním. |
 
 Metody veřejného kódu:
 
-| **Název metody** | **Textový** | **Popis** |
+| **Název metody** | **Typ** | **Popis** |
 | --- | --- | --- |
 | SetFocus (řetězec) | Šekem | Nastaví fokus klienta na určitý ovládací prvek, když se žádost dokončí. |
 
 Následníky kódu:
 
-| **Inteligentní** | **Popis** |
+| **Tag** | **Popis** |
 | --- | --- |
 | &lt;AuthenticationService&gt; | Poskytuje podrobnosti o proxy službě ASP.NET Authentication Service. |
 | &lt;ProfileService&gt; | Poskytuje podrobnosti o proxy serveru ke službě profilace ASP.NET. |
-| Skripty &lt;&gt; | Poskytuje další odkazy na skripty. |
+| &lt;Skripty&gt; | Poskytuje další odkazy na skripty. |
 | &lt;ASP: ScriptReference&gt; | Označuje konkrétní odkaz na skript. |
-| &lt;Service&gt; | Poskytuje další odkazy na webové služby, které budou mít generované třídy proxy. |
+| &lt;Služba&gt; | Poskytuje další odkazy na webové služby, které budou mít generované třídy proxy. |
 | &lt;ASP: ServiceReference&gt; | Označuje konkrétní odkaz na webovou službu. |
 
 Ovládací prvek ScriptManager je základní jádro pro rozšíření ASP.NET AJAX. Poskytuje přístup ke knihovně skriptů (včetně rozsáhlého systému typů skriptů na straně klienta), podporuje částečné vykreslování a poskytuje rozsáhlou podporu pro další služby ASP.NET (například ověřování a profilování, ale také další webové služby). Ovládací prvek ScriptManager také poskytuje podporu globalizace a lokalizace pro klientské skripty.
@@ -177,30 +177,30 @@ Ovládací prvek ScriptManager poskytuje rozsáhlou podporu pro lokalizaci řet�
 
 Vlastnosti s povolenou značkou:
 
-| **Název vlastnosti** | **Textový** | **Popis** |
+| **Název vlastnosti** | **Typ** | **Popis** |
 | --- | --- | --- |
-| Vlastnost ChildrenAsTriggers | bool | Určuje, zda podřízené ovládací prvky automaticky vyvolávají aktualizaci při zpětném odeslání. |
+| ChildrenAsTriggers | bool | Určuje, zda podřízené ovládací prvky automaticky vyvolávají aktualizaci při zpětném odeslání. |
 | RenderMode | Enum (Block, inline) | Určuje způsob, jakým se bude obsah vizuálně prezentovat. |
 | Li UpdateMode nastavena | Enum (vždy, podmíněný) | Určuje, zda je prvek UpdatePanel vždy aktualizován během částečného vykreslení nebo zda je aktualizován pouze v případě, že je dosaženo triggeru. |
 
 Vlastnosti pouze kódu:
 
-| **Název vlastnosti** | **Textový** | **Popis** |
+| **Název vlastnosti** | **Typ** | **Popis** |
 | --- | --- | --- |
 | IsInPartialRendering | bool | Získá, zda objekt UpdatePanel podporuje částečné vykreslení pro aktuální požadavek. |
 | ContentTemplate | Platnou ITemplate | Získá šablonu značek pro žádost o aktualizaci. |
-| ContentTemplateContainer | Control | Získá programovou šablonu pro žádost o aktualizaci. |
-| Aktivační procedury | UpdatePanel – Trigger triggeru | Získá seznam aktivačních událostí přidružených k aktuálnímu prvku UpdatePanel. |
+| ContentTemplateContainer | Řízení | Získá programovou šablonu pro žádost o aktualizaci. |
+| Triggery | UpdatePanel – Trigger triggeru | Získá seznam aktivačních událostí přidružených k aktuálnímu prvku UpdatePanel. |
 
 Metody veřejného kódu:
 
-| **Název metody** | **Textový** | **Popis** |
+| **Název metody** | **Typ** | **Popis** |
 | --- | --- | --- |
-| Update () | Šekem | Aktualizuje zadaný objekt UpdatePanel programově. Umožňuje serveru požadavek na aktivaci částečného vykreslování v jiném neaktivovaném prvku UpdatePanel. |
+| Update() | Šekem | Aktualizuje zadaný objekt UpdatePanel programově. Umožňuje serveru požadavek na aktivaci částečného vykreslování v jiném neaktivovaném prvku UpdatePanel. |
 
 Následníky kódu:
 
-| **Inteligentní** | **Popis** |
+| **Tag** | **Popis** |
 | --- | --- |
 | &lt;ContentTemplate&gt; | Určuje kód, který má být použit k vykreslení výsledku částečného vykreslení. Podřízený objekt &lt;ASP:&gt;UpdatePanel |
 | &lt;Triggery&gt; | Určuje kolekci ovládacích prvků *n* přidružených k aktualizaci tohoto prvku UpdatePanel. Podřízený objekt &lt;ASP:&gt;UpdatePanel |
@@ -267,15 +267,15 @@ Nakonec, pokud aplikace vyžaduje, aby se UpdatePanel používaly, měly by vám
 
 Vlastnosti s povolenou značkou:
 
-| **Název vlastnosti** | **Textový** | **Popis** |
+| **Název vlastnosti** | **Typ** | **Popis** |
 | --- | --- | --- |
-| AssociatedUpdate-PanelID | String | Určuje ID prvku UpdatePanel, na kterém by měl tento prvek UpdateProgress nahlásit. |
-| Hodnotou DisplayAfter | Hmot | Určuje časový limit v milisekundách, než se tento ovládací prvek zobrazí po zahájení asynchronního požadavku. |
+| AssociatedUpdate-PanelID | Řetězec | Určuje ID prvku UpdatePanel, na kterém by měl tento prvek UpdateProgress nahlásit. |
+| Hodnotou DisplayAfter | Int | Určuje časový limit v milisekundách, než se tento ovládací prvek zobrazí po zahájení asynchronního požadavku. |
 | DynamicLayout | bool | Určuje, zda je průběh vykreslen dynamicky. |
 
 Následníky kódu:
 
-| **Inteligentní** | **Popis** |
+| **Tag** | **Popis** |
 | --- | --- |
 | &lt;objekt ProgressTemplate&gt; | Obsahuje sadu šablon ovládacího prvku pro obsah, který bude zobrazen s tímto ovládacím prvkem. |
 
@@ -283,7 +283,7 @@ Ovládací prvek UpdateProgress vám poskytne přehled o tom, jak zajistit, aby 
 
 V podobě poznámky se ovládací prvky UpdateProgress mohou objevit kdekoli v hierarchii stránky. V případech, kdy je částečný postback inicializován z podřízeného prvku UpdatePanel (kde je objekt UpdatePanel vnořen v rámci jiného prvku UpdatePanel), postbacky, které spouštějí podřízenou třídu UpdatePanel, způsobí zobrazení šablon UpdateProgress pro podřízenou položku. UpdatePanel i nadřazený UpdatePanel. Pokud je však aktivační událost přímým podřízeným prvku nadřazeného prvku UpdatePanel, zobrazí se pouze šablony UpdateProgress přidružené k nadřazenému objektu.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Microsoft ASP.NET rozšíření AJAX jsou sofistikované produkty navržené tak, aby vám pomohla při snadnějším zpřístupnění webového obsahu a poskytování bohatšího uživatelského prostředí pro vaše webové aplikace. V rámci rozšíření ASP.NET AJAX jsou částečně viditelné ovládací prvky vykreslování stránky, včetně ovládacího prvku ScriptManager, UpdatePanel a ovládacích prvků UpdateProgress, některé z nejužitečnějších komponent sady Toolkit.
 
@@ -297,7 +297,7 @@ Ovládací prvek UpdateProgress umožňuje uživateli, aby věděli, že se Neig
 
 Tyto nástroje společně pomáhají vytvořit bohatou a bezproblémovou činnost pro uživatele a snížit tak pracovní postup tak, aby na serveru méně zjevné.
 
-## <a name="bio"></a>Dostupnost
+## <a name="bio"></a>Bio
 
 Scott Cate spolupracuje s webovými technologiemi Microsoftu od 1997 a je prezidentem myKB.com ([www.myKB.com](http://www.myKB.com)), kde se specializuje při psaní aplikací založených na ASP.NET zaměřené na softwarová řešení ve znalostní bázi Knowledge Base. Scott se dá kontaktovat e-mailem na [scott.cate@myKB.com](mailto:scott.cate@myKB.com) nebo jeho blogu na [ScottCate.com](http://ScottCate.com)
 

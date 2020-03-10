@@ -1,23 +1,23 @@
 ---
 uid: signalr/overview/guide-to-the-api/index
-title: Funkce SignalR pokyny k rozhraní API | Dokumentace Microsoftu
+title: Průvodce signálem k rozhraní API | Microsoft Docs
 author: bradygaster
-description: Dokumentace o tom, jak použít rozhraní API pro rozbočovače SignalR. Povolení rozhraní API naleznete v tématu na kartě zabezpečení.
+description: Dokumentace k použití rozhraní API pro centra signálů Rozhraní API pro autorizaci najdete na kartě zabezpečení.
 ms.author: bradyg
 ms.date: 09/19/2014
 ms.assetid: af69e8d2-efdd-4d0b-9bbc-95353a65c0db
 msc.legacyurl: /signalr/overview/guide-to-the-api
 msc.type: chapter
 ms.openlocfilehash: 0109298a92ae7e1ea96d1020d4345b5618852efb
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65117100"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78536965"
 ---
-# <a name="signalr-guide-to-the-api"></a>Funkce SignalR pokyny k rozhraní API
+# <a name="signalr-guide-to-the-api"></a>Průvodce signálem do rozhraní API
 
-> Dokumentace o tom, jak použít rozhraní API pro rozbočovače SignalR. Povolení rozhraní API naleznete v tématu na kartě zabezpečení.
+> Dokumentace k použití rozhraní API pro centra signálů Rozhraní API pro autorizaci najdete na kartě zabezpečení.
 
 - [Pokyny k rozhraní API center – server (C#)](hubs-api-guide-server.md)
 - [Pokyny k rozhraní API center – javascriptový klient](hubs-api-guide-javascript-client.md)

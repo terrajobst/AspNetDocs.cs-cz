@@ -9,11 +9,11 @@ ms.assetid: 1cd91055-84bc-42c6-9d80-646f41429d4d
 msc.legacyurl: /web-forms/overview/deployment/visual-studio-web-deployment/deploying-extra-files
 msc.type: authoredcontent
 ms.openlocfilehash: eaa3141c22980f0c816e2f33b5597ac9fe69c23c
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74594897"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78548410"
 ---
 # <a name="aspnet-web-deployment-using-visual-studio-deploying-extra-files"></a>Nasazení webu ASP.NET pomocí sady Visual Studio: nasazení dalších souborů
 
@@ -73,7 +73,7 @@ Pomocí publikování jedním kliknutím nebo příkazového řádku publikujte 
 
 Pokud používáte publikování jedním kliknutím, můžete ověřit v okně **náhledu** , které budou zkopírovány *robot. txt* . V opačném případě pomocí nástroje FTP ověřte, zda je soubor *robots. txt* v kořenové složce webu po nasazení.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Tím se dokončí Tato série kurzů pro nasazení webové aplikace v ASP.NET k poskytovateli hostingu třetí strany. Další informace o všech tématech popsaných v těchto kurzech najdete v tématu [Mapa obsahu nasazení ASP.NET](https://go.microsoft.com/fwlink/p/?LinkId=282413).
 

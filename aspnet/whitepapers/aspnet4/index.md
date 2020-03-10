@@ -1,19 +1,19 @@
 ---
 uid: whitepapers/aspnet4/index
-title: ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu | Dokumentace Microsoftu
+title: ASP.NET 4 a Visual Studio 2010 – přehled vývoje webů | Microsoft Docs
 author: rick-anderson
-description: Tento dokument poskytuje přehled o řadu nových funkcí pro technologii ASP.NET, které jsou zahrnuty v rozhraní.NET Framework 4 a v sadě Visual Studio 2010.
+description: Tento dokument obsahuje přehled mnoha nových funkcí pro ASP.NET, které jsou součástí the.NET Framework 4 a Visual Studio 2010.
 ms.author: riande
 ms.date: 02/10/2010
 ms.assetid: 6bea4655-b0a2-442a-b9c1-d323467befd8
 msc.legacyurl: ''
 msc.type: content
 ms.openlocfilehash: 7a73b6657e6f074cac5e63c907924a8cae68e60e
-ms.sourcegitcommit: 0f1119340e4464720cfd16d0ff15764746ea1fea
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59397178"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78546226"
 ---
 # <a name="aspnet-4-and-visual-studio-2010-web-development-overview"></a>ASP.NET 4 a Visual Studio 2010 – přehled vývoje webu
 

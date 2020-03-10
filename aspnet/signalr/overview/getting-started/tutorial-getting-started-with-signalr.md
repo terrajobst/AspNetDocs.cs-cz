@@ -10,17 +10,17 @@ msc.legacyurl: /signalr/overview/getting-started/tutorial-getting-started-with-s
 msc.type: authoredcontent
 ms.topic: tutorial
 ms.openlocfilehash: bc4ef190b6e36812b6fe7ca4e16eb763431e0e82
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74600469"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78536979"
 ---
 # <a name="tutorial-real-time-chat-with-signalr-2"></a>Kurz: chat v reálném čase s nástrojem Signal 2
 
 V tomto kurzu se dozvíte, jak pomocí signalizace vytvořit aplikaci Chat v reálném čase. Přidáte signál do prázdné webové aplikace v ASP.NET a vytvoříte stránku HTML pro odesílání a zobrazování zpráv.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavení projektu
@@ -29,9 +29,9 @@ V tomto kurzu:
 
 [!INCLUDE [Consider ASP.NET Core SignalR](~/includes/signalr/signalr-version-disambiguation.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
+* Sada [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) se sadou funkcí **Vývoj pro ASP.NET a web**.
 
 ## <a name="set-up-the-project"></a>Nastavení projektu
 
@@ -167,11 +167,11 @@ Tento kód otevře připojení k centru.
 
 Kód spustí připojení a poté předá funkci pro zpracování události Click v tlačítku **Odeslat** na stránce HTML.
 
-## <a name="get-the-code"></a>Získat kód
+## <a name="get-the-code"></a>Získání kódu
 
 [Stáhnout dokončený projekt](https://code.msdn.microsoft.com/SignalR-Getting-Started-b9d18aa9)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Další informace o signalizaci naleznete v následujících zdrojích informací:
 

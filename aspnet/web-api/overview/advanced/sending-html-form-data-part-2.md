@@ -1,8 +1,8 @@
 ---
 uid: web-api/overview/advanced/sending-html-form-data-part-2
-title: 'Posílání dat formulářů HTML ve webovém rozhraní API technologie ASP.NET: Nahrání souboru a vícedílné zprávy standardu MIME – ASP.NET 4.x'
+title: 'Posílání dat formuláře HTML ve webovém rozhraní API ASP.NET: nahrání souboru a MIME-ASP.NET 4. x'
 author: MikeWasson
-description: Tento kurz ukazuje postupy při nahrání souborů do webového rozhraní API. Také popisuje, jak můžete zpracovávat data vícedílné zprávy standardu MIME.
+description: V tomto kurzu se dozvíte, jak nahrát soubory do webového rozhraní API. Popisuje také postup zpracování dat MIME v částech.
 ms.author: riande
 ms.date: 06/21/2012
 ms.custom: seoapril2019
@@ -10,81 +10,81 @@ ms.assetid: a7f3c1b5-69d9-4261-b082-19ffafa5f16a
 msc.legacyurl: /web-api/overview/advanced/sending-html-form-data-part-2
 msc.type: authoredcontent
 ms.openlocfilehash: f5aaebb96f631dfb6b0da1fbca96cd93a6a7fe2d
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65126231"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78557566"
 ---
-# <a name="sending-html-form-data-in-aspnet-web-api-file-upload-and-multipart-mime"></a>Posílání dat formulářů HTML ve webovém rozhraní API technologie ASP.NET: Nahrání souboru a vícedílné zprávy standardu MIME
+# <a name="sending-html-form-data-in-aspnet-web-api-file-upload-and-multipart-mime"></a>Posílání dat formuláře HTML ve webovém rozhraní API ASP.NET: nahrání souboru a MIME s více částmi
 
-podle [Mike Wasson](https://github.com/MikeWasson)
+o [Jan Wasson](https://github.com/MikeWasson)
 
-## <a name="part-2-file-upload-and-multipart-mime"></a>Část 2: Nahrání souboru a vícedílné zprávy standardu MIME
+## <a name="part-2-file-upload-and-multipart-mime"></a>Část 2: nahrání souboru a MIME s více částmi
 
-Tento kurz ukazuje postupy při nahrání souborů do webového rozhraní API. Také popisuje, jak můžete zpracovávat data vícedílné zprávy standardu MIME.
+V tomto kurzu se dozvíte, jak nahrát soubory do webového rozhraní API. Popisuje také postup zpracování dat MIME v částech.
 
 > [!NOTE]
-> [Stáhnout dokončený projekt](https://code.msdn.microsoft.com/ASPNET-Web-API-File-Upload-a8c0fb0d).
+> [Stáhněte dokončený projekt](https://code.msdn.microsoft.com/ASPNET-Web-API-File-Upload-a8c0fb0d).
 
-Tady je příklad z formuláře HTML pro nahrání souboru:
+Tady je příklad formuláře HTML pro nahrání souboru:
 
 [!code-html[Main](sending-html-form-data-part-2/samples/sample1.html)]
 
 ![](sending-html-form-data-part-2/_static/image1.png)
 
-Tento formulář obsahuje ovládací prvek textového vstupu a soubor vstupního ovládacího prvku. Pokud formulář obsahuje ovládací prvek vstupu souboru **enctype** atribut by měl vždy být &quot;multipart/formulář data&quot;, která určuje, že bude odeslán formulář jako vícedílné zprávě standardu MIME.
+Tento formulář obsahuje ovládací prvek textové zadání a ovládací prvek vstupu do souboru. Pokud formulář obsahuje ovládací prvek vstupního souboru, atribut **Enctype** by měl vždy &quot;multipart/form-data&quot;, který určuje, že formulář bude odeslán jako zpráva MIME s více částmi.
 
-Formát vícedílné zprávě standardu MIME je nejjednodušší pochopit zobrazením příklad žádosti:
+Formát zprávy MIME s více částmi je nejjednodušší pochopit tím, že se podíváte na příklad požadavku:
 
 [!code-console[Main](sending-html-form-data-part-2/samples/sample2.cmd)]
 
-Tato zpráva je rozdělen do dvou *částí*, jeden pro každý ovládací prvek formuláře. Část hranice jsou označeny řádky, které začínají znakem pomlčky.
+Tato zpráva je rozdělena na dvě *části*, jednu pro každý ovládací prvek formuláře. Hranice součásti jsou označeny řádky, které začínají pomlčkami.
 
 > [!NOTE]
-> Hranice část obsahuje náhodné komponentu (&quot;41184676334&quot;) k zajištění, že hranici řetězec pravděpodobně neobsahuje omylem uvnitř část zprávy.
+> Hranice součásti zahrnuje náhodnou součást (&quot;41184676334&quot;), aby se zajistilo, že se řetězec hranice omylem neobjeví uvnitř části zprávy.
 
-Každá část zprávy obsahuje jednu nebo víc hlaviček, za nímž následuje část obsahu.
+Každá část zprávy obsahuje jednu nebo více hlaviček následovaných obsahem části.
 
-- Hlavička Content-Disposition zahrnuje název ovládacího prvku. Pro soubory neobsahuje také název souboru.
-- Hlavička Content-Type popisuje data v části. Pokud je vynechán této hlavičky, výchozí hodnota je text/plain.
+- Hlavička Content-Disposition obsahuje název ovládacího prvku. V případě souborů obsahuje také název souboru.
+- Hlavička Content-Type popisuje data v části. Pokud je tato hlavička vynechána, výchozí hodnota je text/prostý.
 
-V předchozím příkladu se uživatel nahrál soubor s názvem GrandCanyon.jpg, s typem obsahu image/jpeg; a byla zadána hodnota textový vstup &quot;léto dovolené&quot;.
+V předchozím příkladu uživatel nahrál soubor s názvem GrandCanyon. jpg s typem obsahu image/jpeg; a hodnota textového vstupu byla &quot;letní dovolené&quot;.
 
 ## <a name="file-upload"></a>Nahrání souboru
 
-Nyní Pojďme se podívat na kontroler Web API, která čte soubory z vícedílné zprávě standardu MIME. Kontroler se asynchronně číst soubory. Webové rozhraní API podporuje asynchronní akce [programovací model založený na úlohách](https://msdn.microsoft.com/library/dd460693.aspx). Nejprve, zde je kód rozhraní .NET Framework 4.5, který podporuje při cílení **asynchronní** a **await** klíčová slova.
+Nyní se podívejme na kontroler webového rozhraní API, který čte soubory ze zprávy MIME s více částmi. Řadič bude soubory číst asynchronně. Webové rozhraní API podporuje asynchronní akce pomocí [programovacího modelu založeného na úlohách](https://msdn.microsoft.com/library/dd460693.aspx). Nejdřív je zde kód, pokud cílíte .NET Framework 4,5, které podporují klíčová slova **Async** a **await** .
 
 [!code-csharp[Main](sending-html-form-data-part-2/samples/sample3.cs)]
 
-Všimněte si, že akce kontroleru nepřijímá žádné parametry. Důvodem je, jsme zpracovat text požadavku v akci, bez vyvolání formátovací modul typu média.
+Všimněte si, že akce kontroleru nepřijímá žádné parametry. To je proto, že zpracováváme tělo žádosti v rámci akce bez vyvolání formátovacího modulu typu média.
 
-**IsMultipartContent** metoda zkontroluje, jestli žádost obsahuje vícedílné zprávě standardu MIME. V opačném případě kontroleru vrátí stavový kód HTTP 415 (nepodporovaný typ média).
+Metoda **IsMultipartContent** ověří, zda požadavek obsahuje zprávu MIME s více částmi. V takovém případě kontroler vrátí stavový kód HTTP 415 (nepodporovaný typ média).
 
-**MultipartFormDataStreamProvider** třída je pomocný objekt, který přiděluje datové proudy souborů o nahraných souborech. Čtení zprávy vícedílné zprávy standardu MIME, zavolejte **ReadAsMultipartAsync** metody. Tato metoda extrahuje všechny části zprávy a zapisuje je do datových proudů poskytované **MultipartFormDataStreamProvider**.
+Třída **MultipartFormDataStreamProvider** je pomocný objekt, který přiděluje datové proudy souborů pro nahrané soubory. Chcete-li si přečíst zprávu MIME s více částmi, zavolejte metodu **ReadAsMultipartAsync** . Tato metoda extrahuje všechny části zprávy a zapisuje je do datových proudů poskytovaných **MultipartFormDataStreamProvider**.
 
-Po dokončení metody můžete získat informace o souborech z **FileData** vlastnost, která je kolekce z **MultipartFileData** objekty.
+Po dokončení metody můžete získat informace o souborech z vlastnosti **dat** , což je kolekce objektů **MultipartFileData** .
 
-- **MultipartFileData.FileName** je název místního souboru na serveru, kam byl uložen soubor.
-- **MultipartFileData.Headers** obsahuje část hlavičky (*není* záhlaví požadavku). To můžete použít pro přístup k obsahu\_záhlaví dispozice a Content-Type.
+- **MultipartFileData. FileName** je název místního souboru na serveru, kde byl soubor uložen.
+- **MultipartFileData. Headers** obsahuje hlavičku části (*ne* hlavičku požadavku). Tuto možnost můžete použít pro přístup k obsahu\_k dispozici a k hlavičkám typu Content-Type.
 
-Jak název napovídá, **ReadAsMultipartAsync** je asynchronní metodu. K provedení práce po dokončení metody, použijte [úkol pokračování](https://msdn.microsoft.com/library/ee372288.aspx) (.NET 4.0) nebo **await** – klíčové slovo (.NET 4.5).
+Jak název naznačuje, **ReadAsMultipartAsync** je asynchronní metoda. K provedení práce po dokončení metody použijte [úlohu pokračování](https://msdn.microsoft.com/library/ee372288.aspx) (.NET 4,0) nebo klíčové slovo **await** (.NET 4,5).
 
-Tady je verze rozhraní .NET Framework 4.0 předchozího kódu:
+Tady je verze .NET Framework 4,0 předchozího kódu:
 
 [!code-csharp[Main](sending-html-form-data-part-2/samples/sample4.cs)]
 
-## <a name="reading-form-control-data"></a>Čtení dat ovládacího prvku formuláře
+## <a name="reading-form-control-data"></a>Čtení dat ovládacího prvku formulář
 
-Formulář HTML, který jsem ukazoval dříve měli ovládací prvek textového vstupu.
+Formulář HTML, který jsem ukázal dříve, měl ovládací prvek textové zadání.
 
 [!code-html[Main](sending-html-form-data-part-2/samples/sample5.html)]
 
-Můžete získat hodnotu z ovládacího prvku **FormData** vlastnost **MultipartFormDataStreamProvider**.
+Hodnotu ovládacího prvku lze získat z vlastnosti **FormData** třídy **MultipartFormDataStreamProvider**.
 
 [!code-csharp[Main](sending-html-form-data-part-2/samples/sample6.cs?highlight=15)]
 
-**FormData** je **NameValueCollection** obsahující dvojice název/hodnota pro ovládací prvky formuláře. Kolekce může obsahovat duplicitní klíče. Vezměte v úvahu tento formulář:
+**FormData** je **kolekce NameValueCollection** , který obsahuje páry název/hodnota pro ovládací prvky formuláře. Kolekce může obsahovat duplicitní klíče. Vezměte v úvahu tento formulář:
 
 [!code-html[Main](sending-html-form-data-part-2/samples/sample7.html)]
 
@@ -94,9 +94,9 @@ Text žádosti může vypadat takto:
 
 [!code-console[Main](sending-html-form-data-part-2/samples/sample8.cmd)]
 
-V takovém případě **FormData** kolekce by obsahovala následující dvojice klíč/hodnota:
+V takovém případě by kolekce **FormData** obsahovala následující páry klíč/hodnota:
 
-- o jízdách: zpátečního převodu
-- možnosti: nonstop
-- možnosti: kalendářních dat
-- licence: okno
+- cesta: zpáteční cesta
+- možnosti: neukončeno
+- možnosti: kalendářní data
+- sedadlo: okno

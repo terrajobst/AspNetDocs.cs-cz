@@ -9,11 +9,11 @@ ms.assetid: 2da25f6a-757e-4e7b-a812-1575288d8f7a
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/using-existing-stored-procedures-for-the-typed-dataset-s-tableadapters-vb
 msc.type: authoredcontent
 ms.openlocfilehash: e35c3d6a98516a07f6119e6cb9dbeb99bc28fe33
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74613606"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78531799"
 ---
 # <a name="using-existing-stored-procedures-for-the-typed-datasets-tableadapters-vb"></a>Použití stávajících uložených procedur komponentami TableAdapter typových sad dat (VB)
 
@@ -220,7 +220,7 @@ Po aktualizaci DAL dojde k odstranění kategorie k automatickému odstranění 
 > [!NOTE]
 > Než otestujete `Categories_Delete` uloženou proceduru, která odstraní řadu produktů společně s vybranou kategorií, může být vhodné vytvořit záložní kopii vaší databáze. Pokud používáte databázi `NORTHWND.MDF` v `App_Data`, stačí zavřít aplikaci Visual Studio a zkopírovat soubory MDF a LDF v `App_Data` do jiné složky. Po otestování funkčnosti můžete databázi obnovit ukončením sady Visual Studio a nahrazením aktuálních souborů MDF a LDF v `App_Data` záložními kopiemi.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 I když Průvodce TableAdapterí automaticky vygeneruje uložené procedury pro nás, nastane čas, kdy je možné tyto uložené procedury už vytvořit nebo je chtít vytvořit ručně nebo pomocí jiných nástrojů. Pro uspokojení takových scénářů může být TableAdapter také nakonfigurován tak, aby odkazoval na stávající uloženou proceduru. V tomto kurzu jsme se vyhlédli do postupu ručního přidání uložených procedur do databáze prostřednictvím prostředí sady Visual Studio a způsobu, jak tyto uložené procedury nakabelovat metody TableAdapter s. Prozkoumali jsme také příkazy T-SQL a vzor skriptu, který se používá pro spouštění, potvrzování a vracení zpětných transakcí z uložené procedury.
 

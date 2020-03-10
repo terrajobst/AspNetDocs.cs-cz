@@ -9,11 +9,11 @@ ms.assetid: 32d54638-71b2-491d-81f4-f7417a13a62f
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/interacting-with-the-master-page-from-the-content-page-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 5ef030d3bed117e98fdd090f7c63643354b47f76
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74583880"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78565637"
 ---
 # <a name="interacting-with-the-master-page-from-the-content-page-c"></a>Interakce stránky předlohy se stránkou obsahu (C#)
 
@@ -208,7 +208,7 @@ Obrázek 8 ukazuje stránku `AddProduct.aspx` hned po přidání nového produkt
 
 **Obrázek 08**: popisek a GridView stránky předlohy zobrazují právě přidaný produkt ([kliknutím zobrazíte obrázek v plné velikosti](interacting-with-the-master-page-from-the-content-page-cs/_static/image24.png))
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V ideálním případě jsou hlavní stránka a její stránky obsahu zcela oddělené od sebe a nevyžadují žádnou úroveň interakce. Zatímco stránky a stránky předlohy by měly být navržené s tímto cílem, existuje řada běžných scénářů, ve kterých se stránka obsahu musí nacházet se stránkou předlohy. Jedním z nejběžnějších důvodů je aktualizovat určitou část zobrazení stránky předlohy na základě některé akce, která se zobrazila na stránce obsahu.
 

@@ -1,90 +1,90 @@
 ---
 uid: mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs
-title: Ověřování v rozhraní IDataErrorInfo (C#) | Dokumentace Microsoftu
+title: Ověřování pomocí rozhraní IDataErrorInfo (C#) | Microsoft Docs
 author: StephenWalther
-description: Stephen Walther se dozvíte, jak zobrazit chybové zprávy ověření na vlastních implementací rozhraní IDataErrorInfo v třídě modelu.
+description: Stephen Walther ukazuje, jak zobrazit chybové zprávy vlastního ověřování implementací rozhraní IDataErrorInfo v třídě modelu.
 ms.author: riande
 ms.date: 03/02/2009
 ms.assetid: 4733b9f1-9999-48fb-8b73-6038fbcc5ecb
 msc.legacyurl: /mvc/overview/older-versions-1/models-data/validating-with-the-idataerrorinfo-interface-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 938b180da02b1963acffd021d18621d75d1d0447
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65117561"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78542558"
 ---
 # <a name="validating-with-the-idataerrorinfo-interface-c"></a>Ověřování v rozhraní IDataErrorInfo (C#)
 
-podle [Stephen Walther](https://github.com/StephenWalther)
+od [Stephen Walther](https://github.com/StephenWalther)
 
-> Stephen Walther se dozvíte, jak zobrazit chybové zprávy ověření na vlastních implementací rozhraní IDataErrorInfo v třídě modelu.
+> Stephen Walther ukazuje, jak zobrazit chybové zprávy vlastního ověřování implementací rozhraní IDataErrorInfo v třídě modelu.
 
-Cílem tohoto kurzu je vysvětlit jedním z přístupů k provedení ověření v aplikaci ASP.NET MVC. Zjistíte, jak zabránit odeslání formuláře HTML bez zadání hodnot požadovaných polí. V tomto kurzu se dozvíte, jak provádět ověření pomocí rozhraní IErrorDataInfo.
+Cílem tohoto kurzu je vysvětlit jeden přístup k provádění ověřování v aplikaci ASP.NET MVC. Naučíte se, jak zabránit odeslání formuláře HTML bez zadání hodnot pro požadovaná pole formuláře. V tomto kurzu se naučíte provádět ověřování pomocí rozhraní IErrorDataInfo.
 
 ## <a name="assumptions"></a>Předpoklady
 
-V tomto kurzu použiju MoviesDB databáze a tabulky databáze filmů. Tato tabulka obsahuje následující sloupce:
+V tomto kurzu použijeme databázi MoviesDB a databázovou tabulku filmů. Tato tabulka obsahuje následující sloupce:
 
 <a id="0.5_table01"></a>
 
-| **Název sloupce** | **Datový typ** | **Povolit hodnoty Null** |
+| **Název sloupce** | **Datový typ** | **Povoluje hodnoty null.** |
 | --- | --- | --- |
 | ID | Int | False |
 | Název | Nvarchar(100) | False |
 | Ředitel | Nvarchar(100) | False |
 | DateReleased | DateTime | False |
 
-V tomto kurzu pomocí Microsoft Entity Framework vytvořit Moje databáze třídy modelu. Třída film vygenerovaným rozhraním Entity Framework se zobrazí na obrázku 1.
+V tomto kurzu použijeme Microsoft Entity Framework k vygenerování tříd databázového modelu. Třída Movie vygenerovaná Entity Framework je zobrazena na obrázku 1.
 
-[![Video entity](validating-with-the-idataerrorinfo-interface-cs/_static/image1.jpg)](validating-with-the-idataerrorinfo-interface-cs/_static/image1.png)
+[![entitě video](validating-with-the-idataerrorinfo-interface-cs/_static/image1.jpg)](validating-with-the-idataerrorinfo-interface-cs/_static/image1.png)
 
-**Obrázek 01**: Movie entity ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-cs/_static/image2.png))
+**Obrázek 01**: entita video ([kliknutím zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-cs/_static/image2.png))
 
 > [!NOTE] 
 > 
-> Další informace o použití rozhraní Entity Framework pro generování tříd modelu vaší databáze najdete v tématu Moje kurz s názvem vytváření tříd modelu s použitím rozhraní Entity Framework.
+> Další informace o použití Entity Framework k vygenerování tříd databázového modelu naleznete v tématu můj kurz s názvem vytváření tříd modelu pomocí Entity Framework.
 
-## <a name="the-controller-class"></a>Třída Kontroleru
+## <a name="the-controller-class"></a>Třída Controller
 
-Používáme kontroler Home na filmy seznamu a vytvořit nové filmy. Kód pro tuto třídu je obsažen v informacích 1.
+K vypsání filmů a vytváření nových filmů používáme domovský kontroler. Kód pro tuto třídu je obsažen v seznamu 1.
 
-**Výpis 1 - Controllers\HomeController.cs**
+**Výpis 1 – souboru controllers\homecontroller.cs**
 
 [!code-csharp[Main](validating-with-the-idataerrorinfo-interface-cs/samples/sample1.cs)]
 
-Třída kontroleru Domovská stránka v informacích 1 obsahuje dvě Create() akce. První akci zobrazí formulář HTML pro vytvoření nové video. Druhou akci Create() provádí skutečné vložit tento nový film do databáze. Druhou akci Create() je voláno, když se odešle formulář zobrazí první Create() akcí na server.
+Třída domovského kontroleru v seznamu 1 obsahuje dvě akce Create (). První akce zobrazí formulář HTML pro vytvoření nového filmu. Druhá akce Create () provede vlastní vložení nového videa do databáze. Druhá akce Create () je vyvolána, když je formulář zobrazený první akcí Create () na server.
 
-Všimněte si, že druhou akci Create() obsahuje následující řádky kódu:
+Všimněte si, že druhá akce Create () obsahuje následující řádky kódu:
 
 [!code-csharp[Main](validating-with-the-idataerrorinfo-interface-cs/samples/sample2.cs)]
 
-Vlastnost IsValid vrátí hodnotu false, když dojde k chybě ověřování. V takovém případě se zobrazí znovu vytvořit zobrazení, která obsahuje formulář HTML pro vytváření videa.
+Vlastnost IsValid vrátí hodnotu false, pokud dojde k chybě ověřování. V takovém případě se zobrazí znovu zobrazení vytvořit, které obsahuje formulář HTML pro vytvoření filmu.
 
 ## <a name="creating-a-partial-class"></a>Vytvoření částečné třídy
 
-Třída Video je vygenerovaným rozhraním Entity Framework. Pokud rozbalte soubor MoviesDBModel.edmx v okně Průzkumník řešení a otevřete soubor MoviesDBModel.Designer.cs v editoru kódu vidíte kód pro třídu Movie (viz obrázek 2).
+Třída Movie je vygenerována Entity Framework. Pokud rozbalíte soubor MoviesDBModel. edmx v okně Průzkumník řešení a otevřete soubor MoviesDBModel.Designer.cs v editoru kódu (viz obrázek 2), můžete zobrazit kód pro třídu filmu.
 
-[![Kód pro entitu Movie](validating-with-the-idataerrorinfo-interface-cs/_static/image2.jpg)](validating-with-the-idataerrorinfo-interface-cs/_static/image3.png)
+[![kódu pro entitu video](validating-with-the-idataerrorinfo-interface-cs/_static/image2.jpg)](validating-with-the-idataerrorinfo-interface-cs/_static/image3.png)
 
-**Obrázek 02**: Kód pro entitu Movie ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-cs/_static/image4.png))
+**Obrázek 02**: kód pro entitu video ([kliknutím zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-cs/_static/image4.png))
 
-Třída Video je částečnou třídu. To znamená, že můžeme přidat jiné částečné třídy se stejným názvem k rozšíření funkčnosti film třídy. Přidáme náš logiku ověřování novou třídu.
+Třída Movie je částečnou třídou. To znamená, že můžeme přidat další částečnou třídu se stejným názvem, aby bylo možné roztáhnout funkce třídy video. Do nové dílčí třídy přidáme naši logiku ověřování.
 
-Přidáte třídu v informacích 2 do složky modely.
+Přidejte třídu v seznamu 2 do složky modely.
 
-**Výpis 2 - Models\Movie.cs**
+**Výpis 2 – Models\Movie.cs**
 
 [!code-csharp[Main](validating-with-the-idataerrorinfo-interface-cs/samples/sample3.cs)]
 
-Všimněte si, že třída v informacích 2 zahrnuje *částečné* modifikátor. Jakékoliv metody nebo vlastnosti, které přidáte do této třídy, se stanou součástí třídy film vygenerovaným rozhraním Entity Framework.
+Všimněte si, že třída v seznamu 2 obsahuje *částečný* modifikátor. Jakékoli metody nebo vlastnosti, které přidáte do této třídy, se stanou součástí třídy filmu vygenerované Entity Framework.
 
-## <a name="adding-onchanging-and-onchanged-partial-methods"></a>Přidání OnChanging a OnChanged částečné metody
+## <a name="adding-onchanging-and-onchanged-partial-methods"></a>Přidávají se částečné metody s jednou změnou a při změně.
 
-Když Entity Frameworku vygeneruje třídu entity, Entity Framework přidá částečné metody do třídy automaticky. Entity Framework generuje OnChanging a OnChanged částečné metody, které odpovídají každá vlastnost třídy.
+Když Entity Framework generuje třídu entity, Entity Framework automaticky přidá částečné metody do třídy. Entity Framework generuje proměnlivé a přiměnitelné částečné metody, které odpovídají jednotlivým vlastnostem třídy.
 
-V případě třídy film Entity Framework vytvoří následující metody:
+V případě třídy video vytvoří Entity Framework následující metody:
 
 - OnIdChanging
 - OnIdChanged
@@ -95,58 +95,58 @@ V případě třídy film Entity Framework vytvoří následující metody:
 - OnDateReleasedChanging
 - OnDateReleasedChanged
 
-Před změnou odpovídající vlastnosti je volána metoda OnChanging vpravo. Po změně vlastnosti je volána metoda OnChanged vpravo.
+Metoda při změně je volána přímo před změnou odpovídající vlastnosti. Metoda prochange je volána hned po změně vlastnosti.
 
-Můžete využít výhod těchto částečné metody třídy film přidat logiku ověřování. Aktualizace třídy filmu v informacích 3 ověřuje, že nadpis a ředitel pro vlastnosti se přiřazují neprázdných hodnot.
+Tyto částečné metody můžete využít k přidání logiky ověřování do třídy filmu. Třída aktualizační filmy v seznamu 3 ověřuje, že vlastnosti title a Director jsou přiřazeny neprázdné hodnoty.
 
 > [!NOTE] 
 > 
-> Částečná metoda je metoda definovaná ve třídě, není nutná pro implementaci. Pokud není implementovat částečnou metodu kompilátor odebere podpis metody a všechny volání metody tady nejsou žádné běhové náklady spojené s částečnou metodu. V editoru Visual Studio Code, můžete přidat částečná metoda zadáním klíčového slova *částečné* následovaný mezerami, chcete-li zobrazit seznam částečných zobrazení k implementaci.
+> Částečná metoda je metoda definovaná ve třídě, kterou není nutné implementovat. Pokud neimplementujete částečnou metodu, kompilátor odstraní signaturu metody a veškerá volání metody, takže neexistují žádné náklady za běhu spojené s částečnou metodou. V editoru Visual Studio Code můžete přidat částečnou metodu zadáním klíčového slova *Partial* následovaného mezerou pro zobrazení seznamu částečných implementací.
 
-**Výpis 3 - Models\Movie.cs**
+**Výpis 3 – Models\Movie.cs**
 
 [!code-csharp[Main](validating-with-the-idataerrorinfo-interface-cs/samples/sample4.cs)]
 
-Například pokud se pokusíte přiřadit vlastnosti název prázdný řetězec, chybovou zprávu přiřadí se mu na slovník s názvem \_chyby.
+Například pokud se pokusíte k vlastnosti title přiřadit prázdný řetězec, chybová zpráva je přiřazena ke slovníku s názvem \_chyby.
 
-V tomto okamžiku nic ve skutečnosti se stane, když přiřadíte prázdný řetězec pro vlastnost názvu a chyba se přidá do soukromého \_pole chyby. Musíme implementovat v rozhraní IDataErrorInfo umožní vystavit tyto chyby ověření do rozhraní ASP.NET MVC.
+V tuto chvíli se nic nestane, když přiřadíte prázdný řetězec k vlastnosti title a do pole chyby Private \_se přidá chyba. Abychom vystavili tyto chyby ověřování v architektuře ASP.NET MVC, musíme implementovat rozhraní IDataErrorInfo.
 
 ## <a name="implementing-the-idataerrorinfo-interface"></a>Implementace rozhraní IDataErrorInfo
 
-V rozhraní IDataErrorInfo byl součástí rozhraní .NET framework od první verze. Toto rozhraní je velmi jednoduché rozhraní:
+Rozhraní IDataErrorInfo bylo součástí rozhraní .NET Framework od první verze. Toto rozhraní je velmi jednoduché rozhraní:
 
 [!code-csharp[Main](validating-with-the-idataerrorinfo-interface-cs/samples/sample5.cs)]
 
-Pokud třída implementuje rozhraní IDataErrorInfo, rozhraní ASP.NET MVC bude používat toto rozhraní, při vytváření instance třídy. Například kontroler Home Create() akce přijímá instanci třídy filmu:
+Pokud třída implementuje rozhraní IDataErrorInfo, rozhraní ASP.NET MVC bude toto rozhraní používat při vytváření instance třídy. Například akce domů kontroleru Create () přijímá instanci třídy video:
 
 [!code-csharp[Main](validating-with-the-idataerrorinfo-interface-cs/samples/sample6.cs)]
 
-Architektura ASP.NET MVC vytvoří instanci film předán Create() akce pomocí vazače modelu (DefaultModelBinder). Vazač modelu zodpovídá za vytvoření instance objektu film navázáním pole formuláře HTML na instanci objektu video.
+Rozhraní ASP.NET MVC vytvoří instanci filmu předanou akci Create () pomocí pořadače modelu (DefaultModelBinder). Pořadač modelů zodpovídá za vytvoření instance objektu filmu navázáním polí formuláře HTML na instanci objektu video.
 
-DefaultModelBinder zjišťuje, zda třída implementuje rozhraní IDataErrorInfo. Pokud třída implementuje toto rozhraní vazače modelu vyvolá IDataErrorInfo.this indexeru pro každou vlastnost třídy. Pokud indexeru vrátí chybovou zprávu přidá vazač modelu tato chybová zpráva pro modelování stav automaticky.
+DefaultModelBinder zjistí, zda třída implementuje rozhraní IDataErrorInfo. Pokud třída implementuje toto rozhraní, pořadač modelu vyvolá IDataErrorInfo. Tento indexer pro každou vlastnost třídy. Pokud indexer vrátí chybovou zprávu, přidá pořadač modelů tuto chybovou zprávu do stavu modelu automaticky.
 
-DefaultModelBinder také kontroluje IDataErrorInfo.Error vlastnost. Tato vlastnost je určena k reprezentaci chyby ověřování podle jiné vlastnosti přidružené k třídě. Můžete například chtít vynutit ověřovací pravidlo, které závisí na hodnotách více vlastností třídy Video. V takovém případě by vrátit chybu ověření z vlastnosti chyby.
+DefaultModelBinder také kontroluje vlastnost IDataErrorInfo. Error. Tato vlastnost slouží k reprezentaci chyb ověřování specifických pro jiné než vlastnosti, které jsou přidruženy ke třídě. Můžete například vynutili ověřovací pravidlo, které závisí na hodnotách více vlastností třídy video. V takovém případě byste vrátili chybu ověřování z vlastnosti Error.
 
-Aktualizované třídy filmu v informacích 4 implementuje rozhraní IDataErrorInfo.
+Aktualizovaná třída filmu v seznamu 4 implementuje rozhraní IDataErrorInfo.
 
-**Část 4 – Models\Movie.cs (implementuje IDataErrorInfo)**
+**Výpis 4 – Models\Movie.cs (implementuje IDataErrorInfo)**
 
 [!code-csharp[Main](validating-with-the-idataerrorinfo-interface-cs/samples/sample7.cs)]
 
-V informacích 4 kontroluje vlastnost indexeru \_předaný kolekce chyb, pokud obsahuje klíč, který odpovídá názvu vlastnosti indexeru. Pokud se nezobrazí žádná chyba ověření přidružený k vlastnosti je vrácen prázdný řetězec.
+V seznamu 4 vlastnost indexeru kontroluje kolekci chyb \_, aby bylo možné zjistit, zda obsahuje klíč, který odpovídá názvu vlastnosti předané indexeru. Není-li k této vlastnosti přidružena žádná chyba ověřování, je vrácen prázdný řetězec.
 
-Není nutné upravovat kontroler Home žádným způsobem pomocí upravené třídy film. Stránky zobrazené na obrázku 3 znázorňuje, co se stane, když je zadána žádná hodnota pro název nebo ředitel pole formuláře.
+Nemusíte upravovat domovský kontroler tak, aby bylo možné použít upravenou třídu filmu. Stránka zobrazená na obrázku 3 ukazuje, co se stane, když pro pole názvu nebo formuláře režiséra není zadána žádná hodnota.
 
-[![Automatické vytváření metody akce](validating-with-the-idataerrorinfo-interface-cs/_static/image3.jpg)](validating-with-the-idataerrorinfo-interface-cs/_static/image5.png)
+[Automatické vytváření metod akcí ![](validating-with-the-idataerrorinfo-interface-cs/_static/image3.jpg)](validating-with-the-idataerrorinfo-interface-cs/_static/image5.png)
 
-**Obrázek 03**: Formulář s chybějící hodnoty ([kliknutím ji zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-cs/_static/image6.png))
+**Obrázek 03**: formulář s chybějícími hodnotami ([kliknutím zobrazíte obrázek v plné velikosti](validating-with-the-idataerrorinfo-interface-cs/_static/image6.png))
 
-Všimněte si, že hodnota DateReleased proběhne automaticky. Protože vlastnost DateReleased nepřijímá hodnoty NULL, DefaultModelBinder Chyba ověřování pro tuto vlastnost automaticky při vygeneruje nemá hodnotu. Pokud chcete upravit chybové zprávy pro vlastnost DateReleased budete muset vytvořit vlastní vazač modelu.
+Všimněte si, že hodnota DateReleased je automaticky ověřena. Vzhledem k tomu, že vlastnost DateReleased nepřijímá hodnoty NULL, vygeneruje DefaultModelBinder chybu ověřování pro tuto vlastnost automaticky, pokud nemá hodnotu. Pokud chcete změnit chybovou zprávu pro vlastnost DateReleased, musíte vytvořit vlastní pořadač modelů.
 
 ## <a name="summary"></a>Souhrn
 
-V tomto kurzu jste zjistili, jak používat rozhraní IDataErrorInfo ke generování chybových zpráv ověření. Nejprve jsme vytvořili částečné třídy film, který rozšiřuje funkce částečné třídy film vygenerovaným rozhraním Entity Framework. Dále jsme přidali logiku ověřování k film třídy OnTitleChanging() OnDirectorChanging() částečné metody a. Nakonec jsme implementovali v rozhraní IDataErrorInfo aby bylo možné zveřejnit tyto zprávy ověření na rozhraní ASP.NET MVC.
+V tomto kurzu jste zjistili, jak používat rozhraní IDataErrorInfo k vytváření chybových zpráv ověřování. Nejprve jsme vytvořili částečnou třídu filmu, která rozšiřuje funkčnost třídy částečného filmu vygenerované Entity Framework. Dále jsme přidali logiku ověřování pro částečné metody třídy film OnTitleChanging () a OnDirectorChanging (). Nakonec jsme implementovali rozhraní IDataErrorInfo, aby se tyto ověřovací zprávy daly vystavit do architektury ASP.NET MVC.
 
 > [!div class="step-by-step"]
 > [Předchozí](performing-simple-validation-cs.md)
-> [další](validating-with-a-service-layer-cs.md)
+> [Další](validating-with-a-service-layer-cs.md)

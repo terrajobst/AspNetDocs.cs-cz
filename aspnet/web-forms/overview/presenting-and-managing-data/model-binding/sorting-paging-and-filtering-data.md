@@ -1,101 +1,101 @@
 ---
 uid: web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
-title: Řazení, stránkování a filtrování dat pomocí vazby modelu a webových formulářů | Dokumentace Microsoftu
+title: Řazení, stránkování a filtrování dat pomocí vazeb modelů a webových formulářů | Microsoft Docs
 author: Rick-Anderson
-description: V této sérii kurzů ukazuje základní aspekty v použití vazby modelu s projektem aplikace webových formulářů ASP.NET. Data interakce díky vazby modelu další přímo-...
+description: Tato série kurzů ukazuje základní aspekty použití vazby modelu s projektem webových formulářů ASP.NET. Vazba modelu umožňuje interakci dat více-...
 ms.author: riande
 ms.date: 02/27/2014
 ms.assetid: 266e7866-e327-4687-b29d-627a0925e87d
 msc.legacyurl: /web-forms/overview/presenting-and-managing-data/model-binding/sorting-paging-and-filtering-data
 msc.type: authoredcontent
 ms.openlocfilehash: f8e64392af6110f36c6af98c4e4e9481c94a0d82
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65106925"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78548060"
 ---
-# <a name="sorting-paging-and-filtering-data-with-model-binding-and-web-forms"></a>Řazení, stránkování a filtrování dat pomocí vazby modelu a webové formuláře
+# <a name="sorting-paging-and-filtering-data-with-model-binding-and-web-forms"></a>Řazení, stránkování a filtrování dat pomocí vazeb modelů a webových formulářů
 
-podle [Tom FitzMacken](https://github.com/tfitzmac)
+tím, že [FitzMacken](https://github.com/tfitzmac)
 
-> V této sérii kurzů ukazuje základní aspekty v použití vazby modelu s projektem aplikace webových formulářů ASP.NET. Vazby modelu díky dat interakce více přímočaré než pracující s daty objektů zdroje (například ObjectDataSource nebo SqlDataSource). Tato série začíná úvodní materiály a přesune pokročilejších pojmech v budoucích kurzech.
+> Tato série kurzů ukazuje základní aspekty použití vazby modelu s projektem webových formulářů ASP.NET. Vazba modelu umožňuje, aby data byla v interakci s více přímým přesměrováním než při práci s objekty zdroje dat (například ObjectDataSource nebo SqlDataSource). Tato série začíná úvodním materiálem a v pozdějších kurzech přechází na pokročilejší koncepty.
 > 
-> Tento kurz ukazuje, jak přidat řazení, stránkování a filtrování dat pomocí vazby modelu.
+> V tomto kurzu se dozvíte, jak přidat řazení, stránkování a filtrování dat prostřednictvím vazby modelu.
 > 
-> V tomto kurzu vychází z projektu vytvořeného v prvním [část](retrieving-data.md) řady.
+> Tento kurz sestaví na projektu vytvořeném v první [části](retrieving-data.md) řady.
 > 
-> Je možné [Stáhnout](https://go.microsoft.com/fwlink/?LinkId=286116) dokončený projekt v jazyce C# nebo VB. Ke stažení kódu funguje pomocí sady Visual Studio 2012 nebo Visual Studio 2013. Používá šablonu Visual Studio 2012, která se trochu liší od sady Visual Studio 2013 šablonu uvedenou v tomto kurzu.
+> Můžete [si stáhnout](https://go.microsoft.com/fwlink/?LinkId=286116) celý projekt v C# nebo VB. Kód ke stažení funguje buď se sadou Visual Studio 2012 nebo Visual Studio 2013. Používá šablonu sady Visual Studio 2012, která se mírně liší od Visual Studio 2013 šablony zobrazené v tomto kurzu.
 
-## <a name="what-youll-build"></a>Co budete vytvářet
+## <a name="what-youll-build"></a>Co sestavíte
 
-V tomto kurzu budete:
+V tomto kurzu:
 
 1. Povolit řazení a stránkování dat
-2. Povolit filtrování dat na základě výběru uživatelem.
+2. Povolit filtrování dat na základě výběru uživatelem
 
-## <a name="add-sorting"></a>Přidání řazení
+## <a name="add-sorting"></a>Přidat řazení
 
-Je velmi snadno povolit řazení v prvku GridView. V souboru Student.aspx, stačí nastavit **AllowSorting** k **true** v prvku GridView. Není nutné nastavovat **SortExpression** hodnotu pro každý sloupec jako hodnota se automaticky použije. GridView upraví dotaz pro přidání řazení dat podle vybrané hodnoty. Zvýrazněný kód uvedený níže ukazuje přidání, že budete muset udělat umožňující řazení.
+Povolení řazení v prvku GridView je velmi snadné. V souboru student. aspx stačí nastavit **AllowSorting** na **hodnotu true** v prvku GridView. Pro každý sloupec není nutné nastavovat hodnotu **SortExpression** , protože pole DataField je automaticky použito. Prvek GridView upraví dotaz tak, aby zahrnoval řazení dat podle vybrané hodnoty. Zvýrazněný kód ukazuje přidání, které je třeba provést, aby bylo možné řazení povolit.
 
 [!code-aspx[Main](sorting-paging-and-filtering-data/samples/sample1.aspx?highlight=5)]
 
-Spuštění webové aplikace a testování řazení záznamech studentů podle hodnot v různých sloupcích.
+Spuštění webové aplikace a testování záznamů studentů podle hodnot v různých sloupcích.
 
-![studenti řazení](sorting-paging-and-filtering-data/_static/image2.png)
+![Seřadit studenty](sorting-paging-and-filtering-data/_static/image2.png)
 
-## <a name="add-paging"></a>Přidání stránkování
+## <a name="add-paging"></a>Přidat stránkování
 
-Povolení stránkování je také velmi snadné. V prvku GridView, nastavte **vlastnost AllowPaging** vlastnost **true** a nastavit **PageSize** na počet záznamů, které chcete zobrazit na jednotlivých stránkách. V tomto kurzu můžete ho nastavit na 4.
+Povolení stránkování je také velmi snadné. V prvku GridView nastavte vlastnost **li AllowPaging nastavena** na **hodnotu true** a nastavte vlastnost **PageSize** na počet záznamů, které chcete zobrazit na každé stránce. V tomto kurzu ho můžete nastavit na 4.
 
 [!code-aspx[Main](sorting-paging-and-filtering-data/samples/sample2.aspx?highlight=5)]
 
-Spusťte webovou aplikaci a Všimněte si, že teď záznamy jsou rozdělit přes více stránek s více než 4 záznamy zobrazené na jednu stránku.
+Spusťte webovou aplikaci a Všimněte si, že nyní jsou záznamy rozděleny na více stránek s maximálně 4 záznamy zobrazenými na jedné stránce.
 
-![Přidání stránkování](sorting-paging-and-filtering-data/_static/image4.png)
+![Přidat stránkování](sorting-paging-and-filtering-data/_static/image4.png)
 
-Odložený dotaz zvyšuje efektivitu aplikace. Místo načtení celé datové sady, upraví prvku GridView. dotaz pro načtení záznamů pouze pro aktuální stránku.
+Odložené provádění dotazů vylepšuje efektivitu aplikace. Místo načtení celé datové sady prvek GridView upraví dotaz tak, aby načetl pouze záznamy pro aktuální stránku.
 
-## <a name="filter-records-by-user-selection"></a>Záznamy filtrovaly podle výběru uživatele
+## <a name="filter-records-by-user-selection"></a>Filtrovat záznamy podle výběru uživatele
 
-Vazby modelu přidá několik atributů, které vám umožní určit, jak nastavit hodnotu pro parametr metody vazby modelu. Tyto atributy jsou v **System.Web.ModelBinding** oboru názvů. Mezi ně patří:
+Vazba modelu přidá několik atributů, které umožňují určit, jak nastavit hodnotu pro parametr v metodě vazby modelu. Tyto atributy jsou v oboru názvů **System. Web. ModelBinding** . Patří mezi ně:
 
-- Control
+- Řízení
 - Soubor cookie
 - Formulář
 - Profil
 - Řetězec dotazu
 - RouteData
 - Relace
-- UserProfile
-- Stav zobrazení
+- Profilu
+- ViewState
 
-V tomto kurzu použijete hodnotu ovládacího prvku k filtrování záznamů, které se zobrazují v prvku GridView. Přidáte **ovládací prvek** atributu na metodu dotazu, který jste vytvořili dříve. V [později](using-query-string-values-to-retrieve-data.md) kurz, se použijí **QueryString** atribut pro parametr určující, zda je hodnota parametru pochází od hodnotu řetězce dotazu.
+V tomto kurzu použijete hodnotu ovládacího prvku k filtrování, které záznamy se zobrazí v prvku GridView. Přidáte atribut **Control** do metody dotazu, kterou jste vytvořili dříve. V [pozdějším](using-query-string-values-to-retrieve-data.md) kurzu použijete atribut **QueryString** na parametr a určíte tak, že hodnota parametru pochází z hodnoty řetězce dotazu.
 
-Nejprve přidejte výše ValidationSummary, rozevírací seznam pro filtrování, které studenty jsou uvedeny.
+Nejdřív nad ovládací souhrnu ověření přidejte rozevírací seznam pro filtrování, které studenty se zobrazí.
 
 [!code-aspx[Main](sorting-paging-and-filtering-data/samples/sample3.aspx?highlight=3-11)]
 
-V souboru kódu na pozadí upravte metodu vyberte získat hodnotu z ovládacího prvku a nastavte název parametru název ovládacího prvku, který obsahuje hodnotu.
+V souboru kódu na pozadí upravte metodu Select pro příjem hodnoty z ovládacího prvku a nastavte název parametru na název ovládacího prvku, který poskytuje hodnotu.
 
-Je nutné přidat **pomocí** příkaz pro **System.Web.ModelBinding** obor názvů, chcete-li vyřešit atribut ovládacího prvku.
+Pro vyřešení atributu ovládacího prvku je nutné přidat příkaz **using** pro obor názvů **System. Web. ModelBinding** .
 
 [!code-csharp[Main](sorting-paging-and-filtering-data/samples/sample4.cs)]
 
-Následující kód ukazuje metody select znovu pracoval pro filtrování vrácená data na základě hodnoty z rozevíracího seznamu. Přidání atributu ovládacího prvku před parametr určuje, že hodnota pro tento parametr pochází z ovládacího prvku se stejným názvem.
+Následující kód ukazuje znovu vypracovanou metodu Select pro filtrování vrácených dat na základě hodnoty rozevíracího seznamu. Přidání atributu ovládacího prvku před parametr určuje, že hodnota pro tento parametr pochází z ovládacího prvku se stejným názvem.
 
 [!code-csharp[Main](sorting-paging-and-filtering-data/samples/sample5.cs)]
 
-Spusťte webovou aplikaci a vyberte jiné hodnoty z rozevíracího seznamu pro filtrování seznamu studentů.
+Pokud chcete filtrovat seznam studentů, spusťte webovou aplikaci a v rozevíracím seznamu vyberte jiné hodnoty.
 
-![Filtr pro studenty](sorting-paging-and-filtering-data/_static/image6.png)
+![filtrovat studenty](sorting-paging-and-filtering-data/_static/image6.png)
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto kurzu jste povolili, řazení a stránkování dat. Také jste povolili, filtrování dat podle hodnoty ovládacího prvku.
+V tomto kurzu jste povolili řazení a stránkování dat. Také jste povolili filtrování dat podle hodnoty ovládacího prvku.
 
-V dalším [kurzu](integrating-jquery-ui.md) uživatelské rozhraní bude vylepšit integrací uživatelské rozhraní JQuery widgetu do šablony dynamická data.
+V dalším [kurzu](integrating-jquery-ui.md) vylepšíte uživatelské rozhraní integrací WIDGETU uživatelského rozhraní jQuery do šablony dynamických dat.
 
 > [!div class="step-by-step"]
 > [Předchozí](updating-deleting-and-creating-data.md)
-> [další](integrating-jquery-ui.md)
+> [Další](integrating-jquery-ui.md)

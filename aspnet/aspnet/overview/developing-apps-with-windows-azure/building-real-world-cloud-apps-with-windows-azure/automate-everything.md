@@ -9,11 +9,11 @@ ms.assetid: ba6e6baa-9b9f-471f-b39d-b007a3addadc
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
 msc.type: authoredcontent
 ms.openlocfilehash: e741a753a36ebdaefbff8eee0b38911785c716ac
-ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77457164"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78584943"
 ---
 # <a name="automate-everything-building-real-world-cloud-apps-with-azure"></a>Automatizace všeho (vytváření skutečných cloudových aplikací s Azure)
 
@@ -247,7 +247,7 @@ Podobným způsobem můžete automatizovat většinu funkcí správy Azure, kter
 
 V [další kapitole](source-control.md) se podíváme na zdrojový kód a vysvětlete, proč je důležité zahrnout skripty do úložiště zdrojového kódu.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 
 - [Nainstalujte a nakonfigurujte Windows PowerShell pro Azure](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1). Vysvětluje, jak nainstalovat rutiny Azure PowerShell a jak nainstalovat certifikát, který potřebujete do vašeho počítače, abyste mohli spravovat účet Azure. To je skvělé místo, kde můžete začít, protože obsahuje také odkazy na prostředky pro učení samotného prostředí PowerShell.
 - [Centrum skriptů Azure](https://docs.microsoft.com/azure/automation/automation-runbook-gallery). Portál WindowsAzure.com k prostředkům pro vývoj skriptů, které spravují služby Azure, s odkazy na kurzy Začínáme, Referenční dokumentace k rutinám a zdrojový kód a ukázkové skripty

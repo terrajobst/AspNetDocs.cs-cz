@@ -1,23 +1,23 @@
 ---
 uid: mvc/videos/mvc-2/how-do-i/index
-title: How-Do-I | Microsoft Docs
+title: Postup – I | Microsoft Docs
 author: rick-anderson
-description: ASP.NET MVC a jak vytvořit aplikaci elektronického obchodování celou od začátku na dokončení The Storefront - vztahovat na videa v této části.
+description: Videa v této části se týkají ASP.NET MVC, včetně postupu sestavení ' prezentace ' – celé aplikace elektronického obchodování od začátku do konce.
 ms.author: riande
 ms.date: 09/15/2011
 ms.assetid: 9bc6c53a-3e54-4f9d-8bef-0f3359aecf7b
 msc.legacyurl: /mvc/videos/mvc-2/how-do-i
 msc.type: chapter
 ms.openlocfilehash: 7c2fd0d57cdd6775eb027c0dc9b360443bacbfed
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65120525"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78537434"
 ---
 # <a name="how-do-i"></a>Jak na to
 
-> Videa v této části vztahovat na ASP.NET MVC a jak vytvořit "The prodejních míst" - aplikaci elektronického obchodování celou od začátku na dokončení.
+> Videa v této části se týkají ASP.NET MVC, včetně postupu sestavení "prezentace" – celé aplikace elektronického obchodování od začátku do konce.
 
 - [Vytvoření aplikace se seznamem úkolů v ASP.NET MVC](creating-a-tasklist-application-with-aspnet-mvc.md)
 - [Vytvoření aplikace Movie Database za 15 minut s ASP.NET MVC](creating-a-movie-database-application-in-15-minutes-with-aspnet-mvc.md)
@@ -36,7 +36,7 @@ ms.locfileid: "65120525"
 - [ASP.NET MVC: 10minutové technické video pro vývojáře](aspnet-mvc-how-10-minute-technical-video-for-developers.md)
 - [Vrácení dat ve formátu JSON na volání AJAX ve webové aplikaci ASP.NET MVC](how-do-i-return-json-formatted-data-for-an-ajax-call-in-an-aspnet-mvc-web-application.md)
 - [Práce s daty v částečných zobrazeních ASP.NET MVC](how-do-i-work-with-data-in-aspnet-mvc-partial-views.md)
-- [Implementace modelů zobrazení kvůli správě dat v zobrazeních ASP.NET MVC](how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
+- [Implementace modelů zobrazení pro správu dat pro zobrazení ASP.NET MVC](how-do-i-implement-view-models-to-manage-data-for-aspnet-mvc-views.md)
 - [Vytvoření vlastní pomocné rutiny HTML pro aplikaci MVC](how-do-i-create-a-custom-html-helper-for-an-mvc-application.md)
 - [Práce s vazači modelu v aplikaci MVC](how-do-i-work-with-model-binders-in-an-mvc-application.md)
 - [Použití atributů HttpVerbs v aplikaci MVC](how-do-i-use-httpverbs-attributes-in-an-mvc-application.md)
