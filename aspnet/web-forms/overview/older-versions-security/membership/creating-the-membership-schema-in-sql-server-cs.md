@@ -9,11 +9,11 @@ ms.assetid: b4ac129d-1b8e-41ca-a38f-9b19d7c7bb0e
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/creating-the-membership-schema-in-sql-server-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 97623e7c13ab7799b9dadbb8e52be8e0cd99e252
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74595038"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78575332"
 ---
 # <a name="creating-the-membership-schema-in-sql-server-c"></a>Vytvoření schématu členství v SQL Serveru (C#)
 
@@ -206,9 +206,9 @@ Tabulka 1 znázorňuje, jaké tři sloupce můžou vypadat jako u různých tech
 
 | **Technika úložiště&lt;\_o3a\_p/&gt;** | **Heslo&lt;\_o3a\_p/&gt;** | **PasswordFormat&lt;\_o3a\_p/&gt;** | **PasswordSalt&lt;\_o3a\_p/&gt;** |
 | --- | --- | --- | --- |
-| Vymazat | MySecret! | 0 | tTnkPlesqissc2y2SMEygA = = |
-| Rozdělí | 2oXm6sZHWbTHFgjgkGQsc2Ec9ZM = | 1 | wFgjUfhdUFOCKQiI61vtiQ = = |
-| Šifrovaná | 62RZgDvhxykkqsMchZ0Yly7HS6onhpaoCYaRxV8g0F4CW56OXUU3e7Inza9j9BKp | 2 | LSRzhGS/AA/oqAXGLHJNBw = = |
+| Vymazat | MySecret! | 0 | tTnkPlesqissc2y2SMEygA== |
+| Rozdělí | 2oXm6sZHWbTHFgjgkGQsc2Ec9ZM= | 1 | wFgjUfhdUFOCKQiI61vtiQ== |
+| Šifrované | 62RZgDvhxykkqsMchZ0Yly7HS6onhpaoCYaRxV8g0F4CW56OXUU3e7Inza9j9BKp | 2 | LSRzhGS/aa/oqAXGLHJNBw== |
 
 **Tabulka 1**: příklad hodnot polí souvisejících s heslem při ukládání hesla MySecret!
 
@@ -248,20 +248,20 @@ Kromě atributů `name` a `type` obsahuje element `<add>` atributy, které defin
 | --- | --- |
 | `ApplicationName` | Odvolání, že rozhraní členství umožňuje rozdělit jednotlivé úložiště uživatelů na oddíly mezi více aplikacemi. Toto nastavení označuje název oddílu aplikace používaného poskytovatelem členství. Pokud tato hodnota není explicitně zadána, je nastavena za běhu na hodnotu pro virtuální kořenovou cestu aplikace. |
 | `commandTimeout` | Určuje hodnotu časového limitu příkazu SQL (v sekundách). Výchozí hodnota je 30. |
-| `connectionStringName` | Název připojovacího řetězce v prvku `<connectionStrings>`, který se má použít pro připojení k databázi úložiště uživatele. Tato hodnota je povinná. |
+| `connectionStringName` | Název připojovacího řetězce v prvku `<connectionStrings>`, který se má použít pro připojení k databázi úložiště uživatele. Tato hodnota se vyžaduje. |
 | `description` | Poskytuje uživatelsky přívětivý popis zaregistrovaného poskytovatele. |
 | `enablePasswordRetrieval` | Určuje, jestli uživatelé můžou načítat zapomenuté heslo. Výchozí hodnota je `false`. |
 | `enablePasswordReset` | Určuje, jestli uživatelé můžou resetovat svoje heslo. Výchozí hodnota je `true`. |
 | `maxInvalidPasswordAttempts` | Maximální počet neúspěšných pokusů o přihlášení, které se mohou vyskytnout pro daného uživatele během zadaného `passwordAttemptWindow`, než bude uživatel uzamčen. Výchozí hodnota je 5. |
 | `minRequiredNonalphanumericCharacters` | Minimální počet nealfanumerických znaků, které se musí objevit v uživatelském hesle. Tato hodnota musí být v rozmezí od 0 do 128. Výchozí hodnota je 1. |
 | `minRequiredPasswordLength` | Minimální počet znaků vyžadovaných v hesle. Tato hodnota musí být v rozmezí od 0 do 128. Výchozí hodnota je 7. |
-| `name` | Název zaregistrovaného poskytovatele. Tato hodnota je povinná. |
+| `name` | Název zaregistrovaného poskytovatele. Tato hodnota se vyžaduje. |
 | `passwordAttemptWindow` | Počet minut, během kterých jsou sledovány neúspěšné pokusy o přihlášení Pokud uživatel zadá neplatné přihlašovací údaje `maxInvalidPasswordAttempts` časy v rámci tohoto zadaného okna, budou uzamčeny. Výchozí hodnota je 10. |
-| `PasswordFormat` | Formát úložiště hesla: `Clear`, `Hashed`nebo `Encrypted`. Výchozí hodnota je `Hashed`. |
+| `PasswordFormat` | Formát úložiště hesla: `Clear`, `Hashed`nebo `Encrypted`. Výchozí formát je `Hashed`. |
 | `passwordStrengthRegularExpression` | Pokud je tento regulární výraz k dispozici, slouží k vyhodnocení síly vybraného hesla uživatele při vytváření nového účtu nebo při změně hesla. Výchozí hodnota je prázdný řetězec. |
 | `requiresQuestionAndAnswer` | Určuje, jestli uživatel musí při načítání nebo resetování hesla odpovědět na jeho bezpečnostní otázku. Výchozí hodnota je `true`. |
 | `requiresUniqueEmail` | Uvádí, zda všechny uživatelské účty v daném oddílu aplikace musí mít jedinečnou e-mailovou adresu. Výchozí hodnota je `true`. |
-| `type` | Určuje typ poskytovatele. Tato hodnota je povinná. |
+| `type` | Určuje typ poskytovatele. Tato hodnota se vyžaduje. |
 
 **Tabulka 2**: nastavení konfigurace členství a `SqlMembershipProvider`
 
@@ -303,7 +303,7 @@ Všimněte si, že nastavení `connectionStringName` `SecurityTutorialsSqlMember
 > [!NOTE]
 > Odvolání, že rozhraní členství umožňuje rozdělit jednotlivé úložiště uživatelů na oddíly mezi více aplikacemi. Nastavení `applicationName` poskytovatele členství indikuje, jaká aplikace poskytovatel používá při práci s úložištěm uživatele. Je důležité, abyste explicitně nastavili hodnotu pro nastavení konfigurace `applicationName`, protože pokud `applicationName` není explicitně nastaven, je při spuštění přiřazená k virtuální kořenové cestě webové aplikace. To funguje, pokud se nemění virtuální kořenová cesta aplikace, ale pokud přesunete aplikaci na jinou cestu, nastavení `applicationName` se změní také. Pokud k tomu dojde, zprostředkovatel členství začne pracovat s jiným oddílem aplikace, než se dřív používal. Uživatelské účty vytvořené před přesunem se budou nacházet v jiném oddílu aplikace a uživatelé se už nebudou moct k lokalitě přihlašovat. Podrobnější diskusi k této problematice najdete v tématu [vždy nastavte vlastnost `applicationName` při konfiguraci členství v ASP.NET 2,0 a dalších zprostředkovatelů](https://weblogs.asp.net/scottgu/443634).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 V tuto chvíli máme databázi s nakonfigurovanými aplikačními službami (`SecurityTutorials.mdf`) a nakonfigurovali jsme naši webovou aplikaci tak, aby rozhraní členství používalo poskytovatele `SecurityTutorialsSqlMembershipProvider`, kterého jsme právě zaregistrovali. Tento registrovaný zprostředkovatel je typu `SqlMembershipProvider` a má `connectionStringName` nastaven na příslušný připojovací řetězec (`SecurityTutorialsConnectionString`) a explicitně nastavenou hodnotu `applicationName`.
 

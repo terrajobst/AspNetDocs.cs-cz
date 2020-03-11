@@ -9,11 +9,11 @@ ms.assetid: 8be9a51b-ea6b-46c7-bfa2-476d9b14c24c
 msc.legacyurl: /web-forms/overview/data-access/advanced-data-access-scenarios/creating-stored-procedures-and-user-defined-functions-with-managed-code-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 0ac5f71d519689a9dc84fb82a04196d520cca6e1
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74609803"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78551301"
 ---
 # <a name="creating-stored-procedures-and-user-defined-functions-with-managed-code-vb"></a>Vytvoření uložených procedur a uživatelsky definovaných funkcí spravovaným kódem (C#)
 
@@ -88,7 +88,7 @@ SQL Server projekt je svázán s konkrétní databází. V důsledku toho po vyt
 
 **Obrázek 5**: přidružení SQL Server projektu k databázi Northwind
 
-Aby bylo možné ladit spravované uložené procedury a UDF, vytvoříme v rámci tohoto projektu podporu ladění SQL/CLR pro toto připojení. Pokaždé, když se přiřadí SQL Server projekt k nové databázi (jako na obrázku 5), Visual Studio se zeptá, jestli chceme povolit ladění SQL/CLR na připojení (viz obrázek 6). Klikněte na možnost Ano.
+Aby bylo možné ladit spravované uložené procedury a UDF, vytvoříme v rámci tohoto projektu podporu ladění SQL/CLR pro toto připojení. Pokaždé, když se přiřadí SQL Server projekt k nové databázi (jako na obrázku 5), Visual Studio se zeptá, jestli chceme povolit ladění SQL/CLR na připojení (viz obrázek 6). Klikněte na tlačítkoAno.
 
 ![Povolit ladění SQL/CLR](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb/_static/image10.png)
 
@@ -448,7 +448,7 @@ Jak ukazuje obrázek 32, výše uvedený příkaz zobrazí informace o těchto p
 
 **Obrázek 32**: `ManuallyCreatedDBObjects.dll` je uveden v Průzkumník objektů ([kliknutím zobrazíte obrázek v plné velikosti](creating-stored-procedures-and-user-defined-functions-with-managed-code-vb/_static/image78.png)).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Microsoft SQL Server 2005 poskytuje integraci s modulem CLR (Common Language Runtime), který umožňuje vytváření databázových objektů pomocí spravovaného kódu. Dřív se tyto objekty databáze daly vytvořit jenom pomocí T-SQL, ale teď můžeme tyto objekty vytvořit pomocí programovacích jazyků .NET, jako je Visual Basic. V tomto kurzu jsme vytvořili dva spravované uložené procedury a spravované uživatelsky definované funkce.
 

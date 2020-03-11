@@ -9,11 +9,11 @@ ms.assetid: 61aa4e08-aa81-4aeb-8ebe-19ba7a65e04c
 msc.legacyurl: /web-forms/overview/older-versions-security/membership/validating-user-credentials-against-the-membership-user-store-cs
 msc.type: authoredcontent
 ms.openlocfilehash: aaf6df6f52253ef0f7369a7e77211b6786b97db1
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74618093"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78523826"
 ---
 # <a name="validating-user-credentials-against-the-membership-user-store-c"></a>Ověření přihlašovacích údajů uživatele v úložišti uživatelů, kteří jsou členy (C#)
 
@@ -255,7 +255,7 @@ K otestování tohoto kódu se záměrně pokus o přihlášení jako stávajíc
 
 **Obrázek 11**: tito provedl příliš mnoho neplatných pokusů o přihlášení a byl uzamčen ([kliknutím zobrazíte obrázek v plné velikosti).](validating-user-credentials-against-the-membership-user-store-cs/_static/image33.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Před tímto kurzem přihlašovací stránka ověřila zadané přihlašovací údaje proti pevně zakódovanému seznamu párů uživatelských jmen a hesel. V tomto kurzu jsme aktualizovali stránku, aby ověřila přihlašovací údaje proti členskému rozhraní. V kroku 1 jsme si vyhledali použití metody `Membership.ValidateUser` programově. V kroku 2 jsme nahradili naše ručně vytvořené uživatelské rozhraní a kód pomocí přihlašovacího ovládacího prvku.
 

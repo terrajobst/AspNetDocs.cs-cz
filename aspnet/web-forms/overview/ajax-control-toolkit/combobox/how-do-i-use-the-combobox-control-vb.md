@@ -1,155 +1,155 @@
 ---
 uid: web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb
-title: Použití ovládacího prvku ComboBox (VB) | Dokumentace Microsoftu
+title: Návody použít ovládací prvek ComboBox? (VB) | Microsoft Docs
 author: microsoft
-description: Pole se seznamem je ovládací prvek ASP.NET AJAX, který kombinuje flexibilitu textové pole se seznamem možností, ze kterých mohou uživatelé vybrat.
+description: ComboBox je ovládací prvek ASP.NET AJAX, který kombinuje flexibilitu textového pole se seznamem možností, ze kterých si uživatelé mohou vybrat.
 ms.author: riande
 ms.date: 05/12/2009
 ms.assetid: e887e7b2-a6e7-4a28-a134-ba334494badb
 msc.legacyurl: /web-forms/overview/ajax-control-toolkit/combobox/how-do-i-use-the-combobox-control-vb
 msc.type: authoredcontent
 ms.openlocfilehash: 468063a72253cce55a02bfaef1219bff03d06418
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65119776"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78554486"
 ---
-# <a name="how-do-i-use-the-combobox-control-vb"></a>Použití ovládacího prvku ComboBox (VB)
+# <a name="how-do-i-use-the-combobox-control-vb"></a>Návody použít ovládací prvek ComboBox? (VB)
 
-by [Microsoft](https://github.com/microsoft)
+od [Microsoftu](https://github.com/microsoft)
 
-> Pole se seznamem je ovládací prvek ASP.NET AJAX, který kombinuje flexibilitu textové pole se seznamem možností, ze kterých mohou uživatelé vybrat.
+> ComboBox je ovládací prvek ASP.NET AJAX, který kombinuje flexibilitu textového pole se seznamem možností, ze kterých si uživatelé mohou vybrat.
 
-Cílem tohoto kurzu je vysvětlit ovládacího prvku Toolkit ComboBox ovládacího prvku AJAX. Pole se seznamem funguje jako kombinace standardní ovládací prvek DropDownList s ASP.NET a ovládací prvek textového pole. Můžete vybrat z existující seznam položek, nebo zadejte novou položku.
+Cílem tohoto kurzu je vysvětlit ovládací prvek ComboBox ovládacího prvku s ovládacím prvkem ovládací prvky AJAX Control Toolkit. Komponenta ComboBox funguje jako kombinace mezi standardním ovládacím prvkem ASP.NET DropDownList a ovládacím prvkem TextBox. Můžete buď vybrat z již existujícího seznamu položek, nebo zadat novou položku.
 
-Pole se seznamem se podobá – extender ovládacího prvku automatické dokončování, ale ovládací prvky se používají v různých scénářích. Zařízení extender automatické dokončování dotazů webovou službu, která najít odpovídající položky. ComboBox – ovládací prvek naproti tomu je inicializována s sadu položek. Umožňuje zařízení extender automatické dokončování pomocí smysl při práci s rozsáhlou sadou dat (miliony částí auta) při používání ovládacího prvku ComboBox dává smysl při práci s malou sadu dat (desítky car části).
+Pole ComboBox se podobá ovládacímu prvku zařízení automatického dokončování, ale ovládací prvky se používají v různých scénářích. Objekt pro automatické dokončování rozšiřuje webovou službu, aby získal vyhovující položky. Ovládací prvek ComboBox na rozdíl od je inicializován se sadou položek. Použití nástroje pro doplnění automatického dokončování dává smysl při práci s velkým množstvím dat (miliony částí auta) a při použití ovládacího prvku ComboBox dává smysl při práci s malou sadou dat (desítky částí auta).
 
-## <a name="selecting-from-a-static-list-of-items"></a>Výběr ze statické seznam položek
+## <a name="selecting-from-a-static-list-of-items"></a>Výběr ze statického seznamu položek
 
-Umožní s začínat jednoduchý příklad použití ovládacího prvku pole se seznamem. Představte si, že chcete zobrazit statický seznam položek v rozevíracím seznamu. Ale budete chtít zůstat otevřeno, možnost, že seznam není úplný. Budete chtít umožnit uživateli zadat vlastní hodnoty do seznamu.
+Pojďme začít s jednoduchou ukázkou použití ovládacího prvku ComboBox. Představte si, že chcete zobrazit statický seznam položek v rozevíracím seznamu. Chcete však ponechat otevřené možnosti, že seznam není úplný. Chcete uživateli dovolit, aby do seznamu zadal vlastní hodnotu.
 
-Jsme ll vytvoření nové stránky webových formulářů ASP.NET a pomocí ovládacího prvku pole se seznamem na stránce. Do projektu přidejte novou stránku ASP.NET a přepněte do zobrazení návrhu.
+Vytvoříme novou stránku webových formulářů ASP.NET a použijeme na stránce ovládací prvek ComboBox. Přidejte do projektu novou stránku ASP.NET a přepněte se na zobrazení Návrh.
 
-Pokud chcete pomocí ovládacího prvku pole se seznamem na stránce musíte přidat ovládací prvek ScriptManager na stránce. Přetáhněte ovládací prvek ScriptManager from beneath na kartě Rozšíření AJAX na plochu návrháře. Měli byste přidat ovládací prvek ScriptManager v horní části stránky. můžete ho přidat bezprostředně pod levou serverové &lt;formuláře&gt; značky.
+Pokud chcete na stránce použít ovládací prvek ComboBox, je nutné na stránku přidat ovládací prvek ScriptManager. Přetáhněte ovládací prvek ScriptManager z části pod kartu Rozšíření AJAX na plochu návrháře. Ovládací prvek ScriptManager byste měli přidat v horní části stránky. můžete ji přidat hned pod úvodní &lt;formuláře na straně serveru&gt; značku.
 
-V dalším kroku přetáhněte ovládací prvek pole se seznamem na stránku. ComboBox – ovládací prvek můžete najít v panelu nástrojů s jinými sadou nástrojů AJAX Control Toolkit ovládacích prvků a extenderů (viz obrázek 1).
+V dalším kroku přetáhněte ovládací prvek ComboBox na stránku. Ovládací prvek ComboBox můžete najít v sadě nástrojů s ostatními ovládacími prvky a ovládacími prvky AJAX Control Toolkit (viz obrázek 1).
 
-[![Jednoduchý formulář pro vytvoření karty firmy](how-do-i-use-the-combobox-control-vb/_static/image1.jpg)](how-do-i-use-the-combobox-control-vb/_static/image1.png)
+[![jednoduchý formulář pro vytvoření vizitky](how-do-i-use-the-combobox-control-vb/_static/image1.jpg)](how-do-i-use-the-combobox-control-vb/_static/image1.png)
 
-**Obrázek 01**: ComboBox – ovládací prvek výběru z panelu nástrojů ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image2.png))
+**Obrázek 01**: výběr ovládacího prvku ComboBox ze sady nástrojů ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image2.png))
 
-Jsme ll pomocí ovládacího prvku pole se seznamem pro zobrazení statický seznam voleb. Uživatel můžete vybrat určitou úroveň spiciness pro jejich potravin ze seznamu tři možnosti: Mírné, střední a aktivní (viz obrázek 2).
+K zobrazení statického seznamu voleb používáme ovládací prvek ComboBox. Uživatel může pro své jídlo vybrat konkrétní úroveň spiciness ze seznamu tří možností: mírná, střední a horká (viz obrázek 2).
 
-[![Výběr ze statické seznam položek](how-do-i-use-the-combobox-control-vb/_static/image2.jpg)](how-do-i-use-the-combobox-control-vb/_static/image3.png)
+[![výběru ze statického seznamu položek](how-do-i-use-the-combobox-control-vb/_static/image2.jpg)](how-do-i-use-the-combobox-control-vb/_static/image3.png)
 
-**Obrázek 02**: Výběr ze statické seznam položek ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image4.png))
+**Obrázek 02**: výběr ze statického seznamu položek ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image4.png))
 
-Existují dva způsoby, že tyto možnosti můžete přidat do ovládacího prvku pole se seznamem. Nejprve vyberte možnost upravit možnosti úkolu, když myší najedete myší na ovládací prvek v návrhovém zobrazení a otevřete Editor položek (viz obrázek 3).
+Existují dva způsoby, jak lze přidat tyto možnosti do ovládacího prvku ComboBox. Nejprve vyberte možnost úlohy upravit možnosti, když najedete myší na ovládací prvek v zobrazení Návrh a otevřete Editor položek (viz obrázek 3).
 
-[![Úprava pole se seznamem položek](how-do-i-use-the-combobox-control-vb/_static/image3.jpg)](how-do-i-use-the-combobox-control-vb/_static/image5.png)
+[![úpravy položek ComboBox](how-do-i-use-the-combobox-control-vb/_static/image3.jpg)](how-do-i-use-the-combobox-control-vb/_static/image5.png)
 
-**Obrázek 03**: Úprava pole se seznamem položek ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image6.png))
+**Obrázek 03**: úpravy položek ComboBox ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image6.png))
 
-Druhou možností je přidat seznam položek mezi otevírací a zavírací &lt;asp: pole se seznamem&gt; značky v zobrazení zdroje. Na stránce v informacích 1 obsahuje aktualizované pole se seznamem, který má seznam položek.
+Druhou možností je přidat seznam položek mezi otevírací a uzavírací &lt;ASP: ComboBox&gt; značky ve zdrojovém zobrazení. Stránka v seznamu 1 obsahuje aktualizovanou položku ComboBox, která obsahuje seznam položek.
 
-**Výpis 1 - Static.aspx**
+**Výpis 1 – statické. aspx**
 
 [!code-aspx[Main](how-do-i-use-the-combobox-control-vb/samples/sample1.aspx)]
 
-Při otevření stránky v informacích 1, můžete vybrat jednu z již existujících možností z pole se seznamem. Jinými slovy pole se seznamem funguje stejně jako ovládací prvek DropDownList.
+Když otevřete stránku v seznamu 1, můžete vybrat jednu z již existujících možností z komponenty ComboBox. Jinými slovy, Komponenta ComboBox funguje stejně jako ovládací prvek DropDownList.
 
-Nicméně máte také možnost zadat novou volbu (třeba Super Spicy), který není v seznamu existujících. Ano pole se seznamem funguje také jako ovládací prvek textového pole.
+Nicméně máte také možnost zadat novou volbu (například Super Spicy), která není v seznamu existujících. Proto pole ComboBox funguje také jako ovládací prvek TextBox.
 
-Bez ohledu na to, jestli si vybrat existující položky nebo můžete zadat vlastní položky při odeslání formuláře, podle vašeho výběru se zobrazí v ovládacím prvku popisek. Po odeslání formuláře btnSubmit\_kliknutím obslužná rutina spustí a aktualizuje popisek (viz obrázek 4).
+Bez ohledu na to, zda jste vybrali již existující položku nebo když zadáte vlastní položku, se vaše volba zobrazí v ovládacím prvku popisek. Při odeslání formuláře se spustí obslužná rutina btnSubmit\_klikněte na ni a aktualizace popisku (viz obrázek 4).
 
-[![Zobrazení vybrané položky](how-do-i-use-the-combobox-control-vb/_static/image4.jpg)](how-do-i-use-the-combobox-control-vb/_static/image7.png)
+[![zobrazení vybrané položky](how-do-i-use-the-combobox-control-vb/_static/image4.jpg)](how-do-i-use-the-combobox-control-vb/_static/image7.png)
 
-**Obrázek 04**: Zobrazení vybrané položky ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image8.png))
+**Obrázek 04**: zobrazení vybrané položky ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image8.png))
 
-Pole se seznamem podporuje stejné vlastnosti jako ovládací prvek DropDownList pro načtení vybrané položky po odeslání formuláře:
+Komponenta ComboBox podporuje stejné vlastnosti jako ovládací prvek DropDownList pro načtení vybrané položky po odeslání formuláře:
 
-- SelectedItem.Text – zobrazí hodnoty vlastnosti Text vybrané položky.
-- SelectedItem.Value – zobrazí hodnoty vlastnosti hodnotu vybrané položky nebo zobrazuje text zadaný do pole se seznamem.
-- SelectedValue – stejný jako SelectedItem.Value s tím rozdílem, že tato vlastnost umožňuje určit výchozí (počáteční) vybranou položku.
+- SelectedItem. text – zobrazí hodnotu vlastnosti text vybrané položky.
+- SelectedItem. Value – zobrazí hodnotu vlastnosti Value vybrané položky nebo zobrazí text zadaný do pole se seznamem.
+- SelectedValue – totéž jako SelectedItem. Value s tím rozdílem, že tato vlastnost umožňuje zadat výchozí (počáteční) vybranou položku.
 
-Pokud zadáte vlastní možnost do pole se seznamem pak podle vlastního výběru přiřazená SelectedItem.Text i SelectedItem.Value vlastnosti.
+Pokud do pole ComboBox zadáte vlastní volbu, přiřadí se vlastní volba do vlastností SelectedItem. text i SelectedItem. Value.
 
-## <a name="selecting-the-list-of-items-from-the-database"></a>Výběr v seznamu položek z databáze
+## <a name="selecting-the-list-of-items-from-the-database"></a>Výběr seznamu položek z databáze
 
-Seznam položek, které zobrazí pole se seznamem můžete načíst z databáze. Například lze svázat pole se seznamem ovládacím prvkem SqlDataSource, ovládací prvek ObjectDataSource, zdroje dat LinqDataSource nebo EntityDataSource.
+Můžete načíst seznam položek, které se zobrazí v poli se seznamem z databáze. Můžete například navazovat pole ComboBox na ovládací prvek SqlDataSource, ovládací prvek ObjectDataSource, zdroj LinqDataSource nebo EntityDataSource.
 
-Představte si, že chcete zobrazit seznam filmy v pole se seznamem. Chcete načíst seznam videa z databázové tabulky videa. Postupujte podle těchto kroků:
+Představte si, že chcete zobrazit seznam filmů v poli se seznamem. Chcete načíst seznam filmů z tabulky databáze filmů. Postupujte následovně:
 
-1. Vytvoření stránky s názvem Movies.aspx
-2. Přidání ovládacího prvku ScriptManager na stránce přetažením ScriptManager získáte na kartě Rozšíření AJAX na panelu nástrojů na stránku.
-3. Přidání ovládacího prvku pole se seznamem na stránku tak, že přetáhnete pole se seznamem na stránku.
-4. V návrhovém zobrazení přesunutí ukazatele myši nad ovládací prvek pole se seznamem a vyberte **zvolit zdroj dat** úloh možnost (viz obrázek 5). Průvodce konfigurací zdroje dat není spuštěn.
-5. V **vyberte zdroj dat** kroku, vyberte &lt;nový zdroj dat&gt; možnost.
-6. V **zvolte typ zdroje dat** kroku, vyberte databázi.
-7. V **vyberte datové připojení** kroku, vyberte svou databázi (například MoviesDB.mdf).
-8. V **uložit připojovací řetězec do konfiguračního souboru aplikace** kroku, vyberte možnost Uložit připojovací řetězec.
-9. V **konfigurovat příkaz Select** kroku, vyberte v tabulce databáze filmů a vybrat všechny sloupce.
-10. V **testovat dotaz** krok, kliknutím na tlačítko Dokončit.
-11. Zpátky **zvolit zdroj dat** kroku, vyberte sloupec název pro pole k zobrazení a ve sloupci Id pro data polí (viz obrázek).
-12. Klikněte na tlačítko OK ukončete průvodce.
+1. Vytvoření stránky s názvem filmy. aspx
+2. Přidejte ovládací prvek ScriptManager na stránku přetažením ovládacího prvku ScriptManager z karty rozšíření AJAX v panelu nástrojů na stránku.
+3. Přidejte ovládací prvek ComboBox na stránku přetažením pole se seznamem na stránku.
+4. V zobrazení Návrh najeďte myší na ovládací prvek ComboBox a vyberte možnost úloha **Zvolit zdroj dat** (viz obrázek 5). Spustí se Průvodce konfigurací zdroje dat.
+5. V kroku **Zvolte zdroj dat** vyberte možnost &lt;nový zdroj dat&gt;.
+6. V kroku **Zvolte typ zdroje dat** vyberte databáze.
+7. V kroku **Zvolte datové připojení** vyberte svou databázi (například MoviesDB. mdf).
+8. V kroku **Uložit připojovací řetězec do konfiguračního souboru aplikace** vyberte možnost uložení připojovacího řetězce.
+9. V kroku **Konfigurace příkazu SELECT** vyberte tabulku databáze filmů a vyberte všechny sloupce.
+10. V kroku **test Query** klikněte na tlačítko Dokončit.
+11. Zpátky v kroku **Zvolit zdroj dat** vyberte sloupec nadpis pro pole, které chcete zobrazit, a sloupec ID pro datové pole (viz obrázek).
+12. Kliknutím na tlačítko OK zavřete průvodce.
 
-[![Výběr zdroje dat](how-do-i-use-the-combobox-control-vb/_static/image5.jpg)](how-do-i-use-the-combobox-control-vb/_static/image9.png)
+[![výběru zdroje dat](how-do-i-use-the-combobox-control-vb/_static/image5.jpg)](how-do-i-use-the-combobox-control-vb/_static/image9.png)
 
-**Obrázek 05**: Výběr zdroje dat ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image10.png))
+**Obrázek 05**: výběr zdroje dat ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image10.png))
 
-[![Výběr datových polí hodnoty a text](how-do-i-use-the-combobox-control-vb/_static/image6.jpg)](how-do-i-use-the-combobox-control-vb/_static/image11.png)
+[![výběru polí s datovým textem a hodnotou](how-do-i-use-the-combobox-control-vb/_static/image6.jpg)](how-do-i-use-the-combobox-control-vb/_static/image11.png)
 
-**Obrázek 06**: Výběr datových polí hodnoty a text ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image12.png))
+**Obrázek 06**: Výběr polí datového textu a hodnoty ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image12.png))
 
-Po dokončení výše uvedených kroků, pole se seznamem je svázána s ovládacím prvkem SqlDataSource, představující videa z databázové tabulky filmy. Zdroj pro stránku vypadá výpis 2 (mám vyčištění formátování trochu).
+Po dokončení kroků uvedených výše je komponenta ComboBox svázána s ovládacím prvkem SqlDataSource, který představuje filmy z tabulky databáze filmů. Zdroj stránky vypadá jako v seznamu 2 (vyčistili jsme formátování trochu).
 
-**Výpis 2 - Movies.aspx**
+**Výpis 2 – filmy. aspx**
 
 [!code-aspx[Main](how-do-i-use-the-combobox-control-vb/samples/sample2.aspx)]
 
-Všimněte si, že ovládací prvek pole se seznamem má vlastnost DataSourceID, která odkazuje na ovládacím prvkem SqlDataSource. Když otevřete stránku v prohlížeči se zobrazí seznam videa z databáze (viz obrázek 7). Můžete vybrat video ze seznamu nebo zadejte nový film zadáním videa do pole se seznamem.
+Všimněte si, že ovládací prvek ComboBox má vlastnost DataSourceID, která odkazuje na ovládací prvek SqlDataSource. Když otevřete stránku v prohlížeči, zobrazí se seznam filmů z databáze (viz obrázek 7). Můžete buď vybrat video ze seznamu, nebo zadat nový film zadáním videa do pole se seznamem.
 
-[![Zobrazení seznamu filmy](how-do-i-use-the-combobox-control-vb/_static/image7.jpg)](how-do-i-use-the-combobox-control-vb/_static/image13.png)
+[![zobrazení seznamu filmů](how-do-i-use-the-combobox-control-vb/_static/image7.jpg)](how-do-i-use-the-combobox-control-vb/_static/image13.png)
 
-**Obrázek 07**: Zobrazení seznamu filmy ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image14.png))
+**Obrázek 07**: zobrazení seznamu filmů ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image14.png))
 
 ## <a name="setting-the-dropdownstyle"></a>Nastavení DropDownStyle
 
-Pokud chcete změnit chování pole se seznamem můžete použít vlastnost DropDownStyle – pole se seznamem. Tato vlastnost přijímá není možné hodnoty:
+Můžete použít vlastnost ComboBox DropDownStyle ke změně chování pole se seznamem. Tato vlastnost přijímá možné hodnoty:
 
-- Rozevírací seznam – (výchozí hodnota) zobrazí The – pole se seznamem rozevírací seznam, když kliknete na šipku a vy můžete zadat vlastní hodnotu.
-- Jednoduché – pole se seznamem se automaticky zobrazí rozevírací seznam a můžete zadat vlastní hodnoty.
-- DropDownList – pole se seznamem funguje stejně jako ovládací prvek DropDownList.
+- Rozevírací seznam (výchozí hodnota): ComboBox zobrazuje rozevírací seznam po kliknutí na šipku a můžete zadat vlastní hodnotu.
+- Jednoduché – komponenta ComboBox automaticky zobrazuje rozevírací seznam a můžete zadat vlastní hodnotu.
+- DropDownList – komponenta ComboBox funguje stejně jako ovládací prvek DropDownList.
 
-Rozdíly mezi rozevírací seznam a jednoduché je, když se zobrazí seznam položek. V případě jednoduchého zobrazí se seznam okamžitě při přesunutí fokusu do pole se seznamem. V případě rozevírací seznam musíte kliknout na šipku zobrazte seznam položek.
+Rozdíl mezi rozevíracím seznamem a jednoduchou je při zobrazení seznamu položek. V případě jednoduchého je seznam zobrazen ihned při přesunutí fokusu na pole se seznamem. V případě rozevíracího seznamu je nutné kliknutím na šipku Zobrazit seznam položek.
 
-Hodnota DropDownList způsobí, že ovládací prvek ComboBox pracovat stejně jako standardní ovládací prvek DropDownList. Ale je tady důležitý rozdíl. Starší verze aplikace Internet Explorer zobrazit ovládací prvek DropDownList s nekonečnou z-index, proto se ovládací prvek zobrazí před libovolný ovládací prvek umístěn před jeho. Vzhledem k tomu, že pole se seznamem vykreslí HTML &lt;div&gt; značek namísto HTML &lt;vyberte&gt; značky, pole se seznamem správně respektuje pořadí z-ordering.
+Hodnota DropDownList způsobí, že ovládací prvek ComboBox funguje stejně jako standardní ovládací prvek DropDownList. Tady je ale důležitý rozdíl. Starší verze aplikace Internet Explorer zobrazí ovládací prvek DropDownList s nekonečným indexem z, takže se ovládací prvek zobrazí před jakýmkoli ovládacím prvkem umístěným před ním. Vzhledem k tomu, že komponenta ComboBox vykresluje značku HTML &lt;div&gt; namísto HTML &lt;vyberte&gt; tag, Komponenta ComboBox správně respektuje řazení z.
 
-## <a name="setting-the-autocompletemode"></a>Nastavení vlastnost AutoCompleteMode
+## <a name="setting-the-autocompletemode"></a>Nastavení AutoCompleteMode
 
-Chcete-li určit, co se stane, když uživatel zadá text do pole se seznamem použijete vlastnost AutoCompleteMode – pole se seznamem vlastností. Tato vlastnost přijímá následující možné hodnoty:
+Vlastnost ComboBox AutoCompleteMode slouží k určení toho, co se stane, když někdo zadá text do pole se seznamem. Tato vlastnost přijímá následující možné hodnoty:
 
-- None – (výchozí hodnota), která pole se seznamem neposkytuje žádné chování automatického dokončení.
-- Navrhnout – pole se seznamem se zobrazí v seznamu a zvýrazní odpovídající položku v seznamu (viz obrázek 8).
-- Append – pole se seznamem nezobrazuje v seznamu a přidá odpovídající položky ze seznamu do co jste zadali (viz obrázek 9).
-- SuggestAppend – pole se seznamem se zobrazí v seznamu a přidá odpovídající položky ze seznamu do co jste zadali (viz obrázek 10).
+- Žádná – (výchozí hodnota) komponenta ComboBox neposkytuje žádné chování při automatickém dokončení.
+- Navrhnout – v poli se zobrazí seznam a zvýrazní se položka, která se shoduje s položkou v seznamu (viz obrázek 8).
+- Připojit – komponenta ComboBox nezobrazuje seznam a připojuje shodnou položku ze seznamu do toho, co jste zadali (viz obrázek 9).
+- SuggestAppend – Tato komponenta zobrazí seznam a připojí shodnou položku ze seznamu do toho, co jste zadali (viz obrázek 10).
 
-[![Pole se seznamem umožňuje návrh](how-do-i-use-the-combobox-control-vb/_static/image8.jpg)](how-do-i-use-the-combobox-control-vb/_static/image15.png)
+[![se v komponentě ComboBox vytvoří návrh.](how-do-i-use-the-combobox-control-vb/_static/image8.jpg)](how-do-i-use-the-combobox-control-vb/_static/image15.png)
 
-**Obrázek 08**: Pole se seznamem umožňuje návrh ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image16.png))
+**Obrázek 08**: komponenta ComboBox provede návrh ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image16.png)).
 
-[![Pole se seznamem připojí odpovídající text](how-do-i-use-the-combobox-control-vb/_static/image9.jpg)](how-do-i-use-the-combobox-control-vb/_static/image17.png)
+[![ComboBox připojuje shodný text](how-do-i-use-the-combobox-control-vb/_static/image9.jpg)](how-do-i-use-the-combobox-control-vb/_static/image17.png)
 
-**Obrázek 09**: Pole se seznamem připojí odpovídající text ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image18.png))
+**Obrázek 09**: v poli se seznamem se připojí shodný text ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image18.png)).
 
-[![Pole se seznamem navrhuje a připojí](how-do-i-use-the-combobox-control-vb/_static/image10.jpg)](how-do-i-use-the-combobox-control-vb/_static/image19.png)
+[![navrhuje a přidává pole se seznamem](how-do-i-use-the-combobox-control-vb/_static/image10.jpg)](how-do-i-use-the-combobox-control-vb/_static/image19.png)
 
-**Obrázek 10**: Pole se seznamem navrhuje a připojí ([kliknutím ji zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image20.png))
+**Obrázek 10**: navrhne a připojí se ComboBox ([kliknutím zobrazíte obrázek v plné velikosti](how-do-i-use-the-combobox-control-vb/_static/image20.png)).
 
 ## <a name="summary"></a>Souhrn
 
-V tomto kurzu jste zjistili, jak zobrazit pevnou sadu položek pomocí ovládacího prvku ComboBox. Jsme vázaného ovládacího prvku pole se seznamem, jak na statickou sadu položek a do databázové tabulky. Nakonec jste zjistili, jak upravit nastavením jeho vlastnosti DropDownStyle a vlastnost AutoCompleteMode chování pole se seznamem.
+V tomto kurzu jste zjistili, jak používat ovládací prvek ComboBox k zobrazení pevné sady položek. Navážeme ovládací prvek ComboBox jak na statickou sadu položek, tak na databázovou tabulku. Nakonec jste zjistili, jak upravit chování komponenty ComboBox nastavením vlastností DropDownStyle a AutoCompleteMode.
 
 > [!div class="step-by-step"]
 > [Předchozí](how-do-i-use-the-combobox-control-cs.md)

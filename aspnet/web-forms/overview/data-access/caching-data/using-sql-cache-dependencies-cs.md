@@ -9,11 +9,11 @@ ms.assetid: 0e91842c-7f10-4aed-8c23-4ee3e2774014
 msc.legacyurl: /web-forms/overview/data-access/caching-data/using-sql-cache-dependencies-cs
 msc.type: authoredcontent
 ms.openlocfilehash: 5bc27a08e39606c25b8f99d6ea057d2a853f08a6
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74612018"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78550419"
 ---
 # <a name="using-sql-cache-dependencies-c"></a>Použití závislostí mezipaměti SQL (C#)
 
@@ -248,7 +248,7 @@ Otestujte tento nový kód. Nyní se změny v tabulkách `Products`, `Categories
 > [!NOTE]
 > Závislosti mezipaměti SQL lze také použít s [ukládání výstupu do mezipaměti](https://quickstarts.asp.net/QuickStartv20/aspnet/doc/caching/output.aspx). Ukázku této funkce naleznete v tématu: [použití ukládání výstupu ASP.NET do mezipaměti s SQL Server](https://msdn.microsoft.com/library/e3w8402y(VS.80).aspx).
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Při ukládání dat do mezipaměti budou data v mezipaměti v ideálním případě uložena v mezipaměti, dokud je neupravíte v databázi. V případě ASP.NET 2,0 lze vytvořit závislosti mezipaměti SQL a použít je v deklarativních i programových scénářích. Jedním z problémů s tímto přístupem je zjišťování, kdy byla data změněna. Úplné verze Microsoft SQL Server 2005 poskytují možnosti oznámení, které mohou aplikaci upozornit, když se změní výsledek dotazu. Pro Express edici SQL Server 2005 a starších verzí SQL Server se místo toho musí použít systém cyklického dotazování. Naštěstí nastavení nezbytné infrastruktury cyklického dotazování je poměrně jasné.
 

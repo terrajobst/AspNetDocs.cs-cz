@@ -1,150 +1,150 @@
 ---
 uid: mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
-title: ASP.NET MVC přehled zobrazení (VB) | Dokumentace Microsoftu
+title: Přehled zobrazení ASP.NET MVC (VB) | Microsoft Docs
 author: StephenWalther
-description: Co se zobrazení ASP.NET MVC a jak se liší od stránku HTML? V tomto kurzu Stephen Walther vás seznámí s zobrazení a předvádí, jak můžete t...
+description: Co je zobrazení ASP.NET MVC a jak se liší od stránky HTML? V tomto kurzu Stephen Walther představuje zobrazení a ukazuje, jak můžete t...
 ms.author: riande
 ms.date: 02/16/2008
 ms.assetid: c28ba88d-3a93-47f5-a306-049bd766714d
 msc.legacyurl: /mvc/overview/older-versions-1/views/asp-net-mvc-views-overview-vb
 msc.type: authoredcontent
 ms.openlocfilehash: f02728ed248f29b09d654e509977ed43889cbb83
-ms.sourcegitcommit: 51b01b6ff8edde57d8243e4da28c9f1e7f1962b2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65117426"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78541305"
 ---
 # <a name="aspnet-mvc-views-overview-vb"></a>ASP.NET MVC – přehled zobrazení (VB)
 
-podle [Stephen Walther](https://github.com/StephenWalther)
+od [Stephen Walther](https://github.com/StephenWalther)
 
-> Co se zobrazení ASP.NET MVC a jak se liší od stránku HTML? V tomto kurzu Stephen Walther vás seznámí s zobrazení a ukazuje, jak můžete využít výhod zobrazení dat a pomocných rutin HTML v zobrazení.
+> Co je zobrazení ASP.NET MVC a jak se liší od stránky HTML? V tomto kurzu vám Stephen Walther představuje zobrazení a ukazuje, jak můžete využít výhod zobrazení dat a pomocníků HTML v rámci zobrazení.
 
-Účelem tohoto kurzu je poskytne stručný úvod do ASP.NET MVC zobrazení, zobrazení dat a pomocných rutin HTML. Na konci tohoto kurzu budete vědět, jak vytvářet nová zobrazení, předat data z kontroleru zobrazení a použití pomocných rutin HTML ke generování obsahu v zobrazení.
+Účelem tohoto kurzu je poskytnout stručný úvod do ASP.NETch zobrazení MVC, zobrazit data a pomocníky HTML. Na konci tohoto kurzu byste měli pochopit, jak vytvářet nová zobrazení, předávat data z kontroleru do zobrazení a používat pomocníky HTML pro generování obsahu v zobrazení.
 
-## <a name="understanding-views"></a>Principy zobrazení
+## <a name="understanding-views"></a>Porozumění zobrazením
 
-Na rozdíl od ASP nebo ASP.NET ASP.NET MVC neobsahuje nic, který přímo odpovídá na stránku. V aplikaci MVC rozhraní ASP.NET není stránku na disku, který odpovídá cestě v adrese URL, kterou zadáte do adresního řádku prohlížeče. Nejbližší věc do stránky v aplikaci ASP.NET MVC se volá *zobrazení*.
+Na rozdíl od ASP.NET nebo Active Server stránek nezahrnuje ASP.NET MVC cokoli, co přímo odpovídá stránce. V aplikaci ASP.NET MVC není na disku žádná stránka, která by odpovídala cestě v adrese URL, kterou zadáte do panelu Adresa v prohlížeči. Nejbližší věc stránky v aplikaci ASP.NET MVC se říká *zobrazení*.
 
-V aplikaci ASP.NET MVC se mapují příchozí požadavky prohlížeče na akce kontroleru. Zobrazení může vrátit akce kontroleru. Akce kontroleru může ale provést i jiný druh akce, jako je probíhá přesměrování na jiný akce kontroleru.
+V aplikaci ASP.NET MVC jsou příchozí požadavky prohlížeče namapovány na akce kontroleru. Akce kontroleru může vrátit zobrazení. Akce kontroleru ale může provést nějaký jiný typ akce, například přesměrování na jinou akci kontroleru.
 
-Výpis 1 obsahuje řadič jednoduché s názvem HomeController. HomeController zpřístupňuje s názvem Index() a Details() dvě akce kontroleru.
+Výpis 1 obsahuje jednoduchý řadič s názvem HomeController. HomeController zpřístupňuje dvě akce kontroleru s názvem index () a podrobnosti ().
 
-**Výpis 1 - HomeController.vb**
+**Výpis 1 – HomeController. vb**
 
 [!code-vb[Main](asp-net-mvc-views-overview-vb/samples/sample1.vb)]
 
-První akci Index() akci, můžete vyvolat zadáním následující adresy URL do adresního řádku prohlížeče:
+Můžete vyvolat první akci, akci index () zadáním následující adresy URL do adresního řádku prohlížeče:
 
-/ Home/Index
+/Home/Index
 
-Druhou akci Details() akci, můžete vyvolat tak, že do prohlížeče zadáte tuto adresu:
+Druhou akci, akci podrobnosti () můžete vyvolat tak, že do svého prohlížeče zadáte tuto adresu:
 
-/ Home/podrobností
+/Home/Details
 
-Akce Index() vrátí zobrazení. Většinu akcí, které vytvoříte vrátí zobrazení. Akce však může vrátit jiné druhy výsledky akce. Například akce Details() vrátí RedirectToActionResult, který přesměruje na akce Index() příchozího požadavku.
+Akce index () vrátí zobrazení. Většina akcí, které vytvoříte, budou vracet zobrazení. Akce však může vracet jiné typy výsledků akce. Například akce podrobnosti () vrátí RedirectToActionResult, který přesměruje příchozí požadavek do akce index ().
 
-Akce Index() obsahuje následující jediný řádek kódu:
+Akce index () obsahuje následující jeden řádek kódu:
 
-View()
+Zobrazit ()
 
-Tento řádek kódu vrátí zobrazení, které musí být v následujícím umístění na vašem webovém serveru:
+Tento řádek kódu vrátí zobrazení, které se musí nacházet na následujícím umístění na webovém serveru:
 
 \Views\Home\Index.aspx
 
-Cesta k zobrazení je odvozen z názvu kontroleru a názvu akce kontroleru.
+Cesta k zobrazení je odvozena z názvu kontroleru a názvu akce kontroleru.
 
-Pokud dáváte přednost, může být explicitní o zobrazení. Následující řádek kódu vrátí zobrazení s názvem Fred:
+Pokud budete chtít, můžete být pro zobrazení explicitní. Následující řádek kódu vrátí zobrazení s názvem Fred:
 
 Zobrazení (Fred)
 
-Pokud je spuštěn tento řádek kódu, zobrazení je vrácen z následující cestu:
+Při spuštění tohoto řádku kódu se vrátí zobrazení z následující cesty:
 
 \Views\Home\Fred.aspx
 
 > [!NOTE] 
 > 
-> Pokud budete chtít vytvořit testy jednotek pro aplikace ASP.NET MVC je vhodné k explicitnímu názvy zobrazení. Tímto způsobem můžete vytvořit testování částí k ověření, že očekávané zobrazení byl vrácen akce kontroleru.
+> Pokud máte v úmyslu vytvořit testy jednotek pro aplikaci ASP.NET MVC, je vhodné, abyste měli explicitní informace o názvech zobrazení. Tímto způsobem můžete vytvořit testování částí a ověřit tak, že se očekávané zobrazení vrátilo pomocí akce kontroleru.
 
-## <a name="adding-content-to-a-view"></a>Přidávání obsahu do zobrazení
+## <a name="adding-content-to-a-view"></a>Přidání obsahu do zobrazení
 
-Zobrazení je standard (dokumentu HTML, který může obsahovat skriptů X). Přidat dynamický obsah k zobrazení pomocí skriptů.
+Zobrazení je standardní dokument HTML (X) HTML, který může obsahovat skripty. Pomocí skriptů můžete přidat dynamický obsah do zobrazení.
 
-Například zobrazení v informacích 2 ukazuje aktuální datum a čas.
+Například zobrazení v seznamu 2 zobrazí aktuální datum a čas.
 
-**Listing 2 - \Views\Home\Index.aspx**
+**Výpis 2 – \Views\Home\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample2.aspx)]
 
-Všimněte si, že tělo stránky HTML v zobrazení 2 obsahuje následující skript:
+Všimněte si, že tělo stránky HTML v seznamu 2 obsahuje následující skript:
 
-&lt;Response.Write(DateTime.Now) %&gt;
+&lt;% Response. Write (DateTime. Now)%&gt;
 
-Použít skript oddělovače &lt;% a %&gt; označit začátek a konec skriptu. Tento skript je napsána v jazyce Visual basic. Zobrazí aktuální datum a čas voláním metody Response.Write() metody k vykreslení obsahu v prohlížeči. Skript oddělovače &lt;% a %&gt; lze použít k provedení jednoho nebo více příkazů.
+Pomocí oddělovačů skriptů &lt;% a%&gt; označíte začátek a konec skriptu. Tento skript je napsán v jazyce Visual Basic. Zobrazí aktuální datum a čas voláním metody Response. Write () pro vykreslení obsahu do prohlížeče. Oddělovače skriptů &lt;% a%&gt; lze použít ke spuštění jednoho nebo více příkazů.
 
-Vzhledem k tomu, že volání metody Response.Write() tak často, Microsoft vám poskytne zástupce pro volání metody Response.Write() metody. Zobrazení v informacích 3 používá oddělovače &lt;% = a %&gt; jako zástupce pro volání metody Response.Write().
+Vzhledem k tomu, že zavoláte Response. Write () tak často, společnost Microsoft poskytuje zástupce pro volání metody Response. Write (). Zobrazení v seznamu 3 používá oddělovače &lt;% = a%&gt; jako zástupce pro volání metody Response. Write ().
 
-**Listing 3 - Views\Home\Index2.aspx**
+**Výpis 3 – Views\Home\Index2.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample3.aspx)]
 
-Libovolný jazyk .NET můžete použít ke generování dynamického obsahu v zobrazení. Za normálních okolností vše můžete pomocí jazyka Visual Basic .NET nebo C# pro zápis kontrolerů a zobrazení.
+K vygenerování dynamického obsahu v zobrazení můžete použít libovolný jazyk rozhraní .NET. Za normálních okolností můžete použít buď Visual Basic .NET C# , nebo můžete zapisovat řadiče a zobrazení.
 
-## <a name="using-html-helpers-to-generate-view-content"></a>Použití pomocných rutin HTML k vygenerování zobrazení obsahu
+## <a name="using-html-helpers-to-generate-view-content"></a>Použití pomocníků HTML ke generování obsahu zobrazení
 
-Aby bylo snazší k přidání obsahu do zobrazení, můžete využít výhod nástroje s názvem *pomocné rutiny HTML*. Pomocné rutiny HTML, je obvykle metodu, která z nich generuje řetězec. Pomocné rutiny HTML můžete použít ke generování standardní elementy jazyka HTML, jako jsou textová pole, odkazy, rozevírací seznamy a pole se seznamem.
+Aby bylo snazší přidávat obsah do zobrazení, můžete využít něco jako *pomocníka HTML*. Pomocný objekt HTML je obvykle metoda, která generuje řetězec. Můžete použít pomocníky HTML k vygenerování standardních HTML prvků, jako jsou textová pole, odkazy, rozevírací seznamy a seznam polí.
 
-Například zobrazení výpisu 4 využívá registrů tři pomocných rutin HTML – Pomocníci BeginForm() TextBox() a Password() – ke generování přihlášení formulář (viz obrázek 1).
+Například zobrazení v seznamu 4 využívá tři pomocníky HTML – BeginForm (), textové pole () a heslo () – pro vygenerování přihlašovacího formuláře (viz obrázek 1).
 
-**Listing 4 -- \Views\Home\Login.aspx**
+**Výpis 4 – \Views\Home\Login.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample4.aspx)]
 
-[![Dialogové okno Nový projekt](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
+[![dialogového okna Nový projekt](asp-net-mvc-views-overview-vb/_static/image1.jpg)](asp-net-mvc-views-overview-vb/_static/image1.png)
 
-**Obrázek 01**: Standardní přihlašovací formulář ([kliknutím ji zobrazíte obrázek v plné velikosti](asp-net-mvc-views-overview-vb/_static/image2.png))
+**Obrázek 01**: standardní přihlašovací formulář ([kliknutím zobrazíte obrázek v plné velikosti](asp-net-mvc-views-overview-vb/_static/image2.png))
 
-Všechny metody pomocných rutin HTML se nazývají na vlastnosti Html zobrazení. Například voláním metody Html.TextBox() vykreslení textové pole.
+Všechny metody pomocníka HTML jsou volány ve vlastnosti HTML zobrazení. Například můžete vykreslit textové pole voláním metody HTML. TextBox ().
 
-Všimněte si, že používáte skript oddělovače &lt;% = a %&gt; při volání metody Html.TextBox() i Html.Password() pomocné rutiny. Tyto pomocné rutiny jednoduše vrátit řetězec. Je třeba volat metody Response.Write() k vykreslení řetězec, který se v prohlížeči.
+Všimněte si, že používáte oddělovače skriptů &lt;% = a%&gt; při volání pomocníků HTML. TextBox () a HTML. Password (). Tyto pomocníky jednoduše vrátí řetězec. Pro vykreslení řetězce do prohlížeče je nutné zavolat Response. Write ().
 
-Použití metody pomocné rutiny HTML není povinné. Jejich usnadnit vám život díky snížení objemu HTML a skript, který budete muset napsat. Zobrazení výpisu 5 vykreslí přesně stejný formulář jako zobrazení výpisu 4 bez použití pomocných rutin HTML.
+Použití pomocných metod jazyka HTML je volitelné. Díky omezení množství HTML a skriptu, který je potřeba napsat, zjednoduší život. Zobrazení v seznamu 5 vykreslí přesně stejný tvar jako zobrazení v seznamu 4 bez použití pomocníků HTML.
 
-**Listing 5 -- \Views\Home\Login.aspx**
+**Výpis 5 – \Views\Home\Login.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample5.aspx)]
 
-Máte také možnost vytvoření vlastních pomocných rutin HTML. Můžete například vytvořit GridView() Pomocná metoda, která automaticky zobrazí sadu záznamů databáze v tabulku HTML. V tomto tématu budeme věnovat v tomto kurzu **pomocných rutin HTML vytvořením Custom**.
+Máte také možnost vytvořit si vlastní pomocníky HTML. Můžete například vytvořit pomocnou metodu GridView (), která zobrazí sadu záznamů databáze v tabulce HTML automaticky. Prozkoumáme toto téma v kurzu **vytváření vlastních pomocníků HTML**.
 
-## <a name="using-view-data-to-pass-data-to-a-view"></a>Pomocí zobrazení dat k předávání dat k zobrazení
+## <a name="using-view-data-to-pass-data-to-a-view"></a>Použití zobrazení dat k předání dat do zobrazení
 
-Zobrazení dat použijete k předání dat z kontroleru zobrazení. Představte si zobrazit data, jako je balíček, který můžete odeslat prostřednictvím e-mailu. Všechna data z kontroleru předána do zobrazení musí být odeslána pomocí tohoto balíčku. Například kontroler v informacích 6 přidá zprávu zobrazíte data.
+Pomocí zobrazení dat můžete předávat data z kontroleru do zobrazení. Představte si zobrazení dat, jako je balíček, který odešlete prostřednictvím e-mailu. Všechna data předaná z kontroleru do zobrazení se musí odeslat pomocí tohoto balíčku. Například kontroler v výpisu 6 přidá zprávu pro zobrazení dat.
 
-**Výpis 6 - ProductController.vb**
+**Výpis 6 – ProductController. vb**
 
 [!code-vb[Main](asp-net-mvc-views-overview-vb/samples/sample6.vb)]
 
-Kontroler ViewData vlastnost představuje kolekci párů názvu a hodnoty. Výpis 6 metodu Index() přidá položku do kolekce dat zobrazení s názvem zprávy s hodnotou Hello World!. Při zobrazení je vrácený metodou Index(), data zobrazení je automaticky předána do zobrazení.
+Vlastnost Controller ViewData představuje kolekci párů název-hodnota. V výpisu 6 metoda index () přidá položku do kolekce zobrazení dat s názvem Zpráva s hodnotou Hello World!. Když je zobrazení vráceno metodou index (), zobrazení dat se automaticky předává do zobrazení.
 
-Zobrazení výpisu 7 načte zprávy z dat zobrazení a vykreslí zprávy do prohlížeče.
+Zobrazení v seznamu 7 načte zprávu z dat zobrazení a vykreslí zprávu do prohlížeče.
 
-**Listing 7 -- \Views\Product\Index.aspx**
+**Výpis 7 – \Views\Product\Index.aspx**
 
 [!code-aspx[Main](asp-net-mvc-views-overview-vb/samples/sample7.aspx)]
 
-Všimněte si, že zobrazení využívá metodu pomocné rutiny HTML Html.Encode() při vykreslování zprávy. Pomocné rutiny HTML Html.Encode() kóduje zvláštní znaky, jako &lt; a &gt; do znaků, které jsou bezpečné pro zobrazení na webové stránce. Pokaždé, když se vám zobrazit obsah, který uživatel odešle na web, by měl kódování obsahu, aby se zabránilo útoků založených na injektáži JavaScriptu.
+Všimněte si, že zobrazení při vykreslování zprávy využívá pomocnou metodu HTML. Encode () HTML. Pomocný kód HTML. Encode () HTML kóduje speciální znaky, například &lt; a &gt; do znaků, které jsou bezpečné pro zobrazení na webové stránce. Kdykoli vykreslíte obsah, který uživatel odešle na web, měli byste zakódovat obsah a zabránit tak útokům prostřednictvím injektáže JavaScriptu.
 
-(Protože jsme vytvořili zprávu si v ProductController, budeme zadávat t opravdu potřebujete ke kódování zprávy. Nicméně je dobré se vždy volat metodu Html.Encode() při zobrazení obsahu načítá ze zobrazení dat v rámci zobrazení.)
+(Vzhledem k tomu, že jsme v ProductController vytvořili zprávu dodržovali, nemusíme ji opravdu kódovat. Je však dobrým zvykem při zobrazování obsahu načteného z zobrazení dat načtených v zobrazení, vždy při volání metody HTML. Encode ().)
 
-Ve výpisu 7 jsme využil předání jednoduché řetězcovou zprávu z řadiče zobrazení dat zobrazení. Zobrazení dat můžete použít také k předání dalších typů dat, jako jsou kolekce záznamů databáze z kontroleru zobrazení. Například pokud chcete zobrazit obsah databázové tabulky produktů v zobrazení, pak by úspěšně prošel zpracováním kolekce databáze záznamů v zobrazení data.
+V seznamu 7 jsme využili výhod zobrazení dat k předání jednoduché zprávy řetězce z řadiče do zobrazení. Pomocí zobrazení dat můžete také předat další typy dat, jako je například kolekce záznamů databáze, z kontroleru do zobrazení. Například pokud chcete zobrazit obsah tabulky databáze produktů v zobrazení, pak byste měli předat kolekci záznamů databáze v zobrazení dat.
 
-Máte také možnost předat data silného typu zobrazení z kontroleru zobrazení. V tomto tématu budeme věnovat v tomto kurzu **Principy silného typu zobrazení dat a zobrazení**.
+Máte také možnost předat data zobrazení silného typu z kontroleru do zobrazení. Toto téma se zabývá v kurzu, který popisuje **zobrazení dat a zobrazení silného typu**.
 
 ## <a name="summary"></a>Souhrn
 
-Tento kurz poskytuje stručný úvod do ASP.NET MVC zobrazení, zobrazení dat a pomocných rutin HTML. V prvním oddílu jste zjistili, jak přidat nová zobrazení do projektu. Jste zjistili, že je nutné přidat zobrazení do správné složky pro volání z určitý kontroler. Dále jsme probírali tématu pomocných rutin HTML. Jste se naučili, jak pomocných rutin HTML umožňují snadno vygenerovat standardní obsah ve formátu HTML. Nakonec jste zjistili, jak využít výhod zobrazení dat k předání dat z kontroleru zobrazení.
+V tomto kurzu najdete stručný úvod k ASP.NET zobrazením MVC, zobrazení dat a pomocníkům HTML. V první části jste se dozvěděli, jak přidat nová zobrazení do projektu. Zjistili jste, že musíte přidat zobrazení do pravé složky, abyste ho mohli zavolat z konkrétního kontroleru. Dále jsme probrali téma nápovědy HTML. Zjistili jste, jak vám pomocník HTML umožňuje snadno vygenerovat standardní obsah HTML. Nakonec jste zjistili, jak využít výhod zobrazení dat k předávání dat z kontroleru do zobrazení.
 
 > [!div class="step-by-step"]
 > [Předchozí](passing-data-to-view-master-pages-cs.md)
-> [další](creating-custom-html-helpers-vb.md)
+> [Další](creating-custom-html-helpers-vb.md)

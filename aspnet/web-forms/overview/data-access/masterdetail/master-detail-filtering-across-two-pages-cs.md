@@ -9,11 +9,11 @@ ms.assetid: 552d2d50-fe73-4153-9a7f-2b379bec4625
 msc.legacyurl: /web-forms/overview/data-access/masterdetail/master-detail-filtering-across-two-pages-cs
 msc.type: authoredcontent
 ms.openlocfilehash: ccb3bfa5f215ba6e65b8a10b40041d5c2896c7e3
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74619971"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78529174"
 ---
 # <a name="masterdetail-filtering-across-two-pages-c"></a>Filtrování hlavních záznamů / podrobností na dvou stránkách (C#)
 
@@ -168,7 +168,7 @@ Ve výchozím nastavení poskytují všichni dodavatelé v databázi Northwind a
 
 **Obrázek 18**: uživatelům se dozvíte, že dodavatel neposkytuje žádné produkty ([kliknutím zobrazíte obrázek v plné velikosti).](master-detail-filtering-across-two-pages-cs/_static/image52.png)
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 I když se v sestavách a podrobností můžou zobrazovat hlavní a podrobné záznamy na jedné stránce, na mnoha webech, které jsou oddělené na dvou webových stránkách. V tomto kurzu jsme se podívali na to, jak implementovat takovou sestavu hlavní/podrobnosti, která má dodavatele uvedené v prvku GridView v hlavní webové stránce a v přidružených produktech uvedených na stránce podrobností. Každý řádek dodavatele na hlavní webové stránce obsahoval odkaz na stránku s podrobnostmi, která byla předána po `SupplierID` hodnotě řádku. Tyto odkazy na konkrétní řádek lze snadno přidat pomocí HyperLinkField prvku GridView.
 

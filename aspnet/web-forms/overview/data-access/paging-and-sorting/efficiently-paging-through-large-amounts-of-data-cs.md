@@ -9,11 +9,11 @@ ms.assetid: 59c01998-9326-4ecb-9392-cb9615962140
 msc.legacyurl: /web-forms/overview/data-access/paging-and-sorting/efficiently-paging-through-large-amounts-of-data-cs
 msc.type: authoredcontent
 ms.openlocfilehash: a3e9562035cb24987b01fcdff5fbfb5fa8a1f894
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74629769"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78589997"
 ---
 # <a name="efficiently-paging-through-large-amounts-of-data-c"></a>Účinné stránkování velkých objemů dat (C#)
 
@@ -300,14 +300,14 @@ Neexistují však žádné místo, které by vyhovovaly všem odpovědím. Zvý�
 
 |  | **Průměrná doba trvání (s)** | **Operace** |
 | --- | --- | --- |
-| **Výchozí stránkovací Profiler SQL** | 1,411 | 383 |
-| **Vlastní stránkování – Profiler SQL** | 0,002 | 29 |
-| **Výchozí ASP.NET trasování stránkování** | 2,379 | *NENÍ K DISPOZICI* |
-| **Vlastní ASP.NET trasování stránkování** | 0,029 | *NENÍ K DISPOZICI* |
+| **Výchozí stránkovací Profiler SQL** | 1.411 | 383 |
+| **Vlastní stránkování – Profiler SQL** | 0.002 | 29 |
+| **Výchozí ASP.NET trasování stránkování** | 2.379 | *–* |
+| **Vlastní ASP.NET trasování stránkování** | 0.029 | *–* |
 
 Jak vidíte, načítají se konkrétní stránka dat, která vyžaduje 354 čtení v průměru a dokončených ve zlomcích času. Na stránce ASP.NET se vlastní stránka mohla vykreslit za blížící se 1/100<sup>tou</sup> dobu trvání při použití výchozího stránkování. V [tomto článku](http://aspnet.4guysfromrolla.com/articles/031506-1.aspx) najdete další informace o těchto výsledcích spolu s kódem a databází, kterou si můžete stáhnout pro reprodukování těchto testů ve vlastním prostředí.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Výchozí stránkování je cinch k implementaci zaškrtnutím políčka Povolit stránkování v inteligentní značce webového ovládacího prvku dat, ale jednoduchost se dostane na náklady na výkon. S výchozím stránkováním, když uživatel požádá o jakoukoli stránku dat, vrátí se *všechny* záznamy, i když je možné zobrazit jenom malé zlomky. Pro boj proti této režii výkonu prvek ObjectDataSource nabízí alternativní stránkování možnosti stránkování.
 
