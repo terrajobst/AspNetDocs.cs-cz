@@ -9,11 +9,11 @@ ms.assetid: 30945276-8ed9-4b27-8e50-4309244d3559
 msc.legacyurl: /web-forms/overview/older-versions-getting-started/master-pages/creating-a-site-wide-layout-using-master-pages-vb
 msc.type: authoredcontent
 ms.openlocfilehash: c0ee6ed9d944b9a8ff2b2996e93706b8416de905
-ms.sourcegitcommit: 22fbd8863672c4ad6693b8388ad5c8e753fb41a2
+ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74584320"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78639263"
 ---
 # <a name="creating-a-site-wide-layout-using-master-pages-vb"></a>Vytvoření rozložení platného pro celý web pomocí stránek předlohy (VB)
 
@@ -25,7 +25,7 @@ ms.locfileid: "74584320"
 
 ## <a name="introduction"></a>Úvod
 
-Jeden atribut dobře navrženého webu je konzistentní rozložení stránky na úrovni webu. Vezměte si například web www.asp.net. V době psaní tohoto zápisu má každá stránka stejný obsah v horní a dolní části stránky. Jak ukazuje obrázek 1, v horní horní části každé stránky se zobrazuje šedý pruh se seznamem komunit Microsoftu. Pod tím je logo lokality, seznam jazyků, do kterých byl web přeložen, a základní oddíly: domů, začínáme, informace, soubory ke stažení a tak dále. Stejně tak dolní část stránky obsahuje informace o reklamě v www.asp.net, prohlášení o autorských právech a odkaz na prohlášení o zásadách ochrany osobních údajů.
+Jeden atribut dobře navrženého webu je konzistentní rozložení stránky na úrovni webu. Vezměme si jako příklad [www.asp.net](www.asp.net) webu. V době psaní tohoto zápisu má každá stránka stejný obsah v horní a dolní části stránky. Jak ukazuje obrázek 1, v horní horní části každé stránky se zobrazuje šedý pruh se seznamem komunit Microsoftu. Pod tím je logo lokality, seznam jazyků, do kterých byl web přeložen, a základní oddíly: domů, začínáme, informace, soubory ke stažení a tak dále. Stejně tak dolní část stránky obsahuje informace o reklamě v www.asp.net, prohlášení o autorských právech a odkaz na prohlášení o zásadách ochrany osobních údajů.
 
 [![web www.asp.net využívá konzistentní vzhled a chování napříč všemi stránkami.](creating-a-site-wide-layout-using-master-pages-vb/_static/image2.png)](creating-a-site-wide-layout-using-master-pages-vb/_static/image1.png)
 
@@ -227,7 +227,7 @@ Výše uvedený kód nastaví vlastnost `Text` popisku na aktuální datum a ča
 > [!NOTE]
 > Jak ukazuje tento příklad, stránky předlohy mohou obsahovat webové ovládací prvky na straně serveru, kód a obslužné rutiny událostí.
 
-## <a name="summary"></a>Přehled
+## <a name="summary"></a>Souhrn
 
 Stránky předlohy umožňují vývojářům ASP.NET navrhovat konzistentní rozložení v rámci webu, které je snadno aktualizovatelné. Vytváření stránek předloh a jejich přidružených stránek obsahu je jednoduché jako vytváření standardních ASP.NET stránek, protože Visual Web Developer nabízí bohatou podporu při návrhu.
 
