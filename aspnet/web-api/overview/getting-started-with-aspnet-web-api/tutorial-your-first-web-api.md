@@ -8,12 +8,12 @@ ms.date: 11/28/2017
 ms.custom: seoapril2019
 msc.legacyurl: /web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 3e35c2bc0e46dfdb4544b772775eddd533f27be3
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 2717d93f47be9d4a6548731d8deeca312b25f39f
+ms.sourcegitcommit: 9e3ca74997a67c18589729d4b7303799905473eb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78556796"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084051"
 ---
 # <a name="get-started-with-aspnet-web-api-2-c"></a>Začínáme s webovým rozhraním API 2C#() pro ASP.NET
 
@@ -137,7 +137,7 @@ Existuje několik způsobů, jak získat jQuery. V tomto příkladu jsem použil
 
 Pokud chcete získat seznam produktů, odešlete požadavek HTTP GET na &quot;/API/Products&quot;.
 
-Funkce jQuery [getjson](http://api.jquery.com/jQuery.getJSON/) pošle požadavek AJAX. Pro odpověď obsahuje pole objektů JSON. Funkce `done` určuje zpětné volání, které je voláno, pokud je požadavek úspěšný. Ve zpětném volání aktualizujeme model DOM informacemi o produktu.
+Funkce jQuery [getjson](http://api.jquery.com/jQuery.getJSON/) pošle požadavek AJAX. Odpověď obsahuje pole objektů JSON. Funkce `done` určuje zpětné volání, které je voláno, pokud je požadavek úspěšný. Ve zpětném volání aktualizujeme model DOM informacemi o produktu.
 
 [!code-html[Main](tutorial-your-first-web-api/samples/sample4.html)]
 
@@ -165,7 +165,7 @@ Pokud zadáte neplatné ID, server vrátí chybu protokolu HTTP:
 
 ## <a name="using-f12-to-view-the-http-request-and-response"></a>Použití nástroje F12 k zobrazení žádosti a odpovědi HTTP
 
-Když pracujete se službou HTTP, může být velmi užitečné zobrazit žádosti HTTP a požadovat zprávy. To můžete provést pomocí vývojářských nástrojů F12 v aplikaci Internet Explorer 9. V aplikaci Internet Explorer 9 otevřete stisknutím klávesy **F12** nástroje. Klikněte na kartu **síť** a potom stiskněte **Spustit zachytávání**. Nyní se vraťte na webovou stránku a stisknutím klávesy **F5** znovu načtěte webovou stránku. Internet Explorer bude zachytit přenos HTTP mezi prohlížečem a webovým serverem. V souhrnném zobrazení se zobrazuje veškerá síťová komunikace pro stránku:
+Když pracujete se službou HTTP, může být velmi užitečné, abyste zobrazili zprávy s požadavkem a odpovědí HTTP. To můžete provést pomocí vývojářských nástrojů F12 v aplikaci Internet Explorer 9. V aplikaci Internet Explorer 9 otevřete stisknutím klávesy **F12** nástroje. Klikněte na kartu **síť** a potom stiskněte **Spustit zachytávání**. Nyní se vraťte na webovou stránku a stisknutím klávesy **F5** znovu načtěte webovou stránku. Internet Explorer bude zachytit přenos HTTP mezi prohlížečem a webovým serverem. V souhrnném zobrazení se zobrazuje veškerá síťová komunikace pro stránku:
 
 ![](tutorial-your-first-web-api/_static/image14.png)
 
