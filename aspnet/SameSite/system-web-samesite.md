@@ -5,12 +5,12 @@ description: Naučte se používat k SameSite souborů cookie v ASP.NET.
 ms.author: riande
 ms.date: 2/15/2019
 uid: samesite/system-web-samesite
-ms.openlocfilehash: 7987a5d6c9b3a82679d42a2d381d471d56f495c2
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
-ms.translationtype: MT
+ms.openlocfilehash: edb368910b24be2d042afe3c19ffa1fb23245443
+ms.sourcegitcommit: 7709c0a091b8d55b7b33bad8849f7b66b23c3d72
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78546744"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77455699"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet"></a>Práce s SameSite soubory cookie v ASP.NET
 
@@ -133,7 +133,7 @@ Takže se aplikace buď poruší, nebo dojde k přerušení na mnoha dalších m
 
 Podpora SameSite byla poprvé implementována v .NET 4.7.2 s využitím [konceptu standard 2016](https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1).
 
-19. listopadu 2019 aktualizace pro Windows aktualizované .NET 4.7.2 + od standardu 2016 až do standardu 2019. Další aktualizace jsou k disdobu pro jiné verze systému Windows. Další informace naleznete v tématu <xref:samesite/kbs-samesite>.
+19. listopadu 2019 aktualizace pro Windows aktualizované .NET 4.7.2 + od standardu 2016 až do standardu 2019. Další aktualizace jsou k disdobu pro jiné verze systému Windows. Další informace najdete v tématu <xref:samesite/kbs-samesite>.
 
  Koncept 2019 specifikace SameSite:
 
@@ -177,7 +177,7 @@ Tyto detekce jsou nejběžnějšími agenty prohlížeče, kteří viděli, že 
 * Vaše aplikace může zobrazit prohlížeče, které naše testovací weby nepodporují.
 * Měli byste být připraveni přidat detekce podle potřeby vašeho prostředí.
 
-Způsob, jakým se detekuje detekce, se liší podle verze rozhraní .NET a webového rozhraní, které používáte. Následující kód lze volat na webu volání [HttpCookie](/dotnet/api/system.web.httpcookie) :
+Způsob, jakým se detekuje detekce, se liší podle verze rozhraní .NET a webového rozhraní, které používáte. Následující kód lze volat na webu <xref:HTTP.HttpCookie> volání:
 
 [!code-csharp[](sample/SameSiteCheck.cs?name=snippet)]
 
@@ -248,8 +248,6 @@ Google nezpřístupňuje starší verze Chrome. Postupujte podle pokynů v čás
 * [Chróm 74 Win64](https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64/638880/)
 * Pokud nepoužíváte 64bitovou verzi systému Windows, můžete pomocí [prohlížeče OmahaProxy](https://omahaproxy.appspot.com/) vyhledat, která větev Chromu odpovídá stylu Chrome 74 (v 74.0.3729.108), a to podle [pokynů uvedených v Chromu](https://www.chromium.org/getting-involved/download-chromium).
 
-Počínaje `80.0.3975.0`ou zkušební verze je možné zakázat dočasné zmírnění LAX + POST pro účely testování pomocí nového příznaku `--enable-features=SameSiteDefaultChecksMethodRigorously`, který umožňuje testování lokalit a služeb v konečném stavu funkce, ve které bylo řešení zmírnění odstraněno. Další informace najdete v tématu [aktualizace SameSite](https://www.chromium.org/updates/same-site) v projektech Chromu.
-
 #### <a name="test-with-chrome-80"></a>Testování s použitím Chromu 80 +
 
 [Stáhněte si](https://www.google.com/chrome/) verzi Chrome, která podporuje jejich nový atribut. V době psaní je aktuální verze Chrome 80. Chrome 80 vyžaduje, aby byl příznak `chrome://flags/#same-site-by-default-cookies` povolen pro použití nového chování. Měli byste taky povolit (`chrome://flags/#cookies-without-same-site-must-be-secure`) pro otestování nadcházejícího chování souborů cookie, u kterých není povolený žádný atribut sameSite. Chrome 80 je v cíli, aby tento přepínač považoval soubory cookie bez atributu `SameSite=Lax`, i když s časovým obdobím pro určité žádosti. Chcete-li zakázat časový limit doby odkladu, je možné spustit Chrome 80 s následujícím argumentem příkazového řádku:
@@ -266,7 +264,7 @@ Prohlížeč Safari 12 striktně implementuje předchozí koncept a v případě
 
 Podporu aplikace Firefox pro nový standard lze testovat na verzi 68 + tím, že na stránce `about:config` `network.cookie.sameSite.laxByDefault`příznak funkce. Nebyly zjištěny žádné zprávy o problémech s kompatibilitou se staršími verzemi aplikace Firefox.
 
-### <a name="test-with-edge-legacy-browser"></a>Test pomocí prohlížeče Edge (starší verze)
+### <a name="test-with-edge-legacy-browser"></a>Test pomocí prohlížeče Microsoft Edge (starší verze)
 
 Edge podporuje starý SameSite Standard. Edge verze 44 + nemá žádné známé problémy s kompatibilitou s novým standardem.
 
@@ -301,10 +299,9 @@ Aktualizujte soubor *Web. config* tak, aby zahrnoval následující nastavení k
 </configuration>
 ```
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Nadcházející změny souborů cookie SameSite v ASP.NET a ASP.NET Core](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
-* [Tipy pro testování a ladění SameSite-podle výchozího nastavení a "SameSite = None;" Zabezpečení souborů cookie](https://www.chromium.org/updates/same-site/test-debug)
 * [Chromový blog: vývojáři: Připravte se na nové SameSite = None; Nastavení zabezpečeného souboru cookie](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)
 * [Vysvětlení souborů cookie SameSite](https://web.dev/samesite-cookies-explained/)
 * [Aktualizace pro Chrome](https://www.chromium.org/updates/same-site)
